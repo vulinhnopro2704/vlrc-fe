@@ -471,8 +471,8 @@ function FileUploadRoot(props: FileUploadRootProps) {
           if (validationMessage) {
             rejectionMessage = validationMessage;
             onFileReject?.(file, rejectionMessage);
-            rejected = true;
             invalid = true;
+            rejectedFiles.push({ file, message: rejectionMessage });
             continue;
           }
         }
