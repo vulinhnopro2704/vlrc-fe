@@ -117,7 +117,8 @@ import {
   GitMerge,
   GitCommit,
   User,
-  Terminal
+  Terminal,
+  Tag
 } from 'lucide-react';
 
 
@@ -232,6 +233,7 @@ export const Icons = {
   Type: Type,
   Edit: Edit,
   Pencil: Pencil,
+  Tag: Tag,
   Trash2: Trash2,
   FolderHeart: FolderHeart,
   FolderOpen: FolderOpen,
