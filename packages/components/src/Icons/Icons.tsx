@@ -96,7 +96,18 @@ import {
   FileQuestion,
   Home,
   AlertCircle,
-  RefreshCcw
+  RefreshCcw,
+  Settings,
+  Camera,
+  Folder,
+  Image,
+  Video,
+  Upload,
+  UploadCloud,
+  Save,
+  Palette,
+  Type,
+  Edit
 } from 'lucide-react';
 
 
@@ -198,6 +209,17 @@ export const Icons = {
   Home: Home,
   AlertCircle: AlertCircle,
   RefreshCcw: RefreshCcw,
+  Settings: Settings,
+  Camera: Camera,
+  Folder: Folder,
+  Image: Image,
+  Video: Video,
+  Upload: Upload,
+  UploadCloud: UploadCloud,
+  Save: Save,
+  Palette: Palette,
+  Type: Type,
+  Edit: Edit,
   GitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden='true'
