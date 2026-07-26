@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/hooks",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Reusable PlatformCore React hooks.",
   "type": "module",
   "license": "MIT",
