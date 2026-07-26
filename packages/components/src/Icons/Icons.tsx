@@ -107,7 +107,16 @@ import {
   Save,
   Palette,
   Type,
-  Edit
+  Edit,
+  Pencil,
+  Trash2,
+  FolderHeart,
+  FolderOpen,
+  GitBranch,
+  GitMerge,
+  GitCommit,
+  User,
+  Terminal
 } from 'lucide-react';
 
 
@@ -220,6 +229,17 @@ export const Icons = {
   Palette: Palette,
   Type: Type,
   Edit: Edit,
+  Pencil: Pencil,
+  Trash2: Trash2,
+  FolderHeart: FolderHeart,
+  FolderOpen: FolderOpen,
+  GitBranch: GitBranch,
+  GitMerge: GitMerge,
+  GitCommit: GitCommit,
+  User: User,
+  Terminal: Terminal,
+  HomeIcon: Home,
+  ImageIcon: Image,
   GitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden='true'
