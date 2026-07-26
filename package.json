@@ -11,6 +11,7 @@
     "publish:packages": "pnpm -r publish --access public --no-git-checks"
   },
   "devDependencies": {
+    "@babel/core": "^8.0.1",
     "@eslint/js": "^10.0.1",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.23",
@@ -38,6 +39,7 @@
     "@radix-ui/react-toggle": "^1.1.18",
     "@radix-ui/react-toggle-group": "^1.1.19",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@rolldown/plugin-babel": "^0.2.3",
     "@tanstack/react-table": "^8.21.3",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^25.9.1",

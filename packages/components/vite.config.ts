@@ -1,13 +1,13 @@
 import { resolve } from 'node:path';
-import react from '@vitejs/plugin-react';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        plugins: [['babel-plugin-react-compiler', {}]]
-      }
+    react(),
+    babel({
+      presets: [reactCompilerPreset()]
     })
   ],
   build: {
