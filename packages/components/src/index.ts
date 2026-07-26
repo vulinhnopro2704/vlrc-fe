@@ -16,7 +16,7 @@ export type { IconNames } from './Icons';
 export * from './ui';
 export * from './Form';
 export { default as Select } from './Select';
-export type { BaseSelectCommonProps, SelectValue, BaseSelectOption } from './Select/type';
+export type { BaseSelectCommonProps, BaseSelectOption } from './Select/type';
 export { default as MultiSelect } from './MultiSelect';
 export type { MultiSelectProps } from './MultiSelect/type';
 

@@ -4,7 +4,7 @@ import { FormBase } from '../Form';
 import type { FormMultiSelectProps, FormSingleSelectProps } from './types';
 import { useFormSelect } from './useFormSelect';
 import BaseSelect from '../../Select';
-import type { SelectValue } from '../../Select';
+import type { SelectValue } from '../../Select/type';
 
 export function FormSelect<TFieldValues extends FieldValues, T extends SelectValue = SelectValue>(
   props: FormMultiSelectProps<TFieldValues, T>
