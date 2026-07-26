@@ -4,4 +4,4 @@ export { default as FormDatePicker } from './FormDatePicker';
 export { default as FormNumberInput } from './FormNumberInput';
 export { default as FormSelect } from './FormSelect';
 export { default as FormRadioGroup } from './FormRadioGroup';
-export { default as FormFileUpload } from './FormFileUpload';
+export { default as FormFileUpload, FileDropzone } from './FormFileUpload';

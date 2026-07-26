@@ -21,4 +21,4 @@ export const FormFileUpload: FormControlFunc<FormFileUploadExtraProps> = props =
 };
 
 export default FormFileUpload;
-export { FileUpload };
+export { FileUpload as FileDropzone };
