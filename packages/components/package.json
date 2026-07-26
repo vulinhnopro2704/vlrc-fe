@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reusable PlatformCore React components.",
   "type": "module",
   "license": "MIT",
@@ -36,7 +36,7 @@
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && vite build",
+    "build": "vite build && tsc -p tsconfig.json",
     "lint": "eslint ."
   },
   "peerDependencies": {
