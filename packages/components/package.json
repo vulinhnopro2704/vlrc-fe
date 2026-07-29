@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "Reusable PlatformCore React components.",
   "type": "module",
   "license": "MIT",

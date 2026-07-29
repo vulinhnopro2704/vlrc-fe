@@ -61,9 +61,21 @@ export function SingleDatePicker({
   disabledTime
 }: SingleDatePickerProps) {
   const [open, setOpen] = React.useState(false);
+  const [currentMonth, setCurrentMonth] = React.useState<Date | undefined>(value || new Date());
   const timeConfig = buildTimeConfig(showTime, pickerType);
 
   const displayValue = value ? formatDateValue(value, dateFormat) : '';
+
+  React.useEffect(() => {
+    if (value) {
+      setCurrentMonth((prev) => {
+        if (prev && prev.getMonth() === value.getMonth() && prev.getFullYear() === value.getFullYear()) {
+          return prev;
+        }
+        return value;
+      });
+    }
+  }, [value]);
 
   const handleDateSelect = (date: Date | undefined) => {
     if (!date) {
@@ -129,11 +141,12 @@ export function SingleDatePicker({
           disabled={disabledDate}
           captionLayout='dropdown'
           locale={vi}
-          month={value}
+          month={currentMonth}
           hidden={{
             after: new Date(new Date().getFullYear() + 50, 11, 31)
           }}
           onMonthChange={month => {
+            setCurrentMonth(month);
             if (pickerType === 'month') {
               onChange(month);
               setOpen(false);

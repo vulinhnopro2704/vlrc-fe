@@ -21,6 +21,7 @@ export default defineConfig({
       external: [
         'react',
         'react/jsx-runtime',
+        'react/compiler-runtime',
         'react-dom',
         '@radix-ui/react-accordion',
         '@radix-ui/react-checkbox',
