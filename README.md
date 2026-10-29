@@ -10,12 +10,12 @@ Standalone monorepo housing the core UI component systems, utility libraries, an
 
 ---
 
-## 📦 Packages
+## 📦 Packages & npm Registries
 
-| Package | Version | Description | Path |
-| :--- | :---: | :--- | :--- |
-| **[`@vlrc-fe/components`](./packages/components)** | `2.0.1` | Accessible, tree-shakable React UI library built with **Meta StyleX** and **Radix UI**. | [`packages/components`](./packages/components) |
-| **[`@vlrc-fe/hooks`](./packages/hooks)** | `1.0.9` | Reusable React hooks for state, gestures, debounce, and query coordination. | [`packages/hooks`](./packages/hooks) |
+| Package | npm Version | Registry Link | Source Path | Description |
+| :--- | :---: | :---: | :---: | :--- |
+| **`@vlrc-fe/components`** | [![npm](https://img.shields.io/npm/v/@vlrc-fe/components.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/components) | [npmjs.com/package/@vlrc-fe/components](https://www.npmjs.com/package/@vlrc-fe/components) | [`packages/components`](./packages/components) | Accessible React UI library built with **Meta StyleX** and **Radix UI**. |
+| **`@vlrc-fe/hooks`** | [![npm](https://img.shields.io/npm/v/@vlrc-fe/hooks.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/hooks) | [npmjs.com/package/@vlrc-fe/hooks](https://www.npmjs.com/package/@vlrc-fe/hooks) | [`packages/hooks`](./packages/hooks) | Reusable React hooks for modal lifecycles, state coordination, and animations. |
 
 ---
 
@@ -79,6 +79,7 @@ This repository maintains standardized guidelines for AI pair-programming agents
 ## 📄 Documentation
 
 - [Components Package README](./packages/components/README.md)
+- [Hooks Package README](./packages/hooks/README.md)
 - [Changelog & Breaking Changes](./packages/components/CHANGELOG.md)
 - [Tailwind to StyleX Migration Guide](./packages/components/MIGRATION_GUIDE.md)
 

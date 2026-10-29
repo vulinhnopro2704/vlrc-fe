@@ -8,6 +8,8 @@
 
 Modern, performant, and accessible React UI component library for the **VLRC** platform. Built from the ground up with **React 19**, **Meta StyleX** (compile-time atomic CSS-in-JS), and **Radix UI** headless primitives.
 
+- **npm package:** [https://www.npmjs.com/package/@vlrc-fe/components](https://www.npmjs.com/package/@vlrc-fe/components)
+
 ---
 
 ## ✨ Features
