@@ -1,0 +1,282 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > UI > should match snapshot for 2xl size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.size2xl xu15cu9 x1f78wua xw4edqq x1c3i2sq"
+    data-size="2xl"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:166"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for accent variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantAccent x1jgryid xzeqxs3 x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:108; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="accent"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for accent-cta variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantAccentCta x1jgryid xzeqxs3 xe3tlyi x14snt5h x1ue318z button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:115; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="accent-cta"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for default size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for default variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for destructive variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s button__styles.variantDestructive x57dptr x1f7m26b x18uuni6 xi3z2r8 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:64; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="destructive"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for ghost variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:92; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="ghost"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for gradient variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGradient x1d6nh5w xstwp1q xq2yyqn xclktvd x1l46q3f button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:124; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="gradient"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for gradient-success variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGradientSuccess x14lf7vg x1f7m26b x1wvf0jk xclktvd x1cdh3jk button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:133; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="gradient-success"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIcon xk8t5le x1s4ejo4 x1717udv"
+    data-size="icon"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:172"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon-lg size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconLg xwaiz5r xvm51jw x1717udv"
+    data-size="icon-lg"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:182"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon-sm size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconSm xettwda xs5h3dt x1717udv"
+    data-size="icon-sm"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:177"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for lg size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeLg xwaiz5r xsda711 xzsmjar"
+    data-size="lg"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:156"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for link variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantLink xjbqb8w x6gpbkk x3pynha xt0b8zv button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:100; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="link"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for outline variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:74; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="outline"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for secondary variant 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantSecondary xr2cb9l x2mg7mp x5z6fxw button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:85; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="secondary"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for sm size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9"
+    data-size="sm"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:149"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for xl size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeXl x12hms15 x1f78wua xzsmjar"
+    data-size="xl"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:161"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="default"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot when disabled 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
+    data-size="default"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:29; @vlrc-fe/components:src/ui/button.tsx:57; @vlrc-fe/components:src/ui/button.tsx:144"
+    data-variant="default"
+    disabled=""
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;

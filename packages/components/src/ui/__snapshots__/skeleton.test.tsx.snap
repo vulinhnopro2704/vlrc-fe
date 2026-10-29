@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Skeleton > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="skeleton__styles.base x1jgryid xsda711 xcx56e2 x1c74tu6 xw1l40g xa4qsjk"
+    data-slot="skeleton"
+    data-style-src="@vlrc-fe/components:src/ui/skeleton.tsx:11"
+    style="width: 100px; height: 20px;"
+  />
+</DocumentFragment>
+`;
+
+exports[`Skeleton > UI > should match snapshot with custom className 1`] = `
+<DocumentFragment>
+  <div
+    class="skeleton__styles.base x1jgryid xsda711 xcx56e2 x1c74tu6 xw1l40g xa4qsjk custom-skeleton-class"
+    data-slot="skeleton"
+    data-style-src="@vlrc-fe/components:src/ui/skeleton.tsx:11"
+    style="width: 100px; height: 20px;"
+  />
+</DocumentFragment>
+`;

@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Alert > UI > should match snapshot for default variant 1`] = `
+<DocumentFragment>
+  <div
+    class="alert__styles.root x1n2onr6 xh8yej3 x1mr5ieh xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDefault x1rexohn xb30jbz xk0jn7w"
+    data-slot="alert"
+    data-style-src="@vlrc-fe/components:src/ui/alert.tsx:8; @vlrc-fe/components:src/ui/alert.tsx:22"
+    role="alert"
+  >
+    <div
+      class="alert__styles.title x1xdureb x132q4wb xk50ysn x1w69ole"
+      data-slot="alert-title"
+      data-style-src="@vlrc-fe/components:src/ui/alert.tsx:32"
+    >
+      Alert Title
+    </div>
+    <div
+      class="alert__styles.description x1xdureb xrvj5dj xvh977a xkpwil5 xw3nh4a"
+      data-slot="alert-description"
+      data-style-src="@vlrc-fe/components:src/ui/alert.tsx:38"
+    >
+      This is an important alert message.
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Alert > UI > should match snapshot for destructive variant 1`] = `
+<DocumentFragment>
+  <div
+    class="alert__styles.root x1n2onr6 xh8yej3 x1mr5ieh xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDestructive x1rexohn x1uwefn5 xuuroe4"
+    data-slot="alert"
+    data-style-src="@vlrc-fe/components:src/ui/alert.tsx:8; @vlrc-fe/components:src/ui/alert.tsx:27"
+    role="alert"
+  >
+    <div
+      class="alert__styles.title x1xdureb x132q4wb xk50ysn x1w69ole"
+      data-slot="alert-title"
+      data-style-src="@vlrc-fe/components:src/ui/alert.tsx:32"
+    >
+      Alert Title
+    </div>
+    <div
+      class="alert__styles.description x1xdureb xrvj5dj xvh977a xkpwil5 xw3nh4a"
+      data-slot="alert-description"
+      data-style-src="@vlrc-fe/components:src/ui/alert.tsx:38"
+    >
+      This is an important alert message.
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Alert > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="alert__styles.root x1n2onr6 xh8yej3 x1mr5ieh xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDefault x1rexohn xb30jbz xk0jn7w"
+    data-slot="alert"
+    data-style-src="@vlrc-fe/components:src/ui/alert.tsx:8; @vlrc-fe/components:src/ui/alert.tsx:22"
+    role="alert"
+  >
+    <div
+      class="alert__styles.title x1xdureb x132q4wb xk50ysn x1w69ole"
+      data-slot="alert-title"
+      data-style-src="@vlrc-fe/components:src/ui/alert.tsx:32"
+    >
+      Alert Title
+    </div>
+    <div
+      class="alert__styles.description x1xdureb xrvj5dj xvh977a xkpwil5 xw3nh4a"
+      data-slot="alert-description"
+      data-style-src="@vlrc-fe/components:src/ui/alert.tsx:38"
+    >
+      This is an important alert message.
+    </div>
+  </div>
+</DocumentFragment>
+`;

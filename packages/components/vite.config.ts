@@ -12,7 +12,7 @@ export default defineConfig({
       runtimeInjection: false,
       unstable_moduleResolution: {
         type: 'commonJS',
-        rootDir: __dirname,
+        rootDir: import.meta.dirname,
       },
     }),
     react(),
@@ -22,7 +22,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(import.meta.dirname, 'src/index.ts'),
       name: 'PlatformCoreComponents',
       formats: ['es', 'cjs'],
       fileName: format => (format === 'es' ? 'index.js' : 'index.cjs')

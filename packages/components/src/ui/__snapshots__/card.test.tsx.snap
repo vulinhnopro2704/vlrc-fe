@@ -1,0 +1,323 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Card > UI > should match snapshot for auth variant 1`] = `
+<DocumentFragment>
+  <div
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf xmkeg23 x1y0btm7 xru8eyw x1yb22fu card__styles.variantAuth xh8yej3 x1983rqf xvueqy4 xuqd5rh x1na3us3 xzu61vc xsx7z29 x2sv03e"
+    data-slot="card"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:59"
+    data-variant="auth"
+  >
+    <div
+      class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
+      data-slot="card-header"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+    >
+      <div
+        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-slot="card-title"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+      >
+        Card Title
+      </div>
+      <div
+        class="card__styles.description xw3nh4a xkpwil5"
+        data-slot="card-description"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+      >
+        Card Description
+      </div>
+    </div>
+    <div
+      class="card__styles.content xzsmjar"
+      data-slot="card-content"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+    >
+      Card Content Body
+    </div>
+    <div
+      class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
+      data-slot="card-footer"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+    >
+      Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card > UI > should match snapshot for default variant 1`] = `
+<DocumentFragment>
+  <div
+    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantDefault"
+    data-slot="card"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:28"
+    data-variant="default"
+  >
+    <div
+      class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
+      data-slot="card-header"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+    >
+      <div
+        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-slot="card-title"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+      >
+        Card Title
+      </div>
+      <div
+        class="card__styles.description xw3nh4a xkpwil5"
+        data-slot="card-description"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+      >
+        Card Description
+      </div>
+    </div>
+    <div
+      class="card__styles.content xzsmjar"
+      data-slot="card-content"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+    >
+      Card Content Body
+    </div>
+    <div
+      class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
+      data-slot="card-footer"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+    >
+      Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card > UI > should match snapshot for elevated variant 1`] = `
+<DocumentFragment>
+  <div
+    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x1f78wua x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevated xc342km xymrrow x16n73rl x13dflua x1n3u82n xlyhkv7"
+    data-slot="card"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:37"
+    data-variant="elevated"
+  >
+    <div
+      class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
+      data-slot="card-header"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+    >
+      <div
+        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-slot="card-title"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+      >
+        Card Title
+      </div>
+      <div
+        class="card__styles.description xw3nh4a xkpwil5"
+        data-slot="card-description"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+      >
+        Card Description
+      </div>
+    </div>
+    <div
+      class="card__styles.content xzsmjar"
+      data-slot="card-content"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+    >
+      Card Content Body
+    </div>
+    <div
+      class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
+      data-slot="card-footer"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+    >
+      Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card > UI > should match snapshot for elevated-glass variant 1`] = `
+<DocumentFragment>
+  <div
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x1f78wua x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevatedGlass xc342km x1so2dtn xvn2z4z x1l59q01 x16n73rl x13dflua x1a3imcw x1jdd2jz"
+    data-slot="card"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:47"
+    data-variant="elevated-glass"
+  >
+    <div
+      class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
+      data-slot="card-header"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+    >
+      <div
+        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-slot="card-title"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+      >
+        Card Title
+      </div>
+      <div
+        class="card__styles.description xw3nh4a xkpwil5"
+        data-slot="card-description"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+      >
+        Card Description
+      </div>
+    </div>
+    <div
+      class="card__styles.content xzsmjar"
+      data-slot="card-content"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+    >
+      Card Content Body
+    </div>
+    <div
+      class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
+      data-slot="card-footer"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+    >
+      Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card > UI > should match snapshot for glass variant 1`] = `
+<DocumentFragment>
+  <div
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantGlass xuqd5rh x1dmgsgi"
+    data-slot="card"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:29"
+    data-variant="glass"
+  >
+    <div
+      class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
+      data-slot="card-header"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+    >
+      <div
+        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-slot="card-title"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+      >
+        Card Title
+      </div>
+      <div
+        class="card__styles.description xw3nh4a xkpwil5"
+        data-slot="card-description"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+      >
+        Card Description
+      </div>
+    </div>
+    <div
+      class="card__styles.content xzsmjar"
+      data-slot="card-content"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+    >
+      Card Content Body
+    </div>
+    <div
+      class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
+      data-slot="card-footer"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+    >
+      Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card > UI > should match snapshot for glass-strong variant 1`] = `
+<DocumentFragment>
+  <div
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantGlassStrong x1so2dtn xvn2z4z"
+    data-slot="card"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:33"
+    data-variant="glass-strong"
+  >
+    <div
+      class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
+      data-slot="card-header"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+    >
+      <div
+        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-slot="card-title"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+      >
+        Card Title
+      </div>
+      <div
+        class="card__styles.description xw3nh4a xkpwil5"
+        data-slot="card-description"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+      >
+        Card Description
+      </div>
+    </div>
+    <div
+      class="card__styles.content xzsmjar"
+      data-slot="card-content"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+    >
+      Card Content Body
+    </div>
+    <div
+      class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
+      data-slot="card-footer"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+    >
+      Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantDefault"
+    data-slot="card"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:28"
+    data-variant="default"
+  >
+    <div
+      class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
+      data-slot="card-header"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+    >
+      <div
+        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-slot="card-title"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+      >
+        Card Title
+      </div>
+      <div
+        class="card__styles.description xw3nh4a xkpwil5"
+        data-slot="card-description"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+      >
+        Card Description
+      </div>
+    </div>
+    <div
+      class="card__styles.content xzsmjar"
+      data-slot="card-content"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+    >
+      Card Content Body
+    </div>
+    <div
+      class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
+      data-slot="card-footer"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+    >
+      Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;

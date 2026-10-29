@@ -1,0 +1,145 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Table > UI > should match snapshot in full table composition 1`] = `
+<DocumentFragment>
+  <div
+    class="table__styles.container x1n2onr6 xh8yej3 xw2csxc"
+    data-slot="table-container"
+    data-style-src="@vlrc-fe/components:src/ui/table.tsx:6"
+  >
+    <table
+      class="table__styles.table xh8yej3 xhdg8po xkpwil5 x1mwwwfo"
+      data-slot="table"
+      data-style-src="@vlrc-fe/components:src/ui/table.tsx:11"
+    >
+      <caption
+        class="table__styles.caption xw3nh4a xj1urod xkpwil5"
+        data-slot="table-caption"
+        data-style-src="@vlrc-fe/components:src/ui/table.tsx:55"
+      >
+        A list of recent invoices.
+      </caption>
+      <thead
+        class="table__styles.header xso031l x1q0q8m5 x1c03eaz"
+        data-slot="table-header"
+        data-style-src="@vlrc-fe/components:src/ui/table.tsx:17"
+      >
+        <tr
+          class="table__styles.row xso031l x1q0q8m5 x1c03eaz x15406qy xx6bhzk x1h46o4z"
+          data-slot="table-row"
+          data-style-src="@vlrc-fe/components:src/ui/table.tsx:30"
+        >
+          <th
+            class="table__styles.head x84br7x xwaiz5r x97vtpp xdpxx8g xxymvpz xk50ysn xuxw1ft"
+            data-slot="table-head"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:40"
+          >
+            Invoice
+          </th>
+          <th
+            class="table__styles.head x84br7x xwaiz5r x97vtpp xdpxx8g xxymvpz xk50ysn xuxw1ft"
+            data-slot="table-head"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:40"
+          >
+            Status
+          </th>
+          <th
+            class="table__styles.head x84br7x xwaiz5r x97vtpp xdpxx8g xxymvpz xk50ysn xuxw1ft"
+            data-slot="table-head"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:40"
+          >
+            Amount
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="table__styles.body"
+        data-slot="table-body"
+        data-style-src="@vlrc-fe/components:src/ui/table.tsx:22"
+      >
+        <tr
+          class="table__styles.row xso031l x1q0q8m5 x1c03eaz x15406qy xx6bhzk x1h46o4z"
+          data-slot="table-row"
+          data-style-src="@vlrc-fe/components:src/ui/table.tsx:30"
+        >
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            INV001
+          </td>
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            Paid
+          </td>
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            $250.00
+          </td>
+        </tr>
+        <tr
+          class="table__styles.row xso031l x1q0q8m5 x1c03eaz x15406qy xx6bhzk x1h46o4z"
+          data-slot="table-row"
+          data-style-src="@vlrc-fe/components:src/ui/table.tsx:30"
+        >
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            INV002
+          </td>
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            Pending
+          </td>
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            $150.00
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class="table__styles.footer xlyhbwk x178xt8z x13fuv20 xh5ekmr xk50ysn"
+        data-slot="table-footer"
+        data-style-src="@vlrc-fe/components:src/ui/table.tsx:23"
+      >
+        <tr
+          class="table__styles.row xso031l x1q0q8m5 x1c03eaz x15406qy xx6bhzk x1h46o4z"
+          data-slot="table-row"
+          data-style-src="@vlrc-fe/components:src/ui/table.tsx:30"
+        >
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            colspan="2"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            Total
+          </td>
+          <td
+            class="table__styles.cell x7gbtqy xxymvpz xuxw1ft x84br7x"
+            data-slot="table-cell"
+            data-style-src="@vlrc-fe/components:src/ui/table.tsx:49"
+          >
+            $400.00
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Label > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <label
+    class="label__styles.base x78zum5 x6s0dn4 x13z6uf9 xkpwil5 xo5v014 xk50ysn x87ps6o x84br7x xaqnwrm xijokvz"
+    data-slot="label"
+    data-style-src="@vlrc-fe/components:src/ui/label.tsx:7"
+    for="email-input"
+  >
+    Email Address
+  </label>
+</DocumentFragment>
+`;
+
+exports[`Label > UI > should match snapshot with custom className 1`] = `
+<DocumentFragment>
+  <label
+    class="label__styles.base x78zum5 x6s0dn4 x13z6uf9 xkpwil5 xo5v014 xk50ysn x87ps6o x84br7x xaqnwrm xijokvz custom-label-class"
+    data-slot="label"
+    data-style-src="@vlrc-fe/components:src/ui/label.tsx:7"
+    for="email-input"
+  >
+    Email Address
+  </label>
+</DocumentFragment>
+`;

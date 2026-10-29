@@ -1,0 +1,73 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Switch > UI > should match snapshot in checked state 1`] = `
+<DocumentFragment>
+  <button
+    aria-checked="true"
+    aria-label="Airplane mode"
+    class="switch__styles.root x3nfvp2 xmll18r x1s4ejo4 x2lah0s x1ypdohk x6s0dn4 x7xypw4 xdh2fpr x1y0btm7 x9r1u3d x1q9yuub x106061f x13dflua x1a2a7pz x156qtes x1ippke1 x1s07b3s xijokvz"
+    data-slot="switch"
+    data-state="checked"
+    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:7"
+    role="switch"
+    type="button"
+    value="on"
+  >
+    <span
+      class="switch__styles.thumb x47corl x1lliihq x1l36t39 xcdlrvm x7xypw4 x1mlyrtw x1lpynwn x11xpdln x13dflua"
+      data-slot="switch-thumb"
+      data-state="checked"
+      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:31"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Switch > UI > should match snapshot in unchecked state 1`] = `
+<DocumentFragment>
+  <button
+    aria-checked="false"
+    aria-label="Airplane mode"
+    class="switch__styles.root x3nfvp2 xmll18r x1s4ejo4 x2lah0s x1ypdohk x6s0dn4 x7xypw4 xdh2fpr x1y0btm7 x9r1u3d x1q9yuub x106061f x13dflua x1a2a7pz x156qtes x1ippke1 x1s07b3s xijokvz"
+    data-slot="switch"
+    data-state="unchecked"
+    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:7"
+    role="switch"
+    type="button"
+    value="on"
+  >
+    <span
+      class="switch__styles.thumb x47corl x1lliihq x1l36t39 xcdlrvm x7xypw4 x1mlyrtw x1lpynwn x11xpdln x13dflua"
+      data-slot="switch-thumb"
+      data-state="unchecked"
+      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:31"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Switch > UI > should match snapshot when disabled 1`] = `
+<DocumentFragment>
+  <button
+    aria-checked="false"
+    aria-label="Airplane mode"
+    class="switch__styles.root x3nfvp2 xmll18r x1s4ejo4 x2lah0s x1ypdohk x6s0dn4 x7xypw4 xdh2fpr x1y0btm7 x9r1u3d x1q9yuub x106061f x13dflua x1a2a7pz x156qtes x1ippke1 x1s07b3s xijokvz"
+    data-disabled=""
+    data-slot="switch"
+    data-state="unchecked"
+    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:7"
+    disabled=""
+    role="switch"
+    type="button"
+    value="on"
+  >
+    <span
+      class="switch__styles.thumb x47corl x1lliihq x1l36t39 xcdlrvm x7xypw4 x1mlyrtw x1lpynwn x11xpdln x13dflua"
+      data-disabled=""
+      data-slot="switch-thumb"
+      data-state="unchecked"
+      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:31"
+    />
+  </button>
+</DocumentFragment>
+`;

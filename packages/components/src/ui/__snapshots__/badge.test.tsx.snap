@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Badge > UI > should match snapshot for default variant 1`] = `
+<DocumentFragment>
+  <span
+    class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantDefault x9r1u3d x1j7ufkg xstwp1q x18uuni6"
+    data-slot="badge"
+    data-style-src="@vlrc-fe/components:src/ui/badge.tsx:9; @vlrc-fe/components:src/ui/badge.tsx:35"
+    data-variant="default"
+  >
+    Status Badge
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Badge > UI > should match snapshot for destructive variant 1`] = `
+<DocumentFragment>
+  <span
+    class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes badge__styles.variantDestructive x9r1u3d x57dptr x1f7m26b x18uuni6 xi3z2r8"
+    data-slot="badge"
+    data-style-src="@vlrc-fe/components:src/ui/badge.tsx:9; @vlrc-fe/components:src/ui/badge.tsx:51"
+    data-variant="destructive"
+  >
+    Status Badge
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Badge > UI > should match snapshot for outline variant 1`] = `
+<DocumentFragment>
+  <span
+    class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantOutline xb30jbz xjbqb8w x84br7x x9p52ec x10ubyu6"
+    data-slot="badge"
+    data-style-src="@vlrc-fe/components:src/ui/badge.tsx:9; @vlrc-fe/components:src/ui/badge.tsx:62"
+    data-variant="outline"
+  >
+    Status Badge
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Badge > UI > should match snapshot for secondary variant 1`] = `
+<DocumentFragment>
+  <span
+    class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6"
+    data-slot="badge"
+    data-style-src="@vlrc-fe/components:src/ui/badge.tsx:9; @vlrc-fe/components:src/ui/badge.tsx:43"
+    data-variant="secondary"
+  >
+    Status Badge
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Badge > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <span
+    class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantDefault x9r1u3d x1j7ufkg xstwp1q x18uuni6"
+    data-slot="badge"
+    data-style-src="@vlrc-fe/components:src/ui/badge.tsx:9; @vlrc-fe/components:src/ui/badge.tsx:35"
+    data-variant="default"
+  >
+    Status Badge
+  </span>
+</DocumentFragment>
+`;

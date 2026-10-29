@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input > UI > should match snapshot for type email 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    placeholder="Enter value..."
+    type="email"
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot for type number 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    placeholder="Enter value..."
+    type="number"
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot for type password 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    placeholder="Enter value..."
+    type="password"
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot for type text 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    placeholder="Enter value..."
+    type="text"
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    placeholder="Enter value..."
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot when disabled 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    disabled=""
+    placeholder="Enter value..."
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot when invalid 1`] = `
+<DocumentFragment>
+  <input
+    aria-invalid="true"
+    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.invalid x1uwefn5 xrqv5e9"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6; @vlrc-fe/components:src/ui/input.tsx:46"
+    placeholder="Enter value..."
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
