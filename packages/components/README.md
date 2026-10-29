@@ -1,193 +1,278 @@
 # @vlrc-fe/components
 
----
-ai_package_metadata:
-  package_name: "@vlrc-fe/components"
-  version: "workspace:*"
-  conventions:
-    import_hygiene:
-      main_app: "Do NOT manually import. Let Vite auto-import handle it (src/types/auto-imports.d.ts)."
-      local_packages: "Always use explicit relative or workspace imports. Packages compile without auto-imports."
-    component_rules:
-      props_typing: "Always declare props inline in the component signature. Avoid standalone interface/type Props for local components."
-      wrapper_preference: "Always prefer Select and MultiSelect wrapper components over Radix UI/Shadcn primitives."
----
+[![npm version](https://img.shields.io/npm/v/@vlrc-fe/components.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/components)
+[![React 19](https://img.shields.io/badge/React-19.3-blue.svg?style=flat-square)](https://react.dev/)
+[![TypeScript 7](https://img.shields.io/badge/TypeScript-7.0-blue.svg?style=flat-square)](https://www.typescriptlang.org/)
+[![StyleX](https://img.shields.io/badge/Styling-Meta%20StyleX-purple.svg?style=flat-square)](https://stylexjs.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](./LICENSE)
 
-Reusable, optimized, and tree-shaken UI components built on top of **React 19**, **Meta StyleX** (compile-time atomic CSS-in-JS), and **Radix UI/Shadcn** primitives for the VLRC project monorepo.
-
-> [!IMPORTANT]
-> **AUTO-IMPORT CONVENTION**: In the main web application (`src/`), **do not write explicit import statements** for any components in this package. They are dynamically parsed and registered by Vite into `src/types/auto-imports.d.ts`.
-> **EXPLICIT PACKAGE IMPORTS**: Inside independent packages (like `packages/components` or `packages/hooks`), **always** write explicit imports because packages are compiled standalone using `tsc`.
+Modern, performant, and accessible React UI component library for the **VLRC** platform. Built from the ground up with **React 19**, **Meta StyleX** (compile-time atomic CSS-in-JS), and **Radix UI** headless primitives.
 
 ---
 
-## 📚 Agent & Codex Skill Reference
+## ✨ Features
 
-This package is fully mapped and integrated with the custom **[platform-core-components Agent Skill](file:///Users/lvtruong/personal/vlrc/.agent/skills/platform-core-components/SKILL.md)**. When working inside this package or utilizing these components, refer to these segmented reference files:
-1. **[Shadcn + TanStack DataTable Composition Guide](file:///Users/lvtruong/personal/vlrc/.agent/skills/platform-core-components/references/datatable.md)**
-2. **[Form Containers & FormItem/FormBase Layouts Specification](file:///Users/lvtruong/personal/vlrc/.agent/skills/platform-core-components/references/forms.md)**
-3. **[Custom Form Fields & Inputs API Manual](file:///Users/lvtruong/personal/vlrc/.agent/skills/platform-core-components/references/form-fields.md)**
-4. **[Dialogs, ConfirmModal & useModalState Bindings](file:///Users/lvtruong/personal/vlrc/.agent/skills/platform-core-components/references/modals.md)**
-5. **[Unified Graphic Icons Registry Guidelines](file:///Users/lvtruong/personal/vlrc/.agent/skills/platform-core-components/references/icons.md)**
+- **🚀 Meta StyleX Engine**: Fully compile-time atomic CSS-in-JS. Zero runtime style injections, deterministic class resolution, and collision-free specificity.
+- **🎨 Dynamic Multi-Theming**: Design tokens (`colors`, `radii`, `textColors`) map directly to CSS custom properties, providing seamless support for `light`, `dark`, `pink`, `lavender`, and custom themes.
+- **♿ Accessible by Default**: Built on top of WAI-ARIA compliant Radix UI primitives with full keyboard navigation and screen-reader support.
+- **📋 RHF-Integrated Form System**: Complete suite of form controls (`FormInput`, `FormSelect`, `FormMultiSelect`, `FormDatePicker`, `FormFileUpload`, `FormNumberInput`) unified under `FormBase` with automatic validation indicators.
+- **📊 TanStack Table Data Grid**: Powerful `DataTable` component with preset selection, expander, and row actions column creators.
+- **📦 Tree-Shakable & Typed**: Full ES Module and CommonJS support with TypeScript declaration source maps and granular subpath exports.
 
 ---
 
-## 📝 1. Shadcn Form Item & RHF Integration (`FormBase` & `FormItem`)
+## 📦 Installation
 
-Form fields inside this repository inherit a highly structured validation wrapper component called `FormBase`. It bridges the standard **react-hook-form** controller with custom-wrapped **Shadcn UI Form Item** layouts.
-
-### 1.1 Structural Layout & Features
-When a field is rendered, `FormBase` automatically builds the following Shadcn structure:
-1. **`<FormItem>` Container**: The primary layout block handling spacing. Supports:
-   - **Vertical (Default)**: Normal form inputs stacked sequentially.
-   - **Horizontal (`horizontal={true}`)**: Arranges labels and inputs side-by-side using unified grid properties. Perfect for dense settings panels.
-   - **Control First (`controlFirst={true}`)**: Renders the input control widget *before* the text label (used automatically by `FormCheckbox` and `FormRadioGroup` options).
-2. **`<FieldLabel>`**: Displays the text label tied to the input via `htmlFor`.
-   - **Automatic required asterisk**: If the field rules specify `required: true` (or a string), `FormBase` automatically appends a red asterisk `<span className="text-red-500">*</span>` to the label.
-3. **`<FieldDescription>`**: Displays supplementary description nodes or helper text.
-4. **`<FieldError>`**: Listens to active RHF validation errors. If a field fails validation checks, the error message is instantly rendered below the input with appropriate red typography, omitting the need for developers to manually write error flags.
-
-### 1.2 How `<Form>` Works
-
-`<Form>` is literally `FormProvider` from `react-hook-form`. It provides form context so child components can use `useFormContext()`.
-
-**Pattern**: Call `useForm()` → spread into `<Form {...form}>` → wrap a native `<form>` → fields receive `form.control`.
-
-**Validation**: Done exclusively via `rules` prop on each field (standard RHF `RegisterOptions`). No Zod schemas.
-
-```tsx
-const { control, handleSubmit, reset } = useForm<LearningManagement.Course>();
-
-return (
-  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-    <FormInput control={control} name="title" label="Tiêu đề" rules={{ required: true }} />
-    <FormCheckbox control={control} name="isActive" label="Hoạt động" />
-    <Button type="submit">Lưu</Button>
-  </form>
-);
+```bash
+pnpm add @vlrc-fe/components @stylexjs/stylex
+pnpm add -D @stylexjs/unplugin
 ```
 
-When splitting into child components, wrap with `<Form {...form}>` and use `useFormContext()` inside children to access `control` without prop drilling.
+---
+
+## ⚙️ Setup & Configuration
+
+### 1. Configure Bundler Plugin (Vite Example)
+
+Install and configure `@stylexjs/unplugin` in your `vite.config.ts`:
+
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import stylex from '@stylexjs/unplugin';
+
+export default defineConfig({
+  plugins: [
+    stylex.vite({
+      useCSSLayers: true,
+      dev: process.env.NODE_ENV === 'development',
+      runtimeInjection: false,
+    }),
+    react(),
+  ],
+});
+```
+
+### 2. Import Atomic Stylesheet
+
+Import the generated StyleX CSS layer in your application's entry file (`main.tsx` or `App.tsx`):
+
+```ts
+import '@vlrc-fe/components/stylex.css';
+```
 
 ---
 
-## 📊 2. DataTable (Shadcn + TanStack Table v8)
+## 🎨 Design Tokens & Theming
 
-The `DataTable` component provides a rich, responsive, and performance-optimized data grid built on top of **Shadcn table structures** and **TanStack Table**.
+Theme design tokens are available via `@vlrc-fe/components/theme`:
 
-### 2.1 API Definition
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `columns` | `ColumnDef<T>[]` | - | **(Required)** TanStack-compliant column definitions. |
-| `data` | `T[]` | - | **(Required)** Row data source array. |
-| `isLoading` | `boolean` | `false` | Renders a custom glass-effect loader spinner overlay. |
-| `pageSize` | `number` | `10` | Rows displayed per page. |
-| `searchPlaceholder` | `string` | `'Tìm kiếm...'` | Search input placeholder. |
-| `searchKey` | `string` | - | Accessor key for client-side search filtering. |
+```ts
+import { colors, radii, textColors } from '@vlrc-fe/components/theme';
+```
 
-### 2.2 Standard Column Creators
-To maintain UI consistency and eliminate copy-paste boilerplate, use the built-in column creators:
-- **Checkbox Row Selection**: `createSelectionColumn<T>()` - Automatically inserts checkbox controls in headers and rows to select records.
-- **Expandable Children Row caret**: `createExpanderColumn<T>()` - Inserts caret icons to toggle nested layouts.
-- **Actions Panel Column**: `createRowActionsColumn<T>({ renderActions })` - Standardizes spacing for edit, view, and delete row action buttons.
+### Supported CSS Variables
+The component styles bind directly to your application's CSS variables:
+
+| Token | CSS Variable | Description |
+| :--- | :--- | :--- |
+| `colors.primary` | `--primary` | Main brand and action color |
+| `colors.background` | `--background` | Page and container background |
+| `colors.foreground` | `--foreground` | Default text and content color |
+| `colors.card` | `--card` | Card and surface background |
+| `colors.border` | `--border` | Dividers and border outlines |
+| `colors.destructive` | `--destructive` | Error states and destructive actions |
+| `radii.md` | `--radius` | Base corner radius |
+
+---
+
+## 🧩 Component Usage Examples
+
+### 1. UI Primitives (`Button`, `Card`, `Badge`)
 
 ```tsx
-const columns = useMemo(() => [
-  createSelectionColumn<CourseRow>(),
-  {
-    accessorKey: 'name',
-    header: 'Tên bài học',
-    cell: ({ row }) => <span className="font-medium">{row.original.name}</span>
+import { Button, Card, CardContent, CardHeader, CardTitle, Badge } from '@vlrc-fe/components';
+
+export function UserSummaryCard({ user }) {
+  return (
+    <Card variant="glass">
+      <CardHeader>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <CardTitle>{user.name}</CardTitle>
+          <Badge variant="secondary">Pro Member</Badge>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <Button variant="default" size="sm">View Profile</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### 2. Custom Styling with `sx` Prop
+
+All components accept an `sx?: stylex.StyleXStyles` prop for type-safe overrides without specificity bugs:
+
+```tsx
+import * as stylex from '@stylexjs/stylex';
+import { Button } from '@vlrc-fe/components';
+
+const styles = stylex.create({
+  fullWidth: {
+    width: '100%',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
   },
-  createRowActionsColumn<CourseRow>({
-    renderActions: ({ row }) => <Button onClick={() => handleEdit(row.original)}>Sửa</Button>
-  })
-], []);
+});
+
+export function CheckoutButton() {
+  return <Button sx={styles.fullWidth}>Proceed to Payment</Button>;
+}
+```
+
+### 3. Integrated Form Controls (`react-hook-form`)
+
+```tsx
+import { useForm } from 'react-hook-form';
+import {
+  Form,
+  FormInput,
+  FormSelect,
+  FormDatePicker,
+  Button
+} from '@vlrc-fe/components';
+
+export function LessonForm() {
+  const form = useForm({
+    defaultValues: { title: '', level: 'A1', schedule: null },
+  });
+
+  const onSubmit = (data) => console.log('Saved:', data);
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <FormInput
+          control={form.control}
+          name="title"
+          label="Lesson Title"
+          placeholder="e.g. Daily Vocabulary"
+          rules={{ required: 'Title is required' }}
+        />
+        <FormSelect
+          control={form.control}
+          name="level"
+          label="Proficiency Level"
+          options={[
+            { value: 'A1', label: 'Beginner (A1)' },
+            { value: 'B2', label: 'Upper Intermediate (B2)' },
+          ]}
+        />
+        <FormDatePicker
+          control={form.control}
+          name="schedule"
+          label="Start Date"
+        />
+        <Button type="submit">Create Lesson</Button>
+      </form>
+    </Form>
+  );
+}
+```
+
+### 4. Advanced DataTable
+
+```tsx
+import { useMemo } from 'react';
+import {
+  DataTable,
+  createSelectionColumn,
+  createRowActionsColumn,
+  Button
+} from '@vlrc-fe/components';
+
+export function UserList({ users, isLoading }) {
+  const columns = useMemo(() => [
+    createSelectionColumn(),
+    {
+      accessorKey: 'name',
+      header: 'Full Name',
+    },
+    {
+      accessorKey: 'email',
+      header: 'Email Address',
+    },
+    createRowActionsColumn({
+      renderActions: ({ row }) => (
+        <Button variant="ghost" size="icon-sm" onClick={() => editUser(row.original.id)}>
+          Edit
+        </Button>
+      ),
+    }),
+  ], []);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={users}
+      isLoading={isLoading}
+      searchKey="name"
+      searchPlaceholder="Filter users..."
+      pageSize={10}
+    />
+  );
+}
+```
+
+### 5. Unified Graphic Icons
+
+```tsx
+import { Icons } from '@vlrc-fe/components/Icons';
+
+export function StatusIndicator() {
+  return (
+    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+      <Icons.CheckCircle2 style={{ color: 'green' }} />
+      <span>All systems operational</span>
+    </div>
+  );
+}
 ```
 
 ---
 
-## 📦 3. Specialized Custom Form Widgets
+## 📁 Subpath Exports
 
-These pre-wrapped components are fully integrated with `FormBase` and automatically wire up under a `<Form>` container:
-
-### 3.1 `FormSelect` (Single & Multi Mode)
-Popover-based select box featuring real-time searchable keyword filters and custom item templates.
-```tsx
-<FormSelect
-  control={control}
-  name="level"
-  label="Trình độ"
-  options={[
-    { value: 'A1', label: 'Cơ bản (A1)' },
-    { value: 'B2', label: 'Nâng cao (B2)' }
-  ]}
-/>
-```
-
-### 3.2 `FormMultiSelect`
-A checkbox popover panel that renders selected elements as removable tag pills inside the trigger button.
-```tsx
-<FormMultiSelect
-  control={control}
-  name="topics"
-  label="Chủ đề chính"
-  options={[{ value: 'grammar', label: 'Ngữ pháp' }]}
-  showSelectAll
-/>
-```
-
-### 3.3 `FormDatePicker`
-Calendar selector supporting single date picking, time picking (`showTime`), month selection, and full date range queries (`isRangePicker: true`).
-```tsx
-<FormDatePicker
-  control={control}
-  name="schedule"
-  label="Lịch khai giảng"
-  isRangePicker={true}
-/>
-```
-
-### 3.4 `FormNumberInput`
-Renders currency and number masks using `react-number-format`. Features increment/decrement steppers.
-```tsx
-<FormNumberInput
-  control={control}
-  name="price"
-  label="Học phí"
-  thousandSeparator=","
-  suffix=" VND"
-/>
-```
-
-### 3.5 `FormFileUpload`
-Advanced file dropzone and uploader supporting avatar rendering (`variant="avatar"`) and S3-based immediate uploading with progress bars.
-```tsx
-<FormFileUpload
-  control={control}
-  name="avatar"
-  label="Ảnh đại diện"
-  variant="avatar"
-  autoUpload
-  uploadFile={async (file) => uploadToS3(file)}
-/>
-```
-
----
-
-## 🎨 4. Direct Wrappers & Design Tokens
-
-Outside of active form contexts, you can directly import these components:
-- **`Select` & `MultiSelect`**: Standard dropdown triggers.
-- **`ConfirmModal` & `Modal`**: Dialog boxes.
-- **`Icons`**: High-performance graphic library wrapper (Lucide React registry). Banned from importing directly in `src/` to prevent weight overheads.
-- **`Button` / `Card` / `Badge`**: Semantic shadcn styling elements under standard Tailwind tokens.
+| Export Path | Contents |
+| :--- | :--- |
+| `@vlrc-fe/components` | All UI primitives, form controls, and DataTable components |
+| `@vlrc-fe/components/ui/*` | Granular primitive components (`button`, `dialog`, `badge`, etc.) |
+| `@vlrc-fe/components/DataTable` | DataTable core and column creator utilities |
+| `@vlrc-fe/components/Icons` | Centralized SVG Icons registry |
+| `@vlrc-fe/components/theme` | Meta StyleX design tokens (`colors`, `radii`, `textColors`) |
+| `@vlrc-fe/components/stylex.css` | Pre-compiled atomic CSS stylesheet with CSS layers |
 
 ---
 
 ## 🛠 Package Scripts
 
-Managed by Lerna and PNPM Workspaces:
-- Build package: `pnpm build`
-- Version package: `pnpm version:packages`
-- Publish package: `pnpm publish:packages`
+```bash
+# Build package (Vite library mode + tsc declaration emission)
+pnpm build
+
+# Lint package codebase
+pnpm lint
+```
+
+---
+
+## 📖 Further Reading
+
+- [CHANGELOG.md](./CHANGELOG.md): Detailed release notes and breaking change migration details.
+- [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md): Step-by-step guide for migrating from Tailwind CSS to Meta StyleX.
+
+---
+
+## 📄 License
+
+MIT © [VLRC Platform Team](https://github.com/vulinhnopro2704/vlrc-fe)
