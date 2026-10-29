@@ -5,7 +5,7 @@ import type { BaseSelectCommonProps, SelectValue } from '../../Select/type';
  * Common props for form select
  */
 export interface FormSelectCommonProps<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   T extends SelectValue = SelectValue
 > extends BaseSelectCommonProps<T> {
   control: Control<TFieldValues>;
@@ -19,7 +19,7 @@ export interface FormSelectCommonProps<
  * Props for multi-select form field
  */
 export interface FormMultiSelectProps<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   T extends SelectValue = SelectValue
 > extends FormSelectCommonProps<TFieldValues, T> {
   isMulti: true;
@@ -30,7 +30,7 @@ export interface FormMultiSelectProps<
  * Props for single-select form field
  */
 export interface FormSingleSelectProps<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   T extends SelectValue = SelectValue
 > extends FormSelectCommonProps<TFieldValues, T> {
   isMulti?: false;
@@ -41,7 +41,7 @@ export interface FormSingleSelectProps<
  * Union type for FormSelect props
  */
 export type FormSelectProps<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   T extends SelectValue = SelectValue
 > = FormMultiSelectProps<TFieldValues, T> | FormSingleSelectProps<TFieldValues, T>;
 
@@ -49,7 +49,7 @@ export type FormSelectProps<
  * Props for wrapper components (omitting options since they fetch their own data)
  */
 export type WrapperSelectProps<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   T extends SelectValue = SelectValue
 > = Omit<FormSelectProps<TFieldValues, T>, 'options' | 'onSearchTextChange'>;
 
@@ -57,7 +57,7 @@ export type WrapperSelectProps<
  * Utility type to extract single select props for wrappers
  */
 export type WrapperSingleSelectProps<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   T extends SelectValue = SelectValue
 > = Omit<FormSingleSelectProps<TFieldValues, T>, 'options' | 'onSearchTextChange'>;
 
@@ -65,6 +65,6 @@ export type WrapperSingleSelectProps<
  * Utility type to extract multi select props for wrappers
  */
 export type WrapperMultiSelectProps<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   T extends SelectValue = SelectValue
 > = Omit<FormMultiSelectProps<TFieldValues, T>, 'options' | 'onSearchTextChange'>;

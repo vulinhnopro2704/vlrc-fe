@@ -1,22 +1,39 @@
-import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
+import * as React from 'react';
+import * as LabelPrimitive from '@radix-ui/react-label';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../theme/tokens.stylex';
 
-import { cn } from "../utils"
+const styles = stylex.create({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    fontSize: '0.875rem',
+    lineHeight: 1,
+    fontWeight: 500,
+    userSelect: 'none',
+    color: colors.foreground,
+    ':disabled': {
+      pointerEvents: 'none',
+      opacity: 0.5,
+    },
+  },
+});
 
-function Label({
-  className,
-  ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>) {
+export interface LabelProps extends React.ComponentProps<typeof LabelPrimitive.Root> {
+  sx?: stylex.StyleXStyles;
+}
+
+function Label({ className, sx, ...props }: LabelProps) {
+  const sxProps = stylex.props(styles.base, sx);
   return (
     <LabelPrimitive.Root
       data-slot="label"
-      className={cn(
-        "flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-export { Label }
+export { Label };

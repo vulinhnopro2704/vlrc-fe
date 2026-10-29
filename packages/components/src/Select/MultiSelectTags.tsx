@@ -1,8 +1,47 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import * as stylex from '@stylexjs/stylex';
 import { Badge } from '../ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import Icons from '../Icons';
 import type { BaseSelectOption, SelectValue } from './type';
+
+const styles = stylex.create({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '0.25rem',
+    alignItems: 'center',
+    flex: '1 1 0%',
+    minWidth: 0,
+  },
+  tag: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.25rem',
+    paddingInline: '0.375rem',
+    paddingBlock: '0.125rem',
+    fontSize: '0.75rem',
+  },
+  removeIcon: {
+    width: '0.75rem',
+    height: '0.75rem',
+    cursor: 'pointer',
+    opacity: 0.7,
+    ':hover': {
+      opacity: 1,
+    },
+  },
+  moreBadge: {
+    fontSize: '0.75rem',
+    cursor: 'default',
+  },
+  tooltipList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.25rem',
+    maxWidth: '12rem',
+  },
+});
 
 /**
  * Component to render tags for multi-select with responsive behavior
@@ -34,7 +73,7 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
       const children = Array.from(container.children);
       for (let i = 0; i < children.length; i++) {
         const child = children[i] as HTMLElement;
-        if (child.classList.contains('select-tag')) {
+        if (child.classList?.contains('select-tag')) {
           const childWidth = child.offsetWidth + 4; // Include gap
           if (totalWidth + childWidth <= containerWidth) {
             totalWidth += childWidth;
@@ -61,45 +100,48 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
     }
   }, [selectedOptions, maxTagCount]);
 
-  const defaultTagRender = (option: BaseSelectOption<T>, handleRemove: () => void) => (
-    <Badge
-      key={option.value}
-      variant='secondary'
-      className='select-tag flex items-center gap-1 px-2 py-0.5 text-xs whitespace-nowrap'>
-      {option.icon && <span className='text-xs'>{option.icon}</span>}
-      <span className='truncate max-w-[100px]'>{option.label}</span>
-      {!disabled && (
-        <Icons.XIcon
-          className='w-3 h-3 cursor-pointer hover:text-destructive'
-          onClick={e => {
-            e.stopPropagation();
-            handleRemove();
-          }}
-        />
-      )}
-    </Badge>
-  );
-
-  const renderTag = tagRender || defaultTagRender;
+  const visibleOptions = selectedOptions.slice(0, visibleCount);
+  const remainingCount = selectedOptions.length - visibleCount;
 
   return (
-    <div ref={containerRef} className='flex items-center gap-1 flex-wrap flex-1 min-w-0'>
-      {selectedOptions.slice(0, visibleCount).map(opt => renderTag(opt, () => onRemove(opt.value)))}
-      {hiddenOptions.length > 0 && (
+    <div ref={containerRef} {...stylex.props(styles.container)}>
+      {visibleOptions.map(opt => {
+        const handleRemove = () => onRemove(opt.value);
+
+        if (tagRender) {
+          return <span key={String(opt.value)} className='select-tag'>{tagRender(opt, handleRemove)}</span>;
+        }
+
+        return (
+          <Badge
+            key={String(opt.value)}
+            variant='secondary'
+            className='select-tag'
+            sx={styles.tag}
+          >
+            {opt.icon && <span>{opt.icon}</span>}
+            <span>{opt.label}</span>
+            {!disabled && (
+              <span onClick={e => { e.stopPropagation(); handleRemove(); }}>
+                <Icons.XIcon {...stylex.props(styles.removeIcon)} />
+              </span>
+            )}
+          </Badge>
+        );
+      })}
+
+      {remainingCount > 0 && (
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Badge variant='outline' className='cursor-help text-xs px-2 py-0.5'>
-                +{hiddenOptions.length}
+              <Badge variant='outline' sx={styles.moreBadge}>
+                +{remainingCount}
               </Badge>
             </TooltipTrigger>
-            <TooltipContent side='bottom' className='max-w-xs'>
-              <div className='flex flex-col gap-1'>
+            <TooltipContent>
+              <div {...stylex.props(styles.tooltipList)}>
                 {hiddenOptions.map(opt => (
-                  <div key={opt.value} className='flex items-center gap-2 text-xs'>
-                    {opt.icon && <span>{opt.icon}</span>}
-                    <span>{opt.label}</span>
-                  </div>
+                  <span key={String(opt.value)}>{opt.label}</span>
                 ))}
               </div>
             </TooltipContent>

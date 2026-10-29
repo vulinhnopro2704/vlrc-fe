@@ -1,30 +1,78 @@
-import * as React from "react"
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
-import { CheckIcon } from "lucide-react"
+import * as React from 'react';
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { CheckIcon } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import { cn } from "../utils"
+const styles = stylex.create({
+  root: {
+    width: '1rem',
+    height: '1rem',
+    flexShrink: 0,
+    borderRadius: radii.sm,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.input,
+    backgroundColor: 'transparent',
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    transitionProperty: 'box-shadow, border-color, background-color',
+    transitionDuration: '150ms',
+    outline: 'none',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+  },
+  indicator: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: colors.primaryForeground,
+    backgroundColor: colors.primary,
+    width: '100%',
+    height: '100%',
+    borderRadius: radii.sm,
+  },
+  icon: {
+    width: '0.875rem',
+    height: '0.875rem',
+  },
+});
+
+export interface CheckboxProps extends React.ComponentProps<typeof CheckboxPrimitive.Root> {
+  sx?: stylex.StyleXStyles;
+}
 
 function Checkbox({
   className,
+  sx,
   ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+}: CheckboxProps) {
+  const sxProps = stylex.props(styles.root, sx);
+
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
-      className={cn(
-        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="grid place-content-center text-current transition-none"
+        {...stylex.props(styles.indicator)}
       >
-        <CheckIcon className="size-3.5" />
+        <CheckIcon {...stylex.props(styles.icon)} />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
-  )
+  );
 }
 
-export { Checkbox }
+export { Checkbox };

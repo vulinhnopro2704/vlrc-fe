@@ -15,6 +15,8 @@ export { default as Icons } from './Icons';
 export type { IconNames } from './Icons';
 export * from './ui';
 export * from './Form';
+export * as theme from './theme';
+export * from './theme';
 export { default as Select } from './Select';
 export type { BaseSelectCommonProps, BaseSelectOption } from './Select/type';
 export { default as MultiSelect } from './MultiSelect';

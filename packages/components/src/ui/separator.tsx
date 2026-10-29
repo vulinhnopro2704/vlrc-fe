@@ -1,26 +1,51 @@
-import * as React from "react"
-import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import * as React from 'react';
+import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../theme/tokens.stylex';
 
-import { cn } from "../utils"
+const styles = stylex.create({
+  base: {
+    backgroundColor: colors.border,
+    flexShrink: 0,
+    borderWidth: 0,
+  },
+  horizontal: {
+    height: '1px',
+    width: '100%',
+  },
+  vertical: {
+    height: '100%',
+    width: '1px',
+  },
+});
+
+export interface SeparatorProps extends React.ComponentProps<typeof SeparatorPrimitive.Root> {
+  sx?: stylex.StyleXStyles;
+}
 
 function Separator({
   className,
-  orientation = "horizontal",
+  orientation = 'horizontal',
   decorative = true,
+  sx,
   ...props
-}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {
+}: SeparatorProps) {
+  const sxProps = stylex.props(
+    styles.base,
+    orientation === 'horizontal' ? styles.horizontal : styles.vertical,
+    sx
+  );
+
   return (
     <SeparatorPrimitive.Root
       data-slot="separator"
       decorative={decorative}
       orientation={orientation}
-      className={cn(
-        "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-export { Separator }
+export { Separator };

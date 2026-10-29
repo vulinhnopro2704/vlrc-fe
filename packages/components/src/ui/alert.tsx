@@ -1,66 +1,113 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from 'react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import { cn } from "../utils"
+export type AlertVariant = 'default' | 'destructive';
 
-const alertVariants = cva(
-  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
-  {
-    variants: {
-      variant: {
-        default: "bg-card text-card-foreground",
-        destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-)
+const styles = stylex.create({
+  root: {
+    position: 'relative',
+    width: '100%',
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    paddingInline: '1rem',
+    paddingBlock: '0.75rem',
+    fontSize: '0.875rem',
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr',
+    gap: '0.75rem',
+    alignItems: 'start',
+  },
+  variantDefault: {
+    backgroundColor: colors.card,
+    borderColor: colors.border,
+    color: colors.cardForeground,
+  },
+  variantDestructive: {
+    backgroundColor: colors.card,
+    borderColor: colors.destructive,
+    color: colors.destructive,
+  },
+  title: {
+    gridColumnStart: 2,
+    lineHeight: 1.25,
+    fontWeight: 500,
+    letterSpacing: '-0.025em',
+  },
+  description: {
+    gridColumnStart: 2,
+    display: 'grid',
+    gap: '0.25rem',
+    fontSize: '0.875rem',
+    color: colors.mutedForeground,
+  },
+});
+
+const variantStyles: Record<AlertVariant, stylex.StyleXStyles> = {
+  default: styles.variantDefault,
+  destructive: styles.variantDestructive,
+};
+
+export interface AlertProps extends React.ComponentProps<'div'> {
+  variant?: AlertVariant;
+  sx?: stylex.StyleXStyles;
+}
 
 function Alert({
   className,
-  variant,
+  variant = 'default',
+  sx,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+}: AlertProps) {
+  const sxProps = stylex.props(
+    styles.root,
+    variantStyles[variant],
+    sx
+  );
+
   return (
     <div
       data-slot="alert"
       role="alert"
-      className={cn(alertVariants({ variant }), className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
+function AlertTitle({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.title, sx);
   return (
     <div
       data-slot="alert-title"
-      className={cn(
-        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
 function AlertDescription({
   className,
+  sx,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.description, sx);
   return (
     <div
       data-slot="alert-description"
-      className={cn(
-        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-export { Alert, AlertTitle, AlertDescription }
+function alertVariants(options?: { variant?: AlertVariant; className?: string }) {
+  const v = options?.variant || 'default';
+  return stylex.props(styles.root, variantStyles[v]).className || '';
+}
+
+export { Alert, AlertTitle, AlertDescription, alertVariants };

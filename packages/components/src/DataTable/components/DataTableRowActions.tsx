@@ -36,9 +36,9 @@ export const DataTableRowActions = <TData,>({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' className='h-8 w-8 p-0'>
-          <span className='sr-only'>{t('datatable_open_menu')}</span>
-          <MoreHorizontal />
+        <Button variant='ghost' size='icon-sm'>
+          <span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>{t('datatable_open_menu')}</span>
+          <MoreHorizontal style={{ width: 16, height: 16 }} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>

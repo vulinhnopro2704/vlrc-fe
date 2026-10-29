@@ -1,69 +1,255 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import { cn } from '../utils';
+export type ButtonVariant =
+  | 'default'
+  | 'destructive'
+  | 'outline'
+  | 'secondary'
+  | 'ghost'
+  | 'link'
+  | 'accent'
+  | 'accent-cta'
+  | 'gradient'
+  | 'gradient-success';
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-all disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-  {
-    variants: {
-      variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        destructive:
-          'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
-        outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-        link: 'text-primary underline-offset-4 hover:underline',
-        accent: 'bg-accent text-accent-foreground hover:bg-accent/90',
-        'accent-cta':
-          'bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 hover:scale-105',
-        gradient:
-          'bg-linear-to-r from-primary to-accent text-primary-foreground hover:opacity-95 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30',
-        'gradient-success':
-          'bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40'
-      },
-      size: {
-        default: 'h-9 px-4 py-2 has-[>svg]:px-3',
-        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
-        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
-        xl: 'h-11 rounded-xl px-6 has-[>svg]:px-4',
-        '2xl': 'h-14 rounded-xl px-8 text-lg has-[>svg]:px-6',
-        icon: 'size-9',
-        'icon-sm': 'size-8',
-        'icon-lg': 'size-10'
-      }
+export type ButtonSize =
+  | 'default'
+  | 'sm'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | 'icon'
+  | 'icon-sm'
+  | 'icon-lg';
+
+const styles = stylex.create({
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.5rem',
+    whiteSpace: 'nowrap',
+    borderRadius: radii.md,
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    cursor: 'pointer',
+    transitionProperty: 'all',
+    transitionDuration: '150ms',
+    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    outline: 'none',
+    borderWidth: 0,
+    borderStyle: 'solid',
+    flexShrink: 0,
+    ':disabled': {
+      pointerEvents: 'none',
+      opacity: 0.5,
+      cursor: 'not-allowed',
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default'
-    }
-  }
-);
+    ':focus-visible': {
+      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+    },
+  },
+
+  // Variants
+  variantDefault: {
+    backgroundColor: colors.primary,
+    color: colors.primaryForeground,
+    ':hover': {
+      opacity: 0.9,
+    },
+  },
+  variantDestructive: {
+    backgroundColor: colors.destructive,
+    color: '#ffffff',
+    ':hover': {
+      opacity: 0.9,
+    },
+    ':focus-visible': {
+      boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 40%, transparent)',
+    },
+  },
+  variantOutline: {
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.background,
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+  },
+  variantSecondary: {
+    backgroundColor: colors.secondary,
+    color: colors.secondaryForeground,
+    ':hover': {
+      opacity: 0.8,
+    },
+  },
+  variantGhost: {
+    backgroundColor: 'transparent',
+    color: 'inherit',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+  },
+  variantLink: {
+    backgroundColor: 'transparent',
+    color: colors.primary,
+    textUnderlineOffset: '4px',
+    ':hover': {
+      textDecoration: 'underline',
+    },
+  },
+  variantAccent: {
+    backgroundColor: colors.accent,
+    color: colors.accentForeground,
+    ':hover': {
+      opacity: 0.9,
+    },
+  },
+  variantAccentCta: {
+    backgroundColor: colors.accent,
+    color: colors.accentForeground,
+    boxShadow: '0 10px 15px -3px color-mix(in srgb, var(--accent) 25%, transparent)',
+    ':hover': {
+      transform: 'scale(1.05)',
+      boxShadow: '0 20px 25px -5px color-mix(in srgb, var(--accent) 30%, transparent)',
+    },
+  },
+  variantGradient: {
+    backgroundImage: 'linear-gradient(to right, var(--primary), var(--accent))',
+    color: colors.primaryForeground,
+    boxShadow: '0 10px 15px -3px color-mix(in srgb, var(--primary) 25%, transparent)',
+    ':hover': {
+      opacity: 0.95,
+      boxShadow: '0 20px 25px -5px color-mix(in srgb, var(--primary) 30%, transparent)',
+    },
+  },
+  variantGradientSuccess: {
+    backgroundImage: 'linear-gradient(to right, #10b981, #16a34a)',
+    color: '#ffffff',
+    boxShadow: '0 10px 15px -3px rgba(16, 185, 129, 0.3)',
+    ':hover': {
+      opacity: 0.95,
+      boxShadow: '0 20px 25px -5px rgba(16, 185, 129, 0.4)',
+    },
+  },
+
+  // Sizes
+  sizeDefault: {
+    height: '2.25rem',
+    paddingInline: '1rem',
+    paddingBlock: '0.5rem',
+  },
+  sizeSm: {
+    height: '2rem',
+    borderRadius: radii.md,
+    gap: '0.375rem',
+    paddingInline: '0.75rem',
+    fontSize: '0.8125rem',
+  },
+  sizeLg: {
+    height: '2.5rem',
+    borderRadius: radii.md,
+    paddingInline: '1.5rem',
+  },
+  sizeXl: {
+    height: '2.75rem',
+    borderRadius: radii.xl,
+    paddingInline: '1.5rem',
+  },
+  size2xl: {
+    height: '3.5rem',
+    borderRadius: radii.xl,
+    paddingInline: '2rem',
+    fontSize: '1.125rem',
+  },
+  sizeIcon: {
+    height: '2.25rem',
+    width: '2.25rem',
+    padding: 0,
+  },
+  sizeIconSm: {
+    height: '2rem',
+    width: '2rem',
+    padding: 0,
+  },
+  sizeIconLg: {
+    height: '2.5rem',
+    width: '2.5rem',
+    padding: 0,
+  },
+});
+
+const variantStyles: Record<ButtonVariant, stylex.StyleXStyles> = {
+  default: styles.variantDefault,
+  destructive: styles.variantDestructive,
+  outline: styles.variantOutline,
+  secondary: styles.variantSecondary,
+  ghost: styles.variantGhost,
+  link: styles.variantLink,
+  accent: styles.variantAccent,
+  'accent-cta': styles.variantAccentCta,
+  gradient: styles.variantGradient,
+  'gradient-success': styles.variantGradientSuccess,
+};
+
+const sizeStyles: Record<ButtonSize, stylex.StyleXStyles> = {
+  default: styles.sizeDefault,
+  sm: styles.sizeSm,
+  lg: styles.sizeLg,
+  xl: styles.sizeXl,
+  '2xl': styles.size2xl,
+  icon: styles.sizeIcon,
+  'icon-sm': styles.sizeIconSm,
+  'icon-lg': styles.sizeIconLg,
+};
+
+export interface ButtonProps extends React.ComponentProps<'button'> {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  asChild?: boolean;
+  sx?: stylex.StyleXStyles;
+}
 
 function Button({
   className,
   variant = 'default',
   size = 'default',
   asChild = false,
+  sx,
   ...props
-}: React.ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
+  const sxProps = stylex.props(
+    styles.base,
+    variantStyles[variant],
+    sizeStyles[size],
+    sx
+  );
 
   return (
     <Comp
-      data-slot='button'
+      data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
+}
+
+// Transitional variant helper
+function buttonVariants(options?: { variant?: ButtonVariant; size?: ButtonSize; className?: string }) {
+  const v = options?.variant || 'default';
+  const s = options?.size || 'default';
+  return stylex.props(styles.base, variantStyles[v], sizeStyles[s]).className || '';
 }
 
 export { Button, buttonVariants };

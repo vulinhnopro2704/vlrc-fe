@@ -1,9 +1,57 @@
-"use client"
+import * as React from 'react';
+import * as SliderPrimitive from '@radix-ui/react-slider';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import * as React from "react"
-import * as SliderPrimitive from "@radix-ui/react-slider"
+const styles = stylex.create({
+  root: {
+    position: 'relative',
+    display: 'flex',
+    width: '100%',
+    touchAction: 'none',
+    userSelect: 'none',
+    alignItems: 'center',
+  },
+  track: {
+    backgroundColor: colors.secondary,
+    position: 'relative',
+    flexGrow: 1,
+    overflow: 'hidden',
+    borderRadius: radii.full,
+    height: '0.375rem',
+  },
+  range: {
+    position: 'absolute',
+    backgroundColor: colors.primary,
+    height: '100%',
+  },
+  thumb: {
+    display: 'block',
+    height: '1rem',
+    width: '1rem',
+    borderRadius: radii.full,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.primary,
+    backgroundColor: colors.background,
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    transitionProperty: 'box-shadow',
+    transitionDuration: '150ms',
+    outline: 'none',
+    cursor: 'pointer',
+    ':focus-visible': {
+      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+    },
+    ':disabled': {
+      pointerEvents: 'none',
+      opacity: 0.5,
+    },
+  },
+});
 
-import { cn } from "../utils"
+export interface SliderProps extends React.ComponentProps<typeof SliderPrimitive.Root> {
+  sx?: stylex.StyleXStyles;
+}
 
 function Slider({
   className,
@@ -11,8 +59,9 @@ function Slider({
   value,
   min = 0,
   max = 100,
+  sx,
   ...props
-}: React.ComponentProps<typeof SliderPrimitive.Root>) {
+}: SliderProps) {
   const _values = React.useMemo(
     () =>
       Array.isArray(value)
@@ -21,7 +70,9 @@ function Slider({
           ? defaultValue
           : [min, max],
     [value, defaultValue, min, max]
-  )
+  );
+
+  const sxProps = stylex.props(styles.root, sx);
 
   return (
     <SliderPrimitive.Root
@@ -30,34 +81,28 @@ function Slider({
       value={value}
       min={min}
       max={max}
-      className={cn(
-        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <SliderPrimitive.Track
         data-slot="slider-track"
-        className={cn(
-          "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
-        )}
+        {...stylex.props(styles.track)}
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
-          className={cn(
-            "bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
-          )}
+          {...stylex.props(styles.range)}
         />
       </SliderPrimitive.Track>
       {Array.from({ length: _values.length }, (_, index) => (
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
-          className="border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+          {...stylex.props(styles.thumb)}
         />
       ))}
     </SliderPrimitive.Root>
-  )
+  );
 }
 
-export { Slider }
+export { Slider };

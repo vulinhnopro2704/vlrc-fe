@@ -1,19 +1,115 @@
 import { useMemo, type ReactNode } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-
-import { cn } from '../utils';
+import * as React from 'react';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../theme/tokens.stylex';
 import { Label } from './label';
 import { Separator } from './separator';
 
-function FieldSet({ className, ...props }: React.ComponentProps<'fieldset'>) {
+export type FieldOrientation = 'vertical' | 'horizontal' | 'responsive';
+
+const styles = stylex.create({
+  set: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem',
+  },
+  legend: {
+    marginBottom: '0.75rem',
+    fontWeight: 500,
+    fontSize: '1rem',
+    color: colors.foreground,
+  },
+  legendLabel: {
+    fontSize: '0.875rem',
+  },
+  group: {
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'column',
+    gap: '1.75rem',
+  },
+  fieldBase: {
+    display: 'flex',
+    width: '100%',
+    gap: '0.75rem',
+  },
+  vertical: {
+    flexDirection: 'column',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  responsive: {
+    flexDirection: 'column',
+  },
+  content: {
+    display: 'flex',
+    flex: '1 1 0%',
+    flexDirection: 'column',
+    gap: '0.375rem',
+    lineHeight: 1.375,
+  },
+  label: {
+    display: 'flex',
+    width: 'fit-content',
+    gap: '0.5rem',
+    lineHeight: 1.375,
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    color: colors.foreground,
+  },
+  title: {
+    display: 'flex',
+    width: 'fit-content',
+    alignItems: 'center',
+    gap: '0.5rem',
+    fontSize: '0.875rem',
+    lineHeight: 1.375,
+    fontWeight: 500,
+    color: colors.foreground,
+  },
+  description: {
+    color: colors.mutedForeground,
+    fontSize: '0.875rem',
+    lineHeight: 1.5,
+  },
+  separator: {
+    position: 'relative',
+    marginBlock: '-0.5rem',
+    height: '1.25rem',
+    fontSize: '0.875rem',
+  },
+  separatorContent: {
+    backgroundColor: colors.background,
+    color: colors.mutedForeground,
+    position: 'relative',
+    marginInline: 'auto',
+    display: 'block',
+    width: 'fit-content',
+    paddingInline: '0.5rem',
+  },
+  error: {
+    color: colors.destructive,
+    fontSize: '0.875rem',
+    fontWeight: 400,
+  },
+  errorList: {
+    marginLeft: '1rem',
+    display: 'flex',
+    listStyleType: 'disc',
+    flexDirection: 'column',
+    gap: '0.25rem',
+  },
+});
+
+function FieldSet({ className, sx, ...props }: React.ComponentProps<'fieldset'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.set, sx);
   return (
     <fieldset
       data-slot='field-set'
-      className={cn(
-        'flex flex-col gap-6',
-        'has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3',
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
@@ -22,121 +118,101 @@ function FieldSet({ className, ...props }: React.ComponentProps<'fieldset'>) {
 function FieldLegend({
   className,
   variant = 'legend',
+  sx,
   ...props
-}: React.ComponentProps<'legend'> & { variant?: 'legend' | 'label' }) {
+}: React.ComponentProps<'legend'> & { variant?: 'legend' | 'label'; sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.legend, variant === 'label' && styles.legendLabel, sx);
   return (
     <legend
       data-slot='field-legend'
       data-variant={variant}
-      className={cn(
-        'mb-3 font-medium',
-        'data-[variant=legend]:text-base',
-        'data-[variant=label]:text-sm',
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function FieldGroup({ className, ...props }: React.ComponentProps<'div'>) {
+function FieldGroup({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.group, sx);
   return (
     <div
       data-slot='field-group'
-      className={cn(
-        'group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4',
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-const fieldVariants = cva('group/field flex w-full gap-3 data-[invalid=true]:text-destructive', {
-  variants: {
-    orientation: {
-      vertical: ['flex-col [&>*]:w-full [&>.sr-only]:w-auto'],
-      horizontal: [
-        'flex-row items-center',
-        '[&>[data-slot=field-label]]:flex-auto',
-        'has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px'
-      ],
-      responsive: [
-        'flex-col [&>*]:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto',
-        '@md/field-group:[&>[data-slot=field-label]]:flex-auto',
-        '@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px'
-      ]
-    }
-  },
-  defaultVariants: {
-    orientation: 'vertical'
-  }
-});
+const orientationStyles: Record<FieldOrientation, stylex.StyleXStyles> = {
+  vertical: styles.vertical,
+  horizontal: styles.horizontal,
+  responsive: styles.responsive,
+};
 
 function Field({
   className,
   orientation = 'vertical',
+  sx,
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof fieldVariants>) {
+}: React.ComponentProps<'div'> & { orientation?: FieldOrientation; sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.fieldBase, orientationStyles[orientation], sx);
   return (
     <div
       role='group'
       data-slot='field'
       data-orientation={orientation}
-      className={cn(fieldVariants({ orientation }), className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function FieldContent({ className, ...props }: React.ComponentProps<'div'>) {
+function FieldContent({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.content, sx);
   return (
     <div
       data-slot='field-content'
-      className={cn('group/field-content flex flex-1 flex-col gap-1.5 leading-snug', className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>) {
+function FieldLabel({ className, sx, ...props }: React.ComponentProps<typeof Label> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.label, sx);
   return (
     <Label
       data-slot='field-label'
-      className={cn(
-        'group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50',
-        'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-4',
-        'has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-primary dark:has-data-[state=checked]:bg-primary/10',
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function FieldTitle({ className, ...props }: React.ComponentProps<'div'>) {
+function FieldTitle({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.title, sx);
   return (
     <div
       data-slot='field-label'
-      className={cn(
-        'flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50',
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function FieldDescription({ className, ...props }: React.ComponentProps<'p'>) {
+function FieldDescription({ className, sx, ...props }: React.ComponentProps<'p'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.description, sx);
   return (
     <p
       data-slot='field-description'
-      className={cn(
-        'text-muted-foreground text-sm leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance',
-        'last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5',
-        '[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
@@ -145,23 +221,24 @@ function FieldDescription({ className, ...props }: React.ComponentProps<'p'>) {
 function FieldSeparator({
   children,
   className,
+  sx,
   ...props
 }: React.ComponentProps<'div'> & {
   children?: ReactNode;
+  sx?: stylex.StyleXStyles;
 }) {
+  const sxProps = stylex.props(styles.separator, sx);
   return (
     <div
       data-slot='field-separator'
       data-content={!!children}
-      className={cn(
-        'relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2',
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}>
-      <Separator className='absolute inset-0 top-1/2' />
+      <Separator style={{ position: 'absolute', inset: 0, top: '50%' }} />
       {children && (
         <span
-          className='bg-background text-muted-foreground relative mx-auto block w-fit px-2'
+          {...stylex.props(styles.separatorContent)}
           data-slot='field-separator-content'>
           {children}
         </span>
@@ -174,9 +251,11 @@ function FieldError({
   className,
   children,
   errors,
+  sx,
   ...props
 }: React.ComponentProps<'div'> & {
   errors?: Array<{ message?: string } | undefined>;
+  sx?: stylex.StyleXStyles;
 }) {
   const content = useMemo(() => {
     if (children) {
@@ -189,12 +268,12 @@ function FieldError({
 
     const uniqueErrors = [...new Map(errors.map(error => [error?.message, error])).values()];
 
-    if (uniqueErrors?.length == 1) {
+    if (uniqueErrors?.length === 1) {
       return uniqueErrors[0]?.message;
     }
 
     return (
-      <ul className='ml-4 flex list-disc flex-col gap-1'>
+      <ul {...stylex.props(styles.errorList)}>
         {uniqueErrors.map((error, index) => error?.message && <li key={index}>{error.message}</li>)}
       </ul>
     );
@@ -204,11 +283,14 @@ function FieldError({
     return null;
   }
 
+  const sxProps = stylex.props(styles.error, sx);
+
   return (
     <div
       role='alert'
       data-slot='field-error'
-      className={cn('text-destructive text-sm font-normal', className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}>
       {content}
     </div>

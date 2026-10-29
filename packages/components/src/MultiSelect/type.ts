@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 
 /**
  * Animation types and configurations
@@ -17,34 +16,18 @@ export interface AnimationConfig {
   delay?: number;
 }
 
+export type MultiSelectVariant = 'default' | 'secondary' | 'destructive' | 'inverted';
+
 /**
- * Variants for the multi-select component to handle different styles.
- * Uses class-variance-authority (cva) to define different styles based on "variant" prop.
+ * Transitional variants helper for the multi-select component.
  */
-export const multiSelectVariants = cva('m-1 transition-all duration-300 ease-in-out', {
-  variants: {
-    variant: {
-      default: 'border-foreground/10 text-foreground bg-card hover:bg-card/80',
-      secondary:
-        'border-foreground/10 bg-secondary text-secondary-foreground hover:bg-secondary/80',
-      destructive:
-        'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
-      inverted: 'inverted'
-    },
-    badgeAnimation: {
-      bounce: 'hover:-translate-y-1 hover:scale-110',
-      pulse: 'hover:animate-pulse',
-      wiggle: 'hover:animate-wiggle',
-      fade: 'hover:opacity-80',
-      slide: 'hover:translate-x-1',
-      none: ''
-    }
-  },
-  defaultVariants: {
-    variant: 'default',
-    badgeAnimation: 'bounce'
-  }
-});
+export const multiSelectVariants = (options?: {
+  variant?: MultiSelectVariant;
+  badgeAnimation?: 'bounce' | 'pulse' | 'wiggle' | 'fade' | 'slide' | 'none';
+  className?: string;
+}) => {
+  return options?.className || '';
+};
 
 /**
  * Option interface for MultiSelect component
@@ -58,22 +41,22 @@ export interface MultiSelectOption {
   icon?: React.ComponentType<{ className?: string }>;
   /** Whether this option is disabled */
   disabled?: boolean;
-  /** Custom styling for the option */
+  /** Custom color styling for the option */
   style?: {
-    /** Custom badge color */
+    /** Badge background color */
     badgeColor?: string;
-    /** Custom icon color */
-    iconColor?: string;
-    /** Gradient background for badge */
+    /** Gradient for badge */
     gradient?: string;
+    /** Icon color */
+    iconColor?: string;
   };
 }
 
 /**
- * Group interface for organizing options
+ * Option group interface for grouped options in MultiSelect component
  */
 export interface MultiSelectGroup {
-  /** Group heading */
+  /** The heading/label for the group */
   heading: string;
   /** Options in this group */
   options: MultiSelectOption[];
@@ -83,9 +66,9 @@ export interface MultiSelectGroup {
  * Props for MultiSelect component
  */
 export interface MultiSelectProps
-  extends
-    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'animationConfig'>,
-    VariantProps<typeof multiSelectVariants> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'animationConfig'> {
+  variant?: MultiSelectVariant;
+  badgeAnimation?: 'bounce' | 'pulse' | 'wiggle' | 'fade' | 'slide' | 'none';
   /**
    * An array of option objects or groups to be displayed in the multi-select component.
    */
@@ -100,26 +83,32 @@ export interface MultiSelectProps
   defaultValue?: string[];
 
   /**
-   * Placeholder text to be displayed when no values are selected.
-   * Optional, defaults to "Select options".
+   * The currently selected values. If provided, the component becomes controlled.
+   */
+  value?: string[];
+
+  /**
+   * The placeholder text to display when no values are selected.
+   * Characters beyond the limit will be truncated with an ellipsis.
+   * Can be configured via responsive.placeholderLength
    */
   placeholder?: string;
 
   /**
    * Animation duration in seconds for the visual effects (e.g., bouncing badges).
-   * Optional, defaults to 0 (no animation).
+   * Set to 0 to disable animations.
+   * @deprecated Use animationConfig instead for more control
    */
   animation?: number;
 
   /**
-   * Advanced animation configuration for different component parts.
-   * Optional, allows fine-tuning of various animation effects.
+   * Advanced animation configuration
    */
   animationConfig?: AnimationConfig;
 
   /**
-   * Maximum number of items to display. Extra selected items will be summarized.
-   * Optional, defaults to 3.
+   * Maximum number of items to display. Extra items will be summarized.
+   * Can be responsive based on screen size or auto-calculated based on container width.
    */
   maxCount?: number;
 
@@ -131,147 +120,139 @@ export interface MultiSelectProps
   modalPopover?: boolean;
 
   /**
-   * If true, renders the multi-select component as a child of another component.
-   * Optional, defaults to false.
-   */
-  asChild?: boolean;
-
-  /**
    * Additional class names to apply custom styles to the multi-select component.
    * Optional, can be used to add custom styles.
    */
   className?: string;
 
   /**
-   * If true, disables the select all functionality.
+   * Hide the "Select All" option from the dropdown menu.
+   * Useful when selecting all items doesn't make sense or isn't desirable.
    * Optional, defaults to false.
    */
   hideSelectAll?: boolean;
 
   /**
-   * If true, shows search functionality in the popover.
-   * If false, hides the search input completely.
+   * Enable or disable the search input in the dropdown menu.
    * Optional, defaults to true.
    */
   searchable?: boolean;
 
   /**
-   * Custom empty state message when no options match search.
+   * Custom component or function to render when no options match the search criteria.
    * Optional, defaults to "No results found."
    */
   emptyIndicator?: ReactNode;
 
   /**
-   * If true, allows the component to grow and shrink with its content.
-   * If false, uses fixed width behavior.
+   * Automatically calculate maxCount based on container width.
+   * When enabled, the component will dynamically adjust the number of visible badges
+   * to prevent wrapping and maintain a clean appearance.
    * Optional, defaults to false.
    */
   autoSize?: boolean;
 
   /**
-   * If true, shows badges in a single line with horizontal scroll.
-   * If false, badges wrap to multiple lines.
+   * Enforce a single line display for the selected items container.
+   * When enabled, items will not wrap to multiple lines, and excess items
+   * will be hidden behind a counter badge.
    * Optional, defaults to false.
    */
   singleLine?: boolean;
 
   /**
-   * Custom CSS class for the popover content.
-   * Optional, can be used to customize popover appearance.
+   * Additional class names to apply to the popover content.
+   * Useful for customizing the appearance of the dropdown list.
+   * Optional.
    */
   popoverClassName?: string;
 
   /**
-   * If true, disables the component completely.
+   * Disable the entire multi-select component.
+   * When true, the component cannot be interacted with and displays in a disabled state.
    * Optional, defaults to false.
    */
   disabled?: boolean;
 
   /**
    * Responsive configuration for different screen sizes.
-   * Allows customizing maxCount and other properties based on viewport.
-   * Can be boolean true for default responsive behavior or an object for custom configuration.
+   * Allows customizing behavior for mobile, tablet, and desktop views.
    */
-  responsive?:
-    | boolean
-    | {
-        /** Configuration for mobile devices (< 640px) */
-        mobile?: {
-          maxCount?: number;
-          hideIcons?: boolean;
-          compactMode?: boolean;
-        };
-        /** Configuration for tablet devices (640px - 1024px) */
-        tablet?: {
-          maxCount?: number;
-          hideIcons?: boolean;
-          compactMode?: boolean;
-        };
-        /** Configuration for desktop devices (> 1024px) */
-        desktop?: {
-          maxCount?: number;
-          hideIcons?: boolean;
-          compactMode?: boolean;
-        };
-      };
+  responsive?: boolean | {
+    /** Settings for mobile screens (< 640px) */
+    mobile?: {
+      maxCount?: number;
+      placeholderLength?: number;
+      hideIcons?: boolean;
+      compactMode?: boolean;
+    };
+    /** Settings for tablet screens (640px - 1024px) */
+    tablet?: {
+      maxCount?: number;
+      placeholderLength?: number;
+      hideIcons?: boolean;
+      compactMode?: boolean;
+    };
+    /** Settings for desktop screens (> 1024px) */
+    desktop?: {
+      maxCount?: number;
+      placeholderLength?: number;
+      hideIcons?: boolean;
+      compactMode?: boolean;
+    };
+  };
 
   /**
    * Minimum width for the component.
-   * Optional, defaults to auto-sizing based on content.
-   * When set, component will not shrink below this width.
+   * Can be any valid CSS width value (e.g., '200px', '15rem', '100%').
    */
   minWidth?: string;
 
   /**
    * Maximum width for the component.
-   * Optional, defaults to 100% of container.
-   * Component will not exceed container boundaries.
+   * Can be any valid CSS width value (e.g., '400px', '30rem', '100%').
    */
   maxWidth?: string;
 
   /**
-   * If true, automatically removes duplicate options based on their value.
-   * Optional, defaults to false (shows warning in dev mode instead).
+   * Automatically remove duplicate options based on their value.
+   * When true, only the first occurrence of each unique value will be kept.
+   * Optional, defaults to false.
    */
   deduplicateOptions?: boolean;
 
   /**
-   * If true, the component will reset its internal state when defaultValue changes.
-   * Useful for React Hook Form integration and form reset functionality.
+   * Reset internal state when defaultValue prop changes.
+   * When true, the component will update its selected values if defaultValue changes.
+   * Useful for forms that reset or update from external state.
    * Optional, defaults to true.
    */
   resetOnDefaultValueChange?: boolean;
 
   /**
-   * If true, automatically closes the popover after selecting an option.
-   * Useful for single-selection-like behavior or mobile UX.
+   * Close the popover immediately after an option is selected.
+   * When true, selecting any option will close the dropdown.
    * Optional, defaults to false.
    */
   closeOnSelect?: boolean;
 }
 
 /**
- * Imperative methods exposed through ref
+ * Imperative ref methods exposed by the MultiSelect component
  */
 export interface MultiSelectRef {
-  /**
-   * Programmatically reset the component to its default value
-   */
+  /** Reset the selection to empty or defaultValue */
   reset: () => void;
-  /**
-   * Get current selected values
-   */
+  /** Get the currently selected values */
   getSelectedValues: () => string[];
-  /**
-   * Set selected values programmatically
-   */
+  /** Programmatically set the selected values */
   setSelectedValues: (values: string[]) => void;
-  /**
-   * Clear all selected values
-   */
+  /** Clear all selections */
   clear: () => void;
-  /**
-   * Focus the component
-   */
+  /** Focus the multi-select trigger button */
   focus: () => void;
+  /** Select all available options */
+  selectAll?: () => void;
+  /** Deselect all currently selected options */
+  clearAll?: () => void;
 }

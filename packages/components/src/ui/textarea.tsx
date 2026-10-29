@@ -1,18 +1,63 @@
-import * as React from "react"
+import * as React from 'react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import { cn } from "../utils"
+const styles = stylex.create({
+  base: {
+    display: 'flex',
+    minHeight: '4rem',
+    width: '100%',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.input,
+    backgroundColor: 'transparent',
+    paddingInline: '0.75rem',
+    paddingBlock: '0.5rem',
+    fontSize: '0.875rem',
+    color: colors.foreground,
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    transitionProperty: 'color, box-shadow, border-color',
+    transitionDuration: '150ms',
+    outline: 'none',
+    '::placeholder': {
+      color: colors.mutedForeground,
+    },
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+  },
+  invalid: {
+    borderColor: colors.destructive,
+    boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 20%, transparent)',
+  },
+});
 
-function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
+export interface TextareaProps extends React.ComponentProps<'textarea'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function Textarea({ className, sx, ...props }: TextareaProps) {
+  const isInvalid = props['aria-invalid'] === true || props['aria-invalid'] === 'true';
+  const sxProps = stylex.props(
+    styles.base,
+    isInvalid && styles.invalid,
+    sx
+  );
+
   return (
     <textarea
       data-slot="textarea"
-      className={cn(
-        "border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-export { Textarea }
+export { Textarea };

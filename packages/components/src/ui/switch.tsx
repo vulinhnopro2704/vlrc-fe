@@ -1,31 +1,70 @@
-"use client"
+import * as React from 'react';
+import * as SwitchPrimitive from '@radix-ui/react-switch';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import * as React from "react"
-import * as SwitchPrimitive from "@radix-ui/react-switch"
+const styles = stylex.create({
+  root: {
+    display: 'inline-flex',
+    height: '1.25rem',
+    width: '2.25rem',
+    flexShrink: 0,
+    cursor: 'pointer',
+    alignItems: 'center',
+    borderRadius: radii.full,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: 'transparent',
+    backgroundColor: colors.input,
+    transitionProperty: 'background-color, box-shadow',
+    transitionDuration: '200ms',
+    outline: 'none',
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+  },
+  thumb: {
+    pointerEvents: 'none',
+    display: 'block',
+    height: '1rem',
+    width: '1rem',
+    borderRadius: radii.full,
+    backgroundColor: colors.background,
+    boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.2)',
+    transitionProperty: 'transform',
+    transitionDuration: '200ms',
+  },
+});
 
-import { cn } from "../utils"
+export interface SwitchProps extends React.ComponentProps<typeof SwitchPrimitive.Root> {
+  sx?: stylex.StyleXStyles;
+}
 
 function Switch({
   className,
+  sx,
   ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root>) {
+}: SwitchProps) {
+  const sxProps = stylex.props(styles.root, sx);
+
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
-      className={cn(
-        "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
-        className={cn(
-          "bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0"
-        )}
+        {...stylex.props(styles.thumb)}
       />
     </SwitchPrimitive.Root>
-  )
+  );
 }
 
-export { Switch }
+export { Switch };

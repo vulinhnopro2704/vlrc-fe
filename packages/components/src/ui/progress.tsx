@@ -1,28 +1,54 @@
-import * as React from "react"
+import * as React from 'react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+const styles = stylex.create({
+  root: {
+    position: 'relative',
+    height: '1rem',
+    width: '100%',
+    overflow: 'hidden',
+    borderRadius: radii.full,
+    backgroundColor: colors.secondary,
+  },
+  indicator: {
+    height: '100%',
+    backgroundColor: colors.primary,
+    borderRadius: radii.full,
+    transitionProperty: 'width',
+    transitionDuration: '300ms',
+    transitionTimingFunction: 'ease-in-out',
+  },
+});
+
+export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: number;
+  sx?: stylex.StyleXStyles;
 }
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
-  ({ className = "", value = 0, ...props }, ref) => {
+  ({ className, value = 0, sx, style, ...props }, ref) => {
     const safeValue = Math.min(Math.max(value, 0), 100);
-    
+    const sxProps = stylex.props(styles.root, sx);
+
     return (
       <div
         ref={ref}
-        className={`relative h-4 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700 ${className}`}
+        data-slot="progress"
+        {...sxProps}
+        style={style}
+        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
         <div
-          className="h-full w-full bg-blue-500 dark:bg-blue-600 transition-all"
+          {...stylex.props(styles.indicator)}
           style={{ width: `${safeValue}%` }}
         />
       </div>
-    )
+    );
   }
-)
+);
 
-Progress.displayName = "Progress"
+Progress.displayName = 'Progress';
 
-export { Progress }
+export { Progress };

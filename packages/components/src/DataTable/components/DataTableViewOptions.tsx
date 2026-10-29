@@ -22,15 +22,14 @@ export const DataTableViewOptions = <TData,>({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' className='ml-auto'>
-          Columns <ChevronDown />
+        <Button variant='outline'>
+          Columns <ChevronDown style={{ width: 16, height: 16, marginLeft: 4 }} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         {map(columns, col => (
           <DropdownMenuCheckboxItem
             key={col.id}
-            className='capitalize'
             checked={columnVisibility[col.id] !== false}
             onCheckedChange={() => col.toggleVisibility(columnVisibility[col.id] === false)}>
             {col.id}

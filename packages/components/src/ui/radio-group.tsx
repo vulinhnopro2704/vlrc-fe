@@ -1,43 +1,99 @@
-import * as React from "react"
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
-import { CircleIcon } from "lucide-react"
+import * as React from 'react';
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import { CircleIcon } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import { cn } from "../utils"
+const styles = stylex.create({
+  root: {
+    display: 'grid',
+    gap: '0.75rem',
+  },
+  item: {
+    aspectRatio: '1 / 1',
+    width: '1rem',
+    height: '1rem',
+    flexShrink: 0,
+    borderRadius: radii.full,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.input,
+    backgroundColor: 'transparent',
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    transitionProperty: 'box-shadow, border-color',
+    transitionDuration: '150ms',
+    outline: 'none',
+    cursor: 'pointer',
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+  },
+  indicator: {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  icon: {
+    width: '0.5rem',
+    height: '0.5rem',
+    fill: colors.primary,
+    color: colors.primary,
+  },
+});
+
+export interface RadioGroupProps extends React.ComponentProps<typeof RadioGroupPrimitive.Root> {
+  sx?: stylex.StyleXStyles;
+}
 
 function RadioGroup({
   className,
+  sx,
   ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
+}: RadioGroupProps) {
+  const sxProps = stylex.props(styles.root, sx);
   return (
     <RadioGroupPrimitive.Root
       data-slot="radio-group"
-      className={cn("grid gap-3", className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
+}
+
+export interface RadioGroupItemProps extends React.ComponentProps<typeof RadioGroupPrimitive.Item> {
+  sx?: stylex.StyleXStyles;
 }
 
 function RadioGroupItem({
   className,
+  sx,
   ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
+}: RadioGroupItemProps) {
+  const sxProps = stylex.props(styles.item, sx);
   return (
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
-      className={cn(
-        "border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <RadioGroupPrimitive.Indicator
         data-slot="radio-group-indicator"
-        className="relative flex items-center justify-center"
+        {...stylex.props(styles.indicator)}
       >
-        <CircleIcon className="fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
+        <CircleIcon {...stylex.props(styles.icon)} />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
-  )
+  );
 }
 
-export { RadioGroup, RadioGroupItem }
+export { RadioGroup, RadioGroupItem };

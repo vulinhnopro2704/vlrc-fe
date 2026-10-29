@@ -1,6 +1,43 @@
 import type { ReactNode } from 'react';
-import { cn } from './utils';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from './theme/tokens.stylex';
 import { Button, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui';
+
+const styles = stylex.create({
+  content: {
+    display: 'flex',
+    maxHeight: 'calc(100vh - 150px)',
+    flexDirection: 'column',
+    gap: 0,
+    padding: 0,
+  },
+  header: {
+    paddingInline: '1.5rem',
+    paddingBlock: '1rem',
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: colors.border,
+  },
+  body: {
+    flex: '1 1 0%',
+    overflowY: 'auto',
+    paddingInline: '1.5rem',
+    paddingBlock: '1rem',
+  },
+  footer: {
+    paddingInline: '1.5rem',
+    paddingBlock: '1rem',
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: colors.border,
+  },
+  actions: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'flex-end',
+    gap: '0.5rem',
+  },
+});
 
 export interface ModalProps {
   open?: boolean;
@@ -14,6 +51,7 @@ export interface ModalProps {
   cancelText?: string;
   onConfirm?: () => void;
   isLoading?: boolean;
+  sx?: stylex.StyleXStyles;
 }
 
 export function Modal({
@@ -27,26 +65,27 @@ export function Modal({
   cancelText = 'Hủy',
   isLoading = false,
   onCancel,
-  onConfirm
+  onConfirm,
+  sx
 }: ModalProps) {
   return (
     <Dialog open={open} onOpenChange={val => !val && onCancel()}>
       <DialogContent
-        className={cn('flex max-h-[calc(100vh-150px)] flex-col gap-0 p-0 sm:max-w-175')}
+        sx={[styles.content, sx]}
         style={{ maxWidth: width }}>
-        <DialogHeader className='px-6 py-4 border-b'>
+        <DialogHeader sx={styles.header}>
           <DialogTitle>{title}</DialogTitle>
           {description ? <DialogDescription>{description}</DialogDescription> : null}
         </DialogHeader>
 
-        <div className='flex-1 overflow-y-auto px-6 py-4'>{children}</div>
+        <div {...stylex.props(styles.body)}>{children}</div>
 
         {(footer || onConfirm) && (
-          <DialogFooter className='px-6 py-4 border-t'>
+          <DialogFooter sx={styles.footer}>
             {footer ? (
               footer
             ) : (
-              <div className='flex w-full justify-end gap-2'>
+              <div {...stylex.props(styles.actions)}>
                 <Button variant='outline' onClick={onCancel} disabled={isLoading}>
                   {cancelText}
                 </Button>

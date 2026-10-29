@@ -1,4 +1,6 @@
 import { noop } from 'lodash-es';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../../theme/tokens.stylex';
 import type {
   DataTableActionItem,
   DataTableApiConfig,
@@ -7,6 +9,15 @@ import type {
   DataTablePaginationConfig,
   DataTableSearchConfig
 } from '../types';
+
+const styles = stylex.create({
+  empty: {
+    color: colors.mutedForeground,
+    paddingBlock: '2rem',
+    textAlign: 'center',
+    fontSize: '0.875rem',
+  },
+});
 
 export const DEFAULT_SEARCH: DataTableSearchConfig = {
   placeholder: 'Search...',
@@ -18,7 +29,7 @@ export const DEFAULT_PAGINATION: DataTablePaginationConfig = {
 };
 
 export const DEFAULT_EMPTY: DataTableEmptyConfig = {
-  render: () => <div className='text-muted-foreground py-8 text-center text-sm'>No results.</div>
+  render: () => <div {...stylex.props(styles.empty)}>No results.</div>
 };
 
 export const DEFAULT_API: DataTableApiConfig = {

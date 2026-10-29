@@ -1,8 +1,20 @@
 import { debounce, isEmpty } from 'lodash-es';
 import { useEffect, useRef, type ReactNode } from 'react';
 import type { Table } from '@tanstack/react-table';
-
+import * as stylex from '@stylexjs/stylex';
 import { Input } from '../../ui/input';
+
+const styles = stylex.create({
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    paddingBlock: '1rem',
+  },
+  searchInput: {
+    maxWidth: '24rem',
+  },
+});
 
 export const DataTableToolbar = <TData,>({
   table,
@@ -40,7 +52,7 @@ export const DataTableToolbar = <TData,>({
   }, []);
 
   return (
-    <div className='flex items-center gap-2 py-4'>
+    <div {...stylex.props(styles.toolbar)}>
       <Input
         placeholder={placeholder}
         defaultValue={currentValue}
@@ -52,7 +64,7 @@ export const DataTableToolbar = <TData,>({
           }
           debouncedSetRef.current(value);
         }}
-        className='max-w-sm'
+        sx={styles.searchInput}
       />
       {right}
     </div>

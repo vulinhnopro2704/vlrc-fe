@@ -1,107 +1,160 @@
-"use client"
+import * as React from 'react';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../theme/tokens.stylex';
 
-import * as React from "react"
+const styles = stylex.create({
+  container: {
+    position: 'relative',
+    width: '100%',
+    overflowX: 'auto',
+  },
+  table: {
+    width: '100%',
+    captionSide: 'bottom',
+    fontSize: '0.875rem',
+    borderCollapse: 'collapse',
+  },
+  header: {
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: colors.border,
+  },
+  body: {},
+  footer: {
+    backgroundColor: 'color-mix(in srgb, var(--muted) 50%, transparent)',
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: colors.border,
+    fontWeight: 500,
+  },
+  row: {
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: colors.border,
+    transitionProperty: 'background-color',
+    transitionDuration: '150ms',
+    ':hover': {
+      backgroundColor: 'color-mix(in srgb, var(--muted) 50%, transparent)',
+    },
+  },
+  head: {
+    color: colors.foreground,
+    height: '2.5rem',
+    paddingInline: '0.5rem',
+    textAlign: 'left',
+    verticalAlign: 'middle',
+    fontWeight: 500,
+    whiteSpace: 'nowrap',
+  },
+  cell: {
+    padding: '0.5rem',
+    verticalAlign: 'middle',
+    whiteSpace: 'nowrap',
+    color: colors.foreground,
+  },
+  caption: {
+    color: colors.mutedForeground,
+    marginTop: '1rem',
+    fontSize: '0.875rem',
+  },
+});
 
-import { cn } from "../utils"
-
-function Table({ className, ...props }: React.ComponentProps<"table">) {
+function Table({ className, sx, ...props }: React.ComponentProps<'table'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.table, sx);
   return (
-    <div
-      data-slot="table-container"
-      className="relative w-full overflow-x-auto"
-    >
+    <div data-slot="table-container" {...stylex.props(styles.container)}>
       <table
         data-slot="table"
-        className={cn("w-full caption-bottom text-sm", className)}
+        {...sxProps}
+        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       />
     </div>
-  )
+  );
 }
 
-function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
+function TableHeader({ className, sx, ...props }: React.ComponentProps<'thead'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.header, sx);
   return (
     <thead
       data-slot="table-header"
-      className={cn("[&_tr]:border-b", className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+function TableBody({ className, sx, ...props }: React.ComponentProps<'tbody'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.body, sx);
   return (
     <tbody
       data-slot="table-body"
-      className={cn("[&_tr:last-child]:border-0", className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
+function TableFooter({ className, sx, ...props }: React.ComponentProps<'tfoot'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.footer, sx);
   return (
     <tfoot
       data-slot="table-footer"
-      className={cn(
-        "bg-muted/50 border-t font-medium [&>tr]:last:border-b-0",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+function TableRow({ className, sx, ...props }: React.ComponentProps<'tr'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.row, sx);
   return (
     <tr
       data-slot="table-row"
-      className={cn(
-        "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+function TableHead({ className, sx, ...props }: React.ComponentProps<'th'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.head, sx);
   return (
     <th
       data-slot="table-head"
-      className={cn(
-        "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-function TableCell({ className, ...props }: React.ComponentProps<"td">) {
+function TableCell({ className, sx, ...props }: React.ComponentProps<'td'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.cell, sx);
   return (
     <td
       data-slot="table-cell"
-      className={cn(
-        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-        className
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
-function TableCaption({
-  className,
-  ...props
-}: React.ComponentProps<"caption">) {
+function TableCaption({ className, sx, ...props }: React.ComponentProps<'caption'> & { sx?: stylex.StyleXStyles }) {
+  const sxProps = stylex.props(styles.caption, sx);
   return (
     <caption
       data-slot="table-caption"
-      className={cn("text-muted-foreground mt-4 text-sm", className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -113,4 +166,4 @@ export {
   TableRow,
   TableCell,
   TableCaption,
-}
+};

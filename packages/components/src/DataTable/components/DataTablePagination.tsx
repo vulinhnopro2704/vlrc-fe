@@ -1,6 +1,7 @@
 import { map } from 'lodash-es';
 import type { Table } from '@tanstack/react-table';
-
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
 import {
   DropdownMenu,
@@ -8,8 +9,33 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '../../ui/dropdown-menu';
-
 import type { DataTableApiConfig } from '../types';
+
+const styles = stylex.create({
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '1rem',
+    paddingBlock: '1rem',
+  },
+  selectedInfo: {
+    color: colors.mutedForeground,
+    flex: '1 1 0%',
+    fontSize: '0.875rem',
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+  },
+  pageNumber: {
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    paddingInline: '0.5rem',
+    color: colors.foreground,
+  },
+});
 
 export const DataTablePagination = <TData,>({
   table,
@@ -31,12 +57,12 @@ export const DataTablePagination = <TData,>({
   const pageCount = pageSize > 0 ? Math.ceil(totalRows / pageSize) : 0;
 
   return (
-    <div className='flex items-center justify-between gap-4 py-4'>
-      <div className='text-muted-foreground flex-1 text-sm'>
+    <div {...stylex.props(styles.container)}>
+      <div {...stylex.props(styles.selectedInfo)}>
         {table.getFilteredSelectedRowModel().rows.length} of {totalRows} row(s) selected.
       </div>
 
-      <div className='flex items-center gap-2'>
+      <div {...stylex.props(styles.controls)}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant='outline' size='sm'>
@@ -62,6 +88,11 @@ export const DataTablePagination = <TData,>({
           disabled={!table.getCanPreviousPage()}>
           Previous
         </Button>
+
+        <span {...stylex.props(styles.pageNumber)}>
+          {pageIndex + 1} / {Math.max(1, pageCount)}
+        </span>
+
         <Button
           variant='outline'
           size='sm'
@@ -69,10 +100,6 @@ export const DataTablePagination = <TData,>({
           disabled={!table.getCanNextPage()}>
           Next
         </Button>
-
-        <div className='text-muted-foreground px-2 text-sm'>
-          Page {pageIndex + 1} / {pageCount === 0 ? 1 : pageCount}
-        </div>
       </div>
     </div>
   );

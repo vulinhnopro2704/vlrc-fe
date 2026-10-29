@@ -1,10 +1,20 @@
 import { resolve } from 'node:path';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import babel from '@rolldown/plugin-babel';
+import stylex from '@stylexjs/unplugin';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
+    stylex.vite({
+      useCSSLayers: true,
+      dev: false,
+      runtimeInjection: false,
+      unstable_moduleResolution: {
+        type: 'commonJS',
+        rootDir: __dirname,
+      },
+    }),
     react(),
     babel({
       presets: [reactCompilerPreset()]
@@ -23,6 +33,7 @@ export default defineConfig({
         'react/jsx-runtime',
         'react/compiler-runtime',
         'react-dom',
+        '@stylexjs/stylex',
         '@radix-ui/react-accordion',
         '@radix-ui/react-checkbox',
         '@radix-ui/react-dialog',

@@ -1,5 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { Controller, type FieldValues, type RegisterOptions } from 'react-hook-form';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../theme/tokens.stylex';
 import {
   Field,
   FieldContent,
@@ -15,7 +17,6 @@ import { Checkbox } from '../ui/checkbox';
 import type { FormBaseProps, FormControlFunc, FormInputExtraProps } from './types';
 import type { FieldPath } from 'react-hook-form';
 import Icons from '../Icons';
-import { cn } from '../utils';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^(0|\+84)(3|5|7|8|9)[0-9]{8}$/;
@@ -49,6 +50,62 @@ const getAutoComplete = (name: string, htmlType?: string) => {
 
   return undefined;
 };
+
+const styles = stylex.create({
+  requiredAsterisk: {
+    color: colors.destructive,
+    marginLeft: '0.25rem',
+  },
+  inputWrapper: {
+    position: 'relative',
+    width: '100%',
+  },
+  leftIcon: {
+    position: 'absolute',
+    left: '0.75rem',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    color: colors.mutedForeground,
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  },
+  rightIcon: {
+    position: 'absolute',
+    right: '0.75rem',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    color: colors.mutedForeground,
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  },
+  inputWithLeftIcon: {
+    paddingLeft: '2.5rem',
+  },
+  inputWithRightIcon: {
+    paddingRight: '2.5rem',
+  },
+  passwordToggle: {
+    position: 'absolute',
+    right: '0.25rem',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    color: colors.mutedForeground,
+    ':hover': {
+      color: colors.foreground,
+    },
+    zIndex: 2,
+  },
+  iconSize: {
+    width: '1rem',
+    height: '1rem',
+  },
+});
 
 export function FormBase<
   TFieldValues extends FieldValues = FieldValues,
@@ -110,13 +167,15 @@ export function FormBase<
             {label && (
               <FieldLabel htmlFor={field.name}>
                 {label}
-                {rules?.required && <span className='text-red-500 ml-1'>*</span>}
+                {rules?.required && (
+                  <span {...stylex.props(styles.requiredAsterisk)}>*</span>
+                )}
               </FieldLabel>
             )}
             {description && <FieldDescription>{description}</FieldDescription>}
           </>
         );
-        const control = children({
+        const controlNode = children({
           ...field,
           id: field.name,
           'aria-invalid': fieldState.invalid
@@ -130,7 +189,7 @@ export function FormBase<
             orientation={horizontal ? 'horizontal' : undefined}>
             {controlFirst ? (
               <>
-                {control}
+                {controlNode}
                 <FieldContent>
                   {labelElement}
                   {errorElem}
@@ -139,7 +198,7 @@ export function FormBase<
             ) : (
               <>
                 <FieldContent>{labelElement}</FieldContent>
-                {control}
+                {controlNode}
                 {errorElem}
               </>
             )}
@@ -166,9 +225,9 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   return (
     <FormBase {...props}>
       {field => (
-        <div className='relative'>
+        <div {...stylex.props(styles.inputWrapper)}>
           {leftIcon && (
-            <div className='absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none'>
+            <div {...stylex.props(styles.leftIcon)}>
               {leftIcon}
             </div>
           )}
@@ -178,11 +237,11 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
             autoComplete={resolvedAutoComplete}
             placeholder={placeholder}
             disabled={disabled}
-            className={cn(
-              leftIcon && 'pl-10',
-              (isPassword || rightIcon) && 'pr-10',
-              inputClassName
-            )}
+            className={inputClassName}
+            sx={[
+              leftIcon ? styles.inputWithLeftIcon : undefined,
+              isPassword || rightIcon ? styles.inputWithRightIcon : undefined,
+            ]}
           />
           {isPassword && (
             <Button
@@ -190,17 +249,17 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
               variant='ghost'
               size='icon-sm'
               onClick={() => setShowPassword(!showPassword)}
-              className='absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground'
+              sx={styles.passwordToggle}
               tabIndex={-1}>
               {showPassword ? (
-                <Icons.EyeOff className='h-4 w-4' />
+                <Icons.EyeOff {...stylex.props(styles.iconSize)} />
               ) : (
-                <Icons.Eye className='h-4 w-4' />
+                <Icons.Eye {...stylex.props(styles.iconSize)} />
               )}
             </Button>
           )}
           {!isPassword && rightIcon && (
-            <div className='absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none'>
+            <div {...stylex.props(styles.rightIcon)}>
               {rightIcon}
             </div>
           )}

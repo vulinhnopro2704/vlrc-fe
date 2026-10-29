@@ -1,6 +1,183 @@
 import { AlertTriangleIcon, CheckCircleIcon, InfoIcon, XCircleIcon, XIcon } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from './theme/tokens.stylex';
+
+const spin = stylex.keyframes({
+  from: { transform: 'rotate(0deg)' },
+  to: { transform: 'rotate(360deg)' },
+});
+
+const styles = stylex.create({
+  container: {
+    position: 'fixed',
+    inset: 0,
+    zIndex: 10000,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backdrop: {
+    position: 'absolute',
+    inset: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    transitionProperty: 'opacity',
+    transitionDuration: '200ms',
+  },
+  backdropOpen: {
+    opacity: 1,
+  },
+  backdropClosed: {
+    opacity: 0,
+  },
+  dialog: {
+    position: 'relative',
+    zIndex: 10000,
+    marginInline: '1rem',
+    width: '100%',
+    maxWidth: '28rem',
+    borderRadius: radii.lg,
+    backgroundColor: colors.card,
+    color: colors.cardForeground,
+    padding: '1.5rem',
+    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    transitionProperty: 'transform, opacity',
+    transitionDuration: '200ms',
+  },
+  dialogOpen: {
+    transform: 'translateY(0) scale(1)',
+    opacity: 1,
+  },
+  dialogClosed: {
+    transform: 'translateY(1.25rem) scale(0.95)',
+    opacity: 0,
+  },
+  closeBtn: {
+    position: 'absolute',
+    right: '1rem',
+    top: '1rem',
+    borderRadius: radii.full,
+    padding: '0.25rem',
+    color: colors.mutedForeground,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.foreground,
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '1rem',
+    paddingRight: '2rem',
+  },
+  iconWrap: {
+    marginTop: '0.25rem',
+    flexShrink: 0,
+  },
+  body: {
+    minWidth: 0,
+    flex: '1 1 0%',
+  },
+  title: {
+    marginBottom: '0.5rem',
+    fontSize: '1.125rem',
+    fontWeight: 600,
+    color: colors.foreground,
+  },
+  message: {
+    fontSize: '0.875rem',
+    lineHeight: 1.6,
+    color: colors.mutedForeground,
+  },
+  footer: {
+    marginTop: '1.5rem',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: '0.75rem',
+  },
+  cancelBtn: {
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.background,
+    color: colors.foreground,
+    paddingInline: '1rem',
+    paddingBlock: '0.5rem',
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    cursor: 'pointer',
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    ':hover': {
+      backgroundColor: colors.accent,
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+  },
+  confirmBtn: {
+    borderRadius: radii.md,
+    borderWidth: 0,
+    paddingInline: '1rem',
+    paddingBlock: '0.5rem',
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    color: '#ffffff',
+    cursor: 'pointer',
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+  },
+  btnWarning: {
+    backgroundColor: '#eab308',
+    ':hover': { backgroundColor: '#ca8a04' },
+  },
+  btnInfo: {
+    backgroundColor: '#3b82f6',
+    ':hover': { backgroundColor: '#2563eb' },
+  },
+  btnSuccess: {
+    backgroundColor: '#22c55e',
+    ':hover': { backgroundColor: '#16a34a' },
+  },
+  btnDanger: {
+    backgroundColor: colors.destructive,
+    ':hover': { opacity: 0.9 },
+  },
+  iconWarning: { color: '#eab308' },
+  iconInfo: { color: '#3b82f6' },
+  iconSuccess: { color: '#22c55e' },
+  iconDanger: { color: colors.destructive },
+  spinner: {
+    display: 'inline-block',
+    marginRight: '0.5rem',
+    width: '1rem',
+    height: '1rem',
+    animationName: spin,
+    animationDuration: '1s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+    borderRadius: radii.full,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: 'rgba(255, 255, 255, 0.4)',
+    borderTopColor: '#ffffff',
+  },
+});
 
 export interface ConfirmationDialogProps {
   isOpen: boolean;
@@ -92,39 +269,6 @@ export default function ConfirmModal({
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    const focusableElements = dialog.querySelectorAll<HTMLElement>(
-      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])'
-    );
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    const handleTabKey = (event: KeyboardEvent) => {
-      if (event.key !== 'Tab') return;
-
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault();
-        lastElement?.focus();
-      } else if (!event.shiftKey && document.activeElement === lastElement) {
-        event.preventDefault();
-        firstElement?.focus();
-      }
-    };
-
-    dialog.addEventListener('keydown', handleTabKey);
-    const timeoutId = window.setTimeout(() => firstElement?.focus(), 100);
-
-    return () => {
-      dialog.removeEventListener('keydown', handleTabKey);
-      window.clearTimeout(timeoutId);
-    };
-  }, [isOpen]);
-
   if (!isRendered) return null;
 
   const Icon = {
@@ -134,66 +278,69 @@ export default function ConfirmModal({
     danger: XCircleIcon
   }[type];
 
-  const iconColor = {
-    warning: 'text-yellow-500',
-    info: 'text-blue-500',
-    success: 'text-green-500',
-    danger: 'text-red-500'
-  }[type];
-
-  const buttonColor = {
-    warning: 'bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-500',
-    info: 'bg-blue-500 hover:bg-blue-600 focus:ring-blue-500',
-    success: 'bg-green-500 hover:bg-green-600 focus:ring-green-500',
-    danger: 'bg-red-500 hover:bg-red-600 focus:ring-red-500'
+  const typeStyles = {
+    warning: { icon: styles.iconWarning, btn: styles.btnWarning },
+    info: { icon: styles.iconInfo, btn: styles.btnInfo },
+    success: { icon: styles.iconSuccess, btn: styles.btnSuccess },
+    danger: { icon: styles.iconDanger, btn: styles.btnDanger },
   }[type];
 
   return (
-    <div ref={containerRef} className='fixed inset-0 z-10000 flex items-center justify-center'>
+    <div ref={containerRef} {...stylex.props(styles.container)}>
       <div
-        className={`absolute inset-0 bg-black/50 transition-opacity duration-200 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+        {...stylex.props(
+          styles.backdrop,
+          isOpen ? styles.backdropOpen : styles.backdropClosed
+        )}
         onClick={handleBackdropClick}
       />
 
       <div
         ref={dialogRef}
-        className={`relative z-10000 mx-4 w-full max-w-md rounded-lg bg-white p-6 shadow-xl transition-all duration-200 ${isOpen ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-5 scale-95 opacity-0'}`}
-        onClick={event => event.stopPropagation()}>
+        {...stylex.props(
+          styles.dialog,
+          isOpen ? styles.dialogOpen : styles.dialogClosed
+        )}
+        onClick={event => event.stopPropagation()}
+      >
         <button
           type='button'
           onClick={handleClose}
           disabled={isLoading}
-          className='absolute right-4 top-4 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 disabled:cursor-not-allowed disabled:opacity-50'
-          aria-label={closeLabel}>
-          <XIcon className='h-5 w-5' />
+          {...stylex.props(styles.closeBtn)}
+          aria-label={closeLabel}
+        >
+          <XIcon style={{ width: 20, height: 20 }} />
         </button>
 
-        <div className='flex items-start space-x-4 pr-8'>
-          <div className='mt-1 flex-shrink-0'>
-            <Icon className={`h-6 w-6 ${iconColor}`} />
+        <div {...stylex.props(styles.header)}>
+          <div {...stylex.props(styles.iconWrap)}>
+            <Icon style={{ width: 24, height: 24 }} {...stylex.props(typeStyles.icon)} />
           </div>
-          <div className='min-w-0 flex-1'>
-            <h3 className='mb-2 text-lg font-medium text-gray-900'>{title}</h3>
-            <p className='text-sm leading-relaxed text-gray-500'>{message}</p>
+          <div {...stylex.props(styles.body)}>
+            <h3 {...stylex.props(styles.title)}>{title}</h3>
+            <p {...stylex.props(styles.message)}>{message}</p>
           </div>
         </div>
 
-        <div className='mt-6 flex justify-end space-x-3'>
+        <div {...stylex.props(styles.footer)}>
           <button
             type='button'
             onClick={handleClose}
             disabled={isLoading}
-            className='rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'>
+            {...stylex.props(styles.cancelBtn)}
+          >
             {cancelText}
           </button>
           <button
             type='button'
             onClick={handleConfirm}
             disabled={isLoading}
-            className={`rounded-md px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${buttonColor}`}>
+            {...stylex.props(styles.confirmBtn, typeStyles.btn)}
+          >
             {isLoading ? (
-              <span className='flex items-center'>
-                <span className='mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white' />
+              <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <span {...stylex.props(styles.spinner)} />
                 {processingText}
               </span>
             ) : (

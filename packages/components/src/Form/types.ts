@@ -1,4 +1,5 @@
-import type { ControllerProps, FieldPath } from 'react-hook-form';
+import type { ReactNode } from 'react';
+import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
 /**
  * Base properties required for any form control connected to React Hook Form.

@@ -13,7 +13,7 @@ ai_package_metadata:
       wrapper_preference: "Always prefer Select and MultiSelect wrapper components over Radix UI/Shadcn primitives."
 ---
 
-Reusable, optimized, and tree-shaken UI components built on top of **React 19**, **Tailwind CSS**, and **Radix UI/Shadcn** primitives for the VLRC project monorepo.
+Reusable, optimized, and tree-shaken UI components built on top of **React 19**, **Meta StyleX** (compile-time atomic CSS-in-JS), and **Radix UI/Shadcn** primitives for the VLRC project monorepo.
 
 > [!IMPORTANT]
 > **AUTO-IMPORT CONVENTION**: In the main web application (`src/`), **do not write explicit import statements** for any components in this package. They are dynamically parsed and registered by Vite into `src/types/auto-imports.d.ts`.

@@ -43,11 +43,10 @@ const ExpanderCell = <TData,>({ row }: { row: Row<TData> }) => {
     return (
       <Button
         variant='ghost'
-        size='sm'
-        className='h-8 w-8 p-0'
+        size='icon-sm'
         onClick={() => row.toggleExpanded()}>
-        <span className='sr-only'>Toggle</span>
-        {row.getIsExpanded() ? <ChevronDown /> : <ChevronRight />}
+        <span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>Toggle</span>
+        {row.getIsExpanded() ? <ChevronDown style={{ width: 16, height: 16 }} /> : <ChevronRight style={{ width: 16, height: 16 }} />}
       </Button>
     );
   }
