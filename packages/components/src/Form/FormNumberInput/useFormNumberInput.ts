@@ -3,7 +3,7 @@ import type {
   ControllerRenderProps,
   FieldPath,
   FieldValues,
-  RegisterOptions
+  RegisterOptions,
 } from 'react-hook-form';
 import type { NumericFormatProps } from 'react-number-format';
 
@@ -14,7 +14,7 @@ const numericInputBaseClass = [
   '[&::-webkit-outer-spin-button]:appearance-none',
   '[&::-webkit-inner-spin-button]:appearance-none',
   'rounded-r-none',
-  'relative'
+  'relative',
 ];
 
 type PassthroughProps = Partial<
@@ -31,7 +31,7 @@ type HandlerArgs<TFieldValues extends FieldValues, TName extends FieldPath<TFiel
 
 type UseFormNumberInputParams<
   TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues>,
 > = {
   rules?: RegisterOptions<TFieldValues, TName>;
   inputClassName?: string;
@@ -44,7 +44,7 @@ type UseFormNumberInputParams<
 
 export function useFormNumberInput<
   TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues>,
 >({
   rules,
   inputClassName,
@@ -52,7 +52,7 @@ export function useFormNumberInput<
   min,
   max,
   onChange,
-  passthroughProps
+  passthroughProps,
 }: UseFormNumberInputParams<TFieldValues, TName>): {
   isRequired: boolean;
   enhancedRules: RegisterOptions<TFieldValues, TName> | undefined;
@@ -80,7 +80,7 @@ export function useFormNumberInput<
     } else if (typeof newRules.required === 'object' && !newRules.required.message) {
       newRules.required = {
         ...newRules.required,
-        message: 'Trường này là bắt buộc'
+        message: 'Trường này là bắt buộc',
       };
     }
     return newRules;
@@ -143,7 +143,7 @@ export function useFormNumberInput<
       handleDecrement,
       handleKeyDown,
       handleBlur,
-      numericOnValueChange
+      numericOnValueChange,
     };
   };
 
@@ -151,6 +151,6 @@ export function useFormNumberInput<
     isRequired,
     enhancedRules,
     numericClass,
-    getHandlers
+    getHandlers,
   };
 }

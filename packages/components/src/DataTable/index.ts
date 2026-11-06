@@ -6,5 +6,5 @@ export type { DataTableQuery } from './types';
 export {
   createSelectionColumn,
   createRowActionsColumn,
-  createExpanderColumn
+  createExpanderColumn,
 } from './render/createColumns';

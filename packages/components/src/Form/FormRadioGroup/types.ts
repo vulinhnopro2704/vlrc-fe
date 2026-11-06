@@ -3,7 +3,7 @@ import type {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  RegisterOptions
+  RegisterOptions,
 } from 'react-hook-form';
 
 export type RadioSize = 'large' | 'middle' | 'small';

@@ -154,12 +154,23 @@ function DialogContent({
       >
         {children}
         {showCloseButton && (
-          <DialogPrimitive.Close
-            data-slot="dialog-close"
-            {...stylex.props(styles.closeButton)}
-          >
+          <DialogPrimitive.Close data-slot="dialog-close" {...stylex.props(styles.closeButton)}>
             <XIcon {...stylex.props(styles.closeIcon)} />
-            <span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>Close</span>
+            <span
+              style={{
+                position: 'absolute',
+                width: 1,
+                height: 1,
+                padding: 0,
+                margin: -1,
+                overflow: 'hidden',
+                clip: 'rect(0, 0, 0, 0)',
+                whiteSpace: 'nowrap',
+                borderWidth: 0,
+              }}
+            >
+              Close
+            </span>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Content>
@@ -167,7 +178,11 @@ function DialogContent({
   );
 }
 
-function DialogHeader({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function DialogHeader({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <div
@@ -179,7 +194,11 @@ function DialogHeader({ className, sx, ...props }: React.ComponentProps<'div'> &
   );
 }
 
-function DialogFooter({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function DialogFooter({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <div

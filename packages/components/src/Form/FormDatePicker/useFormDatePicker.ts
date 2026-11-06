@@ -3,7 +3,7 @@ import type {
   ControllerRenderProps,
   FieldPath,
   FieldValues,
-  RegisterOptions
+  RegisterOptions,
 } from 'react-hook-form';
 
 import type {
@@ -13,7 +13,7 @@ import type {
   DisabledTime,
   FormDatePickerProps,
   PickerType,
-  TimeConfig
+  TimeConfig,
 } from './types';
 
 export type UseFormDatePickerParams<TFieldValues extends FieldValues> = Pick<
@@ -22,18 +22,18 @@ export type UseFormDatePickerParams<TFieldValues extends FieldValues> = Pick<
 >;
 
 export function useFormDatePicker<TFieldValues extends FieldValues>(
-  params: UseFormDatePickerParams<TFieldValues>
+  params: UseFormDatePickerParams<TFieldValues>,
 ): {
   dateFormat: string;
   isRequired: boolean;
   processedRules: RegisterOptions<TFieldValues, FieldPath<TFieldValues>>;
   handleRangeChange: (
     field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
-    dates: [Date | undefined, Date | undefined]
+    dates: [Date | undefined, Date | undefined],
   ) => void;
   handleSingleChange: (
     field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
-    date: Date | undefined
+    date: Date | undefined,
   ) => void;
 } {
   const {
@@ -42,7 +42,7 @@ export function useFormDatePicker<TFieldValues extends FieldValues>(
     dateFormat: customFormat,
     rules = {},
     onChangeDate,
-    onChangeRange
+    onChangeRange,
   } = params;
 
   const dateFormat = customFormat || getDefaultFormat(pickerType, showTime);
@@ -51,13 +51,13 @@ export function useFormDatePicker<TFieldValues extends FieldValues>(
 
   const handleRangeChange = (
     field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
-    dates: [Date | undefined, Date | undefined]
+    dates: [Date | undefined, Date | undefined],
   ) => {
     field.onChange(dates);
     if (onChangeRange) {
       const dateStrings: [string, string] = [
         dates[0] ? formatDateValue(dates[0], dateFormat) : '',
-        dates[1] ? formatDateValue(dates[1], dateFormat) : ''
+        dates[1] ? formatDateValue(dates[1], dateFormat) : '',
       ];
       onChangeRange(dates as [ConfigType, ConfigType], dateStrings);
     }
@@ -65,7 +65,7 @@ export function useFormDatePicker<TFieldValues extends FieldValues>(
 
   const handleSingleChange = (
     field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
-    date: Date | undefined
+    date: Date | undefined,
   ) => {
     field.onChange(date);
     if (onChangeDate) {
@@ -78,13 +78,13 @@ export function useFormDatePicker<TFieldValues extends FieldValues>(
     isRequired,
     processedRules,
     handleRangeChange,
-    handleSingleChange
+    handleSingleChange,
   };
 }
 
 export const buildTimeConfig = (
   showTime: boolean | TimeConfig | undefined,
-  pickerType: PickerType
+  pickerType: PickerType,
 ): TimeConfig | undefined => {
   if (typeof showTime === 'object') return showTime;
   if (showTime === true) return { showSecond: true };
@@ -94,7 +94,7 @@ export const buildTimeConfig = (
 
 export const buildDisabledTime = (
   value: Date | undefined,
-  disabledTime?: DisabledTime | ((date: Date) => DisabledTime)
+  disabledTime?: DisabledTime | ((date: Date) => DisabledTime),
 ): DisabledTime | undefined => {
   if (!disabledTime) return undefined;
   if (typeof disabledTime === 'function' && value) {
@@ -106,7 +106,7 @@ export const buildDisabledTime = (
 export const buildRangeDisplayValue = (
   startDate: Date | undefined,
   endDate: Date | undefined,
-  dateFormat: string
+  dateFormat: string,
 ): string => {
   if (!startDate && !endDate) return '';
   const start = startDate ? formatDateValue(startDate, dateFormat) : '';
@@ -141,7 +141,7 @@ export const getStatusClassName = (status?: DatePickerStatus): string => {
 
 export const getDefaultFormat = (
   pickerType: PickerType,
-  showTime?: boolean | TimeConfig
+  showTime?: boolean | TimeConfig,
 ): string => {
   if (pickerType === 'time') {
     if (typeof showTime === 'object' && showTime.format) {
@@ -172,7 +172,7 @@ export const formatDateValue = (date: Date | null | undefined, formatStr: string
 
 function buildEnhancedRules<TFieldValues extends FieldValues>(
   rules: RegisterOptions<TFieldValues, FieldPath<TFieldValues>> = {},
-  isRequired: boolean
+  isRequired: boolean,
 ) {
   const newRules = { ...rules };
   if (
@@ -184,7 +184,7 @@ function buildEnhancedRules<TFieldValues extends FieldValues>(
   } else if (typeof newRules.required === 'object' && !newRules.required.message) {
     newRules.required = {
       ...newRules.required,
-      message: 'Trường này là bắt buộc'
+      message: 'Trường này là bắt buộc',
     };
   }
   return newRules;

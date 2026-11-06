@@ -15,15 +15,7 @@ export type ButtonVariant =
   | 'gradient'
   | 'gradient-success';
 
-export type ButtonSize =
-  | 'default'
-  | 'sm'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | 'icon'
-  | 'icon-sm'
-  | 'icon-lg';
+export type ButtonSize = 'default' | 'sm' | 'lg' | 'xl' | '2xl' | 'icon' | 'icon-sm' | 'icon-lg';
 
 const styles = stylex.create({
   base: {
@@ -226,12 +218,7 @@ function Button({
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
-  const sxProps = stylex.props(
-    styles.base,
-    variantStyles[variant],
-    sizeStyles[size],
-    sx
-  );
+  const sxProps = stylex.props(styles.base, variantStyles[variant], sizeStyles[size], sx);
 
   return (
     <Comp
@@ -246,7 +233,11 @@ function Button({
 }
 
 // Transitional variant helper
-function buttonVariants(options?: { variant?: ButtonVariant; size?: ButtonSize; className?: string }) {
+function buttonVariants(options?: {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  className?: string;
+}) {
   const v = options?.variant || 'default';
   const s = options?.size || 'default';
   return stylex.props(styles.base, variantStyles[v], sizeStyles[s]).className || '';

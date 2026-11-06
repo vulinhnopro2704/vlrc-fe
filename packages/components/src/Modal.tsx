@@ -1,7 +1,15 @@
 import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from './theme/tokens.stylex';
-import { Button, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui';
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from './ui';
 
 const styles = stylex.create({
   content: {
@@ -66,13 +74,11 @@ export function Modal({
   isLoading = false,
   onCancel,
   onConfirm,
-  sx
+  sx,
 }: ModalProps) {
   return (
-    <Dialog open={open} onOpenChange={val => !val && onCancel()}>
-      <DialogContent
-        sx={[styles.content, sx]}
-        style={{ maxWidth: width }}>
+    <Dialog open={open} onOpenChange={(val) => !val && onCancel()}>
+      <DialogContent sx={[styles.content, sx]} style={{ maxWidth: width }}>
         <DialogHeader sx={styles.header}>
           <DialogTitle>{title}</DialogTitle>
           {description ? <DialogDescription>{description}</DialogDescription> : null}
@@ -86,7 +92,7 @@ export function Modal({
               footer
             ) : (
               <div {...stylex.props(styles.actions)}>
-                <Button variant='outline' onClick={onCancel} disabled={isLoading}>
+                <Button variant="outline" onClick={onCancel} disabled={isLoading}>
                   {cancelText}
                 </Button>
                 {onConfirm ? (

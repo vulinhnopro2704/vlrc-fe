@@ -15,19 +15,19 @@ export const createSelectionColumn = <TData,>(): ColumnDef<TData, DataTableValue
         table.getIsAllPageRowsSelected() ||
         (table.getIsSomePageRowsSelected() ? 'indeterminate' : false)
       }
-      onCheckedChange={value => table.toggleAllPageRowsSelected(!!value)}
-      aria-label='Select all'
+      onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+      aria-label="Select all"
     />
   ),
   cell: ({ row }) => (
     <Checkbox
       checked={row.getIsSelected()}
-      onCheckedChange={value => row.toggleSelected(!!value)}
-      aria-label='Select row'
+      onCheckedChange={(value) => row.toggleSelected(!!value)}
+      aria-label="Select row"
     />
   ),
   enableSorting: false,
-  enableHiding: false
+  enableHiding: false,
 });
 
 export const createExpanderColumn = <TData,>(): ColumnDef<TData, DataTableValue> => ({
@@ -35,18 +35,33 @@ export const createExpanderColumn = <TData,>(): ColumnDef<TData, DataTableValue>
   enableSorting: false,
   enableHiding: false,
   header: () => null,
-  cell: ({ row }) => <ExpanderCell row={row} />
+  cell: ({ row }) => <ExpanderCell row={row} />,
 });
 
 const ExpanderCell = <TData,>({ row }: { row: Row<TData> }) => {
   if (row.getCanExpand()) {
     return (
-      <Button
-        variant='ghost'
-        size='icon-sm'
-        onClick={() => row.toggleExpanded()}>
-        <span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>Toggle</span>
-        {row.getIsExpanded() ? <ChevronDown style={{ width: 16, height: 16 }} /> : <ChevronRight style={{ width: 16, height: 16 }} />}
+      <Button variant="ghost" size="icon-sm" onClick={() => row.toggleExpanded()}>
+        <span
+          style={{
+            position: 'absolute',
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: 'hidden',
+            clip: 'rect(0, 0, 0, 0)',
+            whiteSpace: 'nowrap',
+            borderWidth: 0,
+          }}
+        >
+          Toggle
+        </span>
+        {row.getIsExpanded() ? (
+          <ChevronDown style={{ width: 16, height: 16 }} />
+        ) : (
+          <ChevronRight style={{ width: 16, height: 16 }} />
+        )}
       </Button>
     );
   }
@@ -57,5 +72,5 @@ export const createRowActionsColumn = <TData,>(): ColumnDef<TData, DataTableValu
   id: 'actions',
   enableHiding: false,
   header: () => null,
-  cell: ({ row, table }) => <DataTableRowActions row={row} table={table} />
+  cell: ({ row, table }) => <DataTableRowActions row={row} table={table} />,
 });

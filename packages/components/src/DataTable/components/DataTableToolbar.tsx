@@ -20,7 +20,7 @@ export const DataTableToolbar = <TData,>({
   table,
   placeholder,
   debounceMs,
-  right
+  right,
 }: {
   table: Table<TData>;
   placeholder: string;
@@ -33,7 +33,7 @@ export const DataTableToolbar = <TData,>({
   const debouncedSetRef = useRef(
     debounce((value: string) => {
       table.setGlobalFilter(value);
-    }, debounceMs)
+    }, debounceMs),
   );
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export const DataTableToolbar = <TData,>({
       <Input
         placeholder={placeholder}
         defaultValue={currentValue}
-        onChange={event => {
+        onChange={(event) => {
           const value = event.target.value;
           if (isEmpty(value)) {
             debouncedSetRef.current('');

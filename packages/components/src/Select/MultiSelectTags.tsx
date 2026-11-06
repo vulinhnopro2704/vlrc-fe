@@ -51,7 +51,7 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
   maxTagCount = 'responsive',
   onRemove,
   disabled,
-  tagRender
+  tagRender,
 }: {
   selectedOptions: BaseSelectOption<T>[];
   maxTagCount?: number | 'responsive';
@@ -105,24 +105,28 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
 
   return (
     <div ref={containerRef} {...stylex.props(styles.container)}>
-      {visibleOptions.map(opt => {
+      {visibleOptions.map((opt) => {
         const handleRemove = () => onRemove(opt.value);
 
         if (tagRender) {
-          return <span key={String(opt.value)} className='select-tag'>{tagRender(opt, handleRemove)}</span>;
+          return (
+            <span key={String(opt.value)} className="select-tag">
+              {tagRender(opt, handleRemove)}
+            </span>
+          );
         }
 
         return (
-          <Badge
-            key={String(opt.value)}
-            variant='secondary'
-            className='select-tag'
-            sx={styles.tag}
-          >
+          <Badge key={String(opt.value)} variant="secondary" className="select-tag" sx={styles.tag}>
             {opt.icon && <span>{opt.icon}</span>}
             <span>{opt.label}</span>
             {!disabled && (
-              <span onClick={e => { e.stopPropagation(); handleRemove(); }}>
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRemove();
+                }}
+              >
                 <Icons.XIcon {...stylex.props(styles.removeIcon)} />
               </span>
             )}
@@ -134,13 +138,13 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Badge variant='outline' sx={styles.moreBadge}>
+              <Badge variant="outline" sx={styles.moreBadge}>
                 +{remainingCount}
               </Badge>
             </TooltipTrigger>
             <TooltipContent>
               <div {...stylex.props(styles.tooltipList)}>
-                {hiddenOptions.map(opt => (
+                {hiddenOptions.map((opt) => (
                   <span key={String(opt.value)}>{opt.label}</span>
                 ))}
               </div>

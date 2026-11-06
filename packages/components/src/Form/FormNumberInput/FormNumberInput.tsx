@@ -10,7 +10,7 @@ import { cn } from '../../utils';
 export function FormNumberInput<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues
+  TTransformedValues = TFieldValues,
 >({
   control,
   name,
@@ -41,7 +41,7 @@ export function FormNumberInput<
     inputClassName,
     stepper,
     onChange,
-    passthroughProps: props
+    passthroughProps: props,
   });
 
   return (
@@ -52,7 +52,8 @@ export function FormNumberInput<
       description={description}
       rules={enhancedRules}
       horizontal={horizontal}
-      controlFirst={controlFirst}>
+      controlFirst={controlFirst}
+    >
       {({ id, 'aria-invalid': ariaInvalid, ...field }) => {
         const currentValue = field.value as number | undefined;
         const {
@@ -60,11 +61,11 @@ export function FormNumberInput<
           handleDecrement,
           handleKeyDown,
           handleBlur,
-          numericOnValueChange
+          numericOnValueChange,
         } = getHandlers({ currentValue, field });
 
         return (
-          <div className='flex items-center'>
+          <div className="flex items-center">
             <NumericFormat
               min={min}
               max={max}

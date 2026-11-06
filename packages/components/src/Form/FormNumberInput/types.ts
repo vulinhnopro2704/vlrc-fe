@@ -6,7 +6,7 @@ import type { FormControlProps } from '../types';
 export type FormNumberInputProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues
+  TTransformedValues = TFieldValues,
 > = FormControlProps<TFieldValues, TName, TTransformedValues> &
   Omit<NumericFormatProps<HTMLInputElement>, 'value' | 'onValueChange' | 'name' | 'onChange'> & {
     stepper?: number;

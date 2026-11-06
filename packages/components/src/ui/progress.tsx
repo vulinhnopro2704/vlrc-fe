@@ -40,13 +40,10 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
-        <div
-          {...stylex.props(styles.indicator)}
-          style={{ width: `${safeValue}%` }}
-        />
+        <div {...stylex.props(styles.indicator)} style={{ width: `${safeValue}%` }} />
       </div>
     );
-  }
+  },
 );
 
 Progress.displayName = 'Progress';

@@ -4,7 +4,7 @@ import {
   flexRender,
   type ExpandedState,
   type Table,
-  type VisibilityState
+  type VisibilityState,
 } from '@tanstack/react-table';
 
 import {
@@ -13,7 +13,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
+  TableRow,
 } from '../../ui/table';
 
 import type { DataTableEmptyConfig, DataTableExpandConfig } from '../types';
@@ -24,7 +24,7 @@ export const DataTableTable = <TData,>({
   expandedState,
   expandConfig,
   empty,
-  columnsCount
+  columnsCount,
 }: {
   table: Table<TData>;
   columnVisibility: VisibilityState;
@@ -38,9 +38,9 @@ export const DataTableTable = <TData,>({
 
   const renderHeader = () => (
     <TableHeader>
-      {map(table.getHeaderGroups(), headerGroup => (
+      {map(table.getHeaderGroups(), (headerGroup) => (
         <TableRow key={headerGroup.id}>
-          {map(headerGroup.headers, header => {
+          {map(headerGroup.headers, (header) => {
             if (
               header.isPlaceholder ||
               columnVisibility[header.column.id] === false ||
@@ -63,16 +63,16 @@ export const DataTableTable = <TData,>({
     if (isEmpty(rows)) {
       return (
         <TableRow>
-          <TableCell colSpan={columnsCount} className='h-24 text-center'>
+          <TableCell colSpan={columnsCount} className="h-24 text-center">
             {empty.render()}
           </TableCell>
         </TableRow>
       );
     }
-    return map(rows, row => (
+    return map(rows, (row) => (
       <Fragment key={row.id}>
         <TableRow data-state={row.getIsSelected() ? 'selected' : undefined}>
-          {map(row.getVisibleCells(), cell => (
+          {map(row.getVisibleCells(), (cell) => (
             <TableCell key={cell.id}>
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
             </TableCell>
@@ -81,7 +81,7 @@ export const DataTableTable = <TData,>({
 
         {expandConfig.enabled && row.getIsExpanded() ? (
           <TableRow>
-            <TableCell colSpan={columnsCount} className='p-0'>
+            <TableCell colSpan={columnsCount} className="p-0">
               {expandConfig.renderSubComponent(row)}
             </TableCell>
           </TableRow>

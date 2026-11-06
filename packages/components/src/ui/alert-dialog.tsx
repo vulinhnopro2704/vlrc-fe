@@ -82,7 +82,9 @@ function AlertDialogPortal(props: React.ComponentProps<typeof AlertDialogPrimiti
   return <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />;
 }
 
-export interface AlertDialogOverlayProps extends React.ComponentProps<typeof AlertDialogPrimitive.Overlay> {
+export interface AlertDialogOverlayProps extends React.ComponentProps<
+  typeof AlertDialogPrimitive.Overlay
+> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -98,7 +100,9 @@ function AlertDialogOverlay({ className, sx, ...props }: AlertDialogOverlayProps
   );
 }
 
-export interface AlertDialogContentProps extends React.ComponentProps<typeof AlertDialogPrimitive.Content> {
+export interface AlertDialogContentProps extends React.ComponentProps<
+  typeof AlertDialogPrimitive.Content
+> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -117,7 +121,11 @@ function AlertDialogContent({ className, sx, ...props }: AlertDialogContentProps
   );
 }
 
-function AlertDialogHeader({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function AlertDialogHeader({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <div
@@ -129,7 +137,11 @@ function AlertDialogHeader({ className, sx, ...props }: React.ComponentProps<'di
   );
 }
 
-function AlertDialogFooter({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function AlertDialogFooter({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <div

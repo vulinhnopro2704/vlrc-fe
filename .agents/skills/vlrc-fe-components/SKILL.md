@@ -33,6 +33,7 @@ This skill provides step-by-step procedures and specifications for authoring, st
 ## 2. Common Workflows
 
 ### 2.1 Adding a New UI Primitive
+
 1. Create `src/ui/<component-name>.tsx`.
 2. Define static styles with `stylex.create(...)` using `colors` and `radii` from `../theme/tokens.stylex`.
 3. Support `sx?: stylex.StyleXStyles` and optional `className?: string`.
@@ -40,6 +41,7 @@ This skill provides step-by-step procedures and specifications for authoring, st
 5. Run `pnpm build` to verify both JS/CJS output and `.d.ts` generation.
 
 ### 2.2 Adding a New Form Control
+
 1. Implement the field component inside `src/Form/Form<Widget>/`.
 2. Wrap the core input widget with `FormBase` to supply label, required indicators, description, and automatic error handling.
 3. Export from `src/Form/index.ts` and `src/index.ts`.
@@ -49,6 +51,7 @@ This skill provides step-by-step procedures and specifications for authoring, st
 ## 3. Segmented Reference Documentation
 
 For detailed patterns, APIs, and copy-paste examples, refer to:
+
 - **[StyleX Theming & Styling Guide](./references/stylex.md)**: Design tokens, keyframe animations, pseudo-classes, dynamic styles, and variant maps.
 - **[Form Containers & FormBase Layouts](./references/forms.md)**: Form context, vertical vs horizontal layouts, and RHF integration.
 - **[Custom Form Fields & Inputs API](./references/form-fields.md)**: `FormSelect`, `FormMultiSelect`, `FormDatePicker`, `FormNumberInput`, `FormFileUpload`.

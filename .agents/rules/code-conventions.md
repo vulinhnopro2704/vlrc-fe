@@ -23,7 +23,9 @@
    - Merge `className` for transition compatibility using:
      ```tsx
      const sxProps = stylex.props(styles.base, sx);
-     const mergedClassName = className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className;
+     const mergedClassName = className
+       ? `${sxProps.className || ''} ${className}`.trim()
+       : sxProps.className;
      ```
    - Do NOT override `style?: React.CSSProperties` with StyleX styles to avoid TS2430 type collision with standard HTML attributes.
 

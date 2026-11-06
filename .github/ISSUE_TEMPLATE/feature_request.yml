@@ -1,0 +1,39 @@
+name: Feature Request
+description: Suggest an idea or enhancement for the VLRC frontend libraries
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a feature idea or an improvement for `@vlrc-fe/components` or `@vlrc-fe/hooks`? Tell us about it below!
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Target Package
+      description: Which package should this feature be added to?
+      options:
+        - '@vlrc-fe/components'
+        - '@vlrc-fe/hooks'
+        - 'new package'
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Use Case
+      description: Is your feature request related to a specific problem or use case?
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution / Component API
+      description: Describe the solution or component API you'd like to see.
+      placeholder: |
+        A `<Stepper />` primitive accepting `steps={...}` and `currentStep={...}`
+    validations:
+      required: true

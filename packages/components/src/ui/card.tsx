@@ -114,11 +114,7 @@ export interface CardProps extends React.ComponentProps<'div'> {
 }
 
 function Card({ className, variant = 'default', sx, ...props }: CardProps) {
-  const sxProps = stylex.props(
-    styles.base,
-    variantStyles[variant],
-    sx
-  );
+  const sxProps = stylex.props(styles.base, variantStyles[variant], sx);
 
   return (
     <div
@@ -131,7 +127,11 @@ function Card({ className, variant = 'default', sx, ...props }: CardProps) {
   );
 }
 
-function CardHeader({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function CardHeader({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <div
@@ -143,7 +143,11 @@ function CardHeader({ className, sx, ...props }: React.ComponentProps<'div'> & {
   );
 }
 
-function CardTitle({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function CardTitle({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <div
@@ -155,7 +159,11 @@ function CardTitle({ className, sx, ...props }: React.ComponentProps<'div'> & { 
   );
 }
 
-function CardDescription({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function CardDescription({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.description, sx);
   return (
     <div
@@ -167,7 +175,11 @@ function CardDescription({ className, sx, ...props }: React.ComponentProps<'div'
   );
 }
 
-function CardAction({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function CardAction({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.action, sx);
   return (
     <div
@@ -179,7 +191,11 @@ function CardAction({ className, sx, ...props }: React.ComponentProps<'div'> & {
   );
 }
 
-function CardContent({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function CardContent({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.content, sx);
   return (
     <div
@@ -191,7 +207,11 @@ function CardContent({ className, sx, ...props }: React.ComponentProps<'div'> & 
   );
 }
 
-function CardFooter({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function CardFooter({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <div

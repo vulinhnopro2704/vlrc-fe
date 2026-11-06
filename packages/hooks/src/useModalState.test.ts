@@ -34,7 +34,7 @@ describe('useModalState', () => {
 
     it('should close modal immediately and unload after delay', () => {
       const { result } = renderHook(() =>
-        useModalState(MODAL_KEYS, { destroyDelay: DESTROY_DELAY_MS })
+        useModalState(MODAL_KEYS, { destroyDelay: DESTROY_DELAY_MS }),
       );
 
       act(() => {

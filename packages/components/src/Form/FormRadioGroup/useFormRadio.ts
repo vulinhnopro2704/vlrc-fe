@@ -8,7 +8,7 @@ export type UseFormRadioParams<TFieldValues extends FieldValues> = Pick<
 >;
 
 export function useFormRadio<TFieldValues extends FieldValues>(
-  params: UseFormRadioParams<TFieldValues>
+  params: UseFormRadioParams<TFieldValues>,
 ): {
   isRequired: boolean;
   processedRules: RegisterOptions<TFieldValues, FieldPath<TFieldValues>>;
@@ -37,19 +37,19 @@ export function useFormRadio<TFieldValues extends FieldValues>(
     processedRules,
     parseValue,
     emitChange,
-    sizeClasses: radioSizeClasses
+    sizeClasses: radioSizeClasses,
   };
 }
 
 export const radioSizeClasses: Record<RadioSize, string> = {
   large: 'size-5',
   middle: 'size-4',
-  small: 'size-3.5'
+  small: 'size-3.5',
 };
 
 function buildEnhancedRules<TFieldValues extends FieldValues>(
   rules: RegisterOptions<TFieldValues, FieldPath<TFieldValues>> = {},
-  isRequired: boolean
+  isRequired: boolean,
 ) {
   const newRules = { ...rules };
   if (
@@ -61,7 +61,7 @@ function buildEnhancedRules<TFieldValues extends FieldValues>(
   } else if (typeof newRules.required === 'object' && !newRules.required.message) {
     newRules.required = {
       ...newRules.required,
-      message: 'Trường này là bắt buộc'
+      message: 'Trường này là bắt buộc',
     };
   }
   return newRules;

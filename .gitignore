@@ -4,6 +4,7 @@ dist-ssr
 *.log
 .DS_Store
 .eslintcache
+.oxlintcache
 .pnpm-store
 
 *.tgz

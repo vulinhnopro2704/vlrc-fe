@@ -52,13 +52,13 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
       {showHour && (
         <>
           <Input
-            type='number'
+            type="number"
             min={0}
             max={23}
             value={hourInput}
-            onChange={e => setHourInput(e.target.value)}
-            onBlur={e => handleInputChange('hour', e.target.value)}
-            className='w-14 text-center'
+            onChange={(e) => setHourInput(e.target.value)}
+            onBlur={(e) => handleInputChange('hour', e.target.value)}
+            className="w-14 text-center"
           />
           {(showMinute || showSecond) && <span>:</span>}
         </>
@@ -66,26 +66,26 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
       {showMinute && (
         <>
           <Input
-            type='number'
+            type="number"
             min={0}
             max={59}
             value={minuteInput}
-            onChange={e => setMinuteInput(e.target.value)}
-            onBlur={e => handleInputChange('minute', e.target.value)}
-            className='w-14 text-center'
+            onChange={(e) => setMinuteInput(e.target.value)}
+            onBlur={(e) => handleInputChange('minute', e.target.value)}
+            className="w-14 text-center"
           />
           {showSecond && <span>:</span>}
         </>
       )}
       {showSecond && (
         <Input
-          type='number'
+          type="number"
           min={0}
           max={59}
           value={secondInput}
-          onChange={e => setSecondInput(e.target.value)}
-          onBlur={e => handleInputChange('second', e.target.value)}
-          className='w-14 text-center'
+          onChange={(e) => setSecondInput(e.target.value)}
+          onBlur={(e) => handleInputChange('second', e.target.value)}
+          className="w-14 text-center"
         />
       )}
     </div>

@@ -7,7 +7,7 @@ import type {
   DataTableEmptyConfig,
   DataTableInfiniteScrollConfig,
   DataTablePaginationConfig,
-  DataTableSearchConfig
+  DataTableSearchConfig,
 } from '../types';
 
 const styles = stylex.create({
@@ -21,32 +21,32 @@ const styles = stylex.create({
 
 export const DEFAULT_SEARCH: DataTableSearchConfig = {
   placeholder: 'Search...',
-  debounceMs: 300
+  debounceMs: 300,
 };
 
 export const DEFAULT_PAGINATION: DataTablePaginationConfig = {
-  pageSizeOptions: [10, 20, 50, 100]
+  pageSizeOptions: [10, 20, 50, 100],
 };
 
 export const DEFAULT_EMPTY: DataTableEmptyConfig = {
-  render: () => <div {...stylex.props(styles.empty)}>No results.</div>
+  render: () => <div {...stylex.props(styles.empty)}>No results.</div>,
 };
 
 export const DEFAULT_API: DataTableApiConfig = {
   mode: 'client',
   isFetching: false,
   totalRows: 0,
-  onQueryChange: noop
+  onQueryChange: noop,
 };
 
 export const DEFAULT_INFINITE_SCROLL: DataTableInfiniteScrollConfig = {
   enabled: false,
   thresholdPx: 200,
-  onEndReached: noop
+  onEndReached: noop,
 };
 
 export const createDefaultActions = <TData,>(): {
   getRowActions: () => DataTableActionItem<TData>[];
 } => ({
-  getRowActions: () => []
+  getRowActions: () => [],
 });

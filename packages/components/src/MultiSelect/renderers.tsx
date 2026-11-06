@@ -3,7 +3,7 @@ import {
   type Dispatch,
   type KeyboardEvent,
   type ReactNode,
-  type SetStateAction
+  type SetStateAction,
 } from 'react';
 
 import { CheckIcon, ChevronDown, XCircle, XIcon } from 'lucide-react';
@@ -18,29 +18,29 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator
+  CommandSeparator,
 } from '../ui/command';
 import {
   type AnimationConfig,
   multiSelectVariants,
   type MultiSelectGroup,
   type MultiSelectOption,
-  type MultiSelectProps
+  type MultiSelectProps,
 } from './type';
 import { isGroupedOptions, type ResponsiveSettings, type ScreenSize } from './utils';
 
 export const LiveRegion = ({
   politeMessage,
-  assertiveMessage
+  assertiveMessage,
 }: {
   politeMessage: string;
   assertiveMessage: string;
 }) => (
-  <div className='sr-only'>
-    <div aria-live='polite' aria-atomic='true' role='status'>
+  <div className="sr-only">
+    <div aria-live="polite" aria-atomic="true" role="status">
       {politeMessage}
     </div>
-    <div aria-live='assertive' aria-atomic='true' role='alert'>
+    <div aria-live="assertive" aria-atomic="true" role="alert">
       {assertiveMessage}
     </div>
   </div>
@@ -73,25 +73,26 @@ export const SelectedValuesContent = ({
   getOptionByValue,
   toggleOption,
   clearExtraOptions,
-  handleClear
+  handleClear,
 }: SelectedValuesContentProps) => (
-  <div className='flex justify-between items-center w-full'>
+  <div className="flex justify-between items-center w-full">
     <div
       className={cn(
         'flex items-center gap-1',
         singleLine ? 'overflow-x-auto multiselect-singleline-scroll' : 'flex-wrap',
-        responsiveSettings.compactMode && 'gap-0.5'
+        responsiveSettings.compactMode && 'gap-0.5',
       )}
       style={
         singleLine
           ? {
-              paddingBottom: '4px'
+              paddingBottom: '4px',
             }
           : {}
-      }>
+      }
+    >
       {selectedValues
         .slice(0, responsiveSettings.maxCount)
-        .map(value => {
+        .map((value) => {
           const option = getOptionByValue(value);
           const IconComponent = option?.icon;
           const customStyle = option?.style;
@@ -100,12 +101,12 @@ export const SelectedValuesContent = ({
           const badgeStyle: CSSProperties = {
             animationDuration: `${animation}s`,
             ...(customStyle?.badgeColor && {
-              backgroundColor: customStyle.badgeColor
+              backgroundColor: customStyle.badgeColor,
             }),
             ...(customStyle?.gradient && {
               background: customStyle.gradient,
-              color: 'white'
-            })
+              color: 'white',
+            }),
           };
 
           return (
@@ -118,34 +119,35 @@ export const SelectedValuesContent = ({
                 responsiveSettings.compactMode && 'text-xs px-1.5 py-0.5',
                 screenSize === 'mobile' && 'max-w-30 truncate',
                 singleLine && 'shrink-0 whitespace-nowrap',
-                '[&>svg]:pointer-events-auto'
+                '[&>svg]:pointer-events-auto',
               )}
               style={{
                 ...badgeStyle,
                 animationDuration: `${animationConfig?.duration || animation}s`,
-                animationDelay: `${animationConfig?.delay || 0}s`
-              }}>
+                animationDelay: `${animationConfig?.delay || 0}s`,
+              }}
+            >
               {IconComponent && !responsiveSettings.hideIcons && (
                 <IconComponent
                   className={cn(
                     'h-4 w-4 mr-2',
                     responsiveSettings.compactMode && 'h-3 w-3 mr-1',
-                    customStyle?.iconColor && 'text-current'
+                    customStyle?.iconColor && 'text-current',
                   )}
                   {...(customStyle?.iconColor && {
-                    style: { color: customStyle.iconColor }
+                    style: { color: customStyle.iconColor },
                   })}
                 />
               )}
               <span className={cn(screenSize === 'mobile' && 'truncate')}>{option.label}</span>
               <div
-                role='button'
+                role="button"
                 tabIndex={0}
-                onClick={event => {
+                onClick={(event) => {
                   event.stopPropagation();
                   toggleOption(value);
                 }}
-                onKeyDown={event => {
+                onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
                     event.stopPropagation();
@@ -153,7 +155,8 @@ export const SelectedValuesContent = ({
                   }
                 }}
                 aria-label={`Remove ${option.label} from selection`}
-                className='ml-2 h-4 w-4 cursor-pointer hover:bg-white/20 rounded-sm p-0.5 -m-0.5 focus:outline-none focus:ring-1 focus:ring-white/50'>
+                className="ml-2 h-4 w-4 cursor-pointer hover:bg-white/20 rounded-sm p-0.5 -m-0.5 focus:outline-none focus:ring-1 focus:ring-white/50"
+              >
                 <XCircle
                   className={cn('h-3 w-3', responsiveSettings.compactMode && 'h-2.5 w-2.5')}
                 />
@@ -170,19 +173,20 @@ export const SelectedValuesContent = ({
             multiSelectVariants({ variant }),
             responsiveSettings.compactMode && 'text-xs px-1.5 py-0.5',
             singleLine && 'shrink-0 whitespace-nowrap',
-            '[&>svg]:pointer-events-auto'
+            '[&>svg]:pointer-events-auto',
           )}
           style={{
             animationDuration: `${animationConfig?.duration || animation}s`,
-            animationDelay: `${animationConfig?.delay || 0}s`
-          }}>
+            animationDelay: `${animationConfig?.delay || 0}s`,
+          }}
+        >
           {`+ ${selectedValues.length - responsiveSettings.maxCount} more`}
           <XCircle
             className={cn(
               'ml-2 h-4 w-4 cursor-pointer',
-              responsiveSettings.compactMode && 'ml-1 h-3 w-3'
+              responsiveSettings.compactMode && 'ml-1 h-3 w-3',
             )}
-            onClick={event => {
+            onClick={(event) => {
               event.stopPropagation();
               clearExtraOptions();
             }}
@@ -190,15 +194,15 @@ export const SelectedValuesContent = ({
         </Badge>
       )}
     </div>
-    <div className='flex items-center justify-between'>
+    <div className="flex items-center justify-between">
       <div
-        role='button'
+        role="button"
         tabIndex={0}
-        onClick={event => {
+        onClick={(event) => {
           event.stopPropagation();
           handleClear();
         }}
-        onKeyDown={event => {
+        onKeyDown={(event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             event.stopPropagation();
@@ -206,19 +210,20 @@ export const SelectedValuesContent = ({
           }
         }}
         aria-label={`Clear all ${selectedValues.length} selected options`}
-        className='flex items-center justify-center h-4 w-4 mx-2 cursor-pointer text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded-sm'>
-        <XIcon className='h-4 w-4' />
+        className="flex items-center justify-center h-4 w-4 mx-2 cursor-pointer text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded-sm"
+      >
+        <XIcon className="h-4 w-4" />
       </div>
-      <Separator orientation='vertical' className='flex min-h-6 h-full' />
-      <ChevronDown className='h-4 mx-2 cursor-pointer text-muted-foreground' aria-hidden='true' />
+      <Separator orientation="vertical" className="flex min-h-6 h-full" />
+      <ChevronDown className="h-4 mx-2 cursor-pointer text-muted-foreground" aria-hidden="true" />
     </div>
   </div>
 );
 
 export const PlaceholderContent = ({ placeholder }: { placeholder: string }) => (
-  <div className='flex items-center justify-between w-full mx-auto'>
-    <span className='text-sm text-muted-foreground mx-3'>{placeholder}</span>
-    <ChevronDown className='h-4 cursor-pointer text-muted-foreground mx-2' />
+  <div className="flex items-center justify-between w-full mx-auto">
+    <span className="text-sm text-muted-foreground mx-3">{placeholder}</span>
+    <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-2" />
   </div>
 );
 
@@ -255,21 +260,21 @@ export const OptionsContent = ({
   setSearchValue,
   multiSelectId,
   emptyIndicator,
-  screenSize
+  screenSize,
 }: OptionsContentProps) => (
   <Command>
     {searchable && (
       <CommandInput
-        placeholder='Search options...'
+        placeholder="Search options..."
         onKeyDown={handleInputKeyDown}
         value={searchValue}
         onValueChange={setSearchValue}
-        aria-label='Search through available options'
+        aria-label="Search through available options"
         aria-describedby={`${multiSelectId}-search-help`}
       />
     )}
     {searchable && (
-      <div id={`${multiSelectId}-search-help`} className='sr-only'>
+      <div id={`${multiSelectId}-search-help`} className="sr-only">
         Type to filter options. Use arrow keys to navigate results.
       </div>
     )}
@@ -277,29 +282,32 @@ export const OptionsContent = ({
       className={cn(
         'max-h-[40vh] overflow-y-auto multiselect-scrollbar',
         screenSize === 'mobile' && 'max-h-[50vh]',
-        'overscroll-behavior-y-contain'
-      )}>
+        'overscroll-behavior-y-contain',
+      )}
+    >
       <CommandEmpty>{emptyIndicator || 'No results found.'}</CommandEmpty>{' '}
       {!hideSelectAll && !searchValue && (
         <CommandGroup>
           <CommandItem
-            key='all'
+            key="all"
             onSelect={toggleAll}
-            role='option'
+            role="option"
             aria-selected={
-              selectedValues.length === getAllOptions().filter(opt => !opt.disabled).length
+              selectedValues.length === getAllOptions().filter((opt) => !opt.disabled).length
             }
             aria-label={`Select all ${getAllOptions().length} options`}
-            className='cursor-pointer'>
+            className="cursor-pointer"
+          >
             <div
               className={cn(
                 'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
-                selectedValues.length === getAllOptions().filter(opt => !opt.disabled).length
+                selectedValues.length === getAllOptions().filter((opt) => !opt.disabled).length
                   ? 'bg-primary text-primary-foreground'
-                  : 'opacity-50 [&_svg]:invisible'
+                  : 'opacity-50 [&_svg]:invisible',
               )}
-              aria-hidden='true'>
-              <CheckIcon className='h-4 w-4' />
+              aria-hidden="true"
+            >
+              <CheckIcon className="h-4 w-4" />
             </div>
             <span>
               (Select All
@@ -309,37 +317,39 @@ export const OptionsContent = ({
         </CommandGroup>
       )}
       {isGroupedOptions(filteredOptions) ? (
-        filteredOptions.map(group => (
+        filteredOptions.map((group) => (
           <CommandGroup key={group.heading} heading={group.heading}>
-            {group.options.map(option => {
+            {group.options.map((option) => {
               const isSelected = selectedValues.includes(option.value);
               return (
                 <CommandItem
                   key={option.value}
                   onSelect={() => toggleOption(option.value)}
-                  role='option'
+                  role="option"
                   aria-selected={isSelected}
                   aria-disabled={option.disabled}
                   aria-label={`${option.label}${isSelected ? ', selected' : ', not selected'}${option.disabled ? ', disabled' : ''}`}
                   className={cn(
                     'cursor-pointer',
-                    option.disabled && 'opacity-50 cursor-not-allowed'
+                    option.disabled && 'opacity-50 cursor-not-allowed',
                   )}
-                  disabled={option.disabled}>
+                  disabled={option.disabled}
+                >
                   <div
                     className={cn(
                       'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
                       isSelected
                         ? 'bg-primary text-primary-foreground'
-                        : 'opacity-50 [&_svg]:invisible'
+                        : 'opacity-50 [&_svg]:invisible',
                     )}
-                    aria-hidden='true'>
-                    <CheckIcon className='h-4 w-4' />
+                    aria-hidden="true"
+                  >
+                    <CheckIcon className="h-4 w-4" />
                   </div>
                   {option.icon && (
                     <option.icon
-                      className='mr-2 h-4 w-4 text-muted-foreground'
-                      aria-hidden='true'
+                      className="mr-2 h-4 w-4 text-muted-foreground"
+                      aria-hidden="true"
                     />
                   )}
                   <span>{option.label}</span>
@@ -350,30 +360,32 @@ export const OptionsContent = ({
         ))
       ) : (
         <CommandGroup>
-          {filteredOptions.map(option => {
+          {filteredOptions.map((option) => {
             const isSelected = selectedValues.includes(option.value);
             return (
               <CommandItem
                 key={option.value}
                 onSelect={() => toggleOption(option.value)}
-                role='option'
+                role="option"
                 aria-selected={isSelected}
                 aria-disabled={option.disabled}
                 aria-label={`${option.label}${isSelected ? ', selected' : ', not selected'}${option.disabled ? ', disabled' : ''}`}
                 className={cn('cursor-pointer', option.disabled && 'opacity-50 cursor-not-allowed')}
-                disabled={option.disabled}>
+                disabled={option.disabled}
+              >
                 <div
                   className={cn(
                     'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
                     isSelected
                       ? 'bg-primary text-primary-foreground'
-                      : 'opacity-50 [&_svg]:invisible'
+                      : 'opacity-50 [&_svg]:invisible',
                   )}
-                  aria-hidden='true'>
-                  <CheckIcon className='h-4 w-4' />
+                  aria-hidden="true"
+                >
+                  <CheckIcon className="h-4 w-4" />
                 </div>
                 {option.icon && (
-                  <option.icon className='mr-2 h-4 w-4 text-muted-foreground' aria-hidden='true' />
+                  <option.icon className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
                 )}
                 <span>{option.label}</span>
               </CommandItem>
@@ -383,18 +395,19 @@ export const OptionsContent = ({
       )}
       <CommandSeparator />
       <CommandGroup>
-        <div className='flex items-center justify-between'>
+        <div className="flex items-center justify-between">
           {selectedValues.length > 0 && (
             <>
-              <CommandItem onSelect={handleClear} className='flex-1 justify-center cursor-pointer'>
+              <CommandItem onSelect={handleClear} className="flex-1 justify-center cursor-pointer">
                 Clear
               </CommandItem>
-              <Separator orientation='vertical' className='flex min-h-6 h-full' />
+              <Separator orientation="vertical" className="flex min-h-6 h-full" />
             </>
           )}
           <CommandItem
             onSelect={() => setIsPopoverOpen(false)}
-            className='flex-1 justify-center cursor-pointer max-w-full'>
+            className="flex-1 justify-center cursor-pointer max-w-full"
+          >
             Close
           </CommandItem>
         </div>

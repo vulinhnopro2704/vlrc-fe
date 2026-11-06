@@ -4,7 +4,7 @@ import { FileUpload, type FileUploadProps } from './FileUpload';
 
 export type FormFileUploadExtraProps = Omit<FileUploadProps, 'value' | 'onChange'>;
 
-export const FormFileUpload: FormControlFunc<FormFileUploadExtraProps> = props => {
+export const FormFileUpload: FormControlFunc<FormFileUploadExtraProps> = (props) => {
   return (
     <FormBase {...props}>
       {({ onChange, value, disabled }) => (

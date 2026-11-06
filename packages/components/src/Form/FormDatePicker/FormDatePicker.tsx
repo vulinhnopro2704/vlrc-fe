@@ -7,7 +7,7 @@ import type { FormDatePickerProps } from './types';
 import { useFormDatePicker } from './useFormDatePicker';
 
 function FormDatePicker<TFieldValues extends FieldValues>(
-  props: FormDatePickerProps<TFieldValues>
+  props: FormDatePickerProps<TFieldValues>,
 ) {
   const {
     control,
@@ -31,7 +31,7 @@ function FormDatePicker<TFieldValues extends FieldValues>(
     suffixIcon,
     className,
     disabledDate,
-    disabledTime
+    disabledTime,
   } = props;
 
   const { dateFormat, isRequired, processedRules, handleRangeChange, handleSingleChange } =
@@ -41,15 +41,15 @@ function FormDatePicker<TFieldValues extends FieldValues>(
       dateFormat: customFormat,
       rules,
       onChangeDate,
-      onChangeRange
+      onChangeRange,
     });
 
   const renderRangePicker = (
-    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>
+    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
   ) => (
     <RangeDatePicker
       value={field.value || [undefined, undefined]}
-      onChange={dates => handleRangeChange(field, dates)}
+      onChange={(dates) => handleRangeChange(field, dates)}
       placeholder={placeholder}
       dateFormat={dateFormat}
       showTime={showTime}
@@ -66,11 +66,11 @@ function FormDatePicker<TFieldValues extends FieldValues>(
   );
 
   const renderSinglePicker = (
-    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>
+    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
   ) => (
     <SingleDatePicker
       value={field.value}
-      onChange={date => handleSingleChange(field, date)}
+      onChange={(date) => handleSingleChange(field, date)}
       placeholder={placeholder}
       pickerType={pickerType}
       dateFormat={dateFormat}
@@ -94,11 +94,11 @@ function FormDatePicker<TFieldValues extends FieldValues>(
       name={name}
       rules={processedRules}
       render={({ field }) => (
-        <FormItem className='flex flex-col'>
+        <FormItem className="flex flex-col">
           {label && (
             <FormLabel>
               {label}
-              {isRequired && <span className='text-destructive ml-1'>*</span>}
+              {isRequired && <span className="text-destructive ml-1">*</span>}
             </FormLabel>
           )}
           <FormControl>

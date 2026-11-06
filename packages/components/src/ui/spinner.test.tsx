@@ -15,7 +15,7 @@ describe('Spinner', () => {
 
     it('should match snapshot with custom className', () => {
       const { asFragment } = render(
-        <Spinner {...createDefaultProps({ className: 'custom-spinner-class' })} />
+        <Spinner {...createDefaultProps({ className: 'custom-spinner-class' })} />,
       );
       expect(asFragment()).toMatchSnapshot();
     });

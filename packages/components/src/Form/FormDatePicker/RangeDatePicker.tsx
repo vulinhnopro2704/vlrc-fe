@@ -40,7 +40,7 @@ export function RangeDatePicker({
   hideValue,
   suffixIcon,
   className,
-  disabledDate
+  disabledDate,
 }: RangeDatePickerProps) {
   const [open, setOpen] = React.useState(false);
   const [selectingEnd, setSelectingEnd] = React.useState(false);
@@ -93,7 +93,7 @@ export function RangeDatePicker({
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <Button
-          variant='outline'
+          variant="outline"
           disabled={disabled}
           className={cn(
             'justify-between font-normal',
@@ -101,29 +101,30 @@ export function RangeDatePicker({
             getStatusClassName(status),
             !displayValue && 'text-muted-foreground',
             width === 'auto' ? 'w-full' : '',
-            className
+            className,
           )}
-          style={width !== 'auto' ? { width } : undefined}>
+          style={width !== 'auto' ? { width } : undefined}
+        >
           {!hideValue && displayValue ? displayValue : <span>{placeholder}</span>}
-          <div className='ml-auto flex items-center gap-1'>
+          <div className="ml-auto flex items-center gap-1">
             {allowClear && (startDate || endDate) && (
-              <span onClick={handleClear} className='hover:text-destructive cursor-pointer'>
+              <span onClick={handleClear} className="hover:text-destructive cursor-pointer">
                 ×
               </span>
             )}
-            {suffixIcon || <Icons.CalendarIcon className='h-4 w-4 opacity-50' />}
+            {suffixIcon || <Icons.CalendarIcon className="h-4 w-4 opacity-50" />}
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0' align='start'>
+      <PopoverContent className="w-auto p-0" align="start">
         <Calendar
-          mode='single'
+          mode="single"
           selected={selectingEnd ? endDate : startDate}
           onSelect={handleDateSelect}
           disabled={disabledDate}
-          captionLayout='dropdown'
+          captionLayout="dropdown"
           hidden={{
-            after: new Date(new Date().getFullYear() + 50, 11, 31)
+            after: new Date(new Date().getFullYear() + 50, 11, 31),
           }}
           locale={vi}
         />

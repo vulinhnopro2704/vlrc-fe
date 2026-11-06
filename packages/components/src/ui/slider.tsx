@@ -53,23 +53,10 @@ export interface SliderProps extends React.ComponentProps<typeof SliderPrimitive
   sx?: stylex.StyleXStyles;
 }
 
-function Slider({
-  className,
-  defaultValue,
-  value,
-  min = 0,
-  max = 100,
-  sx,
-  ...props
-}: SliderProps) {
+function Slider({ className, defaultValue, value, min = 0, max = 100, sx, ...props }: SliderProps) {
   const _values = React.useMemo(
-    () =>
-      Array.isArray(value)
-        ? value
-        : Array.isArray(defaultValue)
-          ? defaultValue
-          : [min, max],
-    [value, defaultValue, min, max]
+    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
+    [value, defaultValue, min, max],
   );
 
   const sxProps = stylex.props(styles.root, sx);
@@ -85,14 +72,8 @@ function Slider({
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <SliderPrimitive.Track
-        data-slot="slider-track"
-        {...stylex.props(styles.track)}
-      >
-        <SliderPrimitive.Range
-          data-slot="slider-range"
-          {...stylex.props(styles.range)}
-        />
+      <SliderPrimitive.Track data-slot="slider-track" {...stylex.props(styles.track)}>
+        <SliderPrimitive.Range data-slot="slider-range" {...stylex.props(styles.range)} />
       </SliderPrimitive.Track>
       {Array.from({ length: _values.length }, (_, index) => (
         <SliderPrimitive.Thumb

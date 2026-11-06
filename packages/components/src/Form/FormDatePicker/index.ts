@@ -7,7 +7,7 @@ export {
   buildDisabledTime,
   buildRangeDisplayValue,
   getSizeClassName,
-  getStatusClassName
+  getStatusClassName,
 } from './useFormDatePicker';
 export type {
   ConfigType,
@@ -19,5 +19,5 @@ export type {
   PickerType,
   RangeDatePickerProps,
   SingleDatePickerProps,
-  TimeConfig
+  TimeConfig,
 } from './types';

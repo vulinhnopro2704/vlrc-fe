@@ -10,7 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
   type ColumnDef,
-  type Row
+  type Row,
 } from '@tanstack/react-table';
 import { cn } from '../utils';
 import { DataTablePagination } from './components/DataTablePagination';
@@ -23,7 +23,7 @@ import {
   DEFAULT_INFINITE_SCROLL,
   DEFAULT_PAGINATION,
   DEFAULT_SEARCH,
-  createDefaultActions
+  createDefaultActions,
 } from './render/defaults';
 import type {
   DataTableApiConfig,
@@ -35,7 +35,7 @@ import type {
   DataTableProps,
   DataTableQuery,
   DataTableSearchConfig,
-  DataTableValue
+  DataTableValue,
 } from './types';
 
 const DEFAULT_INITIAL_STATE: DataTableInitialState = {
@@ -45,13 +45,13 @@ const DEFAULT_INITIAL_STATE: DataTableInitialState = {
   columnVisibility: {},
   rowSelection: {},
   pagination: { pageIndex: 0, pageSize: 10 },
-  expanded: {}
+  expanded: {},
 };
 
 const createDefaultExpand = <TData,>(): DataTableExpandConfig<TData> => ({
   enabled: false,
   renderSubComponent: () => null,
-  getSubRows: () => []
+  getSubRows: () => [],
 });
 
 const DEFAULT_RENDER_TOOLBAR_RIGHT = () => null;
@@ -74,7 +74,7 @@ export const DataTable = <TData,>({
   className,
   containerClassName,
   getRowId,
-  renderToolbarRight
+  renderToolbarRight,
 }: DataTableProps<TData> & {
   columns: ColumnDef<TData, DataTableValue>[];
 }) => {
@@ -118,49 +118,51 @@ export const DataTable = <TData,>({
       columnVisibility,
       rowSelection,
       pagination: paginationState,
-      expanded
+      expanded,
     },
     manualSorting: manualMode,
     manualFiltering: manualMode,
     manualPagination: manualMode,
     pageCount,
     meta: {
-      getRowActions: resolvedActions.getRowActions
+      getRowActions: resolvedActions.getRowActions,
     },
     enableRowSelection: true,
     getRowId: (originalRow, index, parent) =>
       resolvedGetRowId(originalRow, index, parent === undefined ? null : (parent as Row<TData>)),
-    onSortingChange: updater => setSorting(current => functionalUpdate(updater, current)),
-    onColumnFiltersChange: updater =>
-      setColumnFilters(current => functionalUpdate(updater, current)),
-    onGlobalFilterChange: updater => setGlobalFilter(current => functionalUpdate(updater, current)),
-    onColumnVisibilityChange: updater =>
-      setColumnVisibility(current => functionalUpdate(updater, current)),
-    onRowSelectionChange: updater => setRowSelection(current => functionalUpdate(updater, current)),
-    onPaginationChange: updater =>
-      setPaginationState(current => functionalUpdate(updater, current)),
-    onExpandedChange: updater => setExpanded(current => functionalUpdate(updater, current)),
+    onSortingChange: (updater) => setSorting((current) => functionalUpdate(updater, current)),
+    onColumnFiltersChange: (updater) =>
+      setColumnFilters((current) => functionalUpdate(updater, current)),
+    onGlobalFilterChange: (updater) =>
+      setGlobalFilter((current) => functionalUpdate(updater, current)),
+    onColumnVisibilityChange: (updater) =>
+      setColumnVisibility((current) => functionalUpdate(updater, current)),
+    onRowSelectionChange: (updater) =>
+      setRowSelection((current) => functionalUpdate(updater, current)),
+    onPaginationChange: (updater) =>
+      setPaginationState((current) => functionalUpdate(updater, current)),
+    onExpandedChange: (updater) => setExpanded((current) => functionalUpdate(updater, current)),
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: manualMode ? undefined : getSortedRowModel(),
     getFilteredRowModel: manualMode ? undefined : getFilteredRowModel(),
     getPaginationRowModel: manualMode ? undefined : getPaginationRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
     getSubRows: resolvedExpand.enabled ? resolvedExpand.getSubRows : undefined,
-    getRowCanExpand: () => resolvedExpand.enabled
+    getRowCanExpand: () => resolvedExpand.enabled,
   });
 
   const query: DataTableQuery = {
     sorting,
     columnFilters,
     globalFilter,
-    pagination: paginationState
+    pagination: paginationState,
   };
 
   useUpdateEffect(() => {
     if (manualMode) {
       return;
     }
-    setPaginationState(current => ({ ...current, pageIndex: 0 }));
+    setPaginationState((current) => ({ ...current, pageIndex: 0 }));
   }, [manualMode, globalFilter, columnFilters, sorting]);
 
   useEffect(() => {
@@ -173,16 +175,16 @@ export const DataTable = <TData,>({
     const computedPageCount = pageSize > 0 ? Math.ceil(filteredRows / pageSize) : 0;
     const maxPageIndex = computedPageCount === 0 ? 0 : computedPageCount - 1;
 
-    setPaginationState(current => ({
+    setPaginationState((current) => ({
       ...current,
-      pageIndex: clamp(current.pageIndex, 0, maxPageIndex)
+      pageIndex: clamp(current.pageIndex, 0, maxPageIndex),
     }));
   }, [manualMode, paginationState.pageSize, table]);
 
   const debouncedNotifyRef = useRef(
     debounce((next: DataTableQuery) => {
       resolvedApi.onQueryChange(next);
-    }, resolvedSearch.debounceMs)
+    }, resolvedSearch.debounceMs),
   );
 
   useEffect(() => {
@@ -242,7 +244,7 @@ export const DataTable = <TData,>({
         placeholder={resolvedSearch.placeholder}
         debounceMs={resolvedSearch.debounceMs}
         right={
-          <div className='ml-auto flex items-center gap-2'>
+          <div className="ml-auto flex items-center gap-2">
             {resolvedRenderToolbarRight(table)}
             <DataTableViewOptions<TData> table={table} columnVisibility={columnVisibility} />
           </div>
@@ -250,8 +252,9 @@ export const DataTable = <TData,>({
       />
 
       <div
-        ref={node => setScrollEl(node)}
-        className={cn(containerClassName === undefined ? 'overflow-auto' : containerClassName)}>
+        ref={(node) => setScrollEl(node)}
+        className={cn(containerClassName === undefined ? 'overflow-auto' : containerClassName)}
+      >
         <DataTableTable<TData>
           table={table}
           columnVisibility={columnVisibility}

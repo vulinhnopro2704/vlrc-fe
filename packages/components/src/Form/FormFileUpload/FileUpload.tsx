@@ -8,7 +8,7 @@ import {
   FileUploadItemMetadata,
   FileUploadItemProgress,
   FileUploadItemDelete,
-  useFileUpload
+  useFileUpload,
 } from '../../ui/file-upload';
 import { CloudUploadIcon, Trash2Icon, CameraIcon } from 'lucide-react';
 import { Button } from '../../ui/button';
@@ -132,13 +132,13 @@ type FileUploadSyncValue = string | string[] | File | File[] | null;
 function FileUploadSync({
   onChange,
   autoUpload,
-  maxFiles
+  maxFiles,
 }: {
   onChange?: (value: FileUploadSyncValue) => void;
   autoUpload: boolean;
   maxFiles: number;
 }) {
-  const store = useFileUpload(state => state);
+  const store = useFileUpload((state) => state);
   const lastValueRef = useRef<FileUploadSyncValue>(null);
 
   useEffect(() => {
@@ -149,12 +149,12 @@ function FileUploadSync({
     const newValue: FileUploadSyncValue = (() => {
       if (autoUpload) {
         const urls = currentFiles
-          .filter(fs => fs.status === 'success')
-          .map(fs => (fs.file as File & { uploadedUrl?: string }).uploadedUrl)
+          .filter((fs) => fs.status === 'success')
+          .map((fs) => (fs.file as File & { uploadedUrl?: string }).uploadedUrl)
           .filter((u): u is string => Boolean(u));
         return maxFiles === 1 ? (urls.length > 0 ? urls[urls.length - 1] : null) : urls;
       }
-      const files = currentFiles.map(fs => fs.file);
+      const files = currentFiles.map((fs) => fs.file);
       return maxFiles === 1 ? (files.length > 0 ? files[files.length - 1] : null) : files;
     })();
 
@@ -162,7 +162,9 @@ function FileUploadSync({
     const isEq = (() => {
       if (autoUpload) return JSON.stringify(last) === JSON.stringify(newValue);
       if (Array.isArray(newValue) && Array.isArray(last)) {
-        return newValue.length === last.length && newValue.every((f, i) => f === (last as File[])[i]);
+        return (
+          newValue.length === last.length && newValue.every((f, i) => f === (last as File[])[i])
+        );
       }
       return newValue === last;
     })();
@@ -187,9 +189,9 @@ function urlToStubFile(url: string, accept: string = ''): ExtendedFile {
     jpeg: 'image/jpeg',
     png: 'image/png',
     gif: 'image/gif',
-    webp: 'image/webp'
+    webp: 'image/webp',
   };
-  let type = (ext && mimeTypes[ext]);
+  let type = ext && mimeTypes[ext];
   if (!type) {
     type = accept.includes('image') ? 'image/jpeg' : 'application/octet-stream';
   }
@@ -209,10 +211,10 @@ export function FileUpload({
   accept = 'image/*',
   disabled,
   className,
-  variant = 'default'
+  variant = 'default',
 }: FileUploadProps) {
   const valArray = Array.isArray(value) ? value : value ? [value] : [];
-  const mappedFiles: ExtendedFile[] = valArray.map(item => {
+  const mappedFiles: ExtendedFile[] = valArray.map((item) => {
     if (item instanceof File) return item as ExtendedFile;
     if (typeof item === 'string') return urlToStubFile(item, accept);
     return item as ExtendedFile;
@@ -224,20 +226,20 @@ export function FileUpload({
       onProgress: (file: File, progress: number) => void;
       onSuccess: (file: File) => void;
       onError: (file: File, error: Error) => void;
-    }
+    },
   ) => {
     if (!autoUpload) {
-      filesToUpload.forEach(f => options.onSuccess(f));
+      filesToUpload.forEach((f) => options.onSuccess(f));
       return;
     }
     if (!uploadFile) {
       console.warn('uploadFile prop is required when autoUpload is true');
-      filesToUpload.forEach(f => options.onError(f, new Error('Missing uploadFile function')));
+      filesToUpload.forEach((f) => options.onError(f, new Error('Missing uploadFile function')));
       return;
     }
 
     await Promise.all(
-      filesToUpload.map(async file => {
+      filesToUpload.map(async (file) => {
         const extendedFile = file as File & { isUploadedUrl?: boolean; uploadedUrl?: string };
         if (extendedFile.isUploadedUrl) {
           options.onSuccess(file);
@@ -252,7 +254,7 @@ export function FileUpload({
         } catch (error: unknown) {
           options.onError(file, error instanceof Error ? error : new Error('Upload failed'));
         }
-      })
+      }),
     );
   };
 
@@ -260,13 +262,22 @@ export function FileUpload({
     <div className="flex flex-col items-center gap-2">
       <FileUploadDropzone className="group relative size-32 cursor-pointer overflow-hidden rounded-full border-2 border-dashed border-border p-0 hover:border-primary">
         {mappedFiles[0] ? (
-          <FileUploadItem value={mappedFiles[0]} className="relative flex size-full flex-col rounded-none border-none p-0">
+          <FileUploadItem
+            value={mappedFiles[0]}
+            className="relative flex size-full flex-col rounded-none border-none p-0"
+          >
             <FileUploadItemPreview
               className="size-full rounded-none border-none bg-transparent"
               render={(previewFile) => {
                 const url = (previewFile as File & { uploadedUrl?: string }).uploadedUrl;
                 if (url) return <img src={url} alt="Avatar" className="size-full object-cover" />;
-                return <img src={URL.createObjectURL(previewFile)} alt="Avatar" className="size-full object-cover" />;
+                return (
+                  <img
+                    src={URL.createObjectURL(previewFile)}
+                    alt="Avatar"
+                    className="size-full object-cover"
+                  />
+                );
               }}
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
@@ -291,9 +302,9 @@ export function FileUpload({
   const renderDefaultVariant = () => (
     <>
       <FileUploadDropzone>
-        <CloudUploadIcon className='h-10 w-10 text-muted-foreground' />
-        <p className='text-sm font-medium'>Drag & drop files here, or click to select</p>
-        <p className='text-xs text-muted-foreground'>
+        <CloudUploadIcon className="h-10 w-10 text-muted-foreground" />
+        <p className="text-sm font-medium">Drag & drop files here, or click to select</p>
+        <p className="text-xs text-muted-foreground">
           {maxFiles > 1 ? `Up to ${maxFiles} files` : '1 file max'}{' '}
           {maxSize ? `(Max ${Math.round(maxSize / (1024 * 1024))}MB)` : ''}
         </p>
@@ -306,7 +317,7 @@ export function FileUpload({
                 const url = (previewFile as File & { uploadedUrl?: string }).uploadedUrl;
                 if (url && previewFile.type.startsWith('image/')) {
                   return (
-                    <img src={url} alt={previewFile.name} className='size-full object-cover' />
+                    <img src={url} alt={previewFile.name} className="size-full object-cover" />
                   );
                 }
                 return fallback();
@@ -315,7 +326,11 @@ export function FileUpload({
             <FileUploadItemMetadata />
             <FileUploadItemProgress className="absolute bottom-0 left-0 right-0 h-1 w-auto rounded-none" />
             <FileUploadItemDelete asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 text-muted-foreground hover:text-destructive">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 shrink-0 text-muted-foreground hover:text-destructive"
+              >
                 <Trash2Icon className="h-4 w-4" />
               </Button>
             </FileUploadItemDelete>
@@ -333,9 +348,14 @@ export function FileUpload({
       accept={accept}
       disabled={disabled}
       onUpload={handleUpload}
-      className={className}>
-      <FileUploadSync onChange={onChange} autoUpload={autoUpload} maxFiles={variant === 'avatar' ? 1 : maxFiles} />
-      
+      className={className}
+    >
+      <FileUploadSync
+        onChange={onChange}
+        autoUpload={autoUpload}
+        maxFiles={variant === 'avatar' ? 1 : maxFiles}
+      />
+
       {variant === 'avatar' ? renderAvatarVariant() : renderDefaultVariant()}
     </FileUploadRoot>
   );

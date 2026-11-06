@@ -1,0 +1,49 @@
+name: Bug Report
+description: Create a report to help us improve the library
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the information below.
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Affected Package
+      description: Which package is affected by this bug?
+      options:
+        - '@vlrc-fe/components'
+        - '@vlrc-fe/hooks'
+        - 'both'
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Steps or a minimal code example to reproduce the behavior.
+      placeholder: |
+        1. Import `Button` from `@vlrc-fe/components`
+        2. Render with prop `...`
+        3. See error
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Info
+      description: Node version, React version, bundler (Vite, Next.js, etc.)
+      placeholder: React 19.3, Vite 8, Node 22
+    validations:
+      required: false

@@ -1,6 +1,7 @@
 # VLRC Frontend Monorepo Guidelines
 
 This repository contains reusable frontend packages for the VLRC ecosystem:
+
 - `@vlrc-fe/components`: UI primitive and composite component library built with Meta StyleX and Radix UI.
 - `@vlrc-fe/hooks`: Shared React utility hooks.
 

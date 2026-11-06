@@ -10,14 +10,14 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from '../../ui/dropdown-menu';
 
 import type { DataTableActionsConfig } from '../types';
 
 export const DataTableRowActions = <TData,>({
   row,
-  table
+  table,
 }: {
   row: Row<TData>;
   table: Table<TData>;
@@ -36,19 +36,34 @@ export const DataTableRowActions = <TData,>({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' size='icon-sm'>
-          <span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>{t('datatable_open_menu')}</span>
+        <Button variant="ghost" size="icon-sm">
+          <span
+            style={{
+              position: 'absolute',
+              width: 1,
+              height: 1,
+              padding: 0,
+              margin: -1,
+              overflow: 'hidden',
+              clip: 'rect(0, 0, 0, 0)',
+              whiteSpace: 'nowrap',
+              borderWidth: 0,
+            }}
+          >
+            {t('datatable_open_menu')}
+          </span>
           <MoreHorizontal style={{ width: 16, height: 16 }} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
+      <DropdownMenuContent align="end">
         <DropdownMenuLabel>{t('datatable_actions')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {map(items, item => (
+        {map(items, (item) => (
           <DropdownMenuItem
             key={item.id}
             disabled={item.disabled}
-            onClick={() => item.onSelect(row)}>
+            onClick={() => item.onSelect(row)}
+          >
             {item.label}
           </DropdownMenuItem>
         ))}

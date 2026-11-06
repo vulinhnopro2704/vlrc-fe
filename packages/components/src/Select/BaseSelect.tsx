@@ -11,7 +11,7 @@ import type {
   BaseSelectOption,
   BaseSelectProps,
   BaseSingleSelectProps,
-  SelectValue
+  SelectValue,
 } from './type';
 
 const styles = stylex.create({
@@ -169,19 +169,19 @@ const styles = stylex.create({
 });
 
 function isMultiProps<T extends SelectValue>(
-  props: BaseSelectProps<T>
+  props: BaseSelectProps<T>,
 ): props is BaseMultiSelectProps<T> {
   return props.isMulti === true;
 }
 
 export function BaseSelect<T extends SelectValue = SelectValue>(
-  props: BaseMultiSelectProps<T>
+  props: BaseMultiSelectProps<T>,
 ): React.ReactElement;
 export function BaseSelect<T extends SelectValue = SelectValue>(
-  props: BaseSingleSelectProps<T>
+  props: BaseSingleSelectProps<T>,
 ): React.ReactElement;
 export function BaseSelect<T extends SelectValue = SelectValue>(
-  props: BaseMultiSelectProps<T> | BaseSingleSelectProps<T>
+  props: BaseMultiSelectProps<T> | BaseSingleSelectProps<T>,
 ): React.ReactElement {
   const {
     options,
@@ -198,7 +198,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
     fetchNextPage,
     maxTagCount = 'responsive',
     tagRender,
-    showSelectAll = false
+    showSelectAll = false,
   } = props;
 
   const isMulti = isMultiProps(props);
@@ -222,9 +222,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
 
   const filteredOptions = useMemo(() => {
     if (!search.trim()) return allOptions;
-    return allOptions.filter(opt =>
-      opt.label.toLowerCase().includes(search.toLowerCase())
-    );
+    return allOptions.filter((opt) => opt.label.toLowerCase().includes(search.toLowerCase()));
   }, [allOptions, search]);
 
   const selectedValues: T[] = useMemo(() => {
@@ -236,16 +234,14 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
   }, [value, isMulti]);
 
   const selectedOptions = useMemo(() => {
-    return allOptions.filter(opt => selectedValues.includes(opt.value));
+    return allOptions.filter((opt) => selectedValues.includes(opt.value));
   }, [allOptions, selectedValues]);
 
   const handleSelect = (val: T) => {
     if (disabled) return;
     if (isMulti) {
       const exists = selectedValues.includes(val);
-      const next = exists
-        ? selectedValues.filter(v => v !== val)
-        : [...selectedValues, val];
+      const next = exists ? selectedValues.filter((v) => v !== val) : [...selectedValues, val];
       if (props.onChange) {
         props.onChange(next);
       }
@@ -287,13 +283,13 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
 
   const displayLabel = useMemo(() => {
     if (isMulti) return '';
-    const found = allOptions.find(opt => opt.value === selectedValues[0]);
+    const found = allOptions.find((opt) => opt.value === selectedValues[0]);
     return found?.label || '';
   }, [selectedValues, allOptions, isMulti]);
 
   const handleRemoveTag = (val: T) => {
     if (disabled || !isMultiProps(props)) return;
-    const newVals = selectedValues.filter(v => v !== val);
+    const newVals = selectedValues.filter((v) => v !== val);
     if (props.onChange) {
       props.onChange(newVals);
     }
@@ -306,7 +302,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
         props.onChange([]);
       }
     } else {
-      const allValues = filteredOptions.map(opt => opt.value);
+      const allValues = filteredOptions.map((opt) => opt.value);
       if (props.onChange) {
         props.onChange(allValues);
       }
@@ -317,15 +313,16 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
     <Popover open={open} onOpenChange={disabled ? undefined : setOpen}>
       <PopoverTrigger asChild>
         <button
-          type='button'
+          type="button"
           {...stylex.props(
             styles.trigger,
             open && styles.triggerOpen,
-            disabled && styles.triggerDisabled
+            disabled && styles.triggerDisabled,
           )}
           className={className}
-          onClick={() => !disabled && setOpen(v => !v)}
-          disabled={disabled}>
+          onClick={() => !disabled && setOpen((v) => !v)}
+          disabled={disabled}
+        >
           {isMulti && selectedValues.length > 0 ? (
             <MultiSelectTags
               selectedOptions={selectedOptions}
@@ -340,22 +337,19 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
             </span>
           )}
           {isClearable && selectedValues.length > 0 && !disabled && (
-            <Icons.XIcon
-              {...stylex.props(styles.clearIcon)}
-              onClick={handleClear}
-            />
+            <Icons.XIcon {...stylex.props(styles.clearIcon)} onClick={handleClear} />
           )}
           <Icons.ChevronDownIcon {...stylex.props(styles.chevronIcon)} />
         </button>
       </PopoverTrigger>
-      <PopoverContent sx={styles.popoverContent} align='start'>
+      <PopoverContent sx={styles.popoverContent} align="start">
         {isSearchable && !disabled && (
           <div {...stylex.props(styles.searchBar)}>
             <Icons.SearchIcon {...stylex.props(styles.searchIcon)} />
             <input
               ref={inputRef}
               {...stylex.props(styles.searchInput)}
-              placeholder='Tìm kiếm...'
+              placeholder="Tìm kiếm..."
               value={search}
               onChange={handleSearchChange}
               autoFocus
@@ -364,9 +358,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
           </div>
         )}
         {isMulti && showSelectAll && !disabled && filteredOptions.length > 0 && (
-          <div
-            {...stylex.props(styles.selectAllRow)}
-            onClick={handleSelectAll}>
+          <div {...stylex.props(styles.selectAllRow)} onClick={handleSelectAll}>
             <span style={{ flex: '1 1 0%' }}>
               {selectedValues.length === filteredOptions.length ? 'Bỏ chọn tất cả' : 'Chọn tất cả'}
             </span>
@@ -382,7 +374,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
             <div {...stylex.props(styles.emptyNotice)}>Không có dữ liệu</div>
           ) : (
             <>
-              {filteredOptions.map(opt => {
+              {filteredOptions.map((opt) => {
                 const isSelected = selectedValues.includes(opt.value);
                 return (
                   <div
@@ -390,26 +382,36 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
                     {...stylex.props(
                       styles.optionRow,
                       isSelected && styles.optionSelected,
-                      disabled && styles.optionDisabled
+                      disabled && styles.optionDisabled,
                     )}
-                    onClick={() => handleSelect(opt.value)}>
+                    onClick={() => handleSelect(opt.value)}
+                  >
                     {opt.icon && <span style={{ marginRight: '0.5rem' }}>{opt.icon}</span>}
-                    <span style={{ flex: '1 1 0%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <span
+                      style={{
+                        flex: '1 1 0%',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
                       {opt.label}
                     </span>
                     {isMulti && (
                       <span
                         {...stylex.props(
                           styles.checkSquare,
-                          isSelected && styles.checkSquareSelected
-                        )}>
-                        {isSelected && (
-                          <Icons.CheckIcon {...stylex.props(styles.checkIcon)} />
+                          isSelected && styles.checkSquareSelected,
                         )}
+                      >
+                        {isSelected && <Icons.CheckIcon {...stylex.props(styles.checkIcon)} />}
                       </span>
                     )}
                     {!isMulti && isSelected && (
-                      <Icons.CheckIcon {...stylex.props(styles.checkIcon)} style={{ color: 'var(--primary)' }} />
+                      <Icons.CheckIcon
+                        {...stylex.props(styles.checkIcon)}
+                        style={{ color: 'var(--primary)' }}
+                      />
                     )}
                   </div>
                 );

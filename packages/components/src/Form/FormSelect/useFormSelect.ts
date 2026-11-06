@@ -1,27 +1,34 @@
 import { get, isNil } from 'lodash-es';
-import type { ControllerRenderProps, FieldPath, FieldValues, RegisterOptions } from 'react-hook-form';
+import type {
+  ControllerRenderProps,
+  FieldPath,
+  FieldValues,
+  RegisterOptions,
+} from 'react-hook-form';
 
 import type { FormMultiSelectProps, FormSelectProps } from './types';
 import type { SelectValue } from '../../Select/type';
 import type { BaseSelectPassThroughProps } from '../../Select/type';
 
 function isFormMultiSelectProps<TFieldValues extends FieldValues, T extends SelectValue>(
-  props: FormSelectProps<TFieldValues, T>
+  props: FormSelectProps<TFieldValues, T>,
 ): props is FormMultiSelectProps<TFieldValues, T> {
   return props.isMulti === true;
 }
 
 export function useFormSelect<
   TFieldValues extends FieldValues,
-  T extends SelectValue = SelectValue
->(props: FormSelectProps<TFieldValues, T>): {
+  T extends SelectValue = SelectValue,
+>(
+  props: FormSelectProps<TFieldValues, T>,
+): {
   readonly isRequired: boolean;
   readonly description: string | undefined;
   readonly enhancedRules: RegisterOptions<TFieldValues, FieldPath<TFieldValues>> | undefined;
   readonly baseSelectProps: BaseSelectPassThroughProps<T>;
   readonly isMulti: boolean;
   readonly createChangeHandlers: (
-    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>
+    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
   ) => {
     onChangeMulti: (value: T[]) => void;
     onChangeSingle: (value: T | null) => void;
@@ -44,7 +51,7 @@ export function useFormSelect<
     fetchNextPage,
     maxTagCount = 'responsive',
     tagRender,
-    showSelectAll = false
+    showSelectAll = false,
   } = props;
 
   const requiredRule = get(rules, 'required');
@@ -65,7 +72,7 @@ export function useFormSelect<
     fetchNextPage,
     maxTagCount,
     tagRender,
-    showSelectAll
+    showSelectAll,
   };
 
   const enhancedRules = (() => {
@@ -81,14 +88,14 @@ export function useFormSelect<
     } else if (typeof newRules.required === 'object' && !newRules.required.message) {
       newRules.required = {
         ...newRules.required,
-        message: 'Trường này là bắt buộc'
+        message: 'Trường này là bắt buộc',
       };
     }
     return newRules;
   })();
 
   const createChangeHandlers = (
-    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>
+    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
   ) => ({
     onChangeMulti: (value: T[]) => {
       field.onChange(value);
@@ -101,7 +108,7 @@ export function useFormSelect<
       if (!isFormMultiSelectProps(props) && props.onChange) {
         props.onChange(value);
       }
-    }
+    },
   });
 
   return {
@@ -110,6 +117,6 @@ export function useFormSelect<
     enhancedRules,
     baseSelectProps,
     isMulti: isFormMultiSelectProps(props),
-    createChangeHandlers
+    createChangeHandlers,
   } as const;
 }

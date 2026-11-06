@@ -103,11 +103,15 @@ const styles = stylex.create({
   },
 });
 
-function FieldSet({ className, sx, ...props }: React.ComponentProps<'fieldset'> & { sx?: stylex.StyleXStyles }) {
+function FieldSet({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'fieldset'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.set, sx);
   return (
     <fieldset
-      data-slot='field-set'
+      data-slot="field-set"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -124,7 +128,7 @@ function FieldLegend({
   const sxProps = stylex.props(styles.legend, variant === 'label' && styles.legendLabel, sx);
   return (
     <legend
-      data-slot='field-legend'
+      data-slot="field-legend"
       data-variant={variant}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -133,11 +137,15 @@ function FieldLegend({
   );
 }
 
-function FieldGroup({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function FieldGroup({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.group, sx);
   return (
     <div
-      data-slot='field-group'
+      data-slot="field-group"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -160,8 +168,8 @@ function Field({
   const sxProps = stylex.props(styles.fieldBase, orientationStyles[orientation], sx);
   return (
     <div
-      role='group'
-      data-slot='field'
+      role="group"
+      data-slot="field"
       data-orientation={orientation}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -170,11 +178,15 @@ function Field({
   );
 }
 
-function FieldContent({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function FieldContent({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.content, sx);
   return (
     <div
-      data-slot='field-content'
+      data-slot="field-content"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -182,11 +194,15 @@ function FieldContent({ className, sx, ...props }: React.ComponentProps<'div'> &
   );
 }
 
-function FieldLabel({ className, sx, ...props }: React.ComponentProps<typeof Label> & { sx?: stylex.StyleXStyles }) {
+function FieldLabel({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<typeof Label> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.label, sx);
   return (
     <Label
-      data-slot='field-label'
+      data-slot="field-label"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -194,11 +210,15 @@ function FieldLabel({ className, sx, ...props }: React.ComponentProps<typeof Lab
   );
 }
 
-function FieldTitle({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function FieldTitle({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <div
-      data-slot='field-label'
+      data-slot="field-label"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -206,11 +226,15 @@ function FieldTitle({ className, sx, ...props }: React.ComponentProps<'div'> & {
   );
 }
 
-function FieldDescription({ className, sx, ...props }: React.ComponentProps<'p'> & { sx?: stylex.StyleXStyles }) {
+function FieldDescription({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'p'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.description, sx);
   return (
     <p
-      data-slot='field-description'
+      data-slot="field-description"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -230,16 +254,15 @@ function FieldSeparator({
   const sxProps = stylex.props(styles.separator, sx);
   return (
     <div
-      data-slot='field-separator'
+      data-slot="field-separator"
       data-content={!!children}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-      {...props}>
+      {...props}
+    >
       <Separator style={{ position: 'absolute', inset: 0, top: '50%' }} />
       {children && (
-        <span
-          {...stylex.props(styles.separatorContent)}
-          data-slot='field-separator-content'>
+        <span {...stylex.props(styles.separatorContent)} data-slot="field-separator-content">
           {children}
         </span>
       )}
@@ -266,7 +289,7 @@ function FieldError({
       return null;
     }
 
-    const uniqueErrors = [...new Map(errors.map(error => [error?.message, error])).values()];
+    const uniqueErrors = [...new Map(errors.map((error) => [error?.message, error])).values()];
 
     if (uniqueErrors?.length === 1) {
       return uniqueErrors[0]?.message;
@@ -287,11 +310,12 @@ function FieldError({
 
   return (
     <div
-      role='alert'
-      data-slot='field-error'
+      role="alert"
+      data-slot="field-error"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-      {...props}>
+      {...props}
+    >
       {content}
     </div>
   );
@@ -307,5 +331,5 @@ export {
   FieldSeparator,
   FieldSet,
   FieldContent,
-  FieldTitle
+  FieldTitle,
 };

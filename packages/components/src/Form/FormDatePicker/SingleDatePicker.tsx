@@ -11,7 +11,7 @@ import type {
   DatePickerStatus,
   DisabledTime,
   PickerType,
-  TimeConfig
+  TimeConfig,
 } from './types';
 import { TimeInput } from './TimeInput';
 import { TimePicker } from './TimePicker';
@@ -20,7 +20,7 @@ import {
   buildTimeConfig,
   formatDateValue,
   getSizeClassName,
-  getStatusClassName
+  getStatusClassName,
 } from './useFormDatePicker';
 
 interface SingleDatePickerProps {
@@ -58,7 +58,7 @@ export function SingleDatePicker({
   suffixIcon,
   className,
   disabledDate,
-  disabledTime
+  disabledTime,
 }: SingleDatePickerProps) {
   const [open, setOpen] = React.useState(false);
   const [currentMonth, setCurrentMonth] = React.useState<Date | undefined>(value || new Date());
@@ -69,7 +69,11 @@ export function SingleDatePicker({
   React.useEffect(() => {
     if (value) {
       setCurrentMonth((prev) => {
-        if (prev && prev.getMonth() === value.getMonth() && prev.getFullYear() === value.getFullYear()) {
+        if (
+          prev &&
+          prev.getMonth() === value.getMonth() &&
+          prev.getFullYear() === value.getFullYear()
+        ) {
           return prev;
         }
         return value;
@@ -111,21 +115,21 @@ export function SingleDatePicker({
 
   const renderIcon = () => {
     if (suffixIcon) return suffixIcon;
-    if (pickerType === 'time') return <Clock className='h-4 w-4 opacity-50' />;
-    return <CalendarIcon className='h-4 w-4 opacity-50' />;
+    if (pickerType === 'time') return <Clock className="h-4 w-4 opacity-50" />;
+    return <CalendarIcon className="h-4 w-4 opacity-50" />;
   };
 
   const renderContent = () => {
     if (pickerType === 'time') {
       return (
-        <div className='p-2'>
+        <div className="p-2">
           <TimePicker
             value={value}
             onChange={handleTimeChange}
             timeConfig={timeConfig}
             disabledTime={buildDisabledTime(value, disabledTime)}
           />
-          <div className='mt-2 pt-2 border-t'>
+          <div className="mt-2 pt-2 border-t">
             <TimeInput value={value} onChange={handleTimeChange} timeConfig={timeConfig} />
           </div>
         </div>
@@ -133,19 +137,19 @@ export function SingleDatePicker({
     }
 
     return (
-      <div className='flex'>
+      <div className="flex">
         <Calendar
-          mode='single'
+          mode="single"
           selected={value}
           onSelect={handleDateSelect}
           disabled={disabledDate}
-          captionLayout='dropdown'
+          captionLayout="dropdown"
           locale={vi}
           month={currentMonth}
           hidden={{
-            after: new Date(new Date().getFullYear() + 50, 11, 31)
+            after: new Date(new Date().getFullYear() + 50, 11, 31),
           }}
-          onMonthChange={month => {
+          onMonthChange={(month) => {
             setCurrentMonth(month);
             if (pickerType === 'month') {
               onChange(month);
@@ -169,7 +173,7 @@ export function SingleDatePicker({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant='outline'
+          variant="outline"
           disabled={disabled}
           className={cn(
             'justify-between font-normal',
@@ -177,13 +181,14 @@ export function SingleDatePicker({
             getStatusClassName(status),
             !value && 'text-muted-foreground',
             width === 'auto' ? 'w-full' : '',
-            className
+            className,
           )}
-          style={width !== 'auto' ? { width } : undefined}>
+          style={width !== 'auto' ? { width } : undefined}
+        >
           {!hideValue && displayValue ? displayValue : <span>{placeholder}</span>}
-          <div className='ml-auto flex items-center gap-1'>
+          <div className="ml-auto flex items-center gap-1">
             {allowClear && value && (
-              <span onClick={handleClear} className='hover:text-destructive cursor-pointer'>
+              <span onClick={handleClear} className="hover:text-destructive cursor-pointer">
                 ×
               </span>
             )}
@@ -191,7 +196,7 @@ export function SingleDatePicker({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0' align='start'>
+      <PopoverContent className="w-auto p-0" align="start">
         {renderContent()}
       </PopoverContent>
     </Popover>

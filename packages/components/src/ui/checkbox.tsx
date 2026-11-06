@@ -51,11 +51,7 @@ export interface CheckboxProps extends React.ComponentProps<typeof CheckboxPrimi
   sx?: stylex.StyleXStyles;
 }
 
-function Checkbox({
-  className,
-  sx,
-  ...props
-}: CheckboxProps) {
+function Checkbox({ className, sx, ...props }: CheckboxProps) {
   const sxProps = stylex.props(styles.root, sx);
 
   return (

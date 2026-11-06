@@ -44,11 +44,7 @@ export interface TextareaProps extends React.ComponentProps<'textarea'> {
 
 function Textarea({ className, sx, ...props }: TextareaProps) {
   const isInvalid = props['aria-invalid'] === true || props['aria-invalid'] === 'true';
-  const sxProps = stylex.props(
-    styles.base,
-    isInvalid && styles.invalid,
-    sx
-  );
+  const sxProps = stylex.props(styles.base, isInvalid && styles.invalid, sx);
 
   return (
     <textarea

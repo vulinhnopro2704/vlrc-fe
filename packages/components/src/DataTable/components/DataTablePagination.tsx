@@ -7,7 +7,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from '../../ui/dropdown-menu';
 import type { DataTableApiConfig } from '../types';
 
@@ -41,7 +41,7 @@ export const DataTablePagination = <TData,>({
   table,
   tableState,
   pageSizeOptions,
-  apiConfig
+  apiConfig,
 }: {
   table: Table<TData>;
   tableState: Table<TData>['getState'] extends () => infer S ? S : never;
@@ -65,16 +65,17 @@ export const DataTablePagination = <TData,>({
       <div {...stylex.props(styles.controls)}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant='outline' size='sm'>
+            <Button variant="outline" size="sm">
               Rows: {pageSize}
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align='end'>
-            {map(pageSizeOptions, opt => (
+          <DropdownMenuContent align="end">
+            {map(pageSizeOptions, (opt) => (
               <DropdownMenuItem
                 key={String(opt)}
                 onClick={() => table.setPageSize(opt)}
-                disabled={opt === pageSize}>
+                disabled={opt === pageSize}
+              >
                 {opt}
               </DropdownMenuItem>
             ))}
@@ -82,10 +83,11 @@ export const DataTablePagination = <TData,>({
         </DropdownMenu>
 
         <Button
-          variant='outline'
-          size='sm'
+          variant="outline"
+          size="sm"
           onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}>
+          disabled={!table.getCanPreviousPage()}
+        >
           Previous
         </Button>
 
@@ -94,10 +96,11 @@ export const DataTablePagination = <TData,>({
         </span>
 
         <Button
-          variant='outline'
-          size='sm'
+          variant="outline"
+          size="sm"
           onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}>
+          disabled={!table.getCanNextPage()}
+        >
           Next
         </Button>
       </div>

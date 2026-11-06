@@ -28,14 +28,12 @@ describe('Input', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it.each([
-      ['text' as const],
-      ['password' as const],
-      ['email' as const],
-      ['number' as const],
-    ])('should match snapshot for type %s', (type) => {
-      const { asFragment } = render(<Input {...createDefaultProps({ type })} />);
-      expect(asFragment()).toMatchSnapshot();
-    });
+    it.each([['text' as const], ['password' as const], ['email' as const], ['number' as const]])(
+      'should match snapshot for type %s',
+      (type) => {
+        const { asFragment } = render(<Input {...createDefaultProps({ type })} />);
+        expect(asFragment()).toMatchSnapshot();
+      },
+    );
   });
 });

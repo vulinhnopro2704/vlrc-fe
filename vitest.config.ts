@@ -21,8 +21,14 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@vlrc-fe/components/theme': resolve(import.meta.dirname, './packages/components/src/theme/tokens.stylex.ts'),
-      '@vlrc-fe/components/Icons': resolve(import.meta.dirname, './packages/components/src/Icons/index.ts'),
+      '@vlrc-fe/components/theme': resolve(
+        import.meta.dirname,
+        './packages/components/src/theme/tokens.stylex.ts',
+      ),
+      '@vlrc-fe/components/Icons': resolve(
+        import.meta.dirname,
+        './packages/components/src/Icons/index.ts',
+      ),
       '@vlrc-fe/components': resolve(import.meta.dirname, './packages/components/src/index.ts'),
       '@vlrc-fe/hooks': resolve(import.meta.dirname, './packages/hooks/src/index.ts'),
     },

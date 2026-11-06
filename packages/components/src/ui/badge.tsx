@@ -83,19 +83,9 @@ export interface BadgeProps extends React.ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
-function Badge({
-  className,
-  variant = 'default',
-  asChild = false,
-  sx,
-  ...props
-}: BadgeProps) {
+function Badge({ className, variant = 'default', asChild = false, sx, ...props }: BadgeProps) {
   const Comp = asChild ? Slot : 'span';
-  const sxProps = stylex.props(
-    styles.base,
-    variantStyles[variant],
-    sx
-  );
+  const sxProps = stylex.props(styles.base, variantStyles[variant], sx);
 
   return (
     <Comp

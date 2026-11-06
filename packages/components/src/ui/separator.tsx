@@ -33,7 +33,7 @@ function Separator({
   const sxProps = stylex.props(
     styles.base,
     orientation === 'horizontal' ? styles.horizontal : styles.vertical,
-    sx
+    sx,
   );
 
   return (

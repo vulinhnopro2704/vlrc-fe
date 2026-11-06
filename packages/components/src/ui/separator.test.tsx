@@ -13,12 +13,12 @@ describe('Separator', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it.each([
-      ['horizontal' as const],
-      ['vertical' as const],
-    ])('should match snapshot for %s orientation', (orientation) => {
-      const { asFragment } = render(<Separator {...createDefaultProps({ orientation })} />);
-      expect(asFragment()).toMatchSnapshot();
-    });
+    it.each([['horizontal' as const], ['vertical' as const]])(
+      'should match snapshot for %s orientation',
+      (orientation) => {
+        const { asFragment } = render(<Separator {...createDefaultProps({ orientation })} />);
+        expect(asFragment()).toMatchSnapshot();
+      },
+    );
   });
 });

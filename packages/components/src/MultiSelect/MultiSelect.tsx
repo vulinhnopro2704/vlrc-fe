@@ -78,7 +78,7 @@ const MultiSelect: FunctionComponent<{
     searchable,
     autoSize,
     disabled,
-    forwardedRef: ref
+    forwardedRef: ref,
   });
 
   const { selectedValues, isPopoverOpen, isAnimating, searchValue, screenSize } = state;
@@ -87,7 +87,7 @@ const MultiSelect: FunctionComponent<{
     responsiveSettings,
     widthConstraints,
     badgeAnimationClass,
-    popoverAnimationClass
+    popoverAnimationClass,
   } = derived;
   const { buttonRef } = refs;
   const { getAllOptions, getOptionByValue } = helpers;
@@ -101,7 +101,7 @@ const MultiSelect: FunctionComponent<{
     clearExtraOptions,
     toggleAll,
     setSearchValue,
-    setIsAnimating
+    setIsAnimating,
   } = handlers;
 
   const handlePopoverChange = (open: boolean) => {
@@ -116,16 +116,16 @@ const MultiSelect: FunctionComponent<{
       <LiveRegion politeMessage={politeMessage} assertiveMessage={assertiveMessage} />
 
       <Popover open={isPopoverOpen} onOpenChange={handlePopoverChange} modal={modalPopover}>
-        <div id={ids.triggerDescriptionId} className='sr-only'>
+        <div id={ids.triggerDescriptionId} className="sr-only">
           Multi-select dropdown. Use arrow keys to navigate, Enter to select, and Escape to close.
         </div>
-        <div id={ids.selectedCountId} className='sr-only' aria-live='polite'>
+        <div id={ids.selectedCountId} className="sr-only" aria-live="polite">
           {selectedValues.length === 0
             ? 'No options selected'
             : `${selectedValues.length} option${
                 selectedValues.length === 1 ? '' : 's'
               } selected: ${selectedValues
-                .map(value => getOptionByValue(value)?.label)
+                .map((value) => getOptionByValue(value)?.label)
                 .filter(Boolean)
                 .join(', ')}`}
         </div>
@@ -136,9 +136,9 @@ const MultiSelect: FunctionComponent<{
             {...buttonProps}
             onClick={handleTogglePopover}
             disabled={disabled}
-            role='combobox'
+            role="combobox"
             aria-expanded={isPopoverOpen}
-            aria-haspopup='listbox'
+            aria-haspopup="listbox"
             aria-controls={isPopoverOpen ? ids.listboxId : undefined}
             aria-describedby={`${ids.triggerDescriptionId} ${ids.selectedCountId}`}
             aria-label={ariaLabel}
@@ -148,12 +148,13 @@ const MultiSelect: FunctionComponent<{
               responsiveSettings.compactMode && 'min-h-8 text-sm',
               screenSize === 'mobile' && 'min-h-12 text-base',
               disabled && 'opacity-50 cursor-not-allowed',
-              className
+              className,
             )}
             style={{
               ...widthConstraints,
-              maxWidth: `min(${widthConstraints.maxWidth}, 100%)`
-            }}>
+              maxWidth: `min(${widthConstraints.maxWidth}, 100%)`,
+            }}
+          >
             {selectedValues.length > 0 ? (
               <SelectedValuesContent
                 selectedValues={selectedValues}
@@ -176,26 +177,27 @@ const MultiSelect: FunctionComponent<{
         </PopoverTrigger>
         <PopoverContent
           id={ids.listboxId}
-          role='listbox'
-          aria-multiselectable='true'
-          aria-label='Available options'
+          role="listbox"
+          aria-multiselectable="true"
+          aria-label="Available options"
           className={cn(
             'w-auto p-0',
             popoverAnimationClass,
             screenSize === 'mobile' && 'w-[85vw] max-w-70',
             screenSize === 'tablet' && 'w-[70vw] max-w-md',
             screenSize === 'desktop' && 'min-w-75',
-            popoverClassName
+            popoverClassName,
           )}
           style={{
             animationDuration: `${animationConfig?.duration || animation}s`,
             animationDelay: `${animationConfig?.delay || 0}s`,
             maxWidth: `min(${widthConstraints.maxWidth}, 85vw)`,
             maxHeight: screenSize === 'mobile' ? '70vh' : '60vh',
-            touchAction: 'manipulation'
+            touchAction: 'manipulation',
           }}
-          align='start'
-          onEscapeKeyDown={() => setIsPopoverOpen(false)}>
+          align="start"
+          onEscapeKeyDown={() => setIsPopoverOpen(false)}
+        >
           <OptionsContent
             filteredOptions={filteredOptions}
             hideSelectAll={hideSelectAll}
@@ -218,7 +220,7 @@ const MultiSelect: FunctionComponent<{
           <Icons.WandSparkles
             className={cn(
               'cursor-pointer my-2 text-foreground bg-background w-3 h-3',
-              isAnimating ? '' : 'text-muted-foreground'
+              isAnimating ? '' : 'text-muted-foreground',
             )}
             onClick={() => setIsAnimating(!isAnimating)}
           />

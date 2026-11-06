@@ -47,7 +47,7 @@ describe('Table', () => {
               <TableCell>$400.00</TableCell>
             </TableRow>
           </TableFooter>
-        </Table>
+        </Table>,
       );
       expect(asFragment()).toMatchSnapshot();
     });

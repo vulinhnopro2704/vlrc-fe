@@ -1,4 +1,4 @@
-# VLRC Frontend Monorepo (`vlrc-fe`)
+# VLRC Frontend Libraries
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-7.0-blue.svg?style=flat-square)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.3-blue.svg?style=flat-square)](https://react.dev/)
@@ -6,85 +6,61 @@
 [![pnpm](https://img.shields.io/badge/pnpm-11-orange.svg?style=flat-square)](https://pnpm.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](./LICENSE)
 
-Standalone monorepo housing the core UI component systems, utility libraries, and hooks for the **VLRC** English Learning platform and related frontend applications.
+Production-ready React UI components and hooks for building modern web applications. Built with **Meta StyleX** (compile-time atomic CSS), **Radix UI** primitives, and **React Hook Form** integration.
 
----
+## Packages
 
-## 📦 Packages & npm Registries
+| Package                                        |                                                               Version                                                               | Description                                                           |
+| :--------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------- |
+| [`@vlrc-fe/components`](./packages/components) | [![npm](https://img.shields.io/npm/v/@vlrc-fe/components.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/components) | Accessible React UI components with theming, forms, and data tables   |
+| [`@vlrc-fe/hooks`](./packages/hooks)           |      [![npm](https://img.shields.io/npm/v/@vlrc-fe/hooks.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/hooks)      | Reusable React hooks for modal state, animations, and UI coordination |
 
-| Package | npm Version | Registry Link | Source Path | Description |
-| :--- | :---: | :---: | :---: | :--- |
-| **`@vlrc-fe/components`** | [![npm](https://img.shields.io/npm/v/@vlrc-fe/components.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/components) | [npmjs.com/package/@vlrc-fe/components](https://www.npmjs.com/package/@vlrc-fe/components) | [`packages/components`](./packages/components) | Accessible React UI library built with **Meta StyleX** and **Radix UI**. |
-| **`@vlrc-fe/hooks`** | [![npm](https://img.shields.io/npm/v/@vlrc-fe/hooks.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/hooks) | [npmjs.com/package/@vlrc-fe/hooks](https://www.npmjs.com/package/@vlrc-fe/hooks) | [`packages/hooks`](./packages/hooks) | Reusable React hooks for modal lifecycles, state coordination, and animations. |
+## Tech Stack
 
----
+- **React** 19.3 with Compiler support
+- **TypeScript** 7.0 in strict mode
+- **Meta StyleX** — compile-time atomic CSS-in-JS, zero runtime
+- **Radix UI** — accessible headless primitives
+- **Vite** 8 + Rolldown bundler
+- **pnpm** 11 workspaces
 
-## 🛠 Tech Stack & Architecture
-
-- **Runtime**: React 19.3 (Compiler ready via `@vitejs/plugin-react`)
-- **Language**: TypeScript 7.0 (strict type checking & declaration maps)
-- **Styling**: Meta StyleX (Compile-time atomic CSS-in-JS, zero runtime style injection)
-- **Package Manager**: pnpm 11 with Workspaces
-- **Bundler**: Vite 8 & Rolldown
-- **Code Quality**: ESLint 10 & Prettier 3
-
----
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Node.js `>= 22`
-- pnpm `>= 10`
 
-### 1. Installation
+- Node.js >= 22
+- pnpm >= 10
 
-Clone the repository and install all workspace dependencies:
+### Install and Build
 
 ```bash
 git clone https://github.com/vulinhnopro2704/vlrc-fe.git
 cd vlrc-fe
 pnpm install
-```
-
-### 2. Building Packages
-
-Build all packages (`@vlrc-fe/components` and `@vlrc-fe/hooks`):
-
-```bash
 pnpm build
 ```
 
-This runs:
-1. Vite library bundling into both ESM (`index.js`) and CJS (`index.cjs`).
-2. StyleX atomic stylesheet extraction into `dist/assets/stylex.css`.
-3. TypeScript compiler (`tsc -p tsconfig.json`) declaration file generation into `dist/`.
+### Interactive Component Playground
 
-### 3. Linting & Type Checking
+Run the interactive catalog to preview and test components with live theme switching:
+
+```bash
+pnpm docs:dev
+```
+
+### Lint and Test
 
 ```bash
 pnpm lint
+pnpm test
 ```
 
----
+## Documentation
 
-## 🤖 AI Agent Guidelines & Coding Standards
+- [Components README](./packages/components/README.md)
+- [Hooks README](./packages/hooks/README.md)
+- [Changelog](./packages/components/CHANGELOG.md)
 
-This repository maintains standardized guidelines for AI pair-programming agents:
-- **Agent Rules**: [`.agents/rules/code-conventions.md`](./.agents/rules/code-conventions.md)
-- **Top-Level Directives**: [`AGENTS.md`](./AGENTS.md)
-- **Component Skill & References**: [`.agents/skills/vlrc-fe-components/`](./.agents/skills/vlrc-fe-components/)
-
----
-
-## 📄 Documentation
-
-- [Components Package README](./packages/components/README.md)
-- [Hooks Package README](./packages/hooks/README.md)
-- [Changelog & Breaking Changes](./packages/components/CHANGELOG.md)
-- [Tailwind to StyleX Migration Guide](./packages/components/MIGRATION_GUIDE.md)
-
----
-
-## 📄 License
+## License
 
 MIT © [VLRC Platform Team](https://github.com/vulinhnopro2704/vlrc-fe)

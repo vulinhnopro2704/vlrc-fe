@@ -65,8 +65,10 @@ export interface MultiSelectGroup {
 /**
  * Props for MultiSelect component
  */
-export interface MultiSelectProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'animationConfig'> {
+export interface MultiSelectProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'animationConfig'
+> {
   variant?: MultiSelectVariant;
   badgeAnimation?: 'bounce' | 'pulse' | 'wiggle' | 'fade' | 'slide' | 'none';
   /**
@@ -178,29 +180,31 @@ export interface MultiSelectProps
    * Responsive configuration for different screen sizes.
    * Allows customizing behavior for mobile, tablet, and desktop views.
    */
-  responsive?: boolean | {
-    /** Settings for mobile screens (< 640px) */
-    mobile?: {
-      maxCount?: number;
-      placeholderLength?: number;
-      hideIcons?: boolean;
-      compactMode?: boolean;
-    };
-    /** Settings for tablet screens (640px - 1024px) */
-    tablet?: {
-      maxCount?: number;
-      placeholderLength?: number;
-      hideIcons?: boolean;
-      compactMode?: boolean;
-    };
-    /** Settings for desktop screens (> 1024px) */
-    desktop?: {
-      maxCount?: number;
-      placeholderLength?: number;
-      hideIcons?: boolean;
-      compactMode?: boolean;
-    };
-  };
+  responsive?:
+    | boolean
+    | {
+        /** Settings for mobile screens (< 640px) */
+        mobile?: {
+          maxCount?: number;
+          placeholderLength?: number;
+          hideIcons?: boolean;
+          compactMode?: boolean;
+        };
+        /** Settings for tablet screens (640px - 1024px) */
+        tablet?: {
+          maxCount?: number;
+          placeholderLength?: number;
+          hideIcons?: boolean;
+          compactMode?: boolean;
+        };
+        /** Settings for desktop screens (> 1024px) */
+        desktop?: {
+          maxCount?: number;
+          placeholderLength?: number;
+          hideIcons?: boolean;
+          compactMode?: boolean;
+        };
+      };
 
   /**
    * Minimum width for the component.

@@ -204,7 +204,7 @@ export default function ConfirmModal({
   closeLabel = 'Đóng',
   processingText = 'Đang xử lý...',
   type = 'warning',
-  isLoading = false
+  isLoading = false,
 }: ConfirmationDialogProps) {
   const [isRendered, setIsRendered] = useState(isOpen);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -275,7 +275,7 @@ export default function ConfirmModal({
     warning: AlertTriangleIcon,
     info: InfoIcon,
     success: CheckCircleIcon,
-    danger: XCircleIcon
+    danger: XCircleIcon,
   }[type];
 
   const typeStyles = {
@@ -288,23 +288,17 @@ export default function ConfirmModal({
   return (
     <div ref={containerRef} {...stylex.props(styles.container)}>
       <div
-        {...stylex.props(
-          styles.backdrop,
-          isOpen ? styles.backdropOpen : styles.backdropClosed
-        )}
+        {...stylex.props(styles.backdrop, isOpen ? styles.backdropOpen : styles.backdropClosed)}
         onClick={handleBackdropClick}
       />
 
       <div
         ref={dialogRef}
-        {...stylex.props(
-          styles.dialog,
-          isOpen ? styles.dialogOpen : styles.dialogClosed
-        )}
-        onClick={event => event.stopPropagation()}
+        {...stylex.props(styles.dialog, isOpen ? styles.dialogOpen : styles.dialogClosed)}
+        onClick={(event) => event.stopPropagation()}
       >
         <button
-          type='button'
+          type="button"
           onClick={handleClose}
           disabled={isLoading}
           {...stylex.props(styles.closeBtn)}
@@ -325,7 +319,7 @@ export default function ConfirmModal({
 
         <div {...stylex.props(styles.footer)}>
           <button
-            type='button'
+            type="button"
             onClick={handleClose}
             disabled={isLoading}
             {...stylex.props(styles.cancelBtn)}
@@ -333,7 +327,7 @@ export default function ConfirmModal({
             {cancelText}
           </button>
           <button
-            type='button'
+            type="button"
             onClick={handleConfirm}
             disabled={isLoading}
             {...stylex.props(styles.confirmBtn, typeStyles.btn)}

@@ -1,16 +1,39 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "2.0.1",
-  "description": "Reusable PlatformCore React components.",
-  "type": "module",
+  "version": "2.0.2",
+  "description": "Accessible React UI components built with Meta StyleX, Radix UI, and React Hook Form.",
+  "keywords": [
+    "accessible",
+    "components",
+    "datatable",
+    "design-system",
+    "form-components",
+    "meta-stylex",
+    "radix-ui",
+    "react",
+    "react-hook-form",
+    "stylex",
+    "theming",
+    "ui"
+  ],
+  "homepage": "https://github.com/vulinhnopro2704/vlrc-fe/tree/main/packages/components#readme",
+  "bugs": {
+    "url": "https://github.com/vulinhnopro2704/vlrc-fe/issues"
+  },
   "license": "MIT",
-  "sideEffects": false,
+  "author": "VLRC Platform Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vulinhnopro2704/vlrc-fe.git",
+    "directory": "packages/components"
+  },
   "files": [
     "dist",
     "README.md",
-    "CHANGELOG.md",
-    "MIGRATION_GUIDE.md"
+    "CHANGELOG.md"
   ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -42,14 +65,24 @@
     },
     "./stylex.css": "./dist/assets/stylex.css"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build && tsc -p tsconfig.json",
     "test": "vitest run",
-    "lint": "eslint ."
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
+  },
+  "devDependencies": {
+    "@stylexjs/unplugin": "^0.19.1",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
   },
   "peerDependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
-    "@stylexjs/stylex": "^0.19.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
     "@radix-ui/react-avatar": "^1.1.2",
@@ -75,6 +108,7 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@stylexjs/stylex": "^0.19.1",
     "@tanstack/react-table": "^8.21.3",
     "ahooks": "^3.9.7",
     "class-variance-authority": "^0.7.1",
@@ -98,13 +132,48 @@
     "tailwind-merge": "^3.6.0",
     "vaul": "^1.1.1"
   },
-  "devDependencies": {
-    "@stylexjs/unplugin": "^0.19.1",
-    "@vitejs/plugin-react": "^6.1.2",
-    "typescript": "^7.0.2",
-    "vite": "^8.3.5"
-  },
-  "publishConfig": {
-    "access": "public"
+  "peerDependenciesMeta": {
+    "recharts": {
+      "optional": true
+    },
+    "vaul": {
+      "optional": true
+    },
+    "embla-carousel-react": {
+      "optional": true
+    },
+    "react-day-picker": {
+      "optional": true
+    },
+    "date-fns": {
+      "optional": true
+    },
+    "react-i18next": {
+      "optional": true
+    },
+    "react-resizable-panels": {
+      "optional": true
+    },
+    "sonner": {
+      "optional": true
+    },
+    "input-otp": {
+      "optional": true
+    },
+    "next-themes": {
+      "optional": true
+    },
+    "react-number-format": {
+      "optional": true
+    },
+    "class-variance-authority": {
+      "optional": true
+    },
+    "clsx": {
+      "optional": true
+    },
+    "tailwind-merge": {
+      "optional": true
+    }
   }
 }

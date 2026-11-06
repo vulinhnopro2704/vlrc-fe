@@ -39,7 +39,7 @@ export function TimePicker({ value, onChange, timeConfig, disabledTime }: TimePi
     max: number,
     step: number,
     current: number,
-    disabledValues: number[]
+    disabledValues: number[],
   ) => {
     const values = [] as number[];
     for (let i = 0; i < max; i += step) {
@@ -47,21 +47,22 @@ export function TimePicker({ value, onChange, timeConfig, disabledTime }: TimePi
     }
 
     return (
-      <ScrollArea className='h-60 w-16'>
-        <div className='flex flex-col'>
-          {values.map(val => {
+      <ScrollArea className="h-60 w-16">
+        <div className="flex flex-col">
+          {values.map((val) => {
             const isDisabled = disabledValues.includes(val);
             return (
               <button
                 key={val}
-                type='button'
+                type="button"
                 disabled={isDisabled}
                 onClick={() => handleTimeChange(type, val)}
                 className={cn(
                   'px-2 py-1 text-center hover:bg-accent transition-colors',
                   current === val && 'bg-primary text-primary-foreground hover:bg-primary/90',
-                  isDisabled && 'opacity-50 cursor-not-allowed hover:bg-transparent'
-                )}>
+                  isDisabled && 'opacity-50 cursor-not-allowed hover:bg-transparent',
+                )}
+              >
                 {val.toString().padStart(2, '0')}
               </button>
             );
@@ -72,22 +73,22 @@ export function TimePicker({ value, onChange, timeConfig, disabledTime }: TimePi
   };
 
   return (
-    <div className='flex gap-1 p-1'>
+    <div className="flex gap-1 p-1">
       {showHour && (
-        <div className='flex flex-col items-center'>
-          <span className='text-xs font-medium mb-1'>Giờ</span>
+        <div className="flex flex-col items-center">
+          <span className="text-xs font-medium mb-1">Giờ</span>
           {renderTimeColumn('hour', 24, hourStep, hours, disabledHours)}
         </div>
       )}
       {showMinute && (
-        <div className='flex flex-col items-center'>
-          <span className='text-xs font-medium mb-1'>Phút</span>
+        <div className="flex flex-col items-center">
+          <span className="text-xs font-medium mb-1">Phút</span>
           {renderTimeColumn('minute', 60, minuteStep, minutes, disabledMinutes)}
         </div>
       )}
       {showSecond && (
-        <div className='flex flex-col items-center'>
-          <span className='text-xs font-medium mb-1'>Giây</span>
+        <div className="flex flex-col items-center">
+          <span className="text-xs font-medium mb-1">Giây</span>
           {renderTimeColumn('second', 60, secondStep, seconds, disabledSeconds)}
         </div>
       )}

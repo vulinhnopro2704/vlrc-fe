@@ -10,7 +10,7 @@ import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 export type FormControlProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues
+  TTransformedValues = TFieldValues,
 > = {
   /** The name (path) of the field in the form data. */
   name: TName;
@@ -50,7 +50,7 @@ export type FormInputExtraProps = {
 export type FormBaseProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues
+  TTransformedValues = TFieldValues,
 > = FormControlProps<TFieldValues, TName, TTransformedValues> & {
   /** If true, arranges the label and the control horizontally instead of vertically. */
   horizontal?: boolean;
@@ -58,7 +58,7 @@ export type FormBaseProps<
   controlFirst?: boolean;
   /** Additional CSS classes to apply to the outermost field wrapper. */
   className?: string;
-  /** 
+  /**
    * Render prop that provides the connected field props to the actual UI component.
    * It injects React Hook Form's field props along with `id` and `aria-invalid` for accessibility.
    */
@@ -68,7 +68,7 @@ export type FormBaseProps<
     >[0]['field'] & {
       'aria-invalid': boolean;
       id: string;
-    }
+    },
   ) => ReactNode;
   /** Validation rules to apply to the field (e.g., required, min, max, pattern). */
   rules?: ControllerProps<TFieldValues, TName, TTransformedValues>['rules'];
@@ -80,13 +80,13 @@ export type FormBaseProps<
  * A type definition for standardizing the signature of form control components.
  * Form control components should accept base form control props, validation rules,
  * HTML type, generic class names, and any component-specific extra props.
- * 
+ *
  * @template ExtraProps Additional props specific to the UI component being wrapped.
  */
 export type FormControlFunc<ExtraProps extends Record<string, unknown> = Record<never, never>> = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues
+  TTransformedValues = TFieldValues,
 >(
   props: FormControlProps<TFieldValues, TName, TTransformedValues> &
     ExtraProps & {
@@ -96,5 +96,5 @@ export type FormControlFunc<ExtraProps extends Record<string, unknown> = Record<
       htmlType?: string;
       /** Additional CSS classes for the component wrapper. */
       className?: string;
-    }
+    },
 ) => ReactNode;

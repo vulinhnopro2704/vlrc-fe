@@ -22,12 +22,12 @@ describe('Alert', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it.each([
-      ['default' as AlertVariant],
-      ['destructive' as AlertVariant],
-    ])('should match snapshot for %s variant', (variant) => {
-      const { asFragment } = render(<Alert {...createDefaultProps({ variant })} />);
-      expect(asFragment()).toMatchSnapshot();
-    });
+    it.each([['default' as AlertVariant], ['destructive' as AlertVariant]])(
+      'should match snapshot for %s variant',
+      (variant) => {
+        const { asFragment } = render(<Alert {...createDefaultProps({ variant })} />);
+        expect(asFragment()).toMatchSnapshot();
+      },
+    );
   });
 });

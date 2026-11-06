@@ -6,14 +6,19 @@ import { useFormSelect } from './useFormSelect';
 import BaseSelect from '../../Select';
 import type { SelectValue } from '../../Select/type';
 
-export function FormSelect<TFieldValues extends FieldValues = FieldValues, T extends SelectValue = SelectValue>(
-  props: FormMultiSelectProps<TFieldValues, T>
-): React.ReactElement;
-export function FormSelect<TFieldValues extends FieldValues = FieldValues, T extends SelectValue = SelectValue>(
-  props: FormSingleSelectProps<TFieldValues, T>
-): React.ReactElement;
-export function FormSelect<TFieldValues extends FieldValues = FieldValues, T extends SelectValue = SelectValue>(
-  props: FormMultiSelectProps<TFieldValues, T> | FormSingleSelectProps<TFieldValues, T>
+export function FormSelect<
+  TFieldValues extends FieldValues = FieldValues,
+  T extends SelectValue = SelectValue,
+>(props: FormMultiSelectProps<TFieldValues, T>): React.ReactElement;
+export function FormSelect<
+  TFieldValues extends FieldValues = FieldValues,
+  T extends SelectValue = SelectValue,
+>(props: FormSingleSelectProps<TFieldValues, T>): React.ReactElement;
+export function FormSelect<
+  TFieldValues extends FieldValues = FieldValues,
+  T extends SelectValue = SelectValue,
+>(
+  props: FormMultiSelectProps<TFieldValues, T> | FormSingleSelectProps<TFieldValues, T>,
 ): React.ReactElement {
   const { baseSelectProps, isMulti, createChangeHandlers } = useFormSelect(props);
 

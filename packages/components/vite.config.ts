@@ -17,15 +17,15 @@ export default defineConfig({
     }),
     react(),
     babel({
-      presets: [reactCompilerPreset()]
-    })
+      presets: [reactCompilerPreset()],
+    }),
   ],
   build: {
     lib: {
       entry: resolve(import.meta.dirname, 'src/index.ts'),
       name: 'PlatformCoreComponents',
       formats: ['es', 'cjs'],
-      fileName: format => (format === 'es' ? 'index.js' : 'index.cjs')
+      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
       external: [
@@ -59,12 +59,12 @@ export default defineConfig({
         'react-day-picker',
         'sonner',
         'react-i18next',
-        'tailwind-merge'
+        'tailwind-merge',
       ],
       output: {
         preserveModules: true,
-        preserveModulesRoot: 'src'
-      }
-    }
-  }
+        preserveModulesRoot: 'src',
+      },
+    },
+  },
 });

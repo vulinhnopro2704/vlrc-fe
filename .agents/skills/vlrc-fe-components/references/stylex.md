@@ -123,12 +123,7 @@ export function Button({
   className,
   ...props
 }: ButtonProps) {
-  const sxProps = stylex.props(
-    styles.base,
-    variantStyles[variant],
-    sizeStyles[size],
-    sx
-  );
+  const sxProps = stylex.props(styles.base, variantStyles[variant], sizeStyles[size], sx);
 
   return (
     <button
@@ -175,5 +170,5 @@ const customStyles = stylex.create({
   },
 });
 
-<Button sx={customStyles.cta}>Get Started</Button>
+<Button sx={customStyles.cta}>Get Started</Button>;
 ```

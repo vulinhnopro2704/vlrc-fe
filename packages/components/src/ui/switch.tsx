@@ -45,11 +45,7 @@ export interface SwitchProps extends React.ComponentProps<typeof SwitchPrimitive
   sx?: stylex.StyleXStyles;
 }
 
-function Switch({
-  className,
-  sx,
-  ...props
-}: SwitchProps) {
+function Switch({ className, sx, ...props }: SwitchProps) {
   const sxProps = stylex.props(styles.root, sx);
 
   return (
@@ -59,10 +55,7 @@ function Switch({
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <SwitchPrimitive.Thumb
-        data-slot="switch-thumb"
-        {...stylex.props(styles.thumb)}
-      />
+      <SwitchPrimitive.Thumb data-slot="switch-thumb" {...stylex.props(styles.thumb)} />
     </SwitchPrimitive.Root>
   );
 }

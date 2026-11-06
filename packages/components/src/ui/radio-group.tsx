@@ -53,11 +53,7 @@ export interface RadioGroupProps extends React.ComponentProps<typeof RadioGroupP
   sx?: stylex.StyleXStyles;
 }
 
-function RadioGroup({
-  className,
-  sx,
-  ...props
-}: RadioGroupProps) {
+function RadioGroup({ className, sx, ...props }: RadioGroupProps) {
   const sxProps = stylex.props(styles.root, sx);
   return (
     <RadioGroupPrimitive.Root
@@ -73,11 +69,7 @@ export interface RadioGroupItemProps extends React.ComponentProps<typeof RadioGr
   sx?: stylex.StyleXStyles;
 }
 
-function RadioGroupItem({
-  className,
-  sx,
-  ...props
-}: RadioGroupItemProps) {
+function RadioGroupItem({ className, sx, ...props }: RadioGroupItemProps) {
   const sxProps = stylex.props(styles.item, sx);
   return (
     <RadioGroupPrimitive.Item

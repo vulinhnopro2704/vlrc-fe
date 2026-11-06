@@ -7,14 +7,14 @@ export default defineConfig({
       entry: resolve(import.meta.dirname, 'src/index.ts'),
       name: 'PlatformCoreHooks',
       formats: ['es', 'cjs'],
-      fileName: format => (format === 'es' ? 'index.js' : 'index.cjs')
+      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
       external: ['react'],
       output: {
         preserveModules: true,
-        preserveModulesRoot: 'src'
-      }
-    }
-  }
+        preserveModulesRoot: 'src',
+      },
+    },
+  },
 });

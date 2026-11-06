@@ -19,7 +19,7 @@ describe('Label', () => {
 
     it('should match snapshot with custom className', () => {
       const { asFragment } = render(
-        <Label {...createDefaultProps({ className: 'custom-label-class' })} />
+        <Label {...createDefaultProps({ className: 'custom-label-class' })} />,
       );
       expect(asFragment()).toMatchSnapshot();
     });

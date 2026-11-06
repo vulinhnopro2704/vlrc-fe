@@ -21,34 +21,35 @@ export function FormRadio<TFieldValues extends FieldValues>({
   autoHeightMax,
   showEmpty = false,
   hideErrorMessage = false,
-  className
+  className,
 }: FormRadioProps<TFieldValues>) {
   const { isRequired, processedRules, parseValue, emitChange, sizeClasses } = useFormRadio({
     rules,
     value,
     onChange,
-    showEmpty
+    showEmpty,
   });
 
   const renderOptions = (
     fieldName: FieldPath<TFieldValues>,
     fieldValue: unknown,
-    fieldOnChange: (value: unknown) => void
+    fieldOnChange: (value: unknown) => void,
   ) => (
     <RadioGroup
       value={parseValue(fieldValue)}
-      onValueChange={newValue => emitChange(fieldOnChange, newValue)}
+      onValueChange={(newValue) => emitChange(fieldOnChange, newValue)}
       disabled={disabled}
-      style={autoHeightMax ? { maxHeight: `${autoHeightMax}px`, overflowY: 'auto' } : undefined}>
-      {options.map(option => (
-        <div key={String(option.value)} className='flex items-center space-x-2'>
+      style={autoHeightMax ? { maxHeight: `${autoHeightMax}px`, overflowY: 'auto' } : undefined}
+    >
+      {options.map((option) => (
+        <div key={String(option.value)} className="flex items-center space-x-2">
           <RadioGroupItem
             value={String(option.value)}
             id={`${fieldName}-${option.value}`}
             disabled={disabled || option.disabled}
             className={sizeClasses[size]}
           />
-          <Label htmlFor={`${fieldName}-${option.value}`} className='cursor-pointer font-normal'>
+          <Label htmlFor={`${fieldName}-${option.value}`} className="cursor-pointer font-normal">
             {option.label}
           </Label>
         </div>
@@ -66,7 +67,7 @@ export function FormRadio<TFieldValues extends FieldValues>({
           {label && (
             <FormLabel>
               {label}
-              {isRequired && <span className='text-destructive ml-1'>*</span>}
+              {isRequired && <span className="text-destructive ml-1">*</span>}
             </FormLabel>
           )}
           <FormControl>{renderOptions(name, value ?? field.value, field.onChange)}</FormControl>

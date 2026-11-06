@@ -10,7 +10,7 @@ import {
   useImperativeHandle,
   useMemo,
   useRef,
-  useState
+  useState,
 } from 'react';
 import {
   arraysEqual,
@@ -23,13 +23,13 @@ import {
   filterOptions,
   type ResponsiveSettings,
   type ScreenSize,
-  type WidthConstraints
+  type WidthConstraints,
 } from './utils';
 import {
   type MultiSelectGroup,
   type MultiSelectOption,
   type MultiSelectProps,
-  type MultiSelectRef
+  type MultiSelectRef,
 } from './type';
 
 export interface UseMultiSelectParams extends MultiSelectProps {
@@ -99,7 +99,7 @@ export const useMultiSelect = ({
     closeOnSelect = false,
     searchable = true,
     autoSize = false,
-    disabled = false
+    disabled = false,
   } = props;
 
   const [selectedValues, setSelectedValues] = useState<string[]>(defaultValue);
@@ -143,7 +143,7 @@ export const useMultiSelect = ({
             deduplicateOptions
               ? 'Duplicates have been removed automatically.'
               : "This may cause unexpected behavior. Consider setting 'deduplicateOptions={true}' or ensure all option values are unique."
-          }`
+          }`,
       );
     }
 
@@ -152,18 +152,18 @@ export const useMultiSelect = ({
 
   const getOptionByValue = useCallback(
     (value: string): MultiSelectOption | undefined => {
-      const option = getAllOptions().find(currentOption => currentOption.value === value);
+      const option = getAllOptions().find((currentOption) => currentOption.value === value);
       if (!option && (import.meta as any).env.NODE_ENV === 'development') {
         console.warn(`MultiSelect: Option with value "${value}" not found in options list`);
       }
       return option;
     },
-    [getAllOptions]
+    [getAllOptions],
   );
 
   const filteredOptions = useMemo(
     () => filterOptions(options, searchValue, searchable),
-    [options, searchValue, searchable]
+    [options, searchValue, searchable],
   );
 
   const handleInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -184,7 +184,7 @@ export const useMultiSelect = ({
     if (option?.disabled) return;
 
     const newSelectedValues = selectedValues.includes(optionValue)
-      ? selectedValues.filter(value => value !== optionValue)
+      ? selectedValues.filter((value) => value !== optionValue)
       : [...selectedValues, optionValue];
 
     setSelectedValues(newSelectedValues);
@@ -203,12 +203,12 @@ export const useMultiSelect = ({
 
   const handleTogglePopover = () => {
     if (disabled) return;
-    setIsPopoverOpen(prev => !prev);
+    setIsPopoverOpen((prev) => !prev);
   };
 
   const responsiveSettings = useMemo(
     () => computeResponsiveSettings(responsive, maxCount, screenSize),
-    [responsive, maxCount, screenSize]
+    [responsive, maxCount, screenSize],
   );
 
   const clearExtraOptions = () => {
@@ -220,11 +220,11 @@ export const useMultiSelect = ({
 
   const toggleAll = () => {
     if (disabled) return;
-    const allOptions = getAllOptions().filter(option => !option.disabled);
+    const allOptions = getAllOptions().filter((option) => !option.disabled);
     if (selectedValues.length === allOptions.length) {
       handleClear();
     } else {
-      const allValues = allOptions.map(option => option.value);
+      const allValues = allOptions.map((option) => option.value);
       setSelectedValues(allValues);
       onValueChange(allValues);
     }
@@ -236,7 +236,7 @@ export const useMultiSelect = ({
 
   const widthConstraints = useMemo(
     () => buildWidthConstraints(screenSize, autoSize, minWidth, maxWidth),
-    [autoSize, maxWidth, minWidth, screenSize]
+    [autoSize, maxWidth, minWidth, screenSize],
   );
 
   useEffect(() => {
@@ -248,7 +248,7 @@ export const useMultiSelect = ({
       }
       prevDefaultValueRef.current = [...defaultValue];
     }
-  }, [arraysEqual, defaultValue, resetOnDefaultValueChange, selectedValues]);
+  }, [defaultValue, resetOnDefaultValueChange, selectedValues]);
 
   useEffect(() => {
     if (!isPopoverOpen) {
@@ -259,23 +259,23 @@ export const useMultiSelect = ({
   useEffect(() => {
     const selectedCount = selectedValues.length;
     const allOptions = getAllOptions();
-    const totalOptions = allOptions.filter(opt => !opt.disabled).length;
+    const totalOptions = allOptions.filter((opt) => !opt.disabled).length;
 
     if (selectedCount !== prevSelectedCount.current) {
       const diff = selectedCount - prevSelectedCount.current;
       if (diff > 0) {
         const addedItems = selectedValues.slice(-diff);
         const addedLabels = addedItems
-          .map(value => allOptions.find(opt => opt.value === value)?.label)
+          .map((value) => allOptions.find((opt) => opt.value === value)?.label)
           .filter(Boolean);
 
         if (addedLabels.length === 1) {
           announce(
-            `${addedLabels[0]} selected. ${selectedCount} of ${totalOptions} options selected.`
+            `${addedLabels[0]} selected. ${selectedCount} of ${totalOptions} options selected.`,
           );
         } else {
           announce(
-            `${addedLabels.length} options selected. ${selectedCount} of ${totalOptions} total selected.`
+            `${addedLabels.length} options selected. ${selectedCount} of ${totalOptions} total selected.`,
           );
         }
       } else if (diff < 0) {
@@ -297,12 +297,12 @@ export const useMultiSelect = ({
       if (searchValue && isPopoverOpen) {
         const filteredCount = countMatchingOptions(allOptions, searchValue);
         announce(
-          `${filteredCount} option${filteredCount === 1 ? '' : 's'} found for "${searchValue}"`
+          `${filteredCount} option${filteredCount === 1 ? '' : 's'} found for "${searchValue}"`,
         );
       }
       prevSearchValue.current = searchValue;
     }
-  }, [announce, countMatchingOptions, getAllOptions, isPopoverOpen, searchValue, selectedValues]);
+  }, [announce, getAllOptions, isPopoverOpen, searchValue, selectedValues]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -324,12 +324,12 @@ export const useMultiSelect = ({
 
   const badgeAnimationClass = useMemo(
     () => buildBadgeAnimationClass(isAnimating, animationConfig),
-    [animationConfig, isAnimating]
+    [animationConfig, isAnimating],
   );
 
   const popoverAnimationClass = useMemo(
     () => buildPopoverAnimationClass(animationConfig),
-    [animationConfig]
+    [animationConfig],
   );
 
   useImperativeHandle(
@@ -364,9 +364,9 @@ export const useMultiSelect = ({
             }
           }, 1000);
         }
-      }
+      },
     }),
-    [defaultValue, forwardedRef, onValueChange, selectedValues]
+    [defaultValue, forwardedRef, onValueChange, selectedValues],
   );
 
   return {
@@ -374,32 +374,32 @@ export const useMultiSelect = ({
       multiSelectId,
       listboxId,
       triggerDescriptionId,
-      selectedCountId
+      selectedCountId,
     },
     state: {
       selectedValues,
       isPopoverOpen,
       isAnimating,
       searchValue,
-      screenSize
+      screenSize,
     },
     derived: {
       filteredOptions,
       responsiveSettings,
       widthConstraints,
       badgeAnimationClass,
-      popoverAnimationClass
+      popoverAnimationClass,
     },
     refs: {
-      buttonRef
+      buttonRef,
     },
     helpers: {
       getAllOptions,
-      getOptionByValue
+      getOptionByValue,
     },
     a11yMessages: {
       politeMessage,
-      assertiveMessage
+      assertiveMessage,
     },
     handlers: {
       setIsPopoverOpen,
@@ -410,7 +410,7 @@ export const useMultiSelect = ({
       clearExtraOptions,
       toggleAll,
       setSearchValue,
-      setIsAnimating
-    }
+      setIsAnimating,
+    },
   };
 };

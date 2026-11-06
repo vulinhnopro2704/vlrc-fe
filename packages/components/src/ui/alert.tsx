@@ -54,17 +54,8 @@ export interface AlertProps extends React.ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
-function Alert({
-  className,
-  variant = 'default',
-  sx,
-  ...props
-}: AlertProps) {
-  const sxProps = stylex.props(
-    styles.root,
-    variantStyles[variant],
-    sx
-  );
+function Alert({ className, variant = 'default', sx, ...props }: AlertProps) {
+  const sxProps = stylex.props(styles.root, variantStyles[variant], sx);
 
   return (
     <div
@@ -77,7 +68,11 @@ function Alert({
   );
 }
 
-function AlertTitle({ className, sx, ...props }: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+function AlertTitle({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <div

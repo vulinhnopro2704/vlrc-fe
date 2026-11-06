@@ -14,4 +14,3 @@ export function cn(...inputs: ClassValue[]) {
 export function sx(...styles: (stylex.StyleXStyles | undefined | null | false)[]) {
   return stylex.props(...styles);
 }
-

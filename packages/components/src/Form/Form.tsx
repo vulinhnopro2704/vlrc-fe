@@ -2,13 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Controller, type FieldValues, type RegisterOptions } from 'react-hook-form';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldError,
-  FieldLabel
-} from '../ui/field';
+import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../ui/field';
 import { Select, SelectContent, SelectTrigger, SelectValue } from '../ui/select';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -110,7 +104,7 @@ const styles = stylex.create({
 export function FormBase<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues
+  TTransformedValues = TFieldValues,
 >({
   children,
   label,
@@ -121,20 +115,20 @@ export function FormBase<
   controlFirst,
   horizontal,
   rules,
-  className
+  className,
 }: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
   const processedRules = (() => {
     const autoRules: RegisterOptions<TFieldValues, TName> = { ...rules };
     if (htmlType === 'email' && !rules?.pattern) {
       autoRules.pattern = {
         value: EMAIL_PATTERN,
-        message: 'Email không hợp lệ'
+        message: 'Email không hợp lệ',
       };
     }
     if (htmlType === 'tel' && !rules?.pattern) {
       autoRules.pattern = {
         value: PHONE_PATTERN,
-        message: 'Số điện thoại không hợp lệ'
+        message: 'Số điện thoại không hợp lệ',
       };
     }
 
@@ -145,7 +139,7 @@ export function FormBase<
         if (!rules.required.message) {
           autoRules.required = {
             ...rules.required,
-            message: 'Trường này là bắt buộc'
+            message: 'Trường này là bắt buộc',
           };
         }
       } else {
@@ -167,9 +161,7 @@ export function FormBase<
             {label && (
               <FieldLabel htmlFor={field.name}>
                 {label}
-                {rules?.required && (
-                  <span {...stylex.props(styles.requiredAsterisk)}>*</span>
-                )}
+                {rules?.required && <span {...stylex.props(styles.requiredAsterisk)}>*</span>}
               </FieldLabel>
             )}
             {description && <FieldDescription>{description}</FieldDescription>}
@@ -178,7 +170,7 @@ export function FormBase<
         const controlNode = children({
           ...field,
           id: field.name,
-          'aria-invalid': fieldState.invalid
+          'aria-invalid': fieldState.invalid,
         });
         const errorElem = fieldState.invalid && <FieldError errors={[fieldState.error]} />;
 
@@ -186,7 +178,8 @@ export function FormBase<
           <Field
             className={className}
             data-invalid={fieldState.invalid}
-            orientation={horizontal ? 'horizontal' : undefined}>
+            orientation={horizontal ? 'horizontal' : undefined}
+          >
             {controlFirst ? (
               <>
                 {controlNode}
@@ -224,13 +217,9 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
 
   return (
     <FormBase {...props}>
-      {field => (
+      {(field) => (
         <div {...stylex.props(styles.inputWrapper)}>
-          {leftIcon && (
-            <div {...stylex.props(styles.leftIcon)}>
-              {leftIcon}
-            </div>
-          )}
+          {leftIcon && <div {...stylex.props(styles.leftIcon)}>{leftIcon}</div>}
           <Input
             {...field}
             type={isPassword && showPassword ? 'text' : props.htmlType}
@@ -245,12 +234,13 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
           />
           {isPassword && (
             <Button
-              type='button'
-              variant='ghost'
-              size='icon-sm'
+              type="button"
+              variant="ghost"
+              size="icon-sm"
               onClick={() => setShowPassword(!showPassword)}
               sx={styles.passwordToggle}
-              tabIndex={-1}>
+              tabIndex={-1}
+            >
               {showPassword ? (
                 <Icons.EyeOff {...stylex.props(styles.iconSize)} />
               ) : (
@@ -258,19 +248,15 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
               )}
             </Button>
           )}
-          {!isPassword && rightIcon && (
-            <div {...stylex.props(styles.rightIcon)}>
-              {rightIcon}
-            </div>
-          )}
+          {!isPassword && rightIcon && <div {...stylex.props(styles.rightIcon)}>{rightIcon}</div>}
         </div>
       )}
     </FormBase>
   );
 };
 
-export const FormTextarea: FormControlFunc = props => {
-  return <FormBase {...props}>{field => <Textarea {...field} />}</FormBase>;
+export const FormTextarea: FormControlFunc = (props) => {
+  return <FormBase {...props}>{(field) => <Textarea {...field} />}</FormBase>;
 };
 
 export const FormSimpleSelect: FormControlFunc<{ children: ReactNode }> = ({

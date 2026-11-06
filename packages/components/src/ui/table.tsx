@@ -59,7 +59,11 @@ const styles = stylex.create({
   },
 });
 
-function Table({ className, sx, ...props }: React.ComponentProps<'table'> & { sx?: stylex.StyleXStyles }) {
+function Table({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'table'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.table, sx);
   return (
     <div data-slot="table-container" {...stylex.props(styles.container)}>
@@ -73,7 +77,11 @@ function Table({ className, sx, ...props }: React.ComponentProps<'table'> & { sx
   );
 }
 
-function TableHeader({ className, sx, ...props }: React.ComponentProps<'thead'> & { sx?: stylex.StyleXStyles }) {
+function TableHeader({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'thead'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <thead
@@ -85,7 +93,11 @@ function TableHeader({ className, sx, ...props }: React.ComponentProps<'thead'> 
   );
 }
 
-function TableBody({ className, sx, ...props }: React.ComponentProps<'tbody'> & { sx?: stylex.StyleXStyles }) {
+function TableBody({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'tbody'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.body, sx);
   return (
     <tbody
@@ -97,7 +109,11 @@ function TableBody({ className, sx, ...props }: React.ComponentProps<'tbody'> & 
   );
 }
 
-function TableFooter({ className, sx, ...props }: React.ComponentProps<'tfoot'> & { sx?: stylex.StyleXStyles }) {
+function TableFooter({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'tfoot'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <tfoot
@@ -109,7 +125,11 @@ function TableFooter({ className, sx, ...props }: React.ComponentProps<'tfoot'> 
   );
 }
 
-function TableRow({ className, sx, ...props }: React.ComponentProps<'tr'> & { sx?: stylex.StyleXStyles }) {
+function TableRow({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'tr'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.row, sx);
   return (
     <tr
@@ -121,7 +141,11 @@ function TableRow({ className, sx, ...props }: React.ComponentProps<'tr'> & { sx
   );
 }
 
-function TableHead({ className, sx, ...props }: React.ComponentProps<'th'> & { sx?: stylex.StyleXStyles }) {
+function TableHead({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'th'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.head, sx);
   return (
     <th
@@ -133,7 +157,11 @@ function TableHead({ className, sx, ...props }: React.ComponentProps<'th'> & { s
   );
 }
 
-function TableCell({ className, sx, ...props }: React.ComponentProps<'td'> & { sx?: stylex.StyleXStyles }) {
+function TableCell({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'td'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.cell, sx);
   return (
     <td
@@ -145,7 +173,11 @@ function TableCell({ className, sx, ...props }: React.ComponentProps<'td'> & { s
   );
 }
 
-function TableCaption({ className, sx, ...props }: React.ComponentProps<'caption'> & { sx?: stylex.StyleXStyles }) {
+function TableCaption({
+  className,
+  sx,
+  ...props
+}: React.ComponentProps<'caption'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.caption, sx);
   return (
     <caption
@@ -157,13 +189,4 @@ function TableCaption({ className, sx, ...props }: React.ComponentProps<'caption
   );
 }
 
-export {
-  Table,
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableCaption,
-};
+export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption };

@@ -7,7 +7,7 @@ import type {
   RowSelectionState,
   SortingState,
   Table,
-  VisibilityState
+  VisibilityState,
 } from '@tanstack/react-table';
 import type { ReactNode } from 'react';
 

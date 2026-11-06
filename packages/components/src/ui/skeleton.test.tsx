@@ -16,7 +16,7 @@ describe('Skeleton', () => {
 
     it('should match snapshot with custom className', () => {
       const { asFragment } = render(
-        <Skeleton {...createDefaultProps({ className: 'custom-skeleton-class' })} />
+        <Skeleton {...createDefaultProps({ className: 'custom-skeleton-class' })} />,
       );
       expect(asFragment()).toMatchSnapshot();
     });

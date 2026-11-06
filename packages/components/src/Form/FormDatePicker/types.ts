@@ -4,7 +4,7 @@ import type {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  RegisterOptions
+  RegisterOptions,
 } from 'react-hook-form';
 
 export type PickerType = 'date' | 'time' | 'datetime' | 'month' | 'year';
@@ -59,7 +59,7 @@ export interface DatePickerBaseProps<TFieldValues extends FieldValues> {
 }
 
 export interface SingleDatePickerProps<
-  TFieldValues extends FieldValues
+  TFieldValues extends FieldValues,
 > extends DatePickerBaseProps<TFieldValues> {
   isRangePicker?: false;
   onChangeDate?: (date: ConfigType, dateString: string) => void;
@@ -67,7 +67,7 @@ export interface SingleDatePickerProps<
 }
 
 export interface RangeDatePickerProps<
-  TFieldValues extends FieldValues
+  TFieldValues extends FieldValues,
 > extends DatePickerBaseProps<TFieldValues> {
   isRangePicker: true;
   onChangeDate?: never;

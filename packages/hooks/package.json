@@ -1,14 +1,32 @@
 {
   "name": "@vlrc-fe/hooks",
   "version": "1.0.9",
-  "description": "Reusable PlatformCore React hooks.",
-  "type": "module",
+  "description": "Reusable React hooks for modal state, UI coordination, and animations.",
+  "keywords": [
+    "animation",
+    "hooks",
+    "modal",
+    "react",
+    "state-management",
+    "utility"
+  ],
+  "homepage": "https://github.com/vulinhnopro2704/vlrc-fe/tree/main/packages/hooks#readme",
+  "bugs": {
+    "url": "https://github.com/vulinhnopro2704/vlrc-fe/issues"
+  },
   "license": "MIT",
-  "sideEffects": false,
+  "author": "VLRC Platform Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vulinhnopro2704/vlrc-fe.git",
+    "directory": "packages/hooks"
+  },
   "files": [
     "dist",
     "README.md"
   ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -19,20 +37,22 @@
       "require": "./dist/index.cjs"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build && tsc -p tsconfig.json",
     "test": "vitest run",
-    "lint": "eslint ."
-  },
-  "peerDependencies": {
-    "react": "^19.0.0"
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.1.2",
     "typescript": "^7.0.2",
     "vite": "^8.3.5"
   },
-  "publishConfig": {
-    "access": "public"
+  "peerDependencies": {
+    "react": "^19.0.0"
   }
 }

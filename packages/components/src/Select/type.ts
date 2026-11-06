@@ -40,7 +40,7 @@ export interface BaseSelectCommonProps<T extends SelectValue = SelectValue> {
  * Props for multi-select (BaseSelect)
  */
 export interface BaseMultiSelectProps<
-  T extends SelectValue = SelectValue
+  T extends SelectValue = SelectValue,
 > extends BaseSelectCommonProps<T> {
   value?: T[];
   onChange?: (value: T[]) => void;
@@ -51,7 +51,7 @@ export interface BaseMultiSelectProps<
  * Props for single-select (BaseSelect)
  */
 export interface BaseSingleSelectProps<
-  T extends SelectValue = SelectValue
+  T extends SelectValue = SelectValue,
 > extends BaseSelectCommonProps<T> {
   value?: T | null;
   onChange?: (value: T | null) => void;

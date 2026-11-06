@@ -2,7 +2,7 @@ import {
   type MultiSelectProps,
   type MultiSelectGroup,
   type MultiSelectOption,
-  type AnimationConfig
+  type AnimationConfig,
 } from './type';
 
 export type ScreenSize = 'mobile' | 'tablet' | 'desktop';
@@ -20,7 +20,7 @@ export interface WidthConstraints {
 }
 
 export const isGroupedOptions = (
-  opts: MultiSelectOption[] | MultiSelectGroup[]
+  opts: MultiSelectOption[] | MultiSelectGroup[],
 ): opts is MultiSelectGroup[] => {
   return Array.isArray(opts) && opts.length > 0 && 'heading' in opts[0];
 };
@@ -34,15 +34,17 @@ export const arraysEqual = (a: string[], b: string[]): boolean => {
 
 export const buildAllOptions = (
   options: MultiSelectOption[] | MultiSelectGroup[],
-  deduplicateOptions: boolean
+  deduplicateOptions: boolean,
 ): { options: MultiSelectOption[]; duplicates: string[] } => {
   if (options.length === 0) return { options: [], duplicates: [] };
-  const flatOptions = isGroupedOptions(options) ? options.flatMap(group => group.options) : options;
+  const flatOptions = isGroupedOptions(options)
+    ? options.flatMap((group) => group.options)
+    : options;
   const valueSet = new Set<string>();
   const duplicates: string[] = [];
   const uniqueOptions: MultiSelectOption[] = [];
 
-  flatOptions.forEach(option => {
+  flatOptions.forEach((option) => {
     if (valueSet.has(option.value)) {
       duplicates.push(option.value);
       if (!deduplicateOptions) {
@@ -56,20 +58,20 @@ export const buildAllOptions = (
 
   return {
     options: deduplicateOptions ? uniqueOptions : flatOptions,
-    duplicates
+    duplicates,
   };
 };
 
 export const computeResponsiveSettings = (
   responsive: MultiSelectProps['responsive'],
   maxCount: number,
-  screenSize: ScreenSize
+  screenSize: ScreenSize,
 ): ResponsiveSettings => {
   if (!responsive) {
     return {
       maxCount,
       hideIcons: false,
-      compactMode: false
+      compactMode: false,
     };
   }
 
@@ -77,14 +79,14 @@ export const computeResponsiveSettings = (
     const defaultResponsive = {
       mobile: { maxCount: 2, hideIcons: false, compactMode: true },
       tablet: { maxCount: 4, hideIcons: false, compactMode: false },
-      desktop: { maxCount: 6, hideIcons: false, compactMode: false }
+      desktop: { maxCount: 6, hideIcons: false, compactMode: false },
     } satisfies Record<ScreenSize, ResponsiveSettings>;
 
     const currentSettings = defaultResponsive[screenSize];
     return {
       maxCount: currentSettings?.maxCount ?? maxCount,
       hideIcons: currentSettings?.hideIcons ?? false,
-      compactMode: currentSettings?.compactMode ?? false
+      compactMode: currentSettings?.compactMode ?? false,
     };
   }
 
@@ -92,13 +94,13 @@ export const computeResponsiveSettings = (
   return {
     maxCount: currentSettings?.maxCount ?? maxCount,
     hideIcons: currentSettings?.hideIcons ?? false,
-    compactMode: currentSettings?.compactMode ?? false
+    compactMode: currentSettings?.compactMode ?? false,
   };
 };
 
 export const buildBadgeAnimationClass = (
   isAnimating: boolean,
-  animationConfig?: AnimationConfig
+  animationConfig?: AnimationConfig,
 ): string => {
   if (animationConfig?.badgeAnimation) {
     switch (animationConfig.badgeAnimation) {
@@ -146,28 +148,28 @@ export const buildPopoverAnimationClass = (animationConfig?: AnimationConfig): s
 export const filterOptions = (
   options: MultiSelectOption[] | MultiSelectGroup[],
   searchValue: string,
-  searchable: boolean
+  searchable: boolean,
 ): MultiSelectOption[] | MultiSelectGroup[] => {
   if (!searchable || !searchValue) return options;
   if (options.length === 0) return [];
 
   if (isGroupedOptions(options)) {
     return options
-      .map(group => ({
+      .map((group) => ({
         ...group,
         options: group.options.filter(
-          option =>
+          (option) =>
             option.label.toLowerCase().includes(searchValue.toLowerCase()) ||
-            option.value.toLowerCase().includes(searchValue.toLowerCase())
-        )
+            option.value.toLowerCase().includes(searchValue.toLowerCase()),
+        ),
       }))
-      .filter(group => group.options.length > 0);
+      .filter((group) => group.options.length > 0);
   }
 
   return options.filter(
-    option =>
+    (option) =>
       option.label.toLowerCase().includes(searchValue.toLowerCase()) ||
-      option.value.toLowerCase().includes(searchValue.toLowerCase())
+      option.value.toLowerCase().includes(searchValue.toLowerCase()),
   );
 };
 
@@ -175,7 +177,7 @@ export const buildWidthConstraints = (
   screenSize: ScreenSize,
   autoSize: boolean,
   minWidth?: string,
-  maxWidth?: string
+  maxWidth?: string,
 ): WidthConstraints => {
   const defaultMinWidth = screenSize === 'mobile' ? '0px' : '200px';
   const effectiveMinWidth = minWidth || defaultMinWidth;
@@ -184,7 +186,7 @@ export const buildWidthConstraints = (
   return {
     minWidth: effectiveMinWidth,
     maxWidth: effectiveMaxWidth,
-    width: autoSize ? 'auto' : '100%'
+    width: autoSize ? 'auto' : '100%',
   };
 };
 
@@ -192,6 +194,6 @@ export const countMatchingOptions = (options: MultiSelectOption[], searchValue: 
   if (!searchValue) return options.length;
   const lowered = searchValue.toLowerCase();
   return options.filter(
-    opt => opt.label.toLowerCase().includes(lowered) || opt.value.toLowerCase().includes(lowered)
+    (opt) => opt.label.toLowerCase().includes(lowered) || opt.value.toLowerCase().includes(lowered),
   ).length;
 };

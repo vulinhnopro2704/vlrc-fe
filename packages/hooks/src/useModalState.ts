@@ -8,7 +8,7 @@ export type UseModalStateOptions = {
 
 export function useModalState<const T extends ReadonlyArray<string>>(
   keyList: T,
-  options?: UseModalStateOptions
+  options?: UseModalStateOptions,
 ) {
   type Key = T[number];
 
@@ -22,13 +22,13 @@ export function useModalState<const T extends ReadonlyArray<string>>(
     }, {});
 
   const [modal, setModal] = useState<Record<Key, ModalState>>(
-    () => makeInitial(keyList) as Record<Key, ModalState>
+    () => makeInitial(keyList) as Record<Key, ModalState>,
   );
 
   const timersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
 
   useEffect(() => {
-    setModal(prev => {
+    setModal((prev) => {
       let changed = false;
       const next = { ...(prev as Record<string, ModalState>) } as Record<Key, ModalState>;
 
@@ -44,7 +44,7 @@ export function useModalState<const T extends ReadonlyArray<string>>(
   }, [keyList, keySignature]);
 
   const openModal = (name: Key) => {
-    setModal(prev => {
+    setModal((prev) => {
       if (!(name in prev)) return prev;
 
       const timer = timersRef.current.get(String(name));
@@ -55,23 +55,23 @@ export function useModalState<const T extends ReadonlyArray<string>>(
 
       return {
         ...prev,
-        [name]: { ...prev[name], open: true, load: true }
+        [name]: { ...prev[name], open: true, load: true },
       };
     });
   };
 
   const closeModal = (name: Key) => {
-    setModal(prev => {
+    setModal((prev) => {
       if (!(name in prev)) return prev;
 
       return {
         ...prev,
-        [name]: { ...prev[name], open: false }
+        [name]: { ...prev[name], open: false },
       };
     });
 
     if (destroyDelay <= 0) {
-      setModal(prev => {
+      setModal((prev) => {
         if (!(name in prev)) return prev;
         return { ...prev, [name]: { ...prev[name], load: false } };
       });
@@ -86,7 +86,7 @@ export function useModalState<const T extends ReadonlyArray<string>>(
     }
 
     const timer = setTimeout(() => {
-      setModal(prev => {
+      setModal((prev) => {
         if (!(name in prev)) return prev;
         return { ...prev, [name]: { ...prev[name], load: false } };
       });
@@ -107,7 +107,7 @@ export function useModalState<const T extends ReadonlyArray<string>>(
   return {
     modal,
     openModal,
-    closeModal
+    closeModal,
   } as {
     modal: Record<Key, ModalState>;
     openModal: (name: Key) => void;

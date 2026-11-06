@@ -55,11 +55,7 @@ export interface InputProps extends React.ComponentProps<'input'> {
 
 function Input({ className, type, sx, ...props }: InputProps) {
   const isInvalid = props['aria-invalid'] === true || props['aria-invalid'] === 'true';
-  const sxProps = stylex.props(
-    styles.base,
-    isInvalid && styles.invalid,
-    sx
-  );
+  const sxProps = stylex.props(styles.base, isInvalid && styles.invalid, sx);
 
   return (
     <input
