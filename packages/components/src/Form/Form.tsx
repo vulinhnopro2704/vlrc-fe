@@ -112,6 +112,12 @@ const styles = stylex.create({
     width: '1rem',
     height: '1rem',
   },
+  fieldHorizontalTop: {
+    alignItems: 'flex-start',
+  },
+  controlTopOffset: {
+    marginTop: '0.125rem',
+  },
 });
 
 export function FormBase<
@@ -195,6 +201,7 @@ export function FormBase<
             width={width}
             data-invalid={fieldState.invalid}
             orientation={horizontal ? 'horizontal' : undefined}
+            sx={horizontal && description ? styles.fieldHorizontalTop : undefined}
           >
             {controlFirst ? (
               <>
@@ -333,7 +340,7 @@ export const FormTextarea: FormControlFunc<FormTextareaExtraProps> = ({
 
 export const FormSimpleSelect: FormControlFunc<{ children: ReactNode }> = ({
   children,
-  width,
+  width = 'full',
   ...props
 }) => {
   return (
@@ -384,7 +391,7 @@ export const FormCheckbox: FormControlFunc<FormCheckboxExtraProps> = ({
           disabled={disabled}
           size={size}
           className={checkboxClassName ?? className}
-          sx={sx}
+          sx={props.description ? [styles.controlTopOffset, sx] : sx}
         />
       )}
     </FormBase>
