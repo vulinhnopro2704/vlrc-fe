@@ -1,52 +1,91 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Input > UI > should match snapshot for type email 1`] = `
+exports[`Input > UI > should match snapshot for size lg 1`] = `
 <DocumentFragment>
   <input
-    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeLg xwaiz5r xsda711 x6u19be xnxx81d x1bilvtl"
+    data-size="lg"
     data-slot="input"
-    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:73"
     placeholder="Enter value..."
-    type="email"
     value="Sample input value"
   />
 </DocumentFragment>
 `;
 
-exports[`Input > UI > should match snapshot for type number 1`] = `
+exports[`Input > UI > should match snapshot for size md 1`] = `
 <DocumentFragment>
   <input
-    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeMd xk8t5le xsda711 xkpwil5 x1ryrjj2 x1o5vn8x"
+    data-size="md"
     data-slot="input"
-    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:66"
     placeholder="Enter value..."
-    type="number"
     value="Sample input value"
   />
 </DocumentFragment>
 `;
 
-exports[`Input > UI > should match snapshot for type password 1`] = `
+exports[`Input > UI > should match snapshot for size sm 1`] = `
 <DocumentFragment>
   <input
-    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeSm xettwda xsda711 x1dcheo9 x1ryrjj2 x1o5vn8x"
+    data-size="sm"
     data-slot="input"
-    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:59"
     placeholder="Enter value..."
-    type="password"
     value="Sample input value"
   />
 </DocumentFragment>
 `;
 
-exports[`Input > UI > should match snapshot for type text 1`] = `
+exports[`Input > UI > should match snapshot for size xl 1`] = `
 <DocumentFragment>
   <input
-    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeXl x12hms15 x1f78wua x1jchvi3 x11h0hc x18g2hj5"
+    data-size="xl"
     data-slot="input"
-    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:80"
     placeholder="Enter value..."
-    type="text"
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot for size xs 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeXs xb8l8e1 x1q0v2j7 xboafo0 xvpgqt4 x5utbj"
+    data-size="xs"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:52"
+    placeholder="Enter value..."
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot for size xxl 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeXxl x1j7fsof x1f78wua x1c3i2sq x1qhpy6z x13eudtd"
+    data-size="xxl"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:87"
+    placeholder="Enter value..."
+    value="Sample input value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input > UI > should match snapshot for size xxs 1`] = `
+<DocumentFragment>
+  <input
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeXxs xam5rvr x1q0v2j7 x12lo8hy x97vtpp x1dus959"
+    data-size="xxs"
+    data-slot="input"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:45"
+    placeholder="Enter value..."
     value="Sample input value"
   />
 </DocumentFragment>
@@ -55,9 +94,10 @@ exports[`Input > UI > should match snapshot for type text 1`] = `
 exports[`Input > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <input
-    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeMd xk8t5le xsda711 xkpwil5 x1ryrjj2 x1o5vn8x"
+    data-size="md"
     data-slot="input"
-    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:66"
     placeholder="Enter value..."
     value="Sample input value"
   />
@@ -67,9 +107,10 @@ exports[`Input > UI > should match snapshot in default state 1`] = `
 exports[`Input > UI > should match snapshot when disabled 1`] = `
 <DocumentFragment>
   <input
-    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz"
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeMd xk8t5le xsda711 xkpwil5 x1ryrjj2 x1o5vn8x"
+    data-size="md"
     data-slot="input"
-    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:66"
     disabled=""
     placeholder="Enter value..."
     value="Sample input value"
@@ -81,9 +122,10 @@ exports[`Input > UI > should match snapshot when invalid 1`] = `
 <DocumentFragment>
   <input
     aria-invalid="true"
-    class="input__styles.base xk8t5le xh8yej3 xeuugli xsda711 xmkeg23 x1y0btm7 xjbqb8w x1ryrjj2 x1o5vn8x xkpwil5 x84br7x x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.invalid x1uwefn5 xrqv5e9"
+    class="input__styles.base xh8yej3 xeuugli xmkeg23 x1y0btm7 xjbqb8w x84br7x x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x16a5dtp x1c4dosm xoo4nqz xu197gb xpn7oa2 xpblgp8 xqj1k98 xjmbuqf x156qtes x1ippke1 xaqnwrm x1s07b3s xijokvz input__styles.sizeMd xk8t5le xsda711 xkpwil5 x1ryrjj2 x1o5vn8x input__styles.invalid x1uwefn5 xrqv5e9"
+    data-size="md"
     data-slot="input"
-    data-style-src="@vlrc-fe/components:src/ui/input.tsx:6; @vlrc-fe/components:src/ui/input.tsx:46"
+    data-style-src="@vlrc-fe/components:src/ui/input.tsx:8; @vlrc-fe/components:src/ui/input.tsx:66; @vlrc-fe/components:src/ui/input.tsx:95"
     placeholder="Enter value..."
     value="Sample input value"
   />

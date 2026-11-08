@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Tabs > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="tabs__styles.root x78zum5 xdt5ytf x13z6uf9 xh8yej3"
+    data-orientation="horizontal"
+    data-size="md"
+    data-slot="tabs"
+    data-style-src="@vlrc-fe/components:src/ui/tabs.tsx:8"
+    dir="ltr"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="tabs__styles.list x3nfvp2 x6s0dn4 xl56j7k x1qry0bl xw3nh4a x9f619 xeq5yr9 tabs__styles.listMd xk8t5le x9ms5i6 x1mr5ieh"
+      data-orientation="horizontal"
+      data-size="md"
+      data-slot="tabs-list"
+      data-style-src="@vlrc-fe/components:src/ui/tabs.tsx:14; @vlrc-fe/components:src/ui/tabs.tsx:41"
+      role="tablist"
+      style="outline: none;"
+      tabindex="0"
+    >
+      <button
+        aria-controls="radix-_r_0_-content-tab1"
+        aria-selected="true"
+        class="tabs__styles.trigger x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xjbqb8w xw3nh4a xc342km x1a2a7pz x1ypdohk x87ps6o xk50ysn x5yr21d x1yyhn7k xx6bhzk x9f619 x8aud5w xybh4k3 x7s97pk xaqnwrm xijokvz tabs__styles.triggerMd x13s4r1c xkpwil5 xsda711 xpj7pl4"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-size="md"
+        data-slot="tabs-trigger"
+        data-state="active"
+        data-style-src="@vlrc-fe/components:src/ui/tabs.tsx:62; @vlrc-fe/components:src/ui/tabs.tsx:111"
+        id="radix-_r_0_-trigger-tab1"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Tab 1
+      </button>
+      <button
+        aria-controls="radix-_r_0_-content-tab2"
+        aria-selected="false"
+        class="tabs__styles.trigger x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xjbqb8w xw3nh4a xc342km x1a2a7pz x1ypdohk x87ps6o xk50ysn x5yr21d x1yyhn7k xx6bhzk x9f619 x8aud5w xybh4k3 x7s97pk xaqnwrm xijokvz tabs__styles.triggerMd x13s4r1c xkpwil5 xsda711 xpj7pl4"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-size="md"
+        data-slot="tabs-trigger"
+        data-state="inactive"
+        data-style-src="@vlrc-fe/components:src/ui/tabs.tsx:62; @vlrc-fe/components:src/ui/tabs.tsx:111"
+        id="radix-_r_0_-trigger-tab2"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Tab 2
+      </button>
+    </div>
+    <div
+      aria-labelledby="radix-_r_0_-trigger-tab1"
+      class="tabs__styles.content x845mor x1a2a7pz xybh4k3 x7s97pk x1jhfc9r"
+      data-orientation="horizontal"
+      data-slot="tabs-content"
+      data-state="active"
+      data-style-src="@vlrc-fe/components:src/ui/tabs.tsx:136"
+      id="radix-_r_0_-content-tab1"
+      role="tabpanel"
+      style="animation-duration: 0s;"
+      tabindex="0"
+    >
+      Content 1
+    </div>
+    <div
+      aria-labelledby="radix-_r_0_-trigger-tab2"
+      class="tabs__styles.content x845mor x1a2a7pz xybh4k3 x7s97pk x1jhfc9r"
+      data-orientation="horizontal"
+      data-slot="tabs-content"
+      data-state="inactive"
+      data-style-src="@vlrc-fe/components:src/ui/tabs.tsx:136"
+      hidden=""
+      id="radix-_r_0_-content-tab2"
+      role="tabpanel"
+      tabindex="0"
+    />
+  </div>
+</DocumentFragment>
+`;

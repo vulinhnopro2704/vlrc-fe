@@ -76,6 +76,18 @@ const styles = stylex.create({
     flexDirection: 'column',
     gap: '1rem',
   },
+  inputWrapper: {
+    width: '280px',
+  },
+  btnIcon: {
+    width: 16,
+    height: 16,
+    marginRight: 6,
+  },
+  modalText: {
+    margin: 0,
+    color: 'var(--muted-foreground)',
+  },
 });
 
 export function App() {
@@ -194,13 +206,13 @@ export function App() {
       <section {...stylex.props(styles.section)}>
         <h2 {...stylex.props(styles.sectionTitle)}>Inputs</h2>
         <div {...stylex.props(styles.row)}>
-          <div style={{ width: '280px' }}>
+          <div {...stylex.props(styles.inputWrapper)}>
             <Input placeholder="Enter username..." />
           </div>
-          <div style={{ width: '280px' }}>
+          <div {...stylex.props(styles.inputWrapper)}>
             <Input type="email" placeholder="Enter email address..." />
           </div>
-          <div style={{ width: '280px' }}>
+          <div {...stylex.props(styles.inputWrapper)}>
             <Input disabled placeholder="Disabled field" />
           </div>
         </div>
@@ -211,10 +223,10 @@ export function App() {
         <h2 {...stylex.props(styles.sectionTitle)}>Modals (Powered by @vlrc-fe/hooks)</h2>
         <div {...stylex.props(styles.row)}>
           <Button onClick={() => openModal('demoModal')}>
-            <Icons.Eye style={{ width: 16, height: 16, marginRight: 6 }} /> Open Preview Modal
+            <Icons.Eye {...stylex.props(styles.btnIcon)} /> Open Preview Modal
           </Button>
           <Button variant="destructive" onClick={() => openModal('deleteModal')}>
-            <Icons.Trash style={{ width: 16, height: 16, marginRight: 6 }} /> Confirm Delete Dialog
+            <Icons.Trash {...stylex.props(styles.btnIcon)} /> Confirm Delete Dialog
           </Button>
         </div>
 
@@ -226,7 +238,7 @@ export function App() {
             description="Mounted lazily with useModalState, ensuring smooth exit animations."
           >
             <div {...stylex.props(styles.modalContent)}>
-              <p style={{ margin: 0, color: 'var(--muted-foreground)' }}>
+              <p {...stylex.props(styles.modalText)}>
                 This modal was mounted lazily with <code>useModalState</code>, ensuring exit
                 animations complete before unmounting from the DOM.
               </p>

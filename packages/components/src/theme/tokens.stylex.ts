@@ -61,3 +61,20 @@ export const textColors = stylex.defineVars({
   primary: 'var(--primary)',
   destructive: 'var(--destructive)',
 });
+
+/**
+ * 7-tier Spacing, Gap, Margin, and Gutter design system tokens.
+ * Maps to root CSS variables for full theme adaptability.
+ */
+export const spacing = stylex.defineVars({
+  xxs: 'var(--spacing-xxs, 0.25rem)',
+  xs: 'var(--spacing-xs, 0.5rem)',
+  sm: 'var(--spacing-sm, 0.75rem)',
+  md: 'var(--spacing-md, 1rem)',
+  lg: 'var(--spacing-lg, 1.5rem)',
+  xl: 'var(--spacing-xl, 2rem)',
+  xxl: 'var(--spacing-xxl, 3rem)',
+});
+
+export const gaps = spacing;
+export const gutters = spacing;

@@ -18,6 +18,8 @@ Accessible, performant React UI component library built with **Meta StyleX**, **
 - **Dynamic Theming** — design tokens (`colors`, `radii`, `textColors`) mapped to CSS custom properties, supporting light, dark, and custom themes
 - **Accessible by Default** — built on WAI-ARIA compliant Radix UI primitives with keyboard navigation and screen reader support
 - **Form System** — complete suite of form controls (`FormInput`, `FormSelect`, `FormMultiSelect`, `FormDatePicker`, `FormFileUpload`, `FormNumberInput`) integrated with React Hook Form
+- **Typography Suite** — rich semantic text components (`Title`, `Text`, `Paragraph`, `Blockquote`, `Link`, `Code`, `Kbd`) with StyleX styling
+- **File Upload Ecosystem** — modular `FileUpload` and `FormFileUpload` with pluggable storage adapters (`Api`, `S3`, `Cloudinary`) and layout variants (`avatar`, `compact`, `card`, `dropzone`)
 - **Data Table** — powerful `DataTable` component with selection, expander, and row actions column helpers via TanStack Table
 - **Tree-Shakable** — full ESM and CJS support with TypeScript declaration maps and granular subpath exports
 
@@ -238,12 +240,15 @@ const styles = stylex.create({
     gap: '0.5rem',
     alignItems: 'center',
   },
+  icon: {
+    color: 'green',
+  },
 });
 
 export function StatusIndicator() {
   return (
     <div {...stylex.props(styles.status)}>
-      <Icons.CheckCircle2 style={{ color: 'green' }} />
+      <Icons.CheckCircle2 {...stylex.props(styles.icon)} />
       <span>All systems operational</span>
     </div>
   );

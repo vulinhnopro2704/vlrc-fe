@@ -75,18 +75,32 @@ export type DataTableInitialState = {
 export type DataTableValue = string | number | boolean | null | undefined | Date | object;
 
 export type DataTableProps<TData> = {
+  /** The data array rendered by the table. */
   data: TData[];
+  /** Column definitions conforming to TanStack Table specifications. */
   columns: ColumnDef<TData, DataTableValue>[];
+  /** Optional initial state for sorting, filters, pagination, or column visibility. */
   initialState?: DataTableInitialState;
+  /** Custom empty state renderer when no records match. */
   empty?: DataTableEmptyConfig;
+  /** Global search configuration with debounced search input. */
   search?: DataTableSearchConfig;
+  /** Pagination configuration including page size options. */
   pagination?: DataTablePaginationConfig;
+  /** Row action menu configuration. */
   actions?: DataTableActionsConfig<TData>;
+  /** Server-side API coordination config for remote sorting, paging, and filtering. */
   api?: DataTableApiConfig;
+  /** Infinite scroll configuration for virtualized or stream-loaded tables. */
   infiniteScroll?: DataTableInfiniteScrollConfig;
+  /** Row expander configuration for nested rows or sub-components. */
   expand?: DataTableExpandConfig<TData>;
+  /** Optional CSS class for the table container. */
   className?: string;
+  /** Optional CSS class for the outer wrapper. */
   containerClassName?: string;
+  /** Custom row id generator function. */
   getRowId?: (originalRow: TData, index: number, parent: Row<TData> | null) => string;
+  /** Custom action buttons or widgets rendered on the right side of the toolbar. */
   renderToolbarRight?: (table: Table<TData>) => ReactNode;
 };

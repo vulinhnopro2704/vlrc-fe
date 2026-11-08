@@ -1,0 +1,83 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Accordion > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="accordion__styles.root xh8yej3"
+    data-orientation="vertical"
+    data-size="md"
+    data-slot="accordion"
+    data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:9"
+  >
+    <div
+      class="accordion__styles.item xso031l x1q0q8m5 x1c03eaz"
+      data-orientation="vertical"
+      data-slot="accordion-item"
+      data-state="open"
+      data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:12"
+    >
+      <h3
+        class="accordion__styles.header x78zum5 x1ghz6dp xh8yej3"
+        data-orientation="vertical"
+        data-state="open"
+        data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:17"
+      >
+        <button
+          aria-controls="radix-_r_1_"
+          aria-expanded="true"
+          class="accordion__styles.trigger xjyslct xjbqb8w xc342km x84br7x x78zum5 x845mor x6s0dn4 x1qughib xh8yej3 x1ypdohk xdpxx8g x1a2a7pz xfagghw x13dflua xt0b8zv xybh4k3 x7s97pk x1hi7d6v xaqnwrm xijokvz accordion__styles.triggerMd xgepmj6 x6u19be xk50ysn x8fetqu"
+          data-orientation="vertical"
+          data-radix-collection-item=""
+          data-size="md"
+          data-slot="accordion-trigger"
+          data-state="open"
+          data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:22; @vlrc-fe/components:src/ui/accordion.tsx:70"
+          id="radix-_r_0_"
+          type="button"
+        >
+          <span>
+            Test Trigger
+          </span>
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-chevron-down accordion__styles.chevron xw3nh4a x2lah0s x47corl x11xpdln x13dflua accordion__styles.chevronMd xcdlrvm x1l36t39"
+            data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:95; @vlrc-fe/components:src/ui/accordion.tsx:116"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m6 9 6 6 6-6"
+            />
+          </svg>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="radix-_r_0_"
+        class="accordion__styles.content xb3r6kr x84br7x"
+        data-orientation="vertical"
+        data-size="md"
+        data-slot="accordion-content"
+        data-state="open"
+        data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:133"
+        id="radix-_r_1_"
+        role="region"
+        style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
+      >
+        <div
+          class="accordion__styles.contentInner x1evy7pa accordion__styles.contentMd x2yie3v xkpwil5"
+          data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:137; @vlrc-fe/components:src/ui/accordion.tsx:154"
+        >
+          Test Content
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

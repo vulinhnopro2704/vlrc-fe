@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/hooks",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Reusable React hooks for modal state, UI coordination, and animations.",
   "keywords": [
     "animation",

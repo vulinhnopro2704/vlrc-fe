@@ -29,7 +29,7 @@ const styles = stylex.create({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: 50,
+    zIndex: 51,
     display: 'grid',
     width: '100%',
     maxWidth: '32rem',
@@ -48,23 +48,24 @@ const styles = stylex.create({
   },
   closeButton: {
     position: 'absolute',
-    top: '1rem',
-    right: '1rem',
+    top: '0.875rem',
+    right: '0.875rem',
     borderRadius: radii.sm,
     opacity: 0.7,
     borderWidth: 0,
     backgroundColor: 'transparent',
-    color: colors.foreground,
+    color: colors.mutedForeground,
     padding: '0.25rem',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    transitionProperty: 'opacity',
+    transitionProperty: 'opacity, color',
     transitionDuration: '150ms',
     outline: 'none',
     ':hover': {
       opacity: 1,
+      color: colors.foreground,
     },
     ':focus-visible': {
       boxShadow: '0 0 0 2px color-mix(in srgb, var(--ring) 50%, transparent)',
@@ -77,7 +78,7 @@ const styles = stylex.create({
   header: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0.5rem',
+    gap: '0.25rem',
     textAlign: 'left',
   },
   footer: {
@@ -87,14 +88,28 @@ const styles = stylex.create({
     gap: '0.5rem',
   },
   title: {
+    margin: 0,
     fontSize: '1.125rem',
-    lineHeight: 1,
+    lineHeight: '1.5rem',
     fontWeight: 600,
     color: colors.foreground,
   },
   description: {
+    margin: 0,
     fontSize: '0.875rem',
+    lineHeight: '1.25rem',
     color: colors.mutedForeground,
+  },
+  srOnly: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
   },
 });
 
@@ -156,21 +171,7 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close data-slot="dialog-close" {...stylex.props(styles.closeButton)}>
             <XIcon {...stylex.props(styles.closeIcon)} />
-            <span
-              style={{
-                position: 'absolute',
-                width: 1,
-                height: 1,
-                padding: 0,
-                margin: -1,
-                overflow: 'hidden',
-                clip: 'rect(0, 0, 0, 0)',
-                whiteSpace: 'nowrap',
-                borderWidth: 0,
-              }}
-            >
-              Close
-            </span>
+            <span {...stylex.props(styles.srOnly)}>Close</span>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Content>

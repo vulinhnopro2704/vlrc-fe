@@ -1,118 +1,305 @@
-'use client';
-
 import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 
-import { cn } from '../utils';
+export type SheetSide = 'top' | 'right' | 'bottom' | 'left';
 
-function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
+const fadeIn = stylex.keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
+
+const slideInRight = stylex.keyframes({
+  from: { transform: 'translateX(100%)' },
+  to: { transform: 'translateX(0)' },
+});
+
+const slideInLeft = stylex.keyframes({
+  from: { transform: 'translateX(-100%)' },
+  to: { transform: 'translateX(0)' },
+});
+
+const slideInTop = stylex.keyframes({
+  from: { transform: 'translateY(-100%)' },
+  to: { transform: 'translateY(0)' },
+});
+
+const slideInBottom = stylex.keyframes({
+  from: { transform: 'translateY(100%)' },
+  to: { transform: 'translateY(0)' },
+});
+
+const styles = stylex.create({
+  overlay: {
+    position: 'fixed',
+    inset: 0,
+    zIndex: 50,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    animationName: fadeIn,
+    animationDuration: '200ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+  },
+  baseContent: {
+    position: 'fixed',
+    zIndex: 51,
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: colors.background,
+    color: colors.foreground,
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    outline: 'none',
+    boxSizing: 'border-box',
+    animationDuration: '250ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+  },
+  right: {
+    top: 0,
+    bottom: 0,
+    right: 0,
+    height: '100%',
+    width: '100%',
+    maxWidth: '24rem',
+    borderLeftWidth: 1,
+    borderLeftStyle: 'solid',
+    borderLeftColor: colors.border,
+    animationName: slideInRight,
+  },
+  left: {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    height: '100%',
+    width: '100%',
+    maxWidth: '24rem',
+    borderRightWidth: 1,
+    borderRightStyle: 'solid',
+    borderRightColor: colors.border,
+    animationName: slideInLeft,
+  },
+  top: {
+    top: 0,
+    left: 0,
+    right: 0,
+    maxHeight: '80vh',
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: colors.border,
+    animationName: slideInTop,
+  },
+  bottom: {
+    bottom: 0,
+    left: 0,
+    right: 0,
+    maxHeight: '80vh',
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: colors.border,
+    animationName: slideInBottom,
+  },
+  closeBtn: {
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
+    borderRadius: radii.sm,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    color: colors.mutedForeground,
+    padding: '0.25rem',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    outline: 'none',
+    transitionProperty: 'color, background-color',
+    transitionDuration: '150ms',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.foreground,
+    },
+    ':focus-visible': {
+      boxShadow: '0 0 0 2px var(--ring)',
+    },
+  },
+  closeIcon: {
+    width: '1rem',
+    height: '1rem',
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.375rem',
+    padding: '1.5rem',
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: colors.border,
+  },
+  footer: {
+    marginTop: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    padding: '1.5rem',
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: colors.border,
+  },
+  title: {
+    margin: 0,
+    fontSize: '1.125rem',
+    lineHeight: 1.4,
+    fontWeight: 600,
+    color: colors.foreground,
+  },
+  description: {
+    margin: 0,
+    fontSize: '0.875rem',
+    lineHeight: 1.5,
+    color: colors.mutedForeground,
+  },
+  srOnly: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
+});
+
+const sideStyles: Record<SheetSide, stylex.StyleXStyles> = {
+  right: styles.right,
+  left: styles.left,
+  top: styles.top,
+  bottom: styles.bottom,
+};
+
+function Sheet(props: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
 }
 
-function SheetTrigger({ ...props }: React.ComponentProps<typeof SheetPrimitive.Trigger>) {
+function SheetTrigger(props: React.ComponentProps<typeof SheetPrimitive.Trigger>) {
   return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />;
 }
 
-function SheetClose({ ...props }: React.ComponentProps<typeof SheetPrimitive.Close>) {
+function SheetClose(props: React.ComponentProps<typeof SheetPrimitive.Close>) {
   return <SheetPrimitive.Close data-slot="sheet-close" {...props} />;
 }
 
-function SheetPortal({ ...props }: React.ComponentProps<typeof SheetPrimitive.Portal>) {
+function SheetPortal(props: React.ComponentProps<typeof SheetPrimitive.Portal>) {
   return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />;
 }
 
-function SheetOverlay({
-  className,
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Overlay>) {
+export interface SheetOverlayProps extends React.ComponentProps<typeof SheetPrimitive.Overlay> {
+  sx?: stylex.StyleXStyles;
+}
+
+function SheetOverlay({ className, sx, ...props }: SheetOverlayProps) {
+  const sxProps = stylex.props(styles.overlay, sx);
   return (
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
-      className={cn(
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50',
-        className,
-      )}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function SheetContent({
-  className,
-  children,
-  side = 'right',
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Content> & {
-  side?: 'top' | 'right' | 'bottom' | 'left';
-}) {
+export interface SheetContentProps extends React.ComponentProps<typeof SheetPrimitive.Content> {
+  side?: SheetSide;
+  sx?: stylex.StyleXStyles;
+}
+
+function SheetContent({ className, children, side = 'right', sx, ...props }: SheetContentProps) {
+  const sideStyle = sideStyles[side] ?? styles.right;
+  const sxProps = stylex.props(styles.baseContent, sideStyle, sx);
+
   return (
     <SheetPortal>
       <SheetOverlay />
       <SheetPrimitive.Content
         data-slot="sheet-content"
-        className={cn(
-          'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
-          side === 'right' &&
-            'data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
-          side === 'left' &&
-            'data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm',
-          side === 'top' &&
-            'data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b',
-          side === 'bottom' &&
-            'data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t',
-          className,
-        )}
+        data-side={side}
+        {...sxProps}
+        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
         {children}
-        <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
-          <XIcon className="size-4" />
-          <span className="sr-only">Close</span>
+        <SheetPrimitive.Close {...stylex.props(styles.closeBtn)} aria-label="Close">
+          <XIcon {...stylex.props(styles.closeIcon)} />
+          <span {...stylex.props(styles.srOnly)}>Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
     </SheetPortal>
   );
 }
 
-function SheetHeader({ className, ...props }: React.ComponentProps<'div'>) {
+export interface SheetHeaderProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function SheetHeader({ className, sx, ...props }: SheetHeaderProps) {
+  const sxProps = stylex.props(styles.header, sx);
   return (
     <div
       data-slot="sheet-header"
-      className={cn('flex flex-col gap-1.5 p-4', className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function SheetFooter({ className, ...props }: React.ComponentProps<'div'>) {
+export interface SheetFooterProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function SheetFooter({ className, sx, ...props }: SheetFooterProps) {
+  const sxProps = stylex.props(styles.footer, sx);
   return (
     <div
       data-slot="sheet-footer"
-      className={cn('mt-auto flex flex-col gap-2 p-4', className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function SheetTitle({ className, ...props }: React.ComponentProps<typeof SheetPrimitive.Title>) {
+export interface SheetTitleProps extends React.ComponentProps<typeof SheetPrimitive.Title> {
+  sx?: stylex.StyleXStyles;
+}
+
+function SheetTitle({ className, sx, ...props }: SheetTitleProps) {
+  const sxProps = stylex.props(styles.title, sx);
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
-      className={cn('text-foreground font-semibold', className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );
 }
 
-function SheetDescription({
-  className,
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Description>) {
+export interface SheetDescriptionProps extends React.ComponentProps<
+  typeof SheetPrimitive.Description
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function SheetDescription({ className, sx, ...props }: SheetDescriptionProps) {
+  const sxProps = stylex.props(styles.description, sx);
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
-      className={cn('text-muted-foreground text-sm', className)}
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
   );

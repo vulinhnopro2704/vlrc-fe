@@ -1,6 +1,6 @@
-export { default as ConfirmModal } from './ConfirmModal';
+export { ConfirmModal, default as ConfirmModalDefault } from './ConfirmModal';
 export { default as ConfirmationDialog } from './ConfirmModal';
-export type { ConfirmationDialogProps } from './ConfirmModal';
+export type { ConfirmModalProps, ConfirmationDialogProps } from './ConfirmModal';
 export { Modal } from './Modal';
 export type { ModalProps } from './Modal';
 export { lazyLoad } from './lazyLoad';
@@ -17,3 +17,4 @@ export { default as Select } from './Select';
 export type { BaseSelectCommonProps, BaseSelectOption } from './Select/type';
 export { default as MultiSelect } from './MultiSelect';
 export type { MultiSelectProps } from './MultiSelect/type';
+export * from './Typography';

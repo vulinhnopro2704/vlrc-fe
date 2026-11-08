@@ -1,0 +1,141 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Command > should render command with input, groups, and items 1`] = `
+<DocumentFragment>
+  <div
+    class="command__styles.root x78zum5 xdt5ytf xh8yej3 x5yr21d xb3r6kr xsda711 xa4jey1 x5e7vtp"
+    cmdk-root=""
+    data-slot="command"
+    data-style-src="@vlrc-fe/components:src/ui/command.tsx:9"
+    tabindex="-1"
+  >
+    <label
+      cmdk-label=""
+      for="radix-_r_2_"
+      id="radix-_r_1_"
+      style="position: absolute; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px;"
+    />
+    <div
+      class="command__styles.inputWrapper x78zum5 xwaiz5r x6s0dn4 x13z6uf9 xso031l x1q0q8m5 x1c03eaz x1ryrjj2"
+      data-slot="command-input-wrapper"
+      data-style-src="@vlrc-fe/components:src/ui/command.tsx:24"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-search command__styles.searchIcon xcdlrvm x1l36t39 x2lah0s xbyyjgo x84br7x"
+        data-style-src="@vlrc-fe/components:src/ui/command.tsx:34"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m21 21-4.34-4.34"
+        />
+        <circle
+          cx="11"
+          cy="11"
+          r="8"
+        />
+      </svg>
+      <input
+        aria-autocomplete="list"
+        aria-controls="radix-_r_0_"
+        aria-expanded="true"
+        aria-labelledby="radix-_r_1_"
+        autocomplete="off"
+        autocorrect="off"
+        class="command__styles.input x78zum5 xk8t5le xh8yej3 xsda711 xjbqb8w xc342km xkpwil5 x1a2a7pz x84br7x x1guo4m0 x1s07b3s xijokvz"
+        cmdk-input=""
+        data-slot="command-input"
+        data-style-src="@vlrc-fe/components:src/ui/command.tsx:41"
+        id="radix-_r_2_"
+        placeholder="Type a command or search..."
+        role="combobox"
+        spellcheck="false"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      aria-label="Suggestions"
+      class="command__styles.list xuyqlj2 x6ikm8r x1odjw0f x78pyy4"
+      cmdk-list=""
+      data-slot="command-list"
+      data-style-src="@vlrc-fe/components:src/ui/command.tsx:59"
+      id="radix-_r_0_"
+      role="listbox"
+      tabindex="-1"
+    >
+      <div
+        cmdk-list-sizer=""
+      >
+        <div
+          class="command__styles.group xb3r6kr x78pyy4 x84br7x"
+          cmdk-group=""
+          data-slot="command-group"
+          data-style-src="@vlrc-fe/components:src/ui/command.tsx:71"
+          data-value="Suggestions"
+          role="presentation"
+        >
+          <div
+            aria-hidden="true"
+            cmdk-group-heading=""
+            id="radix-_r_4_"
+          >
+            Suggestions
+          </div>
+          <div
+            aria-labelledby="radix-_r_4_"
+            cmdk-group-items=""
+            role="group"
+          >
+            <div
+              aria-disabled="false"
+              aria-selected="true"
+              class="command__styles.item x1n2onr6 x78zum5 x6s0dn4 x13z6uf9 x1q0v2j7 x97vtpp x1bilvtl xkpwil5 x1a2a7pz x87ps6o x1ypdohk x84br7x xs2xxs2 x1g2r6go x9p52ec x10ubyu6 xaqnwrm xijokvz"
+              cmdk-item=""
+              data-disabled="false"
+              data-selected="true"
+              data-slot="command-item"
+              data-style-src="@vlrc-fe/components:src/ui/command.tsx:82"
+              data-value="Calendar"
+              id="radix-_r_5_"
+              role="option"
+            >
+              Calendar
+            </div>
+            <div
+              aria-disabled="false"
+              aria-selected="false"
+              class="command__styles.item x1n2onr6 x78zum5 x6s0dn4 x13z6uf9 x1q0v2j7 x97vtpp x1bilvtl xkpwil5 x1a2a7pz x87ps6o x1ypdohk x84br7x xs2xxs2 x1g2r6go x9p52ec x10ubyu6 xaqnwrm xijokvz"
+              cmdk-item=""
+              data-disabled="false"
+              data-selected="false"
+              data-slot="command-item"
+              data-style-src="@vlrc-fe/components:src/ui/command.tsx:82"
+              data-value="Calculator"
+              id="radix-_r_6_"
+              role="option"
+            >
+              Calculator
+            </div>
+          </div>
+        </div>
+        <div
+          class="command__styles.separator xjm9jq1 x15e8ic6 xwefxjc xc342km"
+          cmdk-separator=""
+          data-slot="command-separator"
+          data-style-src="@vlrc-fe/components:src/ui/command.tsx:76"
+          role="separator"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

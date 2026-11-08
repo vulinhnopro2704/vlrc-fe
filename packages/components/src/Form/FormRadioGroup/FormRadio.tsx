@@ -1,16 +1,41 @@
-import type { FieldPath, FieldValues } from 'react-hook-form';
-
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../ui/form';
+import type { FieldValues } from 'react-hook-form';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../../theme/tokens.stylex';
+import { FormBase } from '../Form';
 import { Label } from '../../ui/label';
 import { RadioGroup, RadioGroupItem } from '../../ui/radio-group';
 import type { FormRadioProps } from './types';
 import { useFormRadio } from './useFormRadio';
 
+const styles = stylex.create({
+  list: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.625rem',
+    marginTop: '0.125rem',
+  },
+  option: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+  },
+  label: {
+    cursor: 'pointer',
+    fontWeight: 400,
+    fontSize: '0.875rem',
+    color: colors.foreground,
+    userSelect: 'none',
+  },
+  scrollable: {
+    overflowY: 'auto',
+  },
+});
+
 export function FormRadio<TFieldValues extends FieldValues>({
   name,
   control,
   label = '',
-  size = 'middle',
+  size: _size = 'middle',
   options = [],
   onChange,
   value,
@@ -20,60 +45,46 @@ export function FormRadio<TFieldValues extends FieldValues>({
   buttonStyle: _buttonStyle,
   autoHeightMax,
   showEmpty = false,
-  hideErrorMessage = false,
+  hideErrorMessage: _hideErrorMessage = false,
   className,
 }: FormRadioProps<TFieldValues>) {
-  const { isRequired, processedRules, parseValue, emitChange, sizeClasses } = useFormRadio({
+  const { processedRules, parseValue, emitChange } = useFormRadio({
     rules,
     value,
     onChange,
     showEmpty,
   });
 
-  const renderOptions = (
-    fieldName: FieldPath<TFieldValues>,
-    fieldValue: unknown,
-    fieldOnChange: (value: unknown) => void,
-  ) => (
-    <RadioGroup
-      value={parseValue(fieldValue)}
-      onValueChange={(newValue) => emitChange(fieldOnChange, newValue)}
-      disabled={disabled}
-      style={autoHeightMax ? { maxHeight: `${autoHeightMax}px`, overflowY: 'auto' } : undefined}
-    >
-      {options.map((option) => (
-        <div key={String(option.value)} className="flex items-center space-x-2">
-          <RadioGroupItem
-            value={String(option.value)}
-            id={`${fieldName}-${option.value}`}
-            disabled={disabled || option.disabled}
-            className={sizeClasses[size]}
-          />
-          <Label htmlFor={`${fieldName}-${option.value}`} className="cursor-pointer font-normal">
-            {option.label}
-          </Label>
-        </div>
-      ))}
-    </RadioGroup>
-  );
-
   return (
-    <FormField
-      control={control}
+    <FormBase
       name={name}
+      control={control}
+      label={label}
       rules={processedRules}
-      render={({ field }) => (
-        <FormItem className={className}>
-          {label && (
-            <FormLabel>
-              {label}
-              {isRequired && <span className="text-destructive ml-1">*</span>}
-            </FormLabel>
-          )}
-          <FormControl>{renderOptions(name, value ?? field.value, field.onChange)}</FormControl>
-          {!hideErrorMessage && <FormMessage />}
-        </FormItem>
+      className={className}
+    >
+      {(field) => (
+        <RadioGroup
+          value={parseValue(value ?? field.value)}
+          onValueChange={(newValue) => emitChange(field.onChange, newValue)}
+          disabled={disabled}
+          sx={[styles.list, autoHeightMax ? styles.scrollable : undefined]}
+          style={autoHeightMax ? { maxHeight: `${autoHeightMax}px` } : undefined}
+        >
+          {options.map((option) => (
+            <div key={String(option.value)} {...stylex.props(styles.option)}>
+              <RadioGroupItem
+                value={String(option.value)}
+                id={`${String(name)}-${option.value}`}
+                disabled={disabled || option.disabled}
+              />
+              <Label htmlFor={`${String(name)}-${option.value}`} sx={styles.label}>
+                {option.label}
+              </Label>
+            </div>
+          ))}
+        </RadioGroup>
       )}
-    />
+    </FormBase>
   );
 }

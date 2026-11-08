@@ -31,29 +31,33 @@ const styles = stylex.create({
   fieldBase: {
     display: 'flex',
     width: '100%',
-    gap: '0.75rem',
+    gap: '0.375rem',
   },
   vertical: {
     flexDirection: 'column',
+    gap: '0.375rem',
   },
   horizontal: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: '0.5rem',
   },
   responsive: {
     flexDirection: 'column',
+    gap: '0.375rem',
   },
   content: {
     display: 'flex',
     flex: '1 1 0%',
     flexDirection: 'column',
-    gap: '0.375rem',
+    gap: '0.25rem',
     lineHeight: 1.375,
   },
   label: {
-    display: 'flex',
+    display: 'inline-flex',
+    alignItems: 'center',
     width: 'fit-content',
-    gap: '0.5rem',
+    gap: '0.125rem',
     lineHeight: 1.375,
     fontSize: '0.875rem',
     fontWeight: 500,
@@ -79,6 +83,11 @@ const styles = stylex.create({
     marginBlock: '-0.5rem',
     height: '1.25rem',
     fontSize: '0.875rem',
+  },
+  separatorLine: {
+    position: 'absolute',
+    inset: 0,
+    top: '50%',
   },
   separatorContent: {
     backgroundColor: colors.background,
@@ -260,7 +269,7 @@ function FieldSeparator({
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <Separator style={{ position: 'absolute', inset: 0, top: '50%' }} />
+      <Separator sx={styles.separatorLine} />
       {children && (
         <span {...stylex.props(styles.separatorContent)} data-slot="field-separator-content">
           {children}

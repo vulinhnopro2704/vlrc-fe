@@ -1,4 +1,5 @@
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
 import type { ColumnDef, Row } from '@tanstack/react-table';
 
 import { Button } from '../../ui/button';
@@ -6,6 +7,24 @@ import { Checkbox } from '../../ui/checkbox';
 
 import { DataTableRowActions } from '../components/DataTableRowActions';
 import type { DataTableValue } from '../types';
+
+const styles = stylex.create({
+  srOnly: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
+  icon: {
+    width: 16,
+    height: 16,
+  },
+});
 
 export const createSelectionColumn = <TData,>(): ColumnDef<TData, DataTableValue> => ({
   id: 'select',
@@ -42,25 +61,11 @@ const ExpanderCell = <TData,>({ row }: { row: Row<TData> }) => {
   if (row.getCanExpand()) {
     return (
       <Button variant="ghost" size="icon-sm" onClick={() => row.toggleExpanded()}>
-        <span
-          style={{
-            position: 'absolute',
-            width: 1,
-            height: 1,
-            padding: 0,
-            margin: -1,
-            overflow: 'hidden',
-            clip: 'rect(0, 0, 0, 0)',
-            whiteSpace: 'nowrap',
-            borderWidth: 0,
-          }}
-        >
-          Toggle
-        </span>
+        <span {...stylex.props(styles.srOnly)}>Toggle</span>
         {row.getIsExpanded() ? (
-          <ChevronDown style={{ width: 16, height: 16 }} />
+          <ChevronDown {...stylex.props(styles.icon)} />
         ) : (
-          <ChevronRight style={{ width: 16, height: 16 }} />
+          <ChevronRight {...stylex.props(styles.icon)} />
         )}
       </Button>
     );

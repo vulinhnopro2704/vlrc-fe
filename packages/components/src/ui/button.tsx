@@ -1,7 +1,9 @@
 import * as React from 'react';
+import type { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import type { ComponentSize } from '../theme/types';
 
 export type ButtonVariant =
   | 'default'
@@ -15,7 +17,23 @@ export type ButtonVariant =
   | 'gradient'
   | 'gradient-success';
 
-export type ButtonSize = 'default' | 'sm' | 'lg' | 'xl' | '2xl' | 'icon' | 'icon-sm' | 'icon-lg';
+export type ButtonSize =
+  | ComponentSize
+  | 'default'
+  | '2xl'
+  | 'icon'
+  | 'icon-xxs'
+  | 'icon-xs'
+  | 'icon-sm'
+  | 'icon-md'
+  | 'icon-lg'
+  | 'icon-xl'
+  | 'icon-xxl';
+
+const spin = stylex.keyframes({
+  from: { transform: 'rotate(0deg)' },
+  to: { transform: 'rotate(360deg)' },
+});
 
 const styles = stylex.create({
   base: {
@@ -132,11 +150,20 @@ const styles = stylex.create({
     },
   },
 
-  // Sizes
-  sizeDefault: {
-    height: '2.25rem',
-    paddingInline: '1rem',
-    paddingBlock: '0.5rem',
+  // 7-tier Component Sizes
+  sizeXxs: {
+    height: '1.5rem',
+    borderRadius: radii.sm,
+    gap: '0.25rem',
+    paddingInline: '0.5rem',
+    fontSize: '0.6875rem',
+  },
+  sizeXs: {
+    height: '1.75rem',
+    borderRadius: radii.sm,
+    gap: '0.3125rem',
+    paddingInline: '0.625rem',
+    fontSize: '0.75rem',
   },
   sizeSm: {
     height: '2rem',
@@ -145,36 +172,122 @@ const styles = stylex.create({
     paddingInline: '0.75rem',
     fontSize: '0.8125rem',
   },
+  sizeMd: {
+    height: '2.25rem',
+    borderRadius: radii.md,
+    gap: '0.5rem',
+    paddingInline: '1rem',
+    fontSize: '0.875rem',
+  },
   sizeLg: {
     height: '2.5rem',
     borderRadius: radii.md,
-    paddingInline: '1.5rem',
+    gap: '0.5rem',
+    paddingInline: '1.25rem',
+    fontSize: '0.9375rem',
   },
   sizeXl: {
     height: '2.75rem',
     borderRadius: radii.xl,
+    gap: '0.625rem',
     paddingInline: '1.5rem',
+    fontSize: '1rem',
   },
-  size2xl: {
-    height: '3.5rem',
+  sizeXxl: {
+    height: '3.25rem',
     borderRadius: radii.xl,
-    paddingInline: '2rem',
+    gap: '0.75rem',
+    paddingInline: '1.75rem',
     fontSize: '1.125rem',
   },
-  sizeIcon: {
-    height: '2.25rem',
-    width: '2.25rem',
+
+  // Icon Button Sizes
+  sizeIconXxs: {
+    height: '1.5rem',
+    width: '1.5rem',
     padding: 0,
+    borderRadius: radii.sm,
+  },
+  sizeIconXs: {
+    height: '1.75rem',
+    width: '1.75rem',
+    padding: 0,
+    borderRadius: radii.sm,
   },
   sizeIconSm: {
     height: '2rem',
     width: '2rem',
     padding: 0,
   },
+  sizeIconMd: {
+    height: '2.25rem',
+    width: '2.25rem',
+    padding: 0,
+  },
   sizeIconLg: {
     height: '2.5rem',
     width: '2.5rem',
     padding: 0,
+  },
+  sizeIconXl: {
+    height: '2.75rem',
+    width: '2.75rem',
+    padding: 0,
+  },
+  sizeIconXxl: {
+    height: '3.25rem',
+    width: '3.25rem',
+    padding: 0,
+  },
+
+  // Prefix / Suffix wrappers & icon sizes
+  addonWrapper: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  iconGlyphXxs: {
+    width: '0.75rem',
+    height: '0.75rem',
+  },
+  iconGlyphXs: {
+    width: '0.875rem',
+    height: '0.875rem',
+  },
+  iconGlyphSm: {
+    width: '1rem',
+    height: '1rem',
+  },
+  iconGlyphMd: {
+    width: '1.125rem',
+    height: '1.125rem',
+  },
+  iconGlyphLg: {
+    width: '1.25rem',
+    height: '1.25rem',
+  },
+  iconGlyphXl: {
+    width: '1.375rem',
+    height: '1.375rem',
+  },
+  iconGlyphXxl: {
+    width: '1.5rem',
+    height: '1.5rem',
+  },
+
+  // Built-in spinner
+  spinner: {
+    animationName: spin,
+    animationDuration: '1s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+    borderRadius: radii.full,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: 'currentColor',
+    borderTopColor: 'transparent',
+    flexShrink: 0,
   },
 });
 
@@ -192,55 +305,201 @@ const variantStyles: Record<ButtonVariant, stylex.StyleXStyles> = {
 };
 
 const sizeStyles: Record<ButtonSize, stylex.StyleXStyles> = {
-  default: styles.sizeDefault,
+  xxs: styles.sizeXxs,
+  xs: styles.sizeXs,
   sm: styles.sizeSm,
+  md: styles.sizeMd,
   lg: styles.sizeLg,
   xl: styles.sizeXl,
-  '2xl': styles.size2xl,
-  icon: styles.sizeIcon,
+  xxl: styles.sizeXxl,
+  // Backward compatibility aliases
+  default: styles.sizeMd,
+  '2xl': styles.sizeXxl,
+  // Icon button sizes
+  icon: styles.sizeIconMd,
+  'icon-xxs': styles.sizeIconXxs,
+  'icon-xs': styles.sizeIconXs,
   'icon-sm': styles.sizeIconSm,
+  'icon-md': styles.sizeIconMd,
   'icon-lg': styles.sizeIconLg,
+  'icon-xl': styles.sizeIconXl,
+  'icon-xxl': styles.sizeIconXxl,
 };
 
-export interface ButtonProps extends React.ComponentProps<'button'> {
+const iconGlyphStyles: Record<ComponentSize, stylex.StyleXStyles> = {
+  xxs: styles.iconGlyphXxs,
+  xs: styles.iconGlyphXs,
+  sm: styles.iconGlyphSm,
+  md: styles.iconGlyphMd,
+  lg: styles.iconGlyphLg,
+  xl: styles.iconGlyphXl,
+  xxl: styles.iconGlyphXxl,
+};
+
+const defaultIconSizeForButton: Record<string, ComponentSize> = {
+  xxs: 'xxs',
+  xs: 'xs',
+  sm: 'sm',
+  md: 'sm',
+  default: 'sm',
+  lg: 'md',
+  xl: 'lg',
+  xxl: 'xl',
+  '2xl': 'xl',
+  icon: 'md',
+  'icon-xxs': 'xxs',
+  'icon-xs': 'xs',
+  'icon-sm': 'sm',
+  'icon-md': 'md',
+  'icon-lg': 'lg',
+  'icon-xl': 'xl',
+  'icon-xxl': 'xxl',
+};
+
+export interface ButtonProps extends Omit<React.ComponentProps<'button'>, 'prefix'> {
   variant?: ButtonVariant;
+  /** Size tier across 7-tier scale ('xxs' to 'xxl') or icon sizing */
   size?: ButtonSize;
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
+  /** Prefix icon or ReactNode content placed before button text */
+  prefix?: ReactNode;
+  /** Alias for `prefix` */
+  prefixIcon?: ReactNode;
+  /** Suffix icon or ReactNode content placed after button text */
+  suffix?: ReactNode;
+  /** Alias for `suffix` */
+  suffixIcon?: ReactNode;
+  /** Override size of prefix/suffix icon independently of button size across 7 tiers */
+  iconSize?: ComponentSize;
+  /** Override prefix size specifically */
+  prefixSize?: ComponentSize;
+  /** Override suffix size specifically */
+  suffixSize?: ComponentSize;
+  /** Displays a loading spinner and disables interaction */
+  isLoading?: boolean;
+  /** Alias for `isLoading` */
+  loading?: boolean;
 }
 
 function Button({
   className,
   variant = 'default',
-  size = 'default',
+  size = 'md',
   asChild = false,
+  prefix,
+  prefixIcon,
+  suffix,
+  suffixIcon,
+  iconSize,
+  prefixSize,
+  suffixSize,
+  isLoading,
+  loading,
+  disabled,
+  children,
   sx,
   ...props
 }: ButtonProps) {
+  const isPending = isLoading ?? loading ?? false;
+  const isDisabled = disabled || isPending;
   const Comp = asChild ? Slot : 'button';
-  const sxProps = stylex.props(styles.base, variantStyles[variant], sizeStyles[size], sx);
+
+  const resolvedSize = size === 'default' ? 'md' : size;
+  const currentSizeStyle = sizeStyles[resolvedSize] ?? styles.sizeMd;
+
+  const defaultIconTier = defaultIconSizeForButton[resolvedSize] ?? 'sm';
+  const resolvedPrefixSize = prefixSize ?? iconSize ?? defaultIconTier;
+  const resolvedSuffixSize = suffixSize ?? iconSize ?? defaultIconTier;
+
+  const resolvedPrefix = prefix ?? prefixIcon;
+  const resolvedSuffix = suffix ?? suffixIcon;
+
+  const sxProps = stylex.props(
+    styles.base,
+    variantStyles[variant] ?? styles.variantDefault,
+    currentSizeStyle,
+    sx,
+  );
+
+  const mergedClassName = className
+    ? `${sxProps.className || ''} ${className}`.trim()
+    : sxProps.className;
+
+  if (asChild) {
+    return (
+      <Comp
+        data-slot="button"
+        data-variant={variant}
+        data-size={resolvedSize}
+        disabled={isDisabled}
+        {...sxProps}
+        className={mergedClassName}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+  }
 
   return (
-    <Comp
+    <button
+      type="button"
       data-slot="button"
       data-variant={variant}
-      data-size={size}
+      data-size={resolvedSize}
+      disabled={isDisabled}
       {...sxProps}
-      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+      className={mergedClassName}
       {...props}
-    />
+    >
+      {isPending ? (
+        <span
+          {...stylex.props(
+            styles.addonWrapper,
+            styles.spinner,
+            iconGlyphStyles[resolvedPrefixSize],
+          )}
+          aria-hidden="true"
+        />
+      ) : resolvedPrefix ? (
+        <span
+          {...stylex.props(styles.addonWrapper, iconGlyphStyles[resolvedPrefixSize])}
+          data-slot="button-prefix"
+        >
+          {resolvedPrefix}
+        </span>
+      ) : null}
+
+      {children}
+
+      {resolvedSuffix && !isPending ? (
+        <span
+          {...stylex.props(styles.addonWrapper, iconGlyphStyles[resolvedSuffixSize])}
+          data-slot="button-suffix"
+        >
+          {resolvedSuffix}
+        </span>
+      ) : null}
+    </button>
   );
 }
 
-// Transitional variant helper
 function buttonVariants(options?: {
   variant?: ButtonVariant;
   size?: ButtonSize;
   className?: string;
 }) {
   const v = options?.variant || 'default';
-  const s = options?.size || 'default';
-  return stylex.props(styles.base, variantStyles[v], sizeStyles[s]).className || '';
+  const s = options?.size || 'md';
+  const resolvedSize = s === 'default' ? 'md' : s;
+  return (
+    stylex.props(
+      styles.base,
+      variantStyles[v] ?? styles.variantDefault,
+      sizeStyles[resolvedSize] ?? styles.sizeMd,
+    ).className || ''
+  );
 }
 
 export { Button, buttonVariants };

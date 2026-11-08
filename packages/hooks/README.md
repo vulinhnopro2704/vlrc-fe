@@ -104,6 +104,56 @@ export function CourseManagement() {
 
 ---
 
+### `useUploadFile`
+
+A versatile file upload orchestrator hook supporting custom API backends, AWS S3 presigned URLs, and Cloudinary uploads with upload progress tracking, cancellation, and state management.
+
+#### Features
+
+- **Built-in Storage Adapters**: `createApiUploadHandler`, `createS3UploadHandler`, and `createCloudinaryUploadHandler`.
+- **Progress Tracking**: Granular per-file percentage tracking.
+- **Abort & Cancellation**: Native `AbortController` cancellation support.
+
+#### Example
+
+```tsx
+import { useUploadFile, createApiUploadHandler } from '@vlrc-fe/hooks';
+
+const uploadHandler = createApiUploadHandler({
+  endpoint: '/api/upload',
+  fieldName: 'file',
+});
+
+function FileUploader() {
+  const { onUpload, isUploading, progresses, uploadedFiles } = useUploadFile({
+    uploadHandler,
+    onSuccess: (files) => console.log('Uploaded successfully', files),
+  });
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.length) {
+      await onUpload(Array.from(e.target.files));
+    }
+  };
+
+  return (
+    <div>
+      <input type="file" multiple onChange={handleFileChange} disabled={isUploading} />
+      {isUploading && <p>Uploading...</p>}
+      <ul>
+        {uploadedFiles.map((file) => (
+          <li key={file.key}>
+            {file.name} - {file.url}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+---
+
 ## Scripts
 
 ```bash

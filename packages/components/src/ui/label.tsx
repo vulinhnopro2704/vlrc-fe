@@ -5,9 +5,9 @@ import { colors } from '../theme/tokens.stylex';
 
 const styles = stylex.create({
   base: {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
-    gap: '0.5rem',
+    gap: '0.125rem',
     fontSize: '0.875rem',
     lineHeight: 1,
     fontWeight: 500,

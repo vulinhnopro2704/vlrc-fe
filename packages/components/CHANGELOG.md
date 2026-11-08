@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-11-08
+
+### Added
+
+- **Typography Component Suite**: introduced comprehensive typographic primitives (`Title`, `Text`, `Paragraph`, `Blockquote`, `Link`, `Code`, `Kbd`) with full Meta StyleX semantic styling, color variants, weights, sizes, and truncation support.
+- **Enhanced FileUpload Ecosystem**:
+  - Pre-built layout variants (`avatar`, `compact`, `card`, `dropzone`) in `FileUpload` and `FormFileUpload`.
+  - Custom upload adapters (`createApiUploadHandler`, `createS3UploadHandler`, `createCloudinaryUploadHandler`) for seamless direct storage integration.
+  - Primitive composable components: `FileUploadDropzone`, `FileUploadList`, `FileUploadItem`, `FileUploadItemPreview`, `FileUploadItemMetadata`, `FileUploadItemProgress`, `FileUploadItemDelete`, `FileUploadClear`.
+  - Automatic and manual upload workflows with progress tracking, cancellation, and validation.
+- **Storybook Component Stories**: added interactive Storybook stories (`*.stories.tsx`) across UI primitives and form controls.
+- **Unit and Snapshot Test Coverage**: added test suites for `Typography`, `Accordion`, `Command`, `DropdownMenu`, `Tabs`, `Toggle`, `FileUpload`, and upload adapters.
+
+### Changed
+
+- **UI Component Refinements**: enhanced `ConfirmModal`, `DataTable`, `Button`, `Input`, `Textarea`, `Checkbox`, `Switch`, `DropdownMenu`, `Sheet`, `Drawer`, `Tabs`, `Toggle`, `ToggleGroup`, `Command`, `Breadcrumb`, `Accordion`, and `InputOTP` with atomic StyleX tokens and theme variables.
+
 ## [2.0.2] - 2026-11-06
 
 ### Changed

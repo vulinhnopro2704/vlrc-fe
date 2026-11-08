@@ -76,19 +76,19 @@ export function TimePicker({ value, onChange, timeConfig, disabledTime }: TimePi
     <div className="flex gap-1 p-1">
       {showHour && (
         <div className="flex flex-col items-center">
-          <span className="text-xs font-medium mb-1">Giờ</span>
+          <span className="text-xs font-medium mb-1">Hour</span>
           {renderTimeColumn('hour', 24, hourStep, hours, disabledHours)}
         </div>
       )}
       {showMinute && (
         <div className="flex flex-col items-center">
-          <span className="text-xs font-medium mb-1">Phút</span>
+          <span className="text-xs font-medium mb-1">Minute</span>
           {renderTimeColumn('minute', 60, minuteStep, minutes, disabledMinutes)}
         </div>
       )}
       {showSecond && (
         <div className="flex flex-col items-center">
-          <span className="text-xs font-medium mb-1">Giây</span>
+          <span className="text-xs font-medium mb-1">Second</span>
           {renderTimeColumn('second', 60, secondStep, seconds, disabledSeconds)}
         </div>
       )}

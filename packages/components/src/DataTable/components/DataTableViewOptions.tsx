@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { map } from 'lodash-es';
 import { ChevronDown } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
 import type { Table, VisibilityState } from '@tanstack/react-table';
+import { colors } from '../../theme/tokens.stylex';
 
 import { Button } from '../../ui/button';
 import {
@@ -10,6 +13,18 @@ import {
   DropdownMenuTrigger,
 } from '../../ui/dropdown-menu';
 
+const styles = stylex.create({
+  icon: {
+    width: 16,
+    height: 16,
+    marginLeft: 4,
+  },
+  triggerOpen: {
+    backgroundColor: colors.accent,
+    color: colors.accentForeground,
+  },
+});
+
 export const DataTableViewOptions = <TData,>({
   table,
   columnVisibility,
@@ -17,13 +32,14 @@ export const DataTableViewOptions = <TData,>({
   table: Table<TData>;
   columnVisibility: VisibilityState;
 }) => {
+  const [open, setOpen] = useState(false);
   const columns = table.getAllColumns().filter((c) => c.getCanHide());
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-          Columns <ChevronDown style={{ width: 16, height: 16, marginLeft: 4 }} />
+        <Button variant="outline" sx={open ? styles.triggerOpen : undefined}>
+          Columns <ChevronDown {...stylex.props(styles.icon)} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

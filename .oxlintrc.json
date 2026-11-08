@@ -6,7 +6,7 @@
     "browser": true,
     "es2020": true
   },
-  "ignorePatterns": ["**/dist/**", "**/node_modules/**"],
+  "ignorePatterns": ["**/dist/**", "**/node_modules/**", "**/*.stories.tsx"],
   "rules": {
     "no-unused-vars": "warn",
     "typescript/no-unused-vars": "warn",

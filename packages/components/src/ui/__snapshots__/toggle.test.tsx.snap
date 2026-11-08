@@ -1,0 +1,75 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Toggle > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Toggle italic"
+    aria-pressed="false"
+    class="toggle__toggleStyles.base xjyslct x1lugfcp x3nfvp2 x6s0dn4 xl56j7k xk50ysn x1ypdohk xng3xce x84br7x x29m08k xx6bhzk x1a2a7pz x87ps6o xuxw1ft x9f619 x165v80h x5ufdz3 xybh4k3 x7s97pk xaqnwrm xijokvz x1s07b3s toggle__toggleStyles.defaultVariant xjbqb8w xc342km toggle__toggleStyles.sizeMd xk8t5le x1ryrjj2 x1arx1u8 xkpwil5 xsda711 x13z6uf9"
+    data-size="md"
+    data-slot="toggle"
+    data-state="off"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:45; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-variant="default"
+    type="button"
+  >
+    B
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Toggle > UI > should match snapshot in outline variant 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Toggle italic"
+    aria-pressed="false"
+    class="toggle__toggleStyles.base xjyslct x1lugfcp x3nfvp2 x6s0dn4 xl56j7k xk50ysn x1ypdohk x84br7x x29m08k xx6bhzk x1a2a7pz x87ps6o xuxw1ft x9f619 xybh4k3 x7s97pk xaqnwrm xijokvz x1s07b3s toggle__toggleStyles.outlineVariant xmkeg23 x1y0btm7 xb30jbz xjbqb8w x1dsmnui x9p52ec x10ubyu6 toggle__toggleStyles.sizeMd xk8t5le x1ryrjj2 x1arx1u8 xkpwil5 xsda711 x13z6uf9"
+    data-size="md"
+    data-slot="toggle"
+    data-state="off"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:49; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-variant="outline"
+    type="button"
+  >
+    B
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Toggle > UI > should match snapshot when disabled 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Toggle italic"
+    aria-pressed="false"
+    class="toggle__toggleStyles.base xjyslct x1lugfcp x3nfvp2 x6s0dn4 xl56j7k xk50ysn x1ypdohk xng3xce x84br7x x29m08k xx6bhzk x1a2a7pz x87ps6o xuxw1ft x9f619 x165v80h x5ufdz3 xybh4k3 x7s97pk xaqnwrm xijokvz x1s07b3s toggle__toggleStyles.defaultVariant xjbqb8w xc342km toggle__toggleStyles.sizeMd xk8t5le x1ryrjj2 x1arx1u8 xkpwil5 xsda711 x13z6uf9"
+    data-disabled=""
+    data-size="md"
+    data-slot="toggle"
+    data-state="off"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:45; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-variant="default"
+    disabled=""
+    type="button"
+  >
+    B
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Toggle > UI > should match snapshot when pressed 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Toggle italic"
+    aria-pressed="true"
+    class="toggle__toggleStyles.base xjyslct x1lugfcp x3nfvp2 x6s0dn4 xl56j7k xk50ysn x1ypdohk xng3xce x84br7x x29m08k xx6bhzk x1a2a7pz x87ps6o xuxw1ft x9f619 x165v80h x5ufdz3 xybh4k3 x7s97pk xaqnwrm xijokvz x1s07b3s toggle__toggleStyles.defaultVariant xjbqb8w xc342km toggle__toggleStyles.sizeMd xk8t5le x1ryrjj2 x1arx1u8 xkpwil5 xsda711 x13z6uf9"
+    data-size="md"
+    data-slot="toggle"
+    data-state="on"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:45; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-variant="default"
+    type="button"
+  >
+    B
+  </button>
+</DocumentFragment>
+`;

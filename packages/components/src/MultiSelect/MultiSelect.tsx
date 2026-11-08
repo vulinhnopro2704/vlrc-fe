@@ -133,6 +133,7 @@ const MultiSelect: FunctionComponent<{
         <PopoverTrigger asChild>
           <Button
             ref={buttonRef}
+            variant="outline"
             {...buttonProps}
             onClick={handleTogglePopover}
             disabled={disabled}
@@ -181,7 +182,7 @@ const MultiSelect: FunctionComponent<{
           aria-multiselectable="true"
           aria-label="Available options"
           className={cn(
-            'w-auto p-0',
+            'w-auto p-0 touch-manipulation',
             popoverAnimationClass,
             screenSize === 'mobile' && 'w-[85vw] max-w-70',
             screenSize === 'tablet' && 'w-[70vw] max-w-md',
@@ -193,7 +194,6 @@ const MultiSelect: FunctionComponent<{
             animationDelay: `${animationConfig?.delay || 0}s`,
             maxWidth: `min(${widthConstraints.maxWidth}, 85vw)`,
             maxHeight: screenSize === 'mobile' ? '70vh' : '60vh',
-            touchAction: 'manipulation',
           }}
           align="start"
           onEscapeKeyDown={() => setIsPopoverOpen(false)}

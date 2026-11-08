@@ -6,5 +6,6 @@ dist-ssr
 .eslintcache
 .oxlintcache
 .pnpm-store
+storybook-static
 
 *.tgz

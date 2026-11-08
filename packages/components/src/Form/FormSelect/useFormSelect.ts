@@ -37,7 +37,7 @@ export function useFormSelect<
   const {
     options,
     injectOptions,
-    placeholder = 'Chọn...',
+    placeholder = 'Select...',
     description,
     disabled,
     isClearable = true,
@@ -84,11 +84,11 @@ export function useFormSelect<
       typeof newRules.required !== 'string' &&
       typeof newRules.required !== 'object'
     ) {
-      newRules.required = 'Trường này là bắt buộc';
+      newRules.required = 'This field is required';
     } else if (typeof newRules.required === 'object' && !newRules.required.message) {
       newRules.required = {
         ...newRules.required,
-        message: 'Trường này là bắt buộc',
+        message: 'This field is required',
       };
     }
     return newRules;

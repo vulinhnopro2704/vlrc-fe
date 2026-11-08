@@ -4,8 +4,9 @@ exports[`Spinner > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <svg
     aria-label="Loading"
-    class="lucide lucide-loader-circle spinner__styles.base xcdlrvm x1l36t39 x1aerksh x1q3qbx4 x1esw782 xa4qsjk"
-    data-style-src="@vlrc-fe/components:src/ui/spinner.tsx:11"
+    class="lucide lucide-loader-circle spinner__styles.base x1aerksh x1q3qbx4 x1esw782 xa4qsjk x2lah0s spinner__styles.sizeSm xcdlrvm x1l36t39"
+    data-size="sm"
+    data-style-src="@vlrc-fe/components:src/ui/spinner.tsx:12; @vlrc-fe/components:src/ui/spinner.tsx:27"
     fill="none"
     height="24"
     role="status"
@@ -28,8 +29,9 @@ exports[`Spinner > UI > should match snapshot with custom className 1`] = `
 <DocumentFragment>
   <svg
     aria-label="Loading"
-    class="lucide lucide-loader-circle spinner__styles.base xcdlrvm x1l36t39 x1aerksh x1q3qbx4 x1esw782 xa4qsjk custom-spinner-class"
-    data-style-src="@vlrc-fe/components:src/ui/spinner.tsx:11"
+    class="lucide lucide-loader-circle spinner__styles.base x1aerksh x1q3qbx4 x1esw782 xa4qsjk x2lah0s spinner__styles.sizeSm xcdlrvm x1l36t39 custom-spinner-class"
+    data-size="sm"
+    data-style-src="@vlrc-fe/components:src/ui/spinner.tsx:12; @vlrc-fe/components:src/ui/spinner.tsx:27"
     fill="none"
     height="24"
     role="status"

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
+import type { ComponentSize } from '../theme/types';
 
 /**
  * Base properties required for any form control connected to React Hook Form.
@@ -36,6 +37,24 @@ export type FormInputExtraProps = {
   leftIcon?: ReactNode;
   /** An icon element to display on the right side inside the input. */
   rightIcon?: ReactNode;
+  /** Prefix ReactNode content or icon */
+  prefix?: ReactNode;
+  /** Prefix icon element */
+  prefixIcon?: ReactNode;
+  /** Prefix button or interactive element */
+  prefixButton?: ReactNode;
+  /** Suffix ReactNode content or icon */
+  suffix?: ReactNode;
+  /** Suffix icon element */
+  suffixIcon?: ReactNode;
+  /** Suffix button or interactive element */
+  suffixButton?: ReactNode;
+  /** 7-tier sizing scale for input */
+  size?: ComponentSize;
+  /** Override size of inner button independently of input size */
+  buttonSize?: ComponentSize;
+  /** Override size of icon independently of input size */
+  iconSize?: ComponentSize;
   /** If true, the input will be disabled and cannot be interacted with. */
   disabled?: boolean;
   /** Specifies the autocomplete behavior of the input. */

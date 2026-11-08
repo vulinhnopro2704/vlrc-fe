@@ -3,11 +3,12 @@
 exports[`Button > UI > should match snapshot for 2xl size 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.size2xl xu15cu9 x1f78wua xw4edqq x1c3i2sq"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeXxl x1j7fsof x1f78wua x8233eu x129psgg x1c3i2sq"
     data-size="2xl"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:158"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:196"
     data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -17,11 +18,12 @@ exports[`Button > UI > should match snapshot for 2xl size 1`] = `
 exports[`Button > UI > should match snapshot for accent variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantAccent x1jgryid xzeqxs3 x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantAccent x1jgryid xzeqxs3 x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:100; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:118; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="accent"
+    type="button"
   >
     Click me
   </button>
@@ -31,11 +33,12 @@ exports[`Button > UI > should match snapshot for accent variant 1`] = `
 exports[`Button > UI > should match snapshot for accent-cta variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantAccentCta x1jgryid xzeqxs3 xe3tlyi x14snt5h x1ue318z button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantAccentCta x1jgryid xzeqxs3 xe3tlyi x14snt5h x1ue318z button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:107; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:125; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="accent-cta"
+    type="button"
   >
     Click me
   </button>
@@ -45,11 +48,12 @@ exports[`Button > UI > should match snapshot for accent-cta variant 1`] = `
 exports[`Button > UI > should match snapshot for default size 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -59,11 +63,12 @@ exports[`Button > UI > should match snapshot for default size 1`] = `
 exports[`Button > UI > should match snapshot for default variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -73,11 +78,12 @@ exports[`Button > UI > should match snapshot for default variant 1`] = `
 exports[`Button > UI > should match snapshot for destructive variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s button__styles.variantDestructive x57dptr x1f7m26b x18uuni6 xi3z2r8 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s button__styles.variantDestructive x57dptr x1f7m26b x18uuni6 xi3z2r8 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:56; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:74; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="destructive"
+    type="button"
   >
     Click me
   </button>
@@ -87,11 +93,12 @@ exports[`Button > UI > should match snapshot for destructive variant 1`] = `
 exports[`Button > UI > should match snapshot for ghost variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:84; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="ghost"
+    type="button"
   >
     Click me
   </button>
@@ -101,11 +108,12 @@ exports[`Button > UI > should match snapshot for ghost variant 1`] = `
 exports[`Button > UI > should match snapshot for gradient variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGradient x1d6nh5w xstwp1q xq2yyqn xclktvd x1l46q3f button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGradient x1d6nh5w xstwp1q xq2yyqn xclktvd x1l46q3f button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:116; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:134; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="gradient"
+    type="button"
   >
     Click me
   </button>
@@ -115,11 +123,12 @@ exports[`Button > UI > should match snapshot for gradient variant 1`] = `
 exports[`Button > UI > should match snapshot for gradient-success variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGradientSuccess x14lf7vg x1f7m26b x1wvf0jk xclktvd x1cdh3jk button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGradientSuccess x14lf7vg x1f7m26b x1wvf0jk xclktvd x1cdh3jk button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:125; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:143; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="gradient-success"
+    type="button"
   >
     Click me
   </button>
@@ -129,11 +138,12 @@ exports[`Button > UI > should match snapshot for gradient-success variant 1`] = 
 exports[`Button > UI > should match snapshot for icon size 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIcon xk8t5le x1s4ejo4 x1717udv"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
     data-size="icon"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:164"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:222"
     data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -146,8 +156,24 @@ exports[`Button > UI > should match snapshot for icon-lg size 1`] = `
     class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconLg xwaiz5r xvm51jw x1717udv"
     data-size="icon-lg"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:174"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:227"
     data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon-md size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
+    data-size="icon-md"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:222"
+    data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -160,8 +186,69 @@ exports[`Button > UI > should match snapshot for icon-sm size 1`] = `
     class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconSm xettwda xs5h3dt x1717udv"
     data-size="icon-sm"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:169"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:217"
     data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon-xl size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconXl x12hms15 xb1qrhf x1717udv"
+    data-size="icon-xl"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:232"
+    data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon-xs size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv x1q0v2j7"
+    data-size="icon-xs"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:211"
+    data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon-xxl size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconXxl x1j7fsof x14cw3s8 x1717udv"
+    data-size="icon-xxl"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:237"
+    data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for icon-xxs size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeIconXxs xam5rvr xp8d6y2 x1717udv x1q0v2j7"
+    data-size="icon-xxs"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:205"
+    data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -171,11 +258,12 @@ exports[`Button > UI > should match snapshot for icon-sm size 1`] = `
 exports[`Button > UI > should match snapshot for lg size 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeLg xwaiz5r xsda711 xzsmjar"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeLg xwaiz5r xsda711 x13z6uf9 x1qhpy6z x6u19be"
     data-size="lg"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:148"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:182"
     data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -185,11 +273,27 @@ exports[`Button > UI > should match snapshot for lg size 1`] = `
 exports[`Button > UI > should match snapshot for link variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantLink xjbqb8w x6gpbkk x3pynha xt0b8zv button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantLink xjbqb8w x6gpbkk x3pynha xt0b8zv button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:92; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:110; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="link"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for md size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"
+    data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -199,11 +303,12 @@ exports[`Button > UI > should match snapshot for link variant 1`] = `
 exports[`Button > UI > should match snapshot for outline variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:66; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:84; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="outline"
+    type="button"
   >
     Click me
   </button>
@@ -213,11 +318,12 @@ exports[`Button > UI > should match snapshot for outline variant 1`] = `
 exports[`Button > UI > should match snapshot for secondary variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantSecondary xr2cb9l x2mg7mp x5z6fxw button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantSecondary xr2cb9l x2mg7mp x5z6fxw button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:77; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:95; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="secondary"
+    type="button"
   >
     Click me
   </button>
@@ -230,8 +336,9 @@ exports[`Button > UI > should match snapshot for sm size 1`] = `
     class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9"
     data-size="sm"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:141"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:168"
     data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -241,11 +348,57 @@ exports[`Button > UI > should match snapshot for sm size 1`] = `
 exports[`Button > UI > should match snapshot for xl size 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeXl x12hms15 x1f78wua xzsmjar"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeXl x12hms15 x1f78wua xb6y1gh xzsmjar x1jchvi3"
     data-size="xl"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:153"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:189"
     data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for xs size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeXs xb8l8e1 x1q0v2j7 xx7b8my xvpgqt4 xboafo0"
+    data-size="xs"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:161"
+    data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for xxl size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeXxl x1j7fsof x1f78wua x8233eu x129psgg x1c3i2sq"
+    data-size="xxl"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:196"
+    data-variant="default"
+    type="button"
+  >
+    Click me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button > UI > should match snapshot for xxs size 1`] = `
+<DocumentFragment>
+  <button
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeXxs xam5rvr x1q0v2j7 xvh977a x97vtpp x12lo8hy"
+    data-size="xxs"
+    data-slot="button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:154"
+    data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -255,11 +408,12 @@ exports[`Button > UI > should match snapshot for xl size 1`] = `
 exports[`Button > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="default"
+    type="button"
   >
     Click me
   </button>
@@ -269,12 +423,13 @@ exports[`Button > UI > should match snapshot in default state 1`] = `
 exports[`Button > UI > should match snapshot when disabled 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeDefault xk8t5le xnxx81d x18g2hj5"
-    data-size="default"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+    data-size="md"
     data-slot="button"
-    data-style-src="@vlrc-fe/components:src/ui/button.tsx:21; @vlrc-fe/components:src/ui/button.tsx:49; @vlrc-fe/components:src/ui/button.tsx:136"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"
     data-variant="default"
     disabled=""
+    type="button"
   >
     Click me
   </button>

@@ -29,7 +29,7 @@ const styles = stylex.create({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: 50,
+    zIndex: 51,
     display: 'grid',
     width: '100%',
     maxWidth: '32rem',

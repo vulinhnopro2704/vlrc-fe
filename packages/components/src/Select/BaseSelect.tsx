@@ -166,6 +166,21 @@ const styles = stylex.create({
     width: '0.75rem',
     height: '0.75rem',
   },
+  selectAllText: {
+    flex: '1 1 0%',
+  },
+  optionIcon: {
+    marginRight: '0.5rem',
+  },
+  optionLabel: {
+    flex: '1 1 0%',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
+  singleCheckIcon: {
+    color: colors.primary,
+  },
 });
 
 function isMultiProps<T extends SelectValue>(
@@ -186,7 +201,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
   const {
     options,
     injectOptions = [],
-    placeholder = 'Chọn...',
+    placeholder = 'Select...',
     isClearable = true,
     isSearchable = true,
     isLoading = false,
@@ -309,17 +324,22 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
     }
   };
 
+  const triggerProps = stylex.props(
+    styles.trigger,
+    open && styles.triggerOpen,
+    disabled && styles.triggerDisabled,
+  );
+  const mergedTriggerClassName = className
+    ? `${triggerProps.className || ''} ${className}`.trim()
+    : triggerProps.className;
+
   return (
     <Popover open={open} onOpenChange={disabled ? undefined : setOpen}>
       <PopoverTrigger asChild>
         <button
           type="button"
-          {...stylex.props(
-            styles.trigger,
-            open && styles.triggerOpen,
-            disabled && styles.triggerDisabled,
-          )}
-          className={className}
+          {...triggerProps}
+          className={mergedTriggerClassName}
           onClick={() => !disabled && setOpen((v) => !v)}
           disabled={disabled}
         >
@@ -349,7 +369,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
             <input
               ref={inputRef}
               {...stylex.props(styles.searchInput)}
-              placeholder="Tìm kiếm..."
+              placeholder="Search..."
               value={search}
               onChange={handleSearchChange}
               autoFocus
@@ -359,8 +379,8 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
         )}
         {isMulti && showSelectAll && !disabled && filteredOptions.length > 0 && (
           <div {...stylex.props(styles.selectAllRow)} onClick={handleSelectAll}>
-            <span style={{ flex: '1 1 0%' }}>
-              {selectedValues.length === filteredOptions.length ? 'Bỏ chọn tất cả' : 'Chọn tất cả'}
+            <span {...stylex.props(styles.selectAllText)}>
+              {selectedValues.length === filteredOptions.length ? 'Deselect all' : 'Select all'}
             </span>
             <span {...stylex.props(styles.placeholder)}>
               ({selectedValues.length}/{filteredOptions.length})
@@ -369,9 +389,9 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
         )}
         <div {...stylex.props(styles.optionsList)} onScroll={handleScroll}>
           {isLoading && allOptions.length === 0 ? (
-            <div {...stylex.props(styles.emptyNotice)}>Đang tải...</div>
+            <div {...stylex.props(styles.emptyNotice)}>Loading...</div>
           ) : filteredOptions.length === 0 ? (
-            <div {...stylex.props(styles.emptyNotice)}>Không có dữ liệu</div>
+            <div {...stylex.props(styles.emptyNotice)}>No data</div>
           ) : (
             <>
               {filteredOptions.map((opt) => {
@@ -386,17 +406,8 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
                     )}
                     onClick={() => handleSelect(opt.value)}
                   >
-                    {opt.icon && <span style={{ marginRight: '0.5rem' }}>{opt.icon}</span>}
-                    <span
-                      style={{
-                        flex: '1 1 0%',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {opt.label}
-                    </span>
+                    {opt.icon && <span {...stylex.props(styles.optionIcon)}>{opt.icon}</span>}
+                    <span {...stylex.props(styles.optionLabel)}>{opt.label}</span>
                     {isMulti && (
                       <span
                         {...stylex.props(
@@ -409,8 +420,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
                     )}
                     {!isMulti && isSelected && (
                       <Icons.CheckIcon
-                        {...stylex.props(styles.checkIcon)}
-                        style={{ color: 'var(--primary)' }}
+                        {...stylex.props(styles.checkIcon, styles.singleCheckIcon)}
                       />
                     )}
                   </div>
@@ -418,7 +428,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
               })}
               {(isFetchingNextPage || (hasNextPage && filteredOptions.length > 0)) && (
                 <div {...stylex.props(styles.emptyNotice)}>
-                  {isFetchingNextPage ? 'Đang tải thêm...' : ''}
+                  {isFetchingNextPage ? 'Loading more...' : ''}
                 </div>
               )}
             </>

@@ -28,12 +28,32 @@ describe('Input', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it.each([['text' as const], ['password' as const], ['email' as const], ['number' as const]])(
-      'should match snapshot for type %s',
-      (type) => {
-        const { asFragment } = render(<Input {...createDefaultProps({ type })} />);
-        expect(asFragment()).toMatchSnapshot();
-      },
-    );
+    it.each([
+      ['xxs' as const],
+      ['xs' as const],
+      ['sm' as const],
+      ['md' as const],
+      ['lg' as const],
+      ['xl' as const],
+      ['xxl' as const],
+    ])('should match snapshot for size %s', (size) => {
+      const { asFragment } = render(<Input {...createDefaultProps({ size })} />);
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('should render prefix and suffix addons with separate button size', () => {
+      const { getByTestId, getByText } = render(
+        <Input
+          prefixIcon={<span data-testid="search-icon">🔍</span>}
+          suffixButton={<button data-testid="clear-btn">Clear</button>}
+          size="lg"
+          buttonSize="xs"
+          iconSize="sm"
+        />,
+      );
+      expect(getByTestId('search-icon')).toBeInTheDocument();
+      expect(getByTestId('clear-btn')).toBeInTheDocument();
+      expect(getByText('Clear')).toBeInTheDocument();
+    });
   });
 });

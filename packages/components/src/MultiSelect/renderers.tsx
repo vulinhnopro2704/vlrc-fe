@@ -79,16 +79,9 @@ export const SelectedValuesContent = ({
     <div
       className={cn(
         'flex items-center gap-1',
-        singleLine ? 'overflow-x-auto multiselect-singleline-scroll' : 'flex-wrap',
+        singleLine ? 'overflow-x-auto multiselect-singleline-scroll pb-1' : 'flex-wrap',
         responsiveSettings.compactMode && 'gap-0.5',
       )}
-      style={
-        singleLine
-          ? {
-              paddingBottom: '4px',
-            }
-          : {}
-      }
     >
       {selectedValues
         .slice(0, responsiveSettings.maxCount)
@@ -112,6 +105,7 @@ export const SelectedValuesContent = ({
           return (
             <Badge
               key={value}
+              variant={(variant as any) || 'secondary'}
               className={cn(
                 badgeAnimationClass,
                 multiSelectVariants({ variant }),

@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Controller, type FieldValues, type RegisterOptions } from 'react-hook-form';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
+import type { ComponentSize } from '../theme/types';
 import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../ui/field';
 import { Select, SelectContent, SelectTrigger, SelectValue } from '../ui/select';
 import { Input } from '../ui/input';
@@ -11,6 +12,7 @@ import { Checkbox } from '../ui/checkbox';
 import type { FormBaseProps, FormControlFunc, FormInputExtraProps } from './types';
 import type { FieldPath } from 'react-hook-form';
 import Icons from '../Icons';
+import { Text } from '../Typography';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^(0|\+84)(3|5|7|8|9)[0-9]{8}$/;
@@ -48,7 +50,11 @@ const getAutoComplete = (name: string, htmlType?: string) => {
 const styles = stylex.create({
   requiredAsterisk: {
     color: colors.destructive,
-    marginLeft: '0.25rem',
+    marginLeft: '0.1875rem',
+    display: 'inline-block',
+    lineHeight: 1,
+    fontSize: '0.875rem',
+    userSelect: 'none',
   },
   inputWrapper: {
     position: 'relative',
@@ -122,13 +128,13 @@ export function FormBase<
     if (htmlType === 'email' && !rules?.pattern) {
       autoRules.pattern = {
         value: EMAIL_PATTERN,
-        message: 'Email không hợp lệ',
+        message: 'Invalid email address',
       };
     }
     if (htmlType === 'tel' && !rules?.pattern) {
       autoRules.pattern = {
         value: PHONE_PATTERN,
-        message: 'Số điện thoại không hợp lệ',
+        message: 'Invalid phone number',
       };
     }
 
@@ -139,11 +145,11 @@ export function FormBase<
         if (!rules.required.message) {
           autoRules.required = {
             ...rules.required,
-            message: 'Trường này là bắt buộc',
+            message: 'This field is required',
           };
         }
       } else {
-        autoRules.required = 'Trường này là bắt buộc';
+        autoRules.required = 'This field is required';
       }
     }
 
@@ -160,8 +166,9 @@ export function FormBase<
           <>
             {label && (
               <FieldLabel htmlFor={field.name}>
-                {label}
-                {rules?.required && <span {...stylex.props(styles.requiredAsterisk)}>*</span>}
+                <Text as="span" weight="medium" size="sm" required={Boolean(rules?.required)}>
+                  {label}
+                </Text>
               </FieldLabel>
             )}
             {description && <FieldDescription>{description}</FieldDescription>}
@@ -207,6 +214,15 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   inputClassName,
   leftIcon,
   rightIcon,
+  prefix,
+  prefixIcon,
+  prefixButton,
+  suffix,
+  suffixIcon,
+  suffixButton,
+  size,
+  buttonSize,
+  iconSize,
   disabled,
   autoComplete,
   ...props
@@ -215,41 +231,45 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   const isPassword = props.htmlType === 'password';
   const resolvedAutoComplete = autoComplete ?? getAutoComplete(String(props.name), props.htmlType);
 
+  const resolvedPrefix = prefix ?? prefixIcon ?? leftIcon;
+  const resolvedSuffix = suffix ?? suffixIcon ?? rightIcon;
+
+  const passwordSuffixButton = isPassword ? (
+    <Button
+      type="button"
+      variant="ghost"
+      size={buttonSize ? (`icon-${buttonSize}` as any) : 'icon-sm'}
+      onClick={() => setShowPassword(!showPassword)}
+      tabIndex={-1}
+    >
+      {showPassword ? (
+        <Icons.EyeOff {...stylex.props(styles.iconSize)} />
+      ) : (
+        <Icons.Eye {...stylex.props(styles.iconSize)} />
+      )}
+    </Button>
+  ) : undefined;
+
+  const resolvedSuffixButton = suffixButton ?? passwordSuffixButton;
+
   return (
     <FormBase {...props}>
       {(field) => (
-        <div {...stylex.props(styles.inputWrapper)}>
-          {leftIcon && <div {...stylex.props(styles.leftIcon)}>{leftIcon}</div>}
-          <Input
-            {...field}
-            type={isPassword && showPassword ? 'text' : props.htmlType}
-            autoComplete={resolvedAutoComplete}
-            placeholder={placeholder}
-            disabled={disabled}
-            className={inputClassName}
-            sx={[
-              leftIcon ? styles.inputWithLeftIcon : undefined,
-              isPassword || rightIcon ? styles.inputWithRightIcon : undefined,
-            ]}
-          />
-          {isPassword && (
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon-sm"
-              onClick={() => setShowPassword(!showPassword)}
-              sx={styles.passwordToggle}
-              tabIndex={-1}
-            >
-              {showPassword ? (
-                <Icons.EyeOff {...stylex.props(styles.iconSize)} />
-              ) : (
-                <Icons.Eye {...stylex.props(styles.iconSize)} />
-              )}
-            </Button>
-          )}
-          {!isPassword && rightIcon && <div {...stylex.props(styles.rightIcon)}>{rightIcon}</div>}
-        </div>
+        <Input
+          {...field}
+          type={isPassword && showPassword ? 'text' : props.htmlType}
+          autoComplete={resolvedAutoComplete}
+          placeholder={placeholder}
+          disabled={disabled}
+          size={size}
+          buttonSize={buttonSize}
+          iconSize={iconSize}
+          prefix={resolvedPrefix}
+          prefixButton={prefixButton}
+          suffix={resolvedSuffix}
+          suffixButton={resolvedSuffixButton}
+          className={inputClassName}
+        />
       )}
     </FormBase>
   );
@@ -277,11 +297,21 @@ export const FormSimpleSelect: FormControlFunc<{ children: ReactNode }> = ({
   );
 };
 
-export const FormCheckbox: FormControlFunc<{ disabled?: boolean }> = ({ disabled, ...props }) => {
+export const FormCheckbox: FormControlFunc<{ disabled?: boolean; size?: ComponentSize }> = ({
+  disabled,
+  size = 'md',
+  ...props
+}) => {
   return (
     <FormBase {...props} horizontal controlFirst>
       {({ onChange, value, ...field }) => (
-        <Checkbox {...field} checked={value} onCheckedChange={onChange} disabled={disabled} />
+        <Checkbox
+          {...field}
+          checked={value}
+          onCheckedChange={onChange}
+          disabled={disabled}
+          size={size}
+        />
       )}
     </FormBase>
   );
