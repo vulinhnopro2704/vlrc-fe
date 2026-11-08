@@ -1,6 +1,6 @@
 {
   "name": "vlrc-fe-monorepo",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "private": true,
   "description": "Monorepo for VLRC Frontend reusable component and hook libraries",
   "homepage": "https://github.com/vulinhnopro2704/vlrc-fe#readme",

@@ -14,7 +14,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@vlrc-fe/components": ["../../packages/components/src/index.ts"],
+      "@vlrc-fe/components/*": ["../../packages/components/src/*"],
+      "@vlrc-fe/hooks": ["../../packages/hooks/src/index.ts"],
+      "@vlrc-fe/hooks/*": ["../../packages/hooks/src/*"]
+    }
   },
   "include": ["src"]
 }
