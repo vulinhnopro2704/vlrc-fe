@@ -30,15 +30,19 @@ pnpm install
 
 ### 2. Available Scripts
 
-| Command           | Description                                                           |
-| :---------------- | :-------------------------------------------------------------------- |
-| `pnpm docs:dev`   | Start the interactive component playground at `http://localhost:3000` |
-| `pnpm build`      | Build all library packages and emit TypeScript declarations           |
-| `pnpm docs:build` | Build the playground documentation app                                |
-| `pnpm test`       | Run Vitest unit tests                                                 |
-| `pnpm typecheck`  | Run TypeScript check across all packages without emitting files       |
-| `pnpm lint`       | Run ESLint checks across the monorepo                                 |
-| `pnpm changeset`  | Create a new changeset for your pull request                          |
+| Command                | Description                                                     |
+| :--------------------- | :-------------------------------------------------------------- |
+| `pnpm storybook`       | Start Storybook component playground at `http://localhost:6006` |
+| `pnpm build-storybook` | Build static Storybook site for deployment                      |
+| `pnpm docs:dev`        | Start the documentation playground at `http://localhost:3000`   |
+| `pnpm build`           | Build all library packages and emit TypeScript declarations     |
+| `pnpm test`            | Run Vitest unit tests                                           |
+| `pnpm typecheck`       | Run TypeScript check across all packages without emitting files |
+| `pnpm lint`            | Run Oxlint checks across the monorepo                           |
+| `pnpm format`          | Run Oxfmt code formatter                                        |
+| `pnpm changeset`       | Create a new changeset for your pull request                    |
+
+> 🌐 **Live Storybook**: Deployed automatically to GitHub Pages at [https://vulinhnopro2704.github.io/vlrc-fe/](https://vulinhnopro2704.github.io/vlrc-fe/) on push to `main`.
 
 ---
 

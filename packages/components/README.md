@@ -4,11 +4,13 @@
 [![React 19](https://img.shields.io/badge/React-19.3-blue.svg?style=flat-square)](https://react.dev/)
 [![TypeScript 7](https://img.shields.io/badge/TypeScript-7.0-blue.svg?style=flat-square)](https://www.typescriptlang.org/)
 [![StyleX](https://img.shields.io/badge/Styling-Meta%20StyleX-purple.svg?style=flat-square)](https://stylexjs.com/)
+[![Storybook](https://img.shields.io/badge/Storybook-Live%20Demo-ff4785.svg?style=flat-square&logo=storybook)](https://vulinhnopro2704.github.io/vlrc-fe/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](../../LICENSE)
 
 Accessible, performant React UI component library built with **Meta StyleX**, **Radix UI**, and **React Hook Form**. Ships compile-time atomic CSS with zero runtime style injection.
 
 - **npm**: [npmjs.com/package/@vlrc-fe/components](https://www.npmjs.com/package/@vlrc-fe/components)
+- **Live Storybook**: [vulinhnopro2704.github.io/vlrc-fe](https://vulinhnopro2704.github.io/vlrc-fe/)
 
 ---
 
@@ -62,6 +64,19 @@ Import the compiled StyleX CSS in your entry file:
 ```ts
 import '@vlrc-fe/components/stylex.css';
 ```
+
+---
+
+## Storybook & Interactive Playground
+
+All components can be tested and inspected directly with controls and themes:
+
+- **Online Playground**: [https://vulinhnopro2704.github.io/vlrc-fe/](https://vulinhnopro2704.github.io/vlrc-fe/)
+- **Local Dev Server**:
+  ```bash
+  pnpm storybook
+  ```
+  Runs at `http://localhost:6006` with hot module reloading across all component stories.
 
 ---
 
