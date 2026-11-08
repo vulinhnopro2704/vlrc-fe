@@ -54,7 +54,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Ensure git tags are created and pushed
-        if: steps.changesets.outputs.published == 'true'
+        if: always()
         run: |
           pnpm changeset git-tag || true
           git push --tags || true
