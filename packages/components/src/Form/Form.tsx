@@ -2,14 +2,21 @@ import { useState, type ReactNode } from 'react';
 import { Controller, type FieldValues, type RegisterOptions } from 'react-hook-form';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
-import type { ComponentSize } from '../theme/types';
 import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../ui/field';
 import { Select, SelectContent, SelectTrigger, SelectValue } from '../ui/select';
 import { Input } from '../ui/input';
-import { Button } from '../ui/button';
-import { Textarea, type TextareaProps } from '../ui/textarea';
+import { Button, type ButtonProps } from '../ui/button';
+import { Textarea } from '../ui/textarea';
 import { Checkbox } from '../ui/checkbox';
-import type { FormBaseProps, FormControlFunc, FormInputExtraProps } from './types';
+import { Switch } from '../ui/switch';
+import type {
+  FormBaseProps,
+  FormControlFunc,
+  FormInputExtraProps,
+  FormTextareaExtraProps,
+  FormCheckboxExtraProps,
+  FormSwitchExtraProps,
+} from './types';
 import type { FieldPath } from 'react-hook-form';
 import Icons from '../Icons';
 import { Text } from '../Typography';
@@ -210,8 +217,9 @@ export function FormBase<
 }
 
 export const FormInput: FormControlFunc<FormInputExtraProps> = ({
-  placeholder,
   inputClassName,
+  wrapperClassName,
+  className,
   leftIcon,
   rightIcon,
   prefix,
@@ -220,16 +228,18 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   suffix,
   suffixIcon,
   suffixButton,
-  size,
   buttonSize,
   iconSize,
-  disabled,
   autoComplete,
+  htmlType,
+  htmlSize,
+  sx,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const isPassword = props.htmlType === 'password';
-  const resolvedAutoComplete = autoComplete ?? getAutoComplete(String(props.name), props.htmlType);
+  const inputType = htmlType ?? props.type;
+  const isPassword = inputType === 'password';
+  const resolvedAutoComplete = autoComplete ?? getAutoComplete(String(props.name), inputType);
 
   const resolvedPrefix = prefix ?? prefixIcon ?? leftIcon;
   const resolvedSuffix = suffix ?? suffixIcon ?? rightIcon;
@@ -237,8 +247,9 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   const passwordSuffixButton = isPassword ? (
     <Button
       type="button"
+      htmlType="button"
       variant="ghost"
-      size={buttonSize ? (`icon-${buttonSize}` as any) : 'icon-sm'}
+      size={buttonSize ? (`icon-${buttonSize}` as ButtonProps['size']) : 'icon-sm'}
       onClick={() => setShowPassword(!showPassword)}
       tabIndex={-1}
     >
@@ -253,49 +264,55 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   const resolvedSuffixButton = suffixButton ?? passwordSuffixButton;
 
   return (
-    <FormBase {...props}>
+    <FormBase
+      name={props.name}
+      control={props.control}
+      label={props.label}
+      description={props.description}
+      rules={props.rules}
+      htmlType={inputType}
+      className={wrapperClassName}
+    >
       {(field) => (
         <Input
           {...field}
-          type={isPassword && showPassword ? 'text' : props.htmlType}
+          {...props}
+          type={isPassword && showPassword ? 'text' : inputType}
+          htmlType={isPassword && showPassword ? 'text' : inputType}
+          htmlSize={htmlSize}
           autoComplete={resolvedAutoComplete}
-          placeholder={placeholder}
-          disabled={disabled}
-          size={size}
           buttonSize={buttonSize}
           iconSize={iconSize}
           prefix={resolvedPrefix}
           prefixButton={prefixButton}
           suffix={resolvedSuffix}
           suffixButton={resolvedSuffixButton}
-          className={inputClassName}
+          className={inputClassName ?? className}
+          sx={sx}
         />
       )}
     </FormBase>
   );
 };
 
-export const FormTextarea: FormControlFunc<TextareaProps> = ({
-  size,
-  placeholder,
-  rows,
-  cols,
+export const FormTextarea: FormControlFunc<FormTextareaExtraProps> = ({
+  textareaClassName,
+  wrapperClassName,
   className,
   sx,
   ...props
 }) => {
   return (
-    <FormBase {...props}>
+    <FormBase
+      name={props.name}
+      control={props.control}
+      label={props.label}
+      description={props.description}
+      rules={props.rules}
+      className={wrapperClassName}
+    >
       {(field) => (
-        <Textarea
-          {...field}
-          size={size}
-          placeholder={placeholder}
-          rows={rows}
-          cols={cols}
-          className={className}
-          sx={sx}
-        />
+        <Textarea {...field} {...props} className={textareaClassName ?? className} sx={sx} />
       )}
     </FormBase>
   );
@@ -319,20 +336,72 @@ export const FormSimpleSelect: FormControlFunc<{ children: ReactNode }> = ({
   );
 };
 
-export const FormCheckbox: FormControlFunc<{ disabled?: boolean; size?: ComponentSize }> = ({
+export const FormCheckbox: FormControlFunc<FormCheckboxExtraProps> = ({
+  checkboxClassName,
+  wrapperClassName,
+  className,
+  sx,
   disabled,
   size = 'md',
   ...props
 }) => {
   return (
-    <FormBase {...props} horizontal controlFirst>
+    <FormBase
+      name={props.name}
+      control={props.control}
+      label={props.label}
+      description={props.description}
+      rules={props.rules}
+      horizontal
+      controlFirst
+      className={wrapperClassName}
+    >
       {({ onChange, value, ...field }) => (
         <Checkbox
           {...field}
+          {...props}
           checked={value}
           onCheckedChange={onChange}
           disabled={disabled}
           size={size}
+          className={checkboxClassName ?? className}
+          sx={sx}
+        />
+      )}
+    </FormBase>
+  );
+};
+
+export const FormSwitch: FormControlFunc<FormSwitchExtraProps> = ({
+  switchClassName,
+  wrapperClassName,
+  className,
+  sx,
+  disabled,
+  size = 'md',
+  ...props
+}) => {
+  return (
+    <FormBase
+      name={props.name}
+      control={props.control}
+      label={props.label}
+      description={props.description}
+      rules={props.rules}
+      horizontal
+      controlFirst
+      className={wrapperClassName}
+    >
+      {({ onChange, value, ...field }) => (
+        <Switch
+          {...field}
+          {...props}
+          checked={value}
+          onCheckedChange={onChange}
+          disabled={disabled}
+          size={size}
+          className={switchClassName ?? className}
+          sx={sx}
         />
       )}
     </FormBase>

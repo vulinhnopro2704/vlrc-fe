@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
-import type { ComponentSize } from '../theme/types';
+import type { InputProps } from '../ui/input';
+import type { TextareaProps } from '../ui/textarea';
+import type { CheckboxProps } from '../ui/checkbox';
+import type { SwitchProps } from '../ui/switch';
 
 /**
  * Base properties required for any form control connected to React Hook Form.
@@ -24,41 +27,59 @@ export type FormControlProps<
 };
 
 /**
- * Additional properties specific to standard text input components.
+ * Properties for standard text input form component, inheriting all HTML input and Input component attributes.
  */
-export type FormInputExtraProps = {
-  /** Placeholder text to display when the input is empty. */
-  placeholder?: string;
-  /** Additional CSS classes to apply to the wrapper element. */
-  className?: string;
-  /** Additional CSS classes to apply directly to the input element. */
-  inputClassName?: string;
-  /** An icon element to display on the left side inside the input. */
+export type FormInputExtraProps = Omit<
+  InputProps,
+  'name' | 'defaultValue' | 'value' | 'onChange' | 'onBlur' | 'ref'
+> & {
+  /** Left icon element alias for prefix */
   leftIcon?: ReactNode;
-  /** An icon element to display on the right side inside the input. */
+  /** Right icon element alias for suffix */
   rightIcon?: ReactNode;
-  /** Prefix ReactNode content or icon */
-  prefix?: ReactNode;
-  /** Prefix icon element */
-  prefixIcon?: ReactNode;
-  /** Prefix button or interactive element */
-  prefixButton?: ReactNode;
-  /** Suffix ReactNode content or icon */
-  suffix?: ReactNode;
-  /** Suffix icon element */
-  suffixIcon?: ReactNode;
-  /** Suffix button or interactive element */
-  suffixButton?: ReactNode;
-  /** 7-tier sizing scale for input */
-  size?: ComponentSize;
-  /** Override size of inner button independently of input size */
-  buttonSize?: ComponentSize;
-  /** Override size of icon independently of input size */
-  iconSize?: ComponentSize;
-  /** If true, the input will be disabled and cannot be interacted with. */
-  disabled?: boolean;
-  /** Specifies the autocomplete behavior of the input. */
-  autoComplete?: string;
+  /** Additional CSS classes to apply directly to the input element (vs wrapper className). */
+  inputClassName?: string;
+  /** Additional CSS classes to apply to the outermost field wrapper. */
+  wrapperClassName?: string;
+};
+
+/**
+ * Properties for textarea form component, inheriting all HTML textarea and Textarea component attributes.
+ */
+export type FormTextareaExtraProps = Omit<
+  TextareaProps,
+  'name' | 'defaultValue' | 'value' | 'onChange' | 'onBlur' | 'ref'
+> & {
+  /** Additional CSS classes to apply directly to the textarea element (vs wrapper className). */
+  textareaClassName?: string;
+  /** Additional CSS classes to apply to the outermost field wrapper. */
+  wrapperClassName?: string;
+};
+
+/**
+ * Properties for checkbox form component, inheriting all Radix checkbox attributes.
+ */
+export type FormCheckboxExtraProps = Omit<
+  CheckboxProps,
+  'name' | 'defaultChecked' | 'checked' | 'onCheckedChange' | 'ref'
+> & {
+  /** Additional CSS classes to apply directly to the checkbox element (vs wrapper className). */
+  checkboxClassName?: string;
+  /** Additional CSS classes to apply to the outermost field wrapper. */
+  wrapperClassName?: string;
+};
+
+/**
+ * Properties for switch form component, inheriting all Radix switch attributes.
+ */
+export type FormSwitchExtraProps = Omit<
+  SwitchProps,
+  'name' | 'defaultChecked' | 'checked' | 'onCheckedChange' | 'ref'
+> & {
+  /** Additional CSS classes to apply directly to the switch element (vs wrapper className). */
+  switchClassName?: string;
+  /** Additional CSS classes to apply to the outermost field wrapper. */
+  wrapperClassName?: string;
 };
 
 /**

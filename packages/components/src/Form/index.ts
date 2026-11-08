@@ -1,4 +1,4 @@
-export { FormInput, FormCheckbox, FormSimpleSelect, FormTextarea } from './Form';
+export { FormInput, FormCheckbox, FormSwitch, FormSimpleSelect, FormTextarea } from './Form';
 export { default as FormMultiSelect } from './FormMultiSelect';
 export { default as FormDatePicker } from './FormDatePicker';
 export { default as FormNumberInput } from './FormNumberInput';

@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2.1.4] - 2026-11-08
+
+### Added
+
+- **Form Controls Full HTML Props**: `FormInput`, `FormTextarea`, `FormCheckbox`, and `FormSwitch` now inherit and forward all native HTML and component props directly without requiring manual `FormField` boilerplate.
+- **FormSwitch**: exported `FormSwitch` form control component integrated with React Hook Form.
+- **HTML Collision Aliasing**: added `htmlSize` on `Input` / `FormInput` for conflicting native HTML `<input size={number}>` attribute, and `htmlType` on `Button` / `Input` for button and input types.
+- **Wrapper and Element ClassNames**: added `wrapperClassName`, `inputClassName`, `textareaClassName`, `checkboxClassName`, and `switchClassName` to form controls for clear styling separation.
+
 ## [2.1.3] - 2026-11-08
 
 ### Fixed

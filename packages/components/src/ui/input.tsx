@@ -332,6 +332,10 @@ export interface InputProps extends Omit<React.ComponentProps<'input'>, 'prefix'
   wrapperSx?: stylex.StyleXStyles;
   /** Custom class name applied to outer wrapper when prefix/suffix is present */
   wrapperClassName?: string;
+  /** HTML input type attribute alias */
+  htmlType?: string;
+  /** HTML input size attribute (number of characters) */
+  htmlSize?: number;
 }
 
 function Input({
@@ -350,11 +354,15 @@ function Input({
   wrapperClassName,
   disabled,
   sx,
+  htmlType,
+  htmlSize,
   ...props
 }: InputProps) {
   const isInvalid = props['aria-invalid'] === true || props['aria-invalid'] === 'true';
   const resolvedSize = size;
   const currentSizeStyle = sizeStyles[resolvedSize] ?? styles.sizeMd;
+
+  const resolvedType = htmlType ?? type;
 
   const resolvedPrefixIcon = prefixIcon ?? prefix;
   const resolvedSuffixIcon = suffixIcon ?? suffix;
@@ -373,10 +381,11 @@ function Input({
 
     return (
       <input
-        type={type}
+        type={resolvedType}
         data-slot="input"
         data-size={resolvedSize}
         disabled={disabled}
+        size={htmlSize}
         {...sxProps}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
@@ -427,10 +436,11 @@ function Input({
       ) : null}
 
       <input
-        type={type}
+        type={resolvedType}
         data-slot="input"
         data-size={resolvedSize}
         disabled={disabled}
+        size={htmlSize}
         {...inputSxProps}
         className={mergedInputClass}
         {...props}

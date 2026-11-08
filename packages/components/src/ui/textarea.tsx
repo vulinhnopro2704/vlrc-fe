@@ -97,7 +97,7 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.sizeXxl,
 };
 
-export interface TextareaProps extends Omit<React.ComponentProps<'textarea'>, 'size'> {
+export interface TextareaProps extends React.ComponentProps<'textarea'> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;

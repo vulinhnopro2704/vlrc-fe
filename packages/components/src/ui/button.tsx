@@ -380,10 +380,13 @@ export interface ButtonProps extends Omit<React.ComponentProps<'button'>, 'prefi
   isLoading?: boolean;
   /** Alias for `isLoading` */
   loading?: boolean;
+  /** HTML button type attribute alias */
+  htmlType?: 'button' | 'submit' | 'reset';
 }
 
 function Button({
   className,
+  type,
   variant = 'default',
   size = 'md',
   asChild = false,
@@ -397,12 +400,14 @@ function Button({
   isLoading,
   loading,
   disabled,
+  htmlType,
   children,
   sx,
   ...props
 }: ButtonProps) {
   const isPending = isLoading ?? loading ?? false;
-  const isDisabled = disabled || isPending;
+  const isDisabled = disabled ?? isPending;
+  const resolvedType = htmlType ?? type ?? 'button';
   const Comp = asChild ? Slot : 'button';
 
   const resolvedSize = size === 'default' ? 'md' : size;
@@ -444,7 +449,7 @@ function Button({
 
   return (
     <button
-      type="button"
+      type={resolvedType}
       data-slot="button"
       data-variant={variant}
       data-size={resolvedSize}
