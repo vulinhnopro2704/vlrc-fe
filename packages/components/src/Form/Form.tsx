@@ -7,7 +7,7 @@ import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '.
 import { Select, SelectContent, SelectTrigger, SelectValue } from '../ui/select';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import { Textarea } from '../ui/textarea';
+import { Textarea, type TextareaProps } from '../ui/textarea';
 import { Checkbox } from '../ui/checkbox';
 import type { FormBaseProps, FormControlFunc, FormInputExtraProps } from './types';
 import type { FieldPath } from 'react-hook-form';
@@ -275,8 +275,30 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   );
 };
 
-export const FormTextarea: FormControlFunc = (props) => {
-  return <FormBase {...props}>{(field) => <Textarea {...field} />}</FormBase>;
+export const FormTextarea: FormControlFunc<TextareaProps> = ({
+  size,
+  placeholder,
+  rows,
+  cols,
+  className,
+  sx,
+  ...props
+}) => {
+  return (
+    <FormBase {...props}>
+      {(field) => (
+        <Textarea
+          {...field}
+          size={size}
+          placeholder={placeholder}
+          rows={rows}
+          cols={cols}
+          className={className}
+          sx={sx}
+        />
+      )}
+    </FormBase>
+  );
 };
 
 export const FormSimpleSelect: FormControlFunc<{ children: ReactNode }> = ({

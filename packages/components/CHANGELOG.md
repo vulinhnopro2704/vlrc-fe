@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2.1.3] - 2026-11-08
+
+### Fixed
+
+- **FormTextarea Type Definition**: updated `FormTextarea` to accept `TextareaProps` (`placeholder`, `rows`, `cols`, etc.) and loosened `FormControlFunc` generic constraint.
+
 ## [2.1.2] - 2026-11-08
 
 ### Added

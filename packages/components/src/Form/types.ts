@@ -102,7 +102,7 @@ export type FormBaseProps<
  *
  * @template ExtraProps Additional props specific to the UI component being wrapped.
  */
-export type FormControlFunc<ExtraProps extends Record<string, unknown> = Record<never, never>> = <
+export type FormControlFunc<ExtraProps extends object = Record<never, never>> = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TTransformedValues = TFieldValues,
