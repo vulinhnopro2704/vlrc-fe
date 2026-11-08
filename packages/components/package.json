@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Accessible React UI components built with Meta StyleX, Radix UI, and React Hook Form.",
   "keywords": [
     "accessible",

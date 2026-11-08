@@ -1,21 +1,23 @@
 import React, { useState, type ReactNode } from 'react';
 import { vi } from 'date-fns/locale';
-import { CalendarIcon, Clock } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 
+import Icons from '../../Icons';
 import { colors } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
+import { Text } from '../../Typography';
 import { resolveWidth, type ComponentWidth } from '../../theme/width';
 import { Calendar } from '../../ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
-import type {
-  DatePickerSize,
-  DatePickerStatus,
-  DisabledTime,
-  PickerType,
-  TimeConfig,
+import {
+  resolveDatePickerSize,
+  type DatePickerSize,
+  type DatePickerStatus,
+  type DisabledTime,
+  type PickerType,
+  type TimeConfig,
 } from './types';
-import { formatDateValue } from './useFormDatePicker';
+import { formatDateValue, getDefaultFormat } from './useFormDatePicker';
 import TimeInput from './TimeInput';
 import TimePicker from './TimePicker';
 
@@ -24,26 +26,11 @@ const styles = stylex.create({
     justifyContent: 'space-between',
     fontWeight: 400,
   },
-  sizeSmall: {
-    height: '2rem',
-    fontSize: '0.75rem',
-  },
-  sizeMedium: {
-    height: '2.5rem',
-    fontSize: '0.875rem',
-  },
-  sizeLarge: {
-    height: '3rem',
-    fontSize: '1rem',
-  },
   statusError: {
     borderColor: colors.destructive,
   },
   statusWarning: {
     borderColor: '#eab308',
-  },
-  mutedText: {
-    color: colors.mutedForeground,
   },
   fullWidth: {
     width: '100%',
@@ -84,11 +71,11 @@ const styles = stylex.create({
   },
 });
 
-interface SingleDatePickerProps {
+export interface StandaloneDatePickerProps {
   value?: Date;
-  onChange: (date: Date | undefined) => void;
+  onChange?: (date: Date | undefined) => void;
   placeholder?: string;
-  dateFormat: string;
+  dateFormat?: string;
   pickerType?: PickerType;
   showTime?: boolean | TimeConfig;
   size?: DatePickerSize;
@@ -99,6 +86,7 @@ interface SingleDatePickerProps {
   hideValue?: boolean;
   suffixIcon?: ReactNode;
   className?: string;
+  sx?: stylex.StyleXStyles;
   disabledDate?: (date: Date) => boolean;
   disabledTime?: DisabledTime | ((date: Date) => DisabledTime);
   timeConfig?: TimeConfig;
@@ -111,7 +99,7 @@ export function SingleDatePicker({
   dateFormat,
   pickerType = 'date',
   showTime,
-  size = 'large',
+  size = 'md',
   status,
   width = 'auto',
   disabled,
@@ -119,18 +107,21 @@ export function SingleDatePicker({
   hideValue,
   suffixIcon,
   className,
+  sx,
   disabledDate,
   disabledTime,
   timeConfig,
-}: SingleDatePickerProps) {
+}: StandaloneDatePickerProps) {
   const [open, setOpen] = useState(false);
   const [currentMonth, setCurrentMonth] = useState<Date>(value || new Date());
 
-  const displayValue = formatDateValue(value, dateFormat);
+  const resolvedSize = resolveDatePickerSize(size);
+  const resolvedFormat = dateFormat || getDefaultFormat(pickerType, showTime);
+  const displayValue = formatDateValue(value, resolvedFormat);
 
   const handleDateSelect = (date: Date | undefined) => {
     if (!date) {
-      onChange(undefined);
+      onChange?.(undefined);
       return;
     }
 
@@ -142,7 +133,7 @@ export function SingleDatePicker({
       finalDate.setSeconds(value.getSeconds());
     }
 
-    onChange(finalDate);
+    onChange?.(finalDate);
     setCurrentMonth(finalDate);
 
     if (!showTime) {
@@ -151,18 +142,18 @@ export function SingleDatePicker({
   };
 
   const handleTimeChange = (newDate: Date) => {
-    onChange(newDate);
+    onChange?.(newDate);
   };
 
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onChange(undefined);
+    onChange?.(undefined);
   };
 
   const renderIcon = () => {
     if (suffixIcon) return suffixIcon;
-    if (pickerType === 'time') return <Clock {...stylex.props(styles.icon)} />;
-    return <CalendarIcon {...stylex.props(styles.icon)} />;
+    if (pickerType === 'time') return <Icons.Clock {...stylex.props(styles.icon)} />;
+    return <Icons.CalendarIcon {...stylex.props(styles.icon)} />;
   };
 
   const renderContent = () => {
@@ -186,6 +177,7 @@ export function SingleDatePicker({
       <div {...stylex.props(styles.calendarWrapper)}>
         <Calendar
           mode="single"
+          size={resolvedSize}
           selected={value}
           onSelect={handleDateSelect}
           disabled={disabledDate}
@@ -229,8 +221,6 @@ export function SingleDatePicker({
     };
   };
 
-  const sizeStyle =
-    size === 'small' ? styles.sizeSmall : size === 'medium' ? styles.sizeMedium : styles.sizeLarge;
   const statusStyle =
     status === 'error'
       ? styles.statusError
@@ -238,24 +228,39 @@ export function SingleDatePicker({
         ? styles.statusWarning
         : undefined;
 
+  const typographySize =
+    resolvedSize === 'xxs' || resolvedSize === 'xs'
+      ? 'xs'
+      : resolvedSize === 'xl' || resolvedSize === 'xxl'
+        ? 'lg'
+        : 'sm';
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
+          size={resolvedSize}
           disabled={disabled}
           width={width}
           sx={[
             styles.triggerButton,
-            sizeStyle,
             statusStyle,
-            !value ? styles.mutedText : undefined,
             width === 'auto' ? styles.fullWidth : undefined,
+            sx,
           ]}
           className={className}
           style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
         >
-          {!hideValue && displayValue ? displayValue : <span>{placeholder}</span>}
+          {!hideValue && displayValue ? (
+            <Text size={typographySize} weight="normal">
+              {displayValue}
+            </Text>
+          ) : (
+            <Text size={typographySize} type="muted">
+              {placeholder}
+            </Text>
+          )}
           <div {...stylex.props(styles.rightControls)}>
             {allowClear && value && (
               <span onClick={handleClear} {...stylex.props(styles.clearButton)}>

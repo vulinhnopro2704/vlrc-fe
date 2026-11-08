@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.4.0] - 2026-11-08
+
+### Minor Changes
+
+- **Calendar Enhancements**:
+  - Added comprehensive size variants (`xxs`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl`) via `CalendarContext` and atomic StyleX rules.
+  - Replaced inline Lucide icons with unified `@vlrc-fe/components/Icons` registry (`Icons.ChevronLeft`, `Icons.ChevronRight`, `Icons.ChevronDown`).
+  - Rendered calendar day numbers with semantic `Text` typography with weight styling (`weight="medium"` for today/selected, `normal` otherwise).
+- **FormDatePicker**:
+  - Normalized default size token to `md`.
+  - Polished range and single picker integrations and styling.
+  - Exported `FormDatePicker` directly from `@vlrc-fe/components/Form` and library root.
+- **Testing & Documentation**:
+  - Added full test suites for `Calendar` (`calendar.test.tsx`) and `FormDatePicker` (`FormDatePicker.test.tsx`).
+  - Added Storybook interactive stories (`calendar.stories.tsx` and `DatePicker.stories.tsx`).
+
 ## [2.3.0] - 2026-11-08
 
 ### Changed

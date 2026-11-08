@@ -28,7 +28,7 @@ function FormDatePicker<TFieldValues extends FieldValues>(
     label,
     placeholder,
     status,
-    size = 'large',
+    size = 'md',
     width = 'auto',
     pickerType = 'date',
     dateFormat: customFormat,

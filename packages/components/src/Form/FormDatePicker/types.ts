@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { ComponentWidth } from '../../theme/width';
+import type { ComponentSize, ComponentSizeOrLegacy } from '../../theme/types';
 import type {
   Control,
   FieldPath,
@@ -10,7 +11,16 @@ import type {
 
 export type PickerType = 'date' | 'time' | 'datetime' | 'month' | 'year';
 
-export type DatePickerSize = 'small' | 'medium' | 'large';
+export type DatePickerSize = ComponentSizeOrLegacy | 'small' | 'medium' | 'large';
+
+export function resolveDatePickerSize(size?: DatePickerSize): ComponentSize {
+  if (!size || size === 'default') return 'md';
+  if (size === 'small') return 'sm';
+  if (size === 'medium') return 'md';
+  if (size === 'large') return 'lg';
+  if (size === '2xl') return 'xxl';
+  return size as ComponentSize;
+}
 
 export type DatePickerStatus = 'error' | 'warning' | undefined;
 

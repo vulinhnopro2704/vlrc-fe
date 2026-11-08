@@ -5,37 +5,28 @@ import * as stylex from '@stylexjs/stylex';
 
 import { colors } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
+import { Text } from '../../Typography';
 import { resolveWidth, type ComponentWidth } from '../../theme/width';
 import { Calendar } from '../../ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
-import type { DatePickerSize, DatePickerStatus, TimeConfig } from './types';
-import { buildRangeDisplayValue } from './useFormDatePicker';
+import {
+  resolveDatePickerSize,
+  type DatePickerSize,
+  type DatePickerStatus,
+  type TimeConfig,
+} from './types';
+import { buildRangeDisplayValue, getDefaultFormat } from './useFormDatePicker';
 
 const styles = stylex.create({
   triggerButton: {
     justifyContent: 'space-between',
     fontWeight: 400,
   },
-  sizeSmall: {
-    height: '2rem',
-    fontSize: '0.75rem',
-  },
-  sizeMedium: {
-    height: '2.5rem',
-    fontSize: '0.875rem',
-  },
-  sizeLarge: {
-    height: '3rem',
-    fontSize: '1rem',
-  },
   statusError: {
     borderColor: colors.destructive,
   },
   statusWarning: {
     borderColor: '#eab308',
-  },
-  mutedText: {
-    color: colors.mutedForeground,
   },
   fullWidth: {
     width: '100%',
@@ -63,11 +54,11 @@ const styles = stylex.create({
   },
 });
 
-interface RangeDatePickerProps {
-  value: [Date | undefined, Date | undefined];
-  onChange: (dates: [Date | undefined, Date | undefined]) => void;
+export interface StandaloneRangeDatePickerProps {
+  value?: [Date | undefined, Date | undefined];
+  onChange?: (dates: [Date | undefined, Date | undefined]) => void;
   placeholder?: string;
-  dateFormat: string;
+  dateFormat?: string;
   showTime?: boolean | TimeConfig;
   size?: DatePickerSize;
   status?: DatePickerStatus;
@@ -77,16 +68,17 @@ interface RangeDatePickerProps {
   hideValue?: boolean;
   suffixIcon?: ReactNode;
   className?: string;
+  sx?: stylex.StyleXStyles;
   disabledDate?: (date: Date) => boolean;
 }
 
 export function RangeDatePicker({
-  value,
+  value = [undefined, undefined],
   onChange,
   placeholder = 'Select Date Range',
   dateFormat,
   showTime,
-  size = 'large',
+  size = 'md',
   status,
   width = 'auto',
   disabled,
@@ -94,57 +86,25 @@ export function RangeDatePicker({
   hideValue,
   suffixIcon,
   className,
+  sx,
   disabledDate,
-}: RangeDatePickerProps) {
+}: StandaloneRangeDatePickerProps) {
   const [open, setOpen] = React.useState(false);
-  const [selectingEnd, setSelectingEnd] = React.useState(false);
 
+  const resolvedSize = resolveDatePickerSize(size);
   const [startDate, endDate] = value;
-
-  const displayValue = buildRangeDisplayValue(startDate, endDate, dateFormat);
-
-  const handleDateSelect = (date: Date | undefined) => {
-    if (!date) return;
-
-    if (!startDate || selectingEnd) {
-      if (!startDate) {
-        onChange([date, undefined]);
-        setSelectingEnd(true);
-      } else {
-        const newEndDate = date < startDate ? startDate : date;
-        const newStartDate = date < startDate ? date : startDate;
-        onChange([newStartDate, newEndDate]);
-        if (!showTime) {
-          setOpen(false);
-          setSelectingEnd(false);
-        }
-      }
-    } else {
-      const newEndDate = date < startDate ? startDate : date;
-      const newStartDate = date < startDate ? date : startDate;
-      onChange([newStartDate, newEndDate]);
-      if (!showTime) {
-        setOpen(false);
-        setSelectingEnd(false);
-      }
-    }
-  };
+  const resolvedFormat = dateFormat || getDefaultFormat('date', showTime);
+  const displayValue = buildRangeDisplayValue(startDate, endDate, resolvedFormat);
 
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onChange([undefined, undefined]);
-    setSelectingEnd(false);
+    onChange?.([undefined, undefined]);
   };
 
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
-    if (!newOpen) {
-      setSelectingEnd(false);
-    }
   };
 
-  const sizeStyle =
-    size === 'small' ? styles.sizeSmall : size === 'medium' ? styles.sizeMedium : styles.sizeLarge;
   const statusStyle =
     status === 'error'
       ? styles.statusError
@@ -152,24 +112,39 @@ export function RangeDatePicker({
         ? styles.statusWarning
         : undefined;
 
+  const typographySize =
+    resolvedSize === 'xxs' || resolvedSize === 'xs'
+      ? 'xs'
+      : resolvedSize === 'xl' || resolvedSize === 'xxl'
+        ? 'lg'
+        : 'sm';
+
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
+          size={resolvedSize}
           disabled={disabled}
           width={width}
           sx={[
             styles.triggerButton,
-            sizeStyle,
             statusStyle,
-            !displayValue ? styles.mutedText : undefined,
             width === 'auto' ? styles.fullWidth : undefined,
+            sx,
           ]}
           className={className}
           style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
         >
-          {!hideValue && displayValue ? displayValue : <span>{placeholder}</span>}
+          {!hideValue && displayValue ? (
+            <Text size={typographySize} weight="normal">
+              {displayValue}
+            </Text>
+          ) : (
+            <Text size={typographySize} type="muted">
+              {placeholder}
+            </Text>
+          )}
           <div {...stylex.props(styles.rightControls)}>
             {allowClear && (startDate || endDate) && (
               <span onClick={handleClear} {...stylex.props(styles.clearButton)}>
@@ -182,9 +157,20 @@ export function RangeDatePicker({
       </PopoverTrigger>
       <PopoverContent sx={styles.popoverContent} align="start">
         <Calendar
-          mode="single"
-          selected={selectingEnd ? endDate : startDate}
-          onSelect={handleDateSelect}
+          mode="range"
+          size={resolvedSize}
+          selected={{
+            from: startDate,
+            to: endDate,
+          }}
+          onSelect={(range) => {
+            const nextStart = range?.from;
+            const nextEnd = range?.to;
+            onChange?.([nextStart, nextEnd]);
+            if (nextStart && nextEnd && !showTime) {
+              setOpen(false);
+            }
+          }}
           disabled={disabledDate}
           captionLayout="dropdown"
           hidden={{

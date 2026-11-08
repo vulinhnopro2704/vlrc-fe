@@ -5,6 +5,7 @@ import { FormCheckbox, FormInput, FormTextarea } from './Form';
 import FormRadioGroup from './FormRadioGroup';
 import FormSelect from './FormSelect';
 import { FormFileUpload, FormFileUploader } from './FormFileUpload';
+import FormDatePicker from './FormDatePicker';
 import { Title, Text } from '../Typography';
 import { createApiUploadHandler } from '../ui/file-upload';
 
@@ -12,6 +13,7 @@ interface FormValues {
   avatar: string | null;
   username: string;
   email: string;
+  startDate?: Date;
   role: string;
   bio: string;
   documents: File[] | null;
@@ -42,6 +44,7 @@ function FullFormWorkflowDemo() {
       avatar: null,
       username: '',
       email: '',
+      startDate: undefined,
       role: 'developer',
       bio: '',
       documents: null,
@@ -97,6 +100,15 @@ function FullFormWorkflowDemo() {
           placeholder="jane@example.com"
           htmlType="email"
           rules={{ required: 'Email is required' }}
+        />
+
+        <FormDatePicker
+          name="startDate"
+          control={methods.control}
+          label="Desired Start Date"
+          placeholder="Chọn ngày bắt đầu làm việc"
+          allowClear
+          rules={{ required: 'Start date is required' }}
         />
 
         <FormSelect
@@ -306,6 +318,93 @@ export const AutoUploadWithApiStorage: Story = {
           />
 
           <Button type="submit">Submit Form</Button>
+        </form>
+      </FormProvider>
+    );
+  },
+};
+
+interface DatePickerDemoFormValues {
+  birthDate?: Date;
+  vacationRange: [Date | undefined, Date | undefined];
+  meetingTime?: Date;
+  targetMonth?: Date;
+}
+
+export const DatePickerFormControls: Story = {
+  render: () => {
+    const methods = useForm<DatePickerDemoFormValues>({
+      defaultValues: {
+        birthDate: undefined,
+        vacationRange: [undefined, undefined],
+        meetingTime: undefined,
+        targetMonth: undefined,
+      },
+    });
+
+    const onSubmit = (data: DatePickerDemoFormValues) => {
+      alert(`Date Form Submitted:\n${JSON.stringify(data, null, 2)}`);
+    };
+
+    return (
+      <FormProvider {...methods}>
+        <form
+          onSubmit={methods.handleSubmit(onSubmit)}
+          style={{
+            width: 460,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.25rem',
+            padding: '1.5rem',
+            border: '1px solid var(--border)',
+            borderRadius: '0.75rem',
+            backgroundColor: 'var(--card)',
+          }}
+        >
+          <Title level={4} size="md">
+            DatePicker Form Suite
+          </Title>
+          <Text size="sm" type="muted">
+            All date and calendar variations integrated with React Hook Form validation.
+          </Text>
+
+          <FormDatePicker
+            name="birthDate"
+            control={methods.control}
+            label="Single Date (Required)"
+            placeholder="Chọn ngày sinh"
+            allowClear
+            rules={{ required: 'Vui lòng chọn ngày sinh' }}
+          />
+
+          <FormDatePicker
+            name="vacationRange"
+            control={methods.control}
+            isRangePicker
+            label="Date Range Picker"
+            placeholder="Chọn kỳ nghỉ (từ ngày - đến ngày)"
+            allowClear
+          />
+
+          <FormDatePicker
+            name="meetingTime"
+            control={methods.control}
+            showTime
+            label="Date & Time"
+            placeholder="Chọn ngày và giờ họp"
+            allowClear
+          />
+
+          <FormDatePicker
+            name="targetMonth"
+            control={methods.control}
+            pickerType="month"
+            label="Target Month"
+            placeholder="Chọn tháng triển khai"
+            allowClear
+          />
+
+          <Button type="submit">Validate & Submit</Button>
         </form>
       </FormProvider>
     );
