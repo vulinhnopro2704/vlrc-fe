@@ -5,9 +5,10 @@ import {
   type ReactNode,
   type SetStateAction,
 } from 'react';
-
+import * as stylex from '@stylexjs/stylex';
 import { CheckIcon, ChevronDown, XCircle, XIcon } from 'lucide-react';
 
+import { colors, radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Separator } from '../ui/separator';
 import { Badge } from '../ui/badge';
@@ -22,12 +23,189 @@ import {
 } from '../ui/command';
 import {
   type AnimationConfig,
-  multiSelectVariants,
   type MultiSelectGroup,
   type MultiSelectOption,
   type MultiSelectProps,
 } from './type';
 import { isGroupedOptions, type ResponsiveSettings, type ScreenSize } from './utils';
+
+const styles = stylex.create({
+  srOnly: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
+  selectedValuesRoot: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  badgeList: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.25rem',
+  },
+  badgeListWrap: {
+    flexWrap: 'wrap',
+  },
+  badgeListSingleLine: {
+    overflowX: 'auto',
+    paddingBottom: '0.25rem',
+  },
+  badgeListCompact: {
+    gap: '0.125rem',
+  },
+  badgeIcon: {
+    height: '1rem',
+    width: '1rem',
+    marginRight: '0.5rem',
+  },
+  badgeIconCompact: {
+    height: '0.75rem',
+    width: '0.75rem',
+    marginRight: '0.25rem',
+  },
+  badgeRemoveButton: {
+    marginLeft: '0.5rem',
+    height: '1rem',
+    width: '1rem',
+    cursor: 'pointer',
+    borderRadius: radii.sm,
+    padding: '0.125rem',
+    outline: 'none',
+    ':hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    },
+  },
+  badgeRemoveIcon: {
+    height: '0.75rem',
+    width: '0.75rem',
+  },
+  badgeRemoveIconCompact: {
+    height: '0.625rem',
+    width: '0.625rem',
+  },
+  extraBadge: {
+    backgroundColor: 'transparent',
+    color: colors.foreground,
+    borderColor: colors.border,
+    ':hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+  extraBadgeRemoveIcon: {
+    marginLeft: '0.5rem',
+    height: '1rem',
+    width: '1rem',
+    cursor: 'pointer',
+  },
+  extraBadgeRemoveIconCompact: {
+    marginLeft: '0.25rem',
+    height: '0.75rem',
+    width: '0.75rem',
+  },
+  actionsContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  clearAllButton: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '1rem',
+    width: '1rem',
+    marginInline: '0.5rem',
+    cursor: 'pointer',
+    color: colors.mutedForeground,
+    borderRadius: radii.sm,
+    outline: 'none',
+    ':hover': {
+      color: colors.foreground,
+    },
+  },
+  clearIcon: {
+    height: '1rem',
+    width: '1rem',
+  },
+  separator: {
+    display: 'flex',
+    minHeight: '1.5rem',
+    height: '100%',
+  },
+  chevronIcon: {
+    height: '1rem',
+    width: '1rem',
+    marginInline: '0.5rem',
+    cursor: 'pointer',
+    color: colors.mutedForeground,
+  },
+  placeholderContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginInline: 'auto',
+  },
+  placeholderText: {
+    fontSize: '0.875rem',
+    color: colors.mutedForeground,
+    marginInline: '0.75rem',
+  },
+  placeholderChevron: {
+    height: '1rem',
+    width: '1rem',
+    cursor: 'pointer',
+    color: colors.mutedForeground,
+    marginInline: '0.5rem',
+  },
+  checkboxContainer: {
+    marginRight: '0.5rem',
+    display: 'flex',
+    height: '1rem',
+    width: '1rem',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: radii.sm,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.primary,
+  },
+  checkboxChecked: {
+    backgroundColor: colors.primary,
+    color: colors.primaryForeground,
+  },
+  checkboxUnchecked: {
+    opacity: 0.5,
+  },
+  checkIcon: {
+    height: '1rem',
+    width: '1rem',
+  },
+  optionIcon: {
+    marginRight: '0.5rem',
+    height: '1rem',
+    width: '1rem',
+    color: colors.mutedForeground,
+  },
+  footerActions: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footerActionItem: {
+    flex: 1,
+    justifyContent: 'center',
+    cursor: 'pointer',
+  },
+});
 
 export const LiveRegion = ({
   politeMessage,
@@ -36,7 +214,7 @@ export const LiveRegion = ({
   politeMessage: string;
   assertiveMessage: string;
 }) => (
-  <div className="sr-only">
+  <div {...stylex.props(styles.srOnly)}>
     <div aria-live="polite" aria-atomic="true" role="status">
       {politeMessage}
     </div>
@@ -64,7 +242,7 @@ interface SelectedValuesContentProps {
 export const SelectedValuesContent = ({
   selectedValues,
   responsiveSettings,
-  screenSize,
+  screenSize: _screenSize,
   singleLine,
   animation,
   animationConfig,
@@ -75,12 +253,12 @@ export const SelectedValuesContent = ({
   clearExtraOptions,
   handleClear,
 }: SelectedValuesContentProps) => (
-  <div className="flex justify-between items-center w-full">
+  <div {...stylex.props(styles.selectedValuesRoot)}>
     <div
-      className={cn(
-        'flex items-center gap-1',
-        singleLine ? 'overflow-x-auto multiselect-singleline-scroll pb-1' : 'flex-wrap',
-        responsiveSettings.compactMode && 'gap-0.5',
+      {...stylex.props(
+        styles.badgeList,
+        singleLine ? styles.badgeListSingleLine : styles.badgeListWrap,
+        responsiveSettings.compactMode ? styles.badgeListCompact : undefined,
       )}
     >
       {selectedValues
@@ -106,15 +284,7 @@ export const SelectedValuesContent = ({
             <Badge
               key={value}
               variant={(variant as any) || 'secondary'}
-              className={cn(
-                badgeAnimationClass,
-                multiSelectVariants({ variant }),
-                customStyle?.gradient && 'text-white border-transparent',
-                responsiveSettings.compactMode && 'text-xs px-1.5 py-0.5',
-                screenSize === 'mobile' && 'max-w-30 truncate',
-                singleLine && 'shrink-0 whitespace-nowrap',
-                '[&>svg]:pointer-events-auto',
-              )}
+              className={cn(badgeAnimationClass)}
               style={{
                 ...badgeStyle,
                 animationDuration: `${animationConfig?.duration || animation}s`,
@@ -123,17 +293,15 @@ export const SelectedValuesContent = ({
             >
               {IconComponent && !responsiveSettings.hideIcons && (
                 <IconComponent
-                  className={cn(
-                    'h-4 w-4 mr-2',
-                    responsiveSettings.compactMode && 'h-3 w-3 mr-1',
-                    customStyle?.iconColor && 'text-current',
+                  {...stylex.props(
+                    responsiveSettings.compactMode ? styles.badgeIconCompact : styles.badgeIcon,
                   )}
                   {...(customStyle?.iconColor && {
                     style: { color: customStyle.iconColor },
                   })}
                 />
               )}
-              <span className={cn(screenSize === 'mobile' && 'truncate')}>{option.label}</span>
+              <span>{option.label}</span>
               <div
                 role="button"
                 tabIndex={0}
@@ -149,10 +317,14 @@ export const SelectedValuesContent = ({
                   }
                 }}
                 aria-label={`Remove ${option.label} from selection`}
-                className="ml-2 h-4 w-4 cursor-pointer hover:bg-white/20 rounded-sm p-0.5 -m-0.5 focus:outline-none focus:ring-1 focus:ring-white/50"
+                {...stylex.props(styles.badgeRemoveButton)}
               >
                 <XCircle
-                  className={cn('h-3 w-3', responsiveSettings.compactMode && 'h-2.5 w-2.5')}
+                  {...stylex.props(
+                    responsiveSettings.compactMode
+                      ? styles.badgeRemoveIconCompact
+                      : styles.badgeRemoveIcon,
+                  )}
                 />
               </div>
             </Badge>
@@ -161,14 +333,8 @@ export const SelectedValuesContent = ({
         .filter(Boolean)}
       {selectedValues.length > responsiveSettings.maxCount && (
         <Badge
-          className={cn(
-            'bg-transparent text-foreground border-foreground/1 hover:bg-transparent',
-            badgeAnimationClass,
-            multiSelectVariants({ variant }),
-            responsiveSettings.compactMode && 'text-xs px-1.5 py-0.5',
-            singleLine && 'shrink-0 whitespace-nowrap',
-            '[&>svg]:pointer-events-auto',
-          )}
+          sx={styles.extraBadge}
+          className={cn(badgeAnimationClass)}
           style={{
             animationDuration: `${animationConfig?.duration || animation}s`,
             animationDelay: `${animationConfig?.delay || 0}s`,
@@ -176,9 +342,10 @@ export const SelectedValuesContent = ({
         >
           {`+ ${selectedValues.length - responsiveSettings.maxCount} more`}
           <XCircle
-            className={cn(
-              'ml-2 h-4 w-4 cursor-pointer',
-              responsiveSettings.compactMode && 'ml-1 h-3 w-3',
+            {...stylex.props(
+              responsiveSettings.compactMode
+                ? styles.extraBadgeRemoveIconCompact
+                : styles.extraBadgeRemoveIcon,
             )}
             onClick={(event) => {
               event.stopPropagation();
@@ -188,7 +355,7 @@ export const SelectedValuesContent = ({
         </Badge>
       )}
     </div>
-    <div className="flex items-center justify-between">
+    <div {...stylex.props(styles.actionsContainer)}>
       <div
         role="button"
         tabIndex={0}
@@ -204,20 +371,20 @@ export const SelectedValuesContent = ({
           }
         }}
         aria-label={`Clear all ${selectedValues.length} selected options`}
-        className="flex items-center justify-center h-4 w-4 mx-2 cursor-pointer text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded-sm"
+        {...stylex.props(styles.clearAllButton)}
       >
-        <XIcon className="h-4 w-4" />
+        <XIcon {...stylex.props(styles.clearIcon)} />
       </div>
-      <Separator orientation="vertical" className="flex min-h-6 h-full" />
-      <ChevronDown className="h-4 mx-2 cursor-pointer text-muted-foreground" aria-hidden="true" />
+      <Separator orientation="vertical" sx={styles.separator} />
+      <ChevronDown {...stylex.props(styles.chevronIcon)} aria-hidden="true" />
     </div>
   </div>
 );
 
 export const PlaceholderContent = ({ placeholder }: { placeholder: string }) => (
-  <div className="flex items-center justify-between w-full mx-auto">
-    <span className="text-sm text-muted-foreground mx-3">{placeholder}</span>
-    <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-2" />
+  <div {...stylex.props(styles.placeholderContainer)}>
+    <span {...stylex.props(styles.placeholderText)}>{placeholder}</span>
+    <ChevronDown {...stylex.props(styles.placeholderChevron)} />
   </div>
 );
 
@@ -254,7 +421,6 @@ export const OptionsContent = ({
   setSearchValue,
   multiSelectId,
   emptyIndicator,
-  screenSize,
 }: OptionsContentProps) => (
   <Command>
     {searchable && (
@@ -268,17 +434,11 @@ export const OptionsContent = ({
       />
     )}
     {searchable && (
-      <div id={`${multiSelectId}-search-help`} className="sr-only">
+      <div id={`${multiSelectId}-search-help`} {...stylex.props(styles.srOnly)}>
         Type to filter options. Use arrow keys to navigate results.
       </div>
     )}
-    <CommandList
-      className={cn(
-        'max-h-[40vh] overflow-y-auto multiselect-scrollbar',
-        screenSize === 'mobile' && 'max-h-[50vh]',
-        'overscroll-behavior-y-contain',
-      )}
-    >
+    <CommandList>
       <CommandEmpty>{emptyIndicator || 'No results found.'}</CommandEmpty>{' '}
       {!hideSelectAll && !searchValue && (
         <CommandGroup>
@@ -290,18 +450,17 @@ export const OptionsContent = ({
               selectedValues.length === getAllOptions().filter((opt) => !opt.disabled).length
             }
             aria-label={`Select all ${getAllOptions().length} options`}
-            className="cursor-pointer"
           >
             <div
-              className={cn(
-                'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
+              {...stylex.props(
+                styles.checkboxContainer,
                 selectedValues.length === getAllOptions().filter((opt) => !opt.disabled).length
-                  ? 'bg-primary text-primary-foreground'
-                  : 'opacity-50 [&_svg]:invisible',
+                  ? styles.checkboxChecked
+                  : styles.checkboxUnchecked,
               )}
               aria-hidden="true"
             >
-              <CheckIcon className="h-4 w-4" />
+              <CheckIcon {...stylex.props(styles.checkIcon)} />
             </div>
             <span>
               (Select All
@@ -323,28 +482,19 @@ export const OptionsContent = ({
                   aria-selected={isSelected}
                   aria-disabled={option.disabled}
                   aria-label={`${option.label}${isSelected ? ', selected' : ', not selected'}${option.disabled ? ', disabled' : ''}`}
-                  className={cn(
-                    'cursor-pointer',
-                    option.disabled && 'opacity-50 cursor-not-allowed',
-                  )}
                   disabled={option.disabled}
                 >
                   <div
-                    className={cn(
-                      'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
-                      isSelected
-                        ? 'bg-primary text-primary-foreground'
-                        : 'opacity-50 [&_svg]:invisible',
+                    {...stylex.props(
+                      styles.checkboxContainer,
+                      isSelected ? styles.checkboxChecked : styles.checkboxUnchecked,
                     )}
                     aria-hidden="true"
                   >
-                    <CheckIcon className="h-4 w-4" />
+                    <CheckIcon {...stylex.props(styles.checkIcon)} />
                   </div>
                   {option.icon && (
-                    <option.icon
-                      className="mr-2 h-4 w-4 text-muted-foreground"
-                      aria-hidden="true"
-                    />
+                    <option.icon {...stylex.props(styles.optionIcon)} aria-hidden="true" />
                   )}
                   <span>{option.label}</span>
                 </CommandItem>
@@ -364,22 +514,19 @@ export const OptionsContent = ({
                 aria-selected={isSelected}
                 aria-disabled={option.disabled}
                 aria-label={`${option.label}${isSelected ? ', selected' : ', not selected'}${option.disabled ? ', disabled' : ''}`}
-                className={cn('cursor-pointer', option.disabled && 'opacity-50 cursor-not-allowed')}
                 disabled={option.disabled}
               >
                 <div
-                  className={cn(
-                    'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
-                    isSelected
-                      ? 'bg-primary text-primary-foreground'
-                      : 'opacity-50 [&_svg]:invisible',
+                  {...stylex.props(
+                    styles.checkboxContainer,
+                    isSelected ? styles.checkboxChecked : styles.checkboxUnchecked,
                   )}
                   aria-hidden="true"
                 >
-                  <CheckIcon className="h-4 w-4" />
+                  <CheckIcon {...stylex.props(styles.checkIcon)} />
                 </div>
                 {option.icon && (
-                  <option.icon className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                  <option.icon {...stylex.props(styles.optionIcon)} aria-hidden="true" />
                 )}
                 <span>{option.label}</span>
               </CommandItem>
@@ -389,19 +536,16 @@ export const OptionsContent = ({
       )}
       <CommandSeparator />
       <CommandGroup>
-        <div className="flex items-center justify-between">
+        <div {...stylex.props(styles.footerActions)}>
           {selectedValues.length > 0 && (
             <>
-              <CommandItem onSelect={handleClear} className="flex-1 justify-center cursor-pointer">
+              <CommandItem onSelect={handleClear} sx={styles.footerActionItem}>
                 Clear
               </CommandItem>
-              <Separator orientation="vertical" className="flex min-h-6 h-full" />
+              <Separator orientation="vertical" sx={styles.separator} />
             </>
           )}
-          <CommandItem
-            onSelect={() => setIsPopoverOpen(false)}
-            className="flex-1 justify-center cursor-pointer max-w-full"
-          >
+          <CommandItem onSelect={() => setIsPopoverOpen(false)} sx={styles.footerActionItem}>
             Close
           </CommandItem>
         </div>

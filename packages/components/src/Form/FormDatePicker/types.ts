@@ -25,6 +25,7 @@ export type TimeConfig = {
   minuteStep?: number;
   secondStep?: number;
   defaultValue?: Date;
+  hideDisabledOptions?: boolean;
 };
 
 export interface DisabledTime {

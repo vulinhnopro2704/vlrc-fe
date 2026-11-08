@@ -3,8 +3,133 @@
 import * as React from 'react';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
-
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
+
+const styles = stylex.create({
+  content: {
+    zIndex: 50,
+    minWidth: '8rem',
+    overflow: 'hidden',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.popover,
+    color: colors.popoverForeground,
+    padding: '0.25rem',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+    outline: 'none',
+  },
+  item: {
+    position: 'relative',
+    display: 'flex',
+    cursor: 'pointer',
+    userSelect: 'none',
+    alignItems: 'center',
+    gap: '0.5rem',
+    borderRadius: radii.sm,
+    paddingInline: '0.5rem',
+    paddingBlock: '0.375rem',
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
+    outline: 'none',
+    color: colors.foreground,
+    transitionProperty: 'background-color, color',
+    transitionDuration: '100ms',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+    ':focus': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+  },
+  itemDestructive: {
+    color: colors.destructive,
+    ':hover': {
+      backgroundColor: colors.destructive,
+      color: colors.destructiveForeground,
+    },
+    ':focus': {
+      backgroundColor: colors.destructive,
+      color: colors.destructiveForeground,
+    },
+  },
+  itemInset: {
+    paddingLeft: '2rem',
+  },
+  itemDisabled: {
+    pointerEvents: 'none',
+    opacity: 0.5,
+  },
+  subTrigger: {
+    display: 'flex',
+    cursor: 'pointer',
+    userSelect: 'none',
+    alignItems: 'center',
+    gap: '0.5rem',
+    borderRadius: radii.sm,
+    paddingInline: '0.5rem',
+    paddingBlock: '0.375rem',
+    fontSize: '0.875rem',
+    outline: 'none',
+    color: colors.foreground,
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+    ':focus': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+  },
+  chevronRight: {
+    marginLeft: 'auto',
+    width: '1rem',
+    height: '1rem',
+  },
+  indicatorContainer: {
+    pointerEvents: 'none',
+    position: 'absolute',
+    left: '0.5rem',
+    display: 'flex',
+    width: '0.875rem',
+    height: '0.875rem',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: '1rem',
+    height: '1rem',
+  },
+  circleIcon: {
+    width: '0.5rem',
+    height: '0.5rem',
+    fill: 'currentColor',
+  },
+  label: {
+    paddingInline: '0.5rem',
+    paddingBlock: '0.375rem',
+    fontSize: '0.875rem',
+    fontWeight: 600,
+    color: colors.foreground,
+  },
+  separator: {
+    height: 1,
+    backgroundColor: colors.border,
+    marginBlock: '0.25rem',
+    marginInline: '-0.25rem',
+  },
+  shortcut: {
+    marginLeft: 'auto',
+    fontSize: '0.75rem',
+    letterSpacing: '0.1em',
+    color: colors.mutedForeground,
+  },
+});
 
 function ContextMenu({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {
   return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />;
@@ -34,106 +159,136 @@ function ContextMenuRadioGroup({
   return <ContextMenuPrimitive.RadioGroup data-slot="context-menu-radio-group" {...props} />;
 }
 
+export interface ContextMenuSubTriggerProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.SubTrigger
+> {
+  inset?: boolean;
+  sx?: stylex.StyleXStyles;
+}
+
 function ContextMenuSubTrigger({
   className,
   inset,
   children,
+  sx,
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.SubTrigger> & {
-  inset?: boolean;
-}) {
+}: ContextMenuSubTriggerProps) {
+  const styleProps = stylex.props(styles.subTrigger, inset ? styles.itemInset : undefined, sx);
+
   return (
     <ContextMenuPrimitive.SubTrigger
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto" />
+      <ChevronRightIcon {...stylex.props(styles.chevronRight)} />
     </ContextMenuPrimitive.SubTrigger>
   );
 }
 
-function ContextMenuSubContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.SubContent>) {
+export interface ContextMenuSubContentProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.SubContent
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ContextMenuSubContent({ className, sx, ...props }: ContextMenuSubContentProps) {
+  const styleProps = stylex.props(styles.content, sx);
+
   return (
     <ContextMenuPrimitive.SubContent
       data-slot="context-menu-sub-content"
-      className={cn(
-        'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg',
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ContextMenuContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Content>) {
+export interface ContextMenuContentProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.Content
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ContextMenuContent({ className, sx, ...props }: ContextMenuContentProps) {
+  const styleProps = stylex.props(styles.content, sx);
+
   return (
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.Content
         data-slot="context-menu-content"
-        className={cn(
-          'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-context-menu-content-available-height) min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md',
-          className,
-        )}
+        {...styleProps}
+        className={cn(styleProps.className, className)}
         {...props}
       />
     </ContextMenuPrimitive.Portal>
   );
 }
 
+export interface ContextMenuItemProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.Item
+> {
+  inset?: boolean;
+  variant?: 'default' | 'destructive';
+  sx?: stylex.StyleXStyles;
+}
+
 function ContextMenuItem({
   className,
   inset,
   variant = 'default',
+  sx,
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Item> & {
-  inset?: boolean;
-  variant?: 'default' | 'destructive';
-}) {
+}: ContextMenuItemProps) {
+  const styleProps = stylex.props(
+    styles.item,
+    variant === 'destructive' ? styles.itemDestructive : undefined,
+    inset ? styles.itemInset : undefined,
+    sx,
+  );
+
   return (
     <ContextMenuPrimitive.Item
       data-slot="context-menu-item"
       data-inset={inset}
       data-variant={variant}
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
+}
+
+export interface ContextMenuCheckboxItemProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.CheckboxItem
+> {
+  sx?: stylex.StyleXStyles;
 }
 
 function ContextMenuCheckboxItem({
   className,
   children,
   checked,
+  sx,
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>) {
+}: ContextMenuCheckboxItemProps) {
+  const styleProps = stylex.props(styles.item, styles.itemInset, sx);
+
   return (
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
-      )}
       checked={checked}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span {...stylex.props(styles.indicatorContainer)}>
         <ContextMenuPrimitive.ItemIndicator>
-          <CheckIcon className="size-4" />
+          <CheckIcon {...stylex.props(styles.icon)} />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -141,23 +296,25 @@ function ContextMenuCheckboxItem({
   );
 }
 
-function ContextMenuRadioItem({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.RadioItem>) {
+export interface ContextMenuRadioItemProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.RadioItem
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ContextMenuRadioItem({ className, children, sx, ...props }: ContextMenuRadioItemProps) {
+  const styleProps = stylex.props(styles.item, styles.itemInset, sx);
+
   return (
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span {...stylex.props(styles.indicatorContainer)}>
         <ContextMenuPrimitive.ItemIndicator>
-          <CircleIcon className="size-2 fill-current" />
+          <CircleIcon {...stylex.props(styles.circleIcon)} />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -165,41 +322,58 @@ function ContextMenuRadioItem({
   );
 }
 
-function ContextMenuLabel({
-  className,
-  inset,
-  ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Label> & {
+export interface ContextMenuLabelProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.Label
+> {
   inset?: boolean;
-}) {
+  sx?: stylex.StyleXStyles;
+}
+
+function ContextMenuLabel({ className, inset, sx, ...props }: ContextMenuLabelProps) {
+  const styleProps = stylex.props(styles.label, inset ? styles.itemInset : undefined, sx);
+
   return (
     <ContextMenuPrimitive.Label
       data-slot="context-menu-label"
       data-inset={inset}
-      className={cn('text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ContextMenuSeparator({
-  className,
-  ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Separator>) {
+export interface ContextMenuSeparatorProps extends React.ComponentProps<
+  typeof ContextMenuPrimitive.Separator
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ContextMenuSeparator({ className, sx, ...props }: ContextMenuSeparatorProps) {
+  const styleProps = stylex.props(styles.separator, sx);
+
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
-      className={cn('bg-border -mx-1 my-1 h-px', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ContextMenuShortcut({ className, ...props }: React.ComponentProps<'span'>) {
+export interface ContextMenuShortcutProps extends React.ComponentProps<'span'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ContextMenuShortcut({ className, sx, ...props }: ContextMenuShortcutProps) {
+  const styleProps = stylex.props(styles.shortcut, sx);
+
   return (
     <span
       data-slot="context-menu-shortcut"
-      className={cn('text-muted-foreground ml-auto text-xs tracking-widest', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );

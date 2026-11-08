@@ -2,8 +2,25 @@
 
 import * as React from 'react';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
-
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
+
+const styles = stylex.create({
+  content: {
+    zIndex: 50,
+    width: '16rem',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.popover,
+    color: colors.popoverForeground,
+    padding: '1rem',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+    outline: 'none',
+  },
+});
 
 function HoverCard({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
   return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />;
@@ -13,22 +30,29 @@ function HoverCardTrigger({ ...props }: React.ComponentProps<typeof HoverCardPri
   return <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />;
 }
 
+export interface HoverCardContentProps extends React.ComponentProps<
+  typeof HoverCardPrimitive.Content
+> {
+  sx?: stylex.StyleXStyles;
+}
+
 function HoverCardContent({
   className,
   align = 'center',
   sideOffset = 4,
+  sx,
   ...props
-}: React.ComponentProps<typeof HoverCardPrimitive.Content>) {
+}: HoverCardContentProps) {
+  const styleProps = stylex.props(styles.content, sx);
+
   return (
     <HoverCardPrimitive.Portal data-slot="hover-card-portal">
       <HoverCardPrimitive.Content
         data-slot="hover-card-content"
         align={align}
         sideOffset={sideOffset}
-        className={cn(
-          'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-64 origin-(--radix-hover-card-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden',
-          className,
-        )}
+        {...styleProps}
+        className={cn(styleProps.className, className)}
         {...props}
       />
     </HoverCardPrimitive.Portal>

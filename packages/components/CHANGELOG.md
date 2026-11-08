@@ -1,5 +1,32 @@
 # Changelog
 
+## [2.3.0] - 2026-11-08
+
+### Changed
+
+- **100% Meta StyleX Migration**: Completed full migration to compile-time Meta StyleX, eliminating 100% of residual Tailwind CSS classes and runtime styling across all remaining components:
+  - `Sidebar` (`SidebarProvider`, `Sidebar`, `SidebarTrigger`, `SidebarRail`, `SidebarInset`, `SidebarInput`, `SidebarHeader`, `SidebarFooter`, `SidebarSeparator`, `SidebarContent`, `SidebarGroup`, `SidebarGroupLabel`, `SidebarGroupAction`, `SidebarGroupContent`, `SidebarMenu`, `SidebarMenuItem`, `SidebarMenuButton`, `SidebarMenuAction`, `SidebarMenuBadge`, `SidebarMenuSkeleton`, `SidebarMenuSub`, `SidebarMenuSubItem`, `SidebarMenuSubButton`).
+  - `Calendar` & `CalendarDayButton` (`DayPicker` styles compiled directly with Meta StyleX tokens and variables).
+  - `ContextMenu` & `Menubar` (all menu triggers, contents, items, checkbox/radio items, sub-menus, separators, shortcuts styled with StyleX).
+  - `NavigationMenu` (full StyleX tokens for menu triggers, viewport, indicators, links, and content).
+  - `Carousel` (`CarouselContent`, `CarouselItem`, `CarouselPrevious`, `CarouselNext`).
+  - `ScrollArea` (`ScrollArea`, `ScrollBar`, `ScrollAreaThumb`).
+  - `Resizable` (`ResizablePanelGroup`, `ResizablePanel`, `ResizableHandle`).
+  - `Item` (`Item`, `ItemMedia`, `ItemContent`, `ItemTitle`, `ItemDescription`, `ItemActions`, `ItemHeader`, `ItemFooter`, `ItemGroup`).
+  - `HoverCard` (`HoverCard`, `HoverCardTrigger`, `HoverCardContent`).
+  - `Sonner` (`Toaster` with StyleX keyframe spinner and size styles).
+  - `Form` UI Primitives (`FormItem`, `FormLabel`, `FormDescription`, `FormMessage`).
+  - `MultiSelect` & `SelectedValuesContent`, `PlaceholderContent`, `OptionsContent` (complete StyleX styling with zero Tailwind CSS).
+  - `FormDatePicker` (`RangeDatePicker`, `SingleDatePicker`, `TimeInput`, `TimePicker`).
+  - `FormNumberInput` (`FormNumberInput`, `StepperControls`).
+  - `DataTable` & `DataTableTable` (StyleX toolbar, container, empty and expanded cells).
+- **StyleX Overrides (`sx` prop)**: Added strongly-typed `sx?: stylex.StyleXStyles` override prop to all migrated primitives for type-safe compile-time design customization.
+
+### Fixed
+
+- Fixed `FormCheckbox` vertical alignment when rendered with descriptions or helper text.
+- Replaced all legacy string class concatenations with pure Meta StyleX atomic CSS.
+
 ## 2.2.0
 
 ### Minor Changes

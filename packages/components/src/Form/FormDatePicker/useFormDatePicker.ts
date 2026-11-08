@@ -116,27 +116,12 @@ export const buildRangeDisplayValue = (
   return '';
 };
 
-export const getSizeClassName = (size?: DatePickerSize): string => {
-  switch (size) {
-    case 'small':
-      return 'h-8 text-xs';
-    case 'large':
-      return 'h-12 text-base';
-    case 'medium':
-    default:
-      return 'h-10 text-sm';
-  }
+export const getSizeClassName = (_size?: DatePickerSize): string => {
+  return '';
 };
 
-export const getStatusClassName = (status?: DatePickerStatus): string => {
-  switch (status) {
-    case 'error':
-      return 'border-destructive focus-visible:ring-destructive';
-    case 'warning':
-      return 'border-yellow-500 focus-visible:ring-yellow-500';
-    default:
-      return '';
-  }
+export const getStatusClassName = (_status?: DatePickerStatus): string => {
+  return '';
 };
 
 export const getDefaultFormat = (

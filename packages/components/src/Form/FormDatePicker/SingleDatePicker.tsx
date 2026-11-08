@@ -1,12 +1,13 @@
-import React, { type ReactNode } from 'react';
-import { CalendarIcon, Clock } from 'lucide-react';
+import React, { useState, type ReactNode } from 'react';
 import { vi } from 'date-fns/locale';
+import { CalendarIcon, Clock } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
 
+import { colors } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
 import { resolveWidth, type ComponentWidth } from '../../theme/width';
 import { Calendar } from '../../ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
-import { cn } from '../../utils';
 import type {
   DatePickerSize,
   DatePickerStatus,
@@ -14,22 +15,81 @@ import type {
   PickerType,
   TimeConfig,
 } from './types';
-import { TimeInput } from './TimeInput';
-import { TimePicker } from './TimePicker';
-import {
-  buildDisabledTime,
-  buildTimeConfig,
-  formatDateValue,
-  getSizeClassName,
-  getStatusClassName,
-} from './useFormDatePicker';
+import { formatDateValue } from './useFormDatePicker';
+import TimeInput from './TimeInput';
+import TimePicker from './TimePicker';
+
+const styles = stylex.create({
+  triggerButton: {
+    justifyContent: 'space-between',
+    fontWeight: 400,
+  },
+  sizeSmall: {
+    height: '2rem',
+    fontSize: '0.75rem',
+  },
+  sizeMedium: {
+    height: '2.5rem',
+    fontSize: '0.875rem',
+  },
+  sizeLarge: {
+    height: '3rem',
+    fontSize: '1rem',
+  },
+  statusError: {
+    borderColor: colors.destructive,
+  },
+  statusWarning: {
+    borderColor: '#eab308',
+  },
+  mutedText: {
+    color: colors.mutedForeground,
+  },
+  fullWidth: {
+    width: '100%',
+  },
+  rightControls: {
+    marginLeft: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.25rem',
+  },
+  clearButton: {
+    cursor: 'pointer',
+    ':hover': {
+      color: colors.destructive,
+    },
+  },
+  icon: {
+    width: '1rem',
+    height: '1rem',
+    opacity: 0.5,
+  },
+  popoverContent: {
+    width: 'auto',
+    padding: 0,
+  },
+  timeWrapper: {
+    padding: '0.5rem',
+  },
+  timeInputWrapper: {
+    marginTop: '0.5rem',
+    paddingTop: '0.5rem',
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: colors.border,
+  },
+  calendarWrapper: {
+    display: 'flex',
+  },
+});
 
 interface SingleDatePickerProps {
-  value: Date | undefined;
+  value?: Date;
   onChange: (date: Date | undefined) => void;
   placeholder?: string;
-  pickerType: PickerType;
   dateFormat: string;
+  pickerType?: PickerType;
   showTime?: boolean | TimeConfig;
   size?: DatePickerSize;
   status?: DatePickerStatus;
@@ -41,14 +101,15 @@ interface SingleDatePickerProps {
   className?: string;
   disabledDate?: (date: Date) => boolean;
   disabledTime?: DisabledTime | ((date: Date) => DisabledTime);
+  timeConfig?: TimeConfig;
 }
 
 export function SingleDatePicker({
   value,
   onChange,
   placeholder = 'Select Date',
-  pickerType,
   dateFormat,
+  pickerType = 'date',
   showTime,
   size = 'large',
   status,
@@ -60,53 +121,37 @@ export function SingleDatePicker({
   className,
   disabledDate,
   disabledTime,
+  timeConfig,
 }: SingleDatePickerProps) {
-  const [open, setOpen] = React.useState(false);
-  const [currentMonth, setCurrentMonth] = React.useState<Date | undefined>(value || new Date());
-  const timeConfig = buildTimeConfig(showTime, pickerType);
+  const [open, setOpen] = useState(false);
+  const [currentMonth, setCurrentMonth] = useState<Date>(value || new Date());
 
-  const displayValue = value ? formatDateValue(value, dateFormat) : '';
-
-  React.useEffect(() => {
-    if (value) {
-      setCurrentMonth((prev) => {
-        if (
-          prev &&
-          prev.getMonth() === value.getMonth() &&
-          prev.getFullYear() === value.getFullYear()
-        ) {
-          return prev;
-        }
-        return value;
-      });
-    }
-  }, [value]);
+  const displayValue = formatDateValue(value, dateFormat);
 
   const handleDateSelect = (date: Date | undefined) => {
     if (!date) {
       onChange(undefined);
-      if (pickerType === 'date' || !showTime) {
-        setOpen(false);
-      }
       return;
     }
 
-    let newDate = date;
-
+    let finalDate = date;
     if (showTime && value) {
-      newDate = new Date(date);
-      newDate.setHours(value.getHours(), value.getMinutes(), value.getSeconds());
+      finalDate = new Date(date);
+      finalDate.setHours(value.getHours());
+      finalDate.setMinutes(value.getMinutes());
+      finalDate.setSeconds(value.getSeconds());
     }
 
-    onChange(newDate);
+    onChange(finalDate);
+    setCurrentMonth(finalDate);
 
-    if (pickerType === 'date' && !showTime) {
+    if (!showTime) {
       setOpen(false);
     }
   };
 
-  const handleTimeChange = (date: Date) => {
-    onChange(date);
+  const handleTimeChange = (newDate: Date) => {
+    onChange(newDate);
   };
 
   const handleClear = (e: React.MouseEvent) => {
@@ -116,21 +161,21 @@ export function SingleDatePicker({
 
   const renderIcon = () => {
     if (suffixIcon) return suffixIcon;
-    if (pickerType === 'time') return <Clock className="h-4 w-4 opacity-50" />;
-    return <CalendarIcon className="h-4 w-4 opacity-50" />;
+    if (pickerType === 'time') return <Clock {...stylex.props(styles.icon)} />;
+    return <CalendarIcon {...stylex.props(styles.icon)} />;
   };
 
   const renderContent = () => {
     if (pickerType === 'time') {
       return (
-        <div className="p-2">
+        <div {...stylex.props(styles.timeWrapper)}>
           <TimePicker
             value={value}
             onChange={handleTimeChange}
             timeConfig={timeConfig}
             disabledTime={buildDisabledTime(value, disabledTime)}
           />
-          <div className="mt-2 pt-2 border-t">
+          <div {...stylex.props(styles.timeInputWrapper)}>
             <TimeInput value={value} onChange={handleTimeChange} timeConfig={timeConfig} />
           </div>
         </div>
@@ -138,7 +183,7 @@ export function SingleDatePicker({
     }
 
     return (
-      <div className="flex">
+      <div {...stylex.props(styles.calendarWrapper)}>
         <Calendar
           mode="single"
           selected={value}
@@ -150,25 +195,48 @@ export function SingleDatePicker({
           hidden={{
             after: new Date(new Date().getFullYear() + 50, 11, 31),
           }}
-          onMonthChange={(month) => {
-            setCurrentMonth(month);
-            if (pickerType === 'month') {
-              onChange(month);
-              setOpen(false);
-            }
-          }}
+          onMonthChange={setCurrentMonth}
         />
         {showTime && (
-          <TimePicker
-            value={value}
-            onChange={handleTimeChange}
-            timeConfig={timeConfig}
-            disabledTime={buildDisabledTime(value, disabledTime)}
-          />
+          <div {...stylex.props(styles.timeWrapper)}>
+            <TimePicker
+              value={value}
+              onChange={handleTimeChange}
+              timeConfig={timeConfig}
+              disabledTime={buildDisabledTime(value, disabledTime)}
+            />
+          </div>
         )}
       </div>
     );
   };
+
+  const buildDisabledTime = (
+    currentValue?: Date,
+    disabledTimeConfig?: DisabledTime | ((date: Date) => DisabledTime),
+  ): DisabledTime => {
+    if (!disabledTimeConfig) return {};
+    const resolved =
+      typeof disabledTimeConfig === 'function' && currentValue
+        ? disabledTimeConfig(currentValue)
+        : typeof disabledTimeConfig === 'function'
+          ? {}
+          : disabledTimeConfig;
+    return {
+      disabledHours: () => resolved.disabledHours?.() || [],
+      disabledMinutes: (h) => resolved.disabledMinutes?.(h) || [],
+      disabledSeconds: (h, m) => resolved.disabledSeconds?.(h, m) || [],
+    };
+  };
+
+  const sizeStyle =
+    size === 'small' ? styles.sizeSmall : size === 'medium' ? styles.sizeMedium : styles.sizeLarge;
+  const statusStyle =
+    status === 'error'
+      ? styles.statusError
+      : status === 'warning'
+        ? styles.statusWarning
+        : undefined;
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -177,20 +245,20 @@ export function SingleDatePicker({
           variant="outline"
           disabled={disabled}
           width={width}
-          className={cn(
-            'justify-between font-normal',
-            getSizeClassName(size),
-            getStatusClassName(status),
-            !value && 'text-muted-foreground',
-            width === 'auto' ? 'w-full' : '',
-            className,
-          )}
+          sx={[
+            styles.triggerButton,
+            sizeStyle,
+            statusStyle,
+            !value ? styles.mutedText : undefined,
+            width === 'auto' ? styles.fullWidth : undefined,
+          ]}
+          className={className}
           style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
         >
           {!hideValue && displayValue ? displayValue : <span>{placeholder}</span>}
-          <div className="ml-auto flex items-center gap-1">
+          <div {...stylex.props(styles.rightControls)}>
             {allowClear && value && (
-              <span onClick={handleClear} className="hover:text-destructive cursor-pointer">
+              <span onClick={handleClear} {...stylex.props(styles.clearButton)}>
                 ×
               </span>
             )}
@@ -198,7 +266,7 @@ export function SingleDatePicker({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+      <PopoverContent sx={styles.popoverContent} align="start">
         {renderContent()}
       </PopoverContent>
     </Popover>

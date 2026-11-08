@@ -42,9 +42,9 @@ export function useFormRadio<TFieldValues extends FieldValues>(
 }
 
 export const radioSizeClasses: Record<RadioSize, string> = {
-  large: 'size-5',
-  middle: 'size-4',
-  small: 'size-3.5',
+  large: '',
+  middle: '',
+  small: '',
 };
 
 function buildEnhancedRules<TFieldValues extends FieldValues>(

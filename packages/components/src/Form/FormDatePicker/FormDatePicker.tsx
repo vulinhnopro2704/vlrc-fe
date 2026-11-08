@@ -1,10 +1,23 @@
 import type { ControllerRenderProps, FieldPath, FieldValues } from 'react-hook-form';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../../theme/tokens.stylex';
 
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../ui/form';
 import { RangeDatePicker } from './RangeDatePicker';
 import { SingleDatePicker } from './SingleDatePicker';
 import type { FormDatePickerProps } from './types';
 import { useFormDatePicker } from './useFormDatePicker';
+
+const styles = stylex.create({
+  formItem: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  requiredAsterisk: {
+    color: colors.destructive,
+    marginLeft: '0.25rem',
+  },
+});
 
 function FormDatePicker<TFieldValues extends FieldValues>(
   props: FormDatePickerProps<TFieldValues>,
@@ -94,11 +107,11 @@ function FormDatePicker<TFieldValues extends FieldValues>(
       name={name}
       rules={processedRules}
       render={({ field }) => (
-        <FormItem className="flex flex-col">
+        <FormItem sx={styles.formItem}>
           {label && (
             <FormLabel>
               {label}
-              {isRequired && <span className="text-destructive ml-1">*</span>}
+              {isRequired && <span {...stylex.props(styles.requiredAsterisk)}>*</span>}
             </FormLabel>
           )}
           <FormControl>

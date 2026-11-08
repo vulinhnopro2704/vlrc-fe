@@ -9,13 +9,7 @@ import type { NumericFormatProps } from 'react-number-format';
 
 import { cn } from '../../utils';
 
-const numericInputBaseClass = [
-  '[appearance:textfield]',
-  '[&::-webkit-outer-spin-button]:appearance-none',
-  '[&::-webkit-inner-spin-button]:appearance-none',
-  'rounded-r-none',
-  'relative',
-];
+const numericInputBaseClass: string[] = [];
 
 type PassthroughProps = Partial<
   Omit<

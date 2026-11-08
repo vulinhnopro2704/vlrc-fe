@@ -3,9 +3,80 @@
 import * as React from 'react';
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
 
+import { radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Button } from './button';
+
+const styles = stylex.create({
+  carousel: {
+    position: 'relative',
+  },
+  overflowHidden: {
+    overflow: 'hidden',
+  },
+  content: {
+    display: 'flex',
+  },
+  contentHorizontal: {
+    marginLeft: '-1rem',
+  },
+  contentVertical: {
+    marginTop: '-1rem',
+    flexDirection: 'column',
+  },
+  item: {
+    minWidth: 0,
+    flexShrink: 0,
+    flexGrow: 0,
+    flexBasis: '100%',
+  },
+  itemHorizontal: {
+    paddingLeft: '1rem',
+  },
+  itemVertical: {
+    paddingTop: '1rem',
+  },
+  button: {
+    position: 'absolute',
+    width: '2rem',
+    height: '2rem',
+    borderRadius: radii.full,
+    padding: 0,
+  },
+  prevHorizontal: {
+    top: '50%',
+    left: '-3rem',
+    transform: 'translateY(-50%)',
+  },
+  prevVertical: {
+    top: '-3rem',
+    left: '50%',
+    transform: 'translateX(-50%) rotate(90deg)',
+  },
+  nextHorizontal: {
+    top: '50%',
+    right: '-3rem',
+    transform: 'translateY(-50%)',
+  },
+  nextVertical: {
+    bottom: '-3rem',
+    left: '50%',
+    transform: 'translateX(-50%) rotate(90deg)',
+  },
+  srOnly: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
+});
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -17,6 +88,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin;
   orientation?: 'horizontal' | 'vertical';
   setApi?: (api: CarouselApi) => void;
+  sx?: stylex.StyleXStyles;
 };
 
 type CarouselContextProps = {
@@ -47,6 +119,7 @@ function Carousel({
   plugins,
   className,
   children,
+  sx,
   ...props
 }: React.ComponentProps<'div'> & CarouselProps) {
   const [carouselRef, api] = useEmblaCarousel(
@@ -80,10 +153,9 @@ function Carousel({
         scrollPrev();
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
-        scrollNext();
       }
     },
-    [scrollPrev, scrollNext],
+    [scrollPrev],
   );
 
   React.useEffect(() => {
@@ -102,6 +174,8 @@ function Carousel({
     };
   }, [api, onSelect]);
 
+  const styleProps = stylex.props(styles.carousel, sx);
+
   return (
     <CarouselContext.Provider
       value={{
@@ -117,7 +191,8 @@ function Carousel({
     >
       <div
         onKeyDownCapture={handleKeyDown}
-        className={cn('relative', className)}
+        {...styleProps}
+        className={cn(styleProps.className, className)}
         role="region"
         aria-roledescription="carousel"
         data-slot="carousel"
@@ -129,93 +204,103 @@ function Carousel({
   );
 }
 
-function CarouselContent({ className, ...props }: React.ComponentProps<'div'>) {
+export interface CarouselContentProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function CarouselContent({ className, sx, ...props }: CarouselContentProps) {
   const { carouselRef, orientation } = useCarousel();
+  const orientationStyle =
+    orientation === 'horizontal' ? styles.contentHorizontal : styles.contentVertical;
+  const styleProps = stylex.props(styles.content, orientationStyle, sx);
 
   return (
-    <div ref={carouselRef} className="overflow-hidden" data-slot="carousel-content">
-      <div
-        className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
-        {...props}
-      />
+    <div ref={carouselRef} {...stylex.props(styles.overflowHidden)} data-slot="carousel-content">
+      <div {...styleProps} className={cn(styleProps.className, className)} {...props} />
     </div>
   );
 }
 
-function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
+export interface CarouselItemProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function CarouselItem({ className, sx, ...props }: CarouselItemProps) {
   const { orientation } = useCarousel();
+  const orientationStyle =
+    orientation === 'horizontal' ? styles.itemHorizontal : styles.itemVertical;
+  const styleProps = stylex.props(styles.item, orientationStyle, sx);
 
   return (
     <div
       role="group"
       aria-roledescription="slide"
       data-slot="carousel-item"
-      className={cn(
-        'min-w-0 shrink-0 grow-0 basis-full',
-        orientation === 'horizontal' ? 'pl-4' : 'pt-4',
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
+}
+
+export interface CarouselPreviousProps extends React.ComponentProps<typeof Button> {
+  sx?: stylex.StyleXStyles;
 }
 
 function CarouselPrevious({
   className,
   variant = 'outline',
   size = 'icon',
+  sx,
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: CarouselPreviousProps) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+  const posStyle = orientation === 'horizontal' ? styles.prevHorizontal : styles.prevVertical;
 
   return (
     <Button
       data-slot="carousel-previous"
       variant={variant}
       size={size}
-      className={cn(
-        'absolute size-8 rounded-full',
-        orientation === 'horizontal'
-          ? 'top-1/2 -left-12 -translate-y-1/2'
-          : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
-        className,
-      )}
+      sx={[styles.button, posStyle, sx]}
+      className={className}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
       <ArrowLeft />
-      <span className="sr-only">Previous slide</span>
+      <span {...stylex.props(styles.srOnly)}>Previous slide</span>
     </Button>
   );
+}
+
+export interface CarouselNextProps extends React.ComponentProps<typeof Button> {
+  sx?: stylex.StyleXStyles;
 }
 
 function CarouselNext({
   className,
   variant = 'outline',
   size = 'icon',
+  sx,
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: CarouselNextProps) {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
+  const posStyle = orientation === 'horizontal' ? styles.nextHorizontal : styles.nextVertical;
 
   return (
     <Button
       data-slot="carousel-next"
       variant={variant}
       size={size}
-      className={cn(
-        'absolute size-8 rounded-full',
-        orientation === 'horizontal'
-          ? 'top-1/2 -right-12 -translate-y-1/2'
-          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-        className,
-      )}
+      sx={[styles.button, posStyle, sx]}
+      className={className}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
       <ArrowRight />
-      <span className="sr-only">Next slide</span>
+      <span {...stylex.props(styles.srOnly)}>Next slide</span>
     </Button>
   );
 }

@@ -1,37 +1,116 @@
+import { useEffect, useState } from 'react';
+import * as stylex from '@stylexjs/stylex';
+import { colors, radii } from '../../theme/tokens.stylex';
 import { ScrollArea } from '../../ui/scroll-area';
-import { cn } from '../../utils';
 import type { DisabledTime, TimeConfig } from './types';
 
+const styles = stylex.create({
+  picker: {
+    display: 'flex',
+    gap: '0.25rem',
+    padding: '0.25rem',
+  },
+  headerGroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  headerLabel: {
+    fontSize: '0.75rem',
+    fontWeight: 500,
+    marginBottom: '0.25rem',
+  },
+  scrollArea: {
+    height: '15rem',
+    width: '4rem',
+  },
+  column: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  itemBtn: {
+    paddingInline: '0.5rem',
+    paddingBlock: '0.25rem',
+    textAlign: 'center',
+    borderRadius: radii.sm,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    color: colors.foreground,
+    cursor: 'pointer',
+    transitionProperty: 'background-color, color',
+    transitionDuration: '100ms',
+    outline: 'none',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+  },
+  itemActive: {
+    backgroundColor: colors.primary,
+    color: colors.primaryForeground,
+    ':hover': {
+      backgroundColor: colors.primary,
+      color: colors.primaryForeground,
+    },
+  },
+  itemDisabled: {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+    ':hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+});
+
 interface TimePickerProps {
-  value: Date | undefined;
-  onChange: (date: Date) => void;
+  value?: Date;
+  onChange?: (date: Date) => void;
   timeConfig?: TimeConfig;
   disabledTime?: DisabledTime;
 }
 
-export function TimePicker({ value, onChange, timeConfig, disabledTime }: TimePickerProps) {
-  const showHour = timeConfig?.showHour !== false;
-  const showMinute = timeConfig?.showMinute !== false;
-  const showSecond = timeConfig?.showSecond ?? false;
-  const hourStep = timeConfig?.hourStep ?? 1;
-  const minuteStep = timeConfig?.minuteStep ?? 1;
-  const secondStep = timeConfig?.secondStep ?? 1;
+export function TimePicker({
+  value,
+  onChange,
+  timeConfig = {},
+  disabledTime = {},
+}: TimePickerProps) {
+  const [selectedDate, setSelectedDate] = useState<Date>(value || new Date());
 
-  const currentDate = value || new Date();
-  const hours = currentDate.getHours();
-  const minutes = currentDate.getMinutes();
-  const seconds = currentDate.getSeconds();
+  useEffect(() => {
+    if (value) {
+      setSelectedDate(value);
+    }
+  }, [value]);
 
-  const disabledHours = disabledTime?.disabledHours?.() || [];
-  const disabledMinutes = disabledTime?.disabledMinutes?.(hours) || [];
-  const disabledSeconds = disabledTime?.disabledSeconds?.(hours, minutes) || [];
+  const {
+    format = 'HH:mm:ss',
+    hourStep = 1,
+    minuteStep = 1,
+    secondStep = 1,
+    hideDisabledOptions = false,
+  } = timeConfig;
 
-  const handleTimeChange = (type: 'hour' | 'minute' | 'second', newValue: number) => {
-    const newDate = new Date(currentDate);
-    if (type === 'hour') newDate.setHours(newValue);
-    else if (type === 'minute') newDate.setMinutes(newValue);
-    else newDate.setSeconds(newValue);
-    onChange(newDate);
+  const showHour = format.includes('H') || format.includes('h');
+  const showMinute = format.includes('m');
+  const showSecond = format.includes('s');
+
+  const hours = selectedDate.getHours();
+  const minutes = selectedDate.getMinutes();
+  const seconds = selectedDate.getSeconds();
+
+  const disabledHours = disabledTime.disabledHours?.() || [];
+  const disabledMinutes = disabledTime.disabledMinutes?.(hours) || [];
+  const disabledSeconds = disabledTime.disabledSeconds?.(hours, minutes) || [];
+
+  const handleTimeChange = (type: 'hour' | 'minute' | 'second', val: number) => {
+    const newDate = new Date(selectedDate);
+    if (type === 'hour') newDate.setHours(val);
+    if (type === 'minute') newDate.setMinutes(val);
+    if (type === 'second') newDate.setSeconds(val);
+
+    setSelectedDate(newDate);
+    onChange?.(newDate);
   };
 
   const renderTimeColumn = (
@@ -41,26 +120,29 @@ export function TimePicker({ value, onChange, timeConfig, disabledTime }: TimePi
     current: number,
     disabledValues: number[],
   ) => {
-    const values = [] as number[];
+    const values = [];
     for (let i = 0; i < max; i += step) {
-      values.push(i);
+      if (!hideDisabledOptions || !disabledValues.includes(i)) {
+        values.push(i);
+      }
     }
 
     return (
-      <ScrollArea className="h-60 w-16">
-        <div className="flex flex-col">
+      <ScrollArea sx={styles.scrollArea}>
+        <div {...stylex.props(styles.column)}>
           {values.map((val) => {
             const isDisabled = disabledValues.includes(val);
+            const isActive = current === val;
             return (
               <button
                 key={val}
                 type="button"
                 disabled={isDisabled}
                 onClick={() => handleTimeChange(type, val)}
-                className={cn(
-                  'px-2 py-1 text-center hover:bg-accent transition-colors',
-                  current === val && 'bg-primary text-primary-foreground hover:bg-primary/90',
-                  isDisabled && 'opacity-50 cursor-not-allowed hover:bg-transparent',
+                {...stylex.props(
+                  styles.itemBtn,
+                  isActive && styles.itemActive,
+                  isDisabled && styles.itemDisabled,
                 )}
               >
                 {val.toString().padStart(2, '0')}
@@ -73,22 +155,22 @@ export function TimePicker({ value, onChange, timeConfig, disabledTime }: TimePi
   };
 
   return (
-    <div className="flex gap-1 p-1">
+    <div {...stylex.props(styles.picker)}>
       {showHour && (
-        <div className="flex flex-col items-center">
-          <span className="text-xs font-medium mb-1">Hour</span>
+        <div {...stylex.props(styles.headerGroup)}>
+          <span {...stylex.props(styles.headerLabel)}>Hour</span>
           {renderTimeColumn('hour', 24, hourStep, hours, disabledHours)}
         </div>
       )}
       {showMinute && (
-        <div className="flex flex-col items-center">
-          <span className="text-xs font-medium mb-1">Minute</span>
+        <div {...stylex.props(styles.headerGroup)}>
+          <span {...stylex.props(styles.headerLabel)}>Minute</span>
           {renderTimeColumn('minute', 60, minuteStep, minutes, disabledMinutes)}
         </div>
       )}
       {showSecond && (
-        <div className="flex flex-col items-center">
-          <span className="text-xs font-medium mb-1">Second</span>
+        <div {...stylex.props(styles.headerGroup)}>
+          <span {...stylex.props(styles.headerLabel)}>Second</span>
           {renderTimeColumn('second', 60, secondStep, seconds, disabledSeconds)}
         </div>
       )}

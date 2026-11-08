@@ -1,16 +1,123 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
+import * as stylex from '@stylexjs/stylex';
 
+import { colors, radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Separator } from './separator';
 
-function ItemGroup({ className, ...props }: React.ComponentProps<'div'>) {
+const styles = stylex.create({
+  group: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  item: {
+    display: 'flex',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: 'transparent',
+    fontSize: '0.875rem',
+    borderRadius: radii.md,
+    flexWrap: 'wrap',
+    outline: 'none',
+    transitionProperty: 'background-color, border-color',
+    transitionDuration: '100ms',
+  },
+  variantDefault: {
+    backgroundColor: 'transparent',
+  },
+  variantOutline: {
+    borderColor: colors.border,
+  },
+  variantMuted: {
+    backgroundColor: colors.muted,
+  },
+  sizeDefault: {
+    padding: '1rem',
+    gap: '1rem',
+  },
+  sizeSm: {
+    paddingBlock: '0.75rem',
+    paddingInline: '1rem',
+    gap: '0.625rem',
+  },
+  mediaBase: {
+    display: 'flex',
+    flexShrink: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.5rem',
+  },
+  mediaIcon: {
+    width: '2rem',
+    height: '2rem',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    borderRadius: radii.sm,
+    backgroundColor: colors.muted,
+  },
+  mediaImage: {
+    width: '2.5rem',
+    height: '2.5rem',
+    borderRadius: radii.sm,
+    overflow: 'hidden',
+  },
+  content: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    gap: '0.25rem',
+  },
+  title: {
+    display: 'flex',
+    width: 'fit-content',
+    alignItems: 'center',
+    gap: '0.5rem',
+    fontSize: '0.875rem',
+    lineHeight: 1.375,
+    fontWeight: 500,
+  },
+  description: {
+    color: colors.mutedForeground,
+    fontSize: '0.875rem',
+    lineHeight: 1.5,
+    fontWeight: 400,
+  },
+  actions: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+  },
+  header: {
+    display: 'flex',
+    flexBasis: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '0.5rem',
+  },
+  footer: {
+    display: 'flex',
+    flexBasis: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '0.5rem',
+  },
+});
+
+export interface ItemGroupProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemGroup({ className, sx, ...props }: ItemGroupProps) {
+  const styleProps = stylex.props(styles.group, sx);
   return (
     <div
       role="list"
       data-slot="item-group"
-      className={cn('group/item-group flex flex-col', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
@@ -21,138 +128,166 @@ function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Sepa
     <Separator
       data-slot="item-separator"
       orientation="horizontal"
-      className={cn('my-0', className)}
+      className={className}
       {...props}
     />
   );
 }
 
-const itemVariants = cva(
-  'group/item flex items-center border border-transparent text-sm rounded-md transition-colors [a]:hover:bg-accent/50 [a]:transition-colors duration-100 flex-wrap outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  {
-    variants: {
-      variant: {
-        default: 'bg-transparent',
-        outline: 'border-border',
-        muted: 'bg-muted/50',
-      },
-      size: {
-        default: 'p-4 gap-4 ',
-        sm: 'py-3 px-4 gap-2.5',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-    },
-  },
-);
+export type ItemVariant = 'default' | 'outline' | 'muted';
+export type ItemSize = 'default' | 'sm';
+
+export interface ItemProps extends React.ComponentProps<'div'> {
+  variant?: ItemVariant;
+  size?: ItemSize;
+  asChild?: boolean;
+  sx?: stylex.StyleXStyles;
+}
 
 function Item({
   className,
   variant = 'default',
   size = 'default',
   asChild = false,
+  sx,
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof itemVariants> & { asChild?: boolean }) {
+}: ItemProps) {
   const Comp = asChild ? Slot : 'div';
+  const variantStyle =
+    variant === 'outline'
+      ? styles.variantOutline
+      : variant === 'muted'
+        ? styles.variantMuted
+        : styles.variantDefault;
+  const sizeStyle = size === 'sm' ? styles.sizeSm : styles.sizeDefault;
+  const styleProps = stylex.props(styles.item, variantStyle, sizeStyle, sx);
+
   return (
     <Comp
       data-slot="item"
       data-variant={variant}
       data-size={size}
-      className={cn(itemVariants({ variant, size, className }))}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-const itemMediaVariants = cva(
-  'flex shrink-0 items-center justify-center gap-2 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none group-has-[[data-slot=item-description]]/item:translate-y-0.5',
-  {
-    variants: {
-      variant: {
-        default: 'bg-transparent',
-        icon: "size-8 border rounded-sm bg-muted [&_svg:not([class*='size-'])]:size-4",
-        image: 'size-10 rounded-sm overflow-hidden [&_img]:size-full [&_img]:object-cover',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  },
-);
+export type ItemMediaVariant = 'default' | 'icon' | 'image';
 
-function ItemMedia({
-  className,
-  variant = 'default',
-  ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof itemMediaVariants>) {
+export interface ItemMediaProps extends React.ComponentProps<'div'> {
+  variant?: ItemMediaVariant;
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemMedia({ className, variant = 'default', sx, ...props }: ItemMediaProps) {
+  const variantStyle =
+    variant === 'icon' ? styles.mediaIcon : variant === 'image' ? styles.mediaImage : undefined;
+  const styleProps = stylex.props(styles.mediaBase, variantStyle, sx);
+
   return (
     <div
       data-slot="item-media"
       data-variant={variant}
-      className={cn(itemMediaVariants({ variant, className }))}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ItemContent({ className, ...props }: React.ComponentProps<'div'>) {
+export interface ItemContentProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemContent({ className, sx, ...props }: ItemContentProps) {
+  const styleProps = stylex.props(styles.content, sx);
   return (
     <div
       data-slot="item-content"
-      className={cn('flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ItemTitle({ className, ...props }: React.ComponentProps<'div'>) {
+export interface ItemTitleProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemTitle({ className, sx, ...props }: ItemTitleProps) {
+  const styleProps = stylex.props(styles.title, sx);
   return (
     <div
       data-slot="item-title"
-      className={cn('flex w-fit items-center gap-2 text-sm leading-snug font-medium', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ItemDescription({ className, ...props }: React.ComponentProps<'p'>) {
+export interface ItemDescriptionProps extends React.ComponentProps<'p'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemDescription({ className, sx, ...props }: ItemDescriptionProps) {
+  const styleProps = stylex.props(styles.description, sx);
   return (
     <p
       data-slot="item-description"
-      className={cn(
-        'text-muted-foreground line-clamp-2 text-sm leading-normal font-normal text-balance',
-        '[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ItemActions({ className, ...props }: React.ComponentProps<'div'>) {
+export interface ItemActionsProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemActions({ className, sx, ...props }: ItemActionsProps) {
+  const styleProps = stylex.props(styles.actions, sx);
   return (
-    <div data-slot="item-actions" className={cn('flex items-center gap-2', className)} {...props} />
+    <div
+      data-slot="item-actions"
+      {...styleProps}
+      className={cn(styleProps.className, className)}
+      {...props}
+    />
   );
 }
 
-function ItemHeader({ className, ...props }: React.ComponentProps<'div'>) {
+export interface ItemHeaderProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemHeader({ className, sx, ...props }: ItemHeaderProps) {
+  const styleProps = stylex.props(styles.header, sx);
   return (
     <div
       data-slot="item-header"
-      className={cn('flex basis-full items-center justify-between gap-2', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function ItemFooter({ className, ...props }: React.ComponentProps<'div'>) {
+export interface ItemFooterProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function ItemFooter({ className, sx, ...props }: ItemFooterProps) {
+  const styleProps = stylex.props(styles.footer, sx);
   return (
     <div
       data-slot="item-footer"
-      className={cn('flex basis-full items-center justify-between gap-2', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );

@@ -1,5 +1,6 @@
 import { isEmpty, map } from 'lodash-es';
 import { Fragment } from 'react';
+import * as stylex from '@stylexjs/stylex';
 import {
   flexRender,
   type ExpandedState,
@@ -17,6 +18,16 @@ import {
 } from '../../ui/table';
 
 import type { DataTableEmptyConfig, DataTableExpandConfig } from '../types';
+
+const styles = stylex.create({
+  emptyCell: {
+    height: '6rem',
+    textAlign: 'center',
+  },
+  expandCell: {
+    padding: 0,
+  },
+});
 
 export const DataTableTable = <TData,>({
   table,
@@ -63,7 +74,7 @@ export const DataTableTable = <TData,>({
     if (isEmpty(rows)) {
       return (
         <TableRow>
-          <TableCell colSpan={columnsCount} className="h-24 text-center">
+          <TableCell colSpan={columnsCount} sx={styles.emptyCell}>
             {empty.render()}
           </TableCell>
         </TableRow>
@@ -81,7 +92,7 @@ export const DataTableTable = <TData,>({
 
         {expandConfig.enabled && row.getIsExpanded() ? (
           <TableRow>
-            <TableCell colSpan={columnsCount} className="p-0">
+            <TableCell colSpan={columnsCount} sx={styles.expandCell}>
               {expandConfig.renderSubComponent(row)}
             </TableCell>
           </TableRow>

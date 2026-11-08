@@ -1,11 +1,42 @@
 import type { FieldPath, FieldValues } from 'react-hook-form';
 import { NumericFormat } from 'react-number-format';
+import * as stylex from '@stylexjs/stylex';
 
+import { colors, radii } from '../../theme/tokens.stylex';
 import { FormBase } from '../Form';
 import { StepperControls } from './StepperControls';
 import type { FormNumberInputProps } from './types';
 import { useFormNumberInput } from './useFormNumberInput';
 import { cn } from '../../utils';
+
+const styles = stylex.create({
+  wrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+  },
+  numericInput: {
+    width: '100%',
+    minWidth: 0,
+    borderRadius: radii.md,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.input,
+    backgroundColor: 'transparent',
+    color: colors.foreground,
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    transitionProperty: 'color, box-shadow, border-color',
+    transitionDuration: '150ms',
+    outline: 'none',
+    height: '2.25rem',
+    paddingInline: '0.75rem',
+    paddingBlock: '0.5rem',
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
+  },
+});
 
 export function FormNumberInput<
   TFieldValues extends FieldValues,
@@ -66,8 +97,10 @@ export function FormNumberInput<
           numericOnValueChange,
         } = getHandlers({ currentValue, field });
 
+        const inputStyleProps = stylex.props(styles.numericInput);
+
         return (
-          <div className="flex items-center">
+          <div {...stylex.props(styles.wrapper)}>
             <NumericFormat
               min={min}
               max={max}
@@ -88,7 +121,8 @@ export function FormNumberInput<
               name={field.name}
               {...props}
               id={id}
-              className={cn(numericClass, props.className)}
+              {...inputStyleProps}
+              className={cn(inputStyleProps.className, numericClass, props.className)}
             />
             <StepperControls
               onIncrement={handleIncrement}

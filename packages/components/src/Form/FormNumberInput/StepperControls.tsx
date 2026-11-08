@@ -1,7 +1,36 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-
 import { useTranslation } from 'react-i18next';
+import * as stylex from '@stylexjs/stylex';
+import { colors } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
+
+const styles = stylex.create({
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: '0.25rem',
+  },
+  btnUp: {
+    paddingInline: '0.5rem',
+    height: '1.125rem',
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    borderLeftWidth: 0,
+    borderBottomWidth: '0.5px',
+    borderColor: colors.input,
+  },
+  btnDown: {
+    paddingInline: '0.5rem',
+    height: '1.125rem',
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderLeftWidth: 0,
+    borderTopWidth: '0.5px',
+    borderColor: colors.input,
+  },
+});
 
 interface StepperControlsProps {
   onIncrement: () => void;
@@ -19,10 +48,10 @@ export function StepperControls({
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col ml-1">
+    <div {...stylex.props(styles.controls)}>
       <Button
         aria-label={t('form_increase_value')}
-        className="px-2 h-5 rounded-l-none rounded-br-none border-input border-l-0 border-b-[0.5px] focus-visible:relative"
+        sx={styles.btnUp}
         variant="outline"
         onClick={onIncrement}
         disabled={disableIncrement}
@@ -32,7 +61,7 @@ export function StepperControls({
       </Button>
       <Button
         aria-label={t('form_decrease_value')}
-        className="px-2 h-5 rounded-l-none rounded-tr-none border-input border-l-0 border-t-[0.5px] focus-visible:relative"
+        sx={styles.btnDown}
         variant="outline"
         onClick={onDecrement}
         disabled={disableDecrement}

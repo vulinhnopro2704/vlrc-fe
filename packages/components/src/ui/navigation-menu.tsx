@@ -1,26 +1,167 @@
 import * as React from 'react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
-import { cva } from 'class-variance-authority';
 import { ChevronDownIcon } from 'lucide-react';
+import * as stylex from '@stylexjs/stylex';
 
+import { colors, radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
+
+const styles = stylex.create({
+  root: {
+    position: 'relative',
+    display: 'flex',
+    maxWidth: 'max-content',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  list: {
+    display: 'flex',
+    flex: 1,
+    listStyleType: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.25rem',
+  },
+  item: {
+    position: 'relative',
+  },
+  trigger: {
+    display: 'inline-flex',
+    height: '2.25rem',
+    width: 'max-content',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: radii.md,
+    backgroundColor: colors.background,
+    paddingInline: '1rem',
+    paddingBlock: '0.5rem',
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    outline: 'none',
+    color: colors.foreground,
+    cursor: 'pointer',
+    transitionProperty: 'background-color, color',
+    transitionDuration: '100ms',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+    ':focus': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+    ':disabled': {
+      pointerEvents: 'none',
+      opacity: 0.5,
+    },
+  },
+  chevron: {
+    position: 'relative',
+    top: '1px',
+    marginLeft: '0.25rem',
+    width: '0.75rem',
+    height: '0.75rem',
+    transitionProperty: 'transform',
+    transitionDuration: '300ms',
+  },
+  content: {
+    top: 0,
+    left: 0,
+    width: 'auto',
+    padding: '0.5rem',
+    paddingRight: '0.625rem',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.popover,
+    color: colors.popoverForeground,
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+  },
+  viewportContainer: {
+    position: 'absolute',
+    top: '100%',
+    left: 0,
+    zIndex: 50,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  viewport: {
+    position: 'relative',
+    marginTop: '0.375rem',
+    overflow: 'hidden',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.popover,
+    color: colors.popoverForeground,
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+  },
+  link: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.25rem',
+    borderRadius: radii.sm,
+    padding: '0.5rem',
+    fontSize: '0.875rem',
+    outline: 'none',
+    color: colors.foreground,
+    transitionProperty: 'background-color, color',
+    transitionDuration: '100ms',
+    ':hover': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+    ':focus': {
+      backgroundColor: colors.accent,
+      color: colors.accentForeground,
+    },
+  },
+  indicator: {
+    position: 'relative',
+    top: '100%',
+    zIndex: 1,
+    display: 'flex',
+    height: '0.375rem',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  indicatorArrow: {
+    position: 'relative',
+    top: '60%',
+    width: '0.5rem',
+    height: '0.5rem',
+    transform: 'rotate(45deg)',
+    borderTopLeftRadius: radii.sm,
+    backgroundColor: colors.border,
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+  },
+});
+
+export interface NavigationMenuProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.Root
+> {
+  viewport?: boolean;
+  sx?: stylex.StyleXStyles;
+}
 
 function NavigationMenu({
   className,
   children,
   viewport = true,
+  sx,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-  viewport?: boolean;
-}) {
+}: NavigationMenuProps) {
+  const styleProps = stylex.props(styles.root, sx);
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
       data-viewport={viewport}
-      className={cn(
-        'group/navigation-menu relative flex max-w-max flex-1 items-center justify-center',
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     >
       {children}
@@ -29,121 +170,138 @@ function NavigationMenu({
   );
 }
 
-function NavigationMenuList({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.List>) {
+export interface NavigationMenuListProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.List
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function NavigationMenuList({ className, sx, ...props }: NavigationMenuListProps) {
+  const styleProps = stylex.props(styles.list, sx);
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
-      className={cn('group flex flex-1 list-none items-center justify-center gap-1', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function NavigationMenuItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Item>) {
+export interface NavigationMenuItemProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.Item
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function NavigationMenuItem({ className, sx, ...props }: NavigationMenuItemProps) {
+  const styleProps = stylex.props(styles.item, sx);
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
-      className={cn('relative', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-const navigationMenuTriggerStyle = cva(
-  'group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1',
-);
+const navigationMenuTriggerStyle = () => {
+  return '';
+};
 
-function NavigationMenuTrigger({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
+export interface NavigationMenuTriggerProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.Trigger
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function NavigationMenuTrigger({ className, children, sx, ...props }: NavigationMenuTriggerProps) {
+  const styleProps = stylex.props(styles.trigger, sx);
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
-      className={cn(navigationMenuTriggerStyle(), 'group', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     >
-      {children}{' '}
-      <ChevronDownIcon
-        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
-        aria-hidden="true"
-      />
+      {children} <ChevronDownIcon {...stylex.props(styles.chevron)} aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   );
 }
 
-function NavigationMenuContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Content>) {
+export interface NavigationMenuContentProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.Content
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function NavigationMenuContent({ className, sx, ...props }: NavigationMenuContentProps) {
+  const styleProps = stylex.props(styles.content, sx);
   return (
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
-      className={cn(
-        'data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 top-0 left-0 w-full p-2 pr-2.5 md:absolute md:w-auto',
-        'group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none',
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function NavigationMenuViewport({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+export interface NavigationMenuViewportProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.Viewport
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function NavigationMenuViewport({ className, sx, ...props }: NavigationMenuViewportProps) {
+  const styleProps = stylex.props(styles.viewport, sx);
   return (
-    <div className={cn('absolute top-full left-0 isolate z-50 flex justify-center')}>
+    <div {...stylex.props(styles.viewportContainer)}>
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
-        className={cn(
-          'origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]',
-          className,
-        )}
+        {...styleProps}
+        className={cn(styleProps.className, className)}
         {...props}
       />
     </div>
   );
 }
 
-function NavigationMenuLink({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Link>) {
+export interface NavigationMenuLinkProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.Link
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function NavigationMenuLink({ className, sx, ...props }: NavigationMenuLinkProps) {
+  const styleProps = stylex.props(styles.link, sx);
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
-      className={cn(
-        "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function NavigationMenuIndicator({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Indicator>) {
+export interface NavigationMenuIndicatorProps extends React.ComponentProps<
+  typeof NavigationMenuPrimitive.Indicator
+> {
+  sx?: stylex.StyleXStyles;
+}
+
+function NavigationMenuIndicator({ className, sx, ...props }: NavigationMenuIndicatorProps) {
+  const styleProps = stylex.props(styles.indicator, sx);
   return (
     <NavigationMenuPrimitive.Indicator
       data-slot="navigation-menu-indicator"
-      className={cn(
-        'data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden',
-        className,
-      )}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     >
-      <div className="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />
+      <div {...stylex.props(styles.indicatorArrow)} />
     </NavigationMenuPrimitive.Indicator>
   );
 }

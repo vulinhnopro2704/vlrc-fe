@@ -1,5 +1,7 @@
 import { type FunctionComponent, type Ref } from 'react';
+import * as stylex from '@stylexjs/stylex';
 import Icons from '../Icons';
+import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentWidth } from '../theme/width';
 
 import { cn } from '../utils';
@@ -8,6 +10,81 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { LiveRegion, OptionsContent, PlaceholderContent, SelectedValuesContent } from './renderers';
 import { useMultiSelect } from './useMultiSelect';
 import { type MultiSelectRef } from './type';
+
+const styles = stylex.create({
+  triggerButton: {
+    display: 'flex',
+    padding: '0.25rem',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    minHeight: '2.5rem',
+    height: 'auto',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'inherit',
+    ':hover': {
+      backgroundColor: 'inherit',
+    },
+  },
+  triggerAutoSize: {
+    width: 'auto',
+  },
+  triggerFullWidth: {
+    width: '100%',
+  },
+  triggerCompact: {
+    minHeight: '2rem',
+    fontSize: '0.875rem',
+  },
+  triggerMobile: {
+    minHeight: '3rem',
+    fontSize: '1rem',
+  },
+  triggerDisabled: {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+  },
+  popoverContent: {
+    width: 'auto',
+    padding: 0,
+    touchAction: 'manipulation',
+  },
+  popoverMobile: {
+    width: '85vw',
+    maxWidth: '17.5rem',
+  },
+  popoverTablet: {
+    width: '70vw',
+    maxWidth: '28rem',
+  },
+  popoverDesktop: {
+    minWidth: '18.75rem',
+  },
+  wandIcon: {
+    cursor: 'pointer',
+    marginBlock: '0.5rem',
+    color: colors.foreground,
+    backgroundColor: colors.background,
+    width: '0.75rem',
+    height: '0.75rem',
+  },
+  wandIconInactive: {
+    color: colors.mutedForeground,
+  },
+  srOnly: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
+});
 
 const MultiSelect: FunctionComponent<{
   options: any[];
@@ -72,15 +149,17 @@ const MultiSelect: FunctionComponent<{
     animation,
     animationConfig,
     maxCount,
+    modalPopover,
+    hideSelectAll,
+    searchable,
+    autoSize,
+    disabled,
     responsive,
     minWidth,
     maxWidth,
     deduplicateOptions,
     resetOnDefaultValueChange,
     closeOnSelect,
-    searchable,
-    autoSize,
-    disabled,
     forwardedRef: ref,
   });
 
@@ -119,16 +198,16 @@ const MultiSelect: FunctionComponent<{
       <LiveRegion politeMessage={politeMessage} assertiveMessage={assertiveMessage} />
 
       <Popover open={isPopoverOpen} onOpenChange={handlePopoverChange} modal={modalPopover}>
-        <div id={ids.triggerDescriptionId} className="sr-only">
+        <div id={ids.triggerDescriptionId} {...stylex.props(styles.srOnly)}>
           Multi-select dropdown. Use arrow keys to navigate, Enter to select, and Escape to close.
         </div>
-        <div id={ids.selectedCountId} className="sr-only" aria-live="polite">
+        <div id={ids.selectedCountId} {...stylex.props(styles.srOnly)} aria-live="polite">
           {selectedValues.length === 0
             ? 'No options selected'
             : `${selectedValues.length} option${
                 selectedValues.length === 1 ? '' : 's'
               } selected: ${selectedValues
-                .map((value) => getOptionByValue(value)?.label)
+                .map((val) => getOptionByValue(val)?.label)
                 .filter(Boolean)
                 .join(', ')}`}
         </div>
@@ -147,14 +226,14 @@ const MultiSelect: FunctionComponent<{
             aria-controls={isPopoverOpen ? ids.listboxId : undefined}
             aria-describedby={`${ids.triggerDescriptionId} ${ids.selectedCountId}`}
             aria-label={ariaLabel}
-            className={cn(
-              'flex p-1 rounded-md border min-h-10 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto',
-              autoSize ? 'w-auto' : 'w-full',
-              responsiveSettings.compactMode && 'min-h-8 text-sm',
-              screenSize === 'mobile' && 'min-h-12 text-base',
-              disabled && 'opacity-50 cursor-not-allowed',
-              className,
-            )}
+            sx={[
+              styles.triggerButton,
+              autoSize ? styles.triggerAutoSize : styles.triggerFullWidth,
+              responsiveSettings.compactMode ? styles.triggerCompact : undefined,
+              screenSize === 'mobile' ? styles.triggerMobile : undefined,
+              disabled ? styles.triggerDisabled : undefined,
+            ]}
+            className={className}
             style={{
               ...widthConstraints,
               maxWidth: `min(${widthConstraints.maxWidth}, 100%)`,
@@ -185,14 +264,15 @@ const MultiSelect: FunctionComponent<{
           role="listbox"
           aria-multiselectable="true"
           aria-label="Available options"
-          className={cn(
-            'w-auto p-0 touch-manipulation',
-            popoverAnimationClass,
-            screenSize === 'mobile' && 'w-[85vw] max-w-70',
-            screenSize === 'tablet' && 'w-[70vw] max-w-md',
-            screenSize === 'desktop' && 'min-w-75',
-            popoverClassName,
-          )}
+          sx={[
+            styles.popoverContent,
+            screenSize === 'mobile'
+              ? styles.popoverMobile
+              : screenSize === 'tablet'
+                ? styles.popoverTablet
+                : styles.popoverDesktop,
+          ]}
+          className={cn(popoverAnimationClass, popoverClassName)}
           style={{
             animationDuration: `${animationConfig?.duration || animation}s`,
             animationDelay: `${animationConfig?.delay || 0}s`,
@@ -222,10 +302,7 @@ const MultiSelect: FunctionComponent<{
         </PopoverContent>
         {animation > 0 && selectedValues.length > 0 && (
           <Icons.WandSparkles
-            className={cn(
-              'cursor-pointer my-2 text-foreground bg-background w-3 h-3',
-              isAnimating ? '' : 'text-muted-foreground',
-            )}
+            {...stylex.props(styles.wandIcon, !isAnimating && styles.wandIconInactive)}
             onClick={() => setIsAnimating(!isAnimating)}
           />
         )}

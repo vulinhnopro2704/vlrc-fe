@@ -1,6 +1,7 @@
 import { clamp, debounce } from 'lodash-es';
 import { useEffect, useRef, useState } from 'react';
 import { useUpdateEffect } from 'ahooks';
+import * as stylex from '@stylexjs/stylex';
 import {
   functionalUpdate,
   getCoreRowModel,
@@ -13,6 +14,21 @@ import {
   type Row,
 } from '@tanstack/react-table';
 import { cn } from '../utils';
+
+const styles = stylex.create({
+  root: {
+    width: '100%',
+  },
+  toolbarRight: {
+    marginLeft: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+  },
+  container: {
+    overflow: 'auto',
+  },
+});
 import { DataTablePagination } from './components/DataTablePagination';
 import { DataTableTable } from './components/DataTableTable';
 import { DataTableToolbar } from './components/DataTableToolbar';
@@ -237,14 +253,20 @@ export const DataTable = <TData,>({
 
   const columnsCount = table.getVisibleLeafColumns().length;
 
+  const rootStyleProps = stylex.props(styles.root);
+  const containerStyleProps = stylex.props(styles.container);
+
   return (
-    <div className={cn('w-full', className === undefined ? '' : className)}>
+    <div
+      {...rootStyleProps}
+      className={cn(rootStyleProps.className, className === undefined ? '' : className)}
+    >
       <DataTableToolbar<TData>
         table={table}
         placeholder={resolvedSearch.placeholder}
         debounceMs={resolvedSearch.debounceMs}
         right={
-          <div className="ml-auto flex items-center gap-2">
+          <div {...stylex.props(styles.toolbarRight)}>
             {resolvedRenderToolbarRight(table)}
             <DataTableViewOptions<TData> table={table} columnVisibility={columnVisibility} />
           </div>
@@ -253,7 +275,11 @@ export const DataTable = <TData,>({
 
       <div
         ref={(node) => setScrollEl(node)}
-        className={cn(containerClassName === undefined ? 'overflow-auto' : containerClassName)}
+        {...containerStyleProps}
+        className={cn(
+          containerStyleProps.className,
+          containerClassName === undefined ? '' : containerClassName,
+        )}
       >
         <DataTableTable<TData>
           table={table}

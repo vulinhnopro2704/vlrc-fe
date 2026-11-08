@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import * as stylex from '@stylexjs/stylex';
 import type * as LabelPrimitive from '@radix-ui/react-label';
 import { Slot } from '@radix-ui/react-slot';
 import {
@@ -13,9 +14,30 @@ import {
   type FieldValues,
 } from 'react-hook-form';
 
+import { colors } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Label } from './label';
 import { resolveWidth, type ComponentWidth } from '../theme/width';
+
+const styles = stylex.create({
+  item: {
+    display: 'grid',
+    gap: '0.5rem',
+  },
+  labelError: {
+    color: colors.destructive,
+  },
+  description: {
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
+    color: colors.mutedForeground,
+  },
+  message: {
+    fontSize: '0.875rem',
+    lineHeight: '1.25rem',
+    color: colors.destructive,
+  },
+});
 
 const Form = FormProvider;
 
@@ -75,33 +97,45 @@ const FormItemContext = React.createContext<FormItemContextValue>({} as FormItem
 export interface FormItemProps extends React.ComponentProps<'div'> {
   /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
   width?: ComponentWidth;
+  sx?: stylex.StyleXStyles;
 }
 
-function FormItem({ className, width, style, ...props }: FormItemProps) {
+function FormItem({ className, width, style, sx, ...props }: FormItemProps) {
   const id = React.useId();
   const resolvedWidth = resolveWidth(width);
+  const styleProps = stylex.props(styles.item, sx);
 
   return (
     <FormItemContext.Provider value={{ id }}>
       <div
         data-slot="form-item"
         data-width={width}
-        style={{ ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
-        className={cn('grid gap-2', className)}
+        {...styleProps}
+        style={{
+          ...styleProps.style,
+          ...style,
+          ...(resolvedWidth ? { width: resolvedWidth } : {}),
+        }}
+        className={cn(styleProps.className, className)}
         {...props}
       />
     </FormItemContext.Provider>
   );
 }
 
-function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {
+export interface FormLabelProps extends React.ComponentProps<typeof LabelPrimitive.Root> {
+  sx?: stylex.StyleXStyles;
+}
+
+function FormLabel({ className, sx, ...props }: FormLabelProps) {
   const { error, formItemId } = useFormField();
 
   return (
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn('data-[error=true]:text-destructive', className)}
+      sx={[error ? styles.labelError : undefined, sx]}
+      className={className}
       htmlFor={formItemId}
       {...props}
     />
@@ -122,20 +156,30 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
   );
 }
 
-function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
+export interface FormDescriptionProps extends React.ComponentProps<'p'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function FormDescription({ className, sx, ...props }: FormDescriptionProps) {
   const { formDescriptionId } = useFormField();
+  const styleProps = stylex.props(styles.description, sx);
 
   return (
     <p
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn('text-muted-foreground text-sm', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     />
   );
 }
 
-function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
+export interface FormMessageProps extends React.ComponentProps<'p'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function FormMessage({ className, sx, ...props }: FormMessageProps) {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message ?? '') : props.children;
 
@@ -143,11 +187,14 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
     return null;
   }
 
+  const styleProps = stylex.props(styles.message, sx);
+
   return (
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn('text-destructive text-sm', className)}
+      {...styleProps}
+      className={cn(styleProps.className, className)}
       {...props}
     >
       {body}
