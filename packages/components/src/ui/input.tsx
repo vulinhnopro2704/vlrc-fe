@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
-import type { ComponentSize } from '../theme/types';
+import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
 
 const styles = stylex.create({
   base: {
@@ -336,12 +336,16 @@ export interface InputProps extends Omit<React.ComponentProps<'input'>, 'prefix'
   htmlType?: string;
   /** HTML input size attribute (number of characters) */
   htmlSize?: number;
+  /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
+  width?: ComponentWidth;
 }
 
 function Input({
   className,
   type,
   size = 'md',
+  width,
+  style,
   prefix,
   prefixIcon,
   prefixButton,
@@ -361,6 +365,7 @@ function Input({
   const isInvalid = props['aria-invalid'] === true || props['aria-invalid'] === 'true';
   const resolvedSize = size;
   const currentSizeStyle = sizeStyles[resolvedSize] ?? styles.sizeMd;
+  const resolvedWidth = resolveWidth(width);
 
   const resolvedType = htmlType ?? type;
 
@@ -384,9 +389,11 @@ function Input({
         type={resolvedType}
         data-slot="input"
         data-size={resolvedSize}
+        data-width={width}
         disabled={disabled}
         size={htmlSize}
         {...sxProps}
+        style={{ ...sxProps.style, ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       />
@@ -416,7 +423,9 @@ function Input({
     <div
       data-slot="input-wrapper"
       data-size={resolvedSize}
+      data-width={width}
       {...wrapperSxProps}
+      style={{ ...wrapperSxProps.style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
       className={mergedWrapperClass}
     >
       {prefixButton ? (
@@ -442,6 +451,7 @@ function Input({
         disabled={disabled}
         size={htmlSize}
         {...inputSxProps}
+        style={{ ...inputSxProps.style, ...style }}
         className={mergedInputClass}
         {...props}
       />

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
-import type { ComponentSize } from '../theme/types';
+import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
 
 export type ButtonVariant =
   | 'default'
@@ -382,6 +382,8 @@ export interface ButtonProps extends Omit<React.ComponentProps<'button'>, 'prefi
   loading?: boolean;
   /** HTML button type attribute alias */
   htmlType?: 'button' | 'submit' | 'reset';
+  /** Configurable button width (presets: 'full', 'fit', 'md', px number, or custom CSS string) */
+  width?: ComponentWidth;
 }
 
 function Button({
@@ -390,6 +392,8 @@ function Button({
   variant = 'default',
   size = 'md',
   asChild = false,
+  width,
+  style,
   prefix,
   prefixIcon,
   suffix,
@@ -409,6 +413,7 @@ function Button({
   const isDisabled = disabled ?? isPending;
   const resolvedType = htmlType ?? type ?? 'button';
   const Comp = asChild ? Slot : 'button';
+  const resolvedWidth = resolveWidth(width);
 
   const resolvedSize = size === 'default' ? 'md' : size;
   const currentSizeStyle = sizeStyles[resolvedSize] ?? styles.sizeMd;
@@ -437,8 +442,10 @@ function Button({
         data-slot="button"
         data-variant={variant}
         data-size={resolvedSize}
+        data-width={width}
         disabled={isDisabled}
         {...sxProps}
+        style={{ ...sxProps.style, ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
         className={mergedClassName}
         {...props}
       >
@@ -453,8 +460,10 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={resolvedSize}
+      data-width={width}
       disabled={isDisabled}
       {...sxProps}
+      style={{ ...sxProps.style, ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
       className={mergedClassName}
       {...props}
     >

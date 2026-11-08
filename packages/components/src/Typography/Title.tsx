@@ -5,6 +5,7 @@ import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
 import type { TitleLevel, TitleProps, TitleTracking, TitleVariant } from './types';
 import { resolveCustomTypographyStyle } from './utils';
+import { typographyWeightStyles } from './weightStyles';
 
 const styles = stylex.create({
   base: {
@@ -163,6 +164,7 @@ export function Title({
   size,
   variant = 'default',
   tracking = 'normal',
+  weight,
   customSize,
   lines,
   rows,
@@ -230,6 +232,7 @@ export function Title({
     currentSizeStyle,
     variantStyles[variant],
     trackingStyles[tracking],
+    weight && typographyWeightStyles[weight],
     isSingleEllipsis && styles.ellipsisSingle,
     sx,
   );
@@ -240,6 +243,7 @@ export function Title({
       data-level={level}
       data-size={resolvedSize}
       data-variant={variant}
+      data-weight={weight}
       {...sxProps}
       style={{ ...sxProps.style, ...customStyle }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

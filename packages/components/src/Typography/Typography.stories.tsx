@@ -196,7 +196,21 @@ export const TextPlayground: StoryObj<typeof Text> = {
     },
     weight: {
       control: 'select',
-      options: ['regular', 'medium', 'semibold', 'bold'],
+      options: [
+        'thin',
+        'extra-light',
+        'extralight',
+        'light',
+        'normal',
+        'regular',
+        'medium',
+        'semi-bold',
+        'semibold',
+        'bold',
+        'extra-bold',
+        'extrabold',
+        'black',
+      ],
       description: 'Font weight',
     },
     strong: { control: 'boolean' },
@@ -300,6 +314,81 @@ export const TextSevenSizes: StoryObj = {
       <Typography.Text size="lg">lg (16px): Emphasized prominent text</Typography.Text>
       <Typography.Text size="xl">xl (20px): Sub-headline callout copy</Typography.Text>
       <Typography.Text size="xxl">xxl (24px): Featured value display</Typography.Text>
+    </div>
+  ),
+};
+
+export const FontWeightsDemo: StoryObj = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: 640 }}>
+      <div>
+        <h4
+          style={{
+            fontSize: '0.875rem',
+            fontWeight: 600,
+            color: 'var(--muted-foreground)',
+            marginBottom: '0.75rem',
+          }}
+        >
+          TYPOGRAPHY FONT WEIGHTS (Named types without numeric values)
+        </h4>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <Typography.Text weight="thin">
+            thin (100) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="extra-light">
+            extra-light (200) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="light">
+            light (300) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="regular">
+            regular / normal (400) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="medium">
+            medium (500) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="semibold">
+            semibold / semi-bold (600) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="bold">
+            bold (700) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="extra-bold">
+            extra-bold (800) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+          <Typography.Text weight="black">
+            black (900) — The quick brown fox jumps over the lazy dog
+          </Typography.Text>
+        </div>
+      </div>
+
+      <div>
+        <h4
+          style={{
+            fontSize: '0.875rem',
+            fontWeight: 600,
+            color: 'var(--muted-foreground)',
+            marginBottom: '0.75rem',
+          }}
+        >
+          TITLE WITH CUSTOM WEIGHTS
+        </h4>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <Typography.Title level={2} weight="light">
+            Title with Light weight
+          </Typography.Title>
+          <Typography.Title level={2} weight="regular">
+            Title with Regular weight
+          </Typography.Title>
+          <Typography.Title level={2} weight="bold">
+            Title with Default Bold weight
+          </Typography.Title>
+          <Typography.Title level={2} weight="black">
+            Title with Black weight
+          </Typography.Title>
+        </div>
+      </div>
     </div>
   ),
 };

@@ -32,6 +32,7 @@ export function FormNumberInput<
   description,
   horizontal,
   controlFirst,
+  width,
   ...props
 }: FormNumberInputProps<TFieldValues, TName, TTransformedValues>) {
   const { enhancedRules, numericClass, getHandlers } = useFormNumberInput<TFieldValues, TName>({
@@ -53,6 +54,7 @@ export function FormNumberInput<
       rules={enhancedRules}
       horizontal={horizontal}
       controlFirst={controlFirst}
+      width={width}
     >
       {({ id, 'aria-invalid': ariaInvalid, ...field }) => {
         const currentValue = field.value as number | undefined;

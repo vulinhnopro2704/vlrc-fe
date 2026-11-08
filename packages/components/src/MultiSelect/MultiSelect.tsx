@@ -1,5 +1,6 @@
 import { type FunctionComponent, type Ref } from 'react';
 import Icons from '../Icons';
+import type { ComponentWidth } from '../theme/width';
 
 import { cn } from '../utils';
 import { Button } from '../ui/button';
@@ -28,6 +29,7 @@ const MultiSelect: FunctionComponent<{
   popoverClassName?: string;
   disabled?: boolean;
   responsive?: any;
+  width?: ComponentWidth;
   minWidth?: string;
   maxWidth?: string;
   deduplicateOptions?: boolean;
@@ -54,6 +56,7 @@ const MultiSelect: FunctionComponent<{
   popoverClassName,
   disabled = false,
   responsive,
+  width,
   minWidth,
   maxWidth,
   deduplicateOptions = false,
@@ -134,6 +137,7 @@ const MultiSelect: FunctionComponent<{
           <Button
             ref={buttonRef}
             variant="outline"
+            width={width}
             {...buttonProps}
             onClick={handleTogglePopover}
             disabled={disabled}

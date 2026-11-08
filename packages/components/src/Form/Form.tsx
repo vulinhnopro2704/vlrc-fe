@@ -129,6 +129,7 @@ export function FormBase<
   horizontal,
   rules,
   className,
+  width,
 }: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
   const processedRules = (() => {
     const autoRules: RegisterOptions<TFieldValues, TName> = { ...rules };
@@ -191,6 +192,7 @@ export function FormBase<
         return (
           <Field
             className={className}
+            width={width}
             data-invalid={fieldState.invalid}
             orientation={horizontal ? 'horizontal' : undefined}
           >
@@ -234,6 +236,7 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
   htmlType,
   htmlSize,
   sx,
+  width,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -272,11 +275,13 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
       rules={props.rules}
       htmlType={inputType}
       className={wrapperClassName}
+      width={width}
     >
       {(field) => (
         <Input
           {...field}
           {...props}
+          width={width}
           type={isPassword && showPassword ? 'text' : inputType}
           htmlType={isPassword && showPassword ? 'text' : inputType}
           htmlSize={htmlSize}
@@ -300,6 +305,7 @@ export const FormTextarea: FormControlFunc<FormTextareaExtraProps> = ({
   wrapperClassName,
   className,
   sx,
+  width,
   ...props
 }) => {
   return (
@@ -310,9 +316,16 @@ export const FormTextarea: FormControlFunc<FormTextareaExtraProps> = ({
       description={props.description}
       rules={props.rules}
       className={wrapperClassName}
+      width={width}
     >
       {(field) => (
-        <Textarea {...field} {...props} className={textareaClassName ?? className} sx={sx} />
+        <Textarea
+          {...field}
+          {...props}
+          width={width}
+          className={textareaClassName ?? className}
+          sx={sx}
+        />
       )}
     </FormBase>
   );
@@ -320,13 +333,19 @@ export const FormTextarea: FormControlFunc<FormTextareaExtraProps> = ({
 
 export const FormSimpleSelect: FormControlFunc<{ children: ReactNode }> = ({
   children,
+  width,
   ...props
 }) => {
   return (
-    <FormBase {...props}>
+    <FormBase {...props} width={width}>
       {({ onChange, onBlur, ...field }) => (
         <Select {...field} onValueChange={onChange}>
-          <SelectTrigger aria-invalid={field['aria-invalid']} id={field.id} onBlur={onBlur}>
+          <SelectTrigger
+            aria-invalid={field['aria-invalid']}
+            id={field.id}
+            onBlur={onBlur}
+            width={width}
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>{children}</SelectContent>

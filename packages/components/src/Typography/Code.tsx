@@ -4,6 +4,7 @@ import { colors, radii } from '../theme/tokens.stylex';
 import Icons from '../Icons';
 import type { CodeProps } from './types';
 import { resolveCustomTypographyStyle } from './utils';
+import { typographyWeightStyles } from './weightStyles';
 
 const styles = stylex.create({
   inline: {
@@ -91,6 +92,7 @@ export function Code({
   block = false,
   language,
   copyable = false,
+  weight,
   customSize,
   lines,
   rows,
@@ -138,11 +140,12 @@ export function Code({
 
   if (block) {
     const Component = (as || 'pre') as React.ElementType;
-    const sxProps = stylex.props(styles.pre, sx);
+    const sxProps = stylex.props(styles.pre, weight && typographyWeightStyles[weight], sx);
 
     return (
       <div {...stylex.props(styles.blockContainer)} data-slot="typography-code-block">
         <Component
+          data-weight={weight}
           {...sxProps}
           style={{ ...sxProps.style, ...customStyle }}
           className={
@@ -176,12 +179,13 @@ export function Code({
   }
 
   const Component = (as || 'code') as React.ElementType;
-  const sxProps = stylex.props(styles.inline, sx);
+  const sxProps = stylex.props(styles.inline, weight && typographyWeightStyles[weight], sx);
 
   return (
     <Component
       data-slot="typography-code"
       data-language={language}
+      data-weight={weight}
       {...sxProps}
       style={{ ...sxProps.style, ...customStyle }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

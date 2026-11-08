@@ -61,6 +61,38 @@ export type TextDecoration =
   | 'underline 2px dashed'
   | (string & {});
 
+/**
+ * Typography font weight map associating semantic named weights with numeric CSS values.
+ */
+export const TypographyWeightMap = {
+  thin: 100,
+  'extra-light': 200,
+  extralight: 200,
+  light: 300,
+  normal: 400,
+  regular: 400,
+  medium: 500,
+  'semi-bold': 600,
+  semibold: 600,
+  bold: 700,
+  'extra-bold': 800,
+  extrabold: 800,
+  black: 900,
+} as const;
+
+/**
+ * Standard font weight options with semantic named types so users do not need to fill numeric values.
+ */
+export type TypographyWeight = keyof typeof TypographyWeightMap;
+
+/**
+ * Aliases for TypographyWeight for flexibility and backwards compatibility.
+ */
+export type FontWeight = TypographyWeight;
+export type TextWeight = TypographyWeight;
+export type TitleWeight = TypographyWeight;
+export type ParagraphWeight = TypographyWeight;
+
 export interface BaseTypographyProps extends React.HTMLAttributes<HTMLElement> {
   /** Polymorphic component to override the semantic HTML tag */
   as?: ElementType;
@@ -70,6 +102,8 @@ export interface BaseTypographyProps extends React.HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   /** Whether the field/label is required, displaying an accessible red asterisk indicator */
   required?: boolean;
+  /** Font weight configuration with semantic named types (e.g. 'regular', 'medium', 'semibold', 'bold', 'thin', 'black') */
+  weight?: TypographyWeight;
   /** Arbitrary custom font size in pixels or CSS units (e.g., 18 or '1.5rem') */
   customSize?: number | string;
   /** Max lines of text before truncating with ellipsis */
@@ -140,15 +174,14 @@ export type TextType =
   | 'warning'
   | 'danger'
   | 'info';
-export type TextWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 export interface TextProps extends BaseTypographyProps {
   /** Semantic color type */
   type?: TextType;
   /** 7-tier sizing scale (xxs: 8px, xs: 10px, sm: 12px, md: 14px [default], lg: 16px, xl: 20px, xxl: 24px) */
   size?: ComponentSize;
-  /** Font weight */
-  weight?: TextWeight;
+  /** Font weight configuration (defaults to 'regular') */
+  weight?: TypographyWeight;
   /** Bold text styling (renders <strong> if as is unset) */
   strong?: boolean;
   /** Italic text styling (renders <em> if as is unset) */

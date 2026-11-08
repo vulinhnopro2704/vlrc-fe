@@ -4,6 +4,7 @@ import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
 import type { LinkProps, LinkUnderline } from './types';
 import { resolveCustomTypographyStyle } from './utils';
+import { typographyWeightStyles } from './weightStyles';
 
 const styles = stylex.create({
   base: {
@@ -104,6 +105,7 @@ export function Link({
   external,
   underline = 'hover',
   disabled,
+  weight,
   target,
   rel,
   customSize,
@@ -149,6 +151,7 @@ export function Link({
     styles.base,
     currentSizeStyle,
     underlineStyles[underline],
+    weight && typographyWeightStyles[weight],
     disabled && styles.disabled,
     isSingleEllipsis && styles.ellipsisSingle,
     sx,
@@ -158,6 +161,7 @@ export function Link({
     <Component
       data-slot="typography-link"
       data-size={size}
+      data-weight={weight}
       href={disabled ? undefined : href}
       target={resolvedTarget}
       rel={resolvedRel}

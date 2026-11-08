@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { BlockquoteProps, BlockquoteVariant } from './types';
 import { resolveCustomTypographyStyle } from './utils';
+import { typographyWeightStyles } from './weightStyles';
 
 const styles = stylex.create({
   base: {
@@ -47,6 +48,7 @@ const variantStyles: Record<BlockquoteVariant, stylex.StyleXStyles> = {
 export function Blockquote({
   variant = 'default',
   cite,
+  weight,
   customSize,
   lines,
   rows,
@@ -78,12 +80,18 @@ export function Blockquote({
     textUnderlineOffset,
   });
 
-  const sxProps = stylex.props(styles.base, variantStyles[variant], sx);
+  const sxProps = stylex.props(
+    styles.base,
+    variantStyles[variant],
+    weight && typographyWeightStyles[weight],
+    sx,
+  );
 
   return (
     <Component
       data-slot="typography-blockquote"
       data-variant={variant}
+      data-weight={weight}
       cite={cite}
       {...sxProps}
       style={{ ...sxProps.style, ...customStyle }}

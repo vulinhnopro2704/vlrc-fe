@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { ComponentWidth } from '../../theme/width';
 import type {
   Control,
   FieldPath,
@@ -39,7 +40,7 @@ export interface DatePickerBaseProps<TFieldValues extends FieldValues> {
   placeholder?: string;
   status?: DatePickerStatus;
   size?: DatePickerSize;
-  width?: string;
+  width?: ComponentWidth;
   pickerType?: PickerType;
   dateFormat?: string;
   showTime?: boolean | TimeConfig;

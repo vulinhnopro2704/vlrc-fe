@@ -3,8 +3,9 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
-import type { TextProps, TextType, TextWeight } from './types';
+import type { TextProps, TextType } from './types';
 import { resolveCustomTypographyStyle } from './utils';
+import { typographyWeightStyles } from './weightStyles';
 
 const styles = stylex.create({
   base: {
@@ -63,20 +64,6 @@ const styles = stylex.create({
   },
   typeInfo: {
     color: '#2563eb',
-  },
-
-  // Weights
-  weightRegular: {
-    fontWeight: 400,
-  },
-  weightMedium: {
-    fontWeight: 500,
-  },
-  weightSemibold: {
-    fontWeight: 600,
-  },
-  weightBold: {
-    fontWeight: 700,
   },
 
   // Text decorations
@@ -168,13 +155,6 @@ const typeStyles: Record<TextType, stylex.StyleXStyles> = {
   info: styles.typeInfo,
 };
 
-const weightStyles: Record<TextWeight, stylex.StyleXStyles> = {
-  regular: styles.weightRegular,
-  medium: styles.weightMedium,
-  semibold: styles.weightSemibold,
-  bold: styles.weightBold,
-};
-
 export function Text({
   type = 'default',
   size = 'md',
@@ -248,7 +228,7 @@ export function Text({
     styles.base,
     currentSizeStyle,
     typeStyles[type],
-    weightStyles[weight],
+    weight && typographyWeightStyles[weight],
     strong && styles.strong,
     italic && styles.italic,
     underline && !textDecoration && !textDecorationLine && styles.underline,
@@ -263,6 +243,7 @@ export function Text({
       data-slot="typography-text"
       data-type={type}
       data-size={size}
+      data-weight={weight}
       {...sxProps}
       style={{ ...sxProps.style, ...customStyle }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

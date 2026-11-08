@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
+import type { ComponentWidth } from '../theme/width';
 import type { InputProps } from '../ui/input';
 import type { TextareaProps } from '../ui/textarea';
 import type { CheckboxProps } from '../ui/checkbox';
@@ -98,6 +99,8 @@ export type FormBaseProps<
   controlFirst?: boolean;
   /** Additional CSS classes to apply to the outermost field wrapper. */
   className?: string;
+  /** Configurable field width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
+  width?: ComponentWidth;
   /**
    * Render prop that provides the connected field props to the actual UI component.
    * It injects React Hook Form's field props along with `id` and `aria-invalid` for accessibility.
@@ -136,5 +139,7 @@ export type FormControlFunc<ExtraProps extends object = Record<never, never>> = 
       htmlType?: string;
       /** Additional CSS classes for the component wrapper. */
       className?: string;
+      /** Configurable field width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
+      width?: ComponentWidth;
     },
 ) => ReactNode;

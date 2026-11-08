@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import { isNil } from 'lodash-es';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { resolveWidth } from '../theme/width';
 import Icons from '../Icons';
 
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
@@ -214,10 +215,12 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
     maxTagCount = 'responsive',
     tagRender,
     showSelectAll = false,
+    width,
   } = props;
 
   const isMulti = isMultiProps(props);
   const { value } = props;
+  const resolvedWidth = resolveWidth(width);
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -338,7 +341,13 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
       <PopoverTrigger asChild>
         <button
           type="button"
+          data-slot="select"
+          data-width={width}
           {...triggerProps}
+          style={{
+            ...triggerProps.style,
+            ...(resolvedWidth ? { width: resolvedWidth, minWidth: resolvedWidth } : {}),
+          }}
           className={mergedTriggerClassName}
           onClick={() => !disabled && setOpen((v) => !v)}
           disabled={disabled}

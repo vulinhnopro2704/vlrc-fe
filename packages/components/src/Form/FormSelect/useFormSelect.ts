@@ -52,6 +52,8 @@ export function useFormSelect<
     maxTagCount = 'responsive',
     tagRender,
     showSelectAll = false,
+    allowClear,
+    width,
   } = props;
 
   const requiredRule = get(rules, 'required');
@@ -73,6 +75,8 @@ export function useFormSelect<
     maxTagCount,
     tagRender,
     showSelectAll,
+    allowClear,
+    width,
   };
 
   const enhancedRules = (() => {

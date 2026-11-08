@@ -3,6 +3,7 @@ import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import type { ParagraphAlign, ParagraphProps, ParagraphSpacing, ParagraphVariant } from './types';
 import { resolveCustomTypographyStyle } from './utils';
+import { typographyWeightStyles } from './weightStyles';
 
 const styles = stylex.create({
   base: {
@@ -128,6 +129,7 @@ export function Paragraph({
   variant = 'default',
   spacing = 'none',
   align = 'left',
+  weight,
   required,
   customSize,
   lines,
@@ -171,6 +173,7 @@ export function Paragraph({
     variantStyles[variant],
     spacingStyles[spacing],
     alignStyles[align],
+    weight && typographyWeightStyles[weight],
     isSingleEllipsis && styles.ellipsisSingle,
     sx,
   );
@@ -180,6 +183,7 @@ export function Paragraph({
       data-slot="typography-paragraph"
       data-variant={variant}
       data-size={size}
+      data-weight={weight}
       {...sxProps}
       style={{ ...sxProps.style, ...customStyle }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

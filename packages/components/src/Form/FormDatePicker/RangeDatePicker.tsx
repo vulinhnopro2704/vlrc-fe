@@ -3,6 +3,7 @@ import Icons from '../../Icons';
 import { vi } from 'date-fns/locale';
 
 import { Button } from '../../ui/button';
+import { resolveWidth, type ComponentWidth } from '../../theme/width';
 import { Calendar } from '../../ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { cn } from '../../utils';
@@ -17,7 +18,7 @@ interface RangeDatePickerProps {
   showTime?: boolean | TimeConfig;
   size?: DatePickerSize;
   status?: DatePickerStatus;
-  width?: string;
+  width?: ComponentWidth;
   disabled?: boolean;
   allowClear?: boolean;
   hideValue?: boolean;
@@ -95,6 +96,7 @@ export function RangeDatePicker({
         <Button
           variant="outline"
           disabled={disabled}
+          width={width}
           className={cn(
             'justify-between font-normal',
             getSizeClassName(size),
@@ -103,7 +105,7 @@ export function RangeDatePicker({
             width === 'auto' ? 'w-full' : '',
             className,
           )}
-          style={width !== 'auto' ? { width } : undefined}
+          style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
         >
           {!hideValue && displayValue ? displayValue : <span>{placeholder}</span>}
           <div className="ml-auto flex items-center gap-1">

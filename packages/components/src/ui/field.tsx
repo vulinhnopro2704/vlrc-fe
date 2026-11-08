@@ -4,6 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import { Label } from './label';
 import { Separator } from './separator';
+import { resolveWidth, type ComponentWidth } from '../theme/width';
 
 export type FieldOrientation = 'vertical' | 'horizontal' | 'responsive';
 
@@ -168,19 +169,24 @@ const orientationStyles: Record<FieldOrientation, stylex.StyleXStyles> = {
   responsive: styles.responsive,
 };
 
-function Field({
-  className,
-  orientation = 'vertical',
-  sx,
-  ...props
-}: React.ComponentProps<'div'> & { orientation?: FieldOrientation; sx?: stylex.StyleXStyles }) {
+export interface FieldProps extends React.ComponentProps<'div'> {
+  orientation?: FieldOrientation;
+  sx?: stylex.StyleXStyles;
+  /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
+  width?: ComponentWidth;
+}
+
+function Field({ className, orientation = 'vertical', sx, width, style, ...props }: FieldProps) {
+  const resolvedWidth = resolveWidth(width);
   const sxProps = stylex.props(styles.fieldBase, orientationStyles[orientation], sx);
   return (
     <div
       role="group"
       data-slot="field"
       data-orientation={orientation}
+      data-width={width}
       {...sxProps}
+      style={{ ...sxProps.style, ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />

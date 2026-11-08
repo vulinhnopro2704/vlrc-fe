@@ -1,6 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import Typography, { Title, Paragraph, Text, Link, Blockquote, Code } from './index';
+import Typography, {
+  Title,
+  Paragraph,
+  Text,
+  Link,
+  Blockquote,
+  Code,
+  TypographyWeightMap,
+} from './index';
 
 describe('Typography', () => {
   describe('Title', () => {
@@ -36,6 +44,16 @@ describe('Typography', () => {
       const heading = screen.getByRole('heading', { level: 4 });
       expect(heading).toBeInTheDocument();
     });
+
+    it('should support weight prop', () => {
+      render(
+        <Title level={2} weight="light">
+          Light Title
+        </Title>,
+      );
+      const heading = screen.getByRole('heading', { level: 2 });
+      expect(heading).toHaveAttribute('data-weight', 'light');
+    });
   });
 
   describe('Paragraph', () => {
@@ -53,6 +71,12 @@ describe('Typography', () => {
       );
       const p = screen.getByText('Multi-line paragraph.');
       expect(p).toHaveStyle({ fontSize: '18px', WebkitLineClamp: '3' });
+    });
+
+    it('should support weight prop', () => {
+      render(<Paragraph weight="semibold">Semibold Paragraph</Paragraph>);
+      const p = screen.getByText('Semibold Paragraph');
+      expect(p).toHaveAttribute('data-weight', 'semibold');
     });
   });
 
@@ -115,6 +139,12 @@ describe('Typography', () => {
         textUnderlineOffset: '4px',
       });
     });
+
+    it('should support weight prop', () => {
+      render(<Text weight="black">Heavy black text</Text>);
+      const el = screen.getByText('Heavy black text');
+      expect(el).toHaveAttribute('data-weight', 'black');
+    });
   });
 
   describe('Link', () => {
@@ -139,12 +169,28 @@ describe('Typography', () => {
       expect(anchor).toHaveAttribute('target', '_blank');
       expect(anchor).toHaveAttribute('rel', 'noopener noreferrer');
     });
+
+    it('should support weight prop', () => {
+      render(
+        <Link href="https://vlrc.vn" weight="bold">
+          Bold Link
+        </Link>,
+      );
+      const anchor = screen.getByRole('link', { name: /Bold Link/i });
+      expect(anchor).toHaveAttribute('data-weight', 'bold');
+    });
   });
 
   describe('Blockquote', () => {
     it('should render blockquote element', () => {
       render(<Blockquote>A famous quote.</Blockquote>);
       expect(screen.getByText('A famous quote.')).toBeInTheDocument();
+    });
+
+    it('should support weight prop', () => {
+      render(<Blockquote weight="medium">Medium Quote</Blockquote>);
+      const bq = screen.getByText('Medium Quote');
+      expect(bq).toHaveAttribute('data-weight', 'medium');
     });
   });
 
@@ -162,6 +208,40 @@ describe('Typography', () => {
       );
       expect(screen.getByText('let a = 2;')).toBeInTheDocument();
       expect(screen.getByText('ts')).toBeInTheDocument();
+    });
+
+    it('should support weight prop on inline code', () => {
+      render(<Code weight="semibold">const a = 1;</Code>);
+      const code = screen.getByText('const a = 1;');
+      expect(code).toHaveAttribute('data-weight', 'semibold');
+    });
+
+    it('should support weight prop on block code', () => {
+      render(
+        <Code block weight="bold" language="js">
+          const b = 2;
+        </Code>,
+      );
+      const pre = screen.getByText('const b = 2;').closest('pre');
+      expect(pre).toHaveAttribute('data-weight', 'bold');
+    });
+  });
+
+  describe('TypographyWeightMap', () => {
+    it('should correctly map all semantic font weight names to numeric values', () => {
+      expect(TypographyWeightMap.thin).toBe(100);
+      expect(TypographyWeightMap['extra-light']).toBe(200);
+      expect(TypographyWeightMap.extralight).toBe(200);
+      expect(TypographyWeightMap.light).toBe(300);
+      expect(TypographyWeightMap.normal).toBe(400);
+      expect(TypographyWeightMap.regular).toBe(400);
+      expect(TypographyWeightMap.medium).toBe(500);
+      expect(TypographyWeightMap['semi-bold']).toBe(600);
+      expect(TypographyWeightMap.semibold).toBe(600);
+      expect(TypographyWeightMap.bold).toBe(700);
+      expect(TypographyWeightMap['extra-bold']).toBe(800);
+      expect(TypographyWeightMap.extrabold).toBe(800);
+      expect(TypographyWeightMap.black).toBe(900);
     });
   });
 

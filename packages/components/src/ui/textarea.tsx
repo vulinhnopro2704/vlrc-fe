@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
-import type { ComponentSize } from '../theme/types';
+import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
 
 const styles = stylex.create({
   base: {
@@ -101,18 +101,23 @@ export interface TextareaProps extends React.ComponentProps<'textarea'> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
+  /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
+  width?: ComponentWidth;
 }
 
-function Textarea({ className, size = 'md', sx, ...props }: TextareaProps) {
+function Textarea({ className, size = 'md', width, style, sx, ...props }: TextareaProps) {
   const isInvalid = props['aria-invalid'] === true || props['aria-invalid'] === 'true';
   const sizeStyle = sizeStyles[size] ?? styles.sizeMd;
   const sxProps = stylex.props(styles.base, sizeStyle, isInvalid && styles.invalid, sx);
+  const resolvedWidth = resolveWidth(width);
 
   return (
     <textarea
       data-slot="textarea"
       data-size={size}
+      data-width={width}
       {...sxProps}
+      style={{ ...sxProps.style, ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />

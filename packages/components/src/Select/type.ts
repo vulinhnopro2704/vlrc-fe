@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { ComponentWidth } from '../theme/width';
 
 /**
  * Base value types supported by select components
@@ -34,6 +35,8 @@ export interface BaseSelectCommonProps<T extends SelectValue = SelectValue> {
   tagRender?: (option: BaseSelectOption<T>, onRemove: () => void) => ReactNode;
   showSelectAll?: boolean;
   allowClear?: boolean;
+  /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
+  width?: ComponentWidth;
 }
 
 /**
@@ -85,4 +88,6 @@ export type BaseSelectPassThroughProps<T extends SelectValue = SelectValue> = Pi
   | 'maxTagCount'
   | 'tagRender'
   | 'showSelectAll'
+  | 'allowClear'
+  | 'width'
 >;

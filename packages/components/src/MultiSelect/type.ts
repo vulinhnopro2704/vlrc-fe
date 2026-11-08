@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { ComponentWidth } from '../theme/width';
 
 /**
  * Animation types and configurations
@@ -205,6 +206,11 @@ export interface MultiSelectProps extends Omit<
           compactMode?: boolean;
         };
       };
+
+  /**
+   * Configurable width for the component (presets, px number, or custom CSS string).
+   */
+  width?: ComponentWidth;
 
   /**
    * Minimum width for the component.

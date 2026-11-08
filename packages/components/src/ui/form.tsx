@@ -15,6 +15,7 @@ import {
 
 import { cn } from '../utils';
 import { Label } from './label';
+import { resolveWidth, type ComponentWidth } from '../theme/width';
 
 const Form = FormProvider;
 
@@ -71,12 +72,24 @@ type FormItemContextValue = {
 
 const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue);
 
-function FormItem({ className, ...props }: React.ComponentProps<'div'>) {
+export interface FormItemProps extends React.ComponentProps<'div'> {
+  /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
+  width?: ComponentWidth;
+}
+
+function FormItem({ className, width, style, ...props }: FormItemProps) {
   const id = React.useId();
+  const resolvedWidth = resolveWidth(width);
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div data-slot="form-item" className={cn('grid gap-2', className)} {...props} />
+      <div
+        data-slot="form-item"
+        data-width={width}
+        style={{ ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
+        className={cn('grid gap-2', className)}
+        {...props}
+      />
     </FormItemContext.Provider>
   );
 }

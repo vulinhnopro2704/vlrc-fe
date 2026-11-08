@@ -19,8 +19,8 @@ const numericInputBaseClass = [
 
 type PassthroughProps = Partial<
   Omit<
-    NumericFormatProps<HTMLInputElement>,
-    'value' | 'onValueChange' | 'placeholder' | 'max' | 'min' | 'name' | 'onChange'
+    NumericFormatProps,
+    'value' | 'onValueChange' | 'placeholder' | 'max' | 'min' | 'name' | 'onChange' | 'width'
   >
 >;
 
