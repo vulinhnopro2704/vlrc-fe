@@ -1,0 +1,171 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Grid > UI > should match snapshot for compound Grid.Row and Grid.Col 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 16px; --gutter-y: 16px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+    >
+      Cell 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+    >
+      Cell 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Grid > UI > should match snapshot for gap size "lg" 1`] = `
+<DocumentFragment>
+  <div
+    class="grid__styles.base xrvj5dj x9f619 grid__styles.gapLg x1oqwmkw"
+    data-slot="grid"
+    data-style-src="@vlrc-fe/components:src/ui/grid.tsx:154; @vlrc-fe/components:src/ui/grid.tsx:188"
+    style="grid-template-columns: repeat(3, minmax(0, 1fr));"
+  >
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-1"
+    >
+      Cell 1
+    </div>
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-2"
+    >
+      Cell 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Grid > UI > should match snapshot for gap size "md" 1`] = `
+<DocumentFragment>
+  <div
+    class="grid__styles.base xrvj5dj x9f619 grid__styles.gapMd x1b1hbqf"
+    data-slot="grid"
+    data-style-src="@vlrc-fe/components:src/ui/grid.tsx:154; @vlrc-fe/components:src/ui/grid.tsx:187"
+    style="grid-template-columns: repeat(3, minmax(0, 1fr));"
+  >
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-1"
+    >
+      Cell 1
+    </div>
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-2"
+    >
+      Cell 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Grid > UI > should match snapshot for gap size "sm" 1`] = `
+<DocumentFragment>
+  <div
+    class="grid__styles.base xrvj5dj x9f619 grid__styles.gapSm xdkmor2"
+    data-slot="grid"
+    data-style-src="@vlrc-fe/components:src/ui/grid.tsx:154; @vlrc-fe/components:src/ui/grid.tsx:186"
+    style="grid-template-columns: repeat(3, minmax(0, 1fr));"
+  >
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-1"
+    >
+      Cell 1
+    </div>
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-2"
+    >
+      Cell 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Grid > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="grid__styles.base xrvj5dj x9f619"
+    data-slot="grid"
+    data-style-src="@vlrc-fe/components:src/ui/grid.tsx:154"
+    style="grid-template-columns: repeat(3, minmax(0, 1fr));"
+  >
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-1"
+    >
+      Cell 1
+    </div>
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-2"
+    >
+      Cell 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Grid > UI > should match snapshot with minChildWidth auto-fit 1`] = `
+<DocumentFragment>
+  <div
+    class="grid__styles.base xrvj5dj x9f619 grid__styles.gapMd x1b1hbqf"
+    data-slot="grid"
+    data-style-src="@vlrc-fe/components:src/ui/grid.tsx:154; @vlrc-fe/components:src/ui/grid.tsx:187"
+    style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));"
+  >
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-1"
+    >
+      Cell 1
+    </div>
+    <div
+      class="grid__styles.itemBase x9f619 xeuugli"
+      data-slot="grid-item"
+      data-style-src="@vlrc-fe/components:src/ui/grid.tsx:193"
+      data-testid="test-grid-item-2"
+    >
+      Cell 2
+    </div>
+  </div>
+</DocumentFragment>
+`;

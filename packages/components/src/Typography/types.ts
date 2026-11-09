@@ -93,6 +93,14 @@ export type TextWeight = TypographyWeight;
 export type TitleWeight = TypographyWeight;
 export type ParagraphWeight = TypographyWeight;
 
+/**
+ * Tooltip configuration for typography components:
+ * - `true`: automatically shows the text content as a tooltip on hover
+ * - `ReactNode` (string, JSX, etc.): shows custom tooltip content
+ * - `{ title: ReactNode }`: shows custom title in the tooltip
+ */
+export type TypographyTooltip = boolean | ReactNode | { title?: ReactNode };
+
 export interface BaseTypographyProps extends React.HTMLAttributes<HTMLElement> {
   /** Polymorphic component to override the semantic HTML tag */
   as?: ElementType;
@@ -112,8 +120,10 @@ export interface BaseTypographyProps extends React.HTMLAttributes<HTMLElement> {
   rows?: number;
   /** Custom line height multiplier or CSS unit (e.g., 1.4 or '24px') */
   lineHeight?: number | string;
-  /** Truncate text or clamp to specified number of rows */
-  ellipsis?: boolean | { rows?: number };
+  /** Truncate text or clamp to specified number of rows, optionally configuring tooltip */
+  ellipsis?: boolean | { rows?: number; tooltip?: TypographyTooltip };
+  /** Tooltip to display on hover, showing the full text or custom content */
+  tooltip?: TypographyTooltip;
   /** Complete text decoration shorthand or custom value with typed autocomplete */
   textDecoration?: TextDecoration;
   /** Decoration line type (underline, overline, line-through, etc.) with typed autocomplete */

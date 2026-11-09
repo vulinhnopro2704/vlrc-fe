@@ -1,5 +1,6 @@
 export * from './types';
 export * from './utils';
+export * from './tooltip';
 export * from './weightStyles';
 export { Title } from './Title';
 export { Paragraph } from './Paragraph';

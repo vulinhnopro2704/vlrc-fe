@@ -12,6 +12,7 @@ import { colors, radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Separator } from '../ui/separator';
 import { Badge } from '../ui/badge';
+import { Text } from '../Typography';
 import {
   Command,
   CommandEmpty,
@@ -91,6 +92,21 @@ const styles = stylex.create({
   badgeRemoveIconCompact: {
     height: '0.625rem',
     width: '0.625rem',
+  },
+  badgeLabel: {
+    maxWidth: '10rem',
+    minWidth: 0,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    fontSize: '0.75rem',
+  },
+  optionLabelText: {
+    flex: '1 1 0%',
+    minWidth: 0,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   extraBadge: {
     backgroundColor: 'transparent',
@@ -301,7 +317,9 @@ export const SelectedValuesContent = ({
                   })}
                 />
               )}
-              <span>{option.label}</span>
+              <Text ellipsis tooltip sx={styles.badgeLabel}>
+                {option.label}
+              </Text>
               <div
                 role="button"
                 tabIndex={0}
@@ -496,7 +514,9 @@ export const OptionsContent = ({
                   {option.icon && (
                     <option.icon {...stylex.props(styles.optionIcon)} aria-hidden="true" />
                   )}
-                  <span>{option.label}</span>
+                  <Text ellipsis tooltip sx={styles.optionLabelText}>
+                    {option.label}
+                  </Text>
                 </CommandItem>
               );
             })}
@@ -528,7 +548,9 @@ export const OptionsContent = ({
                 {option.icon && (
                   <option.icon {...stylex.props(styles.optionIcon)} aria-hidden="true" />
                 )}
-                <span>{option.label}</span>
+                <Text ellipsis tooltip sx={styles.optionLabelText}>
+                  {option.label}
+                </Text>
               </CommandItem>
             );
           })}

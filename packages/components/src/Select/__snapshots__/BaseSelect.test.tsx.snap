@@ -1,0 +1,154 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseSelect > UI > should match snapshot in default unselected state 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xsda711 xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz x1dsmnui x16mfhj0 xx6bhzk"
+    data-slot="select"
+    data-state="closed"
+    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20"
+    type="button"
+  >
+    <span
+      class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault weightStyles__styles.regular xo1l8bm BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0 BaseSelect__styles.placeholder xw3nh4a"
+      data-size="md"
+      data-slot="typography-text"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Select/BaseSelect.tsx:49; @vlrc-fe/components:src/Select/BaseSelect.tsx:58"
+      data-type="default"
+      data-weight="regular"
+    >
+      Select an option...
+    </span>
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-chevron-down BaseSelect__styles.chevronIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:72"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m6 9 6 6 6-6"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`BaseSelect > UI > should match snapshot when disabled 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xsda711 xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x84br7x x1a2a7pz x1dsmnui x16mfhj0 xx6bhzk BaseSelect__styles.triggerDisabled x1qry0bl x1h6gzvc x197sbye"
+    data-slot="select"
+    data-state="closed"
+    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20; @vlrc-fe/components:src/Select/BaseSelect.tsx:44"
+    disabled=""
+    type="button"
+  >
+    <span
+      class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm Text__styles.ellipsisSingle x1rg5ohu x193iq5w x3ajldb BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0"
+      data-size="md"
+      data-slot="typography-text"
+      data-state="closed"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:95; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
+      data-type="default"
+      data-weight="regular"
+    >
+      Short Option
+    </span>
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-chevron-down BaseSelect__styles.chevronIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:72"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m6 9 6 6 6-6"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`BaseSelect > UI > should match snapshot with long text selected in trigger 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xsda711 xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz x1dsmnui x16mfhj0 xx6bhzk"
+    data-slot="select"
+    data-state="closed"
+    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20"
+    type="button"
+  >
+    <span
+      class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm Text__styles.ellipsisSingle x1rg5ohu x193iq5w x3ajldb BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0"
+      data-size="md"
+      data-slot="typography-text"
+      data-state="closed"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:95; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
+      data-type="default"
+      data-weight="regular"
+    >
+      Super exceptionally long option text that exceeds typical container boundaries and requires ellipsis truncation with tooltip on hover
+    </span>
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-x BaseSelect__styles.clearIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s x1ypdohk x1mqvv6a"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:61"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18 6 6 18"
+      />
+      <path
+        d="m6 6 12 12"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-chevron-down BaseSelect__styles.chevronIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:72"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m6 9 6 6 6-6"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;

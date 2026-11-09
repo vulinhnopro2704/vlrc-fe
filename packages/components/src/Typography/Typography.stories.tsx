@@ -593,6 +593,97 @@ export const CustomSizeAndLineClamp: StoryObj = {
   ),
 };
 
+export const EllipsisWithTooltip: StoryObj = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: 400 }}>
+      <div>
+        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--muted-foreground)' }}>
+          TEXT WITH ELLIPSIS AND AUTO TOOLTIP (HOVER TO REVEAL)
+        </span>
+        <div
+          style={{
+            width: 260,
+            border: '1px dashed var(--border)',
+            padding: '0.5rem',
+            marginTop: '0.5rem',
+          }}
+        >
+          <Typography.Text ellipsis tooltip>
+            Extremely long text content that exceeds the narrow boundary and shows an ellipsis with
+            interactive hover tooltip.
+          </Typography.Text>
+        </div>
+      </div>
+
+      <div>
+        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--muted-foreground)' }}>
+          TEXT WITH OBJECT ELLIPSIS CONFIG (ellipsis=&#123;&#123; tooltip: true &#125;&#125;)
+        </span>
+        <div
+          style={{
+            width: 260,
+            border: '1px dashed var(--border)',
+            padding: '0.5rem',
+            marginTop: '0.5rem',
+          }}
+        >
+          <Typography.Text ellipsis={{ tooltip: true }}>
+            Second long text option configured via ellipsis object prop, showing full content in
+            tooltip on hover.
+          </Typography.Text>
+        </div>
+      </div>
+
+      <div>
+        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--muted-foreground)' }}>
+          TEXT WITH CUSTOM TOOLTIP CONTENT
+        </span>
+        <div
+          style={{
+            width: 260,
+            border: '1px dashed var(--border)',
+            padding: '0.5rem',
+            marginTop: '0.5rem',
+          }}
+        >
+          <Typography.Text ellipsis tooltip="Custom detailed tooltip with extra explanation">
+            Compact label truncated with ellipsis and custom tooltip text
+          </Typography.Text>
+        </div>
+      </div>
+
+      <div>
+        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--muted-foreground)' }}>
+          HEADING TITLE WITH ELLIPSIS AND TOOLTIP
+        </span>
+        <div
+          style={{
+            width: 300,
+            border: '1px dashed var(--border)',
+            padding: '0.5rem',
+            marginTop: '0.5rem',
+          }}
+        >
+          <Typography.Title level={4} ellipsis tooltip>
+            Very Long Heading Title That Truncates Neatly Without Overflowing Or Breaking Container
+            Layout
+          </Typography.Title>
+        </div>
+      </div>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const truncatedText = canvas.getByText(/Extremely long text content/i);
+    await expect(truncatedText).toBeInTheDocument();
+    await userEvent.hover(truncatedText);
+    const tooltip = await within(document.body).findByText(/Extremely long text content/i, {
+      selector: '[data-slot="tooltip-content"]',
+    });
+    await expect(tooltip).toBeInTheDocument();
+  },
+};
+
 export const InteractiveTitle: StoryObj = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

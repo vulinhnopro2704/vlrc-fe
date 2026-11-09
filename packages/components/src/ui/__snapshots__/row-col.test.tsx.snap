@@ -1,0 +1,445 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Row & Col > UI > should match snapshot for Col span 6 and offset 2 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col6 x6gju3d xjlotr5 row-col__styles.offset2 xfl2045"
+      data-offset="2"
+      data-slot="col"
+      data-span="6"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:209; @vlrc-fe/components:src/ui/row-col.tsx:231"
+    >
+      Col 1
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for Col span 8 and offset 4 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col8 x1c5qzx7 x16gfemc row-col__styles.offset4 x1qlka9e"
+      data-offset="4"
+      data-slot="col"
+      data-span="8"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:211; @vlrc-fe/components:src/ui/row-col.tsx:233"
+    >
+      Col 1
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for Col span 12 and offset 6 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy row-col__styles.offset6 xj8z9x2"
+      data-offset="6"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215; @vlrc-fe/components:src/ui/row-col.tsx:235"
+    >
+      Col 1
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for Col span 24 and offset 0 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col24 x1otvp5z x193iq5w"
+      data-offset="0"
+      data-slot="col"
+      data-span="24"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:227"
+    >
+      Col 1
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row align "bottom" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignBottom xuk3077 row-col__styles.justifyStart x1nhvcw1"
+    data-align="bottom"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row align "middle" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignMiddle x6s0dn4 row-col__styles.justifyStart x1nhvcw1"
+    data-align="middle"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:176; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row align "stretch" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignStretch x1qjc9v5 row-col__styles.justifyStart x1nhvcw1"
+    data-align="stretch"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:178; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row align "top" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row justify "center" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyCenter xl56j7k"
+    data-align="top"
+    data-justify="center"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row justify "end" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyEnd x13a6bvl"
+    data-align="top"
+    data-justify="end"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:182"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row justify "space-around" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyAround x1l1ennw"
+    data-align="top"
+    data-justify="space-around"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:184"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row justify "space-between" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyBetween x1qughib"
+    data-align="top"
+    data-justify="space-between"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:185"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot for row justify "start" 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: 0px; --gutter-y: 0px;"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Row & Col > UI > should match snapshot with single and tuple gutters 1`] = `
+<DocumentFragment>
+  <div
+    class="row-col__styles.rowBase x78zum5 x9f619 x19d0ktg xm87c2r xdxrixi row-col__styles.rowWrap x1a02dak row-col__styles.alignTop x1cy8zhl row-col__styles.justifyStart x1nhvcw1"
+    data-align="top"
+    data-justify="start"
+    data-slot="row"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:160; @vlrc-fe/components:src/ui/row-col.tsx:167; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:181"
+    style="--gutter-x: var(--spacing-sm, 0.75rem); --gutter-y: var(--spacing-lg, 1.5rem);"
+  >
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-1"
+    >
+      Col 1
+    </div>
+    <div
+      class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
+      data-slot="col"
+      data-span="12"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:189; @vlrc-fe/components:src/ui/row-col.tsx:215"
+      data-testid="test-col-2"
+    >
+      Col 2
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -3,6 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 import { Badge } from '../ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import Icons from '../Icons';
+import { Text } from '../Typography';
 import type { BaseSelectOption, SelectValue } from './type';
 
 const styles = stylex.create({
@@ -20,6 +21,15 @@ const styles = stylex.create({
     gap: '0.25rem',
     paddingInline: '0.375rem',
     paddingBlock: '0.125rem',
+    fontSize: '0.75rem',
+    maxWidth: '100%',
+  },
+  tagLabel: {
+    maxWidth: '10rem',
+    minWidth: 0,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
     fontSize: '0.75rem',
   },
   removeIcon: {
@@ -119,7 +129,9 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
         return (
           <Badge key={String(opt.value)} variant="secondary" className="select-tag" sx={styles.tag}>
             {opt.icon && <span>{opt.icon}</span>}
-            <span>{opt.label}</span>
+            <Text ellipsis tooltip sx={styles.tagLabel}>
+              {opt.label}
+            </Text>
             {!disabled && (
               <span
                 onClick={(e) => {
@@ -145,7 +157,9 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
             <TooltipContent>
               <div {...stylex.props(styles.tooltipList)}>
                 {hiddenOptions.map((opt) => (
-                  <span key={String(opt.value)}>{opt.label}</span>
+                  <Text key={String(opt.value)} ellipsis tooltip>
+                    {opt.label}
+                  </Text>
                 ))}
               </div>
             </TooltipContent>

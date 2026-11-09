@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.5.0] - 2026-11-09
+
+### Minor Changes
+
+- **Layout Primitives**:
+  - Added `<Flex>` (`ui/flex.tsx`) with strongly-typed props: `vertical`, `direction` (`row`, `row-reverse`, `column`, `column-reverse`), `align` (`start`, `center`, `end`, `baseline`, `stretch`), `justify` (`start`, `center`, `end`, `space-between`, `space-around`, `space-evenly`, `stretch`), `wrap` (boolean or `wrap`, `nowrap`, `wrap-reverse`), `gap` (7-tier tokens `xxs`-`xxl`, numeric px, CSS unit, or `[rowGap, colGap]`), `inline`, `grow`, `shrink`, `basis`, `width`, `height`, `asChild` (Radix Slot), and Meta StyleX override `sx`.
+  - Added `<Grid>` (`ui/grid.tsx`) with responsive columns, auto-fill/auto-fit templates, rows, gap, and flow controls.
+  - Added `<Row>` & `<Col>` (`ui/row-col.tsx`) for 24-column responsive grid layout with breakpoints (`xs`, `sm`, `md`, `lg`, `xl`, `xxl`) and gutter spacing.
+  - Added `useBreakpoint` (`ui/useBreakpoint.ts`) hook for responsive media query subscriptions.
+  - Added `spacing` tokens (`theme/tokens.stylex.ts`) and spacing resolver utilities (`theme/spacing.ts`).
+- **Typography Suite Enhancements**:
+  - Added `tooltip` support on `Text`, `Title`, `Paragraph`, and `Link` (`TypographyTooltip`: `boolean`, `ReactNode`, or `{ title: ReactNode }`).
+  - Added `ellipsis` with auto/custom tooltip: hovering over truncated text reveals the full text in a Radix Tooltip.
+  - Added `minWidth: 0` to single-line ellipsis styles to prevent flex layout overflow.
+  - Wrapped all Typography components with `React.forwardRef` for seamless integration with Radix `asChild` and DOM access.
+- **Select & MultiSelect Suite**:
+  - `BaseSelect`: Single-select trigger and dropdown option rows now render via `Typography.Text ellipsis tooltip`, preventing text overflow, container blow-out, and UI breakage on ultra-long labels.
+  - `MultiSelectTags`: Tags truncate long labels with ellipsis and reveal full label on hover via tooltip.
+  - `MultiSelect`: Option rows and tags integrated with `Typography.Text ellipsis tooltip`.
+- **Testing & Documentation**:
+  - Added comprehensive Vitest unit tests for `BaseSelect` (`BaseSelect.test.tsx`), `Flex` (`flex.test.tsx`), `Grid` (`grid.test.tsx`), `Row`/`Col` (`row-col.test.tsx`), and `Typography` tooltips (`Typography.test.tsx`).
+  - Added Storybook interactive stories for layout primitives (`layout.stories.tsx`), Typography ellipsis tooltips (`Typography.stories.tsx`), and Select long text handling (`BaseSelect.stories.tsx`).
+
 ## [2.4.0] - 2026-11-08
 
 ### Minor Changes

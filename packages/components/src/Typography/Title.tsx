@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
+import { resolveTooltipContent, renderWithTooltip } from './tooltip';
 import type { TitleLevel, TitleProps, TitleTracking, TitleVariant } from './types';
 import { resolveCustomTypographyStyle } from './utils';
 import { typographyWeightStyles } from './weightStyles';
@@ -79,6 +80,8 @@ const styles = stylex.create({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     display: 'block',
+    maxWidth: '100%',
+    minWidth: 0,
   },
 
   actionBtn: {
@@ -159,43 +162,49 @@ const trackingStyles: Record<TitleTracking, stylex.StyleXStyles> = {
   wide: styles.wide,
 };
 
-export function Title({
-  level = 1,
-  size,
-  variant = 'default',
-  tracking = 'normal',
-  weight,
-  customSize,
-  lines,
-  rows,
-  lineHeight,
-  ellipsis,
-  textDecoration,
-  textDecorationLine,
-  textDecorationStyle,
-  textDecorationColor,
-  textDecorationThickness,
-  textUnderlineOffset,
-  editable,
-  copyable,
-  onEdit,
-  required,
-  as,
-  className,
-  children,
-  sx,
-  ...props
-}: TitleProps) {
+export const Title = React.forwardRef<HTMLElement, TitleProps>(function Title(
+  {
+    level = 1,
+    size,
+    variant = 'default',
+    tracking = 'normal',
+    weight,
+    customSize,
+    lines,
+    rows,
+    lineHeight,
+    ellipsis,
+    tooltip,
+    textDecoration,
+    textDecorationLine,
+    textDecorationStyle,
+    textDecorationColor,
+    textDecorationThickness,
+    textUnderlineOffset,
+    editable,
+    copyable,
+    onEdit,
+    required,
+    as,
+    className,
+    children,
+    sx,
+    ...props
+  }: TitleProps,
+  ref,
+) {
   const Component = (as || `h${level}`) as React.ElementType;
-  const [copied, setCopied] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [textValue, setTextValue] = useState(typeof children === 'string' ? children : '');
+  const [copied, setCopied] = React.useState(false);
+  const [isEditing, setIsEditing] = React.useState(false);
+  const [textValue, setTextValue] = React.useState(typeof children === 'string' ? children : '');
 
   const resolvedSize = size ?? defaultLevelSizes[level] ?? 'xxl';
   const currentSizeStyle = titleSizeStyles[resolvedSize] ?? styles.sizeXxl;
 
-  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis.rows : undefined);
-  const isSingleEllipsis = ellipsis === true && !resolvedRows;
+  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis?.rows : undefined);
+  const isSingleEllipsis =
+    (ellipsis === true || (typeof ellipsis === 'object' && ellipsis !== null && !ellipsis.rows)) &&
+    !resolvedRows;
 
   const customStyle = resolveCustomTypographyStyle({
     customSize,
@@ -237,8 +246,11 @@ export function Title({
     sx,
   );
 
-  return (
+  const tooltipContent = resolveTooltipContent(tooltip, ellipsis, children);
+
+  const element = (
     <Component
+      ref={ref}
       data-slot="typography-title"
       data-level={level}
       data-size={resolvedSize}
@@ -299,4 +311,8 @@ export function Title({
       )}
     </Component>
   );
-}
+
+  return renderWithTooltip(element, tooltipContent);
+});
+
+Title.displayName = 'Typography.Title';

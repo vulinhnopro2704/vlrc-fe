@@ -1,7 +1,9 @@
+import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
+import { resolveTooltipContent, renderWithTooltip } from './tooltip';
 import type { LinkProps, LinkUnderline } from './types';
 import { resolveCustomTypographyStyle } from './utils';
 import { typographyWeightStyles } from './weightStyles';
@@ -80,6 +82,7 @@ const styles = stylex.create({
     display: 'inline-block',
     verticalAlign: 'bottom',
     maxWidth: '100%',
+    minWidth: 0,
   },
 });
 
@@ -99,37 +102,43 @@ const underlineStyles: Record<LinkUnderline, stylex.StyleXStyles> = {
   none: styles.none,
 };
 
-export function Link({
-  href,
-  size = 'md',
-  external,
-  underline = 'hover',
-  disabled,
-  weight,
-  target,
-  rel,
-  customSize,
-  lines,
-  rows,
-  lineHeight,
-  ellipsis,
-  textDecoration,
-  textDecorationLine,
-  textDecorationStyle,
-  textDecorationColor,
-  textDecorationThickness,
-  textUnderlineOffset,
-  as: Component = 'a',
-  className,
-  children,
-  sx,
-  ...props
-}: LinkProps) {
+export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(
+  {
+    href,
+    size = 'md',
+    external,
+    underline = 'hover',
+    disabled,
+    weight,
+    target,
+    rel,
+    customSize,
+    lines,
+    rows,
+    lineHeight,
+    ellipsis,
+    tooltip,
+    textDecoration,
+    textDecorationLine,
+    textDecorationStyle,
+    textDecorationColor,
+    textDecorationThickness,
+    textUnderlineOffset,
+    as: Component = 'a',
+    className,
+    children,
+    sx,
+    ...props
+  }: LinkProps,
+  ref,
+) {
   const resolvedTarget = external ? (target ?? '_blank') : target;
   const resolvedRel = external ? (rel ?? 'noopener noreferrer') : rel;
 
-  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis.rows : undefined);
-  const isSingleEllipsis = ellipsis === true && !resolvedRows;
+  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis?.rows : undefined);
+  const isSingleEllipsis =
+    (ellipsis === true || (typeof ellipsis === 'object' && ellipsis !== null && !ellipsis.rows)) &&
+    !resolvedRows;
 
   const currentSizeStyle = linkSizeStyles[size] ?? styles.sizeMd;
 
@@ -157,8 +166,11 @@ export function Link({
     sx,
   );
 
-  return (
+  const tooltipContent = resolveTooltipContent(tooltip, ellipsis, children);
+
+  const element = (
     <Component
+      ref={ref}
       data-slot="typography-link"
       data-size={size}
       data-weight={weight}
@@ -180,4 +192,8 @@ export function Link({
       )}
     </Component>
   );
-}
+
+  return renderWithTooltip(element, tooltipContent);
+});
+
+Link.displayName = 'Typography.Link';

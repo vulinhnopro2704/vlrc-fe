@@ -1,6 +1,8 @@
+import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { resolveTooltipContent, renderWithTooltip } from './tooltip';
 import type { ParagraphAlign, ParagraphProps, ParagraphSpacing, ParagraphVariant } from './types';
 import { resolveCustomTypographyStyle } from './utils';
 import { typographyWeightStyles } from './weightStyles';
@@ -84,6 +86,8 @@ const styles = stylex.create({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     display: 'block',
+    maxWidth: '100%',
+    minWidth: 0,
   },
   requiredAsterisk: {
     color: colors.destructive,
@@ -124,32 +128,38 @@ const alignStyles: Record<ParagraphAlign, stylex.StyleXStyles> = {
   justify: styles.alignJustify,
 };
 
-export function Paragraph({
-  size = 'md',
-  variant = 'default',
-  spacing = 'none',
-  align = 'left',
-  weight,
-  required,
-  customSize,
-  lines,
-  rows,
-  lineHeight,
-  ellipsis,
-  textDecoration,
-  textDecorationLine,
-  textDecorationStyle,
-  textDecorationColor,
-  textDecorationThickness,
-  textUnderlineOffset,
-  as: Component = 'p',
-  className,
-  children,
-  sx,
-  ...props
-}: ParagraphProps) {
-  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis.rows : undefined);
-  const isSingleEllipsis = ellipsis === true && !resolvedRows;
+export const Paragraph = React.forwardRef<HTMLElement, ParagraphProps>(function Paragraph(
+  {
+    size = 'md',
+    variant = 'default',
+    spacing = 'none',
+    align = 'left',
+    weight,
+    required,
+    customSize,
+    lines,
+    rows,
+    lineHeight,
+    ellipsis,
+    tooltip,
+    textDecoration,
+    textDecorationLine,
+    textDecorationStyle,
+    textDecorationColor,
+    textDecorationThickness,
+    textUnderlineOffset,
+    as: Component = 'p',
+    className,
+    children,
+    sx,
+    ...props
+  }: ParagraphProps,
+  ref,
+) {
+  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis?.rows : undefined);
+  const isSingleEllipsis =
+    (ellipsis === true || (typeof ellipsis === 'object' && ellipsis !== null && !ellipsis.rows)) &&
+    !resolvedRows;
 
   const currentSizeStyle = paragraphSizeStyles[size] ?? styles.sizeMd;
 
@@ -178,8 +188,11 @@ export function Paragraph({
     sx,
   );
 
-  return (
+  const tooltipContent = resolveTooltipContent(tooltip, ellipsis, children);
+
+  const element = (
     <Component
+      ref={ref}
       data-slot="typography-paragraph"
       data-variant={variant}
       data-size={size}
@@ -197,4 +210,8 @@ export function Paragraph({
       )}
     </Component>
   );
-}
+
+  return renderWithTooltip(element, tooltipContent);
+});
+
+Paragraph.displayName = 'Typography.Paragraph';

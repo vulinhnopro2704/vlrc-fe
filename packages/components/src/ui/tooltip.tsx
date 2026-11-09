@@ -12,7 +12,7 @@ const styles = stylex.create({
   content: {
     backgroundColor: colors.foreground,
     color: colors.background,
-    zIndex: 50,
+    zIndex: 100,
     width: 'fit-content',
     borderRadius: radii.md,
     paddingInline: '0.75rem',

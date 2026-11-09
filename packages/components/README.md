@@ -17,10 +17,12 @@ Accessible, performant React UI component library built with **Meta StyleX**, **
 ## Features
 
 - **Meta StyleX** — compile-time atomic CSS-in-JS with deterministic specificity and zero runtime cost
-- **Dynamic Theming** — design tokens (`colors`, `radii`, `textColors`) mapped to CSS custom properties, supporting light, dark, and custom themes
+- **Dynamic Theming** — design tokens (`colors`, `radii`, `textColors`, `spacing`) mapped to CSS custom properties, supporting multi-theme systems
+- **Layout Primitives** — high-performance `<Flex>`, `<Grid>`, `<Row>`, `<Col>`, and `useBreakpoint` with 7-tier spacing tokens and zero runtime overhead
 - **Accessible by Default** — built on WAI-ARIA compliant Radix UI primitives with keyboard navigation and screen reader support
 - **Form System** — complete suite of form controls (`FormInput`, `FormSelect`, `FormMultiSelect`, `FormDatePicker`, `FormFileUpload`, `FormNumberInput`) integrated with React Hook Form
-- **Typography Suite** — rich semantic text components (`Title`, `Text`, `Paragraph`, `Blockquote`, `Link`, `Code`, `Kbd`) with StyleX styling
+- **Typography Suite** — rich semantic text components (`Title`, `Text`, `Paragraph`, `Blockquote`, `Link`, `Code`, `Kbd`) with 7-tier size scale, font weights, text decorations, ellipsis, and hover tooltips
+- **Select & MultiSelect** — responsive dropdowns with automatic text truncation, hover tooltips, and overflow protection for ultra-long labels
 - **File Upload Ecosystem** — modular `FileUpload` and `FormFileUpload` with pluggable storage adapters (`Api`, `S3`, `Cloudinary`) and layout variants (`avatar`, `compact`, `card`, `dropzone`)
 - **Data Table** — powerful `DataTable` component with selection, expander, and row actions column helpers via TanStack Table
 - **Tree-Shakable** — full ESM and CJS support with TypeScript declaration maps and granular subpath exports

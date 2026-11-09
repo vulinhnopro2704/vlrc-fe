@@ -4,6 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import { resolveWidth } from '../theme/width';
 import Icons from '../Icons';
+import { Text } from '../Typography';
 
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { MultiSelectTags } from './MultiSelectTags';
@@ -47,6 +48,7 @@ const styles = stylex.create({
   },
   labelArea: {
     flex: '1 1 0%',
+    minWidth: 0,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -77,6 +79,8 @@ const styles = stylex.create({
   popoverContent: {
     padding: 0,
     width: '15rem',
+    maxWidth: '100vw',
+    boxSizing: 'border-box',
   },
   searchBar: {
     display: 'flex',
@@ -119,6 +123,7 @@ const styles = stylex.create({
   optionsList: {
     maxHeight: '14rem',
     overflowY: 'auto',
+    overflowX: 'hidden',
   },
   emptyNotice: {
     padding: '0.75rem',
@@ -134,6 +139,8 @@ const styles = stylex.create({
     cursor: 'pointer',
     fontSize: '0.75rem',
     color: colors.foreground,
+    minWidth: 0,
+    maxWidth: '100%',
     ':hover': {
       backgroundColor: colors.accent,
     },
@@ -169,12 +176,15 @@ const styles = stylex.create({
   },
   selectAllText: {
     flex: '1 1 0%',
+    minWidth: 0,
   },
   optionIcon: {
     marginRight: '0.5rem',
+    flexShrink: 0,
   },
   optionLabel: {
     flex: '1 1 0%',
+    minWidth: 0,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -360,10 +370,12 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
               disabled={disabled}
               tagRender={tagRender}
             />
+          ) : displayLabel ? (
+            <Text ellipsis tooltip sx={styles.labelArea}>
+              {displayLabel}
+            </Text>
           ) : (
-            <span {...stylex.props(styles.labelArea)}>
-              {displayLabel || <span {...stylex.props(styles.placeholder)}>{placeholder}</span>}
-            </span>
+            <Text sx={[styles.labelArea, styles.placeholder]}>{placeholder}</Text>
           )}
           {isClearable && selectedValues.length > 0 && !disabled && (
             <Icons.XIcon {...stylex.props(styles.clearIcon)} onClick={handleClear} />
@@ -416,7 +428,9 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
                     onClick={() => handleSelect(opt.value)}
                   >
                     {opt.icon && <span {...stylex.props(styles.optionIcon)}>{opt.icon}</span>}
-                    <span {...stylex.props(styles.optionLabel)}>{opt.label}</span>
+                    <Text ellipsis tooltip sx={styles.optionLabel}>
+                      {opt.label}
+                    </Text>
                     {isMulti && (
                       <span
                         {...stylex.props(

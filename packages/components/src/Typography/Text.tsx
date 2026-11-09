@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
+import { resolveTooltipContent, renderWithTooltip } from './tooltip';
 import type { TextProps, TextType } from './types';
 import { resolveCustomTypographyStyle } from './utils';
 import { typographyWeightStyles } from './weightStyles';
@@ -94,6 +95,7 @@ const styles = stylex.create({
   ellipsisSingle: {
     display: 'inline-block',
     maxWidth: '100%',
+    minWidth: 0,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -155,35 +157,39 @@ const typeStyles: Record<TextType, stylex.StyleXStyles> = {
   info: styles.typeInfo,
 };
 
-export function Text({
-  type = 'default',
-  size = 'md',
-  weight = 'regular',
-  required,
-  strong,
-  italic,
-  underline,
-  delete: isDelete,
-  keyboard,
-  customSize,
-  lines,
-  rows,
-  lineHeight,
-  ellipsis,
-  textDecoration,
-  textDecorationLine,
-  textDecorationStyle,
-  textDecorationColor,
-  textDecorationThickness,
-  textUnderlineOffset,
-  copyable,
-  as,
-  className,
-  children,
-  sx,
-  ...props
-}: TextProps) {
-  const [copied, setCopied] = useState(false);
+export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
+  {
+    type = 'default',
+    size = 'md',
+    weight = 'regular',
+    required,
+    strong,
+    italic,
+    underline,
+    delete: isDelete,
+    keyboard,
+    customSize,
+    lines,
+    rows,
+    lineHeight,
+    ellipsis,
+    tooltip,
+    textDecoration,
+    textDecorationLine,
+    textDecorationStyle,
+    textDecorationColor,
+    textDecorationThickness,
+    textUnderlineOffset,
+    copyable,
+    as,
+    className,
+    children,
+    sx,
+    ...props
+  }: TextProps,
+  ref,
+) {
+  const [copied, setCopied] = React.useState(false);
 
   let defaultComponent = 'span';
   if (keyboard) defaultComponent = 'kbd';
@@ -193,8 +199,10 @@ export function Text({
 
   const Component = (as || defaultComponent) as React.ElementType;
 
-  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis.rows : undefined);
-  const isSingleEllipsis = ellipsis === true && !resolvedRows;
+  const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis?.rows : undefined);
+  const isSingleEllipsis =
+    (ellipsis === true || (typeof ellipsis === 'object' && ellipsis !== null && !ellipsis.rows)) &&
+    !resolvedRows;
 
   const currentSizeStyle = textSizeStyles[size] ?? styles.sizeMd;
 
@@ -238,8 +246,11 @@ export function Text({
     sx,
   );
 
-  return (
+  const tooltipContent = resolveTooltipContent(tooltip, ellipsis, children);
+
+  const element = (
     <Component
+      ref={ref}
       data-slot="typography-text"
       data-type={type}
       data-size={size}
@@ -271,4 +282,8 @@ export function Text({
       )}
     </Component>
   );
-}
+
+  return renderWithTooltip(element, tooltipContent);
+});
+
+Text.displayName = 'Typography.Text';

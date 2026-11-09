@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Typography, {
   Title,
@@ -54,6 +54,21 @@ describe('Typography', () => {
       const heading = screen.getByRole('heading', { level: 2 });
       expect(heading).toHaveAttribute('data-weight', 'light');
     });
+
+    it('should show tooltip on hover when ellipsis and tooltip are enabled', async () => {
+      const longTitle = 'Very long title text with ellipsis and tooltip';
+      render(
+        <Title level={2} ellipsis tooltip>
+          {longTitle}
+        </Title>,
+      );
+      const el = screen.getByText(longTitle);
+      fireEvent.pointerMove(el);
+      const tooltipEl = await screen.findByText(longTitle, {
+        selector: '[data-slot="tooltip-content"]',
+      });
+      expect(tooltipEl).toBeInTheDocument();
+    });
   });
 
   describe('Paragraph', () => {
@@ -77,6 +92,22 @@ describe('Typography', () => {
       render(<Paragraph weight="semibold">Semibold Paragraph</Paragraph>);
       const p = screen.getByText('Semibold Paragraph');
       expect(p).toHaveAttribute('data-weight', 'semibold');
+    });
+
+    it('should show tooltip on hover when ellipsis and tooltip are enabled', async () => {
+      const longParagraph =
+        'Very long paragraph text that should truncate and show tooltip on hover';
+      render(
+        <Paragraph ellipsis tooltip>
+          {longParagraph}
+        </Paragraph>,
+      );
+      const el = screen.getByText(longParagraph);
+      fireEvent.pointerMove(el);
+      const tooltipEl = await screen.findByText(longParagraph, {
+        selector: '[data-slot="tooltip-content"]',
+      });
+      expect(tooltipEl).toBeInTheDocument();
     });
   });
 
@@ -144,6 +175,51 @@ describe('Typography', () => {
       render(<Text weight="black">Heavy black text</Text>);
       const el = screen.getByText('Heavy black text');
       expect(el).toHaveAttribute('data-weight', 'black');
+    });
+
+    it('should show tooltip on hover when ellipsis and tooltip are enabled', async () => {
+      const longText = 'This is an exceptionally long text that truncates with ellipsis';
+      render(
+        <Text ellipsis tooltip>
+          {longText}
+        </Text>,
+      );
+      const el = screen.getByText(longText);
+      expect(el).toBeInTheDocument();
+
+      fireEvent.pointerMove(el);
+
+      const tooltipEl = await screen.findByText(longText, {
+        selector: '[data-slot="tooltip-content"]',
+      });
+      expect(tooltipEl).toBeInTheDocument();
+    });
+
+    it('should show tooltip when ellipsis is an object with tooltip: true', async () => {
+      const longText = 'Object ellipsis with tooltip enabled';
+      render(<Text ellipsis={{ tooltip: true }}>{longText}</Text>);
+      const el = screen.getByText(longText);
+
+      fireEvent.pointerMove(el);
+
+      const tooltipEl = await screen.findByText(longText, {
+        selector: '[data-slot="tooltip-content"]',
+      });
+      expect(tooltipEl).toBeInTheDocument();
+    });
+
+    it('should display custom tooltip content when provided', async () => {
+      render(
+        <Text ellipsis tooltip="Custom hover information">
+          Short label
+        </Text>,
+      );
+      const el = screen.getByText('Short label');
+
+      fireEvent.pointerMove(el);
+
+      const tooltipEl = await screen.findByText('Custom hover information');
+      expect(tooltipEl).toBeInTheDocument();
     });
   });
 
