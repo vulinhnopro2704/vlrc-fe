@@ -1,0 +1,107 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CopyButton > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Copy to clipboard"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
+    data-copied="false"
+    data-size="icon"
+    data-slot="copy-button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:222"
+    data-variant="ghost"
+    type="button"
+  >
+    <span
+      class="copy-button__styles.iconWrapper x3nfvp2 x6s0dn4 xl56j7k xwcsmn1 xx6bhzk xz4gly6"
+      data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:8"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-copy copy-button__styles.iconMd xcdlrvm x1l36t39"
+        data-slot="copy-icon"
+        data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:20"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="14"
+          rx="2"
+          ry="2"
+          width="14"
+          x="8"
+          y="8"
+        />
+        <path
+          d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+        />
+      </svg>
+    </span>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`CopyButton > UI > should match snapshot with showLabel enabled 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Copy to clipboard"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
+    data-copied="false"
+    data-size="icon"
+    data-slot="copy-button"
+    data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:222"
+    data-variant="ghost"
+    type="button"
+  >
+    <span
+      class="copy-button__styles.iconWrapper x3nfvp2 x6s0dn4 xl56j7k xwcsmn1 xx6bhzk xz4gly6"
+      data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:8"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-copy copy-button__styles.iconMd xcdlrvm x1l36t39"
+        data-slot="copy-icon"
+        data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:20"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="14"
+          rx="2"
+          ry="2"
+          width="14"
+          x="8"
+          y="8"
+        />
+        <path
+          d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+        />
+      </svg>
+    </span>
+    <span
+      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm copy-button__styles.label x13zjp5t"
+      data-size="sm"
+      data-slot="typography-text"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/copy-button.tsx:31"
+      data-type="default"
+      data-weight="regular"
+    >
+      Sao chép
+    </span>
+  </button>
+</DocumentFragment>
+`;

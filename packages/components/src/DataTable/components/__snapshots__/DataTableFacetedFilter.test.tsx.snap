@@ -1,0 +1,204 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DataTableFacetedFilter > UI > should match snapshot in default state without selection 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9 DataTableFacetedFilter__styles.trigger xettwda xbsl7fq xboafo0 x1m5ztt4"
+    data-size="sm"
+    data-slot="data-table-faceted-filter-trigger"
+    data-state="closed"
+    data-style-src="@vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:20"
+    data-variant="outline"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="14"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="14"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+      />
+      <line
+        x1="12"
+        x2="12"
+        y1="8"
+        y2="16"
+      />
+      <line
+        x1="8"
+        x2="16"
+        y1="12"
+        y2="12"
+      />
+    </svg>
+    Status
+  </button>
+</DocumentFragment>
+`;
+
+exports[`DataTableFacetedFilter > UI > should match snapshot with multiple selected options 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9 DataTableFacetedFilter__styles.trigger xettwda xbsl7fq xboafo0 x1m5ztt4"
+    data-size="sm"
+    data-slot="data-table-faceted-filter-trigger"
+    data-state="closed"
+    data-style-src="@vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:20"
+    data-variant="outline"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="14"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="14"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+      />
+      <line
+        x1="12"
+        x2="12"
+        y1="8"
+        y2="16"
+      />
+      <line
+        x1="8"
+        x2="16"
+        y1="12"
+        y2="12"
+      />
+    </svg>
+    Status
+    <div
+      class="separator__styles.base xwefxjc x2lah0s xc342km separator__styles.vertical x5yr21d x1i1rx1s"
+      data-orientation="vertical"
+      data-slot="separator"
+      data-style-src="@vlrc-fe/components:src/ui/separator.tsx:7; @vlrc-fe/components:src/ui/separator.tsx:16"
+      role="none"
+      style="height: 1rem; margin-inline: 0.25rem;"
+    />
+    <span
+      class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 xk50ysn xeq5yr9 xuxw1ft x2lah0s x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 badge__styles.sizeXxs x1l36t39 x2ohwh0 x18a9hih xt970qd x1enigpx"
+      data-size="xxs"
+      data-slot="badge"
+      data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:94; @vlrc-fe/components:src/ui/badge.tsx:37"
+      data-variant="secondary"
+    >
+      3
+    </span>
+    <div
+      class="DataTableFacetedFilter__styles.triggerBadgeGroup x78zum5 x6s0dn4 xvh977a"
+      data-style-src="@vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:26"
+    >
+      <span
+        class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 xk50ysn xeq5yr9 xuxw1ft x2lah0s x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 badge__styles.sizeXxs x1l36t39 x2ohwh0 x18a9hih xt970qd x1enigpx"
+        data-size="xxs"
+        data-slot="badge"
+        data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:94; @vlrc-fe/components:src/ui/badge.tsx:37"
+        data-variant="secondary"
+      >
+        3 selected
+      </span>
+    </div>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`DataTableFacetedFilter > UI > should match snapshot with single selected option 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9 DataTableFacetedFilter__styles.trigger xettwda xbsl7fq xboafo0 x1m5ztt4"
+    data-size="sm"
+    data-slot="data-table-faceted-filter-trigger"
+    data-state="closed"
+    data-style-src="@vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:20"
+    data-variant="outline"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="14"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="14"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+      />
+      <line
+        x1="12"
+        x2="12"
+        y1="8"
+        y2="16"
+      />
+      <line
+        x1="8"
+        x2="16"
+        y1="12"
+        y2="12"
+      />
+    </svg>
+    Status
+    <div
+      class="separator__styles.base xwefxjc x2lah0s xc342km separator__styles.vertical x5yr21d x1i1rx1s"
+      data-orientation="vertical"
+      data-slot="separator"
+      data-style-src="@vlrc-fe/components:src/ui/separator.tsx:7; @vlrc-fe/components:src/ui/separator.tsx:16"
+      role="none"
+      style="height: 1rem; margin-inline: 0.25rem;"
+    />
+    <span
+      class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 xk50ysn xeq5yr9 xuxw1ft x2lah0s x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 badge__styles.sizeXxs x1l36t39 x2ohwh0 x18a9hih xt970qd x1enigpx"
+      data-size="xxs"
+      data-slot="badge"
+      data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:94; @vlrc-fe/components:src/ui/badge.tsx:37"
+      data-variant="secondary"
+    >
+      1
+    </span>
+    <div
+      class="DataTableFacetedFilter__styles.triggerBadgeGroup x78zum5 x6s0dn4 xvh977a"
+      data-style-src="@vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:26"
+    >
+      <span
+        class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 xk50ysn xeq5yr9 xuxw1ft x2lah0s x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 badge__styles.sizeXxs x1l36t39 x2ohwh0 x18a9hih xt970qd x1enigpx"
+        data-size="xxs"
+        data-slot="badge"
+        data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:94; @vlrc-fe/components:src/ui/badge.tsx:37"
+        data-variant="secondary"
+      >
+        Active
+      </span>
+    </div>
+  </button>
+</DocumentFragment>
+`;

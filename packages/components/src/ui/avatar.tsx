@@ -6,6 +6,13 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
+interface AvatarGroupContextValue {
+  size?: ComponentSize;
+  inGroup?: boolean;
+}
+
+const AvatarGroupContext = React.createContext<AvatarGroupContextValue | null>(null);
+
 const styles = stylex.create({
   root: {
     position: 'relative',
@@ -67,6 +74,27 @@ const styles = stylex.create({
     color: colors.mutedForeground,
     fontWeight: 500,
   },
+
+  // Group styles
+  group: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  groupItem: {
+    marginLeft: '-0.5rem',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: colors.background,
+    ':first-child': {
+      marginLeft: 0,
+    },
+  },
+  overflowFallback: {
+    backgroundColor: colors.muted,
+    color: colors.foreground,
+    fontWeight: 600,
+  },
 });
 
 const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
@@ -85,12 +113,22 @@ export interface AvatarProps extends React.ComponentProps<typeof AvatarPrimitive
   sx?: stylex.StyleXStyles;
 }
 
-function Avatar({ className, size = 'md', sx, ...props }: AvatarProps) {
-  const sxProps = stylex.props(styles.root, sizeStyles[size] ?? styles.sizeMd, sx);
+function Avatar({ className, size, sx, ...props }: AvatarProps) {
+  const groupContext = React.useContext(AvatarGroupContext);
+  const resolvedSize: ComponentSize = size ?? groupContext?.size ?? 'md';
+  const inGroup = Boolean(groupContext?.inGroup);
+
+  const sxProps = stylex.props(
+    styles.root,
+    sizeStyles[resolvedSize] ?? styles.sizeMd,
+    inGroup && styles.groupItem,
+    sx,
+  );
+
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"
-      data-size={size}
+      data-size={resolvedSize}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -130,4 +168,42 @@ function AvatarFallback({ className, sx, ...props }: AvatarFallbackProps) {
   );
 }
 
-export { Avatar, AvatarImage, AvatarFallback };
+export interface AvatarGroupProps extends React.ComponentProps<'div'> {
+  /** Maximum number of visible avatars before showing +N indicator */
+  max?: number;
+  /** Size for all avatars in group */
+  size?: ComponentSize;
+  sx?: stylex.StyleXStyles;
+}
+
+function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: AvatarGroupProps) {
+  const sxProps = stylex.props(styles.group, sx);
+  const validChildren = React.Children.toArray(children).filter(React.isValidElement);
+
+  const visibleChildren = max !== undefined ? validChildren.slice(0, max) : validChildren;
+  const overflowCount = max !== undefined ? Math.max(0, validChildren.length - max) : 0;
+
+  const contextValue = React.useMemo(() => ({ size, inGroup: true }), [size]);
+
+  return (
+    <AvatarGroupContext.Provider value={contextValue}>
+      <div
+        role="group"
+        data-slot="avatar-group"
+        data-size={size}
+        {...sxProps}
+        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+        {...props}
+      >
+        {visibleChildren}
+        {overflowCount > 0 && (
+          <Avatar size={size} data-slot="avatar-group-overflow">
+            <AvatarFallback sx={styles.overflowFallback}>+{overflowCount}</AvatarFallback>
+          </Avatar>
+        )}
+      </div>
+    </AvatarGroupContext.Provider>
+  );
+}
+
+export { Avatar, AvatarImage, AvatarFallback, AvatarGroup };

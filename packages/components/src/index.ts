@@ -4,12 +4,24 @@ export type { ConfirmModalProps, ConfirmationDialogProps } from './ConfirmModal'
 export { Modal } from './Modal';
 export type { ModalProps } from './Modal';
 export { lazyLoad } from './lazyLoad';
-export { DataTable } from './DataTable';
-export type { DataTableQuery } from './DataTable';
-export { createExpanderColumn, createRowActionsColumn, createSelectionColumn } from './DataTable';
+export {
+  DataTable,
+  DataTableFacetedFilter,
+  DataTableColumnHeader,
+  createExpanderColumn,
+  createRowActionsColumn,
+  createSelectionColumn,
+} from './DataTable';
+export type {
+  DataTableQuery,
+  DataTableFacetedFilterProps,
+  DataTableFacetedFilterOption,
+  DataTableColumnHeaderProps,
+} from './DataTable';
 export { default as Icons } from './Icons';
 export type { IconNames } from './Icons';
 export * from './ui';
+export * from './layout';
 export * from './Form';
 export * as theme from './theme';
 export * from './theme';

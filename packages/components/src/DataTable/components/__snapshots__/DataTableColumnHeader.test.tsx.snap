@@ -1,0 +1,143 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DataTableColumnHeader > UI > should match snapshot when column is sorted descending 1`] = `
+<DocumentFragment>
+  <div
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4"
+    data-direction="row"
+    data-slot="data-table-column-header"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139"
+  >
+    <button
+      aria-expanded="false"
+      aria-haspopup="menu"
+      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xsda711 xpj7pl4 x1ryrjj2 x1dcheo9 DataTableColumnHeader__styles.root xettwda xxyw1jk"
+      data-size="sm"
+      data-slot="data-table-column-header-trigger"
+      data-state="closed"
+      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/components:src/DataTable/components/DataTableColumnHeader.tsx:17"
+      data-variant="ghost"
+      id="radix-_r_2_"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Email Address
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-arrow-down DataTableColumnHeader__styles.icon x1xvt488 xf08kfj xko4hcy"
+        data-slot="sort-icon-desc"
+        data-style-src="@vlrc-fe/components:src/DataTable/components/DataTableColumnHeader.tsx:21"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 5v14"
+        />
+        <path
+          d="m19 12-7 7-7-7"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DataTableColumnHeader > UI > should match snapshot when sorting is disabled 1`] = `
+<DocumentFragment>
+  <div
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4"
+    data-direction="row"
+    data-slot="data-table-column-header"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139"
+  >
+    <span
+      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+      data-size="sm"
+      data-slot="typography-text"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+      data-type="default"
+      data-weight="medium"
+    >
+      Email Address
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DataTableColumnHeader > UI > should match snapshot with sortable column in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4"
+    data-direction="row"
+    data-slot="data-table-column-header"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139"
+  >
+    <button
+      aria-expanded="false"
+      aria-haspopup="menu"
+      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xsda711 xpj7pl4 x1ryrjj2 x1dcheo9 DataTableColumnHeader__styles.root xettwda xxyw1jk"
+      data-size="sm"
+      data-slot="data-table-column-header-trigger"
+      data-state="closed"
+      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/components:src/DataTable/components/DataTableColumnHeader.tsx:17"
+      data-variant="ghost"
+      id="radix-_r_0_"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Email Address
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-arrow-up-down DataTableColumnHeader__styles.icon x1xvt488 xf08kfj xko4hcy"
+        data-slot="sort-icon-none"
+        data-style-src="@vlrc-fe/components:src/DataTable/components/DataTableColumnHeader.tsx:21"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m21 16-4 4-4-4"
+        />
+        <path
+          d="M17 20V4"
+        />
+        <path
+          d="m3 8 4-4 4 4"
+        />
+        <path
+          d="M7 4v16"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;

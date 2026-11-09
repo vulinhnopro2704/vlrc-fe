@@ -179,11 +179,11 @@ function DialogContent({
   );
 }
 
-function DialogHeader({
-  className,
-  sx,
-  ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+export type DialogHeaderProps = React.ComponentProps<'div'> & {
+  sx?: stylex.StyleXStyles;
+};
+
+function DialogHeader({ className, sx, ...props }: DialogHeaderProps) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <div
@@ -195,11 +195,11 @@ function DialogHeader({
   );
 }
 
-function DialogFooter({
-  className,
-  sx,
-  ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+export type DialogFooterProps = React.ComponentProps<'div'> & {
+  sx?: stylex.StyleXStyles;
+};
+
+function DialogFooter({ className, sx, ...props }: DialogFooterProps) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <div
@@ -211,11 +211,11 @@ function DialogFooter({
   );
 }
 
-function DialogTitle({
-  className,
-  sx,
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Title> & { sx?: stylex.StyleXStyles }) {
+export type DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title> & {
+  sx?: stylex.StyleXStyles;
+};
+
+function DialogTitle({ className, sx, ...props }: DialogTitleProps) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <DialogPrimitive.Title
@@ -227,11 +227,11 @@ function DialogTitle({
   );
 }
 
-function DialogDescription({
-  className,
-  sx,
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Description> & { sx?: stylex.StyleXStyles }) {
+export type DialogDescriptionProps = React.ComponentProps<typeof DialogPrimitive.Description> & {
+  sx?: stylex.StyleXStyles;
+};
+
+function DialogDescription({ className, sx, ...props }: DialogDescriptionProps) {
   const sxProps = stylex.props(styles.description, sx);
   return (
     <DialogPrimitive.Description

@@ -1,0 +1,137 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Empty > UI > should match snapshot with compound subcomponents 1`] = `
+<DocumentFragment>
+  <div
+    class="flex__styles.base x78zum5 flex__styles.dirCol xdt5ytf flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.root x1kuf5yo x9f619 xh8yej3 x2b8uid"
+    data-direction="column"
+    data-slot="empty"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:9"
+  >
+    <div
+      class="empty__styles.imageWrapper x78zum5 x6s0dn4 xl56j7k xw3nh4a x197sbye x1wwzmr"
+      data-slot="empty-image"
+      data-style-src="@vlrc-fe/components:src/ui/empty.tsx:15"
+    >
+      <span
+        data-testid="custom-illustration"
+      >
+        SVG
+      </span>
+    </div>
+    <h4
+      class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+      data-size="md"
+      data-slot="empty-title"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+      data-type="default"
+      data-weight="semibold"
+    >
+      No data available
+    </h4>
+    <p
+      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm empty__styles.description xowlazn"
+      data-size="sm"
+      data-slot="empty-description"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/empty.tsx:28"
+      data-type="secondary"
+      data-weight="regular"
+    >
+      Create your first project to get started.
+    </p>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.actions xmc9es9"
+      data-direction="row"
+      data-slot="empty-actions"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:31"
+    >
+      <button
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+        data-size="md"
+        data-slot="button"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:84; @vlrc-fe/components:src/ui/button.tsx:175"
+        data-variant="outline"
+        type="button"
+      >
+        Create Project
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Empty > UI > should match snapshot with default shorthand props 1`] = `
+<DocumentFragment>
+  <div
+    class="flex__styles.base x78zum5 flex__styles.dirCol xdt5ytf flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.root x1kuf5yo x9f619 xh8yej3 x2b8uid"
+    data-direction="column"
+    data-slot="empty"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:9"
+  >
+    <div
+      class="empty__styles.imageWrapper x78zum5 x6s0dn4 xl56j7k xw3nh4a x197sbye x1wwzmr"
+      data-slot="empty-image"
+      data-style-src="@vlrc-fe/components:src/ui/empty.tsx:15"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-inbox empty__styles.defaultIcon x154i66o xu15cu9 x1r6sdyr"
+        data-style-src="@vlrc-fe/components:src/ui/empty.tsx:23"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polyline
+          points="22 12 16 12 14 15 10 15 8 12 2 12"
+        />
+        <path
+          d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+        />
+      </svg>
+    </div>
+    <h4
+      class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+      data-size="md"
+      data-slot="empty-title"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+      data-type="default"
+      data-weight="semibold"
+    >
+      No data available
+    </h4>
+    <p
+      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm empty__styles.description xowlazn"
+      data-size="sm"
+      data-slot="empty-description"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/empty.tsx:28"
+      data-type="secondary"
+      data-weight="regular"
+    >
+      Create your first project to get started.
+    </p>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.actions xmc9es9"
+      data-direction="row"
+      data-slot="empty-actions"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:31"
+    >
+      <button
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+        data-size="md"
+        data-slot="button"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"
+        data-variant="default"
+        type="button"
+      >
+        Create Project
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -20,11 +20,16 @@ This skill provides step-by-step procedures and specifications for authoring, st
    - Every UI component accepts an `sx?: stylex.StyleXStyles` prop for clean, collision-free override styling.
    - For legacy or external class names, components merge `className` onto the compiled StyleX class list.
 
-3. **Wrapper-First Form Architecture**:
+3. **Mandatory Primitive Reuse**:
+   - Always reuse existing layout primitives (`Flex`, `Grid`, `Row`, `Col`) from `src/layout` or `src/ui/flex` with 7-tier spacing tokens (`spacing.xxs` through `spacing.xxl`).
+   - Always use `Typography` (`Text`, `Title`, `Paragraph`) with semantic props (`size`, `weight`, `type`) instead of raw `<span>`, `<p>`, `<h1>`-`<h6>`.
+   - Never use inline `style={{ ... }}` for static layout or static color properties.
+
+4. **Wrapper-First Form Architecture**:
    - All form controls (`FormInput`, `FormSelect`, `FormMultiSelect`, `FormDatePicker`, `FormNumberInput`, `FormFileUpload`) connect to `react-hook-form` via the `FormBase` wrapper.
    - Forms use RHF's native `rules` prop for validation rules.
 
-4. **Unified Icons Registry**:
+5. **Unified Icons Registry**:
    - Icons are accessed via `Icons.<IconName>` (exported from `@vlrc-fe/components/Icons`).
    - Do not import directly from `lucide-react` across consumer applications.
 
@@ -35,10 +40,14 @@ This skill provides step-by-step procedures and specifications for authoring, st
 ### 2.1 Adding a New UI Primitive
 
 1. Create `src/ui/<component-name>.tsx`.
-2. Define static styles with `stylex.create(...)` using `colors` and `radii` from `../theme/tokens.stylex`.
-3. Support `sx?: stylex.StyleXStyles` and optional `className?: string`.
-4. Export the component in `src/ui/index.ts` and `src/index.ts`.
-5. Run `pnpm build` to verify both JS/CJS output and `.d.ts` generation.
+2. Define static styles with `stylex.create(...)` using `colors`, `radii`, and `spacing` from `../theme/tokens.stylex`.
+3. Reuse layout (`Flex`, `Grid`) and `Typography` (`Text`, `Title`) primitives internally.
+4. Support `sx?: stylex.StyleXStyles` and optional `className?: string`.
+5. Strict TypeScript: **0% `any`**, omit conflicting HTML attributes when extending props.
+6. Create Storybook stories in `src/ui/<component-name>.stories.tsx`.
+7. Create Vitest suite in `src/ui/<component-name>.test.tsx` with separate `describe('UI')` and `describe('Behavior')`, `it("should ...")` naming, and no magic values.
+8. Export the component and its prop types in `src/ui/index.ts` and `src/index.ts`.
+9. Run `pnpm vitest run src/ui/<component-name>.test.tsx -u` and `pnpm build` to verify tests and `.d.ts` declaration generation.
 
 ### 2.2 Adding a New Form Control
 

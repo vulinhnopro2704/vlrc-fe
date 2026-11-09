@@ -1,0 +1,199 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CircularProgress > UI > should match snapshot across variant colors 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Upload status"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="75"
+    class="circular-progress__styles.root x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k xxymvpz"
+    data-slot="circular-progress"
+    data-state="determinate"
+    data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:12"
+    role="progressbar"
+    style="width: 48px; height: 48px;"
+  >
+    <svg
+      class="circular-progress__styles.svg x1lliihq x9tu13d"
+      data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:19"
+      height="48"
+      viewBox="0 0 48 48"
+      width="48"
+    >
+      <circle
+        class="circular-progress__styles.track xdeg11c"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:29"
+        fill="none"
+        r="22"
+        stroke-width="4"
+      />
+      <circle
+        class="circular-progress__styles.indicator x1owpc8m xxnu56j x1d8287x xz4gly6 circular-progress__styles.colorSuccess x1uof0aa"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:32; @vlrc-fe/components:src/ui/circular-progress.tsx:50"
+        fill="none"
+        r="22"
+        stroke-dasharray="138.23007675795088"
+        stroke-dashoffset="34.55751918948772"
+        stroke-width="4"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CircularProgress > UI > should match snapshot in determinate state 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Upload status"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="75"
+    class="circular-progress__styles.root x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k xxymvpz"
+    data-slot="circular-progress"
+    data-state="determinate"
+    data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:12"
+    role="progressbar"
+    style="width: 48px; height: 48px;"
+  >
+    <svg
+      class="circular-progress__styles.svg x1lliihq x9tu13d"
+      data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:19"
+      height="48"
+      viewBox="0 0 48 48"
+      width="48"
+    >
+      <circle
+        class="circular-progress__styles.track xdeg11c"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:29"
+        fill="none"
+        r="22"
+        stroke-width="4"
+      />
+      <circle
+        class="circular-progress__styles.indicator x1owpc8m xxnu56j x1d8287x xz4gly6 circular-progress__styles.colorDefault xodl5ec"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:32; @vlrc-fe/components:src/ui/circular-progress.tsx:38"
+        fill="none"
+        r="22"
+        stroke-dasharray="138.23007675795088"
+        stroke-dashoffset="34.55751918948772"
+        stroke-width="4"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CircularProgress > UI > should match snapshot in indeterminate state 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Upload status"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    class="circular-progress__styles.root x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k xxymvpz"
+    data-slot="circular-progress"
+    data-state="indeterminate"
+    data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:12"
+    role="progressbar"
+    style="width: 48px; height: 48px;"
+  >
+    <svg
+      class="circular-progress__styles.svg x1lliihq x9tu13d circular-progress__styles.svgIndeterminate x1ka1v4i x1sbju2s x1esw782 xa4qsjk"
+      data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:19; @vlrc-fe/components:src/ui/circular-progress.tsx:23"
+      height="48"
+      viewBox="0 0 48 48"
+      width="48"
+    >
+      <circle
+        class="circular-progress__styles.track xdeg11c"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:29"
+        fill="none"
+        r="22"
+        stroke-width="4"
+      />
+      <circle
+        class="circular-progress__styles.indicator x1owpc8m xxnu56j x1d8287x xz4gly6 circular-progress__styles.colorDefault xodl5ec"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:32; @vlrc-fe/components:src/ui/circular-progress.tsx:38"
+        fill="none"
+        r="22"
+        stroke-dasharray="138.23007675795088"
+        stroke-dashoffset="103.67255756846316"
+        stroke-width="4"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CircularProgress > UI > should match snapshot with showValue enabled 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Upload status"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="75"
+    class="circular-progress__styles.root x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k xxymvpz"
+    data-slot="circular-progress"
+    data-state="determinate"
+    data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:12"
+    role="progressbar"
+    style="width: 48px; height: 48px;"
+  >
+    <svg
+      class="circular-progress__styles.svg x1lliihq x9tu13d"
+      data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:19"
+      height="48"
+      viewBox="0 0 48 48"
+      width="48"
+    >
+      <circle
+        class="circular-progress__styles.track xdeg11c"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:29"
+        fill="none"
+        r="22"
+        stroke-width="4"
+      />
+      <circle
+        class="circular-progress__styles.indicator x1owpc8m xxnu56j x1d8287x xz4gly6 circular-progress__styles.colorDefault xodl5ec"
+        cx="24"
+        cy="24"
+        data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:32; @vlrc-fe/components:src/ui/circular-progress.tsx:38"
+        fill="none"
+        r="22"
+        stroke-dasharray="138.23007675795088"
+        stroke-dashoffset="34.55751918948772"
+        stroke-width="4"
+      />
+    </svg>
+    <div
+      class="circular-progress__styles.centerContent x10l6tqk xwa60dl x1nrll8i x11lhmoz x78zum5 x6s0dn4 xl56j7k x47corl"
+      data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:53"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="circular-progress-value"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        75%
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

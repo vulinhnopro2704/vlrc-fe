@@ -1,0 +1,204 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Gauge > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Server Health"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="72"
+    class="gauge__styles.root x1n2onr6 x3nfvp2 xdt5ytf x6s0dn4 xl56j7k x87ps6o"
+    data-slot="gauge"
+    data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:8"
+    data-variant="primary"
+    role="meter"
+    style="width: 180px;"
+  >
+    <svg
+      class="gauge__styles.svg x1rea2x4"
+      data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:16"
+      height="101"
+      viewBox="0 0 180 101"
+      width="180"
+    >
+      <path
+        class="gauge__styles.track xdeg11c x1owpc8m xbh8q5q"
+        d="M 7 90 A 83 83 0 0 1 173 90"
+        data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:19"
+        stroke-width="14"
+      />
+      <path
+        class="gauge__styles.indicator x1owpc8m xbh8q5q xxnu56j x1wsgiic xwwtwea gauge__styles.colorDefault xodl5ec"
+        d="M 7 90 A 83 83 0 0 1 173 90"
+        data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:24; @vlrc-fe/components:src/ui/gauge.tsx:31"
+        stroke-dasharray="260.75219024795285"
+        stroke-dashoffset="73.01061326942681"
+        stroke-width="14"
+      />
+    </svg>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapXxs x118fsrc gauge__styles.centerContent x10l6tqk x1ey2m1c x1nrll8i xuuh30 x2b8uid x47corl"
+      data-direction="column"
+      data-slot="gauge-content"
+      data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:46"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeXl x1603h9y xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.bold x1xlr1w8"
+        data-size="xl"
+        data-slot="gauge-value"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:38; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:23"
+        data-type="default"
+        data-weight="bold"
+      >
+        72%
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Gauge > UI > should match snapshot with custom children content 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Server Health"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="72"
+    class="gauge__styles.root x1n2onr6 x3nfvp2 xdt5ytf x6s0dn4 xl56j7k x87ps6o"
+    data-slot="gauge"
+    data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:8"
+    data-variant="primary"
+    role="meter"
+    style="width: 180px;"
+  >
+    <svg
+      class="gauge__styles.svg x1rea2x4"
+      data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:16"
+      height="101"
+      viewBox="0 0 180 101"
+      width="180"
+    >
+      <path
+        class="gauge__styles.track xdeg11c x1owpc8m xbh8q5q"
+        d="M 7 90 A 83 83 0 0 1 173 90"
+        data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:19"
+        stroke-width="14"
+      />
+      <path
+        class="gauge__styles.indicator x1owpc8m xbh8q5q xxnu56j x1wsgiic xwwtwea gauge__styles.colorDefault xodl5ec"
+        d="M 7 90 A 83 83 0 0 1 173 90"
+        data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:24; @vlrc-fe/components:src/ui/gauge.tsx:31"
+        stroke-dasharray="260.75219024795285"
+        stroke-dashoffset="73.01061326942681"
+        stroke-width="14"
+      />
+    </svg>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapXxs x118fsrc gauge__styles.centerContent x10l6tqk x1ey2m1c x1nrll8i xuuh30 x2b8uid x47corl"
+      data-direction="column"
+      data-slot="gauge-content"
+      data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:46"
+    >
+      <span
+        data-testid="custom-gauge-text"
+      >
+        Optimal
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Gauge > UI > should match snapshot with label and min/max row 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Server Health"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="72"
+    class="gauge__styles.root x1n2onr6 x3nfvp2 xdt5ytf x6s0dn4 xl56j7k x87ps6o"
+    data-slot="gauge"
+    data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:8"
+    data-variant="success"
+    role="meter"
+    style="width: 180px;"
+  >
+    <svg
+      class="gauge__styles.svg x1rea2x4"
+      data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:16"
+      height="101"
+      viewBox="0 0 180 101"
+      width="180"
+    >
+      <path
+        class="gauge__styles.track xdeg11c x1owpc8m xbh8q5q"
+        d="M 7 90 A 83 83 0 0 1 173 90"
+        data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:19"
+        stroke-width="14"
+      />
+      <path
+        class="gauge__styles.indicator x1owpc8m xbh8q5q xxnu56j x1wsgiic xwwtwea gauge__styles.colorSuccess x1uof0aa"
+        d="M 7 90 A 83 83 0 0 1 173 90"
+        data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:24; @vlrc-fe/components:src/ui/gauge.tsx:34"
+        stroke-dasharray="260.75219024795285"
+        stroke-dashoffset="73.01061326942681"
+        stroke-width="14"
+      />
+    </svg>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapXxs x118fsrc gauge__styles.centerContent x10l6tqk x1ey2m1c x1nrll8i xuuh30 x2b8uid x47corl"
+      data-direction="column"
+      data-slot="gauge-content"
+      data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:46"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeXl x1603h9y xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.bold x1xlr1w8"
+        data-size="xl"
+        data-slot="gauge-value"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:38; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:23"
+        data-type="default"
+        data-weight="bold"
+      >
+        72%
+      </span>
+      <span
+        class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+        data-size="xs"
+        data-slot="gauge-label"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+        data-type="secondary"
+        data-weight="regular"
+      >
+        CPU Load
+      </span>
+    </div>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.justifyBetween x1qughib gauge__styles.minMaxRow xh8yej3 xpxt2so"
+      data-direction="row"
+      data-slot="gauge-minmax"
+      data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:54"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+        data-size="xs"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+        data-type="secondary"
+        data-weight="regular"
+      >
+        0
+      </span>
+      <span
+        class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+        data-size="xs"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+        data-type="secondary"
+        data-weight="regular"
+      >
+        100
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

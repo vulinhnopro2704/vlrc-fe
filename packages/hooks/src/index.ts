@@ -1,6 +1,9 @@
 export { useModalState } from './useModalState';
 export type { ModalState, UseModalStateOptions } from './useModalState';
 
+export { useCopyToClipboard } from './useCopyToClipboard';
+export type { UseCopyToClipboardOptions, UseCopyToClipboardReturn } from './useCopyToClipboard';
+
 export {
   useUploadFile,
   createApiUploadHandler,

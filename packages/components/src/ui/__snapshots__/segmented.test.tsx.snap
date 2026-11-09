@@ -1,0 +1,202 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Segmented > UI > should match snapshot in block mode 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Segmented options"
+    class="flex__styles.base flex__styles.dirRow x1q0g3np flex__styles.alignCenter segmented__styles.root x6s0dn4 x78pyy4 x1mr5ieh x1qry0bl xw3nh4a x87ps6o x9f619 x1enigpx segmented__styles.block x78zum5 xh8yej3"
+    data-direction="row"
+    data-slot="segmented"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/segmented.tsx:8; @vlrc-fe/components:src/ui/segmented.tsx:19"
+    role="radiogroup"
+    tabindex="0"
+  >
+    <button
+      aria-checked="false"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km xjbqb8w xw3nh4a xk50ysn x1ypdohk x1hhurwi xx6bhzk xwwtwea x1a2a7pz x8aud5w xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90 segmented__styles.itemBlock x98rzlu"
+      data-slot="segmented-item"
+      data-state="inactive"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73; @vlrc-fe/components:src/ui/segmented.tsx:51"
+      data-value="daily"
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Daily
+      </span>
+    </button>
+    <button
+      aria-checked="true"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km x1ypdohk x1hhurwi xx6bhzk xwwtwea x1a2a7pz x8aud5w xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90 segmented__styles.itemBlock x98rzlu segmented__styles.itemActive x1mlyrtw x84br7x x1s688f x19sfsg6"
+      data-slot="segmented-item"
+      data-state="active"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73; @vlrc-fe/components:src/ui/segmented.tsx:51; @vlrc-fe/components:src/ui/segmented.tsx:54"
+      data-value="weekly"
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+        data-type="default"
+        data-weight="semibold"
+      >
+        Weekly
+      </span>
+    </button>
+    <button
+      aria-checked="false"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km xjbqb8w xw3nh4a xk50ysn x1ypdohk x1hhurwi xx6bhzk xwwtwea x1a2a7pz x8aud5w xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90 segmented__styles.itemBlock x98rzlu"
+      data-slot="segmented-item"
+      data-state="inactive"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73; @vlrc-fe/components:src/ui/segmented.tsx:51"
+      data-value="monthly"
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Monthly
+      </span>
+    </button>
+    <button
+      aria-checked="false"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km xjbqb8w xw3nh4a xk50ysn x1hhurwi xx6bhzk xwwtwea x1a2a7pz xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90 segmented__styles.itemBlock x98rzlu segmented__styles.itemDisabled x1h6gzvc xbyyjgo x5ufdz3"
+      data-slot="segmented-item"
+      data-state="inactive"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73; @vlrc-fe/components:src/ui/segmented.tsx:51; @vlrc-fe/components:src/ui/segmented.tsx:60"
+      data-value="yearly"
+      disabled=""
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Yearly
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Segmented > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Segmented options"
+    class="flex__styles.base flex__styles.inline flex__styles.dirRow x1q0g3np flex__styles.alignCenter segmented__styles.root x3nfvp2 x6s0dn4 x78pyy4 x1mr5ieh x1qry0bl xw3nh4a x87ps6o x9f619 x1enigpx"
+    data-direction="row"
+    data-inline="true"
+    data-slot="segmented"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/segmented.tsx:8"
+    role="radiogroup"
+    tabindex="0"
+  >
+    <button
+      aria-checked="true"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km x1ypdohk x1hhurwi xx6bhzk xwwtwea x1a2a7pz x8aud5w xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90 segmented__styles.itemActive x1mlyrtw x84br7x x1s688f x19sfsg6"
+      data-slot="segmented-item"
+      data-state="active"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73; @vlrc-fe/components:src/ui/segmented.tsx:54"
+      data-value="daily"
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+        data-type="default"
+        data-weight="semibold"
+      >
+        Daily
+      </span>
+    </button>
+    <button
+      aria-checked="false"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km xjbqb8w xw3nh4a xk50ysn x1ypdohk x1hhurwi xx6bhzk xwwtwea x1a2a7pz x8aud5w xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90"
+      data-slot="segmented-item"
+      data-state="inactive"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73"
+      data-value="weekly"
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Weekly
+      </span>
+    </button>
+    <button
+      aria-checked="false"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km xjbqb8w xw3nh4a xk50ysn x1ypdohk x1hhurwi xx6bhzk xwwtwea x1a2a7pz x8aud5w xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90"
+      data-slot="segmented-item"
+      data-state="inactive"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73"
+      data-value="monthly"
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Monthly
+      </span>
+    </button>
+    <button
+      aria-checked="false"
+      class="segmented__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1m5ztt4 xsda711 xc342km xjbqb8w xw3nh4a xk50ysn x1hhurwi xx6bhzk xwwtwea x1a2a7pz xw5q27k segmented__styles.sizeMd xk8t5le x1ryrjj2 xkpwil5 x8r4c90 segmented__styles.itemDisabled x1h6gzvc xbyyjgo x5ufdz3"
+      data-slot="segmented-item"
+      data-state="inactive"
+      data-style-src="@vlrc-fe/components:src/ui/segmented.tsx:28; @vlrc-fe/components:src/ui/segmented.tsx:73; @vlrc-fe/components:src/ui/segmented.tsx:60"
+      data-value="yearly"
+      disabled=""
+      role="radio"
+      type="button"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        data-size="sm"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="default"
+        data-weight="medium"
+      >
+        Yearly
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;

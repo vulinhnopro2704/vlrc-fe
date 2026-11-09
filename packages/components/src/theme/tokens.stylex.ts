@@ -6,42 +6,42 @@ import * as stylex from '@stylexjs/stylex';
  * (light, dark, pink, lavender) defined in CSS variables.
  */
 export const colors = stylex.defineVars({
-  background: 'var(--background)',
-  foreground: 'var(--foreground)',
-  card: 'var(--card)',
-  cardForeground: 'var(--card-foreground)',
-  popover: 'var(--popover)',
-  popoverForeground: 'var(--popover-foreground)',
-  primary: 'var(--primary)',
-  primaryForeground: 'var(--primary-foreground)',
-  secondary: 'var(--secondary)',
-  secondaryForeground: 'var(--secondary-foreground)',
-  muted: 'var(--muted)',
-  mutedForeground: 'var(--muted-foreground)',
-  accent: 'var(--accent)',
-  accentForeground: 'var(--accent-foreground)',
-  destructive: 'var(--destructive)',
+  background: 'var(--background, #ffffff)',
+  foreground: 'var(--foreground, #0f172a)',
+  card: 'var(--card, #ffffff)',
+  cardForeground: 'var(--card-foreground, #0f172a)',
+  popover: 'var(--popover, #ffffff)',
+  popoverForeground: 'var(--popover-foreground, #0f172a)',
+  primary: 'var(--primary, #3b82f6)',
+  primaryForeground: 'var(--primary-foreground, #ffffff)',
+  secondary: 'var(--secondary, #f1f5f9)',
+  secondaryForeground: 'var(--secondary-foreground, #0f172a)',
+  muted: 'var(--muted, #f8fafc)',
+  mutedForeground: 'var(--muted-foreground, #64748b)',
+  accent: 'var(--accent, #f1f5f9)',
+  accentForeground: 'var(--accent-foreground, #0f172a)',
+  destructive: 'var(--destructive, #ef4444)',
   destructiveForeground: 'var(--destructive-foreground, #ffffff)',
-  border: 'var(--border)',
-  input: 'var(--input)',
-  ring: 'var(--ring)',
+  border: 'var(--border, #e2e8f0)',
+  input: 'var(--input, #cbd5e1)',
+  ring: 'var(--ring, #3b82f6)',
 
   // Charts
-  chart1: 'var(--chart-1)',
-  chart2: 'var(--chart-2)',
-  chart3: 'var(--chart-3)',
-  chart4: 'var(--chart-4)',
-  chart5: 'var(--chart-5)',
+  chart1: 'var(--chart-1, #e76e50)',
+  chart2: 'var(--chart-2, #2a9d8f)',
+  chart3: 'var(--chart-3, #264653)',
+  chart4: 'var(--chart-4, #e9c46a)',
+  chart5: 'var(--chart-5, #f4a261)',
 
   // Sidebar
-  sidebar: 'var(--sidebar, var(--background))',
-  sidebarForeground: 'var(--sidebar-foreground, var(--foreground))',
-  sidebarPrimary: 'var(--sidebar-primary, var(--primary))',
-  sidebarPrimaryForeground: 'var(--sidebar-primary-foreground, var(--primary-foreground))',
-  sidebarAccent: 'var(--sidebar-accent, var(--accent))',
-  sidebarAccentForeground: 'var(--sidebar-accent-foreground, var(--accent-foreground))',
-  sidebarBorder: 'var(--sidebar-border, var(--border))',
-  sidebarRing: 'var(--sidebar-ring, var(--ring))',
+  sidebar: 'var(--sidebar, var(--background, #ffffff))',
+  sidebarForeground: 'var(--sidebar-foreground, var(--foreground, #0f172a))',
+  sidebarPrimary: 'var(--sidebar-primary, var(--primary, #3b82f6))',
+  sidebarPrimaryForeground: 'var(--sidebar-primary-foreground, var(--primary-foreground, #ffffff))',
+  sidebarAccent: 'var(--sidebar-accent, var(--accent, #f1f5f9))',
+  sidebarAccentForeground: 'var(--sidebar-accent-foreground, var(--accent-foreground, #0f172a))',
+  sidebarBorder: 'var(--sidebar-border, var(--border, #e2e8f0))',
+  sidebarRing: 'var(--sidebar-ring, var(--ring, #3b82f6))',
 });
 
 export const radii = stylex.defineVars({
@@ -56,10 +56,10 @@ export const radii = stylex.defineVars({
 });
 
 export const textColors = stylex.defineVars({
-  default: 'var(--foreground)',
-  muted: 'var(--muted-foreground)',
-  primary: 'var(--primary)',
-  destructive: 'var(--destructive)',
+  default: 'var(--foreground, #0f172a)',
+  muted: 'var(--muted-foreground, #64748b)',
+  primary: 'var(--primary, #3b82f6)',
+  destructive: 'var(--destructive, #ef4444)',
 });
 
 /**

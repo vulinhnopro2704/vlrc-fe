@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.6.0] - 2026-11-09
+
+### Minor Changes
+
+- **Theme & Design Tokens (Zero-config Default Fallbacks)**:
+  - Added robust default fallbacks for all color and text tokens (`colors`, `textColors`, charts 1-5, and sidebar) in `tokens.stylex.ts`.
+  - Guaranteed zero-config UI: consumer applications no longer break or render transparent backgrounds if CSS variables are undefined.
+  - Exported `@vlrc-fe/components/theme.css` containing predefined `:root`, `.dark`, `[data-theme='pink']`, `[data-theme='lavender']` palettes and Radix interaction data-state rules.
+- **Storybook Optimization**:
+  - Removed over 700 lines of redundant CSS overrides, orphan Tailwind utility classes, and forced `!important` declarations from `.storybook/preview.css`, relying directly on StyleX tokens and `@vlrc-fe/components/theme.css`.
+- **UI Components & Testing**:
+  - Added `DataTableColumnHeader` and `DataTableFacetedFilter` for enhanced `DataTable` workflows.
+  - Added UI primitives & composite components: `ActionBar`, `BadgeOverflow`, `CircularProgress`, `CompareSlider`, `CopyButton`, `Editable`, `Empty`, `Gauge`, `InputGroup`, `Kbd`, `Masonry`, `Rating`, `ResponsiveDialog`, `Segmented`, `Stat`, `Stepper`, `TagsInput`, and `Timeline`.
+  - Added comprehensive Vitest tests and Storybook stories with 100% pass rate.
+
 ## [2.5.0] - 2026-11-09
 
 ### Minor Changes

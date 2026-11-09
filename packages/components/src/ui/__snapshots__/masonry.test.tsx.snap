@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Masonry > UI > should match snapshot with fixed columns count 1`] = `
+<DocumentFragment>
+  <div
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.gapMd x1b1hbqf masonry__styles.root xh8yej3 x1cy8zhl"
+    data-columns="3"
+    data-direction="row"
+    data-slot="masonry"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:7"
+  >
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapMd x1b1hbqf masonry__styles.column x98rzlu xeuugli"
+      data-column-index="0"
+      data-direction="column"
+      data-slot="masonry-column"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:11"
+    >
+      <div
+        data-testid="item-1"
+      >
+        Card 1
+      </div>
+      <div
+        data-testid="item-4"
+      >
+        Card 4
+      </div>
+    </div>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapMd x1b1hbqf masonry__styles.column x98rzlu xeuugli"
+      data-column-index="1"
+      data-direction="column"
+      data-slot="masonry-column"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:11"
+    >
+      <div
+        data-testid="item-2"
+      >
+        Card 2
+      </div>
+      <div
+        data-testid="item-5"
+      >
+        Card 5
+      </div>
+    </div>
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapMd x1b1hbqf masonry__styles.column x98rzlu xeuugli"
+      data-column-index="2"
+      data-direction="column"
+      data-slot="masonry-column"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:11"
+    >
+      <div
+        data-testid="item-3"
+      >
+        Card 3
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Masonry > UI > should match snapshot with responsive columns config 1`] = `
+<DocumentFragment>
+  <div
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.gapLg x1oqwmkw masonry__styles.root xh8yej3 x1cy8zhl"
+    data-columns="1"
+    data-direction="row"
+    data-slot="masonry"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:7"
+  >
+    <div
+      class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapLg x1oqwmkw masonry__styles.column x98rzlu xeuugli"
+      data-column-index="0"
+      data-direction="column"
+      data-slot="masonry-column"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:11"
+    >
+      <div
+        data-testid="item-1"
+      >
+        Card 1
+      </div>
+      <div
+        data-testid="item-2"
+      >
+        Card 2
+      </div>
+      <div
+        data-testid="item-3"
+      >
+        Card 3
+      </div>
+      <div
+        data-testid="item-4"
+      >
+        Card 4
+      </div>
+      <div
+        data-testid="item-5"
+      >
+        Card 5
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

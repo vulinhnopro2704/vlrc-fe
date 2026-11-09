@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ResponsiveDialog > UI > should match snapshot in desktop mode 1`] = `<DocumentFragment />`;
+
+exports[`ResponsiveDialog > UI > should match snapshot in mobile mode 1`] = `<DocumentFragment />`;

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar, AvatarFallback, AvatarImage } from './avatar';
+import { Avatar, AvatarFallback, AvatarImage, AvatarGroup } from './avatar';
+import { Flex } from './flex';
 
 const meta = {
   title: 'Primitives/Avatar',
@@ -30,7 +31,7 @@ export const Default: Story = {
 
 export const SevenSizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+    <Flex align="center" gap="md" wrap>
       <Avatar size="xxs">
         <AvatarFallback>XX</AvatarFallback>
       </Avatar>
@@ -52,6 +53,42 @@ export const SevenSizes: Story = {
       <Avatar size="xxl">
         <AvatarFallback>2X</AvatarFallback>
       </Avatar>
-    </div>
+    </Flex>
+  ),
+};
+
+export const Group: Story = {
+  render: () => (
+    <Flex vertical gap="lg">
+      <AvatarGroup max={3} size="md">
+        <Avatar>
+          <AvatarFallback>NL</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>LT</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>KP</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>HN</AvatarFallback>
+        </Avatar>
+      </AvatarGroup>
+
+      <AvatarGroup size="lg">
+        <Avatar>
+          <AvatarFallback>A</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>B</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>C</AvatarFallback>
+        </Avatar>
+      </AvatarGroup>
+    </Flex>
   ),
 };

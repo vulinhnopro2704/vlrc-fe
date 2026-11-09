@@ -1,0 +1,215 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = `
+<DocumentFragment>
+  <div
+    class="stepper__styles.root x78zum5 xh8yej3 stepper__styles.rootHorizontal xdt5ytf x1oqwmkw"
+    data-orientation="horizontal"
+    data-slot="stepper"
+    data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:48; @vlrc-fe/components:src/ui/stepper.tsx:56"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="stepper__styles.list x78zum5 xh8yej3 x6s0dn4 stepper__styles.listHorizontal x1q0g3np"
+      data-slot="stepper-list"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:62; @vlrc-fe/components:src/ui/stepper.tsx:67"
+      role="tablist"
+    >
+      <div
+        class="stepper__styles.item x78zum5 x6s0dn4 x1n2onr6 stepper__styles.itemHorizontal x98rzlu x1q0g3np"
+        data-slot="stepper-item"
+        data-status="active"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:82"
+      >
+        <button
+          aria-selected="true"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k"
+          data-slot="stepper-trigger"
+          data-status="active"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
+          role="tab"
+          type="button"
+        >
+          <div
+            aria-hidden="true"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk x3c7tb4"
+            data-slot="stepper-indicator"
+            data-status="active"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:136"
+          >
+            1
+          </div>
+          <strong
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb x84br7x"
+            data-size="md"
+            data-slot="stepper-title"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181"
+            data-type="default"
+            data-weight="regular"
+          >
+            Account
+          </strong>
+        </button>
+        <div
+          aria-hidden="true"
+          class="stepper__styles.separator xwefxjc x15406qy xx6bhzk stepper__styles.separatorHorizontal x98rzlu x36qwtl xaex8be xgomdpo"
+          data-slot="stepper-separator"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:149; @vlrc-fe/components:src/ui/stepper.tsx:157"
+        />
+      </div>
+      <div
+        class="stepper__styles.item x78zum5 x6s0dn4 x1n2onr6 stepper__styles.itemHorizontal x98rzlu x1q0g3np"
+        data-slot="stepper-item"
+        data-status="inactive"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:82"
+      >
+        <button
+          aria-selected="false"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k"
+          data-slot="stepper-trigger"
+          data-status="inactive"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
+          role="tab"
+          type="button"
+        >
+          <div
+            aria-hidden="true"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
+            data-slot="stepper-indicator"
+            data-status="inactive"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:131"
+          >
+            2
+          </div>
+          <strong
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
+            data-size="md"
+            data-slot="stepper-title"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181; @vlrc-fe/components:src/ui/stepper.tsx:187"
+            data-type="default"
+            data-weight="regular"
+          >
+            Profile
+          </strong>
+        </button>
+        <div
+          aria-hidden="true"
+          class="stepper__styles.separator xwefxjc x15406qy xx6bhzk stepper__styles.separatorHorizontal x98rzlu x36qwtl xaex8be xgomdpo"
+          data-slot="stepper-separator"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:149; @vlrc-fe/components:src/ui/stepper.tsx:157"
+        />
+      </div>
+      <div
+        class="stepper__styles.item x78zum5 x6s0dn4 x1n2onr6 stepper__styles.itemHorizontal x98rzlu x1q0g3np"
+        data-disabled=""
+        data-slot="stepper-item"
+        data-status="inactive"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:82"
+      >
+        <button
+          aria-selected="false"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k stepper__styles.triggerDisabled x1h6gzvc xbyyjgo"
+          data-slot="stepper-trigger"
+          data-status="inactive"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93; @vlrc-fe/components:src/ui/stepper.tsx:110"
+          disabled=""
+          role="tab"
+          type="button"
+        >
+          <div
+            aria-hidden="true"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
+            data-slot="stepper-indicator"
+            data-status="inactive"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:131"
+          >
+            3
+          </div>
+          <strong
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
+            data-size="md"
+            data-slot="stepper-title"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181; @vlrc-fe/components:src/ui/stepper.tsx:187"
+            data-type="default"
+            data-weight="regular"
+          >
+            Review
+          </strong>
+        </button>
+      </div>
+    </div>
+    <div
+      class="stepper__styles.content xh8yej3 xuv7m44"
+      data-slot="stepper-content"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:171"
+      role="tabpanel"
+    >
+      Account Details Form
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
+<DocumentFragment>
+  <div
+    class="stepper__styles.root x78zum5 xh8yej3 stepper__styles.rootVertical xdt5ytf x1b1hbqf"
+    data-orientation="vertical"
+    data-slot="stepper"
+    data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:48; @vlrc-fe/components:src/ui/stepper.tsx:52"
+  >
+    <div
+      aria-orientation="vertical"
+      class="stepper__styles.list x78zum5 xh8yej3 stepper__styles.listVertical xdt5ytf x1qjc9v5 x1b1hbqf"
+      data-slot="stepper-list"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:62; @vlrc-fe/components:src/ui/stepper.tsx:70"
+      role="tablist"
+    >
+      <div
+        class="stepper__styles.item x78zum5 x1n2onr6 stepper__styles.itemVertical xh8yej3 xdt5ytf x1cy8zhl"
+        data-slot="stepper-item"
+        data-status="active"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:86"
+      >
+        <button
+          aria-selected="true"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k"
+          data-slot="stepper-trigger"
+          data-status="active"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
+          role="tab"
+          type="button"
+        >
+          <div
+            aria-hidden="true"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk x3c7tb4"
+            data-slot="stepper-indicator"
+            data-status="active"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:136"
+          >
+            1
+          </div>
+          <strong
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb x84br7x"
+            data-size="md"
+            data-slot="stepper-title"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181"
+            data-type="default"
+            data-weight="regular"
+          >
+            Account
+          </strong>
+        </button>
+      </div>
+    </div>
+    <div
+      class="stepper__styles.content xh8yej3 xuv7m44"
+      data-slot="stepper-content"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:171"
+      role="tabpanel"
+    >
+      Account Details Form
+    </div>
+  </div>
+</DocumentFragment>
+`;

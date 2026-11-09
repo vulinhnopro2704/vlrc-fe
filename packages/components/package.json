@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Accessible React UI components built with Meta StyleX, Radix UI, and React Hook Form.",
   "keywords": [
     "accessible",
@@ -63,13 +63,14 @@
       "types": "./dist/theme/index.d.ts",
       "import": "./dist/theme/index.js"
     },
+    "./theme.css": "./dist/theme.css",
     "./stylex.css": "./dist/assets/stylex.css"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "vite build && tsc -p tsconfig.json",
+    "build": "vite build && tsc -p tsconfig.json && cp src/theme/theme.css dist/theme.css",
     "test": "vitest run",
     "lint": "oxlint .",
     "format": "oxfmt .",

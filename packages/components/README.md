@@ -65,6 +65,9 @@ Import the compiled StyleX CSS in your entry file:
 
 ```ts
 import '@vlrc-fe/components/stylex.css';
+
+// Optional: import predefined theme variables (supports light, .dark, [data-theme='pink'], [data-theme='lavender'])
+import '@vlrc-fe/components/theme.css';
 ```
 
 ---

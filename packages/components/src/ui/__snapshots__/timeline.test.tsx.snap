@@ -1,0 +1,469 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Timeline > UI > should match snapshot for dot size lg 1`] = `
+<DocumentFragment>
+  <div
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    data-orientation="vertical"
+    data-slot="timeline"
+    data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
+    role="list"
+  >
+    <div
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      data-orientation="vertical"
+      data-slot="timeline-item"
+      data-status="pending"
+      data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:50; @vlrc-fe/components:src/ui/timeline.tsx:55"
+      role="listitem"
+    >
+      <div
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        data-slot="timeline-track"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
+      >
+        <div
+          class="timeline__styles.dotBase x78zum5 x6s0dn4 xl56j7k x7xypw4 x2lah0s x1vjfegm xu8237s xx6bhzk timeline__styles.dotLg xs5h3dt xettwda xkpwil5 timeline__styles.dotCompleted x1j7ufkg xstwp1q x1khvrlk xmkeg23 x1y0btm7"
+          data-size="lg"
+          data-slot="timeline-dot"
+          data-status="completed"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:82; @vlrc-fe/components:src/ui/timeline.tsx:102; @vlrc-fe/components:src/ui/timeline.tsx:108"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+            width="12"
+          >
+            <polyline
+              points="20 6 9 17 4 12"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        data-slot="timeline-content"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+      >
+        <h5
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          data-level="5"
+          data-size="sm"
+          data-slot="timeline-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:71"
+          data-variant="default"
+        >
+          <span>
+            Order Placed
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Timeline > UI > should match snapshot for dot size md 1`] = `
+<DocumentFragment>
+  <div
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    data-orientation="vertical"
+    data-slot="timeline"
+    data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
+    role="list"
+  >
+    <div
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      data-orientation="vertical"
+      data-slot="timeline-item"
+      data-status="pending"
+      data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:50; @vlrc-fe/components:src/ui/timeline.tsx:55"
+      role="listitem"
+    >
+      <div
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        data-slot="timeline-track"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
+      >
+        <div
+          class="timeline__styles.dotBase x78zum5 x6s0dn4 xl56j7k x7xypw4 x2lah0s x1vjfegm xu8237s xx6bhzk timeline__styles.dotMd xp8d6y2 xam5rvr xboafo0 timeline__styles.dotCompleted x1j7ufkg xstwp1q x1khvrlk xmkeg23 x1y0btm7"
+          data-size="md"
+          data-slot="timeline-dot"
+          data-status="completed"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:82; @vlrc-fe/components:src/ui/timeline.tsx:97; @vlrc-fe/components:src/ui/timeline.tsx:108"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+            width="12"
+          >
+            <polyline
+              points="20 6 9 17 4 12"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        data-slot="timeline-content"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+      >
+        <h5
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          data-level="5"
+          data-size="sm"
+          data-slot="timeline-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:71"
+          data-variant="default"
+        >
+          <span>
+            Order Placed
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Timeline > UI > should match snapshot for dot size sm 1`] = `
+<DocumentFragment>
+  <div
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    data-orientation="vertical"
+    data-slot="timeline"
+    data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
+    role="list"
+  >
+    <div
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      data-orientation="vertical"
+      data-slot="timeline-item"
+      data-status="pending"
+      data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:50; @vlrc-fe/components:src/ui/timeline.tsx:55"
+      role="listitem"
+    >
+      <div
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        data-slot="timeline-track"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
+      >
+        <div
+          class="timeline__styles.dotBase x78zum5 x6s0dn4 xl56j7k x7xypw4 x2lah0s x1vjfegm xu8237s xx6bhzk timeline__styles.dotSm xcdlrvm x1l36t39 x2ohwh0 timeline__styles.dotCompleted x1j7ufkg xstwp1q x1khvrlk xmkeg23 x1y0btm7"
+          data-size="sm"
+          data-slot="timeline-dot"
+          data-status="completed"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:82; @vlrc-fe/components:src/ui/timeline.tsx:92; @vlrc-fe/components:src/ui/timeline.tsx:108"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+            width="12"
+          >
+            <polyline
+              points="20 6 9 17 4 12"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        data-slot="timeline-content"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+      >
+        <h5
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          data-level="5"
+          data-size="sm"
+          data-slot="timeline-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:71"
+          data-variant="default"
+        >
+          <span>
+            Order Placed
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
+<DocumentFragment>
+  <div
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    data-orientation="vertical"
+    data-slot="timeline"
+    data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
+    role="list"
+  >
+    <div
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      data-orientation="vertical"
+      data-slot="timeline-item"
+      data-status="completed"
+      data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:50; @vlrc-fe/components:src/ui/timeline.tsx:55"
+      role="listitem"
+    >
+      <div
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        data-slot="timeline-track"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
+      >
+        <div
+          class="timeline__styles.dotBase x78zum5 x6s0dn4 xl56j7k x7xypw4 x2lah0s x1vjfegm xu8237s xx6bhzk timeline__styles.dotMd xp8d6y2 xam5rvr xboafo0 timeline__styles.dotCompleted x1j7ufkg xstwp1q x1khvrlk xmkeg23 x1y0btm7"
+          data-size="md"
+          data-slot="timeline-dot"
+          data-status="completed"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:82; @vlrc-fe/components:src/ui/timeline.tsx:97; @vlrc-fe/components:src/ui/timeline.tsx:108"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+            width="12"
+          >
+            <polyline
+              points="20 6 9 17 4 12"
+            />
+          </svg>
+        </div>
+        <div
+          aria-hidden="true"
+          class="timeline__styles.connector x15406qy xx6bhzk timeline__styles.connectorVertical xfo62xy x98rzlu x1rqwxy8 xpxt2so x3pkrav timeline__styles.connectorCompleted x1j7ufkg"
+          data-completed=""
+          data-slot="timeline-connector"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:132; @vlrc-fe/components:src/ui/timeline.tsx:140; @vlrc-fe/components:src/ui/timeline.tsx:137"
+        />
+      </div>
+      <div
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        data-slot="timeline-content"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+      >
+        <div
+          class="timeline__styles.header x78zum5 x1pha0wt x1qughib xdkmor2 xh8yej3"
+          data-slot="timeline-header"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:165"
+        >
+          <h5
+            class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+            data-level="5"
+            data-size="sm"
+            data-slot="timeline-title"
+            data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:71"
+            data-variant="default"
+          >
+            <span>
+              Order Placed
+            </span>
+          </h5>
+          <time
+            class="timeline__styles.time xboafo0 xw3nh4a xuxw1ft x2lah0s"
+            data-slot="timeline-time"
+            data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:174"
+          >
+            10:00 AM
+          </time>
+        </div>
+        <p
+          class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+          data-size="sm"
+          data-slot="timeline-description"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+          data-type="secondary"
+          data-weight="regular"
+        >
+          Details regarding this event status.
+        </p>
+      </div>
+    </div>
+    <div
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      data-orientation="vertical"
+      data-slot="timeline-item"
+      data-status="active"
+      data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:50; @vlrc-fe/components:src/ui/timeline.tsx:55"
+      role="listitem"
+    >
+      <div
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        data-slot="timeline-track"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
+      >
+        <div
+          class="timeline__styles.dotBase x78zum5 x6s0dn4 xl56j7k x7xypw4 x2lah0s x1vjfegm xu8237s xx6bhzk timeline__styles.dotMd xp8d6y2 xam5rvr xboafo0 timeline__styles.dotActive x1mlyrtw x6gpbkk x1khvrlk xdh2fpr x1y0btm7 xs3hdaj"
+          data-size="md"
+          data-slot="timeline-dot"
+          data-status="active"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:82; @vlrc-fe/components:src/ui/timeline.tsx:97; @vlrc-fe/components:src/ui/timeline.tsx:115"
+        >
+          <div
+            aria-hidden="true"
+            style="width: 6px; height: 6px; border-radius: 9999px; background-color: currentcolor;"
+          />
+        </div>
+      </div>
+      <div
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        data-slot="timeline-content"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+      >
+        <div
+          class="timeline__styles.header x78zum5 x1pha0wt x1qughib xdkmor2 xh8yej3"
+          data-slot="timeline-header"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:165"
+        >
+          <h5
+            class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+            data-level="5"
+            data-size="sm"
+            data-slot="timeline-title"
+            data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:71"
+            data-variant="default"
+          >
+            <span>
+              Processing Payment
+            </span>
+          </h5>
+          <time
+            class="timeline__styles.time xboafo0 xw3nh4a xuxw1ft x2lah0s"
+            data-slot="timeline-time"
+            data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:174"
+          >
+            10:15 AM
+          </time>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Timeline > UI > should match snapshot in horizontal state 1`] = `
+<DocumentFragment>
+  <div
+    class="timeline__styles.root xh8yej3 timeline__styles.rootHorizontal x78zum5 x1q0g3np x1cy8zhl x1b1hbqf xw2csxc"
+    data-orientation="horizontal"
+    data-slot="timeline"
+    data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:41"
+    role="list"
+  >
+    <div
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemHorizontal xdt5ytf x98rzlu xdkmor2"
+      data-orientation="horizontal"
+      data-slot="timeline-item"
+      data-status="active"
+      data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:50; @vlrc-fe/components:src/ui/timeline.tsx:60"
+      role="listitem"
+    >
+      <div
+        class="timeline__styles.trackHorizontal x78zum5 x1q0g3np x6s0dn4 xh8yej3"
+        data-slot="timeline-track"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:74"
+      >
+        <div
+          class="timeline__styles.dotBase x78zum5 x6s0dn4 xl56j7k x7xypw4 x2lah0s x1vjfegm xu8237s xx6bhzk timeline__styles.dotMd xp8d6y2 xam5rvr xboafo0 timeline__styles.dotActive x1mlyrtw x6gpbkk x1khvrlk xdh2fpr x1y0btm7 xs3hdaj"
+          data-size="md"
+          data-slot="timeline-dot"
+          data-status="active"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:82; @vlrc-fe/components:src/ui/timeline.tsx:97; @vlrc-fe/components:src/ui/timeline.tsx:115"
+        >
+          <div
+            aria-hidden="true"
+            style="width: 6px; height: 6px; border-radius: 9999px; background-color: currentcolor;"
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          class="timeline__styles.connector xwefxjc x15406qy xx6bhzk timeline__styles.connectorHorizontal x36qwtl x98rzlu x1vi9356 x1xk8veh xwf7vgs"
+          data-slot="timeline-connector"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:132; @vlrc-fe/components:src/ui/timeline.tsx:147"
+        />
+      </div>
+      <div
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        data-slot="timeline-content"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+      >
+        <h5
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          data-level="5"
+          data-size="sm"
+          data-slot="timeline-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:71"
+          data-variant="default"
+        >
+          <span>
+            Order Placed
+          </span>
+        </h5>
+      </div>
+    </div>
+    <div
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemHorizontal xdt5ytf x98rzlu xdkmor2"
+      data-orientation="horizontal"
+      data-slot="timeline-item"
+      data-status="pending"
+      data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:50; @vlrc-fe/components:src/ui/timeline.tsx:60"
+      role="listitem"
+    >
+      <div
+        class="timeline__styles.trackHorizontal x78zum5 x1q0g3np x6s0dn4 xh8yej3"
+        data-slot="timeline-track"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:74"
+      >
+        <div
+          class="timeline__styles.dotBase x78zum5 x6s0dn4 xl56j7k x7xypw4 x2lah0s x1vjfegm xu8237s xx6bhzk timeline__styles.dotMd xp8d6y2 xam5rvr xboafo0 timeline__styles.dotPending x1qry0bl xw3nh4a xb30jbz xmkeg23 x1y0btm7"
+          data-size="md"
+          data-slot="timeline-dot"
+          data-status="pending"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:82; @vlrc-fe/components:src/ui/timeline.tsx:97; @vlrc-fe/components:src/ui/timeline.tsx:123"
+        />
+      </div>
+      <div
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        data-slot="timeline-content"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+      >
+        <h5
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          data-level="5"
+          data-size="sm"
+          data-slot="timeline-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:71"
+          data-variant="default"
+        >
+          <span>
+            Processing Payment
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
