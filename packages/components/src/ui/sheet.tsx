@@ -3,6 +3,7 @@ import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 export type SheetSide = 'top' | 'right' | 'bottom' | 'left';
 
@@ -198,12 +199,14 @@ export interface SheetOverlayProps extends React.ComponentProps<typeof SheetPrim
   sx?: stylex.StyleXStyles;
 }
 
-function SheetOverlay({ className, sx, ...props }: SheetOverlayProps) {
+function SheetOverlay({ className, sx, style, ...props }: SheetOverlayProps) {
+  const zIndex = useZIndex('overlay');
   const sxProps = stylex.props(styles.overlay, sx);
   return (
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       {...sxProps}
+      style={{ zIndex, ...sxProps.style, ...style }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
@@ -213,23 +216,34 @@ function SheetOverlay({ className, sx, ...props }: SheetOverlayProps) {
 export interface SheetContentProps extends React.ComponentProps<typeof SheetPrimitive.Content> {
   side?: SheetSide;
   sx?: stylex.StyleXStyles;
+  container?: HTMLElement | DocumentFragment | null;
 }
 
-function SheetContent({ className, children, side = 'right', sx, ...props }: SheetContentProps) {
+function SheetContent({
+  className,
+  children,
+  side = 'right',
+  sx,
+  container,
+  style,
+  ...props
+}: SheetContentProps) {
+  const baseZIndex = useZIndex('drawer');
   const sideStyle = sideStyles[side] ?? styles.right;
   const sxProps = stylex.props(styles.baseContent, sideStyle, sx);
 
   return (
-    <SheetPortal>
-      <SheetOverlay />
+    <SheetPortal container={container}>
+      <SheetOverlay style={{ zIndex: baseZIndex }} />
       <SheetPrimitive.Content
         data-slot="sheet-content"
         data-side={side}
         {...sxProps}
+        style={{ zIndex: baseZIndex + 1, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
-        {children}
+        <ZIndexProvider value={baseZIndex + 10}>{children}</ZIndexProvider>
         <SheetPrimitive.Close {...stylex.props(styles.closeBtn)} aria-label="Close">
           <XIcon {...stylex.props(styles.closeIcon)} />
           <span {...stylex.props(styles.srOnly)}>Close</span>

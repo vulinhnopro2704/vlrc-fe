@@ -70,7 +70,7 @@ const styles = stylex.create({
   listVertical: {
     flexDirection: 'column',
     alignItems: 'stretch',
-    gap: spacing.md,
+    gap: 0,
   },
 
   // Item
@@ -162,9 +162,10 @@ const styles = stylex.create({
   },
   separatorVertical: {
     width: 2,
-    height: '1.5rem',
-    marginLeft: '1rem',
-    marginVertical: spacing.xxs,
+    minHeight: '2rem',
+    height: '100%',
+    marginLeft: 19,
+    marginVertical: 0,
   },
 
   // Content
@@ -177,8 +178,11 @@ const styles = stylex.create({
   textWrapper: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: 2,
   },
   title: {
+    display: 'block',
     fontSize: '0.875rem',
     fontWeight: 600,
     lineHeight: 1.25,
@@ -188,7 +192,10 @@ const styles = stylex.create({
     color: colors.mutedForeground,
   },
   description: {
+    display: 'block',
     fontSize: '0.75rem',
+    lineHeight: 1.25,
+    marginTop: 2,
     color: colors.mutedForeground,
   },
 });
@@ -677,6 +684,24 @@ function StepperPrev({
   );
 }
 
+export interface StepperTextProps extends React.ComponentProps<'div'> {
+  sx?: stylex.StyleXStyles;
+}
+
+function StepperText({ className, sx, children, ...props }: StepperTextProps) {
+  const sxProps = stylex.props(styles.textWrapper, sx);
+  return (
+    <div
+      data-slot="stepper-text"
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
 export {
   Stepper,
   StepperList,
@@ -684,6 +709,7 @@ export {
   StepperTrigger,
   StepperIndicator,
   StepperSeparator,
+  StepperText,
   StepperTitle,
   StepperDescription,
   StepperContent,

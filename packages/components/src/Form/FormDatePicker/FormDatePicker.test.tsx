@@ -1,7 +1,13 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { useForm, FormProvider } from 'react-hook-form';
-import { FormDatePicker, DatePicker, DateRangePicker } from './index';
+import {
+  FormDatePicker,
+  DatePicker,
+  DateRangePicker,
+  MonthPickerPanel,
+  YearPickerPanel,
+} from './index';
 
 interface FormValues {
   date?: Date;
@@ -80,6 +86,88 @@ describe('DatePicker', () => {
       const to = new Date(2026, 10, 15);
       render(<DateRangePicker value={[from, to]} dateFormat="dd/MM/yyyy" />);
       expect(screen.getByText('05/11/2026 ~ 15/11/2026')).toBeInTheDocument();
+    });
+
+    it('should require two clicks to complete range selection and close popover', () => {
+      const handleChange = vi.fn();
+      render(<DateRangePicker placeholder="Pick range" onChange={handleChange} />);
+
+      // Open popover
+      const trigger = screen.getByText('Pick range');
+      fireEvent.click(trigger);
+
+      // Calendar should be visible
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+
+      // Click first date: start of range
+      const dayButtons = screen.getAllByRole('button');
+      const startDayBtn = dayButtons.find((btn) => btn.textContent === '10');
+      expect(startDayBtn).toBeDefined();
+      fireEvent.click(startDayBtn!);
+
+      // After 1st click, popover MUST REMAIN OPEN!
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+      expect(handleChange).toHaveBeenCalledWith([expect.any(Date), undefined]);
+
+      // Click second date: end of range
+      const updatedButtons = screen.getAllByRole('button');
+      const endDayBtn = updatedButtons.find((btn) => btn.textContent === '20');
+      expect(endDayBtn).toBeDefined();
+      fireEvent.click(endDayBtn!);
+
+      // After 2nd click, range is completed and onChange is called with both endpoints
+      expect(handleChange).toHaveBeenLastCalledWith([expect.any(Date), expect.any(Date)]);
+    });
+  });
+
+  describe('Month and Year Picker Panels', () => {
+    it('should render MonthPickerPanel with 12 months and trigger onChange on click', () => {
+      const handleChange = vi.fn();
+      render(<MonthPickerPanel value={new Date(2026, 5, 1)} onChange={handleChange} />);
+
+      expect(screen.getByText('Năm 2026')).toBeInTheDocument();
+      expect(screen.getByText('Tháng 1')).toBeInTheDocument();
+      expect(screen.getByText('Tháng 12')).toBeInTheDocument();
+
+      fireEvent.click(screen.getByText('Tháng 8'));
+      expect(handleChange).toHaveBeenCalledTimes(1);
+      const selected = handleChange.mock.calls[0][0] as Date;
+      expect(selected.getFullYear()).toBe(2026);
+      expect(selected.getMonth()).toBe(7); // Month index 7 is August (Tháng 8)
+    });
+
+    it('should render YearPickerPanel with decade range and trigger onChange on click', () => {
+      const handleChange = vi.fn();
+      render(<YearPickerPanel value={new Date(2026, 0, 1)} onChange={handleChange} />);
+
+      expect(screen.getByText('2020 - 2029')).toBeInTheDocument();
+      expect(screen.getByText('2026')).toBeInTheDocument();
+
+      fireEvent.click(screen.getByText('2028'));
+      expect(handleChange).toHaveBeenCalledTimes(1);
+      const selected = handleChange.mock.calls[0][0] as Date;
+      expect(selected.getFullYear()).toBe(2028);
+    });
+
+    it('should render month panel when DatePicker has pickerType="month"', () => {
+      render(
+        <DatePicker pickerType="month" value={new Date(2026, 10, 1)} placeholder="Pick month" />,
+      );
+
+      const trigger = screen.getByRole('button');
+      fireEvent.click(trigger);
+
+      expect(screen.getByText('Năm 2026')).toBeInTheDocument();
+      expect(screen.getByText('Tháng 11')).toBeInTheDocument();
+    });
+
+    it('should render year panel when DatePicker has pickerType="year"', () => {
+      render(<DatePicker pickerType="year" value={new Date(2026, 0, 1)} placeholder="Pick year" />);
+
+      const trigger = screen.getByRole('button');
+      fireEvent.click(trigger);
+
+      expect(screen.getByText('2020 - 2029')).toBeInTheDocument();
     });
   });
 

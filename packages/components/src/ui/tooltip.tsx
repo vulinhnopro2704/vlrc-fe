@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex } from '../theme/zIndex';
 
 const fadeIn = stylex.keyframes({
   from: { opacity: 0, transform: 'scale(0.95)' },
@@ -12,7 +13,7 @@ const styles = stylex.create({
   content: {
     backgroundColor: colors.foreground,
     color: colors.background,
-    zIndex: 100,
+    zIndex: 110,
     width: 'fit-content',
     borderRadius: radii.md,
     paddingInline: '0.75rem',
@@ -55,6 +56,7 @@ function TooltipTrigger(props: React.ComponentProps<typeof TooltipPrimitive.Trig
 
 export interface TooltipContentProps extends React.ComponentProps<typeof TooltipPrimitive.Content> {
   sx?: stylex.StyleXStyles;
+  container?: HTMLElement | DocumentFragment | null;
 }
 
 function TooltipContent({
@@ -62,16 +64,20 @@ function TooltipContent({
   sideOffset = 4,
   children,
   sx,
+  container,
+  style,
   ...props
 }: TooltipContentProps) {
+  const zIndex = useZIndex('tooltip');
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <TooltipPrimitive.Portal>
+    <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Content
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         {...sxProps}
+        style={{ zIndex, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >

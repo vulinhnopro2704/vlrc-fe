@@ -3,14 +3,14 @@
 exports[`Timeline > UI > should match snapshot for dot size lg 1`] = `
 <DocumentFragment>
   <div
-    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf xxhr3t"
     data-orientation="vertical"
     data-slot="timeline"
     data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
     role="list"
   >
     <div
-      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1qjc9v5 x1b1hbqf"
       data-orientation="vertical"
       data-slot="timeline-item"
       data-status="pending"
@@ -18,7 +18,7 @@ exports[`Timeline > UI > should match snapshot for dot size lg 1`] = `
       role="listitem"
     >
       <div
-        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s xs5h3dt"
         data-slot="timeline-track"
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
       >
@@ -72,14 +72,14 @@ exports[`Timeline > UI > should match snapshot for dot size lg 1`] = `
 exports[`Timeline > UI > should match snapshot for dot size md 1`] = `
 <DocumentFragment>
   <div
-    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf xxhr3t"
     data-orientation="vertical"
     data-slot="timeline"
     data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
     role="list"
   >
     <div
-      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1qjc9v5 x1b1hbqf"
       data-orientation="vertical"
       data-slot="timeline-item"
       data-status="pending"
@@ -87,7 +87,7 @@ exports[`Timeline > UI > should match snapshot for dot size md 1`] = `
       role="listitem"
     >
       <div
-        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s xs5h3dt"
         data-slot="timeline-track"
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
       >
@@ -141,14 +141,14 @@ exports[`Timeline > UI > should match snapshot for dot size md 1`] = `
 exports[`Timeline > UI > should match snapshot for dot size sm 1`] = `
 <DocumentFragment>
   <div
-    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf xxhr3t"
     data-orientation="vertical"
     data-slot="timeline"
     data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
     role="list"
   >
     <div
-      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1qjc9v5 x1b1hbqf"
       data-orientation="vertical"
       data-slot="timeline-item"
       data-status="pending"
@@ -156,7 +156,7 @@ exports[`Timeline > UI > should match snapshot for dot size sm 1`] = `
       role="listitem"
     >
       <div
-        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s xs5h3dt"
         data-slot="timeline-track"
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
       >
@@ -210,14 +210,14 @@ exports[`Timeline > UI > should match snapshot for dot size sm 1`] = `
 exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
 <DocumentFragment>
   <div
-    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf x1b1hbqf"
+    class="timeline__styles.root xh8yej3 timeline__styles.rootVertical x78zum5 xdt5ytf xxhr3t"
     data-orientation="vertical"
     data-slot="timeline"
     data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:33; @vlrc-fe/components:src/ui/timeline.tsx:36"
     role="list"
   >
     <div
-      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1qjc9v5 x1b1hbqf"
       data-orientation="vertical"
       data-slot="timeline-item"
       data-status="completed"
@@ -225,7 +225,7 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
       role="listitem"
     >
       <div
-        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s xs5h3dt"
         data-slot="timeline-track"
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
       >
@@ -254,21 +254,21 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
         </div>
         <div
           aria-hidden="true"
-          class="timeline__styles.connector x15406qy xx6bhzk timeline__styles.connectorVertical xfo62xy x98rzlu x1rqwxy8 xpxt2so x3pkrav timeline__styles.connectorCompleted x1j7ufkg"
+          class="timeline__styles.connector x15406qy xx6bhzk timeline__styles.connectorVertical xfo62xy x98rzlu x1pw4g4d xpxt2so x3pkrav timeline__styles.connectorCompleted x1j7ufkg"
           data-completed=""
           data-slot="timeline-connector"
           data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:132; @vlrc-fe/components:src/ui/timeline.tsx:140; @vlrc-fe/components:src/ui/timeline.tsx:137"
         />
       </div>
       <div
-        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc"
+        class="timeline__styles.content x78zum5 xdt5ytf x98rzlu xeuugli x118fsrc timeline__styles.contentVerticalNotLast xk9h9pj"
         data-slot="timeline-content"
-        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
+        data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156; @vlrc-fe/components:src/ui/timeline.tsx:163"
       >
         <div
           class="timeline__styles.header x78zum5 x1pha0wt x1qughib xdkmor2 xh8yej3"
           data-slot="timeline-header"
-          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:165"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:168"
         >
           <h5
             class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
@@ -285,7 +285,7 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
           <time
             class="timeline__styles.time xboafo0 xw3nh4a xuxw1ft x2lah0s"
             data-slot="timeline-time"
-            data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:174"
+            data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:177"
           >
             10:00 AM
           </time>
@@ -303,7 +303,7 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
       </div>
     </div>
     <div
-      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1cy8zhl x1b1hbqf"
+      class="timeline__styles.item x1n2onr6 x78zum5 xeuugli timeline__styles.itemVertical x1q0g3np x1qjc9v5 x1b1hbqf"
       data-orientation="vertical"
       data-slot="timeline-item"
       data-status="active"
@@ -311,7 +311,7 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
       role="listitem"
     >
       <div
-        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s x19hwnzc"
+        class="timeline__styles.trackVertical x78zum5 xdt5ytf x6s0dn4 x2lah0s xs5h3dt"
         data-slot="timeline-track"
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:67"
       >
@@ -336,7 +336,7 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
         <div
           class="timeline__styles.header x78zum5 x1pha0wt x1qughib xdkmor2 xh8yej3"
           data-slot="timeline-header"
-          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:165"
+          data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:168"
         >
           <h5
             class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
@@ -353,7 +353,7 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
           <time
             class="timeline__styles.time xboafo0 xw3nh4a xuxw1ft x2lah0s"
             data-slot="timeline-time"
-            data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:174"
+            data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:177"
           >
             10:15 AM
           </time>

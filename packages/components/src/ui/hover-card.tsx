@@ -4,11 +4,12 @@ import * as React from 'react';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex } from '../theme/zIndex';
 import { cn } from '../utils';
 
 const styles = stylex.create({
   content: {
-    zIndex: 50,
+    zIndex: 100,
     width: '16rem',
     borderRadius: radii.md,
     borderWidth: 1,
@@ -41,8 +42,10 @@ function HoverCardContent({
   align = 'center',
   sideOffset = 4,
   sx,
+  style,
   ...props
 }: HoverCardContentProps) {
+  const zIndex = useZIndex('popover');
   const styleProps = stylex.props(styles.content, sx);
 
   return (
@@ -52,6 +55,7 @@ function HoverCardContent({
         align={align}
         sideOffset={sideOffset}
         {...styleProps}
+        style={{ zIndex, ...styleProps.style, ...style }}
         className={cn(styleProps.className, className)}
         {...props}
       />

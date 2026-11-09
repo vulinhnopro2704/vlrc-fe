@@ -10,6 +10,10 @@ export type {
   StandaloneRangeDatePickerProps,
   StandaloneRangeDatePickerProps as DateRangePickerProps,
 } from './RangeDatePicker';
+export { MonthPickerPanel } from './MonthPickerPanel';
+export type { MonthPickerPanelProps } from './MonthPickerPanel';
+export { YearPickerPanel } from './YearPickerPanel';
+export type { YearPickerPanelProps } from './YearPickerPanel';
 export {
   useFormDatePicker,
   formatDateValue,

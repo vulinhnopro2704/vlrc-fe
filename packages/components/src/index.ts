@@ -30,3 +30,4 @@ export type { BaseSelectCommonProps, BaseSelectOption } from './Select/type';
 export { default as MultiSelect } from './MultiSelect';
 export type { MultiSelectProps } from './MultiSelect/type';
 export * from './Typography';
+export * from './Dropdown';

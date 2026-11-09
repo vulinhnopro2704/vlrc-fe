@@ -1,0 +1,70 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Dropdown > UI > should match snapshot when closed 1`] = `
+<DocumentFragment>
+  <button
+    aria-expanded="false"
+    aria-haspopup="menu"
+    data-slot="dropdown-menu-trigger"
+    data-state="closed"
+    id="radix-_r_0_"
+    type="button"
+  >
+    Open Menu
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Dropdown > UI > should match snapshot when open 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="radix-_r_3_"
+    aria-expanded="true"
+    aria-haspopup="menu"
+    data-radix-popper-align="start"
+    data-radix-popper-side="bottom"
+    data-slot="dropdown-menu-trigger"
+    data-state="open"
+    id="radix-_r_2_"
+    type="button"
+  >
+    Open Menu
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Dropdown > UI > should match snapshot with lg size 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="radix-_r_d_"
+    aria-expanded="true"
+    aria-haspopup="menu"
+    data-radix-popper-align="start"
+    data-radix-popper-side="bottom"
+    data-slot="dropdown-menu-trigger"
+    data-state="open"
+    id="radix-_r_c_"
+    type="button"
+  >
+    Open Menu
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Dropdown > UI > should match snapshot with sm size 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="radix-_r_8_"
+    aria-expanded="true"
+    aria-haspopup="menu"
+    data-radix-popper-align="start"
+    data-radix-popper-side="bottom"
+    data-slot="dropdown-menu-trigger"
+    data-state="open"
+    id="radix-_r_7_"
+    type="button"
+  >
+    Open Menu
+  </button>
+</DocumentFragment>
+`;

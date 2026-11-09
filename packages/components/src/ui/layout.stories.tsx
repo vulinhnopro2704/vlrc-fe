@@ -82,7 +82,7 @@ export const RowCol24Grid: Story = {
       <div>
         <h3 style={{ margin: '0 0 0.5rem 0' }}>24-Column Grid with Gutter [X, Y]</h3>
         <p style={{ color: 'var(--muted-foreground)', margin: '0 0 1rem 0' }}>
-          Ant Design style 24-column layout with <code>gutter={[16, 16]}</code> and column spans.
+          Standard 24-column grid layout with <code>gutter={[16, 16]}</code> and column spans.
         </p>
         <Row gutter={[16, 16]}>
           <Col span={24}>

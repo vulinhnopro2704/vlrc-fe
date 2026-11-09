@@ -5,11 +5,12 @@ import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 import { cn } from '../utils';
 
 const styles = stylex.create({
   content: {
-    zIndex: 50,
+    zIndex: 100,
     minWidth: '8rem',
     overflow: 'hidden',
     borderRadius: radii.md,
@@ -214,7 +215,8 @@ export interface ContextMenuContentProps extends React.ComponentProps<
   sx?: stylex.StyleXStyles;
 }
 
-function ContextMenuContent({ className, sx, ...props }: ContextMenuContentProps) {
+function ContextMenuContent({ className, sx, style, children, ...props }: ContextMenuContentProps) {
+  const zIndex = useZIndex('popover');
   const styleProps = stylex.props(styles.content, sx);
 
   return (
@@ -222,9 +224,12 @@ function ContextMenuContent({ className, sx, ...props }: ContextMenuContentProps
       <ContextMenuPrimitive.Content
         data-slot="context-menu-content"
         {...styleProps}
+        style={{ zIndex, ...styleProps.style, ...style }}
         className={cn(styleProps.className, className)}
         {...props}
-      />
+      >
+        <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
+      </ContextMenuPrimitive.Content>
     </ContextMenuPrimitive.Portal>
   );
 }

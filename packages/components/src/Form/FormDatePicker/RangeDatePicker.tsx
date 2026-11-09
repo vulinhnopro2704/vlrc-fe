@@ -96,13 +96,53 @@ export function RangeDatePicker({
   const resolvedFormat = dateFormat || getDefaultFormat('date', showTime);
   const displayValue = buildRangeDisplayValue(startDate, endDate, resolvedFormat);
 
+  const [selectedRange, setSelectedRange] = React.useState<{
+    from: Date | undefined;
+    to: Date | undefined;
+  }>({
+    from: startDate,
+    to: endDate,
+  });
+  const [isSelecting, setIsSelecting] = React.useState<boolean>(false);
+
+  // Sync internal range with props on value change or popover open
+  React.useEffect(() => {
+    setSelectedRange({ from: startDate, to: endDate });
+    setIsSelecting(false);
+  }, [startDate, endDate, open]);
+
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
+    setSelectedRange({ from: undefined, to: undefined });
+    setIsSelecting(false);
     onChange?.([undefined, undefined]);
   };
 
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
+  };
+
+  const handleDayClick = (day: Date) => {
+    if (!isSelecting || !selectedRange.from) {
+      // Step 1: User selects start date. Popover stays OPEN.
+      setSelectedRange({ from: day, to: undefined });
+      setIsSelecting(true);
+      onChange?.([day, undefined]);
+    } else {
+      // Step 2: User selects end date. Range is now complete!
+      let finalStart = selectedRange.from;
+      let finalEnd = day;
+      if (day < finalStart) {
+        finalStart = day;
+        finalEnd = selectedRange.from;
+      }
+      setSelectedRange({ from: finalStart, to: finalEnd });
+      setIsSelecting(false);
+      onChange?.([finalStart, finalEnd]);
+      if (!showTime) {
+        setOpen(false);
+      }
+    }
   };
 
   const statusStyle =
@@ -159,18 +199,8 @@ export function RangeDatePicker({
         <Calendar
           mode="range"
           size={resolvedSize}
-          selected={{
-            from: startDate,
-            to: endDate,
-          }}
-          onSelect={(range) => {
-            const nextStart = range?.from;
-            const nextEnd = range?.to;
-            onChange?.([nextStart, nextEnd]);
-            if (nextStart && nextEnd && !showTime) {
-              setOpen(false);
-            }
-          }}
+          selected={selectedRange}
+          onDayClick={handleDayClick}
           disabled={disabledDate}
           captionLayout="dropdown"
           hidden={{

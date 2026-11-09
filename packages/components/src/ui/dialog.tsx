@@ -3,6 +3,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const fadeIn = stylex.keyframes({
   from: { opacity: 0 },
@@ -133,12 +134,14 @@ export interface DialogOverlayProps extends React.ComponentProps<typeof DialogPr
   sx?: stylex.StyleXStyles;
 }
 
-function DialogOverlay({ className, sx, ...props }: DialogOverlayProps) {
+function DialogOverlay({ className, sx, style, ...props }: DialogOverlayProps) {
+  const zIndex = useZIndex('overlay');
   const sxProps = stylex.props(styles.overlay, sx);
   return (
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       {...sxProps}
+      style={{ zIndex, ...sxProps.style, ...style }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
@@ -148,6 +151,7 @@ function DialogOverlay({ className, sx, ...props }: DialogOverlayProps) {
 export interface DialogContentProps extends React.ComponentProps<typeof DialogPrimitive.Content> {
   showCloseButton?: boolean;
   sx?: stylex.StyleXStyles;
+  container?: HTMLElement | DocumentFragment | null;
 }
 
 function DialogContent({
@@ -155,19 +159,23 @@ function DialogContent({
   children,
   showCloseButton = true,
   sx,
+  container,
+  style,
   ...props
 }: DialogContentProps) {
+  const baseZIndex = useZIndex('modal');
   const sxProps = stylex.props(styles.content, sx);
   return (
-    <DialogPortal data-slot="dialog-portal">
-      <DialogOverlay />
+    <DialogPortal data-slot="dialog-portal" container={container}>
+      <DialogOverlay style={{ zIndex: baseZIndex }} />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         {...sxProps}
+        style={{ zIndex: baseZIndex + 1, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
-        {children}
+        <ZIndexProvider value={baseZIndex + 10}>{children}</ZIndexProvider>
         {showCloseButton && (
           <DialogPrimitive.Close data-slot="dialog-close" {...stylex.props(styles.closeButton)}>
             <XIcon {...stylex.props(styles.closeIcon)} />

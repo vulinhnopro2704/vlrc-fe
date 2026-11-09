@@ -40,10 +40,10 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             1
           </div>
           <strong
-            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb x84br7x"
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb x84br7x"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184"
             data-type="default"
             data-weight="regular"
           >
@@ -82,10 +82,10 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             2
           </div>
           <strong
-            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181; @vlrc-fe/components:src/ui/stepper.tsx:187"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184; @vlrc-fe/components:src/ui/stepper.tsx:191"
             data-type="default"
             data-weight="regular"
           >
@@ -126,10 +126,10 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             3
           </div>
           <strong
-            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181; @vlrc-fe/components:src/ui/stepper.tsx:187"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184; @vlrc-fe/components:src/ui/stepper.tsx:191"
             data-type="default"
             data-weight="regular"
           >
@@ -141,7 +141,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
     <div
       class="stepper__styles.content xh8yej3 xuv7m44"
       data-slot="stepper-content"
-      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:171"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:172"
       role="tabpanel"
     >
       Account Details Form
@@ -160,7 +160,7 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
   >
     <div
       aria-orientation="vertical"
-      class="stepper__styles.list x78zum5 xh8yej3 stepper__styles.listVertical xdt5ytf x1qjc9v5 x1b1hbqf"
+      class="stepper__styles.list x78zum5 xh8yej3 stepper__styles.listVertical xdt5ytf x1qjc9v5 xxhr3t"
       data-slot="stepper-list"
       data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:62; @vlrc-fe/components:src/ui/stepper.tsx:70"
       role="tablist"
@@ -190,10 +190,10 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
             1
           </div>
           <strong
-            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title xkpwil5 x1s688f x132q4wb x84br7x"
+            class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb x84br7x"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:181"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184"
             data-type="default"
             data-weight="regular"
           >
@@ -205,7 +205,7 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
     <div
       class="stepper__styles.content xh8yej3 xuv7m44"
       data-slot="stepper-content"
-      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:171"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:172"
       role="tabpanel"
     >
       Account Details Form

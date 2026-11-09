@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Drawer as DrawerPrimitive } from 'vaul';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const fadeIn = stylex.keyframes({
   from: { opacity: 0 },
@@ -112,12 +113,14 @@ export interface DrawerOverlayProps extends React.ComponentProps<typeof DrawerPr
   sx?: stylex.StyleXStyles;
 }
 
-function DrawerOverlay({ className, sx, ...props }: DrawerOverlayProps) {
+function DrawerOverlay({ className, sx, style, ...props }: DrawerOverlayProps) {
+  const zIndex = useZIndex('overlay');
   const sxProps = stylex.props(styles.overlay, sx);
   return (
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       {...sxProps}
+      style={{ zIndex, ...sxProps.style, ...style }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
@@ -128,19 +131,23 @@ export interface DrawerContentProps extends React.ComponentProps<typeof DrawerPr
   sx?: stylex.StyleXStyles;
 }
 
-function DrawerContent({ className, children, sx, ...props }: DrawerContentProps) {
+function DrawerContent({ className, children, sx, style, ...props }: DrawerContentProps) {
+  const baseZIndex = useZIndex('drawer');
   const sxProps = stylex.props(styles.content, sx);
   return (
     <DrawerPortal data-slot="drawer-portal">
-      <DrawerOverlay />
+      <DrawerOverlay style={{ zIndex: baseZIndex }} />
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         {...sxProps}
+        style={{ zIndex: baseZIndex + 1, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
-        <div data-slot="drawer-handle" {...stylex.props(styles.handle)} />
-        {children}
+        <ZIndexProvider value={baseZIndex + 10}>
+          <div data-slot="drawer-handle" {...stylex.props(styles.handle)} />
+          {children}
+        </ZIndexProvider>
       </DrawerPrimitive.Content>
     </DrawerPortal>
   );

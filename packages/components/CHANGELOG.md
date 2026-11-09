@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.7.0] - 2026-11-09
+
+### Minor Changes
+
+- **Dynamic Stacking Context & Semantic z-index Scale**:
+  - Introduced `Z_INDEX_LAYERS` semantic scale (`deep`, `base`, `docked`, `sticky`, `banner`, `drawer/overlay/modal: 500`, `popover: 600`, `toast: 700`, `tooltip: 800`, `max: 9999`) and `ZIndexProvider` / `useZIndex()`.
+  - Fully resolved overlay layering issues: nested floating elements (such as `Popover`, `FormSelect`, `SingleDatePicker`, `DropdownMenu`, `Tooltip`) inside `Dialog`, `Sheet`, `Drawer`, and `AlertDialog` dynamically increment z-index to always render above container overlays according to W3C specifications without arbitrary hardcoded values.
+- **Dropdown / PopupMenu Composite Component**:
+  - Added declarative `<Dropdown>` and `<PopupMenu>` components supporting both `items` array and `menu={{ items, onClick }}` configuration.
+  - Full support for action items, dividers, group labels, checkbox options, shortcuts, danger variants, recursive submenus, and 3 sizing tiers (`sm`, `md`, `lg`) using Meta StyleX tokens and Typography primitives.
+- **Stepper & Timeline UI Alignment**:
+  - Fixed horizontal Stepper title and description collision by enforcing block display and introducing `<StepperText>` wrapper.
+  - Fixed vertical Stepper and Timeline connector alignment and continuity by eliminating unnatural vertical gap offsets, centering separator lines pixel-perfectly with indicators, and stretching connectors seamlessly between steps without floating gaps.
+- **DatePicker Enhancements (Range, Month & Year Pickers)**:
+  - Fixed `DateRangePicker` selection workflow to strictly require 2 clicks (start date, then end date) before completing the range and closing the popover, preventing premature auto-closing on the first click.
+  - Replaced day grid in `MonthPicker` with dedicated 12-month grid (`MonthPickerPanel`) supporting year navigation.
+  - Replaced day grid in `YearPicker` with dedicated decade grid (`YearPickerPanel`) supporting 10-year decade navigation.
+- **Tests & Storybook Suites**:
+  - Added comprehensive Vitest test suites and snapshots for `zIndex`, `dialog`, `popover`, and `Dropdown`.
+  - Added `CompleteFormAndUIModal` Storybook story showcasing complex modal interactions with Stepper, Tabs, Timeline, FileDropzone, Tooltips, and all form inputs.
+
 ## [2.6.0] - 2026-11-09
 
 ### Minor Changes

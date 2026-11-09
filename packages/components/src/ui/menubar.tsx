@@ -5,6 +5,7 @@ import * as MenubarPrimitive from '@radix-ui/react-menubar';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 import { cn } from '../utils';
 
 const styles = stylex.create({
@@ -45,7 +46,7 @@ const styles = stylex.create({
     },
   },
   content: {
-    zIndex: 50,
+    zIndex: 100,
     minWidth: '12rem',
     overflow: 'hidden',
     borderRadius: radii.md,
@@ -59,7 +60,7 @@ const styles = stylex.create({
     outline: 'none',
   },
   subContent: {
-    zIndex: 50,
+    zIndex: 100,
     minWidth: '8rem',
     overflow: 'hidden',
     borderRadius: radii.md,
@@ -235,8 +236,11 @@ function MenubarContent({
   alignOffset = -4,
   sideOffset = 8,
   sx,
+  style,
+  children,
   ...props
 }: MenubarContentProps) {
+  const zIndex = useZIndex('popover');
   const styleProps = stylex.props(styles.content, sx);
   return (
     <MenubarPortal>
@@ -246,9 +250,12 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         {...styleProps}
+        style={{ zIndex, ...styleProps.style, ...style }}
         className={cn(styleProps.className, className)}
         {...props}
-      />
+      >
+        <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
+      </MenubarPrimitive.Content>
     </MenubarPortal>
   );
 }
@@ -420,15 +427,19 @@ export interface MenubarSubContentProps extends React.ComponentProps<
   sx?: stylex.StyleXStyles;
 }
 
-function MenubarSubContent({ className, sx, ...props }: MenubarSubContentProps) {
+function MenubarSubContent({ className, sx, style, children, ...props }: MenubarSubContentProps) {
+  const zIndex = useZIndex('popover', 1);
   const styleProps = stylex.props(styles.subContent, sx);
   return (
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       {...styleProps}
+      style={{ zIndex, ...styleProps.style, ...style }}
       className={cn(styleProps.className, className)}
       {...props}
-    />
+    >
+      <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
+    </MenubarPrimitive.SubContent>
   );
 }
 

@@ -20,6 +20,8 @@ import {
 import { formatDateValue, getDefaultFormat } from './useFormDatePicker';
 import TimeInput from './TimeInput';
 import TimePicker from './TimePicker';
+import MonthPickerPanel from './MonthPickerPanel';
+import YearPickerPanel from './YearPickerPanel';
 
 const styles = stylex.create({
   triggerButton: {
@@ -170,6 +172,18 @@ export function SingleDatePicker({
             <TimeInput value={value} onChange={handleTimeChange} timeConfig={timeConfig} />
           </div>
         </div>
+      );
+    }
+
+    if (pickerType === 'month') {
+      return (
+        <MonthPickerPanel value={value} onChange={handleDateSelect} disabledDate={disabledDate} />
+      );
+    }
+
+    if (pickerType === 'year') {
+      return (
+        <YearPickerPanel value={value} onChange={handleDateSelect} disabledDate={disabledDate} />
       );
     }
 

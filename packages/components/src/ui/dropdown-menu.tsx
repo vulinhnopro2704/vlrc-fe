@@ -3,10 +3,11 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const styles = stylex.create({
   content: {
-    zIndex: 50,
+    zIndex: 100,
     minWidth: '8rem',
     overflow: 'hidden',
     borderRadius: radii.md,
@@ -137,24 +138,32 @@ export interface DropdownMenuContentProps extends React.ComponentProps<
   typeof DropdownMenuPrimitive.Content
 > {
   sx?: stylex.StyleXStyles;
+  container?: HTMLElement | DocumentFragment | null;
 }
 
 function DropdownMenuContent({
   className,
   sideOffset = 4,
   sx,
+  container,
+  style,
+  children,
   ...props
 }: DropdownMenuContentProps) {
+  const zIndex = useZIndex('popover');
   const sxProps = stylex.props(styles.content, sx);
   return (
-    <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Portal container={container}>
       <DropdownMenuPrimitive.Content
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         {...sxProps}
+        style={{ zIndex, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
-      />
+      >
+        <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
+      </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>
   );
 }
@@ -352,15 +361,25 @@ export interface DropdownMenuSubContentProps extends React.ComponentProps<
   sx?: stylex.StyleXStyles;
 }
 
-function DropdownMenuSubContent({ className, sx, ...props }: DropdownMenuSubContentProps) {
+function DropdownMenuSubContent({
+  className,
+  sx,
+  style,
+  children,
+  ...props
+}: DropdownMenuSubContentProps) {
+  const zIndex = useZIndex('popover', 1);
   const sxProps = stylex.props(styles.content, sx);
   return (
     <DropdownMenuPrimitive.SubContent
       data-slot="dropdown-menu-sub-content"
       {...sxProps}
+      style={{ zIndex, ...sxProps.style, ...style }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
-    />
+    >
+      <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
+    </DropdownMenuPrimitive.SubContent>
   );
 }
 

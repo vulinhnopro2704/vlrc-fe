@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Popover > UI > should match snapshot when open 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="radix-_r_0_"
+    aria-expanded="true"
+    aria-haspopup="dialog"
+    data-radix-popper-align="center"
+    data-radix-popper-side="bottom"
+    data-slot="popover-trigger"
+    data-state="open"
+    type="button"
+  >
+    Open Popover
+  </button>
+</DocumentFragment>
+`;

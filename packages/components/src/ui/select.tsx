@@ -5,6 +5,7 @@ import * as stylex from '@stylexjs/stylex';
 
 import { colors, radii } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth } from '../theme/width';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const scaleIn = stylex.keyframes({
   from: { opacity: 0, transform: 'scale(0.96)' },
@@ -197,6 +198,7 @@ function SelectTrigger({
 
 export interface SelectContentProps extends React.ComponentProps<typeof SelectPrimitive.Content> {
   sx?: stylex.StyleXStyles;
+  container?: HTMLElement | DocumentFragment | null;
 }
 
 function SelectContent({
@@ -205,25 +207,31 @@ function SelectContent({
   position = 'popper',
   align = 'center',
   sx,
+  container,
+  style,
   ...props
 }: SelectContentProps) {
+  const zIndex = useZIndex('popover');
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <SelectPrimitive.Portal>
+    <SelectPrimitive.Portal container={container}>
       <SelectPrimitive.Content
         data-slot="select-content"
         position={position}
         align={align}
         {...sxProps}
+        style={{ zIndex, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
-        <SelectScrollUpButton />
-        <SelectPrimitive.Viewport {...stylex.props(styles.viewport)}>
-          {children}
-        </SelectPrimitive.Viewport>
-        <SelectScrollDownButton />
+        <ZIndexProvider value={zIndex + 10}>
+          <SelectScrollUpButton />
+          <SelectPrimitive.Viewport {...stylex.props(styles.viewport)}>
+            {children}
+          </SelectPrimitive.Viewport>
+          <SelectScrollDownButton />
+        </ZIndexProvider>
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   );

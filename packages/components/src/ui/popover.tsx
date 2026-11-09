@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const scaleIn = stylex.keyframes({
   from: { opacity: 0, transform: 'scale(0.95)' },
@@ -12,7 +13,7 @@ const styles = stylex.create({
   content: {
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
-    zIndex: 50,
+    zIndex: 100,
     width: '18rem',
     borderRadius: radii.md,
     borderWidth: 1,
@@ -41,6 +42,7 @@ function PopoverAnchor(props: React.ComponentProps<typeof PopoverPrimitive.Ancho
 
 export interface PopoverContentProps extends React.ComponentProps<typeof PopoverPrimitive.Content> {
   sx?: stylex.StyleXStyles;
+  container?: HTMLElement | DocumentFragment | null;
 }
 
 function PopoverContent({
@@ -48,20 +50,27 @@ function PopoverContent({
   align = 'center',
   sideOffset = 4,
   sx,
+  container,
+  style,
+  children,
   ...props
 }: PopoverContentProps) {
+  const zIndex = useZIndex('popover');
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <PopoverPrimitive.Portal>
+    <PopoverPrimitive.Portal container={container}>
       <PopoverPrimitive.Content
         data-slot="popover-content"
         align={align}
         sideOffset={sideOffset}
         {...sxProps}
+        style={{ zIndex, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
-      />
+      >
+        <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
+      </PopoverPrimitive.Content>
     </PopoverPrimitive.Portal>
   );
 }

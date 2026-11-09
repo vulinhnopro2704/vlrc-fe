@@ -36,7 +36,7 @@ const styles = stylex.create({
   rootVertical: {
     display: 'flex',
     flexDirection: 'column',
-    gap: spacing.md,
+    gap: 0,
   },
   rootHorizontal: {
     display: 'flex',
@@ -54,7 +54,7 @@ const styles = stylex.create({
   },
   itemVertical: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'stretch',
     gap: spacing.md,
   },
   itemHorizontal: {
@@ -69,7 +69,7 @@ const styles = stylex.create({
     flexDirection: 'column',
     alignItems: 'center',
     flexShrink: 0,
-    minWidth: '2rem',
+    width: '2rem',
   },
   trackHorizontal: {
     display: 'flex',
@@ -140,7 +140,7 @@ const styles = stylex.create({
   connectorVertical: {
     width: 2,
     flex: 1,
-    minHeight: '1.5rem',
+    minHeight: '1.75rem',
     marginTop: spacing.xxs,
     marginBottom: spacing.xxs,
   },
@@ -159,6 +159,9 @@ const styles = stylex.create({
     flex: 1,
     minWidth: 0,
     gap: spacing.xxs,
+  },
+  contentVerticalNotLast: {
+    paddingBottom: spacing.lg,
   },
 
   // Header
@@ -420,7 +423,15 @@ export interface TimelineContentProps extends React.ComponentProps<'div'> {
 }
 
 function TimelineContent({ className, sx, children, ...props }: TimelineContentProps) {
-  const sxProps = stylex.props(styles.content, sx);
+  const { isLast } = React.useContext(TimelineItemContext);
+  const { orientation } = React.useContext(TimelineContext);
+  const isVertical = orientation === 'vertical';
+
+  const sxProps = stylex.props(
+    styles.content,
+    isVertical && !isLast && styles.contentVerticalNotLast,
+    sx,
+  );
   return (
     <div
       data-slot="timeline-content"

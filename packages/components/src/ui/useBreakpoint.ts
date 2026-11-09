@@ -25,7 +25,7 @@ const DEFAULT_SCREENS: ScreenMap = {
 };
 
 /**
- * Hook detecting active screen breakpoints based on Ant Design standard thresholds.
+ * Hook detecting active screen breakpoints based on standard grid thresholds.
  * Returns an object of active breakpoint booleans: `{ xs, sm, md, lg, xl, xxl }`.
  */
 export function useBreakpoint(): ScreenMap {

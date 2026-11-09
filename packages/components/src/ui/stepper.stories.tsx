@@ -7,6 +7,7 @@ import {
   StepperTrigger,
   StepperIndicator,
   StepperSeparator,
+  StepperText,
   StepperTitle,
   StepperDescription,
   StepperContent,
@@ -42,10 +43,10 @@ export const Default: Story = {
           <StepperItem value="account">
             <StepperTrigger>
               <StepperIndicator />
-              <div>
+              <StepperText>
                 <StepperTitle>Account</StepperTitle>
                 <StepperDescription>Enter credentials</StepperDescription>
-              </div>
+              </StepperText>
             </StepperTrigger>
             <StepperSeparator />
           </StepperItem>
@@ -53,10 +54,10 @@ export const Default: Story = {
           <StepperItem value="profile">
             <StepperTrigger>
               <StepperIndicator />
-              <div>
+              <StepperText>
                 <StepperTitle>Profile</StepperTitle>
                 <StepperDescription>Personal info</StepperDescription>
-              </div>
+              </StepperText>
             </StepperTrigger>
             <StepperSeparator />
           </StepperItem>
@@ -64,10 +65,10 @@ export const Default: Story = {
           <StepperItem value="confirmation">
             <StepperTrigger>
               <StepperIndicator />
-              <div>
+              <StepperText>
                 <StepperTitle>Confirm</StepperTitle>
                 <StepperDescription>Review summary</StepperDescription>
-              </div>
+              </StepperText>
             </StepperTrigger>
           </StepperItem>
         </StepperList>

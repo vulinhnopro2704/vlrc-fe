@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
+import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 import { buttonVariants } from './button';
 
 const fadeIn = stylex.keyframes({
@@ -88,12 +89,14 @@ export interface AlertDialogOverlayProps extends React.ComponentProps<
   sx?: stylex.StyleXStyles;
 }
 
-function AlertDialogOverlay({ className, sx, ...props }: AlertDialogOverlayProps) {
+function AlertDialogOverlay({ className, sx, style, ...props }: AlertDialogOverlayProps) {
+  const zIndex = useZIndex('overlay');
   const sxProps = stylex.props(styles.overlay, sx);
   return (
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       {...sxProps}
+      style={{ zIndex, ...sxProps.style, ...style }}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     />
@@ -104,19 +107,31 @@ export interface AlertDialogContentProps extends React.ComponentProps<
   typeof AlertDialogPrimitive.Content
 > {
   sx?: stylex.StyleXStyles;
+  container?: HTMLElement | DocumentFragment | null;
 }
 
-function AlertDialogContent({ className, sx, ...props }: AlertDialogContentProps) {
+function AlertDialogContent({
+  className,
+  sx,
+  children,
+  container,
+  style,
+  ...props
+}: AlertDialogContentProps) {
+  const baseZIndex = useZIndex('modal');
   const sxProps = stylex.props(styles.content, sx);
   return (
-    <AlertDialogPortal>
-      <AlertDialogOverlay />
+    <AlertDialogPortal container={container}>
+      <AlertDialogOverlay style={{ zIndex: baseZIndex }} />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         {...sxProps}
+        style={{ zIndex: baseZIndex + 1, ...sxProps.style, ...style }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
-      />
+      >
+        <ZIndexProvider value={baseZIndex + 10}>{children}</ZIndexProvider>
+      </AlertDialogPrimitive.Content>
     </AlertDialogPortal>
   );
 }

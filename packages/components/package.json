@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Accessible React UI components built with Meta StyleX, Radix UI, and React Hook Form.",
   "keywords": [
     "accessible",
@@ -50,6 +50,10 @@
     "./DataTable/*": {
       "types": "./dist/DataTable/*.d.ts",
       "import": "./dist/DataTable/*.js"
+    },
+    "./Dropdown": {
+      "types": "./dist/Dropdown/index.d.ts",
+      "import": "./dist/Dropdown/index.js"
     },
     "./Icons": {
       "types": "./dist/Icons/index.d.ts",
