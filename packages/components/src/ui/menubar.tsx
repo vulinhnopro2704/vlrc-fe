@@ -7,6 +7,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 import { cn } from '../utils';
+import { Text } from '../Typography';
 
 const styles = stylex.create({
   root: {
@@ -385,8 +386,11 @@ export interface MenubarShortcutProps extends React.ComponentProps<'span'> {
 function MenubarShortcut({ className, sx, ...props }: MenubarShortcutProps) {
   const styleProps = stylex.props(styles.shortcut, sx);
   return (
-    <span
+    <Text
+      as="span"
       data-slot="menubar-shortcut"
+      size="xs"
+      type="secondary"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}

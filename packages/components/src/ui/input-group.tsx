@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
+import { Text } from '../Typography';
 
 export type InputGroupSize = 'sm' | 'md' | 'lg';
 export type InputGroupAlign = 'inline-start' | 'inline-end';
@@ -226,14 +227,17 @@ export interface InputGroupTextProps extends React.ComponentProps<'span'> {
 function InputGroupText({ className, sx, children, ...props }: InputGroupTextProps) {
   const sxProps = stylex.props(styles.text, sx);
   return (
-    <span
+    <Text
+      as="span"
+      size="sm"
+      type="secondary"
       data-slot="input-group-text"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       {children}
-    </span>
+    </Text>
   );
 }
 

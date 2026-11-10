@@ -73,6 +73,7 @@ const styles = stylex.create({
     width: '0.75rem',
     height: '0.75rem',
     opacity: 0.8,
+    transform: 'rotate(-45deg)',
   },
 
   ellipsisSingle: {
@@ -183,13 +184,8 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <span>{children}</span>
-      {external && (
-        <Icons.ArrowRight
-          {...stylex.props(styles.externalIcon)}
-          style={{ transform: 'rotate(-45deg)' }}
-        />
-      )}
+      {children}
+      {external && <Icons.ArrowRight {...stylex.props(styles.externalIcon)} />}
     </Component>
   );
 

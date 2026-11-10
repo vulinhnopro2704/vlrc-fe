@@ -28,16 +28,30 @@ export type FormFileUploaderProps = FormFileUploadExtraProps;
  * - Customization props: `showFileList`, `showProgress`, `showPreview`, `showClear`
  */
 export const FormFileUpload: FormControlFunc<FormFileUploadExtraProps> = (props) => {
+  const {
+    control: _c,
+    name: _n,
+    rules: _r,
+    label: _l,
+    description: _d,
+    htmlType: _ht,
+    width: _w,
+    className,
+    sx,
+    disabled: propsDisabled,
+    ...restProps
+  } = props;
+
   return (
     <FormBase {...props}>
       {({ onChange, value, disabled }) => (
         <FileUpload
-          {...(props as unknown as FileUploadProps)}
+          {...(restProps as FileUploadProps)}
           value={value}
           onChange={onChange}
-          disabled={disabled || props.disabled}
-          className={props.className}
-          sx={props.sx}
+          disabled={disabled || propsDisabled}
+          className={className}
+          sx={sx}
         />
       )}
     </FormBase>

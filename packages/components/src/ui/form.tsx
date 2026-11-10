@@ -18,6 +18,7 @@ import { colors } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Label } from './label';
 import { resolveWidth, type ComponentWidth } from '../theme/width';
+import { Paragraph } from '../Typography';
 
 const styles = stylex.create({
   item: {
@@ -165,9 +166,11 @@ function FormDescription({ className, sx, ...props }: FormDescriptionProps) {
   const styleProps = stylex.props(styles.description, sx);
 
   return (
-    <p
+    <Paragraph
+      as="p"
       data-slot="form-description"
       id={formDescriptionId}
+      size="sm"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
@@ -190,15 +193,17 @@ function FormMessage({ className, sx, ...props }: FormMessageProps) {
   const styleProps = stylex.props(styles.message, sx);
 
   return (
-    <p
+    <Paragraph
+      as="p"
       data-slot="form-message"
       id={formMessageId}
+      size="sm"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
     >
       {body}
-    </p>
+    </Paragraph>
   );
 }
 

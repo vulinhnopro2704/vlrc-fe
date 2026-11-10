@@ -3,6 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-re
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { Text, type TextType } from '../Typography';
 
 const styles = stylex.create({
   nav: {
@@ -226,9 +227,10 @@ function PaginationItem({ className, sx, ...props }: PaginationItemProps) {
   );
 }
 
-export interface PaginationLinkProps extends React.ComponentProps<'a'> {
+export interface PaginationLinkProps extends Omit<React.ComponentProps<'a'>, 'type'> {
   isActive?: boolean;
   size?: ComponentSize;
+  type?: TextType;
   sx?: stylex.StyleXStyles;
 }
 
@@ -245,11 +247,13 @@ function PaginationLink({
   const sxProps = stylex.props(styles.link, sizeStyle, isActive && styles.linkActive, sx);
 
   return (
-    <a
+    <Text
+      as="a"
       aria-current={isActive ? 'page' : undefined}
       data-slot="pagination-link"
       data-active={isActive}
       data-size={resolvedSize}
+      type="inherit"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -277,7 +281,9 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeftIcon {...stylex.props(iconSize)} />
-      <span>{children ?? 'Previous'}</span>
+      <Text as="span" size={resolvedSize} type="inherit">
+        {children ?? 'Previous'}
+      </Text>
     </PaginationLink>
   );
 }
@@ -301,7 +307,9 @@ function PaginationNext({
       sx={sx}
       {...props}
     >
-      <span>{children ?? 'Next'}</span>
+      <Text as="span" size={resolvedSize} type="inherit">
+        {children ?? 'Next'}
+      </Text>
       <ChevronRightIcon {...stylex.props(iconSize)} />
     </PaginationLink>
   );
@@ -328,7 +336,9 @@ function PaginationEllipsis({
       {...props}
     >
       <MoreHorizontalIcon {...stylex.props(iconSize)} />
-      <span className="sr-only">More pages</span>
+      <Text as="span" className="sr-only">
+        More pages
+      </Text>
     </span>
   );
 }

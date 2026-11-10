@@ -342,11 +342,17 @@ function Calendar({
   components,
   size = 'md',
   sx,
+  startMonth,
+  endMonth,
   ...props
 }: CalendarProps) {
   const resolvedSize = resolveDatePickerSize(size);
   const defaultClassNames = getDefaultClassNames();
   const rootStyleProps = stylex.props(styles.rootContainer, rootSizeStyles[resolvedSize], sx);
+
+  const currentYear = new Date().getFullYear();
+  const resolvedStartMonth = startMonth ?? new Date(currentYear - 100, 0, 1);
+  const resolvedEndMonth = endMonth ?? new Date(currentYear + 50, 11, 31);
 
   return (
     <CalendarContext.Provider value={{ size: resolvedSize }}>
@@ -354,6 +360,8 @@ function Calendar({
         showOutsideDays={showOutsideDays}
         className={cn(rootStyleProps.className, className)}
         captionLayout={captionLayout}
+        startMonth={resolvedStartMonth}
+        endMonth={resolvedEndMonth}
         formatters={{
           formatMonthDropdown: (date) => date.toLocaleString('default', { month: 'short' }),
           ...formatters,

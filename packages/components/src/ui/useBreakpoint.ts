@@ -28,6 +28,11 @@ const DEFAULT_SCREENS: ScreenMap = {
  * Hook detecting active screen breakpoints based on standard grid thresholds.
  * Returns an object of active breakpoint booleans: `{ xs, sm, md, lg, xl, xxl }`.
  */
+type LegacyMediaQueryList = MediaQueryList & {
+  addListener?: (listener: () => void) => void;
+  removeListener?: (listener: () => void) => void;
+};
+
 export function useBreakpoint(): ScreenMap {
   const [screens, setScreens] = React.useState<ScreenMap>(() => {
     if (typeof window === 'undefined' || !window.matchMedia) {
@@ -64,7 +69,7 @@ export function useBreakpoint(): ScreenMap {
       if (mql.addEventListener) {
         mql.addEventListener('change', listener);
       } else {
-        (mql as any).addListener(listener);
+        (mql as LegacyMediaQueryList).addListener?.(listener);
       }
 
       mqlList.push({ bp, mql, listener });
@@ -75,7 +80,7 @@ export function useBreakpoint(): ScreenMap {
         if (mql.removeEventListener) {
           mql.removeEventListener('change', listener);
         } else {
-          (mql as any).removeListener(listener);
+          (mql as LegacyMediaQueryList).removeListener?.(listener);
         }
       }
     };

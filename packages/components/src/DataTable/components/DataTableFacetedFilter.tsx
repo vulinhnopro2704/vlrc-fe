@@ -4,6 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii, spacing } from '../../theme/tokens.stylex';
 import { Badge } from '../../ui/badge';
 import { Button } from '../../ui/button';
+import { Text } from '../../Typography';
 import {
   Command,
   CommandEmpty,
@@ -71,6 +72,15 @@ const styles = stylex.create({
     justifyContent: 'center',
     textAlign: 'center',
     fontWeight: 500,
+  },
+  separator: {
+    height: '1rem',
+    marginInline: spacing.xxs,
+  },
+  optionIcon: {
+    marginRight: spacing.xs,
+    display: 'flex',
+    alignItems: 'center',
   },
 });
 
@@ -161,10 +171,7 @@ export function DataTableFacetedFilter<TData, TValue = unknown>({
           {title}
           {selectedSet.size > 0 && (
             <>
-              <Separator
-                orientation="vertical"
-                style={{ height: '1rem', marginInline: '0.25rem' }}
-              />
+              <Separator orientation="vertical" sx={styles.separator} />
               <Badge variant="secondary" size="xxs">
                 {selectedSet.size}
               </Badge>
@@ -217,15 +224,17 @@ export function DataTableFacetedFilter<TData, TValue = unknown>({
                       )}
                     </div>
                     {OptionIcon && (
-                      <span
-                        style={{ marginRight: '0.5rem', display: 'flex', alignItems: 'center' }}
-                      >
+                      <span {...stylex.props(styles.optionIcon)}>
                         <OptionIcon />
                       </span>
                     )}
-                    <span {...stylex.props(styles.optionLabel)}>{option.label}</span>
+                    <Text as="span" size="sm" sx={styles.optionLabel}>
+                      {option.label}
+                    </Text>
                     {option.count !== undefined && (
-                      <span {...stylex.props(styles.count)}>{option.count}</span>
+                      <Text as="span" size="xs" type="secondary" sx={styles.count}>
+                        {option.count}
+                      </Text>
                     )}
                   </CommandItem>
                 );

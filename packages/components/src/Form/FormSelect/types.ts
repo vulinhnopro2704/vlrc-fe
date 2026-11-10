@@ -34,7 +34,7 @@ export interface FormSingleSelectProps<
   T extends SelectValue = SelectValue,
 > extends FormSelectCommonProps<TFieldValues, T> {
   isMulti?: false;
-  onChange?: (value: T | null) => void;
+  onChange?: (value: T | null | undefined) => void;
 }
 
 /**

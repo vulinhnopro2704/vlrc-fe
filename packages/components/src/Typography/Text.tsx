@@ -66,6 +66,9 @@ const styles = stylex.create({
   typeInfo: {
     color: '#2563eb',
   },
+  typeInherit: {
+    color: 'inherit',
+  },
 
   // Text decorations
   strong: {
@@ -155,6 +158,7 @@ const typeStyles: Record<TextType, stylex.StyleXStyles> = {
   warning: styles.typeWarning,
   danger: styles.typeDanger,
   info: styles.typeInfo,
+  inherit: styles.typeInherit,
 };
 
 export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
@@ -180,6 +184,22 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
     textDecorationColor,
     textDecorationThickness,
     textUnderlineOffset,
+    color,
+    margin,
+    m,
+    marginTop,
+    mt,
+    marginBottom,
+    mb,
+    marginLeft,
+    ml,
+    marginRight,
+    mr,
+    marginInline,
+    mx,
+    marginBlock,
+    my,
+    letterSpacing,
     copyable,
     as,
     className,
@@ -208,6 +228,7 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
 
   const customStyle = resolveCustomTypographyStyle({
     customSize,
+    color,
     lines,
     rows,
     lineHeight,
@@ -218,6 +239,21 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
     textDecorationColor,
     textDecorationThickness,
     textUnderlineOffset,
+    margin,
+    m,
+    marginTop,
+    mt,
+    marginBottom,
+    mb,
+    marginLeft,
+    ml,
+    marginRight,
+    mr,
+    marginInline,
+    mx,
+    marginBlock,
+    my,
+    letterSpacing,
   });
 
   const handleCopy = async () => {

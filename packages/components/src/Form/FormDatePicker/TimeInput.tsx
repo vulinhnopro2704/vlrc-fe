@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Input } from '../../ui/input';
 import { cn } from '../../utils';
+import { Text } from '../../Typography';
 import type { TimeConfig } from './types';
 
 const styles = stylex.create({
@@ -68,7 +69,11 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
             onBlur={(e) => handleInputChange('hour', e.target.value)}
             sx={styles.timeField}
           />
-          {(showMinute || showSecond) && <span>:</span>}
+          {(showMinute || showSecond) && (
+            <Text as="span" type="secondary">
+              :
+            </Text>
+          )}
         </>
       )}
       {showMinute && (
@@ -82,7 +87,11 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
             onBlur={(e) => handleInputChange('minute', e.target.value)}
             sx={styles.timeField}
           />
-          {showSecond && <span>:</span>}
+          {showSecond && (
+            <Text as="span" type="secondary">
+              :
+            </Text>
+          )}
         </>
       )}
       {showSecond && (

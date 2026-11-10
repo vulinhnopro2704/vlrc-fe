@@ -1,5 +1,5 @@
 import React, { useState, type ReactNode } from 'react';
-import { vi } from 'date-fns/locale';
+import type { Locale } from 'date-fns';
 import * as stylex from '@stylexjs/stylex';
 
 import Icons from '../../Icons';
@@ -92,6 +92,9 @@ export interface StandaloneDatePickerProps {
   disabledDate?: (date: Date) => boolean;
   disabledTime?: DisabledTime | ((date: Date) => DisabledTime);
   timeConfig?: TimeConfig;
+  locale?: Locale;
+  startMonth?: Date;
+  endMonth?: Date;
 }
 
 export function SingleDatePicker({
@@ -113,6 +116,9 @@ export function SingleDatePicker({
   disabledDate,
   disabledTime,
   timeConfig,
+  locale,
+  startMonth,
+  endMonth,
 }: StandaloneDatePickerProps) {
   const [open, setOpen] = useState(false);
   const [currentMonth, setCurrentMonth] = useState<Date>(value || new Date());
@@ -177,7 +183,12 @@ export function SingleDatePicker({
 
     if (pickerType === 'month') {
       return (
-        <MonthPickerPanel value={value} onChange={handleDateSelect} disabledDate={disabledDate} />
+        <MonthPickerPanel
+          value={value}
+          onChange={handleDateSelect}
+          disabledDate={disabledDate}
+          locale={locale}
+        />
       );
     }
 
@@ -196,11 +207,10 @@ export function SingleDatePicker({
           onSelect={handleDateSelect}
           disabled={disabledDate}
           captionLayout="dropdown"
-          locale={vi}
+          locale={locale}
           month={currentMonth}
-          hidden={{
-            after: new Date(new Date().getFullYear() + 50, 11, 31),
-          }}
+          startMonth={startMonth}
+          endMonth={endMonth}
           onMonthChange={setCurrentMonth}
         />
         {showTime && (
@@ -277,9 +287,9 @@ export function SingleDatePicker({
           )}
           <div {...stylex.props(styles.rightControls)}>
             {allowClear && value && (
-              <span onClick={handleClear} {...stylex.props(styles.clearButton)}>
+              <Text as="span" onClick={handleClear} sx={styles.clearButton}>
                 ×
-              </span>
+              </Text>
             )}
             {renderIcon()}
           </div>

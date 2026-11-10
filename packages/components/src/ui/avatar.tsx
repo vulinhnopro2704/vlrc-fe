@@ -5,6 +5,7 @@ import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 interface AvatarGroupContextValue {
   size?: ComponentSize;
@@ -94,6 +95,22 @@ const styles = stylex.create({
     backgroundColor: colors.muted,
     color: colors.foreground,
     fontWeight: 600,
+    cursor: 'pointer',
+  },
+  overflowTrigger: {
+    display: 'inline-flex',
+    cursor: 'pointer',
+  },
+  overflowPopoverContent: {
+    width: 'auto',
+    maxWidth: '20rem',
+    padding: '0.75rem',
+  },
+  overflowList: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '0.5rem',
+    alignItems: 'center',
   },
 });
 
@@ -181,7 +198,28 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
   const validChildren = React.Children.toArray(children).filter(React.isValidElement);
 
   const visibleChildren = max !== undefined ? validChildren.slice(0, max) : validChildren;
+  const hiddenChildren = max !== undefined ? validChildren.slice(max) : [];
   const overflowCount = max !== undefined ? Math.max(0, validChildren.length - max) : 0;
+
+  const [popoverOpen, setPopoverOpen] = React.useState(false);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setPopoverOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setPopoverOpen(false);
+    }, 150);
+  };
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const contextValue = React.useMemo(() => ({ size, inGroup: true }), [size]);
 
@@ -197,9 +235,30 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
       >
         {visibleChildren}
         {overflowCount > 0 && (
-          <Avatar size={size} data-slot="avatar-group-overflow">
-            <AvatarFallback sx={styles.overflowFallback}>+{overflowCount}</AvatarFallback>
-          </Avatar>
+          <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+            <PopoverTrigger asChild>
+              <div
+                {...stylex.props(styles.overflowTrigger)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Avatar size={size} data-slot="avatar-group-overflow">
+                  <AvatarFallback sx={styles.overflowFallback}>+{overflowCount}</AvatarFallback>
+                </Avatar>
+              </div>
+            </PopoverTrigger>
+            <PopoverContent
+              side="top"
+              align="center"
+              sx={styles.overflowPopoverContent}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <AvatarGroupContext.Provider value={{ size, inGroup: false }}>
+                <div {...stylex.props(styles.overflowList)}>{hiddenChildren}</div>
+              </AvatarGroupContext.Provider>
+            </PopoverContent>
+          </Popover>
         )}
       </div>
     </AvatarGroupContext.Provider>

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FieldValues } from 'react-hook-form';
+import type { FieldPath, FieldValues } from 'react-hook-form';
 import { FormBase } from '../Form';
 import type { FormMultiSelectProps, FormSingleSelectProps } from './types';
 import { useFormSelect } from './useFormSelect';
@@ -23,15 +23,22 @@ export function FormSelect<
   const { baseSelectProps, isMulti, createChangeHandlers } = useFormSelect(props);
 
   return (
-    <FormBase {...props}>
-      {(field: any) => {
+    <FormBase<TFieldValues, FieldPath<TFieldValues>> {...props}>
+      {(field) => {
         const { onChangeMulti, onChangeSingle } = createChangeHandlers(field);
-        return (
+        return isMulti ? (
           <BaseSelect<T>
             {...baseSelectProps}
-            isMulti={isMulti}
-            value={field.value as any}
-            onChange={(isMulti ? onChangeMulti : onChangeSingle) as any}
+            isMulti
+            value={field.value as T[]}
+            onChange={onChangeMulti}
+          />
+        ) : (
+          <BaseSelect<T>
+            {...baseSelectProps}
+            isMulti={false}
+            value={field.value as T}
+            onChange={onChangeSingle}
           />
         );
       }}

@@ -37,4 +37,13 @@ describe('Calendar', () => {
     fireEvent.click(dayButton);
     expect(onSelect).toHaveBeenCalled();
   });
+
+  it('should include future years by default in year dropdown', () => {
+    render(<Calendar mode="single" captionLayout="dropdown" />);
+    const yearSelect = screen.getByRole('combobox', { name: /year/i });
+    expect(yearSelect).toBeInTheDocument();
+    const currentYear = new Date().getFullYear();
+    const futureYearOption = screen.getByRole('option', { name: String(currentYear + 10) });
+    expect(futureYearOption).toBeInTheDocument();
+  });
 });

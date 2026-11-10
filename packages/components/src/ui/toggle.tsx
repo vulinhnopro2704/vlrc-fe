@@ -141,7 +141,7 @@ export interface ToggleProps extends Omit<
   /** Visual variant ('default' or 'outline') */
   variant?: ToggleVariant;
   /** Custom StyleX style overrides */
-  sx?: any;
+  sx?: stylex.StyleXStyles;
 }
 
 function Toggle({ className, variant = 'default', size = 'md', sx, ...props }: ToggleProps) {

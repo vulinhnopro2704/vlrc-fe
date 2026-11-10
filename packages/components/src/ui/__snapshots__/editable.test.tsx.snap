@@ -6,17 +6,17 @@ exports[`Editable > UI > should match snapshot in editing mode 1`] = `
     class="editable__styles.root x3nfvp2 x6s0dn4 xeq5yr9 x193iq5w"
     data-editing=""
     data-slot="editable"
-    data-style-src="@vlrc-fe/components:src/ui/editable.tsx:32"
+    data-style-src="@vlrc-fe/components:src/ui/editable.tsx:33"
   >
     <div
       class="editable__styles.area x1n2onr6 x3nfvp2 x6s0dn4 x1m5ztt4 xh8yej3"
       data-slot="editable-area"
-      data-style-src="@vlrc-fe/components:src/ui/editable.tsx:38"
+      data-style-src="@vlrc-fe/components:src/ui/editable.tsx:39"
     >
       <input
         class="editable__styles.input x3nfvp2 x6s0dn4 x1q0v2j7 xmkeg23 x1y0btm7 x1puiyjm x1mlyrtw x84br7x xvg6gpc x1dus959 x1a2a7pz x1ld4rhc x1qlqyl8 x15bjb6t xjb2p0i xz6sds4"
         data-slot="editable-input"
-        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:69"
+        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:70"
         placeholder="Click to edit..."
         type="text"
         value="Project Alpha"
@@ -24,7 +24,7 @@ exports[`Editable > UI > should match snapshot in editing mode 1`] = `
       <div
         class="editable__styles.toolbar x3nfvp2 x6s0dn4 xvh977a"
         data-slot="editable-toolbar"
-        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:87"
+        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:88"
         role="toolbar"
       >
         <button
@@ -95,24 +95,27 @@ exports[`Editable > UI > should match snapshot in preview mode 1`] = `
   <div
     class="editable__styles.root x3nfvp2 x6s0dn4 xeq5yr9 x193iq5w"
     data-slot="editable"
-    data-style-src="@vlrc-fe/components:src/ui/editable.tsx:32"
+    data-style-src="@vlrc-fe/components:src/ui/editable.tsx:33"
   >
     <div
       class="editable__styles.area x1n2onr6 x3nfvp2 x6s0dn4 x1m5ztt4 xh8yej3"
       data-slot="editable-area"
-      data-style-src="@vlrc-fe/components:src/ui/editable.tsx:38"
+      data-style-src="@vlrc-fe/components:src/ui/editable.tsx:39"
     >
       <span
-        class="editable__styles.preview x3nfvp2 x6s0dn4 x1q0v2j7 xvg6gpc x1dus959 x1ypdohk x84br7x xs2xxs2 xx6bhzk x165v80h"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeInherit x1heor9g weightStyles__styles.regular xo1l8bm editable__styles.preview x3nfvp2 x6s0dn4 x1q0v2j7 xvg6gpc x1dus959 x1ypdohk x84br7x xs2xxs2 xx6bhzk x165v80h"
+        data-size="md"
         data-slot="editable-preview"
-        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:45"
+        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:46"
+        data-type="inherit"
+        data-weight="regular"
       >
         Project Alpha
       </span>
       <div
         class="editable__styles.toolbar x3nfvp2 x6s0dn4 xvh977a"
         data-slot="editable-toolbar"
-        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:87"
+        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:88"
         role="toolbar"
       >
         <button
@@ -153,17 +156,20 @@ exports[`Editable > UI > should match snapshot when empty with placeholder 1`] =
   <div
     class="editable__styles.root x3nfvp2 x6s0dn4 xeq5yr9 x193iq5w"
     data-slot="editable"
-    data-style-src="@vlrc-fe/components:src/ui/editable.tsx:32"
+    data-style-src="@vlrc-fe/components:src/ui/editable.tsx:33"
   >
     <div
       class="editable__styles.area x1n2onr6 x3nfvp2 x6s0dn4 x1m5ztt4 xh8yej3"
       data-slot="editable-area"
-      data-style-src="@vlrc-fe/components:src/ui/editable.tsx:38"
+      data-style-src="@vlrc-fe/components:src/ui/editable.tsx:39"
     >
       <span
-        class="editable__styles.preview x3nfvp2 x6s0dn4 x1q0v2j7 xvg6gpc x1dus959 x1ypdohk xs2xxs2 xx6bhzk x165v80h editable__styles.previewPlaceholder xw3nh4a"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeInherit x1heor9g weightStyles__styles.regular xo1l8bm editable__styles.preview x3nfvp2 x6s0dn4 x1q0v2j7 xvg6gpc x1dus959 x1ypdohk xs2xxs2 xx6bhzk x165v80h editable__styles.previewPlaceholder xw3nh4a"
+        data-size="md"
         data-slot="editable-preview"
-        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:45; @vlrc-fe/components:src/ui/editable.tsx:59"
+        data-style-src="@vlrc-fe/components:src/ui/editable.tsx:46; @vlrc-fe/components:src/ui/editable.tsx:60"
+        data-type="inherit"
+        data-weight="regular"
       >
         Enter project title...
       </span>

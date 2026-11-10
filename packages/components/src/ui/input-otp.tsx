@@ -112,6 +112,10 @@ const styles = stylex.create({
     justifyContent: 'center',
     color: colors.mutedForeground,
   },
+  separatorIcon: {
+    width: 16,
+    height: 16,
+  },
 });
 
 const slotSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
@@ -140,10 +144,14 @@ function InputOTP({
   className,
   containerClassName,
   containerSx,
-  sx: _sx,
+  sx,
   ...props
 }: InputOTPProps) {
   const containerSxProps = stylex.props(styles.container, containerSx);
+  const inputSxProps = stylex.props(sx);
+  const mergedInputClassName = className
+    ? `${inputSxProps.className || ''} ${className}`.trim()
+    : inputSxProps.className;
 
   return (
     <InputOTPContext.Provider value={{ size }}>
@@ -155,8 +163,8 @@ function InputOTP({
             ? `${containerSxProps.className || ''} ${containerClassName}`.trim()
             : containerSxProps.className
         }
-        className={className}
-        {...(props as any)}
+        className={mergedInputClassName}
+        {...(props as React.ComponentProps<typeof OTPInput>)}
       />
     </InputOTPContext.Provider>
   );
@@ -226,7 +234,7 @@ function InputOTPSeparator({ className, sx, ...props }: InputOTPSeparatorProps) 
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <MinusIcon style={{ width: 16, height: 16 }} />
+      <MinusIcon {...stylex.props(styles.separatorIcon)} />
     </div>
   );
 }

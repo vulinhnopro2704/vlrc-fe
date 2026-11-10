@@ -1,4 +1,4 @@
-import type { KeyboardEvent } from 'react';
+import type { FocusEvent, KeyboardEvent } from 'react';
 import type {
   ControllerRenderProps,
   FieldPath,
@@ -55,7 +55,7 @@ export function useFormNumberInput<
     handleIncrement: () => void;
     handleDecrement: () => void;
     handleKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
-    handleBlur: () => void;
+    handleBlur: (e?: FocusEvent<HTMLInputElement>) => void;
     numericOnValueChange: (values: { value: string; floatValue: number | undefined }) => void;
   };
 } {
@@ -106,12 +106,10 @@ export function useFormNumberInput<
         handleDecrement();
       }
 
-      if (passthroughProps.onKeyDown) {
-        (passthroughProps.onKeyDown as any)(e);
-      }
+      passthroughProps.onKeyDown?.(e);
     };
 
-    const handleBlur = () => {
+    const handleBlur = (e?: FocusEvent<HTMLInputElement>) => {
       const cur = currentValue;
       if (cur !== undefined) {
         if (cur < min) {
@@ -123,7 +121,9 @@ export function useFormNumberInput<
         }
       }
       field.onBlur();
-      if (passthroughProps.onBlur) (passthroughProps.onBlur as any)();
+      if (e) {
+        passthroughProps.onBlur?.(e);
+      }
     };
 
     const numericOnValueChange = (values: { value: string; floatValue: number | undefined }) => {

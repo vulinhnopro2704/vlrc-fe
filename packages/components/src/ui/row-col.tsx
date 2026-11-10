@@ -408,11 +408,11 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(function Row(
     ? `${sxProps.className || ''} ${className}`.trim()
     : sxProps.className;
 
-  const dynamicStyle: React.CSSProperties = {
+  const dynamicStyle: React.CSSProperties & Record<`--${string}`, string | number | undefined> = {
     ...sxProps.style,
     ...style,
-    ['--gutter-x' as any]: gutterX,
-    ['--gutter-y' as any]: gutterY,
+    '--gutter-x': gutterX,
+    '--gutter-y': gutterY,
   };
 
   const contextValue = React.useMemo<RowContextType>(

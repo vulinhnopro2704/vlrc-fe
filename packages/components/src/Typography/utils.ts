@@ -1,13 +1,24 @@
 import type React from 'react';
-import type { BaseTypographyProps } from './types';
+import type { BaseTypographyProps, LetterSpacingValue } from './types';
+import { resolveSpacing } from '../theme/spacing';
+
+export function resolveLetterSpacing(val?: LetterSpacingValue): string | undefined {
+  if (val === undefined || val === null) return undefined;
+  if (val === 'tight') return '-0.035em';
+  if (val === 'normal') return 'normal';
+  if (val === 'wide') return '0.05em';
+  if (typeof val === 'number') return `${val}px`;
+  return val;
+}
 
 /**
- * Resolves inline styles for typography custom props (size, lineHeight, line clamp,
+ * Resolves inline styles for typography custom props (size, lineHeight, margins, letterSpacing, line clamp,
  * and comprehensive text decoration properties with number-to-px normalization).
  */
 export function resolveCustomTypographyStyle(props: BaseTypographyProps): React.CSSProperties {
   const {
     customSize,
+    color,
     lineHeight,
     lines,
     rows,
@@ -18,6 +29,21 @@ export function resolveCustomTypographyStyle(props: BaseTypographyProps): React.
     textDecorationColor,
     textDecorationThickness,
     textUnderlineOffset,
+    margin,
+    m,
+    marginTop,
+    mt,
+    marginBottom,
+    mb,
+    marginLeft,
+    ml,
+    marginRight,
+    mr,
+    marginInline,
+    mx,
+    marginBlock,
+    my,
+    letterSpacing,
   } = props;
 
   const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis.rows : undefined);
@@ -27,8 +53,51 @@ export function resolveCustomTypographyStyle(props: BaseTypographyProps): React.
     style.fontSize = typeof customSize === 'number' ? `${customSize}px` : customSize;
   }
 
+  if (color !== undefined) {
+    style.color = color;
+  }
+
   if (lineHeight !== undefined) {
     style.lineHeight = lineHeight;
+  }
+
+  const resolvedMargin = margin ?? m;
+  if (resolvedMargin !== undefined) {
+    style.margin = resolveSpacing(resolvedMargin);
+  }
+
+  const resolvedMt = marginTop ?? mt;
+  if (resolvedMt !== undefined) {
+    style.marginTop = resolveSpacing(resolvedMt);
+  }
+
+  const resolvedMb = marginBottom ?? mb;
+  if (resolvedMb !== undefined) {
+    style.marginBottom = resolveSpacing(resolvedMb);
+  }
+
+  const resolvedMl = marginLeft ?? ml;
+  if (resolvedMl !== undefined) {
+    style.marginLeft = resolveSpacing(resolvedMl);
+  }
+
+  const resolvedMr = marginRight ?? mr;
+  if (resolvedMr !== undefined) {
+    style.marginRight = resolveSpacing(resolvedMr);
+  }
+
+  const resolvedMx = marginInline ?? mx;
+  if (resolvedMx !== undefined) {
+    style.marginInline = resolveSpacing(resolvedMx);
+  }
+
+  const resolvedMy = marginBlock ?? my;
+  if (resolvedMy !== undefined) {
+    style.marginBlock = resolveSpacing(resolvedMy);
+  }
+
+  if (letterSpacing !== undefined) {
+    style.letterSpacing = resolveLetterSpacing(letterSpacing);
   }
 
   if (resolvedRows) {

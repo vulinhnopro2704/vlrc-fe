@@ -80,6 +80,11 @@ const styles = stylex.create({
     cursor: 'pointer',
     borderRadius: radii.sm,
     padding: '0.125rem',
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     outline: 'none',
     ':hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -296,10 +301,12 @@ export const SelectedValuesContent = ({
             }),
           };
 
+          const badgeVariant = variant === 'inverted' ? 'secondary' : variant || 'secondary';
+
           return (
             <Badge
               key={value}
-              variant={(variant as any) || 'secondary'}
+              variant={badgeVariant}
               className={cn(badgeAnimationClass)}
               style={{
                 ...badgeStyle,
@@ -320,9 +327,8 @@ export const SelectedValuesContent = ({
               <Text ellipsis tooltip sx={styles.badgeLabel}>
                 {option.label}
               </Text>
-              <div
-                role="button"
-                tabIndex={0}
+              <button
+                type="button"
                 onClick={(event) => {
                   event.stopPropagation();
                   toggleOption(value);
@@ -344,7 +350,7 @@ export const SelectedValuesContent = ({
                       : styles.badgeRemoveIcon,
                   )}
                 />
-              </div>
+              </button>
             </Badge>
           );
         })
@@ -401,7 +407,9 @@ export const SelectedValuesContent = ({
 
 export const PlaceholderContent = ({ placeholder }: { placeholder: string }) => (
   <div {...stylex.props(styles.placeholderContainer)}>
-    <span {...stylex.props(styles.placeholderText)}>{placeholder}</span>
+    <Text as="span" type="secondary" sx={styles.placeholderText}>
+      {placeholder}
+    </Text>
     <ChevronDown {...stylex.props(styles.placeholderChevron)} />
   </div>
 );
@@ -480,10 +488,10 @@ export const OptionsContent = ({
             >
               <CheckIcon {...stylex.props(styles.checkIcon)} />
             </div>
-            <span>
+            <Text as="span" type="inherit">
               (Select All
               {getAllOptions().length > 20 ? ` - ${getAllOptions().length} options` : ''})
-            </span>
+            </Text>
           </CommandItem>
         </CommandGroup>
       )}

@@ -22,7 +22,7 @@ export const SingleDate: Story = {
         <DatePicker
           value={date}
           onChange={setDate}
-          placeholder="Chọn ngày lưu giữ"
+          placeholder="Select date"
           allowClear
           width="full"
         />
@@ -39,7 +39,7 @@ export const WithInitialValue: Story = {
         <DatePicker
           value={date}
           onChange={setDate}
-          placeholder="Chọn ngày lưu giữ"
+          placeholder="Select date"
           allowClear
           width="full"
         />
@@ -59,7 +59,7 @@ export const DateRange: Story = {
         <DateRangePicker
           value={dates}
           onChange={setDates}
-          placeholder="Chọn khoảng thời gian"
+          placeholder="Select date range"
           allowClear
           width="full"
         />
@@ -77,7 +77,7 @@ export const DateTimePicker: Story = {
           value={date}
           onChange={setDate}
           showTime
-          placeholder="Chọn ngày và giờ"
+          placeholder="Select date and time"
           allowClear
           width="full"
         />
@@ -95,7 +95,7 @@ export const MonthPicker: Story = {
           pickerType="month"
           value={date}
           onChange={setDate}
-          placeholder="Chọn tháng"
+          placeholder="Select month"
           allowClear
           width="full"
         />
@@ -113,7 +113,7 @@ export const YearPicker: Story = {
           pickerType="year"
           value={date}
           onChange={setDate}
-          placeholder="Chọn năm"
+          placeholder="Select year"
           allowClear
           width="full"
         />
@@ -131,7 +131,7 @@ export const TimePickerOnly: Story = {
           pickerType="time"
           value={date}
           onChange={setDate}
-          placeholder="Chọn giờ"
+          placeholder="Select time"
           allowClear
           width="full"
         />

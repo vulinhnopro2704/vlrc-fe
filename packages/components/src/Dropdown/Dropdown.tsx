@@ -211,8 +211,12 @@ export function Dropdown({
           onCheckedChange={item.onCheckedChange}
           sx={[itemSizeStyle, item.sx]}
         >
-          {item.icon && <span {...stylex.props(styles.iconWrapper)}>{item.icon}</span>}
-          <span {...stylex.props(styles.labelFlex)}>
+          {item.icon && (
+            <Text as="span" type="inherit" {...stylex.props(styles.iconWrapper)}>
+              {item.icon}
+            </Text>
+          )}
+          <Text as="span" type="inherit" {...stylex.props(styles.labelFlex)}>
             {typeof item.label === 'string' ? (
               <Text size={textSize} weight="normal">
                 {item.label}
@@ -220,7 +224,7 @@ export function Dropdown({
             ) : (
               item.label
             )}
-          </span>
+          </Text>
         </DropdownMenuCheckboxItem>
       );
     }
@@ -230,8 +234,12 @@ export function Dropdown({
       return (
         <DropdownMenuSub key={key}>
           <DropdownMenuSubTrigger disabled={item.disabled} sx={[itemSizeStyle, item.sx]}>
-            {item.icon && <span {...stylex.props(styles.iconWrapper)}>{item.icon}</span>}
-            <span {...stylex.props(styles.labelFlex)}>
+            {item.icon && (
+              <Text as="span" type="inherit" {...stylex.props(styles.iconWrapper)}>
+                {item.icon}
+              </Text>
+            )}
+            <Text as="span" type="inherit" {...stylex.props(styles.labelFlex)}>
               {typeof item.label === 'string' ? (
                 <Text size={textSize} weight="normal">
                   {item.label}
@@ -239,7 +247,7 @@ export function Dropdown({
               ) : (
                 item.label
               )}
-            </span>
+            </Text>
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent sx={[styles.content, sizeStyle]}>
             {item.children.map(renderItem)}
@@ -256,13 +264,17 @@ export function Dropdown({
         variant={item.danger ? 'destructive' : undefined}
         sx={[itemSizeStyle, item.sx]}
         onSelect={(domEvent) => {
-          item.onClick?.({ key, domEvent: domEvent as unknown as React.MouseEvent });
+          item.onClick?.({ key, domEvent });
           menu?.onClick?.({ key });
         }}
       >
         <Flex align="center" gap={size === 'sm' ? 'xs' : 'sm'} sx={styles.labelFlex}>
-          {item.icon && <span {...stylex.props(styles.iconWrapper)}>{item.icon}</span>}
-          <span {...stylex.props(styles.labelFlex)}>
+          {item.icon && (
+            <Text as="span" type="inherit" {...stylex.props(styles.iconWrapper)}>
+              {item.icon}
+            </Text>
+          )}
+          <Text as="span" type="inherit" {...stylex.props(styles.labelFlex)}>
             {typeof item.label === 'string' ? (
               <Text size={textSize} weight="normal" type={item.danger ? 'danger' : 'default'}>
                 {item.label}
@@ -270,7 +282,7 @@ export function Dropdown({
             ) : (
               item.label
             )}
-          </span>
+          </Text>
         </Flex>
         {item.shortcut && <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>}
       </DropdownMenuItem>

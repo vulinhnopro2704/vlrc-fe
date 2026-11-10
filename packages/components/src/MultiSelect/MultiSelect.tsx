@@ -1,15 +1,14 @@
-import { type FunctionComponent, type Ref } from 'react';
+import { type FunctionComponent } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import Icons from '../Icons';
 import { colors, radii } from '../theme/tokens.stylex';
-import type { ComponentWidth } from '../theme/width';
 
 import { cn } from '../utils';
 import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { LiveRegion, OptionsContent, PlaceholderContent, SelectedValuesContent } from './renderers';
 import { useMultiSelect } from './useMultiSelect';
-import { type MultiSelectRef } from './type';
+import { type MultiSelectProps } from './type';
 
 const styles = stylex.create({
   triggerButton: {
@@ -86,34 +85,7 @@ const styles = stylex.create({
   },
 });
 
-const MultiSelect: FunctionComponent<{
-  options: any[];
-  onValueChange: (value: any[]) => void;
-  variant?: string;
-  defaultValue?: any[];
-  value?: any[];
-  placeholder?: string;
-  animation?: number;
-  animationConfig?: any;
-  maxCount?: number;
-  modalPopover?: boolean;
-  className?: string;
-  hideSelectAll?: boolean;
-  searchable?: boolean;
-  emptyIndicator?: React.ReactNode;
-  autoSize?: boolean;
-  singleLine?: boolean;
-  popoverClassName?: string;
-  disabled?: boolean;
-  responsive?: any;
-  width?: ComponentWidth;
-  minWidth?: string;
-  maxWidth?: string;
-  deduplicateOptions?: boolean;
-  resetOnDefaultValueChange?: boolean;
-  closeOnSelect?: boolean;
-  ref?: Ref<MultiSelectRef>;
-}> = ({
+const MultiSelect: FunctionComponent<MultiSelectProps> = ({
   options,
   onValueChange,
   variant,
@@ -248,7 +220,7 @@ const MultiSelect: FunctionComponent<{
                 animation={animation}
                 animationConfig={animationConfig}
                 badgeAnimationClass={badgeAnimationClass}
-                variant={variant as any}
+                variant={variant}
                 getOptionByValue={getOptionByValue}
                 toggleOption={toggleOption}
                 clearExtraOptions={clearExtraOptions}

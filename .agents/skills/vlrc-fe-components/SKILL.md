@@ -33,6 +33,17 @@ This skill provides step-by-step procedures and specifications for authoring, st
    - Icons are accessed via `Icons.<IconName>` (exported from `@vlrc-fe/components/Icons`).
    - Do not import directly from `lucide-react` across consumer applications.
 
+6. **Mobile-First & Responsive Architecture**:
+   - Base styles target compact/mobile screens (`min-width: 0`); scale up progressively via StyleX media queries or `useBreakpoint`.
+   - Ensure minimum 44×44px touch targets on mobile viewports.
+   - Guard against viewport horizontal overflow (`maxWidth: '100%'`, flexible wraps).
+
+7. **Accessibility (WCAG 2.1 AA) by Default**:
+   - Built upon Radix UI headless primitives for robust ARIA compliance and keyboard traps/focus management.
+   - High-contrast `:focus-visible` rings on all interactive elements using `colors.ring`.
+   - Comprehensive keyboard navigation (Tab, Arrow keys, Enter/Space, Esc).
+   - Screen reader friendly (aria labels on icon-only buttons, form label association, `role="alert"` for notices).
+
 ---
 
 ## 2. Common Workflows
@@ -40,14 +51,15 @@ This skill provides step-by-step procedures and specifications for authoring, st
 ### 2.1 Adding a New UI Primitive
 
 1. Create `src/ui/<component-name>.tsx`.
-2. Define static styles with `stylex.create(...)` using `colors`, `radii`, and `spacing` from `../theme/tokens.stylex`.
+2. Define static styles with `stylex.create(...)` using `colors`, `radii`, and `spacing` from `../theme/tokens.stylex`. Ensure mobile-first style definitions and minimum 44px touch targets.
 3. Reuse layout (`Flex`, `Grid`) and `Typography` (`Text`, `Title`) primitives internally.
 4. Support `sx?: stylex.StyleXStyles` and optional `className?: string`.
-5. Strict TypeScript: **0% `any`**, omit conflicting HTML attributes when extending props.
-6. Create Storybook stories in `src/ui/<component-name>.stories.tsx`.
-7. Create Vitest suite in `src/ui/<component-name>.test.tsx` with separate `describe('UI')` and `describe('Behavior')`, `it("should ...")` naming, and no magic values.
-8. Export the component and its prop types in `src/ui/index.ts` and `src/index.ts`.
-9. Run `pnpm vitest run src/ui/<component-name>.test.tsx -u` and `pnpm build` to verify tests and `.d.ts` declaration generation.
+5. Enforce A11y: Include visible `:focus-visible` ring, appropriate ARIA roles/labels, and full keyboard interaction support.
+6. Strict TypeScript: **0% `any`**, omit conflicting HTML attributes when extending props.
+7. Create Storybook stories in `src/ui/<component-name>.stories.tsx` (including responsive viewport tests).
+8. Create Vitest suite in `src/ui/<component-name>.test.tsx` with separate `describe('UI')` and `describe('Behavior')`, `it("should ...")` naming, keyboard interaction tests, and no magic values.
+9. Export the component and its prop types in `src/ui/index.ts` and `src/index.ts`.
+10. Run `pnpm vitest run src/ui/<component-name>.test.tsx -u` and `pnpm build` to verify tests and `.d.ts` declaration generation.
 
 ### 2.2 Adding a New Form Control
 
@@ -67,3 +79,4 @@ For detailed patterns, APIs, and copy-paste examples, refer to:
 - **[DataTable Composition Guide](./references/datatable.md)**: TanStack Table v8, column creators (`createSelectionColumn`, `createExpanderColumn`, `createRowActionsColumn`).
 - **[Modals & Dialogs Specification](./references/modals.md)**: `Modal`, `ConfirmModal`, and `useModalState` patterns.
 - **[Unified Icons Registry](./references/icons.md)**: Icons naming, usage, and adding new glyphs.
+- **[Accessibility & Responsive Guidelines](./references/a11y-and-responsive.md)**: WCAG 2.1 AA checklist, touch targets, keyboard navigation patterns, and StyleX mobile-first media queries.

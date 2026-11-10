@@ -12,8 +12,8 @@ export function getTextFromChildren(children: ReactNode): string {
   if (Array.isArray(children)) {
     return children.map(getTextFromChildren).join('');
   }
-  if (React.isValidElement(children) && (children.props as any)?.children) {
-    return getTextFromChildren((children.props as any).children);
+  if (React.isValidElement<{ children?: ReactNode }>(children) && children.props.children) {
+    return getTextFromChildren(children.props.children);
   }
   return '';
 }

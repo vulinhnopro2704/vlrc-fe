@@ -45,6 +45,11 @@ function FormDatePicker<TFieldValues extends FieldValues>(
     className,
     disabledDate,
     disabledTime,
+    locale,
+    numberOfMonths,
+    closeOnSelect,
+    startMonth,
+    endMonth,
   } = props;
 
   const { dateFormat, isRequired, processedRules, handleRangeChange, handleSingleChange } =
@@ -75,6 +80,11 @@ function FormDatePicker<TFieldValues extends FieldValues>(
       suffixIcon={suffixIcon}
       className={className}
       disabledDate={disabledDate}
+      locale={locale}
+      numberOfMonths={numberOfMonths}
+      closeOnSelect={closeOnSelect}
+      startMonth={startMonth}
+      endMonth={endMonth}
     />
   );
 
@@ -98,6 +108,9 @@ function FormDatePicker<TFieldValues extends FieldValues>(
       className={className}
       disabledDate={disabledDate}
       disabledTime={disabledTime}
+      locale={locale}
+      startMonth={startMonth}
+      endMonth={endMonth}
     />
   );
 

@@ -4,6 +4,7 @@ import { ChevronRight, MoreHorizontal } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { Text } from '../Typography';
 
 const styles = stylex.create({
   list: {
@@ -221,7 +222,8 @@ export interface BreadcrumbPageProps extends React.ComponentProps<'span'> {
 function BreadcrumbPage({ className, sx, ...props }: BreadcrumbPageProps) {
   const sxProps = stylex.props(styles.page, sx);
   return (
-    <span
+    <Text
+      as="span"
       data-slot="breadcrumb-page"
       role="link"
       aria-disabled="true"
@@ -285,7 +287,9 @@ function BreadcrumbEllipsis({ size: propSize, className, sx, ...props }: Breadcr
       {...props}
     >
       <MoreHorizontal {...stylex.props(iconSize)} />
-      <span className="sr-only">More</span>
+      <Text as="span" className="sr-only">
+        More
+      </Text>
     </span>
   );
 }

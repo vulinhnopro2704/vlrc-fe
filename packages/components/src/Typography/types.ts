@@ -2,6 +2,9 @@ import type React from 'react';
 import type { ElementType, ReactNode } from 'react';
 import type * as stylex from '@stylexjs/stylex';
 import type { ComponentSize } from '../theme/types';
+import type { SpacingValue } from '../theme/spacing';
+
+export type LetterSpacingValue = 'tight' | 'normal' | 'wide' | number | (string & {});
 
 /**
  * Text decoration line values with typed autocomplete and support for any custom string combination.
@@ -114,12 +117,44 @@ export interface BaseTypographyProps extends React.HTMLAttributes<HTMLElement> {
   weight?: TypographyWeight;
   /** Arbitrary custom font size in pixels or CSS units (e.g., 18 or '1.5rem') */
   customSize?: number | string;
+  /** Custom text color (CSS color string, 'inherit', or design token) */
+  color?: string;
   /** Max lines of text before truncating with ellipsis */
   lines?: number;
   /** Alias for lines */
   rows?: number;
   /** Custom line height multiplier or CSS unit (e.g., 1.4 or '24px') */
   lineHeight?: number | string;
+  /** Margin (7-tier ComponentSize 'xxs'-'xxl', number in px, or CSS string) */
+  margin?: SpacingValue;
+  /** Margin shorthand alias */
+  m?: SpacingValue;
+  /** Top margin (7-tier ComponentSize 'xxs'-'xxl', number in px, or CSS string) */
+  marginTop?: SpacingValue;
+  /** Top margin shorthand alias */
+  mt?: SpacingValue;
+  /** Bottom margin (7-tier ComponentSize 'xxs'-'xxl', number in px, or CSS string) */
+  marginBottom?: SpacingValue;
+  /** Bottom margin shorthand alias */
+  mb?: SpacingValue;
+  /** Left margin (7-tier ComponentSize 'xxs'-'xxl', number in px, or CSS string) */
+  marginLeft?: SpacingValue;
+  /** Left margin shorthand alias */
+  ml?: SpacingValue;
+  /** Right margin (7-tier ComponentSize 'xxs'-'xxl', number in px, or CSS string) */
+  marginRight?: SpacingValue;
+  /** Right margin shorthand alias */
+  mr?: SpacingValue;
+  /** Horizontal margin (7-tier ComponentSize 'xxs'-'xxl', number in px, or CSS string) */
+  marginInline?: SpacingValue;
+  /** Horizontal margin shorthand alias */
+  mx?: SpacingValue;
+  /** Vertical margin (7-tier ComponentSize 'xxs'-'xxl', number in px, or CSS string) */
+  marginBlock?: SpacingValue;
+  /** Vertical margin shorthand alias */
+  my?: SpacingValue;
+  /** Letter spacing / tracking ('tight', 'normal', 'wide', number in px, or CSS string) */
+  letterSpacing?: LetterSpacingValue;
   /** Truncate text or clamp to specified number of rows, optionally configuring tooltip */
   ellipsis?: boolean | { rows?: number; tooltip?: TypographyTooltip };
   /** Tooltip to display on hover, showing the full text or custom content */
@@ -170,6 +205,8 @@ export interface ParagraphProps extends BaseTypographyProps {
   size?: ComponentSize;
   /** Text style variant */
   variant?: ParagraphVariant;
+  /** Semantic color type */
+  type?: TextType;
   /** Bottom margin spacing */
   spacing?: ParagraphSpacing;
   /** Text alignment */
@@ -183,7 +220,8 @@ export type TextType =
   | 'success'
   | 'warning'
   | 'danger'
-  | 'info';
+  | 'info'
+  | 'inherit';
 
 export interface TextProps extends BaseTypographyProps {
   /** Semantic color type */

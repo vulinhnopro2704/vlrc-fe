@@ -70,6 +70,7 @@ export interface MultiSelectProps extends Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'animationConfig'
 > {
+  ref?: React.Ref<MultiSelectRef>;
   variant?: MultiSelectVariant;
   badgeAnimation?: 'bounce' | 'pulse' | 'wiggle' | 'fade' | 'slide' | 'none';
   /**

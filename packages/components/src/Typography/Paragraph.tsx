@@ -3,7 +3,13 @@ import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { resolveTooltipContent, renderWithTooltip } from './tooltip';
-import type { ParagraphAlign, ParagraphProps, ParagraphSpacing, ParagraphVariant } from './types';
+import type {
+  ParagraphAlign,
+  ParagraphProps,
+  ParagraphSpacing,
+  ParagraphVariant,
+  TextType,
+} from './types';
 import { resolveCustomTypographyStyle } from './utils';
 import { typographyWeightStyles } from './weightStyles';
 
@@ -51,6 +57,32 @@ const styles = stylex.create({
     lineHeight: 1.6,
     color: colors.mutedForeground,
     fontWeight: 400,
+  },
+
+  // Semantic types
+  typeDefault: {
+    color: colors.foreground,
+  },
+  typeSecondary: {
+    color: colors.mutedForeground,
+  },
+  typeMuted: {
+    color: colors.mutedForeground,
+  },
+  typeSuccess: {
+    color: '#16a34a',
+  },
+  typeWarning: {
+    color: '#ca8a04',
+  },
+  typeDanger: {
+    color: colors.destructive,
+  },
+  typeInfo: {
+    color: '#2563eb',
+  },
+  typeInherit: {
+    color: 'inherit',
   },
 
   // Spacing
@@ -128,10 +160,22 @@ const alignStyles: Record<ParagraphAlign, stylex.StyleXStyles> = {
   justify: styles.alignJustify,
 };
 
+const paragraphTypeStyles: Record<TextType, stylex.StyleXStyles> = {
+  default: styles.typeDefault,
+  secondary: styles.typeSecondary,
+  muted: styles.typeMuted,
+  success: styles.typeSuccess,
+  warning: styles.typeWarning,
+  danger: styles.typeDanger,
+  info: styles.typeInfo,
+  inherit: styles.typeInherit,
+};
+
 export const Paragraph = React.forwardRef<HTMLElement, ParagraphProps>(function Paragraph(
   {
     size = 'md',
     variant = 'default',
+    type,
     spacing = 'none',
     align = 'left',
     weight,
@@ -148,6 +192,22 @@ export const Paragraph = React.forwardRef<HTMLElement, ParagraphProps>(function 
     textDecorationColor,
     textDecorationThickness,
     textUnderlineOffset,
+    color,
+    margin,
+    m,
+    marginTop,
+    mt,
+    marginBottom,
+    mb,
+    marginLeft,
+    ml,
+    marginRight,
+    mr,
+    marginInline,
+    mx,
+    marginBlock,
+    my,
+    letterSpacing,
     as: Component = 'p',
     className,
     children,
@@ -165,6 +225,7 @@ export const Paragraph = React.forwardRef<HTMLElement, ParagraphProps>(function 
 
   const customStyle = resolveCustomTypographyStyle({
     customSize,
+    color,
     lines,
     rows,
     lineHeight,
@@ -175,12 +236,28 @@ export const Paragraph = React.forwardRef<HTMLElement, ParagraphProps>(function 
     textDecorationColor,
     textDecorationThickness,
     textUnderlineOffset,
+    margin,
+    m,
+    marginTop,
+    mt,
+    marginBottom,
+    mb,
+    marginLeft,
+    ml,
+    marginRight,
+    mr,
+    marginInline,
+    mx,
+    marginBlock,
+    my,
+    letterSpacing,
   });
 
   const sxProps = stylex.props(
     styles.base,
     currentSizeStyle,
     variantStyles[variant],
+    type && paragraphTypeStyles[type],
     spacingStyles[spacing],
     alignStyles[align],
     weight && typographyWeightStyles[weight],

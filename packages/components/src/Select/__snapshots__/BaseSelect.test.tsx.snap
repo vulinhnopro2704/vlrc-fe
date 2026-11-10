@@ -60,7 +60,7 @@ exports[`BaseSelect > UI > should match snapshot when disabled 1`] = `
       data-size="md"
       data-slot="typography-text"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:95; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
       data-type="default"
       data-weight="regular"
     >
@@ -104,7 +104,7 @@ exports[`BaseSelect > UI > should match snapshot with long text selected in trig
       data-size="md"
       data-slot="typography-text"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:95; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
       data-type="default"
       data-weight="regular"
     >

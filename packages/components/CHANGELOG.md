@@ -1,5 +1,30 @@
 # Changelog
 
+## [2.8.0] - 2026-11-10
+
+### Minor Changes
+
+- **ConfirmModal Polish & A11y**:
+  - Balanced modal layout and eliminated excessive vertical whitespace in footer and content container.
+  - Aligned title and status icon with body typography.
+  - Added explicit `:focus-visible` ring token on close button and WCAG 2.1 AA keyboard navigation.
+  - Added dedicated Vitest test suite and snapshot for `ConfirmModal`.
+- **DateRangePicker & Calendar Refinements**:
+  - Dual calendar view: `DateRangePicker` now renders two sequential months (`numberOfMonths={2}`) for seamless multi-month and cross-year range selection.
+  - Fixed 3rd-click range reset: configured `mode="range"` with `min={1}` and `resetOnSelect`, cleanly restarting range selection on subsequent clicks without UI distortion.
+  - Controlled popover behavior: Popover remains open across first and second selections and closes cleanly on click outside (or when configured).
+  - Extended calendar year bounds: Default `startMonth` (-100 years) and `endMonth` (+50 years) allow selecting future dates well beyond the current year.
+  - Default international localization: Changed calendar weekday and month labels to international English defaults, dynamically configurable via `locale` prop.
+  - Cleaned hardcoded Vietnamese labels in `MonthPickerPanel` and Storybook stories.
+- **Typography Primitives Expansion**:
+  - Extended `Title`, `Paragraph`, and `Text` with spacing props (`marginTop`, `marginBottom`, `marginLeft`, `marginRight`, `margin`, `marginInline`, `marginBlock`) and shorthand aliases (`mt`, `mb`, `ml`, `mr`, `m`, `mx`, `my`) mapped to the 7-tier token scale (`xxs`-`xxl`).
+  - Added typography fine-tuning props: `letterSpacing` (`tighter` through `widest`) and `lineHeight` (`none` through `loose`).
+  - Audited and refactored native HTML tags (`<span>`, `<p>`, `<a>`) across composite components to official Typography primitives.
+- **AvatarGroup Overflow Popover**:
+  - Hovering the `+X` overflow counter now triggers a responsive `Popover` previewing all truncated avatars in a flex-wrap container.
+- **Command Palette Spacing**:
+  - Restored proper padding, min-height, and separator vertical margins for items and section headings in `Command`.
+
 ## [2.7.0] - 2026-11-09
 
 ### Minor Changes

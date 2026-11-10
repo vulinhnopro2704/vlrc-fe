@@ -6,7 +6,7 @@ exports[`Command > should render command with input, groups, and items 1`] = `
     class="command__styles.root x78zum5 xdt5ytf xh8yej3 x5yr21d xb3r6kr xsda711 xa4jey1 x5e7vtp"
     cmdk-root=""
     data-slot="command"
-    data-style-src="@vlrc-fe/components:src/ui/command.tsx:9"
+    data-style-src="@vlrc-fe/components:src/ui/command.tsx:10"
     tabindex="-1"
   >
     <label
@@ -18,12 +18,12 @@ exports[`Command > should render command with input, groups, and items 1`] = `
     <div
       class="command__styles.inputWrapper x78zum5 xwaiz5r x6s0dn4 x13z6uf9 xso031l x1q0q8m5 x1c03eaz x1ryrjj2"
       data-slot="command-input-wrapper"
-      data-style-src="@vlrc-fe/components:src/ui/command.tsx:24"
+      data-style-src="@vlrc-fe/components:src/ui/command.tsx:25"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-search command__styles.searchIcon xcdlrvm x1l36t39 x2lah0s xbyyjgo x84br7x"
-        data-style-src="@vlrc-fe/components:src/ui/command.tsx:34"
+        data-style-src="@vlrc-fe/components:src/ui/command.tsx:35"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -53,7 +53,7 @@ exports[`Command > should render command with input, groups, and items 1`] = `
         class="command__styles.input x78zum5 xk8t5le xh8yej3 xsda711 xjbqb8w xc342km xkpwil5 x1a2a7pz x84br7x x1guo4m0 x1s07b3s xijokvz"
         cmdk-input=""
         data-slot="command-input"
-        data-style-src="@vlrc-fe/components:src/ui/command.tsx:41"
+        data-style-src="@vlrc-fe/components:src/ui/command.tsx:42"
         id="radix-_r_2_"
         placeholder="Type a command or search..."
         role="combobox"
@@ -67,7 +67,7 @@ exports[`Command > should render command with input, groups, and items 1`] = `
       class="command__styles.list xuyqlj2 x6ikm8r x1odjw0f x78pyy4"
       cmdk-list=""
       data-slot="command-list"
-      data-style-src="@vlrc-fe/components:src/ui/command.tsx:59"
+      data-style-src="@vlrc-fe/components:src/ui/command.tsx:60"
       id="radix-_r_0_"
       role="listbox"
       tabindex="-1"
@@ -79,7 +79,7 @@ exports[`Command > should render command with input, groups, and items 1`] = `
           class="command__styles.group xb3r6kr x78pyy4 x84br7x"
           cmdk-group=""
           data-slot="command-group"
-          data-style-src="@vlrc-fe/components:src/ui/command.tsx:71"
+          data-style-src="@vlrc-fe/components:src/ui/command.tsx:72"
           data-value="Suggestions"
           role="presentation"
         >
@@ -88,7 +88,16 @@ exports[`Command > should render command with input, groups, and items 1`] = `
             cmdk-group-heading=""
             id="radix-_r_4_"
           >
-            Suggestions
+            <div
+              class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault weightStyles__styles.regular command__styles.groupHeading x97vtpp x1bilvtl xboafo0 xk50ysn xw3nh4a x87ps6o"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/command.tsx:77"
+              data-type="default"
+              data-weight="regular"
+            >
+              Suggestions
+            </div>
           </div>
           <div
             aria-labelledby="radix-_r_4_"
@@ -98,12 +107,12 @@ exports[`Command > should render command with input, groups, and items 1`] = `
             <div
               aria-disabled="false"
               aria-selected="true"
-              class="command__styles.item x1n2onr6 x78zum5 x6s0dn4 x13z6uf9 x1q0v2j7 x97vtpp x1bilvtl xkpwil5 x1a2a7pz x87ps6o x1ypdohk x84br7x xs2xxs2 x1g2r6go x9p52ec x10ubyu6 xaqnwrm xijokvz"
+              class="command__styles.item x1n2onr6 x78zum5 x6s0dn4 x13z6uf9 x1q0v2j7 x97vtpp x1bilvtl x1e5nzy4 x1in32aq xkpwil5 x1a2a7pz x87ps6o x1ypdohk x84br7x xs2xxs2 x1g2r6go x9p52ec x10ubyu6 xaqnwrm xijokvz"
               cmdk-item=""
               data-disabled="false"
               data-selected="true"
               data-slot="command-item"
-              data-style-src="@vlrc-fe/components:src/ui/command.tsx:82"
+              data-style-src="@vlrc-fe/components:src/ui/command.tsx:92"
               data-value="Calendar"
               id="radix-_r_5_"
               role="option"
@@ -113,12 +122,12 @@ exports[`Command > should render command with input, groups, and items 1`] = `
             <div
               aria-disabled="false"
               aria-selected="false"
-              class="command__styles.item x1n2onr6 x78zum5 x6s0dn4 x13z6uf9 x1q0v2j7 x97vtpp x1bilvtl xkpwil5 x1a2a7pz x87ps6o x1ypdohk x84br7x xs2xxs2 x1g2r6go x9p52ec x10ubyu6 xaqnwrm xijokvz"
+              class="command__styles.item x1n2onr6 x78zum5 x6s0dn4 x13z6uf9 x1q0v2j7 x97vtpp x1bilvtl x1e5nzy4 x1in32aq xkpwil5 x1a2a7pz x87ps6o x1ypdohk x84br7x xs2xxs2 x1g2r6go x9p52ec x10ubyu6 xaqnwrm xijokvz"
               cmdk-item=""
               data-disabled="false"
               data-selected="false"
               data-slot="command-item"
-              data-style-src="@vlrc-fe/components:src/ui/command.tsx:82"
+              data-style-src="@vlrc-fe/components:src/ui/command.tsx:92"
               data-value="Calculator"
               id="radix-_r_6_"
               role="option"
@@ -128,10 +137,10 @@ exports[`Command > should render command with input, groups, and items 1`] = `
           </div>
         </div>
         <div
-          class="command__styles.separator xjm9jq1 x15e8ic6 xwefxjc xc342km"
+          class="command__styles.separator xjm9jq1 x15e8ic6 x8atrpe xwefxjc xc342km"
           cmdk-separator=""
           data-slot="command-separator"
-          data-style-src="@vlrc-fe/components:src/ui/command.tsx:76"
+          data-style-src="@vlrc-fe/components:src/ui/command.tsx:85"
           role="separator"
         />
       </div>

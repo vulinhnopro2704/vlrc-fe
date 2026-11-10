@@ -4,6 +4,7 @@ import { SearchIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog';
+import { Text } from '../Typography';
 
 const styles = stylex.create({
   root: {
@@ -73,9 +74,18 @@ const styles = stylex.create({
     padding: '0.25rem',
     color: colors.foreground,
   },
+  groupHeading: {
+    paddingInline: '0.5rem',
+    paddingBlock: '0.375rem',
+    fontSize: '0.75rem',
+    fontWeight: 500,
+    color: colors.mutedForeground,
+    userSelect: 'none',
+  },
   separator: {
     height: 1,
     marginInline: '-0.25rem',
+    marginBlock: '0.25rem',
     backgroundColor: colors.border,
     borderWidth: 0,
   },
@@ -87,6 +97,8 @@ const styles = stylex.create({
     borderRadius: radii.sm,
     paddingInline: '0.5rem',
     paddingBlock: '0.375rem',
+    marginBlock: '0.125rem',
+    minHeight: '2rem',
     fontSize: '0.875rem',
     outline: 'none',
     userSelect: 'none',
@@ -228,15 +240,24 @@ export interface CommandGroupProps extends React.ComponentProps<typeof CommandPr
   sx?: stylex.StyleXStyles;
 }
 
-function CommandGroup({ className, sx, ...props }: CommandGroupProps) {
+function CommandGroup({ className, sx, heading, children, ...props }: CommandGroupProps) {
   const sxProps = stylex.props(styles.group, sx);
+  const styledHeading = heading ? (
+    <Text as="div" sx={styles.groupHeading}>
+      {heading}
+    </Text>
+  ) : undefined;
+
   return (
     <CommandPrimitive.Group
       data-slot="command-group"
+      heading={styledHeading}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
-    />
+    >
+      {children}
+    </CommandPrimitive.Group>
   );
 }
 
@@ -281,8 +302,11 @@ export interface CommandShortcutProps extends React.ComponentProps<'span'> {
 function CommandShortcut({ className, sx, ...props }: CommandShortcutProps) {
   const sxProps = stylex.props(styles.shortcut, sx);
   return (
-    <span
+    <Text
+      as="span"
       data-slot="command-shortcut"
+      size="xs"
+      type="secondary"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}

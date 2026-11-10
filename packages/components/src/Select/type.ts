@@ -57,7 +57,7 @@ export interface BaseSingleSelectProps<
   T extends SelectValue = SelectValue,
 > extends BaseSelectCommonProps<T> {
   value?: T | null;
-  onChange?: (value: T | null) => void;
+  onChange?: (value: T | null | undefined) => void;
   isMulti?: false;
 }
 

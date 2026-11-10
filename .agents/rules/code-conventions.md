@@ -91,11 +91,73 @@ To eliminate duplicate styling code and maintain design consistency across the r
 
 ## 6. Component Authoring Standards
 
-1. **Accessibility**:
+1. **Accessibility Foundation**:
    - Maintain full ARIA accessibility by extending Radix UI headless primitives whenever possible.
-   - Implement keyboard navigation for interactive widgets (arrows, Home, End, Enter, Escape).
+   - Implement complete keyboard navigation for interactive widgets (arrows, Home, End, Enter, Escape, Space).
 2. **Form Integration**:
    - Form controls must integrate through `FormBase` and accept `control`, `name`, `rules`, and optional `label`/`description`.
 3. **Icons**:
    - Consumer applications must use `Icons.<Name>` from `@vlrc-fe/components/Icons`.
    - Direct `lucide-react` imports are reserved for package internal primitives.
+
+---
+
+## 7. Responsive & Mobile-First Architecture
+
+All components in `@vlrc-fe/components` must be designed and built **mobile-first**:
+
+1. **Mobile-First Progressive Enhancement**:
+   - Base styles must represent mobile viewports (`min-width: 0`).
+   - Use `min-width` media queries to progressively enhance styles for larger screens.
+   - Breakpoint reference scale:
+     - `xs`: `< 576px` (Mobile compact, base default)
+     - `sm`: `>= 576px` (`@media (min-width: 576px)`)
+     - `md`: `>= 768px` (`@media (min-width: 768px)`) (Tablet)
+     - `lg`: `>= 992px` (`@media (min-width: 992px)`) (Desktop)
+     - `xl`: `>= 1200px` (`@media (min-width: 1200px)`) (Wide desktop)
+     - `xxl`: `>= 1600px` (`@media (min-width: 1600px)`) (Ultrawide)
+
+2. **StyleX Media Query Pattern**:
+   - In Meta StyleX, media queries are declared per CSS property:
+     ```tsx
+     const styles = stylex.create({
+       container: {
+         flexDirection: {
+           default: 'column',
+           '@media (min-width: 768px)': 'row',
+         },
+         padding: {
+           default: spacing.sm,
+           '@media (min-width: 768px)': spacing.md,
+         },
+       },
+     });
+     ```
+
+3. **Touch Targets & Mobile Usability**:
+   - Interactive elements (buttons, inputs, toggles, select triggers, icon buttons) must maintain an accessible touch target size (minimum 44×44px or padded hit bounds) on touch viewports.
+   - Prevent horizontal viewport clipping: avoid static pixel widths (`width: 500px`), prefer `maxWidth: '100%'`, `width: '100%'`, and appropriate flex/grid wrapping (`wrap?: boolean`).
+   - Complex overlays (Modals, Dialogs, Drawers, Sheets, Sidebars) must adapt to mobile viewports (e.g., bottom drawer or full-width sheet on mobile vs floating dialog/sidebar on desktop).
+
+---
+
+## 8. Comprehensive Accessibility (A11y) Standards (WCAG 2.1 AA)
+
+All components must comply with **WCAG 2.1 Level AA** standards:
+
+1. **Keyboard Operability & Focus Management**:
+   - Every interactive control must be reachable via the `Tab` key and operable without a mouse.
+   - Modals, Dialogs, and Sheets must trap focus while open, return focus upon dismissal, and close on `Escape`.
+   - Menus, Selects, Radios, and Tabs must support standard roving focus via Arrow keys (`ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight`, `Home`, `End`).
+   - Every focusable component MUST have a visible, high-contrast `:focus-visible` indicator (using `colors.ring`). Never use `outline: 'none'` without an explicit focus-visible alternative.
+
+2. **Semantic Structure & ARIA Contracts**:
+   - Use semantic HTML elements (`<button>`, `<input>`, `<nav>`, `<aside>`, `<dialog>`) or Radix UI headless primitives.
+   - Any icon-only button or control lacking visible text must provide an explicit `aria-label` or visually hidden text.
+   - Form inputs must be linked to their visible labels via `id` / `htmlFor` or `aria-labelledby`, and error/helper messages linked via `aria-describedby`.
+   - Reflect dynamic state using standard ARIA attributes: `aria-expanded`, `aria-selected`, `aria-checked`, `aria-disabled`, `aria-invalid`, `aria-required`.
+   - Announce dynamic updates (toasts, alerts, search counts) using `role="alert"`, `role="status"`, or `aria-live="polite"`.
+
+3. **Color Contrast & Reduced Motion**:
+   - Maintain minimum color contrast ratio of 4.5:1 for standard text and 3:1 for large text/icons against their background.
+   - Support `prefers-reduced-motion: reduce` for animations, spinners, and transitions to ensure accessible experiences for users with vestibular disorders.

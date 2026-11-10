@@ -5,6 +5,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Separator } from './separator';
+import { Paragraph, Text } from '../Typography';
 
 const styles = stylex.create({
   group: {
@@ -220,7 +221,9 @@ export interface ItemTitleProps extends React.ComponentProps<'div'> {
 function ItemTitle({ className, sx, ...props }: ItemTitleProps) {
   const styleProps = stylex.props(styles.title, sx);
   return (
-    <div
+    <Text
+      as="div"
+      weight="medium"
       data-slot="item-title"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -236,7 +239,10 @@ export interface ItemDescriptionProps extends React.ComponentProps<'p'> {
 function ItemDescription({ className, sx, ...props }: ItemDescriptionProps) {
   const styleProps = stylex.props(styles.description, sx);
   return (
-    <p
+    <Paragraph
+      as="p"
+      size="sm"
+      type="secondary"
       data-slot="item-description"
       {...styleProps}
       className={cn(styleProps.className, className)}

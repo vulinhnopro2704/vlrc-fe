@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../../theme/tokens.stylex';
 import { ScrollArea } from '../../ui/scroll-area';
+import { Text } from '../../Typography';
 import type { DisabledTime, TimeConfig } from './types';
 
 const styles = stylex.create({
@@ -158,19 +159,25 @@ export function TimePicker({
     <div {...stylex.props(styles.picker)}>
       {showHour && (
         <div {...stylex.props(styles.headerGroup)}>
-          <span {...stylex.props(styles.headerLabel)}>Hour</span>
+          <Text as="span" size="xs" weight="medium" sx={styles.headerLabel}>
+            Hour
+          </Text>
           {renderTimeColumn('hour', 24, hourStep, hours, disabledHours)}
         </div>
       )}
       {showMinute && (
         <div {...stylex.props(styles.headerGroup)}>
-          <span {...stylex.props(styles.headerLabel)}>Minute</span>
+          <Text as="span" size="xs" weight="medium" sx={styles.headerLabel}>
+            Minute
+          </Text>
           {renderTimeColumn('minute', 60, minuteStep, minutes, disabledMinutes)}
         </div>
       )}
       {showSecond && (
         <div {...stylex.props(styles.headerGroup)}>
-          <span {...stylex.props(styles.headerLabel)}>Second</span>
+          <Text as="span" size="xs" weight="medium" sx={styles.headerLabel}>
+            Second
+          </Text>
           {renderTimeColumn('second', 60, secondStep, seconds, disabledSeconds)}
         </div>
       )}

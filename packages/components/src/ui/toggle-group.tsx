@@ -85,7 +85,7 @@ function ToggleGroup({
       data-slot="toggle-group"
       data-variant={variant}
       data-size={size}
-      {...(props as any)}
+      {...(props as React.ComponentProps<typeof ToggleGroupPrimitive.Root>)}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
     >
@@ -102,7 +102,7 @@ export interface ToggleGroupItemProps extends Omit<
 > {
   size?: ComponentSize;
   variant?: ToggleVariant;
-  sx?: any;
+  sx?: stylex.StyleXStyles;
 }
 
 function ToggleGroupItem({

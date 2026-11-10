@@ -3,6 +3,7 @@ import type { Table } from '@tanstack/react-table';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
+import { Text } from '../../Typography';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -91,9 +92,9 @@ export const DataTablePagination = <TData,>({
           Previous
         </Button>
 
-        <span {...stylex.props(styles.pageNumber)}>
+        <Text as="span" size="sm" sx={styles.pageNumber}>
           {pageIndex + 1} / {Math.max(1, pageCount)}
-        </span>
+        </Text>
 
         <Button
           variant="outline"

@@ -6,13 +6,13 @@ exports[`InputGroup > UI > should match snapshot for lg size 1`] = `
     class="input-group__styles.group x1n2onr6 x78zum5 xh8yej3 xeuugli x6s0dn4 xsda711 xmkeg23 x1y0btm7 xsyin8q x1mlyrtw x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz xb3r6kr x1eqqpix xy7i05z input-group__styles.sizeLg xgbkey0 x1jchvi3"
     data-size="lg"
     data-slot="input-group"
-    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:10; @vlrc-fe/components:src/ui/input-group.tsx:39"
+    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:11; @vlrc-fe/components:src/ui/input-group.tsx:40"
     role="group"
   >
     <input
       class="input-group__styles.innerInput x98rzlu xeuugli x5yr21d xc342km xjbqb8w x84br7x x7ai2fz x1yroua3 x1qlqyl8 x15bjb6t x1a2a7pz x1gnnqk1 x1guo4m0 x1s07b3s"
       data-slot="input-group-control"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:74"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:75"
       placeholder="Search or enter query..."
     />
   </div>
@@ -25,13 +25,13 @@ exports[`InputGroup > UI > should match snapshot for md size 1`] = `
     class="input-group__styles.group x1n2onr6 x78zum5 xh8yej3 xeuugli x6s0dn4 xsda711 xmkeg23 x1y0btm7 xsyin8q x1mlyrtw x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz xb3r6kr x1eqqpix xy7i05z input-group__styles.sizeMd xsejkeq xkpwil5"
     data-size="md"
     data-slot="input-group"
-    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:10; @vlrc-fe/components:src/ui/input-group.tsx:35"
+    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:11; @vlrc-fe/components:src/ui/input-group.tsx:36"
     role="group"
   >
     <input
       class="input-group__styles.innerInput x98rzlu xeuugli x5yr21d xc342km xjbqb8w x84br7x x7ai2fz x1yroua3 x1qlqyl8 x15bjb6t x1a2a7pz x1gnnqk1 x1guo4m0 x1s07b3s"
       data-slot="input-group-control"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:74"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:75"
       placeholder="Search or enter query..."
     />
   </div>
@@ -44,13 +44,13 @@ exports[`InputGroup > UI > should match snapshot for sm size 1`] = `
     class="input-group__styles.group x1n2onr6 x78zum5 xh8yej3 xeuugli x6s0dn4 xsda711 xmkeg23 x1y0btm7 xsyin8q x1mlyrtw x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz xb3r6kr x1eqqpix xy7i05z input-group__styles.sizeSm x1in32aq x1dcheo9"
     data-size="sm"
     data-slot="input-group"
-    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:10; @vlrc-fe/components:src/ui/input-group.tsx:31"
+    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:11; @vlrc-fe/components:src/ui/input-group.tsx:32"
     role="group"
   >
     <input
       class="input-group__styles.innerInput x98rzlu xeuugli x5yr21d xc342km xjbqb8w x84br7x x7ai2fz x1yroua3 x1qlqyl8 x15bjb6t x1a2a7pz x1gnnqk1 x1guo4m0 x1s07b3s"
       data-slot="input-group-control"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:74"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:75"
       placeholder="Search or enter query..."
     />
   </div>
@@ -63,19 +63,22 @@ exports[`InputGroup > UI > should match snapshot in default state 1`] = `
     class="input-group__styles.group x1n2onr6 x78zum5 xh8yej3 xeuugli x6s0dn4 xsda711 xmkeg23 x1y0btm7 xsyin8q x1mlyrtw x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz xb3r6kr x1eqqpix xy7i05z input-group__styles.sizeMd xsejkeq xkpwil5"
     data-size="md"
     data-slot="input-group"
-    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:10; @vlrc-fe/components:src/ui/input-group.tsx:35"
+    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:11; @vlrc-fe/components:src/ui/input-group.tsx:36"
     role="group"
   >
     <div
       class="input-group__styles.addon x78zum5 x6s0dn4 xl56j7k x87ps6o x2lah0s x7ai2fz xw3nh4a input-group__styles.addonStart x1clqncf"
       data-align="inline-start"
       data-slot="input-group-addon"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:57; @vlrc-fe/components:src/ui/input-group.tsx:66"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:58; @vlrc-fe/components:src/ui/input-group.tsx:67"
     >
       <span
-        class="input-group__styles.text x3nfvp2 x6s0dn4 xw3nh4a xuxw1ft x1qlqyl8"
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm input-group__styles.text x3nfvp2 x6s0dn4 xw3nh4a xuxw1ft x1qlqyl8"
+        data-size="sm"
         data-slot="input-group-text"
-        data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:118"
+        data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:119"
+        data-type="secondary"
+        data-weight="regular"
       >
         https://
       </span>
@@ -83,19 +86,22 @@ exports[`InputGroup > UI > should match snapshot in default state 1`] = `
     <input
       class="input-group__styles.innerInput x98rzlu xeuugli x5yr21d xc342km xjbqb8w x84br7x x7ai2fz x1yroua3 x1qlqyl8 x15bjb6t x1a2a7pz x1gnnqk1 x1guo4m0 x1s07b3s"
       data-slot="input-group-control"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:74"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:75"
       placeholder="Search or enter query..."
     />
     <div
       class="input-group__styles.addon x78zum5 x6s0dn4 xl56j7k x87ps6o x2lah0s x7ai2fz xw3nh4a input-group__styles.addonEnd x1sjo555"
       data-align="inline-end"
       data-slot="input-group-addon"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:57; @vlrc-fe/components:src/ui/input-group.tsx:69"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:58; @vlrc-fe/components:src/ui/input-group.tsx:70"
     >
       <span
-        class="input-group__styles.text x3nfvp2 x6s0dn4 xw3nh4a xuxw1ft x1qlqyl8"
+        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm input-group__styles.text x3nfvp2 x6s0dn4 xw3nh4a xuxw1ft x1qlqyl8"
+        data-size="sm"
         data-slot="input-group-text"
-        data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:118"
+        data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:119"
+        data-type="secondary"
+        data-weight="regular"
       >
         .com
       </span>
@@ -111,13 +117,13 @@ exports[`InputGroup > UI > should match snapshot when disabled or invalid 1`] = 
     data-disabled=""
     data-size="md"
     data-slot="input-group"
-    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:10; @vlrc-fe/components:src/ui/input-group.tsx:35; @vlrc-fe/components:src/ui/input-group.tsx:43"
+    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:11; @vlrc-fe/components:src/ui/input-group.tsx:36; @vlrc-fe/components:src/ui/input-group.tsx:44"
     role="group"
   >
     <input
       class="input-group__styles.innerInput x98rzlu xeuugli x5yr21d xc342km xjbqb8w x84br7x x7ai2fz x1yroua3 x1qlqyl8 x15bjb6t x1a2a7pz x1gnnqk1 x1guo4m0 x1s07b3s"
       data-slot="input-group-control"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:74"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:75"
       disabled=""
       placeholder="Search or enter query..."
     />
@@ -132,13 +138,13 @@ exports[`InputGroup > UI > should match snapshot when disabled or invalid 2`] = 
     data-invalid=""
     data-size="md"
     data-slot="input-group"
-    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:10; @vlrc-fe/components:src/ui/input-group.tsx:35; @vlrc-fe/components:src/ui/input-group.tsx:48"
+    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:11; @vlrc-fe/components:src/ui/input-group.tsx:36; @vlrc-fe/components:src/ui/input-group.tsx:49"
     role="group"
   >
     <input
       class="input-group__styles.innerInput x98rzlu xeuugli x5yr21d xc342km xjbqb8w x84br7x x7ai2fz x1yroua3 x1qlqyl8 x15bjb6t x1a2a7pz x1gnnqk1 x1guo4m0 x1s07b3s"
       data-slot="input-group-control"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:74"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:75"
       placeholder="Search or enter query..."
     />
   </div>
@@ -151,26 +157,26 @@ exports[`InputGroup > UI > should match snapshot with button and textarea 1`] = 
     class="input-group__styles.group x1n2onr6 x78zum5 xh8yej3 xeuugli x6s0dn4 xsda711 xmkeg23 x1y0btm7 xsyin8q x1mlyrtw x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz xb3r6kr x1eqqpix xy7i05z input-group__styles.sizeMd xsejkeq xkpwil5"
     data-size="md"
     data-slot="input-group"
-    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:10; @vlrc-fe/components:src/ui/input-group.tsx:35"
+    data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:11; @vlrc-fe/components:src/ui/input-group.tsx:36"
     role="group"
   >
     <textarea
       class="input-group__styles.innerTextarea x98rzlu xeuugli xc342km xjbqb8w x84br7x x7ai2fz x1xsmjz1 x1qlqyl8 x1evy7pa x1a2a7pz x1gnnqk1 xtt52l0 x1guo4m0 x1s07b3s"
       data-slot="input-group-control"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:96"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:97"
       placeholder="Search or enter query..."
     />
     <div
       class="input-group__styles.addon x78zum5 x6s0dn4 xl56j7k x87ps6o x2lah0s x7ai2fz xw3nh4a input-group__styles.addonEnd x1sjo555"
       data-align="inline-end"
       data-slot="input-group-addon"
-      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:57; @vlrc-fe/components:src/ui/input-group.tsx:69"
+      data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:58; @vlrc-fe/components:src/ui/input-group.tsx:70"
     >
       <button
         class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeXs xb8l8e1 x1q0v2j7 xx7b8my xvpgqt4 xboafo0 input-group__styles.button xiiczor x1gnnqk1"
         data-size="xs"
         data-slot="input-group-button"
-        data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:127"
+        data-style-src="@vlrc-fe/components:src/ui/input-group.tsx:128"
         data-variant="ghost"
         type="button"
       >

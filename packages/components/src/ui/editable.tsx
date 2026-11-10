@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
+import { Text } from '../Typography';
 
 interface EditableContextValue {
   value: string;
@@ -283,8 +284,10 @@ function EditablePreview({
   );
 
   return (
-    <span
+    <Text
+      as="span"
       data-slot="editable-preview"
+      type="inherit"
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
       {...sxProps}
@@ -292,7 +295,7 @@ function EditablePreview({
       {...props}
     >
       {isEmpty ? placeholder : value}
-    </span>
+    </Text>
   );
 }
 

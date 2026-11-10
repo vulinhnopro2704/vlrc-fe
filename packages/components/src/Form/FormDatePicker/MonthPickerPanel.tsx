@@ -4,19 +4,19 @@ import Icons from '../../Icons';
 import { colors, radii, spacing } from '../../theme/tokens.stylex';
 import { Text } from '../../Typography';
 
-const MONTH_LABELS = [
-  'Tháng 1',
-  'Tháng 2',
-  'Tháng 3',
-  'Tháng 4',
-  'Tháng 5',
-  'Tháng 6',
-  'Tháng 7',
-  'Tháng 8',
-  'Tháng 9',
-  'Tháng 10',
-  'Tháng 11',
-  'Tháng 12',
+const DEFAULT_MONTH_LABELS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
 const styles = stylex.create({
@@ -111,6 +111,7 @@ export interface MonthPickerPanelProps {
   onChange: (date: Date) => void;
   disabledDate?: (date: Date) => boolean;
   onYearClick?: (year: number) => void;
+  locale?: any;
 }
 
 export function MonthPickerPanel({
@@ -118,6 +119,7 @@ export function MonthPickerPanel({
   onChange,
   disabledDate,
   onYearClick,
+  locale,
 }: MonthPickerPanelProps) {
   const initialYear = value ? value.getFullYear() : new Date().getFullYear();
   const [viewYear, setViewYear] = useState<number>(initialYear);
@@ -140,6 +142,15 @@ export function MonthPickerPanel({
     onChange(newDate);
   };
 
+  const getMonthLabel = (index: number) => {
+    if (locale?.localize?.month) {
+      return locale.localize.month(index, { width: 'abbreviated' });
+    }
+    return DEFAULT_MONTH_LABELS[index];
+  };
+
+  const yearTitle = locale?.code?.startsWith('vi') ? `Năm ${viewYear}` : String(viewYear);
+
   return (
     <div data-slot="month-picker-panel" {...stylex.props(styles.panel)}>
       <div {...stylex.props(styles.header)}>
@@ -158,7 +169,7 @@ export function MonthPickerPanel({
           {...stylex.props(styles.yearTitleBtn)}
         >
           <Text weight="semibold" size="sm">
-            Năm {viewYear}
+            {yearTitle}
           </Text>
         </button>
 
@@ -173,7 +184,8 @@ export function MonthPickerPanel({
       </div>
 
       <div {...stylex.props(styles.grid)}>
-        {MONTH_LABELS.map((label, index) => {
+        {DEFAULT_MONTH_LABELS.map((_, index) => {
+          const label = getMonthLabel(index);
           const isSelected = selectedYear === viewYear && selectedMonth === index;
           const monthDate = new Date(viewYear, index, 1);
           const isDisabled = disabledDate ? disabledDate(monthDate) : false;

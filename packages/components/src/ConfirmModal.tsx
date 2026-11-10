@@ -1,10 +1,11 @@
-import type React from 'react';
-import { type ReactNode, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from './theme/tokens.stylex';
 import type { ComponentSize } from './theme/types';
 import Icons from './Icons';
 import { Title, Text } from './Typography';
+import { Button } from './ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from './ui/dialog';
 
 const spin = stylex.keyframes({
   from: { transform: 'rotate(0deg)' },
@@ -12,43 +13,19 @@ const spin = stylex.keyframes({
 });
 
 const styles = stylex.create({
-  container: {
-    position: 'fixed',
-    inset: 0,
-    zIndex: 10000,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backdrop: {
-    position: 'absolute',
-    inset: 0,
-    zIndex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    transitionProperty: 'opacity',
-    transitionDuration: '200ms',
-  },
-  backdropOpen: {
-    opacity: 1,
-  },
-  backdropClosed: {
-    opacity: 0,
-  },
   dialog: {
-    position: 'relative',
-    zIndex: 2,
-    marginInline: '1rem',
     width: '100%',
     borderRadius: radii.lg,
     backgroundColor: 'var(--background, #ffffff)',
     color: 'var(--foreground, #0f172a)',
-    padding: '1.25rem 1.5rem',
+    padding: '1.5rem',
     boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
-    transitionProperty: 'transform, opacity',
-    transitionDuration: '200ms',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.25rem',
   },
   sizeXxs: { maxWidth: 320 },
   sizeXs: { maxWidth: 380 },
@@ -57,14 +34,6 @@ const styles = stylex.create({
   sizeLg: { maxWidth: 640 },
   sizeXl: { maxWidth: 768 },
   sizeXxl: { maxWidth: 960 },
-  dialogOpen: {
-    transform: 'translateY(0) scale(1)',
-    opacity: 1,
-  },
-  dialogClosed: {
-    transform: 'translateY(1.25rem) scale(0.95)',
-    opacity: 0,
-  },
   closeBtn: {
     position: 'absolute',
     right: '1rem',
@@ -78,9 +47,15 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    outline: 'none',
+    transition: 'background-color 0.15s ease, color 0.15s ease',
     ':hover': {
       backgroundColor: colors.accent,
       color: colors.foreground,
+    },
+    ':focus-visible': {
+      outline: '2px solid var(--ring)',
+      outlineOffset: '2px',
     },
     ':disabled': {
       cursor: 'not-allowed',
@@ -98,7 +73,7 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
-    marginTop: 0,
+    paddingTop: '0.125rem',
   },
   body: {
     minWidth: 0,
@@ -119,10 +94,10 @@ const styles = stylex.create({
     color: colors.mutedForeground,
   },
   footer: {
-    marginTop: '1.25rem',
     display: 'flex',
     justifyContent: 'flex-end',
     gap: '0.625rem',
+    marginTop: 0,
   },
   cancelBtn: {
     borderRadius: radii.md,
@@ -314,23 +289,6 @@ export function ConfirmModal({
   const resolvedMessage = message ?? description;
   const resolvedLoadingText = loadingText ?? processingText ?? 'Processing...';
 
-  const [isRendered, setIsRendered] = useState(isModalOpen);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dialogRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isModalOpen) {
-      setIsRendered(true);
-    }
-  }, [isModalOpen]);
-
-  useEffect(() => {
-    if (!isRendered || isModalOpen) return;
-
-    const timeoutId = window.setTimeout(() => setIsRendered(false), 200);
-    return () => window.clearTimeout(timeoutId);
-  }, [isModalOpen, isRendered]);
-
   const handleDismiss = () => {
     if (!isPending) {
       (onCancel ?? onClose)?.();
@@ -342,42 +300,6 @@ export function ConfirmModal({
       (onConfirm ?? onOk)?.();
     }
   };
-
-  const handleBackdropClick = (event: React.MouseEvent) => {
-    if (event.target === event.currentTarget && !isPending) {
-      handleDismiss();
-    }
-  };
-
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isModalOpen && !isPending) {
-        handleDismiss();
-      }
-    };
-
-    if (isModalOpen) {
-      document.addEventListener('keydown', handleEscape);
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [isModalOpen, isPending]);
-
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isModalOpen]);
-
-  if (!isRendered) return null;
 
   const Icon = {
     warning: Icons.AlertTriangle,
@@ -394,39 +316,20 @@ export function ConfirmModal({
   }[resolvedType];
 
   const sizeStyle = sizeStyles[size] ?? styles.sizeMd;
-  const dialogSxProps = stylex.props(
-    styles.dialog,
-    sizeStyle,
-    isModalOpen ? styles.dialogOpen : styles.dialogClosed,
-    sx,
-  );
-  const mergedDialogClass = className
-    ? `${dialogSxProps.className || ''} ${className}`.trim()
-    : dialogSxProps.className;
-  const mergedDialogStyle =
-    width || dialogSxProps.style
-      ? { ...dialogSxProps.style, ...(width ? { maxWidth: width } : {}) }
-      : undefined;
 
   return (
-    <div ref={containerRef} {...stylex.props(styles.container)}>
-      <div
-        {...stylex.props(
-          styles.backdrop,
-          isModalOpen ? styles.backdropOpen : styles.backdropClosed,
-        )}
-        onClick={handleBackdropClick}
-      />
-
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="confirm-modal-title"
-        {...dialogSxProps}
-        className={mergedDialogClass}
-        style={mergedDialogStyle}
-        onClick={(event) => event.stopPropagation()}
+    <Dialog open={isModalOpen} onOpenChange={(val) => !val && handleDismiss()}>
+      <DialogContent
+        showCloseButton={false}
+        sx={[styles.dialog, sizeStyle, sx]}
+        className={className}
+        style={width ? { maxWidth: width } : undefined}
+        onEscapeKeyDown={(e) => {
+          if (isPending) e.preventDefault();
+        }}
+        onPointerDownOutside={(e) => {
+          if (isPending) e.preventDefault();
+        }}
       >
         <button
           type="button"
@@ -443,13 +346,17 @@ export function ConfirmModal({
             <Icon {...stylex.props(styles.typeIcon, typeStyles.icon)} />
           </div>
           <div {...stylex.props(styles.body)}>
-            <Title id="confirm-modal-title" level={3} sx={styles.title}>
-              {title}
-            </Title>
+            <DialogTitle asChild>
+              <Title id="confirm-modal-title" level={3} sx={styles.title}>
+                {title}
+              </Title>
+            </DialogTitle>
             {resolvedMessage ? (
-              <Text type="muted" sx={styles.message}>
-                {resolvedMessage}
-              </Text>
+              <DialogDescription asChild>
+                <Text type="muted" sx={styles.message}>
+                  {resolvedMessage}
+                </Text>
+              </DialogDescription>
             ) : null}
             {children}
           </div>
@@ -459,33 +366,28 @@ export function ConfirmModal({
           footer
         ) : (
           <div {...stylex.props(styles.footer)}>
-            <button
+            <Button
               type="button"
+              variant="outline"
               onClick={handleDismiss}
               disabled={isPending}
-              {...stylex.props(styles.cancelBtn)}
+              sx={styles.cancelBtn}
             >
               {cancelText}
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant={type === 'danger' ? 'destructive' : 'default'}
               onClick={handleConfirm}
-              disabled={isPending}
-              {...stylex.props(styles.confirmBtn, typeStyles.btn)}
+              isLoading={isPending}
+              sx={[styles.confirmBtn, typeStyles.btn]}
             >
-              {isPending ? (
-                <span {...stylex.props(styles.loadingContent)}>
-                  <span {...stylex.props(styles.spinner)} />
-                  {resolvedLoadingText}
-                </span>
-              ) : (
-                confirmText
-              )}
-            </button>
+              {isPending ? resolvedLoadingText : confirmText}
+            </Button>
           </div>
         )}
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }
 

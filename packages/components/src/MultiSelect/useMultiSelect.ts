@@ -81,6 +81,10 @@ export interface UseMultiSelectResult {
   };
 }
 
+const isDev =
+  Boolean((import.meta as { env?: { DEV?: boolean; NODE_ENV?: string } }).env?.DEV) ||
+  (import.meta as { env?: { DEV?: boolean; NODE_ENV?: string } }).env?.NODE_ENV === 'development';
+
 export const useMultiSelect = ({
   forwardedRef,
   ...props
@@ -135,7 +139,7 @@ export const useMultiSelect = ({
   const getAllOptions = useCallback((): MultiSelectOption[] => {
     const { options: normalizedOptions, duplicates } = buildAllOptions(options, deduplicateOptions);
 
-    if ((import.meta as any).env.NODE_ENV === 'development' && duplicates.length > 0) {
+    if (isDev && duplicates.length > 0) {
       const action = deduplicateOptions ? 'automatically removed' : 'detected';
       console.warn(
         `MultiSelect: Duplicate option values ${action}: ${duplicates.join(', ')}. ` +
@@ -153,7 +157,7 @@ export const useMultiSelect = ({
   const getOptionByValue = useCallback(
     (value: string): MultiSelectOption | undefined => {
       const option = getAllOptions().find((currentOption) => currentOption.value === value);
-      if (!option && (import.meta as any).env.NODE_ENV === 'development') {
+      if (!option && isDev) {
         console.warn(`MultiSelect: Option with value "${value}" not found in options list`);
       }
       return option;

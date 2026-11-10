@@ -284,14 +284,10 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (disabled) return;
-    if (isMulti) {
-      if (props.onChange) {
-        props.onChange([]);
-      }
+    if (isMultiProps(props)) {
+      props.onChange?.([]);
     } else {
-      if (props.onChange) {
-        props.onChange(undefined as unknown as T);
-      }
+      props.onChange?.(undefined);
     }
   };
 
@@ -400,12 +396,12 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
         )}
         {isMulti && showSelectAll && !disabled && filteredOptions.length > 0 && (
           <div {...stylex.props(styles.selectAllRow)} onClick={handleSelectAll}>
-            <span {...stylex.props(styles.selectAllText)}>
+            <Text as="span" size="sm" sx={styles.selectAllText}>
               {selectedValues.length === filteredOptions.length ? 'Deselect all' : 'Select all'}
-            </span>
-            <span {...stylex.props(styles.placeholder)}>
+            </Text>
+            <Text as="span" size="sm" type="secondary" sx={styles.placeholder}>
               ({selectedValues.length}/{filteredOptions.length})
-            </span>
+            </Text>
           </div>
         )}
         <div {...stylex.props(styles.optionsList)} onScroll={handleScroll}>

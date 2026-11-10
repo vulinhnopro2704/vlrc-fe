@@ -5,6 +5,7 @@ import { colors } from '../theme/tokens.stylex';
 import { Label } from './label';
 import { Separator } from './separator';
 import { resolveWidth, type ComponentWidth } from '../theme/width';
+import { Paragraph, Text } from '../Typography';
 
 export type FieldOrientation = 'vertical' | 'horizontal' | 'responsive';
 
@@ -248,8 +249,11 @@ function FieldDescription({
 }: React.ComponentProps<'p'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.description, sx);
   return (
-    <p
+    <Paragraph
+      as="p"
       data-slot="field-description"
+      size="xs"
+      type="secondary"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -277,9 +281,15 @@ function FieldSeparator({
     >
       <Separator sx={styles.separatorLine} />
       {children && (
-        <span {...stylex.props(styles.separatorContent)} data-slot="field-separator-content">
+        <Text
+          as="span"
+          size="xs"
+          type="secondary"
+          {...stylex.props(styles.separatorContent)}
+          data-slot="field-separator-content"
+        >
           {children}
-        </span>
+        </Text>
       )}
     </div>
   );

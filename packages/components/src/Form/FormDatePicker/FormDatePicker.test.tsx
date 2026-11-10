@@ -118,6 +118,36 @@ describe('DatePicker', () => {
       // After 2nd click, range is completed and onChange is called with both endpoints
       expect(handleChange).toHaveBeenLastCalledWith([expect.any(Date), expect.any(Date)]);
     });
+
+    it('should reset and start a new range on 3rd click after completing a range', () => {
+      const handleChange = vi.fn();
+      render(<DateRangePicker placeholder="Pick range" onChange={handleChange} />);
+
+      // Open popover
+      const trigger = screen.getByText('Pick range');
+      fireEvent.click(trigger);
+
+      // Click 1: start of range (day 10)
+      const dayButtons1 = screen.getAllByRole('button');
+      const day10 = dayButtons1.find((btn) => btn.textContent === '10');
+      fireEvent.click(day10!);
+      expect(handleChange).toHaveBeenCalledWith([expect.any(Date), undefined]);
+
+      // Click 2: end of range (day 20)
+      const dayButtons2 = screen.getAllByRole('button');
+      const day20 = dayButtons2.find((btn) => btn.textContent === '20');
+      fireEvent.click(day20!);
+      expect(handleChange).toHaveBeenCalledWith([expect.any(Date), expect.any(Date)]);
+
+      // Click 3: should start a fresh range starting at day 25 (not extend the old range!)
+      const dayButtons3 = screen.getAllByRole('button');
+      const day25 = dayButtons3.find((btn) => btn.textContent === '25');
+      fireEvent.click(day25!);
+      expect(handleChange).toHaveBeenLastCalledWith([expect.any(Date), undefined]);
+      const lastCall = handleChange.mock.calls.at(-1)?.[0];
+      expect(lastCall[0].getDate()).toBe(25);
+      expect(lastCall[1]).toBeUndefined();
+    });
   });
 
   describe('Month and Year Picker Panels', () => {
@@ -125,15 +155,15 @@ describe('DatePicker', () => {
       const handleChange = vi.fn();
       render(<MonthPickerPanel value={new Date(2026, 5, 1)} onChange={handleChange} />);
 
-      expect(screen.getByText('Năm 2026')).toBeInTheDocument();
-      expect(screen.getByText('Tháng 1')).toBeInTheDocument();
-      expect(screen.getByText('Tháng 12')).toBeInTheDocument();
+      expect(screen.getByText('2026')).toBeInTheDocument();
+      expect(screen.getByText('Jan')).toBeInTheDocument();
+      expect(screen.getByText('Dec')).toBeInTheDocument();
 
-      fireEvent.click(screen.getByText('Tháng 8'));
+      fireEvent.click(screen.getByText('Aug'));
       expect(handleChange).toHaveBeenCalledTimes(1);
       const selected = handleChange.mock.calls[0][0] as Date;
       expect(selected.getFullYear()).toBe(2026);
-      expect(selected.getMonth()).toBe(7); // Month index 7 is August (Tháng 8)
+      expect(selected.getMonth()).toBe(7); // Month index 7 is August
     });
 
     it('should render YearPickerPanel with decade range and trigger onChange on click', () => {
@@ -157,8 +187,8 @@ describe('DatePicker', () => {
       const trigger = screen.getByRole('button');
       fireEvent.click(trigger);
 
-      expect(screen.getByText('Năm 2026')).toBeInTheDocument();
-      expect(screen.getByText('Tháng 11')).toBeInTheDocument();
+      expect(screen.getByText('2026')).toBeInTheDocument();
+      expect(screen.getByText('Nov')).toBeInTheDocument();
     });
 
     it('should render year panel when DatePicker has pickerType="year"', () => {

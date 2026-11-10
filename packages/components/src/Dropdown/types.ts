@@ -11,7 +11,7 @@ export interface DropdownActionItem {
   shortcut?: string;
   disabled?: boolean;
   danger?: boolean;
-  onClick?: (info: { key: string | number; domEvent: React.MouseEvent }) => void;
+  onClick?: (info: { key: string | number; domEvent: React.MouseEvent | Event }) => void;
   children?: DropdownItemType[];
   sx?: stylex.StyleXStyles;
 }

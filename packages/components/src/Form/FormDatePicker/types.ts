@@ -68,6 +68,11 @@ export interface DatePickerBaseProps<TFieldValues extends FieldValues> {
   disabledDate?: (date: Date) => boolean;
   cellRender?: (date: Date) => ReactNode;
   disabledTime?: DisabledTime | ((date: Date) => DisabledTime);
+  locale?: any;
+  numberOfMonths?: number;
+  closeOnSelect?: boolean;
+  startMonth?: Date;
+  endMonth?: Date;
 }
 
 export interface SingleDatePickerProps<

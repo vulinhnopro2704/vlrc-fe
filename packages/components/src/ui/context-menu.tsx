@@ -7,6 +7,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 import { cn } from '../utils';
+import { Text } from '../Typography';
 
 const styles = stylex.create({
   content: {
@@ -375,8 +376,11 @@ function ContextMenuShortcut({ className, sx, ...props }: ContextMenuShortcutPro
   const styleProps = stylex.props(styles.shortcut, sx);
 
   return (
-    <span
+    <Text
+      as="span"
       data-slot="context-menu-shortcut"
+      size="xs"
+      type="secondary"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}

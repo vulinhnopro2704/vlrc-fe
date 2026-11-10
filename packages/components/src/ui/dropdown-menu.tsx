@@ -4,6 +4,7 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
+import { Text } from '../Typography';
 
 const styles = stylex.create({
   content: {
@@ -120,6 +121,15 @@ const styles = stylex.create({
     width: '1rem',
     height: '1rem',
   },
+  indicatorIcon: {
+    width: 14,
+    height: 14,
+  },
+  radioIndicatorIcon: {
+    width: 8,
+    height: 8,
+    fill: 'currentColor',
+  },
 });
 
 function DropdownMenu(props: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
@@ -229,7 +239,7 @@ function DropdownMenuCheckboxItem({
     >
       <span {...stylex.props(styles.indicatorContainer)}>
         <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon style={{ width: 14, height: 14 }} />
+          <CheckIcon {...stylex.props(styles.indicatorIcon)} />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -260,7 +270,7 @@ function DropdownMenuRadioItem({ className, children, sx, ...props }: DropdownMe
     >
       <span {...stylex.props(styles.indicatorContainer)}>
         <DropdownMenuPrimitive.ItemIndicator>
-          <CircleIcon style={{ width: 8, height: 8, fill: 'currentColor' }} />
+          <CircleIcon {...stylex.props(styles.radioIndicatorIcon)} />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -313,8 +323,11 @@ export interface DropdownMenuShortcutProps extends React.ComponentProps<'span'> 
 function DropdownMenuShortcut({ className, sx, ...props }: DropdownMenuShortcutProps) {
   const sxProps = stylex.props(styles.shortcut, sx);
   return (
-    <span
+    <Text
+      as="span"
       data-slot="dropdown-menu-shortcut"
+      size="xs"
+      type="secondary"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}

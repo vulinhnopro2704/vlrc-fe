@@ -1,7 +1,7 @@
 import React, { type ReactNode } from 'react';
-import Icons from '../../Icons';
-import { vi } from 'date-fns/locale';
+import type { Locale } from 'date-fns';
 import * as stylex from '@stylexjs/stylex';
+import Icons from '../../Icons';
 
 import { colors } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
@@ -70,6 +70,11 @@ export interface StandaloneRangeDatePickerProps {
   className?: string;
   sx?: stylex.StyleXStyles;
   disabledDate?: (date: Date) => boolean;
+  locale?: Locale;
+  numberOfMonths?: number;
+  closeOnSelect?: boolean;
+  startMonth?: Date;
+  endMonth?: Date;
 }
 
 export function RangeDatePicker({
@@ -88,6 +93,11 @@ export function RangeDatePicker({
   className,
   sx,
   disabledDate,
+  locale,
+  numberOfMonths = 2,
+  closeOnSelect = false,
+  startMonth,
+  endMonth,
 }: StandaloneRangeDatePickerProps) {
   const [open, setOpen] = React.useState(false);
 
@@ -103,18 +113,15 @@ export function RangeDatePicker({
     from: startDate,
     to: endDate,
   });
-  const [isSelecting, setIsSelecting] = React.useState<boolean>(false);
 
-  // Sync internal range with props on value change or popover open
+  // Sync internal range with props on value change
   React.useEffect(() => {
     setSelectedRange({ from: startDate, to: endDate });
-    setIsSelecting(false);
-  }, [startDate, endDate, open]);
+  }, [startDate, endDate]);
 
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
     setSelectedRange({ from: undefined, to: undefined });
-    setIsSelecting(false);
     onChange?.([undefined, undefined]);
   };
 
@@ -122,26 +129,19 @@ export function RangeDatePicker({
     setOpen(newOpen);
   };
 
-  const handleDayClick = (day: Date) => {
-    if (!isSelecting || !selectedRange.from) {
-      // Step 1: User selects start date. Popover stays OPEN.
-      setSelectedRange({ from: day, to: undefined });
-      setIsSelecting(true);
-      onChange?.([day, undefined]);
-    } else {
-      // Step 2: User selects end date. Range is now complete!
-      let finalStart = selectedRange.from;
-      let finalEnd = day;
-      if (day < finalStart) {
-        finalStart = day;
-        finalEnd = selectedRange.from;
-      }
-      setSelectedRange({ from: finalStart, to: finalEnd });
-      setIsSelecting(false);
-      onChange?.([finalStart, finalEnd]);
-      if (!showTime) {
+  const handleSelect = (range: { from?: Date; to?: Date } | undefined) => {
+    const from = range?.from;
+    const to = range?.to;
+    setSelectedRange({ from, to });
+    if (from && to) {
+      onChange?.([from, to]);
+      if (closeOnSelect && !showTime) {
         setOpen(false);
       }
+    } else if (from) {
+      onChange?.([from, undefined]);
+    } else {
+      onChange?.([undefined, undefined]);
     }
   };
 
@@ -187,9 +187,9 @@ export function RangeDatePicker({
           )}
           <div {...stylex.props(styles.rightControls)}>
             {allowClear && (startDate || endDate) && (
-              <span onClick={handleClear} {...stylex.props(styles.clearButton)}>
+              <Text as="span" onClick={handleClear} sx={styles.clearButton}>
                 ×
-              </span>
+              </Text>
             )}
             {suffixIcon || <Icons.CalendarIcon {...stylex.props(styles.icon)} />}
           </div>
@@ -198,15 +198,17 @@ export function RangeDatePicker({
       <PopoverContent sx={styles.popoverContent} align="start">
         <Calendar
           mode="range"
+          min={1}
+          resetOnSelect
           size={resolvedSize}
           selected={selectedRange}
-          onDayClick={handleDayClick}
+          onSelect={handleSelect}
           disabled={disabledDate}
           captionLayout="dropdown"
-          hidden={{
-            after: new Date(new Date().getFullYear() + 50, 11, 31),
-          }}
-          locale={vi}
+          numberOfMonths={numberOfMonths}
+          locale={locale}
+          startMonth={startMonth}
+          endMonth={endMonth}
         />
       </PopoverContent>
     </Popover>

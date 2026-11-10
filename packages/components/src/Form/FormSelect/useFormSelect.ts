@@ -31,7 +31,7 @@ export function useFormSelect<
     field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
   ) => {
     onChangeMulti: (value: T[]) => void;
-    onChangeSingle: (value: T | null) => void;
+    onChangeSingle: (value: T | null | undefined) => void;
   };
 } {
   const {
@@ -107,7 +107,7 @@ export function useFormSelect<
         props.onChange(value);
       }
     },
-    onChangeSingle: (value: T | null) => {
+    onChangeSingle: (value: T | null | undefined) => {
       field.onChange(value);
       if (!isFormMultiSelectProps(props) && props.onChange) {
         props.onChange(value);

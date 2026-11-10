@@ -246,6 +246,8 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
+    color: 'inherit',
+    lineHeight: 1,
   },
   iconGlyphXxs: {
     width: '0.75rem',

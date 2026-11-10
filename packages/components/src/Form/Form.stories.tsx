@@ -106,7 +106,7 @@ function FullFormWorkflowDemo() {
           name="startDate"
           control={methods.control}
           label="Desired Start Date"
-          placeholder="Chọn ngày bắt đầu làm việc"
+          placeholder="Select start date"
           allowClear
           rules={{ required: 'Start date is required' }}
         />
@@ -372,9 +372,9 @@ export const DatePickerFormControls: Story = {
             name="birthDate"
             control={methods.control}
             label="Single Date (Required)"
-            placeholder="Chọn ngày sinh"
+            placeholder="Select date of birth"
             allowClear
-            rules={{ required: 'Vui lòng chọn ngày sinh' }}
+            rules={{ required: 'Date of birth is required' }}
           />
 
           <FormDatePicker
@@ -382,7 +382,7 @@ export const DatePickerFormControls: Story = {
             control={methods.control}
             isRangePicker
             label="Date Range Picker"
-            placeholder="Chọn kỳ nghỉ (từ ngày - đến ngày)"
+            placeholder="Select date range"
             allowClear
           />
 
@@ -391,7 +391,7 @@ export const DatePickerFormControls: Story = {
             control={methods.control}
             showTime
             label="Date & Time"
-            placeholder="Chọn ngày và giờ họp"
+            placeholder="Select meeting date & time"
             allowClear
           />
 
@@ -400,7 +400,7 @@ export const DatePickerFormControls: Story = {
             control={methods.control}
             pickerType="month"
             label="Target Month"
-            placeholder="Chọn tháng triển khai"
+            placeholder="Select target month"
             allowClear
           />
 

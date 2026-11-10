@@ -2,6 +2,7 @@ import { useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import Icons from '../Icons';
+import { Text } from './Text';
 import type { CodeProps } from './types';
 import { resolveCustomTypographyStyle } from './utils';
 import { typographyWeightStyles } from './weightStyles';
@@ -158,7 +159,11 @@ export function Code({
           </code>
         </Component>
 
-        {language && <span {...stylex.props(styles.badge)}>{language}</span>}
+        {language && (
+          <Text as="span" size="xxs" type="secondary" sx={styles.badge}>
+            {language}
+          </Text>
+        )}
 
         {copyable && (
           <button

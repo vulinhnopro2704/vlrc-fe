@@ -4,6 +4,7 @@ import { ChevronDownIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radii } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { Text } from '../Typography';
 
 const styles = stylex.create({
   root: {
@@ -214,7 +215,7 @@ function Accordion({ size = 'md', className, sx, ...props }: AccordionProps) {
       <AccordionPrimitive.Root
         data-slot="accordion"
         data-size={size}
-        {...(props as any)}
+        {...(props as React.ComponentProps<typeof AccordionPrimitive.Root>)}
         {...sxProps}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       />
@@ -268,7 +269,9 @@ function AccordionTrigger({
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
-        <span>{children}</span>
+        <Text as="span" type="inherit">
+          {children}
+        </Text>
         <ChevronDownIcon {...stylex.props(styles.chevron, chevronSize)} />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
