@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Enterprise UI component library built on Meta's Astryx Design System, Meta StyleX, and Radix UI.",
   "keywords": [
     "accessible",
@@ -101,7 +101,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vite build && tsc -p tsconfig.json && cp src/theme/theme.css dist/theme.css && cp src/theme/vlrc-theme.css dist/vlrc-theme.css",
+    "build": "vite build && tsc -p tsconfig.json && cat src/theme/theme.css dist/assets/stylex.css > dist/theme.css && cp src/theme/vlrc-theme.css dist/vlrc-theme.css",
     "test": "vitest run",
     "lint": "oxlint .",
     "format": "oxfmt .",

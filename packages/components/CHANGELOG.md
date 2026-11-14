@@ -127,6 +127,12 @@
 - Fixed `FormCheckbox` vertical alignment when rendered with descriptions or helper text.
 - Replaced all legacy string class concatenations with pure Meta StyleX atomic CSS.
 
+## 3.0.1
+
+### Patch Changes
+
+- Bundle compiled StyleX rules into `dist/theme.css` so consumers only importing `theme.css` get layout utilities (Row, Col, Stack) without requiring separate `stylex.css` import.
+
 ## 3.0.0
 
 ### Major Changes
