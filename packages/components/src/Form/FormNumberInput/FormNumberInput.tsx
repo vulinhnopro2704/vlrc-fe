@@ -2,7 +2,7 @@ import type { FieldPath, FieldValues } from 'react-hook-form';
 import { NumericFormat } from 'react-number-format';
 import * as stylex from '@stylexjs/stylex';
 
-import { colors, radii } from '../../theme/tokens.stylex';
+import { colors, radius, shadow } from '../../theme/tokens.stylex';
 import { FormBase } from '../Form';
 import { StepperControls } from './StepperControls';
 import type { FormNumberInputProps } from './types';
@@ -18,7 +18,7 @@ const styles = stylex.create({
   numericInput: {
     width: '100%',
     minWidth: 0,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     borderWidth: 1,
@@ -26,7 +26,7 @@ const styles = stylex.create({
     borderColor: colors.input,
     backgroundColor: 'transparent',
     color: colors.foreground,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     outline: 'none',

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { resolveWidth } from '../theme/width';
 import { Flex } from '../layout';
@@ -44,12 +44,12 @@ const styles = stylex.create({
   content: {
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     padding: spacing.xxs,
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.md,
     outline: 'none',
   },
   sizeSm: {

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from './theme/tokens.stylex';
+import { colors, radius, shadow } from './theme/tokens.stylex';
 import type { ComponentSize } from './theme/types';
 import Icons from './Icons';
 import { Title, Text } from './Typography';
@@ -15,11 +15,11 @@ const spin = stylex.keyframes({
 const styles = stylex.create({
   dialog: {
     width: '100%',
-    borderRadius: radii.lg,
-    backgroundColor: 'var(--background, #ffffff)',
-    color: 'var(--foreground, #0f172a)',
+    borderRadius: radius.lg,
+    backgroundColor: colors.background,
+    color: colors.foreground,
     padding: '1.5rem',
-    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.xl,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -38,7 +38,7 @@ const styles = stylex.create({
     position: 'absolute',
     right: '1rem',
     top: '1rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     padding: '0.25rem',
     color: colors.mutedForeground,
     borderWidth: 0,
@@ -54,8 +54,8 @@ const styles = stylex.create({
       color: colors.foreground,
     },
     ':focus-visible': {
-      outline: '2px solid var(--ring)',
-      outlineOffset: '2px',
+      outline: 'none',
+      boxShadow: shadow.ringFocus,
     },
     ':disabled': {
       cursor: 'not-allowed',
@@ -100,7 +100,7 @@ const styles = stylex.create({
     marginTop: 0,
   },
   cancelBtn: {
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -111,7 +111,7 @@ const styles = stylex.create({
     fontSize: '0.875rem',
     fontWeight: 500,
     cursor: 'pointer',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     ':hover': {
       backgroundColor: colors.accent,
     },
@@ -121,39 +121,39 @@ const styles = stylex.create({
     },
   },
   confirmBtn: {
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 0,
     paddingInline: '1rem',
     paddingBlock: '0.5rem',
     fontSize: '0.875rem',
     fontWeight: 500,
-    color: '#ffffff',
+    color: colors.primaryForeground,
     cursor: 'pointer',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     ':disabled': {
       cursor: 'not-allowed',
       opacity: 0.5,
     },
   },
   btnWarning: {
-    backgroundColor: '#eab308',
-    ':hover': { backgroundColor: '#ca8a04' },
+    backgroundColor: colors.warning,
+    ':hover': { opacity: 0.9 },
   },
   btnInfo: {
-    backgroundColor: '#3b82f6',
-    ':hover': { backgroundColor: '#2563eb' },
+    backgroundColor: colors.info,
+    ':hover': { opacity: 0.9 },
   },
   btnSuccess: {
-    backgroundColor: '#22c55e',
-    ':hover': { backgroundColor: '#16a34a' },
+    backgroundColor: colors.success,
+    ':hover': { opacity: 0.9 },
   },
   btnDanger: {
     backgroundColor: colors.destructive,
     ':hover': { opacity: 0.9 },
   },
-  iconWarning: { color: '#eab308' },
-  iconInfo: { color: '#3b82f6' },
-  iconSuccess: { color: '#22c55e' },
+  iconWarning: { color: colors.warning },
+  iconInfo: { color: colors.info },
+  iconSuccess: { color: colors.success },
   iconDanger: { color: colors.destructive },
   spinner: {
     display: 'inline-block',
@@ -164,11 +164,11 @@ const styles = stylex.create({
     animationDuration: '1s',
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: 'rgba(255, 255, 255, 0.4)',
-    borderTopColor: '#ffffff',
+    borderTopColor: colors.primaryForeground,
   },
   closeIcon: {
     width: 20,

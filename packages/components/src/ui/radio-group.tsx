@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
 const styles = stylex.create({
@@ -12,12 +12,12 @@ const styles = stylex.create({
   item: {
     aspectRatio: '1 / 1',
     flexShrink: 0,
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 1.5,
     borderStyle: 'solid',
     borderColor: colors.input,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'box-shadow, border-color',
     transitionDuration: '150ms',
     outline: 'none',
@@ -29,7 +29,7 @@ const styles = stylex.create({
     boxSizing: 'border-box',
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
     ':disabled': {
       cursor: 'not-allowed',
@@ -78,7 +78,7 @@ const styles = stylex.create({
   },
 
   dot: {
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.primary,
   },
 

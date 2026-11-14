@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Drawer as DrawerPrimitive } from 'vaul';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const fadeIn = stylex.keyframes({
@@ -32,14 +32,14 @@ const styles = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     maxHeight: '85vh',
-    borderTopLeftRadius: radii.xl,
-    borderTopRightRadius: radii.xl,
+    borderTopLeftRadius: radius.xl,
+    borderTopRightRadius: radius.xl,
     borderTopWidth: 1,
     borderTopStyle: 'solid',
     borderTopColor: colors.border,
-    backgroundColor: 'var(--background, #ffffff)',
-    color: 'var(--foreground, #0f172a)',
-    boxShadow: '0 -10px 25px -5px rgba(0, 0, 0, 0.1)',
+    backgroundColor: colors.background,
+    color: colors.foreground,
+    boxShadow: shadow.xl,
     outline: 'none',
     boxSizing: 'border-box',
     animationName: slideUp,
@@ -52,7 +52,7 @@ const styles = stylex.create({
     marginBottom: '0.25rem',
     height: '0.25rem',
     width: '3rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.mutedForeground,
     opacity: 0.4,
     flexShrink: 0,

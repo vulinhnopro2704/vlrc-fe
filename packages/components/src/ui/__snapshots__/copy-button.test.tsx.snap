@@ -4,7 +4,7 @@ exports[`CopyButton > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <button
     aria-label="Copy to clipboard"
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xrijj7p xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
     data-copied="false"
     data-size="icon"
     data-slot="copy-button"
@@ -14,13 +14,13 @@ exports[`CopyButton > UI > should match snapshot in default state 1`] = `
   >
     <span
       class="copy-button__styles.iconWrapper x3nfvp2 x6s0dn4 xl56j7k xwcsmn1 xx6bhzk xz4gly6"
-      data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:8"
+      data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:9"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-copy copy-button__styles.iconMd xcdlrvm x1l36t39"
         data-slot="copy-icon"
-        data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:20"
+        data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:21"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -52,7 +52,7 @@ exports[`CopyButton > UI > should match snapshot with showLabel enabled 1`] = `
 <DocumentFragment>
   <button
     aria-label="Copy to clipboard"
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xsda711 xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xrijj7p xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconMd xk8t5le x1s4ejo4 x1717udv"
     data-copied="false"
     data-size="icon"
     data-slot="copy-button"
@@ -62,13 +62,13 @@ exports[`CopyButton > UI > should match snapshot with showLabel enabled 1`] = `
   >
     <span
       class="copy-button__styles.iconWrapper x3nfvp2 x6s0dn4 xl56j7k xwcsmn1 xx6bhzk xz4gly6"
-      data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:8"
+      data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:9"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-copy copy-button__styles.iconMd xcdlrvm x1l36t39"
         data-slot="copy-icon"
-        data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:20"
+        data-style-src="@vlrc-fe/components:src/ui/copy-button.tsx:21"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -96,7 +96,7 @@ exports[`CopyButton > UI > should match snapshot with showLabel enabled 1`] = `
       class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm copy-button__styles.label x13zjp5t"
       data-size="sm"
       data-slot="typography-text"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/copy-button.tsx:31"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/copy-button.tsx:32"
       data-type="default"
       data-weight="regular"
     >

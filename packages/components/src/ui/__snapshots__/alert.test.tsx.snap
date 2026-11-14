@@ -3,7 +3,7 @@
 exports[`Alert > UI > should match snapshot for default variant 1`] = `
 <DocumentFragment>
   <div
-    class="alert__styles.root x1n2onr6 xh8yej3 x1mr5ieh xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDefault x1rexohn xb30jbz xk0jn7w"
+    class="alert__styles.root x1n2onr6 xh8yej3 x1ez7q3a xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDefault x1rexohn xb30jbz xk0jn7w"
     data-slot="alert"
     data-style-src="@vlrc-fe/components:src/ui/alert.tsx:8; @vlrc-fe/components:src/ui/alert.tsx:22"
     role="alert"
@@ -29,7 +29,7 @@ exports[`Alert > UI > should match snapshot for default variant 1`] = `
 exports[`Alert > UI > should match snapshot for destructive variant 1`] = `
 <DocumentFragment>
   <div
-    class="alert__styles.root x1n2onr6 xh8yej3 x1mr5ieh xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDestructive x1rexohn x1uwefn5 xuuroe4"
+    class="alert__styles.root x1n2onr6 xh8yej3 x1ez7q3a xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDestructive x1rexohn x1uwefn5 xuuroe4"
     data-slot="alert"
     data-style-src="@vlrc-fe/components:src/ui/alert.tsx:8; @vlrc-fe/components:src/ui/alert.tsx:27"
     role="alert"
@@ -55,7 +55,7 @@ exports[`Alert > UI > should match snapshot for destructive variant 1`] = `
 exports[`Alert > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <div
-    class="alert__styles.root x1n2onr6 xh8yej3 x1mr5ieh xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDefault x1rexohn xb30jbz xk0jn7w"
+    class="alert__styles.root x1n2onr6 xh8yej3 x1ez7q3a xmkeg23 x1y0btm7 xnxx81d xo0yzjp xkpwil5 xrvj5dj x1pmbctz x8233eu x7a106z alert__styles.variantDefault x1rexohn xb30jbz xk0jn7w"
     data-slot="alert"
     data-style-src="@vlrc-fe/components:src/ui/alert.tsx:8; @vlrc-fe/components:src/ui/alert.tsx:22"
     role="alert"

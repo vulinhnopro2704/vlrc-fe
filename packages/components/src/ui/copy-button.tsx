@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Copy, Check } from 'lucide-react';
+import { colors } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
 import { Text } from '../Typography/Text';
 
@@ -26,7 +27,7 @@ const styles = stylex.create({
     height: '1.25rem',
   },
   copiedIcon: {
-    color: 'var(--success, #22c55e)',
+    color: colors.success,
   },
   label: {
     marginLeft: '0.5rem',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Column } from '@tanstack/react-table';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../../theme/tokens.stylex';
+import { colors, radius, spacing } from '../../theme/tokens.stylex';
 import { Badge } from '../../ui/badge';
 import { Button } from '../../ui/button';
 import { Text } from '../../Typography';
@@ -39,7 +39,7 @@ const styles = stylex.create({
     width: '1rem',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,

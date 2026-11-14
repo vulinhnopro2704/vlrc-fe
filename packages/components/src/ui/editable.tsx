@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
 import { Text } from '../Typography';
 
@@ -46,7 +46,7 @@ const styles = stylex.create({
   preview: {
     display: 'inline-flex',
     alignItems: 'center',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingInline: spacing.xs,
     paddingBlock: '0.125rem',
     cursor: 'pointer',
@@ -70,7 +70,7 @@ const styles = stylex.create({
   input: {
     display: 'inline-flex',
     alignItems: 'center',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.ring,
@@ -79,7 +79,7 @@ const styles = stylex.create({
     paddingInline: spacing.xs,
     paddingBlock: '0.125rem',
     outline: 'none',
-    boxShadow: '0 0 0 2px color-mix(in srgb, var(--ring) 25%, transparent)',
+    boxShadow: shadow.ring,
     fontSize: 'inherit',
     lineHeight: 'inherit',
     fontFamily: 'inherit',

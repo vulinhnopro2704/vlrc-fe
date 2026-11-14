@@ -10,7 +10,7 @@ exports[`Kbd > UI > should match snapshot for KbdGroup with multiple keys 1`] = 
     role="group"
   >
     <kbd
-      class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
+      class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
       data-size="sm"
       data-slot="kbd"
       data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:47"
@@ -19,7 +19,7 @@ exports[`Kbd > UI > should match snapshot for KbdGroup with multiple keys 1`] = 
       Ctrl
     </kbd>
     <kbd
-      class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
+      class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
       data-size="sm"
       data-slot="kbd"
       data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:47"
@@ -34,7 +34,7 @@ exports[`Kbd > UI > should match snapshot for KbdGroup with multiple keys 1`] = 
 exports[`Kbd > UI > should match snapshot for default variant 1`] = `
 <DocumentFragment>
   <kbd
-    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
+    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
     data-size="sm"
     data-slot="kbd"
     data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:47"
@@ -48,7 +48,7 @@ exports[`Kbd > UI > should match snapshot for default variant 1`] = `
 exports[`Kbd > UI > should match snapshot for lg size 1`] = `
 <DocumentFragment>
   <kbd
-    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeLg x1pw4g4d x1xkahga xvpgqt4 x1o5vn8x xkpwil5"
+    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeLg x1pw4g4d x1xkahga xvpgqt4 x1o5vn8x xkpwil5"
     data-size="lg"
     data-slot="kbd"
     data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:61"
@@ -62,7 +62,7 @@ exports[`Kbd > UI > should match snapshot for lg size 1`] = `
 exports[`Kbd > UI > should match snapshot for md size 1`] = `
 <DocumentFragment>
   <kbd
-    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeMd x1rqwxy8 x1vi9356 x97vtpp x5utbj xboafo0"
+    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeMd x1rqwxy8 x1vi9356 x97vtpp x5utbj xboafo0"
     data-size="md"
     data-slot="kbd"
     data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:54"
@@ -76,7 +76,7 @@ exports[`Kbd > UI > should match snapshot for md size 1`] = `
 exports[`Kbd > UI > should match snapshot for outline variant 1`] = `
 <DocumentFragment>
   <kbd
-    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.outline xjbqb8w x84br7x kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
+    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.outline xjbqb8w x84br7x kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
     data-size="sm"
     data-slot="kbd"
     data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:34; @vlrc-fe/components:src/ui/kbd.tsx:47"
@@ -90,7 +90,7 @@ exports[`Kbd > UI > should match snapshot for outline variant 1`] = `
 exports[`Kbd > UI > should match snapshot for sm size 1`] = `
 <DocumentFragment>
   <kbd
-    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
+    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
     data-size="sm"
     data-slot="kbd"
     data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:47"
@@ -104,7 +104,7 @@ exports[`Kbd > UI > should match snapshot for sm size 1`] = `
 exports[`Kbd > UI > should match snapshot for xs size 1`] = `
 <DocumentFragment>
   <kbd
-    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeXs x287gpq xbqenb3 xllzysa x1iv7sc9 x2ohwh0"
+    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeXs x287gpq xbqenb3 xllzysa x1iv7sc9 x2ohwh0"
     data-size="xs"
     data-slot="kbd"
     data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:40"
@@ -118,7 +118,7 @@ exports[`Kbd > UI > should match snapshot for xs size 1`] = `
 exports[`Kbd > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <kbd
-    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
+    class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeSm x2umgb4 x199i5n0 x18a9hih x1dus959 x12lo8hy"
     data-size="sm"
     data-slot="kbd"
     data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:47"

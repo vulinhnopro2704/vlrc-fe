@@ -4,7 +4,7 @@ import * as React from 'react';
 import { GripVerticalIcon } from 'lucide-react';
 import * as ResizablePrimitive from 'react-resizable-panels';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 
 const styles = stylex.create({
@@ -29,7 +29,7 @@ const styles = stylex.create({
     width: '0.75rem',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,

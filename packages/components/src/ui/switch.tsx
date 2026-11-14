@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
 const styles = stylex.create({
@@ -10,7 +10,7 @@ const styles = stylex.create({
     flexShrink: 0,
     cursor: 'pointer',
     alignItems: 'center',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: 'transparent',
@@ -22,7 +22,7 @@ const styles = stylex.create({
     padding: 0,
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
     ':disabled': {
       cursor: 'not-allowed',
@@ -66,9 +66,9 @@ const styles = stylex.create({
   thumb: {
     pointerEvents: 'none',
     display: 'block',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.2)',
+    boxShadow: shadow.sm,
     transitionProperty: 'transform',
     transitionDuration: '200ms',
     transform: 'translateX(0)',

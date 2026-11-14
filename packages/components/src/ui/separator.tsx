@@ -49,3 +49,6 @@ function Separator({
 }
 
 export { Separator };
+
+export { Divider } from '@astryxdesign/core';
+export type { DividerProps, DividerVariant, DividerVariantMap } from '@astryxdesign/core';

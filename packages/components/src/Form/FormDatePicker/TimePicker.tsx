@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../../theme/tokens.stylex';
+import { colors, radius } from '../../theme/tokens.stylex';
 import { ScrollArea } from '../../ui/scroll-area';
 import { Text } from '../../Typography';
 import type { DisabledTime, TimeConfig } from './types';
@@ -33,7 +33,7 @@ const styles = stylex.create({
     paddingInline: '0.5rem',
     paddingBlock: '0.25rem',
     textAlign: 'center',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 0,
     backgroundColor: 'transparent',
     color: colors.foreground,

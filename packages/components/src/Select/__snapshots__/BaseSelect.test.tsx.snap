@@ -5,7 +5,7 @@ exports[`BaseSelect > UI > should match snapshot in default unselected state 1`]
   <button
     aria-expanded="false"
     aria-haspopup="dialog"
-    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xsda711 xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz x1dsmnui x16mfhj0 xx6bhzk"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk"
     data-slot="select"
     data-state="closed"
     data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20"
@@ -48,7 +48,7 @@ exports[`BaseSelect > UI > should match snapshot when disabled 1`] = `
   <button
     aria-expanded="false"
     aria-haspopup="dialog"
-    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xsda711 xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x84br7x x1a2a7pz x1dsmnui x16mfhj0 xx6bhzk BaseSelect__styles.triggerDisabled x1qry0bl x1h6gzvc x197sbye"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x84br7x x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk BaseSelect__styles.triggerDisabled x1qry0bl x1h6gzvc x197sbye"
     data-slot="select"
     data-state="closed"
     data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20; @vlrc-fe/components:src/Select/BaseSelect.tsx:44"
@@ -93,7 +93,7 @@ exports[`BaseSelect > UI > should match snapshot with long text selected in trig
   <button
     aria-expanded="false"
     aria-haspopup="dialog"
-    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xsda711 xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz x1dsmnui x16mfhj0 xx6bhzk"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk"
     data-slot="select"
     data-state="closed"
     data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20"

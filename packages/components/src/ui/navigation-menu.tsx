@@ -3,7 +3,7 @@ import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { ChevronDownIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 
 const styles = stylex.create({
@@ -32,7 +32,7 @@ const styles = stylex.create({
     width: 'max-content',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: colors.background,
     paddingInline: '1rem',
     paddingBlock: '0.5rem',
@@ -71,13 +71,13 @@ const styles = stylex.create({
     width: 'auto',
     padding: '0.5rem',
     paddingRight: '0.625rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.md,
   },
   viewportContainer: {
     position: 'absolute',
@@ -91,19 +91,19 @@ const styles = stylex.create({
     position: 'relative',
     marginTop: '0.375rem',
     overflow: 'hidden',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.md,
   },
   link: {
     display: 'flex',
     flexDirection: 'column',
     gap: '0.25rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     padding: '0.5rem',
     fontSize: '0.875rem',
     outline: 'none',
@@ -135,9 +135,9 @@ const styles = stylex.create({
     width: '0.5rem',
     height: '0.5rem',
     transform: 'rotate(45deg)',
-    borderTopLeftRadius: radii.sm,
+    borderTopLeftRadius: radius.sm,
     backgroundColor: colors.border,
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.md,
   },
 });
 

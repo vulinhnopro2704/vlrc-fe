@@ -70,16 +70,16 @@ const styles = stylex.create({
     color: colors.mutedForeground,
   },
   typeSuccess: {
-    color: '#16a34a',
+    color: colors.success,
   },
   typeWarning: {
-    color: '#ca8a04',
+    color: colors.warning,
   },
   typeDanger: {
     color: colors.destructive,
   },
   typeInfo: {
-    color: '#2563eb',
+    color: colors.info,
   },
   typeInherit: {
     color: 'inherit',

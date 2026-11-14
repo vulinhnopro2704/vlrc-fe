@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { ChevronsLeftRight } from 'lucide-react';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Badge } from './badge';
 
 const styles = stylex.create({
@@ -10,7 +10,7 @@ const styles = stylex.create({
     overflow: 'hidden',
     userSelect: 'none',
     touchAction: 'none',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -36,8 +36,8 @@ const styles = stylex.create({
     top: 0,
     bottom: 0,
     width: 2,
-    backgroundColor: '#ffffff',
-    boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)',
+    backgroundColor: colors.primaryForeground,
+    boxShadow: shadow.md,
     cursor: 'ew-resize',
     transform: 'translateX(-50%)',
     zIndex: 10,
@@ -47,8 +47,8 @@ const styles = stylex.create({
     left: 0,
     right: 0,
     height: 2,
-    backgroundColor: '#ffffff',
-    boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)',
+    backgroundColor: colors.primaryForeground,
+    boxShadow: shadow.md,
     cursor: 'ns-resize',
     transform: 'translateY(-50%)',
     zIndex: 10,
@@ -60,20 +60,20 @@ const styles = stylex.create({
     transform: 'translate(-50%, -50%)',
     width: '2.25rem',
     height: '2.25rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.background,
     color: colors.foreground,
     borderWidth: 2,
     borderStyle: 'solid',
-    borderColor: '#ffffff',
-    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)',
+    borderColor: colors.primaryForeground,
+    boxShadow: shadow.lg,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     outline: 'none',
     cursor: 'grab',
     ':focus-visible': {
-      boxShadow: '0 0 0 3px var(--ring)',
+      boxShadow: shadow.ringFocus,
     },
   },
   handleDragging: {

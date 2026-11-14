@@ -5,7 +5,7 @@ import { DayPicker, getDefaultClassNames, type DayButton } from 'react-day-picke
 import * as stylex from '@stylexjs/stylex';
 
 import Icons from '../Icons';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Text } from '../Typography';
 import { cn } from '../utils';
@@ -15,7 +15,7 @@ import { resolveDatePickerSize, type DatePickerSize } from '../Form/FormDatePick
 const styles = stylex.create({
   rootContainer: {
     backgroundColor: colors.background,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
   },
   root: {
     width: 'fit-content',
@@ -54,7 +54,7 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     color: colors.foreground,
     cursor: 'pointer',
     pointerEvents: 'auto',
@@ -92,7 +92,7 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: colors.background,
     transition: 'background-color 0.15s ease, border-color 0.15s ease',
     ':hover': {
@@ -157,22 +157,22 @@ const styles = stylex.create({
     userSelect: 'none',
   },
   rangeStart: {
-    borderTopLeftRadius: radii.md,
-    borderBottomLeftRadius: radii.md,
+    borderTopLeftRadius: radius.md,
+    borderBottomLeftRadius: radius.md,
     backgroundColor: colors.accent,
   },
   rangeMiddle: {
     borderRadius: 0,
   },
   rangeEnd: {
-    borderTopRightRadius: radii.md,
-    borderBottomRightRadius: radii.md,
+    borderTopRightRadius: radius.md,
+    borderBottomRightRadius: radius.md,
     backgroundColor: colors.accent,
   },
   today: {
     backgroundColor: colors.accent,
     color: colors.accentForeground,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
   },
   outside: {
     color: colors.mutedForeground,
@@ -201,7 +201,7 @@ const styles = stylex.create({
     padding: 0,
     lineHeight: 1,
     fontWeight: 400,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     color: colors.foreground,
     transition: 'background-color 0.15s ease, color 0.15s ease',
   },
@@ -236,8 +236,8 @@ const styles = stylex.create({
   dayButtonRangeStart: {
     backgroundColor: colors.primary,
     color: colors.primaryForeground,
-    borderTopLeftRadius: radii.md,
-    borderBottomLeftRadius: radii.md,
+    borderTopLeftRadius: radius.md,
+    borderBottomLeftRadius: radius.md,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
   },
@@ -246,8 +246,8 @@ const styles = stylex.create({
     color: colors.primaryForeground,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
-    borderTopRightRadius: radii.md,
-    borderBottomRightRadius: radii.md,
+    borderTopRightRadius: radius.md,
+    borderBottomRightRadius: radius.md,
   },
 });
 

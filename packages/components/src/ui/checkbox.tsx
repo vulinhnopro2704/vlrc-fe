@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors } from '../theme/tokens.stylex';
+import { colors, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
 const styles = stylex.create({
@@ -12,7 +12,7 @@ const styles = stylex.create({
     borderStyle: 'solid',
     borderColor: colors.input,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'box-shadow, border-color, background-color',
     transitionDuration: '150ms',
     outline: 'none',
@@ -24,7 +24,7 @@ const styles = stylex.create({
     boxSizing: 'border-box',
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
     ':disabled': {
       cursor: 'not-allowed',

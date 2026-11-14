@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const scaleIn = stylex.keyframes({
@@ -15,12 +15,12 @@ const styles = stylex.create({
     color: colors.popoverForeground,
     zIndex: 100,
     width: '18rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     padding: '1rem',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.md,
     outline: 'none',
     animationName: scaleIn,
     animationDuration: '150ms',

@@ -5,7 +5,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { PanelLeftIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Button } from './button';
 import { Input } from './input';
@@ -118,7 +118,7 @@ const styles = stylex.create({
     backgroundColor: colors.background,
     height: '2rem',
     width: '100%',
-    boxShadow: 'none',
+    boxShadow: shadow.none,
   },
   header: {
     display: 'flex',
@@ -160,7 +160,7 @@ const styles = stylex.create({
     height: '2rem',
     flexShrink: 0,
     alignItems: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     paddingInline: '0.5rem',
     fontSize: '0.75rem',
     fontWeight: 500,
@@ -179,7 +179,7 @@ const styles = stylex.create({
     width: '1.25rem',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     padding: 0,
     outline: 'none',
     transitionProperty: 'transform',
@@ -208,7 +208,7 @@ const styles = stylex.create({
     alignItems: 'center',
     gap: '0.5rem',
     overflow: 'hidden',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     padding: '0.5rem',
     textAlign: 'left',
     fontSize: '0.875rem',
@@ -265,7 +265,7 @@ const styles = stylex.create({
     width: '1.25rem',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     padding: 0,
     outline: 'none',
     borderWidth: 0,
@@ -288,7 +288,7 @@ const styles = stylex.create({
     minWidth: '1.25rem',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     paddingInline: '0.25rem',
     fontSize: '0.75rem',
     fontWeight: 500,
@@ -299,13 +299,13 @@ const styles = stylex.create({
     height: '2rem',
     alignItems: 'center',
     gap: '0.5rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     paddingInline: '0.5rem',
   },
   skeletonIcon: {
     width: '1rem',
     height: '1rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
   },
   skeletonText: {
     height: '1rem',
@@ -334,7 +334,7 @@ const styles = stylex.create({
     alignItems: 'center',
     gap: '0.5rem',
     overflow: 'hidden',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     paddingInline: '0.5rem',
     outline: 'none',
     textDecoration: 'none',

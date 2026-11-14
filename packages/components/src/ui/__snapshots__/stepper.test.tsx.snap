@@ -23,7 +23,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
       >
         <button
           aria-selected="true"
-          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9"
           data-slot="stepper-trigger"
           data-status="active"
           data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
@@ -32,7 +32,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
         >
           <div
             aria-hidden="true"
-            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk x3c7tb4"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk xf0oo4t"
             data-slot="stepper-indicator"
             data-status="active"
             data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:136"
@@ -65,7 +65,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
       >
         <button
           aria-selected="false"
-          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9"
           data-slot="stepper-trigger"
           data-status="inactive"
           data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
@@ -74,7 +74,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
         >
           <div
             aria-hidden="true"
-            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
             data-slot="stepper-indicator"
             data-status="inactive"
             data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:131"
@@ -108,7 +108,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
       >
         <button
           aria-selected="false"
-          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k stepper__styles.triggerDisabled x1h6gzvc xbyyjgo"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9 stepper__styles.triggerDisabled x1h6gzvc xbyyjgo"
           data-slot="stepper-trigger"
           data-status="inactive"
           data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93; @vlrc-fe/components:src/ui/stepper.tsx:110"
@@ -118,7 +118,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
         >
           <div
             aria-hidden="true"
-            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
             data-slot="stepper-indicator"
             data-status="inactive"
             data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:131"
@@ -173,7 +173,7 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
       >
         <button
           aria-selected="true"
-          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xsda711 x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk xw5q27k"
+          class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9"
           data-slot="stepper-trigger"
           data-status="active"
           data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
@@ -182,7 +182,7 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
         >
           <div
             aria-hidden="true"
-            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x7xypw4 xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk x3c7tb4"
+            class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk xf0oo4t"
             data-slot="stepper-indicator"
             data-status="active"
             data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:136"

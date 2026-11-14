@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex } from '../theme/zIndex';
 import { cn } from '../utils';
 
@@ -11,14 +11,14 @@ const styles = stylex.create({
   content: {
     zIndex: 100,
     width: '16rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
     padding: '1rem',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.md,
     outline: 'none',
   },
 });

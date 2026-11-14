@@ -3,7 +3,7 @@
 exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
 <DocumentFragment>
   <div
-    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root xjixspg x1mr5ieh x1rexohn xk0jn7w stat__styles.bordered xmkeg23 x1y0btm7 xb30jbz"
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root xjixspg x1ez7q3a x1rexohn xk0jn7w stat__styles.bordered xmkeg23 x1y0btm7 xb30jbz"
     data-direction="column"
     data-slot="stat"
     data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/stat.tsx:9; @vlrc-fe/components:src/ui/stat.tsx:15"
@@ -36,7 +36,7 @@ exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
       $45,231.89
     </span>
     <div
-      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xkpwil5 x8r4c90 xk50ysn stat__styles.trendPositive x1xboyr"
+      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xkpwil5 x8r4c90 xk50ysn stat__styles.trendPositive x1spsc8"
       data-direction="up"
       data-inline="true"
       data-slot="stat-trend"
@@ -83,7 +83,7 @@ exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
 exports[`Stat > UI > should match snapshot with inverted negative trend 1`] = `
 <DocumentFragment>
   <div
-    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root xjixspg x1mr5ieh x1rexohn xk0jn7w"
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root xjixspg x1ez7q3a x1rexohn xk0jn7w"
     data-direction="column"
     data-slot="stat"
     data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/stat.tsx:9"
@@ -116,7 +116,7 @@ exports[`Stat > UI > should match snapshot with inverted negative trend 1`] = `
       0.08%
     </span>
     <div
-      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xkpwil5 x8r4c90 xk50ysn stat__styles.trendPositive x1xboyr"
+      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xkpwil5 x8r4c90 xk50ysn stat__styles.trendPositive x1spsc8"
       data-direction="down"
       data-inline="true"
       data-slot="stat-trend"

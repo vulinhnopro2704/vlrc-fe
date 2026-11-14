@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const fadeIn = stylex.keyframes({
@@ -35,13 +35,13 @@ const styles = stylex.create({
     width: '100%',
     maxWidth: '32rem',
     gap: '1rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.background,
     padding: '1.5rem',
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    boxShadow: shadow['2xl'],
     outline: 'none',
     animationName: scaleIn,
     animationDuration: '200ms',
@@ -51,7 +51,7 @@ const styles = stylex.create({
     position: 'absolute',
     top: '0.875rem',
     right: '0.875rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     opacity: 0.7,
     borderWidth: 0,
     backgroundColor: 'transparent',
@@ -69,7 +69,7 @@ const styles = stylex.create({
       color: colors.foreground,
     },
     ':focus-visible': {
-      boxShadow: '0 0 0 2px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
   },
   closeIcon: {

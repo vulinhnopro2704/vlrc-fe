@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 
 export type CardVariant =
   | 'default'
@@ -16,11 +16,11 @@ const styles = stylex.create({
     color: colors.cardForeground,
     display: 'flex',
     flexDirection: 'column',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     gap: '1.5rem',
     paddingBlock: '1.5rem',
   },
@@ -36,24 +36,24 @@ const styles = stylex.create({
   },
   variantElevated: {
     borderWidth: 0,
-    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.lg,
     transitionProperty: 'transform, box-shadow',
     transitionDuration: '200ms',
     ':hover': {
       transform: 'translateY(-4px)',
-      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+      boxShadow: shadow.xl,
     },
   },
   variantElevatedGlass: {
     borderWidth: 0,
     backgroundColor: 'color-mix(in srgb, var(--card) 60%, transparent)',
     backdropFilter: 'blur(12px)',
-    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.lg,
     transitionProperty: 'transform, box-shadow',
     transitionDuration: '200ms',
     ':hover': {
       transform: 'translateY(-8px)',
-      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.15)',
+      boxShadow: shadow.xl,
     },
   },
   variantAuth: {
@@ -63,8 +63,8 @@ const styles = stylex.create({
     backgroundColor: 'color-mix(in srgb, var(--card) 80%, transparent)',
     backdropFilter: 'blur(24px) saturate(150%)',
     borderColor: 'color-mix(in srgb, var(--border) 60%, transparent)',
-    borderRadius: radii['2xl'],
-    boxShadow: '0 25px 50px -12px color-mix(in srgb, var(--primary) 10%, transparent)',
+    borderRadius: radius['2xl'],
+    boxShadow: shadow['2xl'],
   },
 
   header: {

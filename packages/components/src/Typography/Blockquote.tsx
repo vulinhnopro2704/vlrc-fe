@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import type { BlockquoteProps, BlockquoteVariant } from './types';
 import { resolveCustomTypographyStyle } from './utils';
 import { typographyWeightStyles } from './weightStyles';
@@ -27,14 +27,14 @@ const styles = stylex.create({
     borderColor: colors.border,
     borderLeftWidth: 4,
     borderLeftColor: colors.primary,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: colors.background,
   },
   filledVariant: {
     borderLeftWidth: 4,
     borderLeftStyle: 'solid',
     borderLeftColor: colors.primary,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: colors.muted,
   },
 });

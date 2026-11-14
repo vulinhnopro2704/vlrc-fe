@@ -12,7 +12,7 @@ exports[`Tabs > UI > should match snapshot in default state 1`] = `
   >
     <div
       aria-orientation="horizontal"
-      class="tabs__styles.list x3nfvp2 x6s0dn4 xl56j7k x1qry0bl xw3nh4a x9f619 xeq5yr9 tabs__styles.listMd xk8t5le x9ms5i6 x1mr5ieh"
+      class="tabs__styles.list x3nfvp2 x6s0dn4 xl56j7k x1qry0bl xw3nh4a x9f619 xeq5yr9 tabs__styles.listMd xk8t5le x9ms5i6 x1ez7q3a"
       data-orientation="horizontal"
       data-size="md"
       data-slot="tabs-list"
@@ -24,7 +24,7 @@ exports[`Tabs > UI > should match snapshot in default state 1`] = `
       <button
         aria-controls="radix-_r_0_-content-tab1"
         aria-selected="true"
-        class="tabs__styles.trigger x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xjbqb8w xw3nh4a xc342km x1a2a7pz x1ypdohk x87ps6o xk50ysn x5yr21d x1yyhn7k xx6bhzk x9f619 x8aud5w xybh4k3 x7s97pk xaqnwrm xijokvz tabs__styles.triggerMd x13s4r1c xkpwil5 xsda711 xpj7pl4"
+        class="tabs__styles.trigger x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xjbqb8w xw3nh4a xc342km x1a2a7pz x1ypdohk x87ps6o xk50ysn x5yr21d x1yyhn7k xx6bhzk x9f619 x8aud5w xybh4k3 x7s97pk xaqnwrm xijokvz tabs__styles.triggerMd x13s4r1c xkpwil5 xrijj7p xpj7pl4"
         data-orientation="horizontal"
         data-radix-collection-item=""
         data-size="md"
@@ -41,7 +41,7 @@ exports[`Tabs > UI > should match snapshot in default state 1`] = `
       <button
         aria-controls="radix-_r_0_-content-tab2"
         aria-selected="false"
-        class="tabs__styles.trigger x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xjbqb8w xw3nh4a xc342km x1a2a7pz x1ypdohk x87ps6o xk50ysn x5yr21d x1yyhn7k xx6bhzk x9f619 x8aud5w xybh4k3 x7s97pk xaqnwrm xijokvz tabs__styles.triggerMd x13s4r1c xkpwil5 xsda711 xpj7pl4"
+        class="tabs__styles.trigger x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xjbqb8w xw3nh4a xc342km x1a2a7pz x1ypdohk x87ps6o xk50ysn x5yr21d x1yyhn7k xx6bhzk x9f619 x8aud5w xybh4k3 x7s97pk xaqnwrm xijokvz tabs__styles.triggerMd x13s4r1c xkpwil5 xrijj7p xpj7pl4"
         data-orientation="horizontal"
         data-radix-collection-item=""
         data-size="md"
@@ -58,7 +58,7 @@ exports[`Tabs > UI > should match snapshot in default state 1`] = `
     </div>
     <div
       aria-labelledby="radix-_r_0_-trigger-tab1"
-      class="tabs__styles.content x845mor x1a2a7pz xybh4k3 x7s97pk x1jhfc9r"
+      class="tabs__styles.content x845mor x1a2a7pz xybh4k3 x7s97pk x1s6ly0"
       data-orientation="horizontal"
       data-slot="tabs-content"
       data-state="active"
@@ -72,7 +72,7 @@ exports[`Tabs > UI > should match snapshot in default state 1`] = `
     </div>
     <div
       aria-labelledby="radix-_r_0_-trigger-tab2"
-      class="tabs__styles.content x845mor x1a2a7pz xybh4k3 x7s97pk x1jhfc9r"
+      class="tabs__styles.content x845mor x1a2a7pz xybh4k3 x7s97pk x1s6ly0"
       data-orientation="horizontal"
       data-slot="tabs-content"
       data-state="inactive"

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
@@ -20,7 +20,7 @@ const styles = stylex.create({
     display: 'flex',
     flexShrink: 0,
     overflow: 'hidden',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
   },
   // 7-tier Avatar Sizes
   sizeXxs: {
@@ -70,7 +70,7 @@ const styles = stylex.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.muted,
     color: colors.mutedForeground,
     fontWeight: 500,

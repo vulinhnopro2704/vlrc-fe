@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Text, type TextType } from '../Typography';
 
@@ -29,7 +29,7 @@ const styles = stylex.create({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: 'transparent',
@@ -55,7 +55,7 @@ const styles = stylex.create({
   linkActive: {
     borderColor: colors.border,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     ':hover': {
       backgroundColor: colors.background,
     },

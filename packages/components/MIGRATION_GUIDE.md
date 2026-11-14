@@ -1,125 +1,122 @@
-# Migration Guide: Moving from Tailwind CSS to StyleX
+# Migration Guide: @vlrc-fe/components
 
-**Consumer Project:** `vlrc`  
-**Package:** `@vlrc-fe/components` (v2.0.0)
-
----
-
-## Overview
-
-`@vlrc-fe/components` has replaced **Tailwind CSS** with **Meta StyleX**. This guide walks through updating the consumer application `vlrc` to support the new StyleX architecture.
+This document guides engineers through major version migrations of `@vlrc-fe/components`.
 
 ---
 
-## 1. Install StyleX Bundler Plugin in `vlrc`
+# Migration: v2.8.x to v3.0.0 (Meta's Astryx Design System)
 
-In the root of the `vlrc` consumer project:
+**Release Date:** November 2026  
+**Scope:** Replatforming `@vlrc-fe/components` onto Meta's **Astryx Design System** (`@astryxdesign/core`, `@astryxdesign/cli`, `@astryxdesign/richtext`) and **Meta StyleX**.
+
+---
+
+## 1. Overview of Changes in v3.0.0
+
+- **Astryx Primitive Foundation**: All primitive and composite UI widgets are now built on or aligned with Meta's Astryx design system foundation.
+- **Zero UI Dependency Friction**: Moved all 30+ UI/headless libraries (`@radix-ui/*`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `lodash-es`, `lucide-react`, `react-day-picker`, `react-number-format`, `react-resizable-panels`, `sonner`, `vaul`, `ahooks`) into `dependencies`. Consumer apps no longer install or manage separate UI packages!
+- **Astryx Subpath Export (`@vlrc-fe/components/astryx`)**: Direct, tree-shakeable access to 100% of Meta's Astryx primitives (447+ components, layout, and hooks) without bundle penalty.
+- **Unified Theme & CSS Layers**: Replaced manual stylesheet stacking with a single `@vlrc-fe/components/theme.css` establishing `@layer reset, astryx-base, astryx-theme, product;`.
+- **Zero Raw `<div>` & `<span>` Invariant**: Strict layout and typography primitives must be used instead of raw HTML elements.
+- **Zero Magic Values Invariant**: Every color, space, radius, shadow, and transition MUST derive from design tokens.
+- **Token Modernization**: `radii` is standardized to `radius` with Astryx standard tiers (`sm: 2px`, `default: 4px`, `md: 6px`, `lg: 8px`, `xl: 12px`, `2xl: 16px`, `full`). A backwards-compatible `radii` export is preserved.
+- **Astryx CLI & MCP Integration**: Consumer apps can run `npx vlrc component <Name> --props` / `--json` and connect AI coding assistants to `https://astryx.atmeta.com/mcp`.
+- **Native i18n & Multi-Calendar**: First-class `<InternationalizationProvider>` supporting RTL and multiple calendar systems, coexisting with `react-i18next`.
+
+---
+
+## 2. Step-by-Step Upgrade Guide
+
+### Step 2.1: Update Dependencies & Clean Up Old Peer Dependencies
+
+In your consumer application, you can **remove** all previous UI peer dependencies (`@radix-ui/*`, `lucide-react`, `cmdk`, `date-fns`, `embla-carousel-react`, etc.) from your `package.json`. `@vlrc-fe/components` manages them directly:
 
 ```bash
-pnpm add @stylexjs/stylex
-pnpm add -D @stylexjs/unplugin
-pnpm remove @tailwindcss/vite tailwindcss
+# In consumer applications:
+pnpm add @vlrc-fe/components@^3.0.0 @stylexjs/stylex@^0.19.1
+pnpm add -D @astryxdesign/build@^0.7.16
 ```
 
----
+### Step 2.2: Update Vite Bundler Config
 
-## 2. Update `vite.config.ts` in `vlrc`
+Replace `@stylexjs/unplugin` with `@astryxdesign/build/vite`:
 
-Replace the Tailwind Vite plugin with `@stylexjs/unplugin`:
-
-```typescript
+```ts
 // vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import stylex from '@stylexjs/unplugin';
+import { stylex } from '@astryxdesign/build/vite';
 
 export default defineConfig({
   plugins: [
-    stylex.vite({
+    stylex({
       useCSSLayers: true,
       dev: process.env.NODE_ENV === 'development',
-      runtimeInjection: false,
-      unstable_moduleResolution: {
-        type: 'commonJS',
-        rootDir: __dirname,
-      },
     }),
     react(),
-    // ...other plugins (tanstackRouter, AutoImport, etc.)
   ],
 });
 ```
 
----
+### Step 2.3: Single App Entry Stylesheet Import
 
-## 3. Global CSS Setup in `vlrc`
-
-### Step 3.1: Clean up `src/index.css`
-
-Remove the Tailwind CSS imports at the top of `src/index.css`:
-
-```css
-/* REMOVE THESE LINES */
-@import 'tailwindcss';
-@import 'tw-animate-css';
-```
-
-### Step 3.2: Import `@vlrc-fe/components/stylex.css`
-
-In your application entry point (`src/main.tsx` or `src/index.css`), import the compiled StyleX CSS:
-
-```typescript
-// src/main.tsx
-import '@vlrc-fe/components/stylex.css';
-```
-
-### Step 3.3: Theme Variables Remain Intact
-
-All your existing CSS variables in `src/index.css`:
-
-- `:root` (default light theme)
-- `[data-theme='pink']` (Sakura Pink theme)
-- `[data-theme='lavender']` (Lavender Lilac theme)
-- `.dark` (Dark theme)
-
-These work seamlessly without modification, because StyleX tokens map directly to `var(--background)`, `var(--primary)`, `var(--card)`, etc.
-
----
-
-## 4. Component Usage & Overrides
-
-### 4.1 Using the new `sx` Prop for Overrides
-
-In `@vlrc-fe/components`, components now accept `sx?: stylex.StyleXStyles`:
+In your application entry point (`main.tsx` or `App.tsx`):
 
 ```tsx
-import * as stylex from '@stylexjs/stylex';
-import { Button } from '@vlrc-fe/components';
-import { colors } from '@vlrc-fe/components/theme';
+// REMOVE old stylesheet imports:
+// import '@vlrc-fe/components/stylex.css';
 
-const styles = stylex.create({
-  fullWidthEmerald: {
-    width: '100%',
-    backgroundColor: '#10b981',
-    ':hover': {
-      backgroundColor: '#059669',
-    },
-  },
-});
-
-export function SaveButton() {
-  return <Button sx={styles.fullWidthEmerald}>Save Changes</Button>;
-}
+// ADD single unified theme import:
+import '@vlrc-fe/components/theme.css';
 ```
 
-### 4.2 Transitional `className` Support
+This sets up native CSS cascade layers in the correct order:
 
-For existing code in `vlrc`, `className` will still be passed through and merged with StyleX generated atomic classes, allowing you to migrate your screens progressively without breaking production.
+```css
+@layer reset, astryx-base, astryx-theme, product;
+```
+
+### Step 2.4: Layout Primitives (Replace Raw `<div>`)
+
+| Old (Raw HTML)                                       | New (Astryx + VLRC Layout Primitives)                 |
+| :--------------------------------------------------- | :---------------------------------------------------- |
+| `<div className="flex flex-col gap-4">`              | `<VStack gap="md">` or `<Stack direction="vertical">` |
+| `<div className="flex items-center gap-2">`          | `<HStack gap="sm" align="center">`                    |
+| `<div className="grid grid-cols-3 gap-4">`           | `<Grid columns={3} gap="md">`                         |
+| `<div className="p-4 rounded-lg bg-card">`           | `<Box padding="md" sx={styles.card}>`                 |
+| `<div className="mx-auto max-w-7xl">`                | `<Container size="xl">`                               |
+| `<div className="flex items-center justify-center">` | `<Center>`                                            |
+
+### Step 2.5: Typography Primitives (Replace Raw `<span>`, `<p>`, `<h1>`-`<h6>`)
+
+| Old (Raw HTML)                             | New (VLRC Typography Primitives)                   |
+| :----------------------------------------- | :------------------------------------------------- |
+| `<h1>Page Title</h1>`                      | `<Title level={1}>Page Title</Title>`              |
+| `<h2>Section Title</h2>`                   | `<Title level={2}>Section Title</Title>`           |
+| `<p>Body paragraph text...</p>`            | `<Paragraph>Body paragraph text...</Paragraph>`    |
+| `<span className="text-muted">Text</span>` | `<Text type="secondary">Text</Text>`               |
+| `<code>const x = 1;</code>`                | `<Code>const x = 1;</Code>`                        |
+| `<pre><code>...</code></pre>`              | `<CodeBlock language="typescript">...</CodeBlock>` |
+
+### Step 2.6: Design Token Renames & Shadow Standardization
+
+- **Radius**: Update `radii.md` -> `radius.md`.
+- **Shadows**: Replace any hardcoded `boxShadow: '0 4px 6px ...'` with `shadow.sm`, `shadow.md`, `shadow.lg`, `shadow.ringFocus`, etc.
+- **Colors**: Replace any raw `#hex` or `rgb()` with `colors.*` or semantic surface variables (`colors.surfaceWash`, `colors.surfaceElevated`).
+
+### Step 2.7: AI Coding Assistant Configuration
+
+Enable Astryx CLI and Remote MCP for your team:
+
+- Inspect schemas: `npx vlrc component <ComponentName> --props`
+- Connect MCP: Add `https://astryx.atmeta.com/mcp` to `.cursor/mcp.json` or `.mcp.json`.
 
 ---
 
-## 5. Summary of Key Benefits in `vlrc`
+# Historical Migration: v1.x to v2.0.0 (Tailwind CSS to Meta StyleX)
 
-1. **Faster Build Times & Smaller Bundle**: Zero runtime CSS generation; unused CSS is completely pruned at compile-time.
-2. **No CSS Clashes**: StyleX deterministically orders atomic rules, so you never have to fight CSS cascade order or `!important`.
-3. **Type-Safe Theming**: Full TypeScript autocompletion on design tokens via `@vlrc-fe/components/theme`.
+For archival purposes, the v1 to v2 migration from Tailwind CSS to compile-time Meta StyleX is documented below:
+
+1. Replaced Tailwind CSS classes with `@stylexjs/stylex`.
+2. Created typed `sx?: stylex.StyleXStyles` override pattern.
+3. Introduced design token variables (`colors`, `spacing`, `radii`).

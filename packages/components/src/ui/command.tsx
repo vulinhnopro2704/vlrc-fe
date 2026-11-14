@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Command as CommandPrimitive } from 'cmdk';
 import { SearchIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog';
 import { Text } from '../Typography';
 
@@ -13,7 +13,7 @@ const styles = stylex.create({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
   },
@@ -43,7 +43,7 @@ const styles = stylex.create({
     display: 'flex',
     height: '2.25rem',
     width: '100%',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: 'transparent',
     borderWidth: 0,
     fontSize: '0.875rem',
@@ -94,7 +94,7 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingInline: '0.5rem',
     paddingBlock: '0.375rem',
     marginBlock: '0.125rem',

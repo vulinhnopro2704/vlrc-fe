@@ -1,7 +1,7 @@
 import { type FunctionComponent } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import Icons from '../Icons';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 
 import { cn } from '../utils';
 import { Button } from '../ui/button';
@@ -14,7 +14,7 @@ const styles = stylex.create({
   triggerButton: {
     display: 'flex',
     padding: '0.25rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,

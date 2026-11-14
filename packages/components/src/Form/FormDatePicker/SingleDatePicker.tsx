@@ -32,7 +32,7 @@ const styles = stylex.create({
     borderColor: colors.destructive,
   },
   statusWarning: {
-    borderColor: '#eab308',
+    borderColor: colors.warning,
   },
   fullWidth: {
     width: '100%',

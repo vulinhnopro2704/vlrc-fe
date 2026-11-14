@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Flex } from './flex';
 import { Text } from '../Typography/Text';
 
@@ -9,7 +9,7 @@ const styles = stylex.create({
     display: 'inline-flex',
     alignItems: 'center',
     padding: '0.25rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     backgroundColor: colors.muted,
     color: colors.mutedForeground,
     userSelect: 'none',
@@ -31,7 +31,7 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: spacing.xs,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 0,
     backgroundColor: 'transparent',
     color: colors.mutedForeground,
@@ -45,7 +45,7 @@ const styles = stylex.create({
       color: colors.foreground,
     },
     ':focus-visible': {
-      boxShadow: '0 0 0 2px var(--ring)',
+      boxShadow: shadow.ringFocus,
     },
   },
   itemBlock: {
@@ -55,7 +55,7 @@ const styles = stylex.create({
     backgroundColor: colors.background,
     color: colors.foreground,
     fontWeight: 600,
-    boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.sm,
   },
   itemDisabled: {
     cursor: 'not-allowed',

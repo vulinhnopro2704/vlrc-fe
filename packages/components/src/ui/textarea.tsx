@@ -1,19 +1,19 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
 
 const styles = stylex.create({
   base: {
     display: 'flex',
     width: '100%',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
     backgroundColor: 'transparent',
     color: colors.foreground,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     outline: 'none',
@@ -22,7 +22,7 @@ const styles = stylex.create({
     },
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
     ':disabled': {
       cursor: 'not-allowed',
@@ -33,49 +33,49 @@ const styles = stylex.create({
   // 7-tier Sizes
   sizeXxs: {
     minHeight: '2.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingInline: '0.5rem',
     paddingBlock: '0.25rem',
     fontSize: '0.6875rem',
   },
   sizeXs: {
     minHeight: '3rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingInline: '0.625rem',
     paddingBlock: '0.375rem',
     fontSize: '0.75rem',
   },
   sizeSm: {
     minHeight: '3.5rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     paddingInline: '0.75rem',
     paddingBlock: '0.5rem',
     fontSize: '0.8125rem',
   },
   sizeMd: {
     minHeight: '4rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     paddingInline: '0.75rem',
     paddingBlock: '0.5rem',
     fontSize: '0.875rem',
   },
   sizeLg: {
     minHeight: '5rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     paddingInline: '1rem',
     paddingBlock: '0.625rem',
     fontSize: '0.9375rem',
   },
   sizeXl: {
     minHeight: '6rem',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
     paddingInline: '1.125rem',
     paddingBlock: '0.75rem',
     fontSize: '1rem',
   },
   sizeXxl: {
     minHeight: '8rem',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
     paddingInline: '1.25rem',
     paddingBlock: '1rem',
     fontSize: '1.125rem',
@@ -83,7 +83,7 @@ const styles = stylex.create({
 
   invalid: {
     borderColor: colors.destructive,
-    boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 20%, transparent)',
+    boxShadow: shadow.ringDestructive,
   },
 });
 

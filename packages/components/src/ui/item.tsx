@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Separator } from './separator';
 import { Paragraph, Text } from '../Typography';
@@ -19,7 +19,7 @@ const styles = stylex.create({
     borderStyle: 'solid',
     borderColor: 'transparent',
     fontSize: '0.875rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     flexWrap: 'wrap',
     outline: 'none',
     transitionProperty: 'background-color, border-color',
@@ -56,13 +56,13 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     backgroundColor: colors.muted,
   },
   mediaImage: {
     width: '2.5rem',
     height: '2.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     overflow: 'hidden',
   },
   content: {

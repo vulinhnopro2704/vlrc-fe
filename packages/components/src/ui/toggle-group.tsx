@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import * as stylex from '@stylexjs/stylex';
-import { radii } from '../theme/tokens.stylex';
+import { radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { toggleStyles, toggleVariantStyles, toggleSizeStyles, type ToggleVariant } from './toggle';
 
@@ -10,22 +10,22 @@ const styles = stylex.create({
     display: 'inline-flex',
     alignItems: 'center',
     width: 'fit-content',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
   },
   groupOutline: {
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
   },
   itemGrouped: {
     borderRadius: 0,
     minWidth: 0,
     flex: '1 1 0%',
     ':first-child': {
-      borderTopLeftRadius: radii.md,
-      borderBottomLeftRadius: radii.md,
+      borderTopLeftRadius: radius.md,
+      borderBottomLeftRadius: radius.md,
     },
     ':last-child': {
-      borderTopRightRadius: radii.md,
-      borderBottomRightRadius: radii.md,
+      borderTopRightRadius: radius.md,
+      borderBottomRightRadius: radius.md,
     },
   },
   itemGroupedOutline: {

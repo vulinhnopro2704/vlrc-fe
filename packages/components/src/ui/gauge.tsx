@@ -32,10 +32,10 @@ const styles = stylex.create({
     stroke: colors.primary,
   },
   colorSuccess: {
-    stroke: 'var(--success, #22c55e)',
+    stroke: colors.success,
   },
   colorWarning: {
-    stroke: 'var(--warning, #f59e0b)',
+    stroke: colors.warning,
   },
   colorDestructive: {
     stroke: colors.destructive,

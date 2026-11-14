@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { isNil } from 'lodash-es';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth } from '../theme/width';
 import Icons from '../Icons';
 import { Text } from '../Typography';
@@ -22,7 +22,7 @@ const styles = stylex.create({
     alignItems: 'center',
     width: '100%',
     minWidth: '15rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
@@ -33,13 +33,13 @@ const styles = stylex.create({
     color: colors.foreground,
     cursor: 'pointer',
     outline: 'none',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'box-shadow, border-color',
     transitionDuration: '150ms',
   },
   triggerOpen: {
     borderColor: colors.ring,
-    boxShadow: '0 0 0 2px color-mix(in srgb, var(--ring) 50%, transparent)',
+    boxShadow: shadow.ring,
   },
   triggerDisabled: {
     backgroundColor: colors.muted,
@@ -159,7 +159,7 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

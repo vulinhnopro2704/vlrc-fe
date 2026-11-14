@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
 import { Text } from '../Typography';
 
@@ -97,14 +97,14 @@ const styles = stylex.create({
     backgroundColor: 'transparent',
     borderWidth: 0,
     padding: spacing.xs,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     cursor: 'pointer',
     outline: 'none',
     textAlign: 'left',
     transitionProperty: 'opacity, background-color',
     transitionDuration: '150ms',
     ':focus-visible': {
-      boxShadow: '0 0 0 2px var(--ring)',
+      boxShadow: shadow.ringFocus,
     },
   },
   triggerDisabled: {
@@ -119,7 +119,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     width: '2rem',
     height: '2rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     fontSize: '0.875rem',
     fontWeight: 600,
     flexShrink: 0,
@@ -137,7 +137,7 @@ const styles = stylex.create({
     backgroundColor: colors.background,
     borderColor: colors.primary,
     color: colors.primary,
-    boxShadow: '0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent)',
+    boxShadow: shadow.ring,
   },
   indicatorCompleted: {
     backgroundColor: colors.primary,

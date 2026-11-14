@@ -358,3 +358,19 @@ export {
   FieldContent,
   FieldTitle,
 };
+
+export {
+  Field as AstryxField,
+  FieldLabel as AstryxFieldLabel,
+  FieldStatus as AstryxFieldStatus,
+  InputClearButton,
+} from '@astryxdesign/core';
+
+export type {
+  FieldProps as AstryxFieldProps,
+  FieldLabelProps as AstryxFieldLabelProps,
+  FieldStatusProps as AstryxFieldStatusProps,
+  AutoCapitalize,
+  EnterKeyHint,
+  InputMode,
+} from '@astryxdesign/core';

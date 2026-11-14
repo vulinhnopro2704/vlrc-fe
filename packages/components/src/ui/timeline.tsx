@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Title, Text } from '../Typography';
 
 export type TimelineOrientation = 'vertical' | 'horizontal';
@@ -83,7 +83,7 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     flexShrink: 0,
     zIndex: 1,
     transitionProperty: 'background-color, border-color, box-shadow, color',
@@ -118,7 +118,7 @@ const styles = stylex.create({
     borderColor: colors.primary,
     borderWidth: 2,
     borderStyle: 'solid',
-    boxShadow: '0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent)',
+    boxShadow: shadow.ring,
   },
   dotPending: {
     backgroundColor: colors.muted,

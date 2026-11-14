@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 export type SheetSide = 'top' | 'right' | 'bottom' | 'left';
@@ -49,7 +49,7 @@ const styles = stylex.create({
     flexDirection: 'column',
     backgroundColor: colors.background,
     color: colors.foreground,
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    boxShadow: shadow['2xl'],
     outline: 'none',
     boxSizing: 'border-box',
     animationDuration: '250ms',
@@ -103,7 +103,7 @@ const styles = stylex.create({
     position: 'absolute',
     top: '1rem',
     right: '1rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 0,
     backgroundColor: 'transparent',
     color: colors.mutedForeground,
@@ -120,7 +120,7 @@ const styles = stylex.create({
       color: colors.foreground,
     },
     ':focus-visible': {
-      boxShadow: '0 0 0 2px var(--ring)',
+      boxShadow: shadow.ringFocus,
     },
   },
   closeIcon: {

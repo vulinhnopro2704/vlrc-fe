@@ -11,7 +11,7 @@ exports[`DataTableColumnHeader > UI > should match snapshot when column is sorte
     <button
       aria-expanded="false"
       aria-haspopup="menu"
-      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xsda711 xpj7pl4 x1ryrjj2 x1dcheo9 DataTableColumnHeader__styles.root xettwda xxyw1jk"
+      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9 DataTableColumnHeader__styles.root xettwda xxyw1jk"
       data-size="sm"
       data-slot="data-table-column-header-trigger"
       data-state="closed"
@@ -90,7 +90,7 @@ exports[`DataTableColumnHeader > UI > should match snapshot with sortable column
     <button
       aria-expanded="false"
       aria-haspopup="menu"
-      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xsda711 xpj7pl4 x1ryrjj2 x1dcheo9 DataTableColumnHeader__styles.root xettwda xxyw1jk"
+      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9 DataTableColumnHeader__styles.root xettwda xxyw1jk"
       data-size="sm"
       data-slot="data-table-column-header-trigger"
       data-state="closed"

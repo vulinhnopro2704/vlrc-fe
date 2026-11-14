@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 
 const pulse = stylex.keyframes({
   '0%, 100%': { opacity: 1 },
@@ -10,7 +10,7 @@ const pulse = stylex.keyframes({
 const styles = stylex.create({
   base: {
     backgroundColor: colors.accent,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     animationName: pulse,
     animationDuration: '2s',
     animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',

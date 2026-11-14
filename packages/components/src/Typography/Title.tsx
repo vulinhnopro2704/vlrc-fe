@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
 import { resolveTooltipContent, renderWithTooltip } from './tooltip';
@@ -55,7 +55,8 @@ const styles = stylex.create({
     color: colors.foreground,
   },
   gradientVariant: {
-    backgroundImage: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)',
+    backgroundImage:
+      'linear-gradient(135deg, var(--primary) 0%, var(--chart-4) 50%, var(--chart-5) 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   },
@@ -91,7 +92,7 @@ const styles = stylex.create({
     color: colors.mutedForeground,
     cursor: 'pointer',
     padding: '0.25rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -116,7 +117,7 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.ring,
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingInline: '0.5rem',
     paddingBlock: '0.25rem',
     outline: 'none',

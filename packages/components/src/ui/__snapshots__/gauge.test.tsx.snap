@@ -137,7 +137,7 @@ exports[`Gauge > UI > should match snapshot with label and min/max row 1`] = `
         stroke-width="14"
       />
       <path
-        class="gauge__styles.indicator x1owpc8m xbh8q5q xxnu56j x1wsgiic xwwtwea gauge__styles.colorSuccess x1uof0aa"
+        class="gauge__styles.indicator x1owpc8m xbh8q5q xxnu56j x1wsgiic xwwtwea gauge__styles.colorSuccess x19u12o8"
         d="M 7 90 A 83 83 0 0 1 173 90"
         data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:24; @vlrc-fe/components:src/ui/gauge.tsx:34"
         stroke-dasharray="260.75219024795285"

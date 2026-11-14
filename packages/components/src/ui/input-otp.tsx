@@ -2,7 +2,7 @@ import * as React from 'react';
 import { OTPInput, OTPInputContext } from 'input-otp';
 import { MinusIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
 const caretBlink = stylex.keyframes({
@@ -31,8 +31,8 @@ const styles = stylex.create({
     borderColor: colors.input,
     backgroundColor: colors.background,
     color: colors.foreground,
-    borderRadius: radii.md,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    borderRadius: radius.md,
+    boxShadow: shadow.xs,
     transitionProperty: 'border-color, box-shadow',
     transitionDuration: '150ms',
     outline: 'none',
@@ -42,7 +42,7 @@ const styles = stylex.create({
   },
   slotActive: {
     borderColor: colors.ring,
-    boxShadow: '0 0 0 2px var(--ring)',
+    boxShadow: shadow.ringFocus,
     zIndex: 1,
   },
 
@@ -51,43 +51,43 @@ const styles = stylex.create({
     width: '1.5rem',
     height: '1.5rem',
     fontSize: '0.75rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
   },
   slotXs: {
     width: '1.75rem',
     height: '1.75rem',
     fontSize: '0.8125rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
   },
   slotSm: {
     width: '2rem',
     height: '2rem',
     fontSize: '0.875rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
   },
   slotMd: {
     width: '2.5rem',
     height: '2.5rem',
     fontSize: '1rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
   },
   slotLg: {
     width: '3rem',
     height: '3rem',
     fontSize: '1.125rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
   },
   slotXl: {
     width: '3.5rem',
     height: '3.5rem',
     fontSize: '1.25rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
   },
   slotXxl: {
     width: '4rem',
     height: '4rem',
     fontSize: '1.5rem',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
   },
 
   caretContainer: {

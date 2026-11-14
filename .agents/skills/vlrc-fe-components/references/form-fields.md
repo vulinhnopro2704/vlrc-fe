@@ -1,6 +1,6 @@
 # Custom Form Fields API Reference
 
-This manual provides prop definitions and copy-pasteable snippets for all 10 specialized form field wrappers in `@vlrc-fe/components`. All of these automatically wire up inside a `<Form>` container using `control` and `name` attributes.
+This manual provides prop definitions and copy-pasteable snippets for all 10 specialized form field wrappers in `@vlrc-fe/components`. All of these automatically wire up inside a `<Form>` container using `control` and `name` attributes, with full Astryx token integration and zero magic values.
 
 ---
 
@@ -23,17 +23,17 @@ This manual provides prop definitions and copy-pasteable snippets for all 10 spe
 
 Unifies standard text, email, phone, and password inputs.
 
-- **Automatic Password Eye**: Renders `Icons.Eye`/`Icons.EyeOff` toggle button automatically when `htmlType="password"`.
-- **Regex Validations**: Automatically hooks Vietnamese phone numbers and email formats to validators if `htmlType="tel"` or `"email"` is declared and no custom pattern overrides are passed.
+- **Automatic Password Toggle**: Renders `<Icons.Eye>` / `<Icons.EyeOff>` visibility toggle button automatically when `htmlType="password"`.
+- **Regex Validations**: Automatically validates phone numbers and email formats when `htmlType="tel"` or `"email"` is declared.
 
-| Prop             | Type                                                | Default  | Description                                           |
-| :--------------- | :-------------------------------------------------- | :------- | :---------------------------------------------------- |
-| `htmlType`       | `'text' \| 'password' \| 'email' \| 'tel' \| 'url'` | `'text'` | Directs input format styles.                          |
-| `leftIcon`       | `ReactNode`                                         | -        | Prefix icon aligned inside the input box.             |
-| `rightIcon`      | `ReactNode`                                         | -        | Suffix icon aligned inside the input box.             |
-| `placeholder`    | `string`                                            | -        | Input placeholder.                                    |
-| `disabled`       | `boolean`                                           | `false`  | Disable state toggle.                                 |
-| `inputClassName` | `string`                                            | `''`     | Direct class overrides for the raw `<input>` element. |
+| Prop          | Type                                                | Default  | Description                               |
+| :------------ | :-------------------------------------------------- | :------- | :---------------------------------------- |
+| `htmlType`    | `'text' \| 'password' \| 'email' \| 'tel' \| 'url'` | `'text'` | Directs input format behavior.            |
+| `leftIcon`    | `ReactNode`                                         | -        | Prefix icon aligned inside the input box. |
+| `rightIcon`   | `ReactNode`                                         | -        | Suffix icon aligned inside the input box. |
+| `placeholder` | `string`                                            | -        | Input placeholder text.                   |
+| `disabled`    | `boolean`                                           | `false`  | Disable state toggle.                     |
+| `sx`          | `stylex.StyleXStyles`                               | -        | StyleX overrides.                         |
 
 ```tsx
 <FormInput
@@ -41,7 +41,7 @@ Unifies standard text, email, phone, and password inputs.
   name="email"
   label="Email đăng nhập"
   htmlType="email"
-  leftIcon={<Icons.Mail className="h-4 w-4" />}
+  leftIcon={<Icons.Mail />}
   rules={{ required: 'Bắt buộc nhập email' }}
 />
 
@@ -50,7 +50,7 @@ Unifies standard text, email, phone, and password inputs.
   name="password"
   label="Mật khẩu"
   htmlType="password"
-  leftIcon={<Icons.Lock className="h-4 w-4" />}
+  leftIcon={<Icons.Lock />}
   rules={{ required: 'Bắt buộc nhập mật khẩu' }}
 />
 ```
@@ -59,12 +59,14 @@ Unifies standard text, email, phone, and password inputs.
 
 ## 2. `<FormTextarea>` (Multiline Text Box)
 
-Renders a custom styled multiline text area input box.
+Renders a token-styled multiline text area input box.
 
-| Prop          | Type      | Default | Description                |
-| :------------ | :-------- | :------ | :------------------------- |
-| `disabled`    | `boolean` | `false` | Disable interactions.      |
-| `placeholder` | `string`  | -       | Textarea placeholder text. |
+| Prop          | Type                  | Default | Description                |
+| :------------ | :-------------------- | :------ | :------------------------- |
+| `disabled`    | `boolean`             | `false` | Disable interactions.      |
+| `placeholder` | `string`              | -       | Textarea placeholder text. |
+| `rows`        | `number`              | `4`     | Default row count.         |
+| `sx`          | `stylex.StyleXStyles` | -       | StyleX overrides.          |
 
 ```tsx
 <FormTextarea
@@ -79,14 +81,21 @@ Renders a custom styled multiline text area input box.
 
 ## 3. `<FormCheckbox>` (Single Boolean Toggle)
 
-Sets `horizontal={true}` and `controlFirst={true}` automatically to align checkbox widgets inline before their descriptive labels.
+Renders an accessible checkbox wrapped with `FormBase`.
+
+| Prop          | Type                  | Default | Description           |
+| :------------ | :-------------------- | :------ | :-------------------- |
+| `label`       | `ReactNode`           | -       | Accompanying label.   |
+| `description` | `ReactNode`           | -       | Subtitle description. |
+| `disabled`    | `boolean`             | `false` | Disable checkbox.     |
+| `sx`          | `stylex.StyleXStyles` | -       | StyleX overrides.     |
 
 ```tsx
 <FormCheckbox
   control={control}
-  name="agree"
-  label="Tôi đồng ý với điều khoản dịch vụ"
-  rules={{ required: 'Bạn phải chấp nhận điều khoản' }}
+  name="agreeTerms"
+  label="Tôi đồng ý với các điều khoản sử dụng"
+  rules={{ required: 'Bạn cần đồng ý với điều khoản' }}
 />
 ```
 
@@ -94,53 +103,39 @@ Sets `horizontal={true}` and `controlFirst={true}` automatically to align checkb
 
 ## 4. `<FormSimpleSelect>` (Direct Inline Dropdown)
 
-A simple select dropdown box that utilizes inline children rather than data objects. Useful for quick static lists.
+Lightweight native-like select wrapper for simple option choices.
 
 ```tsx
-<FormSimpleSelect control={control} name="role" label="Vai trò tài khoản">
-  <SelectItem value="student">Học sinh</SelectItem>
-  <SelectItem value="teacher">Giáo viên</SelectItem>
-  <SelectItem value="admin">Quản trị viên</SelectItem>
-</FormSimpleSelect>
+<FormSimpleSelect
+  control={control}
+  name="role"
+  label="Vai trò tài khoản"
+  placeholder="Chọn vai trò..."
+  options={[
+    { label: 'Học viên', value: 'student' },
+    { label: 'Giáo viên', value: 'teacher' },
+    { label: 'Quản trị viên', value: 'admin' },
+  ]}
+  rules={{ required: 'Vui lòng chọn vai trò' }}
+/>
 ```
 
 ---
 
 ## 5. `<FormSelect>` (Advanced Single & Multi-Select)
 
-An advanced select popover wrapping `@vlrc-fe/components`'s custom `Select` dropdown. Highly optimized for larger searchable lists.
-
-| Prop           | Type                    | Default | Description                                      |
-| :------------- | :---------------------- | :------ | :----------------------------------------------- |
-| `options`      | `BaseSelectOption<T>[]` | `[]`    | Choice items array `{ value, label }`.           |
-| `isMulti`      | `boolean`               | `false` | Enable multi-selection list mode.                |
-| `isClearable`  | `boolean`               | `true`  | Show close/reset values triggers.                |
-| `isSearchable` | `boolean`               | `true`  | Enables keyword search filtering inside popover. |
-| `isLoading`    | `boolean`               | `false` | Spinner indicator.                               |
+Full-featured dropdown selector with search, clear button, and badge options.
 
 ```tsx
-// Single Selection Choice
 <FormSelect
   control={control}
-  name="subject"
-  label="Môn học chính"
-  options={[
-    { value: 'english', label: 'Tiếng Anh' },
-    { value: 'japanese', label: 'Tiếng Nhật' }
-  ]}
-  isClearable={false}
-/>
-
-// Multi Selection List Choice
-<FormSelect
-  control={control}
-  name="topics"
-  label="Chủ đề quan tâm"
-  isMulti={true}
-  options={[
-    { value: 'vocab', label: 'Từ vựng' },
-    { value: 'grammar', label: 'Ngữ pháp' }
-  ]}
+  name="courseId"
+  label="Khóa học"
+  placeholder="Tìm kiếm và chọn khóa học..."
+  options={courseOptions}
+  isSearchable
+  isClearable
+  rules={{ required: 'Vui lòng chọn một khóa học' }}
 />
 ```
 
@@ -148,26 +143,15 @@ An advanced select popover wrapping `@vlrc-fe/components`'s custom `Select` drop
 
 ## 6. `<FormMultiSelect>` (Popover Tag List Selection)
 
-A custom multi-select tag picker displaying checked tags and selection triggers in a dropdown menu.
-
-| Prop            | Type                     | Default        | Description                                         |
-| :-------------- | :----------------------- | :------------- | :-------------------------------------------------- |
-| `options`       | `BaseSelectOption[]`     | `[]`           | Dropdown items.                                     |
-| `placeholder`   | `string`                 | `'Chọn...'`    | Trigger placeholder text.                           |
-| `showSelectAll` | `boolean`                | `false`        | Displays a global toggle button checking all items. |
-| `maxTagCount`   | `number \| 'responsive'` | `'responsive'` | Maximum tag pills visible.                          |
+Allows picking multiple options displayed as compact badge tags.
 
 ```tsx
 <FormMultiSelect
   control={control}
-  name="hobbies"
-  label="Sở thích cá nhân"
-  options={[
-    { value: 'sport', label: 'Thể thao' },
-    { value: 'music', label: 'Âm nhạc' },
-    { value: 'reading', label: 'Đọc sách' },
-  ]}
-  showSelectAll={true}
+  name="tagIds"
+  label="Thẻ phân loại"
+  placeholder="Chọn các thẻ liên quan..."
+  options={allTags}
 />
 ```
 
@@ -175,42 +159,15 @@ A custom multi-select tag picker displaying checked tags and selection triggers 
 
 ## 7. `<FormDatePicker>` (Calendars & DateTime Selectors)
 
-Handles single date picks, range selection, datetime inputs, and month/year picks.
-
-| Prop            | Type                                                  | Default  | Description                                    |
-| :-------------- | :---------------------------------------------------- | :------- | :--------------------------------------------- |
-| `isRangePicker` | `boolean`                                             | `false`  | Range picking toggle (returns `[Date, Date]`). |
-| `pickerType`    | `'date' \| 'time' \| 'datetime' \| 'month' \| 'year'` | `'date'` | Control calendar granularity.                  |
-| `dateFormat`    | `string`                                              | -        | Mask format (e.g. `'yyyy-MM-dd HH:mm'`).       |
-| `showTime`      | `boolean \| TimeConfig`                               | `false`  | Toggles sub-hour steps.                        |
-| `disabledDate`  | `(date: Date) => boolean`                             | -        | Callback function blocking custom dates.       |
+Astryx-powered internationalized date and range selector with multi-calendar support.
 
 ```tsx
-// Single Date Selection
 <FormDatePicker
   control={control}
-  name="birthDate"
-  label="Ngày sinh"
-  placeholder="Chọn ngày sinh..."
-/>
-
-// Time & Date Selection
-<FormDatePicker
-  control={control}
-  name="schedule"
-  label="Lịch hẹn tư vấn"
-  pickerType="datetime"
-  showTime={true}
-  dateFormat="dd/MM/yyyy HH:mm"
-/>
-
-// Date Range Selection
-<FormDatePicker
-  control={control}
-  name="vacation"
-  label="Thời gian nghỉ phép"
-  isRangePicker={true}
-  placeholder="Ngày đi ~ Ngày về"
+  name="publishedAt"
+  label="Ngày phát hành"
+  placeholder="Chọn ngày..."
+  rules={{ required: 'Ngày phát hành là bắt buộc' }}
 />
 ```
 
@@ -218,35 +175,16 @@ Handles single date picks, range selection, datetime inputs, and month/year pick
 
 ## 8. `<FormNumberInput>` (Numeric Format with Steppers)
 
-A numerical formatted controller that parses input values, triggers step increment/decrement, and formats thousands or decimals.
-
-| Prop                | Type     | Default                    | Description                                 |
-| :------------------ | :------- | :------------------------- | :------------------------------------------ |
-| `stepper`           | `number` | `1`                        | Stepper size limit.                         |
-| `minValue`          | `number` | `Number.NEGATIVE_INFINITY` | Lower boundary.                             |
-| `maxValue`          | `number` | `Number.POSITIVE_INFINITY` | Upper boundary.                             |
-| `thousandSeparator` | `string` | -                          | Thousands separator character (e.g. `','`). |
-| `prefix`            | `string` | -                          | String leading numeric values.              |
-| `suffix`            | `string` | -                          | String appending numeric values.            |
+Numeric input supporting step controls, minimums, maximums, and currency/percentage formatting.
 
 ```tsx
-// Standard Numerical Stepper
 <FormNumberInput
   control={control}
-  name="order"
-  label="Thứ tự hiển thị"
-  minValue={1}
-  maxValue={50}
-/>
-
-// Currency mask input
-<FormNumberInput
-  control={control}
-  name="salary"
-  label="Mức lương đề xuất"
-  thousandSeparator=","
-  suffix=" VND"
-  minValue={0}
+  name="price"
+  label="Giá khóa học (VNĐ)"
+  min={0}
+  step={10000}
+  rules={{ required: 'Vui lòng nhập giá khóa học' }}
 />
 ```
 
@@ -254,22 +192,17 @@ A numerical formatted controller that parses input values, triggers step increme
 
 ## 9. `<FormRadioGroup>` (Radio Option List)
 
-Renders custom radio buttons formatted cleanly vertically or horizontally.
-
-| Prop            | Type                             | Default    | Description                                            |
-| :-------------- | :------------------------------- | :--------- | :----------------------------------------------------- |
-| `options`       | `RadioOption[]`                  | `[]`       | Choices list `{ value, label, disabled }`.             |
-| `size`          | `'small' \| 'middle' \| 'large'` | `'middle'` | Scale constraints.                                     |
-| `autoHeightMax` | `number`                         | -          | Renders list with vertical scrolls if overflow active. |
+Renders mutually exclusive radio lists with token-based focus rings.
 
 ```tsx
 <FormRadioGroup
   control={control}
-  name="level"
-  label="Trình độ"
+  name="gender"
+  label="Giới tính"
   options={[
-    { value: 'basic', label: 'Cơ bản' },
-    { value: 'advanced', label: 'Nâng cao' },
+    { label: 'Nam', value: 'male' },
+    { label: 'Nữ', value: 'female' },
+    { label: 'Khác', value: 'other' },
   ]}
 />
 ```
@@ -278,39 +211,15 @@ Renders custom radio buttons formatted cleanly vertically or horizontally.
 
 ## 10. `<FormFileUpload>` (Avatar & File Drag & Drop)
 
-A comprehensive drag and drop or circle avatar component with automatic cloud uploads or manual form submission files.
-
-| Prop         | Type                              | Default     | Description                                                  |
-| :----------- | :-------------------------------- | :---------- | :----------------------------------------------------------- |
-| `variant`    | `'default' \| 'avatar'`           | `'default'` | Avatar renders a round image circle selector.                |
-| `maxFiles`   | `number`                          | `1`         | Maximum quantity.                                            |
-| `maxSize`    | `number`                          | `5MB`       | Maximum size limit.                                          |
-| `accept`     | `string`                          | `'image/*'` | Mime formats.                                                |
-| `autoUpload` | `boolean`                         | `false`     | Immediate upload trigger.                                    |
-| `uploadFile` | `(file: File) => Promise<string>` | -           | **(Required if autoUpload: true)** Custom cloud upload hook. |
+Handles file upload workflows with preview cards, progress indicators, and storage adapters.
 
 ```tsx
-// circular profile uploader with immediate S3 upload
 <FormFileUpload
   control={control}
-  name="profilePic"
-  label="Ảnh hồ sơ cá nhân"
-  variant="avatar"
-  autoUpload={true}
-  uploadFile={async (file) => {
-    const url = await uploadToCloudStorage(file);
-    return url;
-  }}
-/>
-
-// drag & drop local attachments loader
-<FormFileUpload
-  control={control}
-  name="cvAttachments"
-  label="Hồ sơ đính kèm (CV)"
-  variant="default"
-  accept=".pdf,.doc"
-  maxFiles={2}
-  autoUpload={false}
+  name="avatarUrl"
+  label="Ảnh đại diện"
+  layout="avatar"
+  accept={['image/jpeg', 'image/png']}
+  maxSizeMb={5}
 />
 ```

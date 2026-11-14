@@ -10,13 +10,13 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
     role="group"
   >
     <span
-      class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
+      class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
       data-size="md"
       data-slot="avatar"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:41; @vlrc-fe/components:src/ui/avatar.tsx:85"
     >
       <span
-        class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+        class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
         data-slot="avatar-fallback"
         data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
       >
@@ -24,13 +24,13 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       </span>
     </span>
     <span
-      class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
+      class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
       data-size="md"
       data-slot="avatar"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:41; @vlrc-fe/components:src/ui/avatar.tsx:85"
     >
       <span
-        class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+        class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
         data-slot="avatar-fallback"
         data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
       >
@@ -38,13 +38,13 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       </span>
     </span>
     <span
-      class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
+      class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
       data-size="md"
       data-slot="avatar"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:41; @vlrc-fe/components:src/ui/avatar.tsx:85"
     >
       <span
-        class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+        class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
         data-slot="avatar-fallback"
         data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
       >
@@ -61,13 +61,13 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       type="button"
     >
       <span
-        class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
+        class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
         data-size="md"
         data-slot="avatar-group-overflow"
         data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:41; @vlrc-fe/components:src/ui/avatar.tsx:85"
       >
         <span
-          class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 avatar__styles.overflowFallback x1qry0bl x84br7x x1s688f x1ypdohk"
+          class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww avatar__styles.overflowFallback x1qry0bl x84br7x x1s688f x1ypdohk"
           data-slot="avatar-fallback"
           data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67; @vlrc-fe/components:src/ui/avatar.tsx:94"
         >
@@ -82,13 +82,13 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
 exports[`Avatar > UI > should match snapshot for size lg 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeLg xvm51jw xwaiz5r x1jchvi3"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeLg xvm51jw xwaiz5r x1jchvi3"
     data-size="lg"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:46"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >
@@ -101,13 +101,13 @@ exports[`Avatar > UI > should match snapshot for size lg 1`] = `
 exports[`Avatar > UI > should match snapshot for size md 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeMd xs5h3dt xettwda xkpwil5"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5"
     data-size="md"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:41"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >
@@ -120,13 +120,13 @@ exports[`Avatar > UI > should match snapshot for size md 1`] = `
 exports[`Avatar > UI > should match snapshot for size sm 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeSm xh29eag xb8l8e1 xboafo0"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeSm xh29eag xb8l8e1 xboafo0"
     data-size="sm"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:36"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >
@@ -139,13 +139,13 @@ exports[`Avatar > UI > should match snapshot for size sm 1`] = `
 exports[`Avatar > UI > should match snapshot for size xl 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeXl x188tqju x1pizb70 x1603h9y"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXl x188tqju x1pizb70 x1603h9y"
     data-size="xl"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:51"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >
@@ -158,13 +158,13 @@ exports[`Avatar > UI > should match snapshot for size xl 1`] = `
 exports[`Avatar > UI > should match snapshot for size xs 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeXs xp8d6y2 xam5rvr x12lo8hy"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXs xp8d6y2 xam5rvr x12lo8hy"
     data-size="xs"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:31"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >
@@ -177,13 +177,13 @@ exports[`Avatar > UI > should match snapshot for size xs 1`] = `
 exports[`Avatar > UI > should match snapshot for size xxl 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeXxl xekueh x1sh0tsm xngnso2"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXxl xekueh x1sh0tsm xngnso2"
     data-size="xxl"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:56"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >
@@ -196,13 +196,13 @@ exports[`Avatar > UI > should match snapshot for size xxl 1`] = `
 exports[`Avatar > UI > should match snapshot for size xxs 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeXxs xwqq7k2 xmll18r x2ohwh0"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXxs xwqq7k2 xmll18r x2ohwh0"
     data-size="xxs"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:26"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >
@@ -215,13 +215,13 @@ exports[`Avatar > UI > should match snapshot for size xxs 1`] = `
 exports[`Avatar > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <span
-    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x7xypw4 avatar__styles.sizeMd xs5h3dt xettwda xkpwil5"
+    class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5"
     data-size="md"
     data-slot="avatar"
     data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:18; @vlrc-fe/components:src/ui/avatar.tsx:41"
   >
     <span
-      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x7xypw4 x1qry0bl xw3nh4a xk50ysn"
+      class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:67"
     >

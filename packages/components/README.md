@@ -3,37 +3,71 @@
 [![npm version](https://img.shields.io/npm/v/@vlrc-fe/components.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/components)
 [![React 19](https://img.shields.io/badge/React-19.3-blue.svg?style=flat-square)](https://react.dev/)
 [![TypeScript 7](https://img.shields.io/badge/TypeScript-7.0-blue.svg?style=flat-square)](https://www.typescriptlang.org/)
+[![Astryx](https://img.shields.io/badge/Astryx-0.7.16-blueviolet.svg?style=flat-square)](https://astryx.atmeta.com)
 [![StyleX](https://img.shields.io/badge/Styling-Meta%20StyleX-purple.svg?style=flat-square)](https://stylexjs.com/)
 [![Storybook](https://img.shields.io/badge/Storybook-Live%20Demo-ff4785.svg?style=flat-square&logo=storybook)](https://vulinhnopro2704.github.io/vlrc-fe/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](../../LICENSE)
 
-Accessible, performant React UI component library built with **Meta StyleX**, **Radix UI**, and **React Hook Form**. Ships compile-time atomic CSS with zero runtime style injection.
+Accessible, enterprise-grade React UI component library built natively on Meta's **Astryx Design System**, **Meta StyleX**, **Radix UI**, and **React Hook Form**. Ships compile-time atomic CSS with zero runtime style injection and full CLI / MCP support.
 
 - **npm**: [npmjs.com/package/@vlrc-fe/components](https://www.npmjs.com/package/@vlrc-fe/components)
 - **Live Storybook**: [vulinhnopro2704.github.io/vlrc-fe](https://vulinhnopro2704.github.io/vlrc-fe/)
+- **Astryx Official Docs**: [astryx.atmeta.com](https://astryx.atmeta.com)
+- **Astryx Remote MCP**: `https://astryx.atmeta.com/mcp`
 
 ---
 
 ## Features
 
-- **Meta StyleX** — compile-time atomic CSS-in-JS with deterministic specificity and zero runtime cost
-- **Dynamic Theming** — design tokens (`colors`, `radii`, `textColors`, `spacing`) mapped to CSS custom properties, supporting multi-theme systems
-- **Layout Primitives** — high-performance `<Flex>`, `<Grid>`, `<Row>`, `<Col>`, and `useBreakpoint` with 7-tier spacing tokens and zero runtime overhead
-- **Accessible by Default** — built on WAI-ARIA compliant Radix UI primitives with keyboard navigation and screen reader support
-- **Form System** — complete suite of form controls (`FormInput`, `FormSelect`, `FormMultiSelect`, `FormDatePicker`, `FormFileUpload`, `FormNumberInput`) integrated with React Hook Form
-- **Typography Suite** — rich semantic text components (`Title`, `Text`, `Paragraph`, `Blockquote`, `Link`, `Code`, `Kbd`) with 7-tier size scale, font weights, text decorations, ellipsis, and hover tooltips
-- **Select & MultiSelect** — responsive dropdowns with automatic text truncation, hover tooltips, and overflow protection for ultra-long labels
-- **File Upload Ecosystem** — modular `FileUpload` and `FormFileUpload` with pluggable storage adapters (`Api`, `S3`, `Cloudinary`) and layout variants (`avatar`, `compact`, `card`, `dropzone`)
-- **Data Table** — powerful `DataTable` component with selection, expander, and row actions column helpers via TanStack Table
-- **Tree-Shakable** — full ESM and CJS support with TypeScript declaration maps and granular subpath exports
+- **Astryx Design System Core** — 174+ upstream primitives, unified design tokens, rich text editor (`@astryxdesign/richtext`), and native internationalization.
+- **Zero UI Dependency Burden** — all 30+ UI primitives and headless libraries (`@radix-ui/*`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `lucide-react`, `sonner`, `vaul`, etc.) are packaged directly in `dependencies`. Consumer applications only need to install `react` and `react-dom`.
+- **Subpath Architecture & Tree-Shaking** — lightweight main entry (372 kB bundle) for enterprise wrappers, plus a dedicated `@vlrc-fe/components/astryx` subpath for 100% of Meta's Astryx primitives.
+- **Meta StyleX Styling** — compile-time atomic CSS-in-JS with deterministic specificity and zero runtime overhead.
+- **CLI Bridge & Schema Inspection** — run `npx vlrc component <ComponentName> --json` or `--props` to inspect schemas directly from Astryx.
+- **Enterprise Wrapper Extensions**:
+  - **Typography**: `<Text>` and `<Title>` provide `copyable` (with clipboard tooltip), `editable` (inline editing), `ellipsis` (with automatic tooltip on text overflow), `lines`/`rows` multi-line clamp, and margin shorthand props (`m`, `mt`, `mb`, etc.).
+  - **Layout Primitives**: `<Box>`, `<Stack>`, `<HStack>`, `<VStack>`, `<Grid>`, `<Row>`, `<Col>`, `<Container>`, `<Center>`, and `<Flex>`. Never use raw `<div>` for layout!
+  - **Form Controls**: Full suite of accessible form controls integrated with `react-hook-form` and `FormBase`.
+  - **Unified Icons**: `<Icons.<Name> />` backed by Lucide and Astryx `IconProvider`.
+- **Zero Magic Values Contract** — all colors, spaces, radii, shadows, and transitions strictly come from design tokens (`colors.*`, `spacing.*`, `radius.*`, `shadow.*`).
+- **Native i18n & Multi-Calendar** — `<InternationalizationProvider>` with automatic string localization, RTL layout tracking, and multiple calendars (Gregorian, Persian, Hebrew, Buddhist, Japanese, Chinese), coexisting with `react-i18next`.
 
 ---
 
 ## Installation
 
 ```bash
+# In consumer applications:
 pnpm add @vlrc-fe/components @stylexjs/stylex
-pnpm add -D @stylexjs/unplugin
+pnpm add -D @astryxdesign/build
+```
+
+> [!NOTE]
+> **No Peer Dependency Management Required**: Unlike typical UI libraries that require installing 20+ Radix primitives and utility packages into your app's `package.json`, `@vlrc-fe/components` bundles and resolves all UI dependencies internally.
+
+---
+
+## Subpath Exports
+
+| Import Path                      | Contents                                                                           |
+| :------------------------------- | :--------------------------------------------------------------------------------- |
+| `@vlrc-fe/components`            | Tree-shakeable enterprise components, layout primitives, typography, forms         |
+| `@vlrc-fe/components/astryx`     | 100% of Meta's Astryx primitives (447+ components, layout, and hooks)              |
+| `@vlrc-fe/components/theme`      | Design tokens: `colors`, `radius`, `spacing`, `shadow`, `duration`, `easing`       |
+| `@vlrc-fe/components/DataTable`  | Virtualized enterprise DataTable powered by TanStack Table & Astryx styles         |
+| `@vlrc-fe/components/Dropdown`   | Accessible dropdown and action menus                                               |
+| `@vlrc-fe/components/Icons`      | Central Lucide icon registry                                                       |
+| `@vlrc-fe/components/Typography` | Extended `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`                    |
+| `@vlrc-fe/components/richtext`   | Lexical-based rich text editor & headless Markdown serializers                     |
+| `@vlrc-fe/components/theme.css`  | Unified CSS layer declarations (`reset`, `astryx-base`, `astryx-theme`, `product`) |
+
+### Direct Astryx Access (`@vlrc-fe/components/astryx`)
+
+When you need an upstream Astryx primitive not yet customized in the root entry, import it via the `./astryx` subpath:
+
+```tsx
+// Direct named imports or whole namespace
+import { AstryxComponent, astryx } from '@vlrc-fe/components/astryx';
 ```
 
 ---
@@ -42,260 +76,144 @@ pnpm add -D @stylexjs/unplugin
 
 ### 1. Configure Bundler Plugin (Vite)
 
+In your application's `vite.config.ts`, configure prefix splitting using `@astryxdesign/build/vite`:
+
 ```ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import stylex from '@stylexjs/unplugin';
+import { stylex } from '@astryxdesign/build/vite';
 
 export default defineConfig({
   plugins: [
-    stylex.vite({
+    stylex({
       useCSSLayers: true,
       dev: process.env.NODE_ENV === 'development',
-      runtimeInjection: false,
     }),
     react(),
   ],
 });
 ```
 
-### 2. Import Stylesheet
+### 2. Import Stylesheet Once in App Entry
 
-Import the compiled StyleX CSS in your entry file:
+Import `@vlrc-fe/components/theme.css` once at your root entry (e.g. `main.tsx` or `App.tsx`):
 
-```ts
-import '@vlrc-fe/components/stylex.css';
-
-// Optional: import predefined theme variables (supports light, .dark, [data-theme='pink'], [data-theme='lavender'])
+```tsx
 import '@vlrc-fe/components/theme.css';
+```
+
+This automatically declares native CSS cascade layers in the required order:
+
+```css
+@layer reset, astryx-base, astryx-theme, product;
 ```
 
 ---
 
-## Storybook & Interactive Playground
+## Layout & Typography Primitives
 
-All components can be tested and inspected directly with controls and themes:
+### Layout (Strict: Zero Raw `<div>`)
 
-- **Online Playground**: [https://vulinhnopro2704.github.io/vlrc-fe/](https://vulinhnopro2704.github.io/vlrc-fe/)
-- **Local Dev Server**:
-  ```bash
-  pnpm storybook
-  ```
-  Runs at `http://localhost:6006` with hot module reloading across all component stories.
+```tsx
+import { Box, Stack, HStack, VStack, Grid, Row, Col, Container, Center } from '@vlrc-fe/components';
+
+// Vertical stack
+<VStack gap="md">
+  <Box padding="sm">Item 1</Box>
+  <Box padding="sm">Item 2</Box>
+</VStack>
+
+// Horizontal stack
+<HStack gap="sm" align="center">
+  <Button>Action</Button>
+  <Text type="secondary">Helper text</Text>
+</HStack>
+
+// Responsive 24-column grid
+<Row gutter={[16, 16]}>
+  <Col span={12} xs={24}>Left Column</Col>
+  <Col span={12} xs={24}>Right Column</Col>
+</Row>
+```
+
+### Typography (Strict: Zero Raw `<span>`, `<p>`, `<h1>`-`<h6>`)
+
+```tsx
+import { Title, Text, Paragraph, Link, Code, CodeBlock } from '@vlrc-fe/components';
+
+<Title level={1}>Dashboard</Title>
+<Text type="secondary" ellipsis copyable>
+  Token: 0x1234abcd5678ef90
+</Text>
+<Paragraph>
+  Enterprise paragraph text with automatic line-height tokens.
+</Paragraph>
+```
 
 ---
 
 ## Design Tokens
 
-Theme tokens are available via `@vlrc-fe/components/theme`:
+Tokens are imported from `@vlrc-fe/components/theme`:
 
 ```ts
-import { colors, radii, textColors } from '@vlrc-fe/components/theme';
+import { colors, radius, spacing, shadow, duration, easing } from '@vlrc-fe/components/theme';
 ```
 
-| Token                | CSS Variable    | Description                   |
-| :------------------- | :-------------- | :---------------------------- |
-| `colors.primary`     | `--primary`     | Brand and action color        |
-| `colors.background`  | `--background`  | Page background               |
-| `colors.foreground`  | `--foreground`  | Default text color            |
-| `colors.card`        | `--card`        | Card surface background       |
-| `colors.border`      | `--border`      | Dividers and borders          |
-| `colors.destructive` | `--destructive` | Error and destructive actions |
-| `radii.md`           | `--radius`      | Base corner radius            |
+| Token Category | Examples                                                                            | Description                     |
+| :------------- | :---------------------------------------------------------------------------------- | :------------------------------ |
+| **Colors**     | `colors.primary`, `colors.surfaceWash`, `colors.destructive`                        | Semantic theme surfaces & fg    |
+| **Radius**     | `radius.sm`, `radius.default`, `radius.md`, `radius.lg`, `radius.xl`, `radius.full` | 2px to 9999px scale             |
+| **Spacing**    | `spacing.0` through `spacing.24`, `spacing.xxs` through `spacing.xxl`               | 4px numeric grid & 7-tier scale |
+| **Shadow**     | `shadow.sm`, `shadow.md`, `shadow.lg`, `shadow.ringFocus`                           | Design-token elevations & rings |
+| **Motion**     | `duration.fast`, `duration.normal`, `easing.default`                                | Transition durations & curves   |
 
 ---
 
-## Usage Examples
+## Internationalization (i18n)
 
-### UI Primitives
+Wrap your application tree in `<InternationalizationProvider>`:
 
 ```tsx
-import * as stylex from '@stylexjs/stylex';
-import { Button, Card, CardContent, CardHeader, CardTitle, Badge } from '@vlrc-fe/components';
+import { InternationalizationProvider, useLocale, useDirection } from '@vlrc-fe/components';
 
-const styles = stylex.create({
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-});
-
-export function UserSummaryCard({ user }) {
+export function Root() {
   return (
-    <Card variant="glass">
-      <CardHeader>
-        <div {...stylex.props(styles.header)}>
-          <CardTitle>{user.name}</CardTitle>
-          <Badge variant="secondary">Pro Member</Badge>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <Button variant="default" size="sm">
-          View Profile
-        </Button>
-      </CardContent>
-    </Card>
+    <InternationalizationProvider locale="vi">
+      <App />
+    </InternationalizationProvider>
   );
 }
 ```
 
-### Custom Styling with `sx` Prop
-
-All components accept `sx?: stylex.StyleXStyles` for type-safe overrides:
-
-```tsx
-import * as stylex from '@stylexjs/stylex';
-import { Button } from '@vlrc-fe/components';
-
-const styles = stylex.create({
-  fullWidth: {
-    width: '100%',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-  },
-});
-
-export function CheckoutButton() {
-  return <Button sx={styles.fullWidth}>Proceed to Payment</Button>;
-}
-```
-
-### Form Controls (React Hook Form)
-
-```tsx
-import * as stylex from '@stylexjs/stylex';
-import { useForm } from 'react-hook-form';
-import { Form, FormInput, FormSelect, FormDatePicker, Button } from '@vlrc-fe/components';
-
-const styles = stylex.create({
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
-  },
-});
-
-export function LessonForm() {
-  const form = useForm({
-    defaultValues: { title: '', level: 'A1', schedule: null },
-  });
-
-  return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(console.log)} {...stylex.props(styles.form)}>
-        <FormInput
-          control={form.control}
-          name="title"
-          label="Lesson Title"
-          placeholder="e.g. Daily Vocabulary"
-          rules={{ required: 'Title is required' }}
-        />
-        <FormSelect
-          control={form.control}
-          name="level"
-          label="Proficiency Level"
-          options={[
-            { value: 'A1', label: 'Beginner (A1)' },
-            { value: 'B2', label: 'Upper Intermediate (B2)' },
-          ]}
-        />
-        <FormDatePicker control={form.control} name="schedule" label="Start Date" />
-        <Button type="submit">Create Lesson</Button>
-      </form>
-    </Form>
-  );
-}
-```
-
-### DataTable
-
-```tsx
-import { useMemo } from 'react';
-import {
-  DataTable,
-  createSelectionColumn,
-  createRowActionsColumn,
-  Button,
-} from '@vlrc-fe/components';
-
-export function UserList({ users, isLoading }) {
-  const columns = useMemo(
-    () => [
-      createSelectionColumn(),
-      { accessorKey: 'name', header: 'Full Name' },
-      { accessorKey: 'email', header: 'Email Address' },
-      createRowActionsColumn({
-        renderActions: ({ row }) => (
-          <Button variant="ghost" size="icon-sm" onClick={() => editUser(row.original.id)}>
-            Edit
-          </Button>
-        ),
-      }),
-    ],
-    [],
-  );
-
-  return (
-    <DataTable
-      columns={columns}
-      data={users}
-      isLoading={isLoading}
-      searchKey="name"
-      searchPlaceholder="Filter users..."
-      pageSize={10}
-    />
-  );
-}
-```
-
-### Icons
-
-```tsx
-import * as stylex from '@stylexjs/stylex';
-import { Icons } from '@vlrc-fe/components/Icons';
-
-const styles = stylex.create({
-  status: {
-    display: 'flex',
-    gap: '0.5rem',
-    alignItems: 'center',
-  },
-  icon: {
-    color: 'green',
-  },
-});
-
-export function StatusIndicator() {
-  return (
-    <div {...stylex.props(styles.status)}>
-      <Icons.CheckCircle2 {...stylex.props(styles.icon)} />
-      <span>All systems operational</span>
-    </div>
-  );
-}
-```
+Astryx date pickers, calendars, table pagination controls, and file uploads localize automatically.
 
 ---
 
-## Subpath Exports
+## CLI & AI Inspection
 
-| Export Path                      | Contents                                        |
-| :------------------------------- | :---------------------------------------------- |
-| `@vlrc-fe/components`            | All UI primitives, form controls, and DataTable |
-| `@vlrc-fe/components/ui/*`       | Granular primitive components                   |
-| `@vlrc-fe/components/DataTable`  | DataTable core and column utilities             |
-| `@vlrc-fe/components/Icons`      | Centralized SVG icon registry                   |
-| `@vlrc-fe/components/theme`      | StyleX design tokens                            |
-| `@vlrc-fe/components/stylex.css` | Pre-compiled atomic CSS stylesheet              |
-
----
-
-## Scripts
+Product developers and AI coding agents can inspect component props and schemas anytime:
 
 ```bash
-pnpm build   # Vite library build + tsc declarations
-pnpm lint    # Oxlint
-pnpm format  # Oxfmt
+# JSON schema for AI agents
+npx vlrc component Button --json
+
+# Human-readable prop table
+npx vlrc component Button --props
+
+# Search documentation and components
+npx vlrc search "data table"
+npx vlrc docs tokens
+```
+
+---
+
+## Testing
+
+Meta's upstream Astryx primitives are comprehensively tested. When testing consumer apps or custom wrappers, focus on business logic and interaction:
+
+```bash
+pnpm test
 ```
 
 ---

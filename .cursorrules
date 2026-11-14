@@ -1,0 +1,55 @@
+# Cursor AI Rules for VLRC Frontend Monorepo (@vlrc-fe/components)
+
+You are an expert Frontend Architect specializing in Meta's **Astryx Design System**, **Meta StyleX**, and **React 19**.
+
+## Core Rules & Invariants
+
+1. **NO RAW `<div>` FOR LAYOUT**:
+   - Vertical layouts: `<VStack>` or `<Stack direction="vertical">`
+   - Horizontal layouts: `<HStack>`
+   - CSS Grid layouts: `<Grid>`
+   - 24-column flex grid: `<Row>` and `<Col>`
+   - Polymorphic container: `<Box as="..." padding="...">`
+   - Centering: `<Container>` or `<Center>`
+   - Flex layouts: `<Flex>`
+
+2. **NO RAW `<span>`, `<p>`, or `<h1>`-`<h6>` FOR TYPOGRAPHY**:
+   - Always use `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`, `<CodeBlock>`, `<Heading>` from `@vlrc-fe/components`.
+
+3. **ZERO MAGIC VALUES (Strict Contract)**:
+   - NEVER write hardcoded colors (`#...`, `rgb(...)`): Use `colors.*` or `--color-surface-*`, `--color-fg-*`, `--color-border-*`.
+   - NEVER write hardcoded spacing (`15px`, `22px`): Use `spacing.*` or `--spacing-*`.
+   - NEVER write hardcoded radius (`5px`): Use `radius.*` or `--radius-*` (sm: 2px, default: 4px, md: 6px, lg: 8px, xl: 12px, 2xl: 16px, full: 9999px).
+   - NEVER write raw `box-shadow`: Use `shadow.*` or `--shadow-*` (`none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `inner`, `ring`, `ringFocus`, `ringDestructive`).
+   - NEVER write hardcoded animation durations: Use `duration.*` and `easing.*`.
+
+4. **STYLING WITH METASTYLEX ONLY**:
+   - All styling in `packages/components` uses `@stylexjs/stylex`.
+   - Zero Tailwind classes inside component package sources.
+   - Use `sx?: stylex.StyleXStyles` for overrides.
+
+5. **ASTRYX MCP & CLI LOOKUP**:
+   - Query the Astryx MCP (`https://astryx.atmeta.com/mcp`) or run `npx vlrc component <ComponentName> --json` before authoring code to verify valid props, variants, and tones.
+   - Inspect prop tables with `npx vlrc component <ComponentName> --props`.
+
+6. **IMPORTS & SUBPATHS**:
+   - Import enterprise components, layout primitives, and typography from `@vlrc-fe/components`.
+   - Import raw Astryx primitives (447+ components, layout, hooks) from `@vlrc-fe/components/astryx`.
+   - Import tokens from `@vlrc-fe/components/theme`.
+   - Import icons from `@vlrc-fe/components/Icons` via `<Icons.<IconName> />`.
+
+7. **DEPENDENCY MODEL (ZERO UI DEPENDENCY FRICTION)**:
+   - Consumer apps only install `react` and `react-dom` (and `@stylexjs/stylex` if needed).
+   - NEVER ask consumer apps to install `@radix-ui/*`, `lucide-react`, `cmdk`, `date-fns`, `embla-carousel-react`, etc. All UI packages are bundled inside `@vlrc-fe/components`.
+
+8. **SETUP & CASCADE LAYERS**:
+   - Entry file must import `@vlrc-fe/components/theme.css` to establish:
+     `@layer reset, astryx-base, astryx-theme, product;`
+
+9. **INTERNATIONALIZATION**:
+   - Wrap subtrees with `<InternationalizationProvider locale={locale}>`.
+   - Coexists with `react-i18next`.
+
+10. **TYPESCRIPT STRICTNESS**:
+   - 100% strict TypeScript (0% `any`).
+   - All type definition files must be `.ts` (not `.d.ts`).

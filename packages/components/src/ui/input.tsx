@@ -1,20 +1,20 @@
 import * as React from 'react';
 import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
 
 const styles = stylex.create({
   base: {
     width: '100%',
     minWidth: 0,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
     backgroundColor: 'transparent',
     color: colors.foreground,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     outline: 'none',
@@ -33,7 +33,7 @@ const styles = stylex.create({
     },
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
     ':disabled': {
       pointerEvents: 'none',
@@ -44,49 +44,49 @@ const styles = stylex.create({
   // 7-tier Sizes for standalone input
   sizeXxs: {
     height: '1.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     fontSize: '0.6875rem',
     paddingInline: '0.5rem',
     paddingBlock: '0.125rem',
   },
   sizeXs: {
     height: '1.75rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     fontSize: '0.75rem',
     paddingInline: '0.625rem',
     paddingBlock: '0.1875rem',
   },
   sizeSm: {
     height: '2rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     fontSize: '0.8125rem',
     paddingInline: '0.75rem',
     paddingBlock: '0.25rem',
   },
   sizeMd: {
     height: '2.25rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     fontSize: '0.875rem',
     paddingInline: '0.75rem',
     paddingBlock: '0.25rem',
   },
   sizeLg: {
     height: '2.5rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     fontSize: '0.9375rem',
     paddingInline: '1rem',
     paddingBlock: '0.375rem',
   },
   sizeXl: {
     height: '2.75rem',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
     fontSize: '1rem',
     paddingInline: '1.125rem',
     paddingBlock: '0.5rem',
   },
   sizeXxl: {
     height: '3.25rem',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
     fontSize: '1.125rem',
     paddingInline: '1.25rem',
     paddingBlock: '0.625rem',
@@ -94,7 +94,7 @@ const styles = stylex.create({
 
   invalid: {
     borderColor: colors.destructive,
-    boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 20%, transparent)',
+    boxShadow: shadow.ringDestructive,
   },
 
   // Input Wrapper for Prefix / Suffix / Button addons
@@ -103,22 +103,22 @@ const styles = stylex.create({
     alignItems: 'center',
     width: '100%',
     minWidth: 0,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
     backgroundColor: 'transparent',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     ':focus-within': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
   },
   wrapperInvalid: {
     borderColor: colors.destructive,
-    boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 20%, transparent)',
+    boxShadow: shadow.ringDestructive,
   },
   wrapperDisabled: {
     pointerEvents: 'none',

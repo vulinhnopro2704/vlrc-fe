@@ -127,6 +127,22 @@
 - Fixed `FormCheckbox` vertical alignment when rendered with descriptions or helper text.
 - Replaced all legacy string class concatenations with pure Meta StyleX atomic CSS.
 
+## 3.0.0
+
+### Major Changes
+
+- Migrate to Meta's Astryx Design System (v0.7.16) and Meta StyleX:
+
+  - Replatformed onto Astryx primitives and unified design tokens (`colors`, `radius`, `shadow`, `spacing`, `duration`, `easing`).
+  - Established single entry CSS cascade layers: `@layer reset, astryx-base, astryx-theme, product;` via `@vlrc-fe/components/theme.css`.
+  - Enforced strict layout & typography invariants: zero raw `<div>` / `<span>` / `<p>` / `<h1-h6>` tags.
+  - Added polymorphic layout primitives: `<Box>`, `<Container>`, `<Center>`, `<Stack>`, `<HStack>`, `<VStack>`, `<StackItem>`, while preserving 24-column `<Row>` and `<Col>`.
+  - Re-exported Astryx primitives: `ButtonGroup`, `IconButton`, `ToggleButton`, `ToggleButtonGroup`, `StatusDot`, `AvatarStatusDot`, `Divider`, `AstryxField`, `InputClearButton`.
+  - Integrated native internationalization (`<InternationalizationProvider>`, `useLocale`, `useDirection`, `useCollator`, `useTranslator`, and multi-calendar support).
+  - Integrated `@astryxdesign/richtext` subpath export for Lexical-based rich text editing.
+  - Added CLI bridge (`vlrc`) forwarding to `@astryxdesign/cli` for machine-readable schemas (`--json`) and prop inspection (`--props`).
+  - Connected Astryx Remote MCP server (`https://astryx.atmeta.com/mcp`) for Cursor and Claude Code.
+
 ## 2.2.0
 
 ### Minor Changes

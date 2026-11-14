@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
 import { Text } from '../Typography';
 
@@ -14,19 +14,19 @@ const styles = stylex.create({
     width: '100%',
     minWidth: 0,
     alignItems: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     outline: 'none',
     overflow: 'hidden',
     ':focus-within': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
   },
   sizeSm: {
@@ -50,7 +50,7 @@ const styles = stylex.create({
     borderColor: colors.destructive,
     ':focus-within': {
       borderColor: colors.destructive,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 40%, transparent)',
+      boxShadow: shadow.ringDestructive,
     },
   },
 
@@ -84,7 +84,7 @@ const styles = stylex.create({
     fontSize: 'inherit',
     lineHeight: 'inherit',
     outline: 'none',
-    boxShadow: 'none',
+    boxShadow: shadow.none,
     '::placeholder': {
       color: colors.mutedForeground,
     },
@@ -105,7 +105,7 @@ const styles = stylex.create({
     fontSize: 'inherit',
     lineHeight: 1.5,
     outline: 'none',
-    boxShadow: 'none',
+    boxShadow: shadow.none,
     resize: 'none',
     '::placeholder': {
       color: colors.mutedForeground,
@@ -127,7 +127,7 @@ const styles = stylex.create({
   // Button within group
   button: {
     marginInline: '0.125rem',
-    boxShadow: 'none',
+    boxShadow: shadow.none,
   },
 });
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 import { buttonVariants } from './button';
 
@@ -35,13 +35,13 @@ const styles = stylex.create({
     width: '100%',
     maxWidth: '32rem',
     gap: '1rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.background,
     padding: '1.5rem',
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    boxShadow: shadow['2xl'],
     outline: 'none',
     animationName: scaleIn,
     animationDuration: '200ms',

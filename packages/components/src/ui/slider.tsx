@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 
 const styles = stylex.create({
   root: {
@@ -17,7 +17,7 @@ const styles = stylex.create({
     position: 'relative',
     flexGrow: 1,
     overflow: 'hidden',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     height: '0.375rem',
   },
   range: {
@@ -29,18 +29,18 @@ const styles = stylex.create({
     display: 'block',
     height: '1rem',
     width: '1rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.primary,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'box-shadow',
     transitionDuration: '150ms',
     outline: 'none',
     cursor: 'pointer',
     ':focus-visible': {
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
     ':disabled': {
       pointerEvents: 'none',

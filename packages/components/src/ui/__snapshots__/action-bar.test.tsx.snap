@@ -6,7 +6,7 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
 <DocumentFragment>
   <div
     aria-label="Bulk actions toolbar"
-    class="action-bar__styles.root xixxii4 x1vuu14i x1nrll8i xuuh30 xa9119d x78zum5 x6s0dn4 xdkmor2 x1mlyrtw x84br7x x7xypw4 xmkeg23 x1y0btm7 xb30jbz xco5wwd x1yroua3 x18jdcd xwcsmn1 x13dflua"
+    class="action-bar__styles.root xixxii4 x1vuu14i x1nrll8i xuuh30 xa9119d x78zum5 x6s0dn4 xdkmor2 x1mlyrtw x84br7x x9psvww xmkeg23 x1y0btm7 xb30jbz xco5wwd x1yroua3 xvqvx5d xwcsmn1 x13dflua"
     data-slot="action-bar"
     data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:25"
     role="toolbar"
@@ -31,7 +31,7 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
       data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:52"
     >
       <button
-        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
         data-size="sm"
         data-slot="action-bar-item"
         data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
@@ -41,7 +41,7 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
         Delete
       </button>
       <button
-        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
         data-size="sm"
         data-slot="action-bar-item"
         data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
@@ -59,7 +59,7 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
       role="separator"
     />
     <button
-      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xsda711 xpj7pl4 x1ryrjj2 x1dcheo9"
+      class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
       data-size="sm"
       data-slot="action-bar-close"
       data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
@@ -68,7 +68,7 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
     >
       Deselect
       <kbd
-        class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft x1q0v2j7 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a x1rbhkzv kbd__styles.sizeXs x287gpq xbqenb3 xllzysa x1iv7sc9 x2ohwh0"
+        class="kbd__styles.base x3nfvp2 x6s0dn4 xl56j7k x87ps6o x47corl x4w1nh8 xk50ysn xo5v014 xuxw1ft xqfady0 xmkeg23 x1y0btm7 xb30jbz x1oy24xj xx6bhzk kbd__styles.default x1qry0bl xw3nh4a xfk7h2l kbd__styles.sizeXs x287gpq xbqenb3 xllzysa x1iv7sc9 x2ohwh0"
         data-size="xs"
         data-slot="kbd"
         data-style-src="@vlrc-fe/components:src/ui/kbd.tsx:11; @vlrc-fe/components:src/ui/kbd.tsx:29; @vlrc-fe/components:src/ui/kbd.tsx:40"

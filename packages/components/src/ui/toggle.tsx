@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as TogglePrimitive from '@radix-ui/react-toggle';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
 export type ToggleVariant = 'default' | 'outline';
@@ -13,7 +13,7 @@ export const toggleStyles = stylex.create({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     fontWeight: 500,
     cursor: 'pointer',
     borderWidth: 0,
@@ -51,7 +51,7 @@ export const toggleStyles = stylex.create({
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: 'transparent',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     ':hover': {
       backgroundColor: colors.accent,
       color: colors.accentForeground,
@@ -64,7 +64,7 @@ export const toggleStyles = stylex.create({
     paddingInline: '0.375rem',
     minWidth: '1.5rem',
     fontSize: '0.6875rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     gap: '0.25rem',
   },
   sizeXs: {
@@ -72,7 +72,7 @@ export const toggleStyles = stylex.create({
     paddingInline: '0.5rem',
     minWidth: '1.75rem',
     fontSize: '0.75rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     gap: '0.25rem',
   },
   sizeSm: {
@@ -80,7 +80,7 @@ export const toggleStyles = stylex.create({
     paddingInline: '0.625rem',
     minWidth: '2rem',
     fontSize: '0.8125rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.375rem',
   },
   sizeMd: {
@@ -88,7 +88,7 @@ export const toggleStyles = stylex.create({
     paddingInline: '0.75rem',
     minWidth: '2.25rem',
     fontSize: '0.875rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.5rem',
   },
   sizeLg: {
@@ -96,7 +96,7 @@ export const toggleStyles = stylex.create({
     paddingInline: '1rem',
     minWidth: '2.625rem',
     fontSize: '1rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.625rem',
   },
   sizeXl: {
@@ -104,7 +104,7 @@ export const toggleStyles = stylex.create({
     paddingInline: '1.25rem',
     minWidth: '3rem',
     fontSize: '1.125rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     gap: '0.75rem',
   },
   sizeXxl: {
@@ -112,7 +112,7 @@ export const toggleStyles = stylex.create({
     paddingInline: '1.5rem',
     minWidth: '3.5rem',
     fontSize: '1.25rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     gap: '0.875rem',
   },
 });

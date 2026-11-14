@@ -3,7 +3,7 @@
 exports[`CompareSlider > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <div
-    class="compare-slider__styles.root x1n2onr6 xb3r6kr x87ps6o x5ve5x3 x1mr5ieh xmkeg23 x1y0btm7 xb30jbz x1rg5ohu xh8yej3"
+    class="compare-slider__styles.root x1n2onr6 xb3r6kr x87ps6o x5ve5x3 x1ez7q3a xmkeg23 x1y0btm7 xb30jbz x1rg5ohu xh8yej3"
     data-orientation="horizontal"
     data-slot="compare-slider"
     data-style-src="@vlrc-fe/components:src/ui/compare-slider.tsx:8"
@@ -32,7 +32,7 @@ exports[`CompareSlider > UI > should match snapshot in default state 1`] = `
       </div>
     </div>
     <div
-      class="compare-slider__styles.dividerHorizontal x10l6tqk x13vifvy x1ey2m1c xfo62xy x1c5tqo3 xfr4yco x7eptgl xuuh30 x1n327nk"
+      class="compare-slider__styles.dividerHorizontal x10l6tqk x13vifvy x1ey2m1c xfo62xy x39f3so x16xnvrd x7eptgl xuuh30 x1n327nk"
       data-slot="compare-divider"
       data-style-src="@vlrc-fe/components:src/ui/compare-slider.tsx:34"
       style="left: 50%;"
@@ -42,7 +42,7 @@ exports[`CompareSlider > UI > should match snapshot in default state 1`] = `
         aria-valuemax="100"
         aria-valuemin="0"
         aria-valuenow="50"
-        class="compare-slider__styles.handle x10l6tqk xwa60dl x1nrll8i x11lhmoz x1s4ejo4 xk8t5le x7xypw4 x1mlyrtw x84br7x xdh2fpr x1y0btm7 xkqzj2t xytkxmq x78zum5 x6s0dn4 xl56j7k x1a2a7pz x1jm3nie x1kj9du5"
+        class="compare-slider__styles.handle x10l6tqk xwa60dl x1nrll8i x11lhmoz x1s4ejo4 xk8t5le x9psvww x1mlyrtw x84br7x xdh2fpr x1y0btm7 x1d1s520 xop26oq x78zum5 x6s0dn4 xl56j7k x1a2a7pz x1jm3nie x13nj1q9"
         data-slot="compare-handle"
         data-style-src="@vlrc-fe/components:src/ui/compare-slider.tsx:56"
         role="slider"
@@ -77,7 +77,7 @@ exports[`CompareSlider > UI > should match snapshot in default state 1`] = `
 exports[`CompareSlider > UI > should match snapshot with labels displayed 1`] = `
 <DocumentFragment>
   <div
-    class="compare-slider__styles.root x1n2onr6 xb3r6kr x87ps6o x5ve5x3 x1mr5ieh xmkeg23 x1y0btm7 xb30jbz x1rg5ohu xh8yej3"
+    class="compare-slider__styles.root x1n2onr6 xb3r6kr x87ps6o x5ve5x3 x1ez7q3a xmkeg23 x1y0btm7 xb30jbz x1rg5ohu xh8yej3"
     data-orientation="horizontal"
     data-slot="compare-slider"
     data-style-src="@vlrc-fe/components:src/ui/compare-slider.tsx:8"
@@ -106,7 +106,7 @@ exports[`CompareSlider > UI > should match snapshot with labels displayed 1`] = 
       </div>
     </div>
     <span
-      class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 compare-slider__styles.labelLeft x10l6tqk xa5cwud xxpd3ly x1u8a7rm x47corl"
+      class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 compare-slider__styles.labelLeft x10l6tqk xa5cwud xxpd3ly x1u8a7rm x47corl"
       data-size="md"
       data-slot="compare-label-one"
       data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:94; @vlrc-fe/components:src/ui/compare-slider.tsx:83"
@@ -115,7 +115,7 @@ exports[`CompareSlider > UI > should match snapshot with labels displayed 1`] = 
       Original
     </span>
     <span
-      class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x7xypw4 xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes x1ippke1 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 compare-slider__styles.labelRight x10l6tqk xa5cwud x3uxsio x1u8a7rm x47corl"
+      class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6 compare-slider__styles.labelRight x10l6tqk xa5cwud x3uxsio x1u8a7rm x47corl"
       data-size="md"
       data-slot="compare-label-two"
       data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:94; @vlrc-fe/components:src/ui/compare-slider.tsx:90"
@@ -124,7 +124,7 @@ exports[`CompareSlider > UI > should match snapshot with labels displayed 1`] = 
       Processed
     </span>
     <div
-      class="compare-slider__styles.dividerHorizontal x10l6tqk x13vifvy x1ey2m1c xfo62xy x1c5tqo3 xfr4yco x7eptgl xuuh30 x1n327nk"
+      class="compare-slider__styles.dividerHorizontal x10l6tqk x13vifvy x1ey2m1c xfo62xy x39f3so x16xnvrd x7eptgl xuuh30 x1n327nk"
       data-slot="compare-divider"
       data-style-src="@vlrc-fe/components:src/ui/compare-slider.tsx:34"
       style="left: 50%;"
@@ -134,7 +134,7 @@ exports[`CompareSlider > UI > should match snapshot with labels displayed 1`] = 
         aria-valuemax="100"
         aria-valuemin="0"
         aria-valuenow="50"
-        class="compare-slider__styles.handle x10l6tqk xwa60dl x1nrll8i x11lhmoz x1s4ejo4 xk8t5le x7xypw4 x1mlyrtw x84br7x xdh2fpr x1y0btm7 xkqzj2t xytkxmq x78zum5 x6s0dn4 xl56j7k x1a2a7pz x1jm3nie x1kj9du5"
+        class="compare-slider__styles.handle x10l6tqk xwa60dl x1nrll8i x11lhmoz x1s4ejo4 xk8t5le x9psvww x1mlyrtw x84br7x xdh2fpr x1y0btm7 x1d1s520 xop26oq x78zum5 x6s0dn4 xl56j7k x1a2a7pz x1jm3nie x13nj1q9"
         data-slot="compare-handle"
         data-style-src="@vlrc-fe/components:src/ui/compare-slider.tsx:56"
         role="slider"

@@ -13,8 +13,7 @@
     "@vlrc-fe/components": "workspace:*",
     "@vlrc-fe/hooks": "workspace:*",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "react-hook-form": "^7.76.1"
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@stylexjs/unplugin": "^0.19.1",

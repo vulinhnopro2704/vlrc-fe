@@ -89,12 +89,14 @@ Every interactive component must be fully functional using only the keyboard:
 - **Never remove focus outlines** without replacing them with an accessible ring:
 
 ```tsx
+import { shadow } from '../theme/tokens.stylex';
+
 const styles = stylex.create({
   interactive: {
     outline: 'none',
     ':focus-visible': {
       outline: 'none',
-      boxShadow: `0 0 0 2px ${colors.background}, 0 0 0 4px ${colors.ring}`,
+      boxShadow: shadow.ringFocus,
     },
   },
 });

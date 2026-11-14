@@ -6,9 +6,12 @@ Thank you for your interest in contributing to `@vlrc-fe/components` and `@vlrc-
 
 ## Code of Conduct & Core Principles
 
-- **Zero Tailwind in `@vlrc-fe/components`**: All components must be styled using **Meta StyleX** (`@stylexjs/stylex`).
+- **Astryx Design System Foundation**: Components are built on Meta's Astryx design system primitives and Meta StyleX (`@stylexjs/stylex`).
+- **Zero Raw `<div>` & `<span>`**: Layouts must use `<Stack>`, `<HStack>`, `<VStack>`, `<Grid>`, `<Row>`, `<Col>`, `<Box>`, `<Container>`, `<Center>`, or `<Flex>`. Typography must use `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`, `<CodeBlock>`, or `<Heading>`.
+- **Zero Magic Values Contract**: No `#hex`, unparsed `px`, or raw `boxShadow: '...'` strings in component code. All visuals must derive from design tokens (`colors.*`, `spacing.*`, `radius.*`, `shadow.*`, `duration.*`, `easing.*`).
 - **Deterministic Overrides**: Components must accept an `sx?: stylex.StyleXStyles` prop for style customization.
-- **Theme Tokens**: Colors and sizing must reference tokens from `@vlrc-fe/components/theme` (`tokens.stylex.ts`) to ensure multi-theme support (`light`, `dark`, `pink`, `lavender`).
+- **AI Tooling & Discovery**: Inspect component contracts before coding via `npx vlrc component <ComponentName> --json` or Astryx Remote MCP (`https://astryx.atmeta.com/mcp`).
+- **Streamlined Tests**: Upstream Astryx components are thoroughly tested by Meta. Focus Vitest unit tests solely on VLRC-specific wrapper logic (`copyable`, `editable`, custom form binders, responsive math).
 - **Semantic Versioning & Changesets**: Every user-facing change requires an associated changeset.
 
 ---
@@ -58,8 +61,9 @@ git checkout -b fix/your-bug-fix
 
 ### 2. Making Changes
 
-- If creating or updating a UI primitive, add corresponding tests in `packages/components/src/ui/*.test.tsx`.
-- Preview and verify your changes in the playground with `pnpm docs:dev`.
+- Before writing or modifying components, inspect the schema with `npx vlrc component <ComponentName> --props`.
+- If creating or updating a UI wrapper, add corresponding focused tests in `packages/components/src/ui/*.test.tsx`.
+- Preview and verify your changes in Storybook with `pnpm storybook`.
 - Verify your code meets all quality gates before committing:
   ```bash
   pnpm lint

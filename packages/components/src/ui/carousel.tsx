@@ -5,7 +5,7 @@ import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-reac
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 
-import { radii } from '../theme/tokens.stylex';
+import { radius } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Button } from './button';
 
@@ -42,7 +42,7 @@ const styles = stylex.create({
     position: 'absolute',
     width: '2rem',
     height: '2rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     padding: 0,
   },
   prevHorizontal: {

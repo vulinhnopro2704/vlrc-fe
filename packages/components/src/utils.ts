@@ -1,11 +1,10 @@
 import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import * as stylex from '@stylexjs/stylex';
 
 export type StyleXStyles = stylex.StyleXStyles;
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return clsx(inputs);
 }
 
 /**

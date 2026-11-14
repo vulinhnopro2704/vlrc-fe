@@ -5,7 +5,6 @@ import {
   OctagonXIcon,
   TriangleAlertIcon,
 } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { Toaster as Sonner, type ToasterProps } from 'sonner';
 import * as stylex from '@stylexjs/stylex';
 
@@ -27,12 +26,10 @@ const styles = stylex.create({
   },
 });
 
-const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = 'system' } = useTheme();
-
+const Toaster = ({ theme = 'system', ...props }: ToasterProps) => {
   return (
     <Sonner
-      theme={theme as ToasterProps['theme']}
+      theme={theme}
       className="toaster group"
       icons={{
         success: <CircleCheckIcon {...stylex.props(styles.icon)} />,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
 const styles = stylex.create({
@@ -15,7 +15,7 @@ const styles = stylex.create({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     backgroundColor: colors.muted,
     color: colors.mutedForeground,
     boxSizing: 'border-box',
@@ -26,37 +26,37 @@ const styles = stylex.create({
   listXxs: {
     height: '1.5rem',
     padding: '2px',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
   },
   listXs: {
     height: '1.75rem',
     padding: '2px',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
   },
   listSm: {
     height: '2rem',
     padding: '3px',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
   },
   listMd: {
     height: '2.25rem',
     padding: '3px',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
   },
   listLg: {
     height: '2.625rem',
     padding: '4px',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
   },
   listXl: {
     height: '3rem',
     padding: '4px',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
   },
   listXxl: {
     height: '3.5rem',
     padding: '5px',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
   },
 
   trigger: {
@@ -64,7 +64,7 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     whiteSpace: 'nowrap',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: 'transparent',
     color: colors.mutedForeground,
     borderWidth: 0,
@@ -93,43 +93,43 @@ const styles = stylex.create({
   triggerXxs: {
     paddingInline: '0.5rem',
     fontSize: '0.6875rem',
-    borderRadius: radii.none,
+    borderRadius: radius.none,
     gap: '0.25rem',
   },
   triggerXs: {
     paddingInline: '0.625rem',
     fontSize: '0.75rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     gap: '0.25rem',
   },
   triggerSm: {
     paddingInline: '0.75rem',
     fontSize: '0.8125rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     gap: '0.375rem',
   },
   triggerMd: {
     paddingInline: '0.875rem',
     fontSize: '0.875rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.375rem',
   },
   triggerLg: {
     paddingInline: '1rem',
     fontSize: '0.9375rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.5rem',
   },
   triggerXl: {
     paddingInline: '1.25rem',
     fontSize: '1rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     gap: '0.5rem',
   },
   triggerXxl: {
     paddingInline: '1.5rem',
     fontSize: '1.125rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     gap: '0.625rem',
   },
 
@@ -139,7 +139,7 @@ const styles = stylex.create({
     ':focus-visible': {
       outline: '2px solid var(--ring)',
       outlineOffset: '2px',
-      borderRadius: radii.md,
+      borderRadius: radius.md,
     },
   },
 });

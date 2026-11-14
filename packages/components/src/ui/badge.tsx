@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 
 export type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline';
@@ -11,7 +11,7 @@ const styles = stylex.create({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: 'transparent',
@@ -29,7 +29,7 @@ const styles = stylex.create({
     outline: 'none',
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
   },
 
@@ -102,12 +102,12 @@ const styles = stylex.create({
   variantDestructive: {
     borderColor: 'transparent',
     backgroundColor: colors.destructive,
-    color: '#ffffff',
+    color: colors.destructiveForeground,
     ':hover': {
       opacity: 0.9,
     },
     ':focus-visible': {
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 40%, transparent)',
+      boxShadow: shadow.ringDestructive,
     },
   },
   variantOutline: {
@@ -182,3 +182,13 @@ function badgeVariants(options?: {
 }
 
 export { Badge, badgeVariants };
+
+export { StatusDot, AvatarStatusDot } from '@astryxdesign/core';
+export type {
+  StatusDotProps,
+  StatusDotVariant,
+  StatusDotVariantMap,
+  AvatarStatusDotProps,
+  AvatarStatusDotVariant,
+  AvatarStatusDotVariantMap,
+} from '@astryxdesign/core';

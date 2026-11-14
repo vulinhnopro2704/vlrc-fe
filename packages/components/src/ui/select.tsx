@@ -3,7 +3,7 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth } from '../theme/width';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
@@ -18,7 +18,7 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: '0.5rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
@@ -28,7 +28,7 @@ const styles = stylex.create({
     paddingBlock: '0.375rem',
     fontSize: '0.875rem',
     whiteSpace: 'nowrap',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'border-color, box-shadow, color',
     transitionDuration: '150ms',
     outline: 'none',
@@ -37,7 +37,7 @@ const styles = stylex.create({
     boxSizing: 'border-box',
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 2px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
     ':disabled': {
       cursor: 'not-allowed',
@@ -59,13 +59,13 @@ const styles = stylex.create({
     maxHeight: '20rem',
     overflowY: 'auto',
     overflowX: 'hidden',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
+    boxShadow: shadow.md,
     outline: 'none',
     boxSizing: 'border-box',
     animationName: scaleIn,
@@ -83,7 +83,7 @@ const styles = stylex.create({
     userSelect: 'none',
     alignItems: 'center',
     gap: '0.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingBlock: '0.375rem',
     paddingLeft: '0.5rem',
     paddingRight: '2rem',

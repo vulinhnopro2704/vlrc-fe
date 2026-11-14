@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import Icons from '../Icons';
 import { Text } from './Text';
 import type { CodeProps } from './types';
@@ -11,7 +11,7 @@ const styles = stylex.create({
   inline: {
     fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
     fontSize: '0.875rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     backgroundColor: colors.muted,
     color: colors.foreground,
     paddingInline: '0.375rem',
@@ -29,7 +29,7 @@ const styles = stylex.create({
     margin: 0,
     padding: '1rem',
     overflowX: 'auto',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     backgroundColor: colors.muted,
     color: colors.foreground,
     borderWidth: 1,
@@ -59,7 +59,7 @@ const styles = stylex.create({
     color: colors.mutedForeground,
     cursor: 'pointer',
     padding: '0.375rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',

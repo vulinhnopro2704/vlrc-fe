@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 
 const styles = stylex.create({
   root: {
@@ -8,13 +8,13 @@ const styles = stylex.create({
     height: '1rem',
     width: '100%',
     overflow: 'hidden',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.secondary,
   },
   indicator: {
     height: '100%',
     backgroundColor: colors.primary,
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     transitionProperty: 'width',
     transitionDuration: '300ms',
     transitionTimingFunction: 'ease-in-out',

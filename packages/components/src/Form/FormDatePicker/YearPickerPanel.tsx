@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import Icons from '../../Icons';
-import { colors, radii, spacing } from '../../theme/tokens.stylex';
+import { colors, radius, spacing } from '../../theme/tokens.stylex';
 import { Text } from '../../Typography';
 
 const styles = stylex.create({
@@ -9,7 +9,7 @@ const styles = stylex.create({
     width: 280,
     padding: spacing.sm,
     backgroundColor: colors.background,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     userSelect: 'none',
   },
   header: {
@@ -28,7 +28,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     width: 28,
     height: 28,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -51,7 +51,7 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 44,
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 0,
     backgroundColor: 'transparent',
     color: colors.foreground,

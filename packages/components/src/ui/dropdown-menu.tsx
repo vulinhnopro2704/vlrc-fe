@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 import { Text } from '../Typography';
 
@@ -11,14 +11,14 @@ const styles = stylex.create({
     zIndex: 100,
     minWidth: '8rem',
     overflow: 'hidden',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.popover,
     color: colors.popoverForeground,
     padding: '0.25rem',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.md,
     outline: 'none',
   },
   item: {
@@ -28,7 +28,7 @@ const styles = stylex.create({
     userSelect: 'none',
     alignItems: 'center',
     gap: '0.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingInline: '0.5rem',
     paddingBlock: '0.375rem',
     fontSize: '0.875rem',
@@ -101,7 +101,7 @@ const styles = stylex.create({
     userSelect: 'none',
     alignItems: 'center',
     gap: '0.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     paddingInline: '0.5rem',
     paddingBlock: '0.375rem',
     fontSize: '0.875rem',

@@ -1,12 +1,12 @@
 # Modals & useModalState Data Binding Reference
 
-Decoupling modal triggers from dialog panels is a core architectural convention. This reference details `ConfirmModal`, `Modal`, and how to wire them using the `useModalState` hook from `@vlrc-fe/hooks`.
+Decoupling modal triggers from dialog panels is a core architectural convention. This reference details `ConfirmModal`, `Modal`, and how to wire them cleanly using the `useModalState` hook from `@vlrc-fe/hooks` and layout primitives from `@vlrc-fe/components`.
 
 ---
 
 ## 1. Modal Control Hook (`useModalState`)
 
-The `useModalState` hook manages multiple independent modals from a single call using a typed key list. It provides two-phase unmounting (`load` → `open`) to allow smooth exit animations before DOM removal.
+The `useModalState` hook from `@vlrc-fe/hooks` manages multiple independent modals from a single call using a typed key list. It provides two-phase unmounting (`load` → `open`) to ensure smooth exit animations before DOM removal.
 
 ### Hook Signature
 
@@ -26,10 +26,10 @@ function useModalState<const T extends ReadonlyArray<string>>(
 ```
 openModal('edit')  →  { load: true, open: true }   // mount + animate in
 closeModal('edit') →  { load: true, open: false }   // animate out (300ms default)
-                   →  { load: false, open: false }   // unmount from DOM
+                   →  { load: false, open: false }  // unmount from DOM
 ```
 
-Use `modal.key.load` to conditionally render, and `modal.key.open` for the dialog's `open` prop.
+Use `modal.key.load` to conditionally render the modal container, and `modal.key.open` for the dialog's `open` prop.
 
 ---
 
@@ -37,72 +37,70 @@ Use `modal.key.load` to conditionally render, and `modal.key.open` for the dialo
 
 ### 2.1 Standard Overlay Wrapper (`<Modal>`)
 
-A simple overlay wrapper requiring `open` and `onOpenChange` controls.
+Generic dialog overlay wrapper built on Astryx modal primitives.
 
 ### 2.2 Confirmation Alert Dialogue (`<ConfirmModal>`)
 
-| Prop          | Type                          | Default      | Description            |
-| :------------ | :---------------------------- | :----------- | :--------------------- |
-| `open`        | `boolean`                     | `false`      | Visibility indicator.  |
-| `title`       | `ReactNode`                   | -            | Header text.           |
-| `description` | `ReactNode`                   | -            | Body description text. |
-| `confirmText` | `string`                      | `'Xác nhận'` | Submit button string.  |
-| `cancelText`  | `string`                      | `'Hủy'`      | Cancel button string.  |
-| `variant`     | `'default' \| 'destructive'`  | `'default'`  | Theme coloration.      |
-| `onConfirm`   | `() => void \| Promise<void>` | -            | Submit event handler.  |
-| `onCancel`    | `() => void`                  | -            | Cancel event handler.  |
+| Prop          | Type                          | Default      | Description                   |
+| :------------ | :---------------------------- | :----------- | :---------------------------- |
+| `open`        | `boolean`                     | `false`      | Visibility indicator.         |
+| `title`       | `ReactNode`                   | -            | Header title text.            |
+| `description` | `ReactNode`                   | -            | Body description text.        |
+| `confirmText` | `string`                      | `'Xác nhận'` | Submit action label.          |
+| `cancelText`  | `string`                      | `'Hủy'`      | Cancel action label.          |
+| `variant`     | `'default' \| 'destructive'`  | `'default'`  | Destructive or primary theme. |
+| `onConfirm`   | `() => void \| Promise<void>` | -            | Submit event handler.         |
+| `onCancel`    | `() => void`                  | -            | Cancel event handler.         |
 
 ---
 
-## 3. Composition Example
+## 3. Composition Example (Zero Raw `<div>` & Zero Magic Values)
 
 ```tsx
-import * as stylex from '@stylexjs/stylex';
+import { Button, ConfirmModal, HStack, VStack, Text, Title, Icons } from '@vlrc-fe/components';
+import { useModalState } from '@vlrc-fe/hooks';
 
-const styles = stylex.create({
-  actions: { display: 'flex', gap: '1rem' },
-  modalBody: { padding: '1.5rem' },
-  modalTitle: { fontSize: '1.125rem', fontWeight: 700 },
-});
-
-const CoursePanel = () => {
-  const { t } = useTranslation();
+export const CourseActionPanel = ({
+  courseTitle,
+  onDeleteCourse,
+}: {
+  courseTitle: string;
+  onDeleteCourse: () => Promise<void>;
+}) => {
   const { modal, openModal, closeModal } = useModalState(['edit', 'delete'] as const);
 
   return (
-    <div {...stylex.props(styles.actions)}>
-      <Button onClick={() => openModal('edit')}>
-        <Icons.Edit /> Edit
-      </Button>
-      <Button variant="destructive" onClick={() => openModal('delete')}>
-        <Icons.Trash /> Delete
-      </Button>
-
-      {modal.edit.load && (
-        <Modal open={modal.edit.open} onOpenChange={() => closeModal('edit')}>
-          <div {...stylex.props(styles.modalBody)}>
-            <h3 {...stylex.props(styles.modalTitle)}>Edit Course</h3>
-            {/* form content here */}
-            <Button onClick={() => closeModal('edit')}>Close</Button>
-          </div>
-        </Modal>
-      )}
+    <VStack gap="md">
+      <HStack gap="sm">
+        <Button variant="outline" onClick={() => openModal('edit')}>
+          <Icons.Edit /> Chỉnh sửa
+        </Button>
+        <Button variant="destructive" onClick={() => openModal('delete')}>
+          <Icons.Trash /> Xóa khóa học
+        </Button>
+      </HStack>
 
       {modal.delete.load && (
         <ConfirmModal
           open={modal.delete.open}
-          title="Delete course?"
-          description="This action cannot be undone. The course will be permanently removed."
-          confirmText="Delete permanently"
+          title={<Title level={3}>Xác nhận xóa khóa học</Title>}
+          description={
+            <Text type="secondary">
+              Bạn có chắc chắn muốn xóa khóa học <strong>{courseTitle}</strong>? Thao tác này không
+              thể hoàn tác.
+            </Text>
+          }
           variant="destructive"
-          onCancel={() => closeModal('delete')}
+          confirmText="Xóa vĩnh viễn"
+          cancelText="Hủy bỏ"
           onConfirm={async () => {
-            await deleteCourseMutation.mutateAsync(courseId);
+            await onDeleteCourse();
             closeModal('delete');
           }}
+          onCancel={() => closeModal('delete')}
         />
       )}
-    </div>
+    </VStack>
   );
 };
 ```

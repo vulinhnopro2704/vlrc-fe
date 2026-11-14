@@ -46,7 +46,7 @@ exports[`Empty > UI > should match snapshot with compound subcomponents 1`] = `
       data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:31"
     >
       <button
-        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw x1dsmnui x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw xfk7h2l x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"
         data-size="md"
         data-slot="button"
         data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:84; @vlrc-fe/components:src/ui/button.tsx:175"
@@ -122,7 +122,7 @@ exports[`Empty > UI > should match snapshot with default shorthand props 1`] = `
       data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:31"
     >
       <button
-        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xsda711 x13z6uf9 xnxx81d xkpwil5"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"
         data-size="md"
         data-slot="button"
         data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"

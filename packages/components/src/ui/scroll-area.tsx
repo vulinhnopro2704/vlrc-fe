@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 
 const styles = stylex.create({
@@ -41,7 +41,7 @@ const styles = stylex.create({
   thumb: {
     position: 'relative',
     flex: 1,
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.border,
   },
 });

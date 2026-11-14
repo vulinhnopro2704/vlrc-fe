@@ -8,7 +8,7 @@ import {
 import * as stylex from '@stylexjs/stylex';
 import { CheckIcon, ChevronDown, XCircle, XIcon } from 'lucide-react';
 
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import { cn } from '../utils';
 import { Separator } from '../ui/separator';
 import { Badge } from '../ui/badge';
@@ -78,7 +78,7 @@ const styles = stylex.create({
     height: '1rem',
     width: '1rem',
     cursor: 'pointer',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     padding: '0.125rem',
     borderWidth: 0,
     backgroundColor: 'transparent',
@@ -146,7 +146,7 @@ const styles = stylex.create({
     marginInline: '0.5rem',
     cursor: 'pointer',
     color: colors.mutedForeground,
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     outline: 'none',
     ':hover': {
       color: colors.foreground,
@@ -194,7 +194,7 @@ const styles = stylex.create({
     width: '1rem',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.primary,

@@ -3,7 +3,7 @@
 exports[`Card > UI > should match snapshot for auth variant 1`] = `
 <DocumentFragment>
   <div
-    class="card__styles.base xk0jn7w x78zum5 xdt5ytf xmkeg23 x1y0btm7 xru8eyw x1yb22fu card__styles.variantAuth xh8yej3 x1983rqf xvueqy4 xuqd5rh x1na3us3 xzu61vc xsx7z29 x2sv03e"
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf xmkeg23 x1y0btm7 xru8eyw x1yb22fu card__styles.variantAuth xh8yej3 x1983rqf xvueqy4 xuqd5rh x1na3us3 xzu61vc x20zu57 x9sgfzt"
     data-slot="card"
     data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:59"
     data-variant="auth"
@@ -49,7 +49,7 @@ exports[`Card > UI > should match snapshot for auth variant 1`] = `
 exports[`Card > UI > should match snapshot for default variant 1`] = `
 <DocumentFragment>
   <div
-    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantDefault"
+    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantDefault"
     data-slot="card"
     data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:28"
     data-variant="default"
@@ -95,7 +95,7 @@ exports[`Card > UI > should match snapshot for default variant 1`] = `
 exports[`Card > UI > should match snapshot for elevated variant 1`] = `
 <DocumentFragment>
   <div
-    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x1f78wua x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevated xc342km xymrrow x16n73rl x13dflua x1n3u82n xlyhkv7"
+    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x16ntqz8 x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevated xc342km xop26oq x16n73rl x13dflua x1n3u82n x1vvtbqd"
     data-slot="card"
     data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:37"
     data-variant="elevated"
@@ -141,7 +141,7 @@ exports[`Card > UI > should match snapshot for elevated variant 1`] = `
 exports[`Card > UI > should match snapshot for elevated-glass variant 1`] = `
 <DocumentFragment>
   <div
-    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x1f78wua x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevatedGlass xc342km x1so2dtn xvn2z4z x1l59q01 x16n73rl x13dflua x1a3imcw x1jdd2jz"
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x16ntqz8 x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevatedGlass xc342km x1so2dtn xvn2z4z xop26oq x16n73rl x13dflua x1a3imcw x1vvtbqd"
     data-slot="card"
     data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:47"
     data-variant="elevated-glass"
@@ -187,7 +187,7 @@ exports[`Card > UI > should match snapshot for elevated-glass variant 1`] = `
 exports[`Card > UI > should match snapshot for glass variant 1`] = `
 <DocumentFragment>
   <div
-    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantGlass xuqd5rh x1dmgsgi"
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantGlass xuqd5rh x1dmgsgi"
     data-slot="card"
     data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:29"
     data-variant="glass"
@@ -233,7 +233,7 @@ exports[`Card > UI > should match snapshot for glass variant 1`] = `
 exports[`Card > UI > should match snapshot for glass-strong variant 1`] = `
 <DocumentFragment>
   <div
-    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantGlassStrong x1so2dtn xvn2z4z"
+    class="card__styles.base xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantGlassStrong x1so2dtn xvn2z4z"
     data-slot="card"
     data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:33"
     data-variant="glass-strong"
@@ -279,7 +279,7 @@ exports[`Card > UI > should match snapshot for glass-strong variant 1`] = `
 exports[`Card > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <div
-    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x1f78wua xmkeg23 x1y0btm7 xb30jbz x1dsmnui xru8eyw x1yb22fu card__styles.variantDefault"
+    class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantDefault"
     data-slot="card"
     data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:28"
     data-variant="default"

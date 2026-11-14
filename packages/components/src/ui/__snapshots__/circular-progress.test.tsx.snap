@@ -31,7 +31,7 @@ exports[`CircularProgress > UI > should match snapshot across variant colors 1`]
         stroke-width="4"
       />
       <circle
-        class="circular-progress__styles.indicator x1owpc8m xxnu56j x1d8287x xz4gly6 circular-progress__styles.colorSuccess x1uof0aa"
+        class="circular-progress__styles.indicator x1owpc8m xxnu56j x1d8287x xz4gly6 circular-progress__styles.colorSuccess x19u12o8"
         cx="24"
         cy="24"
         data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:32; @vlrc-fe/components:src/ui/circular-progress.tsx:50"

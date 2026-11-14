@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, spacing } from '../theme/tokens.stylex';
 import { Flex } from './flex';
 import { Text } from '../Typography/Text';
 
 const styles = stylex.create({
   root: {
     padding: spacing.md,
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     backgroundColor: colors.card,
     color: colors.cardForeground,
   },
@@ -33,7 +33,7 @@ const styles = stylex.create({
     fontWeight: 500,
   },
   trendPositive: {
-    color: 'var(--success, #22c55e)',
+    color: colors.success,
   },
   trendNegative: {
     color: colors.destructive,

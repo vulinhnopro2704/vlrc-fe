@@ -45,10 +45,10 @@ const styles = stylex.create({
     stroke: colors.destructive,
   },
   colorWarning: {
-    stroke: 'var(--warning, #f59e0b)',
+    stroke: colors.warning,
   },
   colorSuccess: {
-    stroke: 'var(--success, #22c55e)',
+    stroke: colors.success,
   },
   centerContent: {
     position: 'absolute',

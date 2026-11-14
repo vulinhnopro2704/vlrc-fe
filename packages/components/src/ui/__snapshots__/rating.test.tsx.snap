@@ -48,7 +48,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -106,7 +106,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -164,7 +164,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -222,7 +222,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -280,7 +280,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -358,7 +358,7 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -410,7 +410,7 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -462,7 +462,7 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -514,7 +514,7 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -566,7 +566,7 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -638,7 +638,7 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -690,7 +690,7 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -742,7 +742,7 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -794,7 +794,7 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"
@@ -846,7 +846,7 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-star rating__styles.filledStar xg5597n rating__styles.iconMd xwqq7k2 xmll18r"
+          class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
           data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
           fill="currentColor"

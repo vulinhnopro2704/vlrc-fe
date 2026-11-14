@@ -67,7 +67,7 @@ const styles = stylex.create({
     pointerEvents: 'none',
   },
   filledStar: {
-    color: 'var(--rating-color, #f59e0b)',
+    color: colors.warning,
   },
   hitAreaLeft: {
     position: 'absolute',

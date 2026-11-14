@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import Icons from '../Icons';
 import { resolveTooltipContent, renderWithTooltip } from './tooltip';
@@ -55,16 +55,16 @@ const styles = stylex.create({
     color: colors.mutedForeground,
   },
   typeSuccess: {
-    color: '#16a34a',
+    color: colors.success,
   },
   typeWarning: {
-    color: '#ca8a04',
+    color: colors.warning,
   },
   typeDanger: {
     color: colors.destructive,
   },
   typeInfo: {
-    color: '#2563eb',
+    color: colors.info,
   },
   typeInherit: {
     color: 'inherit',
@@ -86,14 +86,14 @@ const styles = stylex.create({
   keyboard: {
     fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
     fontSize: '0.8125rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.muted,
     paddingInline: '0.375rem',
     paddingBlock: '0.125rem',
-    boxShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.xs,
   },
   ellipsisSingle: {
     display: 'inline-block',
@@ -113,7 +113,7 @@ const styles = stylex.create({
     cursor: 'pointer',
     padding: '0.125rem 0.25rem',
     marginLeft: '0.25rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { Flex } from './flex';
 
 export type KbdSize = 'xs' | 'sm' | 'md' | 'lg';
@@ -19,7 +19,7 @@ const styles = stylex.create({
     fontWeight: 500,
     lineHeight: 1,
     whiteSpace: 'nowrap',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -29,7 +29,7 @@ const styles = stylex.create({
   default: {
     backgroundColor: colors.muted,
     color: colors.mutedForeground,
-    boxShadow: '0 1px 0 0 color-mix(in srgb, var(--border) 80%, transparent)',
+    boxShadow: shadow.xs,
   },
   outline: {
     backgroundColor: 'transparent',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Text } from '../Typography';
 
 export type TagsInputSize = 'sm' | 'md' | 'lg';
@@ -34,18 +34,18 @@ const styles = stylex.create({
     minWidth: 0,
     flexWrap: 'wrap',
     alignItems: 'center',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.input,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     cursor: 'text',
     ':focus-within': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
   },
   sizeSm: {
@@ -78,7 +78,7 @@ const styles = stylex.create({
     borderColor: colors.destructive,
     ':focus-within': {
       borderColor: colors.destructive,
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 40%, transparent)',
+      boxShadow: shadow.ringDestructive,
     },
   },
 
@@ -87,7 +87,7 @@ const styles = stylex.create({
     display: 'inline-flex',
     alignItems: 'center',
     gap: '0.25rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     backgroundColor: colors.muted,
     color: colors.foreground,
     borderWidth: 1,
@@ -113,7 +113,7 @@ const styles = stylex.create({
     backgroundColor: 'transparent',
     color: colors.mutedForeground,
     cursor: 'pointer',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     lineHeight: 1,
     transitionProperty: 'color',
     transitionDuration: '150ms',
@@ -133,7 +133,7 @@ const styles = stylex.create({
     fontSize: 'inherit',
     lineHeight: 'inherit',
     outline: 'none',
-    boxShadow: 'none',
+    boxShadow: shadow.none,
     '::placeholder': {
       color: colors.mutedForeground,
     },
@@ -152,7 +152,7 @@ const styles = stylex.create({
     backgroundColor: 'transparent',
     color: colors.mutedForeground,
     cursor: 'pointer',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     transitionProperty: 'color',
     transitionDuration: '150ms',
     ':hover': {

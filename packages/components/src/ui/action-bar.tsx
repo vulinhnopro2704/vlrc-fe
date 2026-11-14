@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii, spacing } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
 import { Kbd } from './kbd';
 
@@ -33,13 +33,13 @@ const styles = stylex.create({
     gap: spacing.sm,
     backgroundColor: colors.background,
     color: colors.foreground,
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     paddingInline: spacing.md,
     paddingBlock: spacing.xs,
-    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+    boxShadow: shadow.xl,
     transitionProperty: 'transform, opacity',
     transitionDuration: '200ms',
   },

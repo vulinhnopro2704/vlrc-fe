@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
 
 export type ButtonVariant =
@@ -42,7 +42,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     gap: '0.5rem',
     whiteSpace: 'nowrap',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     fontSize: '0.875rem',
     fontWeight: 500,
     cursor: 'pointer',
@@ -59,7 +59,7 @@ const styles = stylex.create({
       cursor: 'not-allowed',
     },
     ':focus-visible': {
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent)',
+      boxShadow: shadow.ring,
     },
   },
 
@@ -73,12 +73,12 @@ const styles = stylex.create({
   },
   variantDestructive: {
     backgroundColor: colors.destructive,
-    color: '#ffffff',
+    color: colors.destructiveForeground,
     ':hover': {
       opacity: 0.9,
     },
     ':focus-visible': {
-      boxShadow: '0 0 0 3px color-mix(in srgb, var(--destructive) 40%, transparent)',
+      boxShadow: shadow.ringDestructive,
     },
   },
   variantOutline: {
@@ -86,7 +86,7 @@ const styles = stylex.create({
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.background,
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    boxShadow: shadow.xs,
     ':hover': {
       backgroundColor: colors.accent,
       color: colors.accentForeground,
@@ -125,77 +125,77 @@ const styles = stylex.create({
   variantAccentCta: {
     backgroundColor: colors.accent,
     color: colors.accentForeground,
-    boxShadow: '0 10px 15px -3px color-mix(in srgb, var(--accent) 25%, transparent)',
+    boxShadow: shadow.md,
     ':hover': {
       transform: 'scale(1.05)',
-      boxShadow: '0 20px 25px -5px color-mix(in srgb, var(--accent) 30%, transparent)',
+      boxShadow: shadow.lg,
     },
   },
   variantGradient: {
     backgroundImage: 'linear-gradient(to right, var(--primary), var(--accent))',
     color: colors.primaryForeground,
-    boxShadow: '0 10px 15px -3px color-mix(in srgb, var(--primary) 25%, transparent)',
+    boxShadow: shadow.md,
     ':hover': {
       opacity: 0.95,
-      boxShadow: '0 20px 25px -5px color-mix(in srgb, var(--primary) 30%, transparent)',
+      boxShadow: shadow.lg,
     },
   },
   variantGradientSuccess: {
-    backgroundImage: 'linear-gradient(to right, #10b981, #16a34a)',
-    color: '#ffffff',
-    boxShadow: '0 10px 15px -3px rgba(16, 185, 129, 0.3)',
+    backgroundImage: 'linear-gradient(to right, var(--chart-2), var(--color-success))',
+    color: colors.primaryForeground,
+    boxShadow: shadow.sm,
     ':hover': {
       opacity: 0.95,
-      boxShadow: '0 20px 25px -5px rgba(16, 185, 129, 0.4)',
+      boxShadow: shadow.md,
     },
   },
 
   // 7-tier Component Sizes
   sizeXxs: {
     height: '1.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     gap: '0.25rem',
     paddingInline: '0.5rem',
     fontSize: '0.6875rem',
   },
   sizeXs: {
     height: '1.75rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     gap: '0.3125rem',
     paddingInline: '0.625rem',
     fontSize: '0.75rem',
   },
   sizeSm: {
     height: '2rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.375rem',
     paddingInline: '0.75rem',
     fontSize: '0.8125rem',
   },
   sizeMd: {
     height: '2.25rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.5rem',
     paddingInline: '1rem',
     fontSize: '0.875rem',
   },
   sizeLg: {
     height: '2.5rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     gap: '0.5rem',
     paddingInline: '1.25rem',
     fontSize: '0.9375rem',
   },
   sizeXl: {
     height: '2.75rem',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
     gap: '0.625rem',
     paddingInline: '1.5rem',
     fontSize: '1rem',
   },
   sizeXxl: {
     height: '3.25rem',
-    borderRadius: radii.xl,
+    borderRadius: radius.xl,
     gap: '0.75rem',
     paddingInline: '1.75rem',
     fontSize: '1.125rem',
@@ -206,13 +206,13 @@ const styles = stylex.create({
     height: '1.5rem',
     width: '1.5rem',
     padding: 0,
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
   },
   sizeIconXs: {
     height: '1.75rem',
     width: '1.75rem',
     padding: 0,
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
   },
   sizeIconSm: {
     height: '2rem',
@@ -284,7 +284,7 @@ const styles = stylex.create({
     animationDuration: '1s',
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: 'currentColor',
@@ -519,3 +519,22 @@ function buttonVariants(options?: {
 }
 
 export { Button, buttonVariants };
+
+export {
+  ButtonGroup,
+  IconButton,
+  ToggleButton,
+  ToggleButtonGroup,
+  useButtonGroup,
+} from '@astryxdesign/core';
+
+export type {
+  ButtonGroupProps,
+  ButtonGroupOrientation,
+  ButtonGroupContextValue,
+  IconButtonProps,
+  ToggleButtonProps,
+  ToggleButtonGroupProps,
+  ToggleButtonGroupSingleProps,
+  ToggleButtonGroupMultipleProps,
+} from '@astryxdesign/core';

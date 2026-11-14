@@ -25,7 +25,7 @@ exports[`Accordion > UI > should match snapshot in default state 1`] = `
         <button
           aria-controls="radix-_r_1_"
           aria-expanded="true"
-          class="accordion__styles.trigger xjyslct xjbqb8w xc342km x84br7x x78zum5 x845mor x6s0dn4 x1qughib xh8yej3 x1ypdohk xdpxx8g x1a2a7pz xfagghw x13dflua xt0b8zv xybh4k3 x7s97pk x1hi7d6v xaqnwrm xijokvz accordion__styles.triggerMd xgepmj6 x6u19be xk50ysn x8fetqu"
+          class="accordion__styles.trigger xjyslct xjbqb8w xc342km x84br7x x78zum5 x845mor x6s0dn4 x1qughib xh8yej3 x1ypdohk xdpxx8g x1a2a7pz xfagghw x13dflua xt0b8zv xybh4k3 x7s97pk xi89txa xaqnwrm xijokvz accordion__styles.triggerMd xgepmj6 x6u19be xk50ysn x8fetqu"
           data-orientation="vertical"
           data-radix-collection-item=""
           data-size="md"

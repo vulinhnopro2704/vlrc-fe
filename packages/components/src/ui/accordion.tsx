@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Text } from '../Typography';
 
@@ -41,7 +41,7 @@ const styles = stylex.create({
     ':focus-visible': {
       outline: '2px solid var(--ring)',
       outlineOffset: '2px',
-      borderRadius: radii.sm,
+      borderRadius: radius.sm,
     },
     ':disabled': {
       pointerEvents: 'none',

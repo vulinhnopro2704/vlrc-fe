@@ -14,7 +14,7 @@ exports[`Editable > UI > should match snapshot in editing mode 1`] = `
       data-style-src="@vlrc-fe/components:src/ui/editable.tsx:39"
     >
       <input
-        class="editable__styles.input x3nfvp2 x6s0dn4 x1q0v2j7 xmkeg23 x1y0btm7 x1puiyjm x1mlyrtw x84br7x xvg6gpc x1dus959 x1a2a7pz x1ld4rhc x1qlqyl8 x15bjb6t xjb2p0i xz6sds4"
+        class="editable__styles.input x3nfvp2 x6s0dn4 xqfady0 xmkeg23 x1y0btm7 x1puiyjm x1mlyrtw x84br7x xvg6gpc x1dus959 x1a2a7pz xf0oo4t x1qlqyl8 x15bjb6t xjb2p0i xz6sds4"
         data-slot="editable-input"
         data-style-src="@vlrc-fe/components:src/ui/editable.tsx:70"
         placeholder="Click to edit..."
@@ -28,7 +28,7 @@ exports[`Editable > UI > should match snapshot in editing mode 1`] = `
         role="toolbar"
       >
         <button
-          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeXs xb8l8e1 x1q0v2j7 xx7b8my xvpgqt4 xboafo0"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeXs xb8l8e1 xqfady0 xx7b8my xvpgqt4 xboafo0"
           data-size="xs"
           data-slot="editable-submit"
           data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:161"
@@ -52,7 +52,7 @@ exports[`Editable > UI > should match snapshot in editing mode 1`] = `
           </svg>
         </button>
         <button
-          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeXs xb8l8e1 x1q0v2j7 xx7b8my xvpgqt4 xboafo0"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeXs xb8l8e1 xqfady0 xx7b8my xvpgqt4 xboafo0"
           data-size="xs"
           data-slot="editable-cancel"
           data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:161"
@@ -103,7 +103,7 @@ exports[`Editable > UI > should match snapshot in preview mode 1`] = `
       data-style-src="@vlrc-fe/components:src/ui/editable.tsx:39"
     >
       <span
-        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeInherit x1heor9g weightStyles__styles.regular xo1l8bm editable__styles.preview x3nfvp2 x6s0dn4 x1q0v2j7 xvg6gpc x1dus959 x1ypdohk x84br7x xs2xxs2 xx6bhzk x165v80h"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeInherit x1heor9g weightStyles__styles.regular xo1l8bm editable__styles.preview x3nfvp2 x6s0dn4 xqfady0 xvg6gpc x1dus959 x1ypdohk x84br7x xs2xxs2 xx6bhzk x165v80h"
         data-size="md"
         data-slot="editable-preview"
         data-style-src="@vlrc-fe/components:src/ui/editable.tsx:46"
@@ -119,7 +119,7 @@ exports[`Editable > UI > should match snapshot in preview mode 1`] = `
         role="toolbar"
       >
         <button
-          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s x1ippke1 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeXs xb8l8e1 x1q0v2j7 xx7b8my xvpgqt4 xboafo0"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeXs xb8l8e1 xqfady0 xx7b8my xvpgqt4 xboafo0"
           data-size="xs"
           data-slot="editable-trigger"
           data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:161"
@@ -164,7 +164,7 @@ exports[`Editable > UI > should match snapshot when empty with placeholder 1`] =
       data-style-src="@vlrc-fe/components:src/ui/editable.tsx:39"
     >
       <span
-        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeInherit x1heor9g weightStyles__styles.regular xo1l8bm editable__styles.preview x3nfvp2 x6s0dn4 x1q0v2j7 xvg6gpc x1dus959 x1ypdohk xs2xxs2 xx6bhzk x165v80h editable__styles.previewPlaceholder xw3nh4a"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeInherit x1heor9g weightStyles__styles.regular xo1l8bm editable__styles.preview x3nfvp2 x6s0dn4 xqfady0 xvg6gpc x1dus959 x1ypdohk xs2xxs2 xx6bhzk x165v80h editable__styles.previewPlaceholder xw3nh4a"
         data-size="md"
         data-slot="editable-preview"
         data-style-src="@vlrc-fe/components:src/ui/editable.tsx:46; @vlrc-fe/components:src/ui/editable.tsx:60"

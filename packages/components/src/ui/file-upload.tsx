@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { Icons } from '../Icons';
 import { Text } from '../Typography';
 import { formatFileSize, type UploadHandler } from './file-upload-adapters';
@@ -36,7 +36,7 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: '0.5rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     borderWidth: 2,
     borderStyle: 'dashed',
     borderColor: colors.border,
@@ -53,18 +53,18 @@ const styles = stylex.create({
     },
     ':focus-visible': {
       borderColor: colors.ring,
-      boxShadow: '0 0 0 2px var(--background), 0 0 0 4px var(--ring)',
+      boxShadow: shadow.ring,
     },
   },
   dropzoneDragging: {
     backgroundColor: colors.accent,
     borderColor: colors.primary,
-    boxShadow: '0 0 0 2px var(--background), 0 0 0 4px var(--primary)',
+    boxShadow: shadow.ring,
   },
   dropzoneInvalid: {
     borderColor: colors.destructive,
     backgroundColor: 'color-mix(in srgb, var(--destructive) 5%, transparent)',
-    boxShadow: '0 0 0 2px var(--background), 0 0 0 4px var(--destructive)',
+    boxShadow: shadow.ringDestructive,
   },
   dropzoneDisabled: {
     pointerEvents: 'none',
@@ -75,7 +75,7 @@ const styles = stylex.create({
     position: 'relative',
     width: '8rem',
     height: '8rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 2,
     borderStyle: 'dashed',
     borderColor: colors.border,
@@ -102,7 +102,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     gap: '0.25rem',
     backgroundColor: 'rgba(0, 0, 0, 0.45)',
-    color: '#ffffff',
+    color: colors.primaryForeground,
     opacity: 0,
     transitionProperty: 'opacity',
     transitionDuration: '200ms',
@@ -119,7 +119,7 @@ const styles = stylex.create({
   avatarPreview: {
     width: '100%',
     height: '100%',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
   },
   list: {
     display: 'flex',
@@ -136,7 +136,7 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     gap: '0.75rem',
-    borderRadius: radii.md,
+    borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -155,7 +155,7 @@ const styles = stylex.create({
     width: '2.5rem',
     height: '2.5rem',
     minWidth: '2.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     backgroundColor: colors.muted,
     color: colors.mutedForeground,
     overflow: 'hidden',
@@ -194,7 +194,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     width: '1.75rem',
     height: '1.75rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 0,
     backgroundColor: 'transparent',
     color: colors.mutedForeground,
@@ -211,14 +211,14 @@ const styles = stylex.create({
     position: 'relative',
     width: '100%',
     height: '4px',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     backgroundColor: colors.muted,
     overflow: 'hidden',
   },
   progressIndicator: {
     height: '100%',
     backgroundColor: colors.primary,
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     transitionProperty: 'width',
     transitionDuration: '300ms',
     transitionTimingFunction: 'ease-in-out',
@@ -245,7 +245,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     width: '2.5rem',
     height: '2.5rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -265,7 +265,7 @@ const styles = stylex.create({
     textAlign: 'center',
   },
   whiteText: {
-    color: '#ffffff',
+    color: colors.primaryForeground,
   },
   compactDropzone: {
     padding: '0.75rem 1rem',
@@ -287,7 +287,7 @@ const styles = stylex.create({
     borderWidth: 0,
     cursor: 'pointer',
     padding: '0.25rem 0.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     ':hover': {
       backgroundColor: colors.accent,
       color: colors.destructive,

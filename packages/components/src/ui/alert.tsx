@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radii } from '../theme/tokens.stylex';
+import { colors, radius } from '../theme/tokens.stylex';
 
 export type AlertVariant = 'default' | 'destructive';
 
@@ -8,7 +8,7 @@ const styles = stylex.create({
   root: {
     position: 'relative',
     width: '100%',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     borderWidth: 1,
     borderStyle: 'solid',
     paddingInline: '1rem',

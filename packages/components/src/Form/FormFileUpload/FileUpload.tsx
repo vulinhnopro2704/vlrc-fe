@@ -19,7 +19,7 @@ import {
   type UploadThingStorageConfig,
   type UploadHandler,
 } from '../../ui/file-upload';
-import { colors, radii } from '../../theme/tokens.stylex';
+import { colors, radius } from '../../theme/tokens.stylex';
 import { Icons } from '../../Icons';
 import { Text } from '../../Typography';
 import { Button } from '../../ui/button';
@@ -35,7 +35,7 @@ const styles = stylex.create({
     position: 'relative',
     width: '8rem',
     height: '8rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 2,
     borderStyle: 'dashed',
     borderColor: colors.border,
@@ -83,7 +83,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     gap: '0.25rem',
     backgroundColor: 'rgba(0, 0, 0, 0.45)',
-    color: '#ffffff',
+    color: colors.primaryForeground,
     opacity: 0,
     transitionProperty: 'opacity',
     transitionDuration: '200ms',
@@ -110,7 +110,7 @@ const styles = stylex.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: '0.75rem',
-    borderRadius: radii.lg,
+    borderRadius: radius.lg,
     borderWidth: 1,
     borderStyle: 'dashed',
     borderColor: colors.border,
@@ -136,7 +136,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     width: '2.5rem',
     height: '2.5rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -150,7 +150,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     width: '2rem',
     height: '2rem',
-    borderRadius: radii.full,
+    borderRadius: radius.full,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
@@ -173,7 +173,7 @@ const styles = stylex.create({
     borderWidth: 0,
     cursor: 'pointer',
     padding: '0.25rem 0.5rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     ':hover': {
       backgroundColor: colors.accent,
       color: colors.destructive,
@@ -185,7 +185,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     width: '2rem',
     height: '2rem',
-    borderRadius: radii.sm,
+    borderRadius: radius.sm,
     borderWidth: 0,
     backgroundColor: 'transparent',
     color: colors.mutedForeground,
@@ -199,7 +199,7 @@ const styles = stylex.create({
     },
   },
   whiteText: {
-    color: '#ffffff',
+    color: colors.primaryForeground,
   },
 });
 

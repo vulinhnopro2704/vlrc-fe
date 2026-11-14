@@ -3,7 +3,7 @@
 exports[`Textarea > UI > should match snapshot in default state 1`] = `
 <DocumentFragment>
   <textarea
-    class="textarea__styles.base x78zum5 xh8yej3 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x156qtes x1ippke1 x1s07b3s xijokvz textarea__styles.sizeMd xd4eqea xsda711 x1ryrjj2 x18g2hj5 xkpwil5"
+    class="textarea__styles.base x78zum5 xh8yej3 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x xfk7h2l x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x156qtes xik21o4 x1s07b3s xijokvz textarea__styles.sizeMd xd4eqea xrijj7p x1ryrjj2 x18g2hj5 xkpwil5"
     data-size="md"
     data-slot="textarea"
     data-style-src="@vlrc-fe/components:src/ui/textarea.tsx:7; @vlrc-fe/components:src/ui/textarea.tsx:55"
@@ -17,7 +17,7 @@ exports[`Textarea > UI > should match snapshot in default state 1`] = `
 exports[`Textarea > UI > should match snapshot when disabled 1`] = `
 <DocumentFragment>
   <textarea
-    class="textarea__styles.base x78zum5 xh8yej3 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x x1dsmnui x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x156qtes x1ippke1 x1s07b3s xijokvz textarea__styles.sizeMd xd4eqea xsda711 x1ryrjj2 x18g2hj5 xkpwil5"
+    class="textarea__styles.base x78zum5 xh8yej3 xmkeg23 x1y0btm7 xsyin8q xjbqb8w x84br7x xfk7h2l x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x156qtes xik21o4 x1s07b3s xijokvz textarea__styles.sizeMd xd4eqea xrijj7p x1ryrjj2 x18g2hj5 xkpwil5"
     data-size="md"
     data-slot="textarea"
     data-style-src="@vlrc-fe/components:src/ui/textarea.tsx:7; @vlrc-fe/components:src/ui/textarea.tsx:55"
@@ -33,7 +33,7 @@ exports[`Textarea > UI > should match snapshot when invalid 1`] = `
 <DocumentFragment>
   <textarea
     aria-invalid="true"
-    class="textarea__styles.base x78zum5 xh8yej3 xmkeg23 x1y0btm7 xjbqb8w x84br7x x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x156qtes x1ippke1 x1s07b3s xijokvz textarea__styles.sizeMd xd4eqea xsda711 x1ryrjj2 x18g2hj5 xkpwil5 textarea__styles.invalid x1uwefn5 xrqv5e9"
+    class="textarea__styles.base x78zum5 xh8yej3 xmkeg23 x1y0btm7 xjbqb8w x84br7x x1bh2a3r xx6bhzk x1a2a7pz x1guo4m0 x156qtes xik21o4 x1s07b3s xijokvz textarea__styles.sizeMd xd4eqea xrijj7p x1ryrjj2 x18g2hj5 xkpwil5 textarea__styles.invalid x1uwefn5 x1r3qo2b"
     data-size="md"
     data-slot="textarea"
     data-style-src="@vlrc-fe/components:src/ui/textarea.tsx:7; @vlrc-fe/components:src/ui/textarea.tsx:55; @vlrc-fe/components:src/ui/textarea.tsx:84"
