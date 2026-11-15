@@ -1,6 +1,16 @@
 # Changelog
 
-## 3.0.2
+## [3.0.3] - 2026-11-15
+
+### Patch Changes
+
+- **FormFileUpload & FileUpload Error Handling**:
+  - Integrated `<FieldError>` display into `FileUpload` across all variants (`default`, `compact`, `avatar`) when a file is rejected (e.g. exceeding `maxSize` or invalid format) or when external `error` / `errors` props are provided.
+  - Connected `FormFileUpload` with React Hook Form validation via `formContext` and fallback `control`, dynamically setting `fieldState.error` (`{ type: 'validate', message }`) upon file rejection so `<Field data-invalid="true">` and `<FieldError errors={[fieldState.error]} />` render consistently with all other form fields.
+  - Automatically clears validation error upon selecting valid files or clearing the file selection.
+  - Enforced strict 0% `any` and direct imports of React hooks and types.
+
+## [3.0.2] - 2026-11-15
 
 ### Patch Changes
 
@@ -10,6 +20,8 @@
 - **Storybook Reorganization**:
   - Reorganized all component stories into cohesive hierarchies (`Foundations/`, `Actions/`, `Feedback/`, `Forms/`, `Layout/`, `Navigation/`).
   - Added theme switching support in Storybook preview.
+
+## [3.0.1] - 2026-11-14
 
 ## [2.8.0] - 2026-11-10
 

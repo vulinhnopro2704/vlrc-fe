@@ -1,4 +1,12 @@
-import * as React from 'react';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import {
   FileUpload as FileUploadRoot,
@@ -23,6 +31,7 @@ import { colors, radius } from '../../theme/tokens.stylex';
 import { Icons } from '../../Icons';
 import { Text } from '../../Typography';
 import { Button } from '../../ui/button';
+import { FieldError } from '../../ui/field';
 
 const styles = stylex.create({
   avatarContainer: {
@@ -228,6 +237,10 @@ export type FileUploadBaseProps = {
    */
   maxSize?: number;
   /**
+   * Minimum allowed file size in bytes.
+   */
+  minSize?: number;
+  /**
    * Accepted MIME types or extensions (e.g., 'image/*', '.pdf').
    * @default "image/*"
    */
@@ -268,7 +281,7 @@ export type FileUploadBaseProps = {
   /**
    * Custom icon element rendered inside dropzone.
    */
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   /**
    * Whether to display the uploaded file list below the dropzone.
    * @default true
@@ -289,6 +302,36 @@ export type FileUploadBaseProps = {
    * @default false
    */
   showClear?: boolean;
+  /**
+   * Single error message or error object to display.
+   */
+  error?: string | { message?: string } | null;
+  /**
+   * Array of errors to display via `<FieldError>`.
+   */
+  errors?: Array<{ message?: string } | undefined>;
+  /**
+   * Callback fired when a file is rejected during selection/drop (e.g. exceeds maxSize, invalid format).
+   */
+  onFileReject?: (file: File, message: string) => void;
+  /**
+   * Callback fired when valid files are accepted.
+   */
+  onAccept?: (files: File[]) => void;
+  /**
+   * If true, suppresses the internal `<FieldError>` rendering.
+   * Useful when wrapped by FormBase which renders its own FieldError.
+   * @default false
+   */
+  hideError?: boolean;
+  /**
+   * Whether the field is marked as invalid.
+   */
+  invalid?: boolean;
+  /**
+   * Accessibility attribute indicating the field has an error.
+   */
+  'aria-invalid'?: boolean | 'true' | 'false';
 };
 
 /**
@@ -337,20 +380,28 @@ export type FileUploadProps = FileUploadBaseProps & (FileUploadAutoProps | FileU
 
 type FileUploadSyncValue = string | string[] | File | File[] | null;
 
+interface FileUploadSyncProps {
+  onChange?: (value: FileUploadSyncValue) => void;
+  autoUpload: boolean;
+  maxFiles: number;
+  onResetReject?: () => void;
+}
+
+/**
+ * Internal synchronizer component that monitors file store mutations
+ * and propagates updated file references or uploaded URL strings to onChange.
+ */
 function FileUploadSync({
   onChange,
   autoUpload,
   maxFiles,
-}: {
-  onChange?: (value: FileUploadSyncValue) => void;
-  autoUpload: boolean;
-  maxFiles: number;
-}) {
+  onResetReject,
+}: FileUploadSyncProps): null {
   const store = useFileUpload((state) => state);
-  const lastValueRef = React.useRef<FileUploadSyncValue>(null);
-  const isFirstRenderRef = React.useRef(true);
+  const lastValueRef = useRef<FileUploadSyncValue>(null);
+  const isFirstRenderRef = useRef(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!onChange) return;
 
     const currentFiles = Array.from(store.files.values());
@@ -388,8 +439,9 @@ function FileUploadSync({
     if (!isEq) {
       lastValueRef.current = newValue;
       onChange(newValue);
+      onResetReject?.();
     }
-  }, [store, autoUpload, maxFiles, onChange]);
+  }, [store, autoUpload, maxFiles, onChange, onResetReject]);
 
   return null;
 }
@@ -494,13 +546,20 @@ function FileUploadClearRow({
   );
 }
 
+interface FileUploadAvatarRendererProps {
+  showProgress: boolean;
+  maxSize?: number;
+  errorElem?: ReactNode;
+}
+
+/**
+ * Dedicated renderer for circular profile avatar dropzones.
+ */
 function FileUploadAvatarRenderer({
   showProgress,
   maxSize,
-}: {
-  showProgress: boolean;
-  maxSize?: number;
-}) {
+  errorElem,
+}: FileUploadAvatarRendererProps): ReactElement {
   const file = useFileUpload((state) => {
     const first = state.files.values().next();
     return first.done ? null : (first.value.file as ExtendedFile);
@@ -558,8 +617,35 @@ function FileUploadAvatarRenderer({
           Max {formatFileSize(maxSize)}
         </Text>
       ) : null}
+      {errorElem}
     </div>
   );
+}
+
+/**
+ * Resolves an array of error objects from explicit errors, a single error,
+ * or rejection error messages captured during file validation.
+ *
+ * @param explicitErrors Array of error objects passed via props
+ * @param singleError Single error string or object passed via props
+ * @param rejectMessages Rejection messages captured during file validation
+ * @returns Array of errors formatted for FieldError, or undefined if none exist
+ */
+function resolveDisplayErrors(
+  explicitErrors?: Array<{ message?: string } | undefined>,
+  singleError?: string | { message?: string } | null,
+  rejectMessages: string[] = [],
+): Array<{ message?: string } | undefined> | undefined {
+  if (explicitErrors && explicitErrors.length > 0) {
+    return explicitErrors;
+  }
+  if (singleError) {
+    return [typeof singleError === 'string' ? { message: singleError } : singleError];
+  }
+  if (rejectMessages.length > 0) {
+    return rejectMessages.map((message) => ({ message }));
+  }
+  return undefined;
 }
 
 /**
@@ -577,6 +663,7 @@ export function FileUpload({
   uploadHandler,
   maxFiles = 1,
   maxSize = 1024 * 1024 * 5,
+  minSize,
   accept = 'image/*',
   multiple,
   disabled,
@@ -590,10 +677,53 @@ export function FileUpload({
   showProgress = true,
   showPreview = true,
   showClear = false,
-}: FileUploadProps) {
-  const cachedStubsRef = React.useRef<Map<string, ExtendedFile>>(new Map());
+  error,
+  errors,
+  onFileReject,
+  onAccept,
+  hideError = false,
+  invalid,
+  'aria-invalid': ariaInvalid,
+}: FileUploadProps): ReactElement {
+  const [rejectErrors, setRejectErrors] = useState<string[]>([]);
 
-  const mappedFiles: ExtendedFile[] = React.useMemo(() => {
+  const handleFileReject = useCallback(
+    (file: File, message: string): void => {
+      setRejectErrors((prev) => (prev.includes(message) ? prev : [...prev, message]));
+      onFileReject?.(file, message);
+    },
+    [onFileReject],
+  );
+
+  const handleAccept = useCallback(
+    (files: File[]): void => {
+      setRejectErrors([]);
+      onAccept?.(files);
+    },
+    [onAccept],
+  );
+
+  const handleResetReject = useCallback((): void => {
+    setRejectErrors([]);
+  }, []);
+
+  useEffect(() => {
+    setRejectErrors([]);
+  }, [value]);
+
+  const displayErrors = useMemo(
+    () => resolveDisplayErrors(errors, error, rejectErrors),
+    [errors, error, rejectErrors],
+  );
+
+  const errorElem =
+    !hideError && displayErrors && displayErrors.length > 0 ? (
+      <FieldError errors={displayErrors} />
+    ) : null;
+
+  const cachedStubsRef = useRef<Map<string, ExtendedFile>>(new Map());
+
+  const mappedFiles: ExtendedFile[] = useMemo(() => {
     const valArray = Array.isArray(value) ? value : value ? [value] : [];
     return valArray.map((item) => {
       if (item instanceof File) return item as ExtendedFile;
@@ -609,7 +739,7 @@ export function FileUpload({
     });
   }, [value, accept]);
 
-  const resolvedUploadHandler = React.useMemo<UploadHandler | null>(() => {
+  const resolvedUploadHandler = useMemo<UploadHandler | null>(() => {
     if (uploadHandler) return uploadHandler;
     if (uploadThingConfig) return createUploadThingUploadHandler(uploadThingConfig);
     if (apiConfig) return createApiUploadHandler(apiConfig);
@@ -718,6 +848,8 @@ export function FileUpload({
           deleteBtnSx={styles.deleteBtn}
         />
       )}
+
+      {errorElem}
     </>
   );
 
@@ -746,6 +878,8 @@ export function FileUpload({
           deleteBtnSx={styles.deleteBtn}
         />
       )}
+
+      {errorElem}
     </>
   );
 
@@ -754,10 +888,14 @@ export function FileUpload({
       value={mappedFiles}
       maxFiles={variant === 'avatar' ? 1 : maxFiles}
       maxSize={maxSize}
+      minSize={minSize}
       accept={accept}
       multiple={isMultiple}
       disabled={disabled}
+      invalid={Boolean(invalid || ariaInvalid || (displayErrors && displayErrors.length > 0))}
       onUpload={handleUpload}
+      onFileReject={handleFileReject}
+      onAccept={handleAccept}
       className={className}
       sx={sx}
     >
@@ -765,9 +903,14 @@ export function FileUpload({
         onChange={onChange}
         autoUpload={Boolean(autoUpload)}
         maxFiles={variant === 'avatar' ? 1 : maxFiles}
+        onResetReject={handleResetReject}
       />
       {variant === 'avatar' ? (
-        <FileUploadAvatarRenderer showProgress={showProgress} maxSize={maxSize} />
+        <FileUploadAvatarRenderer
+          showProgress={showProgress}
+          maxSize={maxSize}
+          errorElem={errorElem}
+        />
       ) : variant === 'compact' ? (
         renderCompactVariant()
       ) : (
