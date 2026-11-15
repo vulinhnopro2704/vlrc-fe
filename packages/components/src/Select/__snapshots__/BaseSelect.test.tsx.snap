@@ -12,11 +12,10 @@ exports[`BaseSelect > UI > should match snapshot in default unselected state 1`]
     type="button"
   >
     <span
-      class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault weightStyles__styles.regular xo1l8bm BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0 BaseSelect__styles.placeholder xw3nh4a"
+      class="Text__styles.base Text__styles.sizeMd x1evy7pa weightStyles__styles.regular xo1l8bm BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0 BaseSelect__styles.placeholder xw3nh4a"
       data-size="md"
       data-slot="typography-text"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Select/BaseSelect.tsx:49; @vlrc-fe/components:src/Select/BaseSelect.tsx:58"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Select/BaseSelect.tsx:49; @vlrc-fe/components:src/Select/BaseSelect.tsx:58"
       data-weight="regular"
     >
       Select an option...
@@ -56,12 +55,11 @@ exports[`BaseSelect > UI > should match snapshot when disabled 1`] = `
     type="button"
   >
     <span
-      class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm Text__styles.ellipsisSingle x1rg5ohu x193iq5w x3ajldb BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0"
+      class="Text__styles.base x1heor9g Text__styles.sizeMd x1evy7pa weightStyles__styles.regular xo1l8bm Text__styles.ellipsisSingle x1rg5ohu x193iq5w x3ajldb BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0"
       data-size="md"
       data-slot="typography-text"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
       data-weight="regular"
     >
       Short Option
@@ -100,12 +98,11 @@ exports[`BaseSelect > UI > should match snapshot with long text selected in trig
     type="button"
   >
     <span
-      class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm Text__styles.ellipsisSingle x1rg5ohu x193iq5w x3ajldb BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0"
+      class="Text__styles.base x1heor9g Text__styles.sizeMd x1evy7pa weightStyles__styles.regular xo1l8bm Text__styles.ellipsisSingle x1rg5ohu x193iq5w x3ajldb BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0"
       data-size="md"
       data-slot="typography-text"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
       data-weight="regular"
     >
       Super exceptionally long option text that exceeds typical container boundaries and requires ellipsis truncation with tooltip on hover

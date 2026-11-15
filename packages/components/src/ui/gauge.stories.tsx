@@ -3,7 +3,7 @@ import { Flex } from '../layout';
 import { Gauge } from './gauge';
 
 const meta: Meta<typeof Gauge> = {
-  title: 'Components/Feedback/Gauge',
+  title: 'Feedback/Gauge',
   component: Gauge,
   tags: ['autodocs'],
   argTypes: {

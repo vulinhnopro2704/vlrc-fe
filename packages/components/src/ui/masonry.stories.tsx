@@ -4,7 +4,7 @@ import { Title, Text } from '../Typography';
 import { Masonry } from './masonry';
 
 const meta: Meta<typeof Masonry> = {
-  title: 'Components/Layout/Masonry',
+  title: 'Layout/Masonry',
   component: Masonry,
   tags: ['autodocs'],
   argTypes: {

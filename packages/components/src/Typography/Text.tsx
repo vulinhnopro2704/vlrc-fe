@@ -10,7 +10,7 @@ import { typographyWeightStyles } from './weightStyles';
 
 const styles = stylex.create({
   base: {
-    color: colors.foreground,
+    color: 'inherit',
     lineHeight: 1.5,
   },
 
@@ -163,7 +163,7 @@ const typeStyles: Record<TextType, stylex.StyleXStyles> = {
 
 export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   {
-    type = 'default',
+    type,
     size = 'md',
     weight = 'regular',
     required,
@@ -271,7 +271,7 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   const sxProps = stylex.props(
     styles.base,
     currentSizeStyle,
-    typeStyles[type],
+    type && typeStyles[type],
     weight && typographyWeightStyles[weight],
     strong && styles.strong,
     italic && styles.italic,

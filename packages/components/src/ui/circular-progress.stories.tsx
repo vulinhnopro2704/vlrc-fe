@@ -3,7 +3,7 @@ import { Flex } from '../layout';
 import { CircularProgress } from './circular-progress';
 
 const meta: Meta<typeof CircularProgress> = {
-  title: 'Components/Feedback/CircularProgress',
+  title: 'Feedback/CircularProgress',
   component: CircularProgress,
   tags: ['autodocs'],
   argTypes: {

@@ -3,7 +3,7 @@ import { BadgeOverflow } from './badge-overflow';
 import { Flex } from './flex';
 
 const meta: Meta<typeof BadgeOverflow> = {
-  title: 'UI/BadgeOverflow',
+  title: 'Data Display/BadgeOverflow',
   component: BadgeOverflow,
   tags: ['autodocs'],
   argTypes: {

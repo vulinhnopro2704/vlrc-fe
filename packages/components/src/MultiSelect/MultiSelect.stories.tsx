@@ -13,7 +13,7 @@ const frameworks: MultiSelectOption[] = [
 ];
 
 const meta = {
-  title: 'Forms/MultiSelect',
+  title: 'Data Entry/MultiSelect',
   component: MultiSelect,
   tags: ['autodocs'],
   parameters: {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Progress } from './progress';
 
 const meta = {
-  title: 'Primitives/Progress',
+  title: 'Feedback/Progress',
   component: Progress,
   tags: ['autodocs'],
   parameters: {

@@ -11,7 +11,7 @@ import { Flex } from './flex';
 import { Kbd } from './kbd';
 
 const meta: Meta<typeof InputGroup> = {
-  title: 'UI/InputGroup',
+  title: 'Data Entry/InputGroup',
   component: InputGroup,
   tags: ['autodocs'],
   argTypes: {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Textarea } from './textarea';
 
 const meta = {
-  title: 'Primitives/Textarea',
+  title: 'Data Entry/Textarea',
   component: Textarea,
   tags: ['autodocs'],
   parameters: {

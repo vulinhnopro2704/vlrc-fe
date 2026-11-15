@@ -7,7 +7,7 @@ import {
 } from './DataTableFacetedFilter';
 
 const meta: Meta<typeof DataTableFacetedFilter> = {
-  title: 'Components/DataTable/DataTableFacetedFilter',
+  title: 'Data Display/DataTable/DataTableFacetedFilter',
   component: DataTableFacetedFilter,
   tags: ['autodocs'],
 };

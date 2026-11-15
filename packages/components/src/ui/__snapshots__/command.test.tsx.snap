@@ -89,11 +89,10 @@ exports[`Command > should render command with input, groups, and items 1`] = `
             id="radix-_r_4_"
           >
             <div
-              class="Text__styles.base Text__styles.sizeMd x1evy7pa Text__styles.typeDefault weightStyles__styles.regular command__styles.groupHeading x97vtpp x1bilvtl xboafo0 xk50ysn xw3nh4a x87ps6o"
+              class="Text__styles.base Text__styles.sizeMd x1evy7pa weightStyles__styles.regular command__styles.groupHeading x97vtpp x1bilvtl xboafo0 xk50ysn xw3nh4a x87ps6o"
               data-size="md"
               data-slot="typography-text"
-              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/command.tsx:77"
-              data-type="default"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/command.tsx:77"
               data-weight="regular"
             >
               Suggestions

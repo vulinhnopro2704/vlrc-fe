@@ -5,7 +5,7 @@ import { InputGroup, InputGroupAddon } from './input-group';
 import { CopyButton } from './copy-button';
 
 const meta: Meta<typeof CopyButton> = {
-  title: 'Components/Action/CopyButton',
+  title: 'Actions/CopyButton',
   component: CopyButton,
   tags: ['autodocs'],
   argTypes: {

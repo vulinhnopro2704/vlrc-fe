@@ -6,7 +6,7 @@ import { Text } from '../Typography';
 import { Segmented, type SegmentedOption } from './segmented';
 
 const meta: Meta<typeof Segmented> = {
-  title: 'Components/Navigation/Segmented',
+  title: 'Navigation/Segmented',
   component: Segmented,
   tags: ['autodocs'],
   argTypes: {

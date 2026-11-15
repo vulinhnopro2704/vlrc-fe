@@ -112,6 +112,27 @@ describe('Typography', () => {
   });
 
   describe('Text', () => {
+    it('should naturally inherit color when type is not explicitly provided', () => {
+      render(
+        <div style={{ color: 'rgb(255, 0, 0)' }}>
+          <Text>Inherited text</Text>
+        </div>,
+      );
+      const el = screen.getByText('Inherited text');
+      expect(el).not.toHaveAttribute('data-type');
+      expect(getComputedStyle(el).color).toBe('rgb(255, 0, 0)');
+    });
+
+    it('should allow type="default" to explicitly set foreground color', () => {
+      render(
+        <div style={{ color: 'rgb(255, 0, 0)' }}>
+          <Text type="default">Foreground text</Text>
+        </div>,
+      );
+      const el = screen.getByText('Foreground text');
+      expect(el).toHaveAttribute('data-type', 'default');
+    });
+
     it('should render text with semantic type and 7-tier size', () => {
       render(
         <Text type="success" size="xs">

@@ -3,7 +3,7 @@ import { Kbd, KbdGroup } from './kbd';
 import { Flex } from './flex';
 
 const meta: Meta<typeof Kbd> = {
-  title: 'UI/Kbd',
+  title: 'Data Display/Kbd',
   component: Kbd,
   tags: ['autodocs'],
   argTypes: {

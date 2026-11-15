@@ -26,11 +26,10 @@ exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
       </span>
     </div>
     <span
-      class="Text__styles.base Text__styles.sizeXxl Text__styles.typeDefault weightStyles__styles.bold stat__styles.value xcg35fi x16n75kc x1xlr1w8 x1w69ole x84br7x"
+      class="Text__styles.base Text__styles.sizeXxl weightStyles__styles.bold stat__styles.value xcg35fi x16n75kc x1xlr1w8 x1w69ole x84br7x"
       data-size="xxl"
       data-slot="stat-value"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:23"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:23"
       data-weight="bold"
     >
       $45,231.89
@@ -106,11 +105,10 @@ exports[`Stat > UI > should match snapshot with inverted negative trend 1`] = `
       </span>
     </div>
     <span
-      class="Text__styles.base Text__styles.sizeXxl Text__styles.typeDefault weightStyles__styles.bold stat__styles.value xcg35fi x16n75kc x1xlr1w8 x1w69ole x84br7x"
+      class="Text__styles.base Text__styles.sizeXxl weightStyles__styles.bold stat__styles.value xcg35fi x16n75kc x1xlr1w8 x1w69ole x84br7x"
       data-size="xxl"
       data-slot="stat-value"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:23"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:23"
       data-weight="bold"
     >
       0.08%

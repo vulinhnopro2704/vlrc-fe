@@ -52,11 +52,11 @@ exports[`Timeline > UI > should match snapshot for dot size lg 1`] = `
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
       >
         <h5
-          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
           data-level="5"
           data-size="sm"
           data-slot="timeline-title"
-          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:72"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
           data-variant="default"
         >
           <span>
@@ -121,11 +121,11 @@ exports[`Timeline > UI > should match snapshot for dot size md 1`] = `
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
       >
         <h5
-          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
           data-level="5"
           data-size="sm"
           data-slot="timeline-title"
-          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:72"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
           data-variant="default"
         >
           <span>
@@ -190,11 +190,11 @@ exports[`Timeline > UI > should match snapshot for dot size sm 1`] = `
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
       >
         <h5
-          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
           data-level="5"
           data-size="sm"
           data-slot="timeline-title"
-          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:72"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
           data-variant="default"
         >
           <span>
@@ -271,11 +271,11 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
           data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:168"
         >
           <h5
-            class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+            class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
             data-level="5"
             data-size="sm"
             data-slot="timeline-title"
-            data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:72"
+            data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
             data-variant="default"
           >
             <span>
@@ -339,11 +339,11 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
           data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:168"
         >
           <h5
-            class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+            class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
             data-level="5"
             data-size="sm"
             data-slot="timeline-title"
-            data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:72"
+            data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
             data-variant="default"
           >
             <span>
@@ -411,11 +411,11 @@ exports[`Timeline > UI > should match snapshot in horizontal state 1`] = `
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
       >
         <h5
-          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
           data-level="5"
           data-size="sm"
           data-slot="timeline-title"
-          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:72"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
           data-variant="default"
         >
           <span>
@@ -451,11 +451,11 @@ exports[`Timeline > UI > should match snapshot in horizontal state 1`] = `
         data-style-src="@vlrc-fe/components:src/ui/timeline.tsx:156"
       >
         <h5
-          class="Title__styles.base x1ghz6dp x1xlr1w8 x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant x84br7x Title__styles.normal x1i21sxh"
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeSm xkpwil5 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
           data-level="5"
           data-size="sm"
           data-slot="timeline-title"
-          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:72"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:31; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
           data-variant="default"
         >
           <span>

@@ -22,7 +22,7 @@ interface FormValues {
 }
 
 const meta = {
-  title: 'Forms/FormControls',
+  title: 'Data Entry/Form',
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',

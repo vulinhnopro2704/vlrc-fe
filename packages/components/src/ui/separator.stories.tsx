@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Separator } from './separator';
 
 const meta = {
-  title: 'Primitives/Separator',
+  title: 'Layout/Separator',
   component: Separator,
   tags: ['autodocs'],
   parameters: {

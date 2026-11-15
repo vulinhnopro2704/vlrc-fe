@@ -4,7 +4,7 @@ import { vi } from 'date-fns/locale';
 import { Calendar } from './calendar';
 
 const meta = {
-  title: 'Primitives/Calendar',
+  title: 'Data Entry/Calendar',
   component: Calendar,
   tags: ['autodocs'],
   parameters: {

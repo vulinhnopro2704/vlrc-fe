@@ -18,7 +18,7 @@ import { Flex } from './flex';
 import { Card } from './card';
 
 const meta: Meta<typeof Stepper> = {
-  title: 'UI/Stepper',
+  title: 'Navigation/Stepper',
   component: Stepper,
   tags: ['autodocs'],
   argTypes: {

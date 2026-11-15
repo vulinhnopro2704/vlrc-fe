@@ -184,11 +184,10 @@ exports[`CircularProgress > UI > should match snapshot with showValue enabled 1`
       data-style-src="@vlrc-fe/components:src/ui/circular-progress.tsx:53"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="circular-progress-value"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         75%

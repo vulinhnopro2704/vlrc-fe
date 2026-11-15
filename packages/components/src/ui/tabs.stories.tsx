@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
 
 const meta = {
-  title: 'Primitives/Tabs',
+  title: 'Navigation/Tabs',
   component: Tabs,
   tags: ['autodocs'],
   parameters: {

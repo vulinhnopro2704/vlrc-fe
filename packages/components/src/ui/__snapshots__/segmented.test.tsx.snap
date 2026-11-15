@@ -22,11 +22,10 @@ exports[`Segmented > UI > should match snapshot in block mode 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Daily
@@ -43,11 +42,10 @@ exports[`Segmented > UI > should match snapshot in block mode 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.semibold x1s688f"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
         data-weight="semibold"
       >
         Weekly
@@ -64,11 +62,10 @@ exports[`Segmented > UI > should match snapshot in block mode 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Monthly
@@ -86,11 +83,10 @@ exports[`Segmented > UI > should match snapshot in block mode 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Yearly
@@ -123,11 +119,10 @@ exports[`Segmented > UI > should match snapshot in default state 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.semibold x1s688f"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
         data-weight="semibold"
       >
         Daily
@@ -144,11 +139,10 @@ exports[`Segmented > UI > should match snapshot in default state 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Weekly
@@ -165,11 +159,10 @@ exports[`Segmented > UI > should match snapshot in default state 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Monthly
@@ -187,11 +180,10 @@ exports[`Segmented > UI > should match snapshot in default state 1`] = `
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Yearly

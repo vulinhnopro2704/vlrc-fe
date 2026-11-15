@@ -12,7 +12,7 @@ import { Badge } from './badge';
 import { Button } from './button';
 
 const meta: Meta<typeof ActionBar> = {
-  title: 'UI/ActionBar',
+  title: 'Actions/ActionBar',
   component: ActionBar,
   tags: ['autodocs'],
   argTypes: {

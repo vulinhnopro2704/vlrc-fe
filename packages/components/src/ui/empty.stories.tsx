@@ -5,7 +5,7 @@ import { Card } from './card';
 import { Empty, EmptyImage, EmptyTitle, EmptyDescription, EmptyActions } from './empty';
 
 const meta: Meta<typeof Empty> = {
-  title: 'Components/Feedback/Empty',
+  title: 'Feedback/Empty',
   component: Empty,
   tags: ['autodocs'],
 };

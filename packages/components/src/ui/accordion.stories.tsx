@@ -4,7 +4,7 @@ import type { ComponentSize } from '../theme/types';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion';
 
 const meta = {
-  title: 'Primitives/Accordion',
+  title: 'Data Display/Accordion',
   component: Accordion,
   tags: ['autodocs'],
   parameters: {

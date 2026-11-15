@@ -93,11 +93,10 @@ exports[`CopyButton > UI > should match snapshot with showLabel enabled 1`] = `
       </svg>
     </span>
     <span
-      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm copy-button__styles.label x13zjp5t"
+      class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm copy-button__styles.label x13zjp5t"
       data-size="sm"
       data-slot="typography-text"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/copy-button.tsx:32"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/copy-button.tsx:32"
       data-weight="regular"
     >
       Sao chép

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import Typography, { Blockquote, Code, Link, Paragraph, Text, Title } from './index';
 
 const meta = {
-  title: 'Primitives/Typography',
+  title: 'Foundations/Typography',
   parameters: {
     layout: 'padded',
     docs: {
@@ -170,7 +170,7 @@ export const TextPlayground: StoryObj<typeof Text> = {
   render: (args) => <Text {...args} />,
   args: {
     children: 'Interactive Typography Text Primitive with Full Customization',
-    type: 'default',
+    type: undefined,
     size: 'md',
     weight: 'regular',
     strong: false,
@@ -186,8 +186,8 @@ export const TextPlayground: StoryObj<typeof Text> = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['default', 'secondary', 'muted', 'success', 'warning', 'danger', 'info'],
-      description: 'Semantic text color',
+      options: ['inherit', 'default', 'secondary', 'muted', 'success', 'warning', 'danger', 'info'],
+      description: 'Semantic text color (defaults to inherit parent color)',
     },
     size: {
       control: 'select',

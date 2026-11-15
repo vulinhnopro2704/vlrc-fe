@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Enterprise UI component library built on Meta's Astryx Design System, Meta StyleX, and Radix UI.",
   "keywords": [
     "accessible",

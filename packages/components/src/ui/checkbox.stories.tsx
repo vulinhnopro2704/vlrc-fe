@@ -5,7 +5,7 @@ import { Checkbox } from './checkbox';
 import { Label } from './label';
 
 const meta = {
-  title: 'Primitives/Checkbox',
+  title: 'Data Entry/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
   parameters: {

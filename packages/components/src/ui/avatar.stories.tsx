@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage, AvatarGroup } from './avatar';
 import { Flex } from './flex';
 
 const meta = {
-  title: 'Primitives/Avatar',
+  title: 'Data Display/Avatar',
   component: Avatar,
   tags: ['autodocs'],
   parameters: {

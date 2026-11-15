@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.0.2
+
+### Patch Changes
+
+- **Typography Color Inheritance**:
+  - `Text`, `Paragraph`, and `Title` now default to `color: inherit` instead of forcing `color: colors.foreground`.
+  - Semantic `type` prop on `Text` now applies explicit semantic color only when specified, allowing Typography primitives to naturally inherit colors inside colored containers, buttons, and badges.
+- **Storybook Reorganization**:
+  - Reorganized all component stories into cohesive hierarchies (`Foundations/`, `Actions/`, `Feedback/`, `Forms/`, `Layout/`, `Navigation/`).
+  - Added theme switching support in Storybook preview.
+
 ## [2.8.0] - 2026-11-10
 
 ### Minor Changes

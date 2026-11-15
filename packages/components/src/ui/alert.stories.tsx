@@ -3,7 +3,7 @@ import Icons from '../Icons';
 import { Alert, AlertDescription, AlertTitle } from './alert';
 
 const meta = {
-  title: 'Primitives/Alert',
+  title: 'Feedback/Alert',
   component: Alert,
   tags: ['autodocs'],
   parameters: {

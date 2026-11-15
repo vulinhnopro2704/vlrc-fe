@@ -3,7 +3,7 @@ import Icons from '../Icons';
 import { Button } from './button';
 
 const meta = {
-  title: 'Primitives/Button',
+  title: 'Actions/Button',
   component: Button,
   tags: ['autodocs'],
   parameters: {

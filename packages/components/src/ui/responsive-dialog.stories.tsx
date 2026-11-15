@@ -15,7 +15,7 @@ import {
 } from './responsive-dialog';
 
 const meta: Meta<typeof ResponsiveDialog> = {
-  title: 'Components/Feedback/ResponsiveDialog',
+  title: 'Feedback/ResponsiveDialog',
   component: ResponsiveDialog,
   tags: ['autodocs'],
 };

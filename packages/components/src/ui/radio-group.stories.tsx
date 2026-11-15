@@ -5,7 +5,7 @@ import { Label } from './label';
 import { RadioGroup, RadioGroupItem } from './radio-group';
 
 const meta = {
-  title: 'Primitives/RadioGroup',
+  title: 'Data Entry/RadioGroup',
   component: RadioGroup,
   tags: ['autodocs'],
   parameters: {

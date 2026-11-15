@@ -11,7 +11,7 @@ import {
 import { Flex } from './flex';
 
 const meta: Meta<typeof TagsInput> = {
-  title: 'UI/TagsInput',
+  title: 'Data Entry/TagsInput',
   component: TagsInput,
   tags: ['autodocs'],
   argTypes: {

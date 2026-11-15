@@ -12,7 +12,7 @@ import {
 } from './stat';
 
 const meta: Meta<typeof Stat> = {
-  title: 'Components/DataDisplay/Stat',
+  title: 'Data Display/Stat',
   component: Stat,
   tags: ['autodocs'],
 };

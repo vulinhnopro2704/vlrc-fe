@@ -20,11 +20,10 @@ exports[`Empty > UI > should match snapshot with compound subcomponents 1`] = `
       </span>
     </div>
     <h4
-      class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+      class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.semibold x1s688f"
       data-size="md"
       data-slot="empty-title"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
       data-weight="semibold"
     >
       No data available
@@ -96,11 +95,10 @@ exports[`Empty > UI > should match snapshot with default shorthand props 1`] = `
       </svg>
     </div>
     <h4
-      class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.semibold x1s688f"
+      class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.semibold x1s688f"
       data-size="md"
       data-slot="empty-title"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
       data-weight="semibold"
     >
       No data available

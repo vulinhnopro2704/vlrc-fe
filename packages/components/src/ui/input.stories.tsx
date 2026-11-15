@@ -4,7 +4,7 @@ import { Button } from './button';
 import { Input } from './input';
 
 const meta = {
-  title: 'Primitives/Input',
+  title: 'Data Entry/Input',
   component: Input,
   tags: ['autodocs'],
   parameters: {

@@ -14,7 +14,7 @@ import {
 import { Flex } from './flex';
 
 const meta: Meta<typeof Timeline> = {
-  title: 'UI/Timeline',
+  title: 'Data Display/Timeline',
   component: Timeline,
   tags: ['autodocs'],
   argTypes: {

@@ -6,7 +6,7 @@ import { Toggle } from './toggle';
 import { ToggleGroup, ToggleGroupItem } from './toggle-group';
 
 const meta = {
-  title: 'Primitives/Toggle',
+  title: 'Actions/Toggle',
   component: Toggle,
   tags: ['autodocs'],
   parameters: {

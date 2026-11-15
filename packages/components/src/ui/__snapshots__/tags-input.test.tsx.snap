@@ -16,11 +16,10 @@ exports[`TagsInput > UI > should match snapshot for size lg 1`] = `
       data-value="React"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
         data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
-        data-type="default"
         data-weight="regular"
       >
         React
@@ -53,11 +52,10 @@ exports[`TagsInput > UI > should match snapshot for size md 1`] = `
       data-value="React"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
         data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
-        data-type="default"
         data-weight="regular"
       >
         React
@@ -90,11 +88,10 @@ exports[`TagsInput > UI > should match snapshot for size sm 1`] = `
       data-value="React"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
         data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
-        data-type="default"
         data-weight="regular"
       >
         React
@@ -127,11 +124,10 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
       data-value="React"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
         data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
-        data-type="default"
         data-weight="regular"
       >
         React
@@ -176,11 +172,10 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
       data-value="Vite"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
         data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
-        data-type="default"
         data-weight="regular"
       >
         Vite
@@ -280,11 +275,10 @@ exports[`TagsInput > UI > should match snapshot when disabled or invalid 1`] = `
       data-value="React"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
         data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
-        data-type="default"
         data-weight="regular"
       >
         React
@@ -319,11 +313,10 @@ exports[`TagsInput > UI > should match snapshot when disabled or invalid 2`] = `
       data-value="React"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
         data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
-        data-type="default"
         data-weight="regular"
       >
         React

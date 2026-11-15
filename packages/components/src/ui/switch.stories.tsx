@@ -4,7 +4,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { Switch } from './switch';
 
 const meta = {
-  title: 'Primitives/Switch',
+  title: 'Data Entry/Switch',
   component: Switch,
   tags: ['autodocs'],
   parameters: {

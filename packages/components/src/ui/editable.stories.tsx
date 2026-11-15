@@ -13,7 +13,7 @@ import {
 import { Flex } from './flex';
 
 const meta: Meta<typeof Editable> = {
-  title: 'UI/Editable',
+  title: 'Data Entry/Editable',
   component: Editable,
   tags: ['autodocs'],
   argTypes: {

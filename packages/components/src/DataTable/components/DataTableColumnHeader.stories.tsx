@@ -4,7 +4,7 @@ import { Flex } from '../../layout';
 import { DataTableColumnHeader } from './DataTableColumnHeader';
 
 const meta: Meta<typeof DataTableColumnHeader> = {
-  title: 'Components/DataTable/DataTableColumnHeader',
+  title: 'Data Display/DataTable/DataTableColumnHeader',
   component: DataTableColumnHeader,
   tags: ['autodocs'],
 };

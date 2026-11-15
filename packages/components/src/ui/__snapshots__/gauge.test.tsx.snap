@@ -43,11 +43,10 @@ exports[`Gauge > UI > should match snapshot in default state 1`] = `
       data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:46"
     >
       <span
-        class="Text__styles.base Text__styles.sizeXl x1603h9y xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.bold x1xlr1w8"
+        class="Text__styles.base x1heor9g Text__styles.sizeXl x1603h9y xfrs9s4 weightStyles__styles.bold x1xlr1w8"
         data-size="xl"
         data-slot="gauge-value"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:38; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:23"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:38; @vlrc-fe/components:src/Typography/weightStyles.ts:23"
         data-weight="bold"
       >
         72%
@@ -152,11 +151,10 @@ exports[`Gauge > UI > should match snapshot with label and min/max row 1`] = `
       data-style-src="@vlrc-fe/components:src/ui/gauge.tsx:46"
     >
       <span
-        class="Text__styles.base Text__styles.sizeXl x1603h9y xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.bold x1xlr1w8"
+        class="Text__styles.base x1heor9g Text__styles.sizeXl x1603h9y xfrs9s4 weightStyles__styles.bold x1xlr1w8"
         data-size="xl"
         data-slot="gauge-value"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:38; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:23"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:38; @vlrc-fe/components:src/Typography/weightStyles.ts:23"
         data-weight="bold"
       >
         72%

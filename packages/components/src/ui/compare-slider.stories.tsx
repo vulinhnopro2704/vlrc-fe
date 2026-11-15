@@ -4,7 +4,7 @@ import { Text } from '../Typography';
 import { CompareSlider } from './compare-slider';
 
 const meta: Meta<typeof CompareSlider> = {
-  title: 'Components/DataDisplay/CompareSlider',
+  title: 'Data Display/CompareSlider',
   component: CompareSlider,
   tags: ['autodocs'],
   argTypes: {

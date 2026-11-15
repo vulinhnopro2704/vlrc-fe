@@ -14,7 +14,7 @@ const sampleOptions: BaseSelectOption<string>[] = [
 ];
 
 const meta = {
-  title: 'Forms/BaseSelect',
+  title: 'Data Entry/BaseSelect',
   component: BaseSelect,
   tags: ['autodocs'],
   parameters: {

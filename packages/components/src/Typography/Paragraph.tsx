@@ -16,7 +16,7 @@ import { typographyWeightStyles } from './weightStyles';
 const styles = stylex.create({
   base: {
     margin: 0,
-    color: colors.foreground,
+    color: 'inherit',
     lineHeight: 1.625,
   },
 

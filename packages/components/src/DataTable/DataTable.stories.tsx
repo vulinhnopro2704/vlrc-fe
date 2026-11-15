@@ -87,7 +87,7 @@ const columns: ColumnDef<User, unknown>[] = [
 ];
 
 const meta = {
-  title: 'Data/DataTable',
+  title: 'Data Display/DataTable',
   component: DataTable,
   tags: ['autodocs'],
   parameters: {

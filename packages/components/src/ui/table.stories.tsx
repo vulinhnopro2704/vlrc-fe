@@ -11,7 +11,7 @@ import {
 } from './table';
 
 const meta = {
-  title: 'Primitives/Table',
+  title: 'Data Display/Table',
   component: Table,
   tags: ['autodocs'],
   parameters: {

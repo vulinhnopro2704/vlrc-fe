@@ -21,11 +21,10 @@ exports[`DataTableColumnHeader > UI > should match snapshot when column is sorte
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Email Address
@@ -66,11 +65,10 @@ exports[`DataTableColumnHeader > UI > should match snapshot when sorting is disa
     data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139"
   >
     <span
-      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+      class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
       data-size="sm"
       data-slot="typography-text"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-      data-type="default"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
       data-weight="medium"
     >
       Email Address
@@ -100,11 +98,10 @@ exports[`DataTableColumnHeader > UI > should match snapshot with sortable column
       type="button"
     >
       <span
-        class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeDefault x84br7x weightStyles__styles.medium xk50ysn"
+        class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
         data-size="sm"
         data-slot="typography-text"
-        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:48; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
-        data-type="default"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
         data-weight="medium"
       >
         Email Address

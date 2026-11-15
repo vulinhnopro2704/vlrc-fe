@@ -12,7 +12,7 @@ const styles = stylex.create({
   base: {
     margin: 0,
     fontWeight: 700,
-    color: colors.foreground,
+    color: 'inherit',
     lineHeight: 1.25,
     display: 'flex',
     alignItems: 'center',
@@ -51,9 +51,7 @@ const styles = stylex.create({
   },
 
   // Variants
-  defaultVariant: {
-    color: colors.foreground,
-  },
+  defaultVariant: {},
   gradientVariant: {
     backgroundImage:
       'linear-gradient(135deg, var(--primary) 0%, var(--chart-4) 50%, var(--chart-5) 100%)',

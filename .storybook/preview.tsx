@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import type { Preview, Decorator } from '@storybook/react';
+import 'virtual:stylex:runtime';
 import './preview.css';
 
 function ThemeWrapper({ theme, children }: { theme: string; children: React.ReactNode }) {
@@ -39,6 +40,20 @@ const withTheme: Decorator = (Story, context) => {
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Foundations',
+          'Layout',
+          'Actions',
+          'Data Entry',
+          'Data Display',
+          'Navigation',
+          'Feedback',
+          '*',
+        ],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

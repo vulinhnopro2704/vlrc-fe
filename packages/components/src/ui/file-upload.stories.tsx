@@ -20,7 +20,7 @@ import { Icons } from '../Icons';
 import { Text, Title } from '../Typography';
 
 const meta = {
-  title: 'UI/FileUpload',
+  title: 'Data Entry/FileUpload',
   component: FileUploader,
   tags: ['autodocs'],
   parameters: {

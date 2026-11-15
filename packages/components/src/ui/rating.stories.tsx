@@ -5,7 +5,7 @@ import { Text } from '../Typography';
 import { Rating } from './rating';
 
 const meta: Meta<typeof Rating> = {
-  title: 'Components/Feedback/Rating',
+  title: 'Feedback/Rating',
   component: Rating,
   tags: ['autodocs'],
   argTypes: {

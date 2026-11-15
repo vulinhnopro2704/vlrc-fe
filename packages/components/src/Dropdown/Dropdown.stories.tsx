@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Dropdown> = {
-  title: 'Components/Navigation/Dropdown',
+  title: 'Navigation/Dropdown',
   component: Dropdown,
   tags: ['autodocs'],
   parameters: {

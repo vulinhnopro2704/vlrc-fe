@@ -63,7 +63,7 @@ import {
 } from '../Form';
 
 const meta: Meta<typeof Dialog> = {
-  title: 'Components/Feedback/Dialog',
+  title: 'Feedback/Dialog',
   component: Dialog,
   tags: ['autodocs'],
 };
