@@ -9,7 +9,7 @@ exports[`Toggle > UI > should match snapshot in default state 1`] = `
     data-size="md"
     data-slot="toggle"
     data-state="off"
-    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:45; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:12; @vlrc-fe/components:src/ui/toggle.tsx:47; @vlrc-fe/components:src/ui/toggle.tsx:88"
     data-variant="default"
     type="button"
   >
@@ -27,7 +27,7 @@ exports[`Toggle > UI > should match snapshot in outline variant 1`] = `
     data-size="md"
     data-slot="toggle"
     data-state="off"
-    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:49; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:12; @vlrc-fe/components:src/ui/toggle.tsx:51; @vlrc-fe/components:src/ui/toggle.tsx:88"
     data-variant="outline"
     type="button"
   >
@@ -46,7 +46,7 @@ exports[`Toggle > UI > should match snapshot when disabled 1`] = `
     data-size="md"
     data-slot="toggle"
     data-state="off"
-    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:45; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:12; @vlrc-fe/components:src/ui/toggle.tsx:47; @vlrc-fe/components:src/ui/toggle.tsx:88"
     data-variant="default"
     disabled=""
     type="button"
@@ -65,7 +65,7 @@ exports[`Toggle > UI > should match snapshot when pressed 1`] = `
     data-size="md"
     data-slot="toggle"
     data-state="on"
-    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:10; @vlrc-fe/components:src/ui/toggle.tsx:45; @vlrc-fe/components:src/ui/toggle.tsx:86"
+    data-style-src="@vlrc-fe/components:src/ui/toggle.tsx:12; @vlrc-fe/components:src/ui/toggle.tsx:47; @vlrc-fe/components:src/ui/toggle.tsx:88"
     data-variant="default"
     type="button"
   >

@@ -1,4 +1,11 @@
-import * as React from 'react';
+import {
+  forwardRef,
+  useMemo,
+  useState,
+  type HTMLAttributes,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type ReactNode,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Flex } from './flex';
@@ -93,15 +100,15 @@ const styles = stylex.create({
 export type SegmentedSize = 'sm' | 'md' | 'lg';
 
 export interface SegmentedOptionObject {
-  label: React.ReactNode;
+  label: ReactNode;
   value: string | number;
   disabled?: boolean;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
 export type SegmentedOption = string | number | SegmentedOptionObject;
 
-export interface SegmentedProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface SegmentedProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   options: SegmentedOption[];
   value?: string | number;
   defaultValue?: string | number;
@@ -119,7 +126,7 @@ function normalizeOption(option: SegmentedOption): SegmentedOptionObject {
   return option;
 }
 
-export const Segmented = React.forwardRef<HTMLDivElement, SegmentedProps>(
+export const Segmented = forwardRef<HTMLDivElement, SegmentedProps>(
   (
     {
       options,
@@ -136,10 +143,10 @@ export const Segmented = React.forwardRef<HTMLDivElement, SegmentedProps>(
     },
     ref,
   ) => {
-    const normalizedOptions = React.useMemo(() => options.map(normalizeOption), [options]);
+    const normalizedOptions = useMemo(() => options.map(normalizeOption), [options]);
 
     const initialValue = defaultValue ?? normalizedOptions[0]?.value ?? '';
-    const [internalValue, setInternalValue] = React.useState<string | number>(initialValue);
+    const [internalValue, setInternalValue] = useState<string | number>(initialValue);
 
     const isControlled = controlledValue !== undefined;
     const activeValue = isControlled ? controlledValue : internalValue;
@@ -152,7 +159,7 @@ export const Segmented = React.forwardRef<HTMLDivElement, SegmentedProps>(
       onValueChange?.(val);
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
       if (disabled) return;
       const enabledOptions = normalizedOptions.filter((opt) => !opt.disabled);
       const currentIndex = enabledOptions.findIndex((opt) => opt.value === activeValue);

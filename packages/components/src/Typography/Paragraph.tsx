@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -171,7 +171,7 @@ const paragraphTypeStyles: Record<TextType, stylex.StyleXStyles> = {
   inherit: styles.typeInherit,
 };
 
-export const Paragraph = React.forwardRef<HTMLElement, ParagraphProps>(function Paragraph(
+export const Paragraph = forwardRef<HTMLElement, ParagraphProps>(function Paragraph(
   {
     size = 'md',
     variant = 'default',

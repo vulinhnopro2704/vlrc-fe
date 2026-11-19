@@ -1,6 +1,23 @@
 'use client';
 
-import * as React from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ButtonHTMLAttributes,
+  type ChangeEvent as ReactChangeEvent,
+  type DragEvent as ReactDragEvent,
+  type HTMLAttributes,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type RefObject,
+} from 'react';
 import type { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
@@ -478,18 +495,18 @@ function createStore(
   };
 }
 
-const StoreContext = React.createContext<FileUploadStore | null>(null);
+const StoreContext = createContext<FileUploadStore | null>(null);
 
 function useStore<T>(selector: (state: StoreState) => T): T {
-  const store = React.useContext(StoreContext);
+  const store = useContext(StoreContext);
   if (!store) {
     throw new Error('useStore must be used within FileUploadRoot');
   }
 
-  const lastStateRef = React.useRef<StoreState | null>(null);
-  const lastSelectedRef = React.useRef<T | undefined>(undefined);
+  const lastStateRef = useRef<StoreState | null>(null);
+  const lastSelectedRef = useRef<T | undefined>(undefined);
 
-  const getSnapshot = React.useCallback(() => {
+  const getSnapshot = useCallback(() => {
     const currentState = store.getState();
     if (currentState === lastStateRef.current && lastSelectedRef.current !== undefined) {
       return lastSelectedRef.current;
@@ -500,7 +517,7 @@ function useStore<T>(selector: (state: StoreState) => T): T {
     return nextSelected;
   }, [store, selector]);
 
-  return React.useSyncExternalStore(store.subscribe, getSnapshot, getSnapshot);
+  return useSyncExternalStore(store.subscribe, getSnapshot, getSnapshot);
 }
 
 export function useFileUpload<T>(selector: (state: StoreState) => T): T {
@@ -514,25 +531,22 @@ interface FileUploadContextValue {
   labelId: string;
   dir?: 'ltr' | 'rtl';
   disabled?: boolean;
-  inputRef: React.RefObject<HTMLInputElement | null>;
+  inputRef: RefObject<HTMLInputElement | null>;
   urlCache: WeakMap<File, string>;
   processFiles: (files: File[]) => Promise<void>;
 }
 
-const FileUploadContext = React.createContext<FileUploadContextValue | null>(null);
+const FileUploadContext = createContext<FileUploadContextValue | null>(null);
 
 function useFileUploadContext(name: string) {
-  const context = React.useContext(FileUploadContext);
+  const context = useContext(FileUploadContext);
   if (!context) {
     throw new Error(`${name} must be within ${ROOT_NAME}`);
   }
   return context;
 }
 
-export interface FileUploadRootProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  'defaultValue'
-> {
+export interface FileUploadRootProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   asChild?: boolean;
   value?: File[];
   defaultValue?: File[];
@@ -587,16 +601,16 @@ function FileUploadRoot(props: FileUploadRootProps) {
     ...rootProps
   } = props;
 
-  const dropzoneId = React.useId();
-  const inputId = React.useId();
-  const listId = React.useId();
-  const labelId = React.useId();
+  const dropzoneId = useId();
+  const inputId = useId();
+  const listId = useId();
+  const labelId = useId();
 
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
-  const listeners = React.useRef(new Set<() => void>()).current;
-  const urlCache = React.useRef(new WeakMap<File, string>()).current;
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const listeners = useRef(new Set<() => void>()).current;
+  const urlCache = useRef(new WeakMap<File, string>()).current;
 
-  const initialFilesMap = React.useMemo(() => {
+  const initialFilesMap = useMemo(() => {
     const map = new Map<File, FileState>();
     const initialFiles = value ?? defaultValue ?? [];
     for (const file of initialFiles) {
@@ -609,22 +623,22 @@ function FileUploadRoot(props: FileUploadRootProps) {
     return map;
   }, []);
 
-  const store = React.useMemo(
+  const store = useMemo(
     () => createStore(listeners, initialFilesMap, urlCache, invalid, onValueChange),
     [],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (value !== undefined) {
       store.dispatch({ type: 'SET_FILES', files: value });
     }
   }, [value, store]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     store.dispatch({ type: 'SET_INVALID', invalid });
   }, [invalid, store]);
 
-  const validateFile = React.useCallback(
+  const validateFile = useCallback(
     (file: File): string | null => {
       if (accept) {
         const acceptedTypes = accept.split(',').map((t) => t.trim().toLowerCase());
@@ -660,7 +674,7 @@ function FileUploadRoot(props: FileUploadRootProps) {
     [accept, maxSize, minSize],
   );
 
-  const processFiles = React.useCallback(
+  const processFiles = useCallback(
     async (rawFiles: File[]) => {
       if (disabled) return;
 
@@ -720,8 +734,8 @@ function FileUploadRoot(props: FileUploadRootProps) {
     [disabled, maxFiles, multiple, onAccept, onFileReject, onUpload, store, validateFile],
   );
 
-  const onInputChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = useCallback(
+    (event: ReactChangeEvent<HTMLInputElement>) => {
       const files = event.target.files ? Array.from(event.target.files) : [];
       if (files.length > 0) {
         processFiles(files);
@@ -731,7 +745,7 @@ function FileUploadRoot(props: FileUploadRootProps) {
     [processFiles],
   );
 
-  const contextValue = React.useMemo(
+  const contextValue = useMemo(
     () => ({
       dropzoneId,
       inputId,
@@ -787,7 +801,7 @@ function FileUploadRoot(props: FileUploadRootProps) {
   );
 }
 
-export interface FileUploadDropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FileUploadDropzoneProps extends HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -808,12 +822,12 @@ function FileUploadDropzone(props: FileUploadDropzoneProps) {
   } = props;
 
   const context = useFileUploadContext(DROPZONE_NAME);
-  const store = React.useContext(StoreContext);
+  const store = useContext(StoreContext);
   const dragOver = useStore((state) => state.dragOver);
   const invalid = useStore((state) => state.invalid);
 
-  const onClick = React.useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
+  const onClick = useCallback(
+    (event: ReactMouseEvent<HTMLDivElement>) => {
       onClickProp?.(event);
       if (event.defaultPrevented) return;
 
@@ -828,8 +842,8 @@ function FileUploadDropzone(props: FileUploadDropzoneProps) {
     [context.inputRef, onClickProp],
   );
 
-  const onDragOver = React.useCallback(
-    (event: React.DragEvent<HTMLDivElement>) => {
+  const onDragOver = useCallback(
+    (event: ReactDragEvent<HTMLDivElement>) => {
       onDragOverProp?.(event);
       if (event.defaultPrevented) return;
       event.preventDefault();
@@ -838,8 +852,8 @@ function FileUploadDropzone(props: FileUploadDropzoneProps) {
     [store, onDragOverProp],
   );
 
-  const onDragEnter = React.useCallback(
-    (event: React.DragEvent<HTMLDivElement>) => {
+  const onDragEnter = useCallback(
+    (event: ReactDragEvent<HTMLDivElement>) => {
       onDragEnterProp?.(event);
       if (event.defaultPrevented) return;
       event.preventDefault();
@@ -848,8 +862,8 @@ function FileUploadDropzone(props: FileUploadDropzoneProps) {
     [store, onDragEnterProp],
   );
 
-  const onDragLeave = React.useCallback(
-    (event: React.DragEvent<HTMLDivElement>) => {
+  const onDragLeave = useCallback(
+    (event: ReactDragEvent<HTMLDivElement>) => {
       onDragLeaveProp?.(event);
       if (event.defaultPrevented) return;
 
@@ -868,8 +882,8 @@ function FileUploadDropzone(props: FileUploadDropzoneProps) {
     [store, onDragLeaveProp],
   );
 
-  const onDrop = React.useCallback(
-    (event: React.DragEvent<HTMLDivElement>) => {
+  const onDrop = useCallback(
+    (event: ReactDragEvent<HTMLDivElement>) => {
       onDropProp?.(event);
       if (event.defaultPrevented) return;
 
@@ -884,8 +898,8 @@ function FileUploadDropzone(props: FileUploadDropzoneProps) {
     [store, context.processFiles, onDropProp],
   );
 
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const onKeyDown = useCallback(
+    (event: ReactKeyboardEvent<HTMLDivElement>) => {
       onKeyDownProp?.(event);
       if (!event.defaultPrevented && (event.key === 'Enter' || event.key === ' ')) {
         event.preventDefault();
@@ -931,7 +945,7 @@ function FileUploadDropzone(props: FileUploadDropzoneProps) {
   );
 }
 
-export interface FileUploadTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface FileUploadTriggerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -940,8 +954,8 @@ function FileUploadTrigger(props: FileUploadTriggerProps) {
   const { asChild, onClick: onClickProp, className, sx, ...triggerProps } = props;
   const context = useFileUploadContext(TRIGGER_NAME);
 
-  const onClick = React.useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onClick = useCallback(
+    (event: ReactMouseEvent<HTMLButtonElement>) => {
       onClickProp?.(event);
       if (event.defaultPrevented) return;
       context.inputRef.current?.click();
@@ -967,7 +981,7 @@ function FileUploadTrigger(props: FileUploadTriggerProps) {
   );
 }
 
-export interface FileUploadListProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FileUploadListProps extends HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   orientation?: 'vertical' | 'horizontal';
   sx?: stylex.StyleXStyles;
@@ -1006,17 +1020,17 @@ interface FileUploadItemContextValue {
   sizeId: string;
 }
 
-const FileUploadItemContext = React.createContext<FileUploadItemContextValue | null>(null);
+const FileUploadItemContext = createContext<FileUploadItemContextValue | null>(null);
 
 function useFileUploadItemContext(name: string) {
-  const context = React.useContext(FileUploadItemContext);
+  const context = useContext(FileUploadItemContext);
   if (!context) {
     throw new Error(`${name} must be within ${ITEM_NAME}`);
   }
   return context;
 }
 
-export interface FileUploadItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FileUploadItemProps extends HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   value: File;
   sx?: stylex.StyleXStyles;
@@ -1029,11 +1043,11 @@ function FileUploadItem(props: FileUploadItemProps) {
   const files = useStore((state) => state.files);
   const fileState = files.get(value);
 
-  const statusId = React.useId();
-  const nameId = React.useId();
-  const sizeId = React.useId();
+  const statusId = useId();
+  const nameId = useId();
+  const sizeId = useId();
 
-  const contextValue = React.useMemo(
+  const contextValue = useMemo(
     () => ({
       file: value,
       fileState,
@@ -1063,7 +1077,7 @@ function FileUploadItem(props: FileUploadItemProps) {
   );
 }
 
-export interface FileUploadItemPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FileUploadItemPreviewProps extends HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   render?: (file: File, fallback: () => ReactNode) => ReactNode;
   sx?: stylex.StyleXStyles;
@@ -1075,9 +1089,9 @@ function FileUploadItemPreview(props: FileUploadItemPreviewProps) {
   const itemContext = useFileUploadItemContext(ITEM_PREVIEW_NAME);
 
   const file = itemContext.file;
-  const [objectUrl, setObjectUrl] = React.useState<string | null>(null);
+  const [objectUrl, setObjectUrl] = useState<string | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const extended = file as File & { uploadedUrl?: string };
     if (extended.uploadedUrl && file.type.startsWith('image/')) {
       setObjectUrl(extended.uploadedUrl);
@@ -1155,7 +1169,7 @@ function FileUploadItemPreview(props: FileUploadItemPreviewProps) {
   );
 }
 
-export interface FileUploadItemMetadataProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FileUploadItemMetadataProps extends HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -1205,7 +1219,7 @@ function FileUploadItemMetadata(props: FileUploadItemMetadataProps) {
   );
 }
 
-export interface FileUploadItemProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FileUploadItemProgressProps extends HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   variant?: 'linear' | 'bottom' | 'fill';
   sx?: stylex.StyleXStyles;
@@ -1252,18 +1266,18 @@ function FileUploadItemProgress(props: FileUploadItemProgressProps) {
   );
 }
 
-export interface FileUploadItemDeleteProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface FileUploadItemDeleteProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }
 
 function FileUploadItemDelete(props: FileUploadItemDeleteProps) {
   const { asChild, onClick: onClickProp, className, sx, children, ...deleteProps } = props;
-  const store = React.useContext(StoreContext);
+  const store = useContext(StoreContext);
   const itemContext = useFileUploadItemContext(ITEM_DELETE_NAME);
 
-  const onClick = React.useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onClick = useCallback(
+    (event: ReactMouseEvent<HTMLButtonElement>) => {
       onClickProp?.(event);
       if (event.defaultPrevented) return;
       store?.dispatch({ type: 'REMOVE_FILE', file: itemContext.file });
@@ -1289,17 +1303,17 @@ function FileUploadItemDelete(props: FileUploadItemDeleteProps) {
   );
 }
 
-export interface FileUploadClearProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface FileUploadClearProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }
 
 function FileUploadClear(props: FileUploadClearProps) {
   const { asChild, onClick: onClickProp, className, sx, ...clearProps } = props;
-  const store = React.useContext(StoreContext);
+  const store = useContext(StoreContext);
 
-  const onClick = React.useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onClick = useCallback(
+    (event: ReactMouseEvent<HTMLButtonElement>) => {
       onClickProp?.(event);
       if (event.defaultPrevented) return;
       store?.dispatch({ type: 'CLEAR' });
@@ -1367,7 +1381,7 @@ function FileUploader({
   className,
   ...props
 }: FileUploaderProps) {
-  const [internalFiles, setInternalFiles] = React.useState<File[]>(value || []);
+  const [internalFiles, setInternalFiles] = useState<File[]>(value || []);
   const activeFiles = value !== undefined ? value : internalFiles;
 
   const handleValueChange = (newFiles: File[]) => {
@@ -1375,7 +1389,7 @@ function FileUploader({
     onValueChange?.(newFiles);
   };
 
-  const handleUpload = React.useCallback<NonNullable<FileUploadRootProps['onUpload']>>(
+  const handleUpload = useCallback<NonNullable<FileUploadRootProps['onUpload']>>(
     async (files, options) => {
       if (onUploadProp) {
         return onUploadProp(files, options);

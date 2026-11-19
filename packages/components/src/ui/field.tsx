@@ -1,5 +1,5 @@
 import { useMemo, type ReactNode } from 'react';
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import { Label } from './label';
@@ -118,7 +118,7 @@ function FieldSet({
   className,
   sx,
   ...props
-}: React.ComponentProps<'fieldset'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'fieldset'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.set, sx);
   return (
     <fieldset
@@ -135,7 +135,7 @@ function FieldLegend({
   variant = 'legend',
   sx,
   ...props
-}: React.ComponentProps<'legend'> & { variant?: 'legend' | 'label'; sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'legend'> & { variant?: 'legend' | 'label'; sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.legend, variant === 'label' && styles.legendLabel, sx);
   return (
     <legend
@@ -152,7 +152,7 @@ function FieldGroup({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.group, sx);
   return (
     <div
@@ -170,7 +170,7 @@ const orientationStyles: Record<FieldOrientation, stylex.StyleXStyles> = {
   responsive: styles.responsive,
 };
 
-export interface FieldProps extends React.ComponentProps<'div'> {
+export interface FieldProps extends ComponentProps<'div'> {
   orientation?: FieldOrientation;
   sx?: stylex.StyleXStyles;
   /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
@@ -198,7 +198,7 @@ function FieldContent({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.content, sx);
   return (
     <div
@@ -214,7 +214,7 @@ function FieldLabel({
   className,
   sx,
   ...props
-}: React.ComponentProps<typeof Label> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<typeof Label> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.label, sx);
   return (
     <Label
@@ -230,7 +230,7 @@ function FieldTitle({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <div
@@ -246,7 +246,7 @@ function FieldDescription({
   className,
   sx,
   ...props
-}: React.ComponentProps<'p'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'p'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.description, sx);
   return (
     <Paragraph
@@ -266,7 +266,7 @@ function FieldSeparator({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & {
+}: ComponentProps<'div'> & {
   children?: ReactNode;
   sx?: stylex.StyleXStyles;
 }) {
@@ -301,7 +301,7 @@ function FieldError({
   errors,
   sx,
   ...props
-}: React.ComponentProps<'div'> & {
+}: ComponentProps<'div'> & {
   errors?: Array<{ message?: string } | undefined>;
   sx?: stylex.StyleXStyles;
 }) {

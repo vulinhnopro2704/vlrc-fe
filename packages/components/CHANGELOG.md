@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.0.4] - 2026-11-19
+
+### Patch Changes
+
+- **StyleX Shadowing & Unminified Dist**:
+  - Dist is now built with `build.minify: false` so identifiers keep their source-level names and the StyleX import binding cannot be shadowed by minifier variable reuse.
+  - Added post-build AST validation (`scripts/check-stylex-shadowing.mjs`) ensuring zero shadowing across all ESM and CJS dist bundles.
+  - Documented consumer contract: package dist is pre-compiled and must not be re-transpiled through `@stylexjs/babel-plugin`.
+- **New Enterprise Components & Primitives**:
+  - Added `SignaturePad` digital signature canvas with pressure smoothing, color picker, clear, undo, and PNG export.
+  - Added `Questionnaire` multi-step interactive survey and assessment engine with progress tracking.
+  - Added `Marker` text highlight primitive supporting fluorescent, pen, and underline effects.
+  - Added `CodeBlock` syntax-highlighted code container with line numbers and copy button.
+- **Astryx CLI & VLRC CLI Bridge**:
+  - Added first-class CLI schema, docs, props, and search support for all components and richtext via `npx vlrc component <Name> [--json] [--props]` and `npx vlrc search <query>`.
+  - Registered Astryx and VLRC binary bridges (`bin/vlrc.mjs`, `bin/registry.mjs`).
+
 ## [3.0.3] - 2026-11-15
 
 ### Patch Changes

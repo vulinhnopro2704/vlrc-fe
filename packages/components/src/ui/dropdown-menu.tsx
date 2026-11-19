@@ -1,5 +1,21 @@
-import * as React from 'react';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import { type ComponentProps } from 'react';
+import {
+  CheckboxItem as DropdownMenuPrimitiveCheckboxItem,
+  Content as DropdownMenuPrimitiveContent,
+  Group as DropdownMenuPrimitiveGroup,
+  Item as DropdownMenuPrimitiveItem,
+  ItemIndicator as DropdownMenuPrimitiveItemIndicator,
+  Label as DropdownMenuPrimitiveLabel,
+  Portal as DropdownMenuPrimitivePortal,
+  RadioGroup as DropdownMenuPrimitiveRadioGroup,
+  RadioItem as DropdownMenuPrimitiveRadioItem,
+  Root as DropdownMenuPrimitiveRoot,
+  Separator as DropdownMenuPrimitiveSeparator,
+  Sub as DropdownMenuPrimitiveSub,
+  SubContent as DropdownMenuPrimitiveSubContent,
+  SubTrigger as DropdownMenuPrimitiveSubTrigger,
+  Trigger as DropdownMenuPrimitiveTrigger,
+} from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -132,20 +148,20 @@ const styles = stylex.create({
   },
 });
 
-function DropdownMenu(props: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
+function DropdownMenu(props: ComponentProps<typeof DropdownMenuPrimitiveRoot>) {
+  return <DropdownMenuPrimitiveRoot data-slot="dropdown-menu" {...props} />;
 }
 
-function DropdownMenuPortal(props: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
-  return <DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />;
+function DropdownMenuPortal(props: ComponentProps<typeof DropdownMenuPrimitivePortal>) {
+  return <DropdownMenuPrimitivePortal data-slot="dropdown-menu-portal" {...props} />;
 }
 
-function DropdownMenuTrigger(props: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
-  return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />;
+function DropdownMenuTrigger(props: ComponentProps<typeof DropdownMenuPrimitiveTrigger>) {
+  return <DropdownMenuPrimitiveTrigger data-slot="dropdown-menu-trigger" {...props} />;
 }
 
-export interface DropdownMenuContentProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.Content
+export interface DropdownMenuContentProps extends ComponentProps<
+  typeof DropdownMenuPrimitiveContent
 > {
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
@@ -163,8 +179,8 @@ function DropdownMenuContent({
   const zIndex = useZIndex('popover');
   const sxProps = stylex.props(styles.content, sx);
   return (
-    <DropdownMenuPrimitive.Portal container={container}>
-      <DropdownMenuPrimitive.Content
+    <DropdownMenuPrimitivePortal container={container}>
+      <DropdownMenuPrimitiveContent
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         {...sxProps}
@@ -173,18 +189,16 @@ function DropdownMenuContent({
         {...props}
       >
         <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
-      </DropdownMenuPrimitive.Content>
-    </DropdownMenuPrimitive.Portal>
+      </DropdownMenuPrimitiveContent>
+    </DropdownMenuPrimitivePortal>
   );
 }
 
-function DropdownMenuGroup(props: React.ComponentProps<typeof DropdownMenuPrimitive.Group>) {
-  return <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
+function DropdownMenuGroup(props: ComponentProps<typeof DropdownMenuPrimitiveGroup>) {
+  return <DropdownMenuPrimitiveGroup data-slot="dropdown-menu-group" {...props} />;
 }
 
-export interface DropdownMenuItemProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.Item
-> {
+export interface DropdownMenuItemProps extends ComponentProps<typeof DropdownMenuPrimitiveItem> {
   inset?: boolean;
   variant?: 'default' | 'destructive';
   sx?: stylex.StyleXStyles;
@@ -204,7 +218,7 @@ function DropdownMenuItem({
     sx,
   );
   return (
-    <DropdownMenuPrimitive.Item
+    <DropdownMenuPrimitiveItem
       data-slot="dropdown-menu-item"
       data-inset={inset}
       data-variant={variant}
@@ -215,8 +229,8 @@ function DropdownMenuItem({
   );
 }
 
-export interface DropdownMenuCheckboxItemProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.CheckboxItem
+export interface DropdownMenuCheckboxItemProps extends ComponentProps<
+  typeof DropdownMenuPrimitiveCheckboxItem
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -230,7 +244,7 @@ function DropdownMenuCheckboxItem({
 }: DropdownMenuCheckboxItemProps) {
   const sxProps = stylex.props(styles.item, styles.itemInset, sx);
   return (
-    <DropdownMenuPrimitive.CheckboxItem
+    <DropdownMenuPrimitiveCheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       checked={checked}
       {...sxProps}
@@ -238,23 +252,21 @@ function DropdownMenuCheckboxItem({
       {...props}
     >
       <span {...stylex.props(styles.indicatorContainer)}>
-        <DropdownMenuPrimitive.ItemIndicator>
+        <DropdownMenuPrimitiveItemIndicator>
           <CheckIcon {...stylex.props(styles.indicatorIcon)} />
-        </DropdownMenuPrimitive.ItemIndicator>
+        </DropdownMenuPrimitiveItemIndicator>
       </span>
       {children}
-    </DropdownMenuPrimitive.CheckboxItem>
+    </DropdownMenuPrimitiveCheckboxItem>
   );
 }
 
-function DropdownMenuRadioGroup(
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>,
-) {
-  return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...props} />;
+function DropdownMenuRadioGroup(props: ComponentProps<typeof DropdownMenuPrimitiveRadioGroup>) {
+  return <DropdownMenuPrimitiveRadioGroup data-slot="dropdown-menu-radio-group" {...props} />;
 }
 
-export interface DropdownMenuRadioItemProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.RadioItem
+export interface DropdownMenuRadioItemProps extends ComponentProps<
+  typeof DropdownMenuPrimitiveRadioItem
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -262,25 +274,23 @@ export interface DropdownMenuRadioItemProps extends React.ComponentProps<
 function DropdownMenuRadioItem({ className, children, sx, ...props }: DropdownMenuRadioItemProps) {
   const sxProps = stylex.props(styles.item, styles.itemInset, sx);
   return (
-    <DropdownMenuPrimitive.RadioItem
+    <DropdownMenuPrimitiveRadioItem
       data-slot="dropdown-menu-radio-item"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <span {...stylex.props(styles.indicatorContainer)}>
-        <DropdownMenuPrimitive.ItemIndicator>
+        <DropdownMenuPrimitiveItemIndicator>
           <CircleIcon {...stylex.props(styles.radioIndicatorIcon)} />
-        </DropdownMenuPrimitive.ItemIndicator>
+        </DropdownMenuPrimitiveItemIndicator>
       </span>
       {children}
-    </DropdownMenuPrimitive.RadioItem>
+    </DropdownMenuPrimitiveRadioItem>
   );
 }
 
-export interface DropdownMenuLabelProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.Label
-> {
+export interface DropdownMenuLabelProps extends ComponentProps<typeof DropdownMenuPrimitiveLabel> {
   inset?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -288,7 +298,7 @@ export interface DropdownMenuLabelProps extends React.ComponentProps<
 function DropdownMenuLabel({ className, inset, sx, ...props }: DropdownMenuLabelProps) {
   const sxProps = stylex.props(styles.label, inset && styles.itemInset, sx);
   return (
-    <DropdownMenuPrimitive.Label
+    <DropdownMenuPrimitiveLabel
       data-slot="dropdown-menu-label"
       data-inset={inset}
       {...sxProps}
@@ -298,8 +308,8 @@ function DropdownMenuLabel({ className, inset, sx, ...props }: DropdownMenuLabel
   );
 }
 
-export interface DropdownMenuSeparatorProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.Separator
+export interface DropdownMenuSeparatorProps extends ComponentProps<
+  typeof DropdownMenuPrimitiveSeparator
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -307,7 +317,7 @@ export interface DropdownMenuSeparatorProps extends React.ComponentProps<
 function DropdownMenuSeparator({ className, sx, ...props }: DropdownMenuSeparatorProps) {
   const sxProps = stylex.props(styles.separator, sx);
   return (
-    <DropdownMenuPrimitive.Separator
+    <DropdownMenuPrimitiveSeparator
       data-slot="dropdown-menu-separator"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -316,7 +326,7 @@ function DropdownMenuSeparator({ className, sx, ...props }: DropdownMenuSeparato
   );
 }
 
-export interface DropdownMenuShortcutProps extends React.ComponentProps<'span'> {
+export interface DropdownMenuShortcutProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -335,12 +345,12 @@ function DropdownMenuShortcut({ className, sx, ...props }: DropdownMenuShortcutP
   );
 }
 
-function DropdownMenuSub(props: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
-  return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
+function DropdownMenuSub(props: ComponentProps<typeof DropdownMenuPrimitiveSub>) {
+  return <DropdownMenuPrimitiveSub data-slot="dropdown-menu-sub" {...props} />;
 }
 
-export interface DropdownMenuSubTriggerProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.SubTrigger
+export interface DropdownMenuSubTriggerProps extends ComponentProps<
+  typeof DropdownMenuPrimitiveSubTrigger
 > {
   inset?: boolean;
   sx?: stylex.StyleXStyles;
@@ -355,7 +365,7 @@ function DropdownMenuSubTrigger({
 }: DropdownMenuSubTriggerProps) {
   const sxProps = stylex.props(styles.subTrigger, inset && styles.itemInset, sx);
   return (
-    <DropdownMenuPrimitive.SubTrigger
+    <DropdownMenuPrimitiveSubTrigger
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset}
       {...sxProps}
@@ -364,12 +374,12 @@ function DropdownMenuSubTrigger({
     >
       {children}
       <ChevronRightIcon {...stylex.props(styles.chevronRight)} />
-    </DropdownMenuPrimitive.SubTrigger>
+    </DropdownMenuPrimitiveSubTrigger>
   );
 }
 
-export interface DropdownMenuSubContentProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.SubContent
+export interface DropdownMenuSubContentProps extends ComponentProps<
+  typeof DropdownMenuPrimitiveSubContent
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -384,7 +394,7 @@ function DropdownMenuSubContent({
   const zIndex = useZIndex('popover', 1);
   const sxProps = stylex.props(styles.content, sx);
   return (
-    <DropdownMenuPrimitive.SubContent
+    <DropdownMenuPrimitiveSubContent
       data-slot="dropdown-menu-sub-content"
       {...sxProps}
       style={{ zIndex, ...sxProps.style, ...style }}
@@ -392,7 +402,7 @@ function DropdownMenuSubContent({
       {...props}
     >
       <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
-    </DropdownMenuPrimitive.SubContent>
+    </DropdownMenuPrimitiveSubContent>
   );
 }
 

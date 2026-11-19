@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
@@ -34,7 +34,7 @@ type LegacyMediaQueryList = MediaQueryList & {
 };
 
 export function useBreakpoint(): ScreenMap {
-  const [screens, setScreens] = React.useState<ScreenMap>(() => {
+  const [screens, setScreens] = useState<ScreenMap>(() => {
     if (typeof window === 'undefined' || !window.matchMedia) {
       return DEFAULT_SCREENS;
     }
@@ -45,7 +45,7 @@ export function useBreakpoint(): ScreenMap {
     return initial as ScreenMap;
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) {
       return;
     }

@@ -1,7 +1,13 @@
 'use client';
 
-import * as React from 'react';
-import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
+import { type ComponentProps } from 'react';
+import {
+  Corner as ScrollAreaPrimitiveCorner,
+  Root as ScrollAreaPrimitiveRoot,
+  ScrollAreaScrollbar as ScrollAreaPrimitiveScrollAreaScrollbar,
+  ScrollAreaThumb as ScrollAreaPrimitiveScrollAreaThumb,
+  Viewport as ScrollAreaPrimitiveViewport,
+} from '@radix-ui/react-scroll-area';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 import { cn } from '../utils';
@@ -46,7 +52,7 @@ const styles = stylex.create({
   },
 });
 
-export interface ScrollAreaProps extends React.ComponentProps<typeof ScrollAreaPrimitive.Root> {
+export interface ScrollAreaProps extends ComponentProps<typeof ScrollAreaPrimitiveRoot> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -54,26 +60,26 @@ function ScrollArea({ className, children, sx, ...props }: ScrollAreaProps) {
   const styleProps = stylex.props(styles.root, sx);
 
   return (
-    <ScrollAreaPrimitive.Root
+    <ScrollAreaPrimitiveRoot
       data-slot="scroll-area"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
     >
-      <ScrollAreaPrimitive.Viewport
+      <ScrollAreaPrimitiveViewport
         data-slot="scroll-area-viewport"
         {...stylex.props(styles.viewport)}
       >
         {children}
-      </ScrollAreaPrimitive.Viewport>
+      </ScrollAreaPrimitiveViewport>
       <ScrollBar />
-      <ScrollAreaPrimitive.Corner />
-    </ScrollAreaPrimitive.Root>
+      <ScrollAreaPrimitiveCorner />
+    </ScrollAreaPrimitiveRoot>
   );
 }
 
-export interface ScrollBarProps extends React.ComponentProps<
-  typeof ScrollAreaPrimitive.ScrollAreaScrollbar
+export interface ScrollBarProps extends ComponentProps<
+  typeof ScrollAreaPrimitiveScrollAreaScrollbar
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -86,18 +92,18 @@ function ScrollBar({ className, orientation = 'vertical', sx, ...props }: Scroll
   );
 
   return (
-    <ScrollAreaPrimitive.ScrollAreaScrollbar
+    <ScrollAreaPrimitiveScrollAreaScrollbar
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
     >
-      <ScrollAreaPrimitive.ScrollAreaThumb
+      <ScrollAreaPrimitiveScrollAreaThumb
         data-slot="scroll-area-thumb"
         {...stylex.props(styles.thumb)}
       />
-    </ScrollAreaPrimitive.ScrollAreaScrollbar>
+    </ScrollAreaPrimitiveScrollAreaScrollbar>
   );
 }
 

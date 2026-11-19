@@ -1,4 +1,10 @@
-import * as React from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useState,
+  type HTMLAttributes,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Star } from 'lucide-react';
 import { colors, spacing } from '../theme/tokens.stylex';
@@ -100,7 +106,7 @@ const styles = stylex.create({
 
 export type RatingSize = 'sm' | 'md' | 'lg';
 
-export interface RatingProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   value?: number;
   defaultValue?: number;
   onValueChange?: (value: number) => void;
@@ -112,7 +118,7 @@ export interface RatingProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   sx?: stylex.StyleXStyles;
 }
 
-export const Rating = React.forwardRef<HTMLDivElement, RatingProps>(
+export const Rating = forwardRef<HTMLDivElement, RatingProps>(
   (
     {
       value: controlledValue,
@@ -132,13 +138,13 @@ export const Rating = React.forwardRef<HTMLDivElement, RatingProps>(
     ref,
   ) => {
     const isControlled = controlledValue !== undefined;
-    const [internalValue, setInternalValue] = React.useState<number>(defaultValue);
-    const [hoverValue, setHoverValue] = React.useState<number | null>(null);
+    const [internalValue, setInternalValue] = useState<number>(defaultValue);
+    const [hoverValue, setHoverValue] = useState<number | null>(null);
 
     const currentValue = isControlled ? controlledValue : internalValue;
     const activeDisplayValue = hoverValue !== null ? hoverValue : currentValue;
 
-    const handleRatingChange = React.useCallback(
+    const handleRatingChange = useCallback(
       (nextValue: number) => {
         if (readOnly || disabled) return;
         const clamped = Math.max(0, Math.min(nextValue, max));
@@ -150,7 +156,7 @@ export const Rating = React.forwardRef<HTMLDivElement, RatingProps>(
       [readOnly, disabled, max, isControlled, onValueChange],
     );
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
       if (readOnly || disabled) return;
       const step = allowHalf ? 0.5 : 1;
 

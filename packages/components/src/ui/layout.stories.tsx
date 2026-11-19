@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type CSSProperties } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Flex } from './flex';
 import { Row, Col } from './row-col';
@@ -15,7 +15,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const boxStyle: React.CSSProperties = {
+const boxStyle: CSSProperties = {
   backgroundColor: 'var(--primary)',
   color: 'var(--primary-foreground)',
   padding: '12px 16px',
@@ -25,7 +25,7 @@ const boxStyle: React.CSSProperties = {
   fontSize: '0.875rem',
 };
 
-const boxSubtleStyle: React.CSSProperties = {
+const boxSubtleStyle: CSSProperties = {
   backgroundColor: 'color-mix(in srgb, var(--primary) 15%, transparent)',
   color: 'var(--foreground)',
   border: '1px dashed var(--primary)',

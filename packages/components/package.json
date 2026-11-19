@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Enterprise UI component library built on Meta's Astryx Design System, Meta StyleX, and Radix UI.",
   "keywords": [
     "accessible",
@@ -73,6 +73,12 @@
       "types": "./dist/theme/index.d.ts",
       "import": "./dist/theme/index.js"
     },
+    "./theme/tokens.stylex": {
+      "types": "./dist/theme/tokens.stylex.d.ts",
+      "import": "./dist/theme/tokens.stylex.js",
+      "require": "./dist/theme/tokens.stylex.cjs",
+      "default": "./dist/theme/tokens.stylex.js"
+    },
     "./layout": {
       "types": "./dist/layout/index.d.ts",
       "import": "./dist/layout/index.js",
@@ -101,7 +107,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vite build && tsc -p tsconfig.json && cat src/theme/theme.css dist/assets/stylex.css > dist/theme.css && cp src/theme/vlrc-theme.css dist/vlrc-theme.css",
+    "build": "vite build && node scripts/check-stylex-shadowing.mjs && tsc -p tsconfig.json && cat src/theme/theme.css dist/assets/stylex.css > dist/theme.css && cp src/theme/vlrc-theme.css dist/vlrc-theme.css",
     "test": "vitest run",
     "lint": "oxlint .",
     "format": "oxfmt .",
@@ -157,6 +163,8 @@
   "devDependencies": {
     "@astryxdesign/build": "0.7.16",
     "@astryxdesign/cli": "0.7.16",
+    "@babel/parser": "^7.29.0",
+    "@babel/traverse": "^7.29.0",
     "@stylexjs/unplugin": "^0.19.1",
     "@vitejs/plugin-react": "^6.1.2",
     "typescript": "^7.0.2",

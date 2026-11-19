@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   Editable,
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof Editable>;
 
 export const Default: Story = {
   render: () => {
-    const [title, setTitle] = React.useState('Customer Onboarding Workflow');
+    const [title, setTitle] = useState('Customer Onboarding Workflow');
     return (
       <Flex vertical gap="sm" style={{ maxWidth: 400 }}>
         <span>Project Title:</span>

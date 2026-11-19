@@ -1,5 +1,11 @@
-import * as React from 'react';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { type ComponentProps } from 'react';
+import {
+  Anchor as PopoverPrimitiveAnchor,
+  Content as PopoverPrimitiveContent,
+  Portal as PopoverPrimitivePortal,
+  Root as PopoverPrimitiveRoot,
+  Trigger as PopoverPrimitiveTrigger,
+} from '@radix-ui/react-popover';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
@@ -28,19 +34,19 @@ const styles = stylex.create({
   },
 });
 
-function Popover(props: React.ComponentProps<typeof PopoverPrimitive.Root>) {
-  return <PopoverPrimitive.Root data-slot="popover" {...props} />;
+function Popover(props: ComponentProps<typeof PopoverPrimitiveRoot>) {
+  return <PopoverPrimitiveRoot data-slot="popover" {...props} />;
 }
 
-function PopoverTrigger(props: React.ComponentProps<typeof PopoverPrimitive.Trigger>) {
-  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />;
+function PopoverTrigger(props: ComponentProps<typeof PopoverPrimitiveTrigger>) {
+  return <PopoverPrimitiveTrigger data-slot="popover-trigger" {...props} />;
 }
 
-function PopoverAnchor(props: React.ComponentProps<typeof PopoverPrimitive.Anchor>) {
-  return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />;
+function PopoverAnchor(props: ComponentProps<typeof PopoverPrimitiveAnchor>) {
+  return <PopoverPrimitiveAnchor data-slot="popover-anchor" {...props} />;
 }
 
-export interface PopoverContentProps extends React.ComponentProps<typeof PopoverPrimitive.Content> {
+export interface PopoverContentProps extends ComponentProps<typeof PopoverPrimitiveContent> {
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
 }
@@ -59,8 +65,8 @@ function PopoverContent({
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <PopoverPrimitive.Portal container={container}>
-      <PopoverPrimitive.Content
+    <PopoverPrimitivePortal container={container}>
+      <PopoverPrimitiveContent
         data-slot="popover-content"
         align={align}
         sideOffset={sideOffset}
@@ -70,8 +76,8 @@ function PopoverContent({
         {...props}
       >
         <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
-      </PopoverPrimitive.Content>
-    </PopoverPrimitive.Portal>
+      </PopoverPrimitiveContent>
+    </PopoverPrimitivePortal>
   );
 }
 

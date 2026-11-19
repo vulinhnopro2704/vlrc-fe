@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 export interface UseCopyToClipboardOptions {
   /** Delay in milliseconds before `copied` resets to false. Defaults to 2000. */
@@ -19,28 +19,28 @@ export function useCopyToClipboard(
   options: UseCopyToClipboardOptions = {},
 ): UseCopyToClipboardReturn {
   const { timeout = 2000, onSuccess, onError } = options;
-  const [copied, setCopied] = React.useState(false);
-  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const clearTimer = React.useCallback(() => {
+  const clearTimer = useCallback(() => {
     if (timeoutRef.current !== null) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       clearTimer();
     };
   }, [clearTimer]);
 
-  const reset = React.useCallback(() => {
+  const reset = useCallback(() => {
     clearTimer();
     setCopied(false);
   }, [clearTimer]);
 
-  const copy = React.useCallback(
+  const copy = useCallback(
     async (text: string): Promise<boolean> => {
       clearTimer();
 

@@ -1,5 +1,21 @@
-import * as React from 'react';
-import * as SelectPrimitive from '@radix-ui/react-select';
+import { type ComponentProps } from 'react';
+import {
+  Content as SelectPrimitiveContent,
+  Group as SelectPrimitiveGroup,
+  Icon as SelectPrimitiveIcon,
+  Item as SelectPrimitiveItem,
+  ItemIndicator as SelectPrimitiveItemIndicator,
+  ItemText as SelectPrimitiveItemText,
+  Label as SelectPrimitiveLabel,
+  Portal as SelectPrimitivePortal,
+  Root as SelectPrimitiveRoot,
+  ScrollDownButton as SelectPrimitiveScrollDownButton,
+  ScrollUpButton as SelectPrimitiveScrollUpButton,
+  Separator as SelectPrimitiveSeparator,
+  Trigger as SelectPrimitiveTrigger,
+  Value as SelectPrimitiveValue,
+  Viewport as SelectPrimitiveViewport,
+} from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 
@@ -142,19 +158,19 @@ const styles = stylex.create({
   },
 });
 
-function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />;
+function Select({ ...props }: ComponentProps<typeof SelectPrimitiveRoot>) {
+  return <SelectPrimitiveRoot data-slot="select" {...props} />;
 }
 
-function SelectGroup({ ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {
-  return <SelectPrimitive.Group data-slot="select-group" {...props} />;
+function SelectGroup({ ...props }: ComponentProps<typeof SelectPrimitiveGroup>) {
+  return <SelectPrimitiveGroup data-slot="select-group" {...props} />;
 }
 
-function SelectValue({ ...props }: React.ComponentProps<typeof SelectPrimitive.Value>) {
-  return <SelectPrimitive.Value data-slot="select-value" {...props} />;
+function SelectValue({ ...props }: ComponentProps<typeof SelectPrimitiveValue>) {
+  return <SelectPrimitiveValue data-slot="select-value" {...props} />;
 }
 
-export interface SelectTriggerProps extends React.ComponentProps<typeof SelectPrimitive.Trigger> {
+export interface SelectTriggerProps extends ComponentProps<typeof SelectPrimitiveTrigger> {
   size?: 'sm' | 'default';
   /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
   width?: ComponentWidth;
@@ -175,7 +191,7 @@ function SelectTrigger({
   const sxProps = stylex.props(styles.trigger, sizeStyle, sx);
 
   return (
-    <SelectPrimitive.Trigger
+    <SelectPrimitiveTrigger
       data-slot="select-trigger"
       data-size={size}
       data-width={width}
@@ -189,14 +205,14 @@ function SelectTrigger({
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild>
+      <SelectPrimitiveIcon asChild>
         <ChevronDownIcon {...stylex.props(styles.icon)} />
-      </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
+      </SelectPrimitiveIcon>
+    </SelectPrimitiveTrigger>
   );
 }
 
-export interface SelectContentProps extends React.ComponentProps<typeof SelectPrimitive.Content> {
+export interface SelectContentProps extends ComponentProps<typeof SelectPrimitiveContent> {
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
 }
@@ -215,8 +231,8 @@ function SelectContent({
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <SelectPrimitive.Portal container={container}>
-      <SelectPrimitive.Content
+    <SelectPrimitivePortal container={container}>
+      <SelectPrimitiveContent
         data-slot="select-content"
         position={position}
         align={align}
@@ -227,24 +243,24 @@ function SelectContent({
       >
         <ZIndexProvider value={zIndex + 10}>
           <SelectScrollUpButton />
-          <SelectPrimitive.Viewport {...stylex.props(styles.viewport)}>
+          <SelectPrimitiveViewport {...stylex.props(styles.viewport)}>
             {children}
-          </SelectPrimitive.Viewport>
+          </SelectPrimitiveViewport>
           <SelectScrollDownButton />
         </ZIndexProvider>
-      </SelectPrimitive.Content>
-    </SelectPrimitive.Portal>
+      </SelectPrimitiveContent>
+    </SelectPrimitivePortal>
   );
 }
 
-export interface SelectLabelProps extends React.ComponentProps<typeof SelectPrimitive.Label> {
+export interface SelectLabelProps extends ComponentProps<typeof SelectPrimitiveLabel> {
   sx?: stylex.StyleXStyles;
 }
 
 function SelectLabel({ className, sx, ...props }: SelectLabelProps) {
   const sxProps = stylex.props(styles.label, sx);
   return (
-    <SelectPrimitive.Label
+    <SelectPrimitiveLabel
       data-slot="select-label"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -253,7 +269,7 @@ function SelectLabel({ className, sx, ...props }: SelectLabelProps) {
   );
 }
 
-export interface SelectItemProps extends React.ComponentProps<typeof SelectPrimitive.Item> {
+export interface SelectItemProps extends ComponentProps<typeof SelectPrimitiveItem> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -261,7 +277,7 @@ function SelectItem({ className, children, disabled, sx, ...props }: SelectItemP
   const sxProps = stylex.props(styles.item, disabled && styles.itemDisabled, sx);
 
   return (
-    <SelectPrimitive.Item
+    <SelectPrimitiveItem
       data-slot="select-item"
       disabled={disabled}
       {...sxProps}
@@ -269,25 +285,23 @@ function SelectItem({ className, children, disabled, sx, ...props }: SelectItemP
       {...props}
     >
       <span data-slot="select-item-indicator" {...stylex.props(styles.itemIndicator)}>
-        <SelectPrimitive.ItemIndicator>
+        <SelectPrimitiveItemIndicator>
           <CheckIcon size={14} />
-        </SelectPrimitive.ItemIndicator>
+        </SelectPrimitiveItemIndicator>
       </span>
-      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-    </SelectPrimitive.Item>
+      <SelectPrimitiveItemText>{children}</SelectPrimitiveItemText>
+    </SelectPrimitiveItem>
   );
 }
 
-export interface SelectSeparatorProps extends React.ComponentProps<
-  typeof SelectPrimitive.Separator
-> {
+export interface SelectSeparatorProps extends ComponentProps<typeof SelectPrimitiveSeparator> {
   sx?: stylex.StyleXStyles;
 }
 
 function SelectSeparator({ className, sx, ...props }: SelectSeparatorProps) {
   const sxProps = stylex.props(styles.separator, sx);
   return (
-    <SelectPrimitive.Separator
+    <SelectPrimitiveSeparator
       data-slot="select-separator"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -299,34 +313,34 @@ function SelectSeparator({ className, sx, ...props }: SelectSeparatorProps) {
 function SelectScrollUpButton({
   className,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
+}: ComponentProps<typeof SelectPrimitiveScrollUpButton>) {
   const sxProps = stylex.props(styles.scrollButton);
   return (
-    <SelectPrimitive.ScrollUpButton
+    <SelectPrimitiveScrollUpButton
       data-slot="select-scroll-up-button"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <ChevronUpIcon size={14} />
-    </SelectPrimitive.ScrollUpButton>
+    </SelectPrimitiveScrollUpButton>
   );
 }
 
 function SelectScrollDownButton({
   className,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
+}: ComponentProps<typeof SelectPrimitiveScrollDownButton>) {
   const sxProps = stylex.props(styles.scrollButton);
   return (
-    <SelectPrimitive.ScrollDownButton
+    <SelectPrimitiveScrollDownButton
       data-slot="select-scroll-down-button"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <ChevronDownIcon size={14} />
-    </SelectPrimitive.ScrollDownButton>
+    </SelectPrimitiveScrollDownButton>
   );
 }
 

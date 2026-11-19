@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, type ComponentProps } from 'react';
 import {
   Stack as AstryxStack,
   HStack as AstryxHStack,
@@ -29,15 +29,12 @@ function resolveStackGap(gap: StackGap | undefined): AstryxSpacingStep | undefin
   return TIER_TO_STEP_MAP[gap] ?? 4;
 }
 
-export interface StackProps extends Omit<
-  React.ComponentProps<typeof AstryxStack>,
-  'gap' | 'xstyle'
-> {
+export interface StackProps extends Omit<ComponentProps<typeof AstryxStack>, 'gap' | 'xstyle'> {
   gap?: StackGap;
   sx?: stylex.StyleXStyles;
 }
 
-export const Stack = React.forwardRef<HTMLElement, StackProps>(
+export const Stack = forwardRef<HTMLElement, StackProps>(
   ({ gap, sx, className, children, ...props }, ref) => {
     const resolvedGap = resolveStackGap(gap);
     return (
@@ -50,15 +47,12 @@ export const Stack = React.forwardRef<HTMLElement, StackProps>(
 
 Stack.displayName = 'Stack';
 
-export interface HStackProps extends Omit<
-  React.ComponentProps<typeof AstryxHStack>,
-  'gap' | 'xstyle'
-> {
+export interface HStackProps extends Omit<ComponentProps<typeof AstryxHStack>, 'gap' | 'xstyle'> {
   gap?: StackGap;
   sx?: stylex.StyleXStyles;
 }
 
-export const HStack = React.forwardRef<HTMLElement, HStackProps>(
+export const HStack = forwardRef<HTMLElement, HStackProps>(
   ({ gap, sx, className, children, ...props }, ref) => {
     const resolvedGap = resolveStackGap(gap);
     return (
@@ -71,15 +65,12 @@ export const HStack = React.forwardRef<HTMLElement, HStackProps>(
 
 HStack.displayName = 'HStack';
 
-export interface VStackProps extends Omit<
-  React.ComponentProps<typeof AstryxVStack>,
-  'gap' | 'xstyle'
-> {
+export interface VStackProps extends Omit<ComponentProps<typeof AstryxVStack>, 'gap' | 'xstyle'> {
   gap?: StackGap;
   sx?: stylex.StyleXStyles;
 }
 
-export const VStack = React.forwardRef<HTMLElement, VStackProps>(
+export const VStack = forwardRef<HTMLElement, VStackProps>(
   ({ gap, sx, className, children, ...props }, ref) => {
     const resolvedGap = resolveStackGap(gap);
     return (
@@ -92,14 +83,11 @@ export const VStack = React.forwardRef<HTMLElement, VStackProps>(
 
 VStack.displayName = 'VStack';
 
-export interface StackItemProps extends Omit<
-  React.ComponentProps<typeof AstryxStackItem>,
-  'xstyle'
-> {
+export interface StackItemProps extends Omit<ComponentProps<typeof AstryxStackItem>, 'xstyle'> {
   sx?: stylex.StyleXStyles;
 }
 
-export const StackItem = React.forwardRef<HTMLElement, StackItemProps>(
+export const StackItem = forwardRef<HTMLElement, StackItemProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <AstryxStackItem ref={ref} xstyle={sx} className={cn(className)} {...props}>

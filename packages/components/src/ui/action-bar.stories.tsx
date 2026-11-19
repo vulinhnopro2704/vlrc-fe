@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   ActionBar,
@@ -25,8 +25,8 @@ type Story = StoryObj<typeof ActionBar>;
 
 export const Default: Story = {
   render: () => {
-    const [open, setOpen] = React.useState(true);
-    const [count, setCount] = React.useState(4);
+    const [open, setOpen] = useState(true);
+    const [count, setCount] = useState(4);
 
     return (
       <div style={{ height: 300, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

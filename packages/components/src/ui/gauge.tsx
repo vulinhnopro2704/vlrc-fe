@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, spacing } from '../theme/tokens.stylex';
 import { Flex } from './flex';
@@ -59,7 +59,7 @@ const styles = stylex.create({
 
 export type GaugeVariant = 'primary' | 'success' | 'warning' | 'destructive' | 'secondary';
 
-export interface GaugeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
+export interface GaugeProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   value: number;
   min?: number;
   max?: number;
@@ -68,13 +68,13 @@ export interface GaugeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   variant?: GaugeVariant;
   showValue?: boolean;
   showMinMax?: boolean;
-  formatValue?: (value: number) => React.ReactNode;
-  label?: React.ReactNode;
-  children?: React.ReactNode;
+  formatValue?: (value: number) => ReactNode;
+  label?: ReactNode;
+  children?: ReactNode;
   sx?: stylex.StyleXStyles;
 }
 
-export const Gauge = React.forwardRef<HTMLDivElement, GaugeProps>(
+export const Gauge = forwardRef<HTMLDivElement, GaugeProps>(
   (
     {
       value,

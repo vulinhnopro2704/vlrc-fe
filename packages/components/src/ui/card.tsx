@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 
@@ -108,7 +108,7 @@ const variantStyles: Record<CardVariant, stylex.StyleXStyles> = {
   auth: styles.variantAuth,
 };
 
-export interface CardProps extends React.ComponentProps<'div'> {
+export interface CardProps extends ComponentProps<'div'> {
   variant?: CardVariant;
   sx?: stylex.StyleXStyles;
 }
@@ -131,7 +131,7 @@ function CardHeader({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <div
@@ -147,7 +147,7 @@ function CardTitle({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <div
@@ -163,7 +163,7 @@ function CardDescription({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.description, sx);
   return (
     <div
@@ -179,7 +179,7 @@ function CardAction({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.action, sx);
   return (
     <div
@@ -195,7 +195,7 @@ function CardContent({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.content, sx);
   return (
     <div
@@ -211,7 +211,7 @@ function CardFooter({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <div

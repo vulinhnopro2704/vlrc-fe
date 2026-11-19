@@ -1,7 +1,21 @@
 'use client';
 
-import * as React from 'react';
-import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import {
+  Children,
+  createContext,
+  isValidElement,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentProps,
+} from 'react';
+import {
+  Fallback as AvatarPrimitiveFallback,
+  Image as AvatarPrimitiveImage,
+  Root as AvatarPrimitiveRoot,
+} from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -12,7 +26,7 @@ interface AvatarGroupContextValue {
   inGroup?: boolean;
 }
 
-const AvatarGroupContext = React.createContext<AvatarGroupContextValue | null>(null);
+const AvatarGroupContext = createContext<AvatarGroupContextValue | null>(null);
 
 const styles = stylex.create({
   root: {
@@ -124,14 +138,14 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.sizeXxl,
 };
 
-export interface AvatarProps extends React.ComponentProps<typeof AvatarPrimitive.Root> {
+export interface AvatarProps extends ComponentProps<typeof AvatarPrimitiveRoot> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
 
 function Avatar({ className, size, sx, ...props }: AvatarProps) {
-  const groupContext = React.useContext(AvatarGroupContext);
+  const groupContext = useContext(AvatarGroupContext);
   const resolvedSize: ComponentSize = size ?? groupContext?.size ?? 'md';
   const inGroup = Boolean(groupContext?.inGroup);
 
@@ -143,7 +157,7 @@ function Avatar({ className, size, sx, ...props }: AvatarProps) {
   );
 
   return (
-    <AvatarPrimitive.Root
+    <AvatarPrimitiveRoot
       data-slot="avatar"
       data-size={resolvedSize}
       {...sxProps}
@@ -153,14 +167,14 @@ function Avatar({ className, size, sx, ...props }: AvatarProps) {
   );
 }
 
-export interface AvatarImageProps extends React.ComponentProps<typeof AvatarPrimitive.Image> {
+export interface AvatarImageProps extends ComponentProps<typeof AvatarPrimitiveImage> {
   sx?: stylex.StyleXStyles;
 }
 
 function AvatarImage({ className, sx, ...props }: AvatarImageProps) {
   const sxProps = stylex.props(styles.image, sx);
   return (
-    <AvatarPrimitive.Image
+    <AvatarPrimitiveImage
       data-slot="avatar-image"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -169,14 +183,14 @@ function AvatarImage({ className, sx, ...props }: AvatarImageProps) {
   );
 }
 
-export interface AvatarFallbackProps extends React.ComponentProps<typeof AvatarPrimitive.Fallback> {
+export interface AvatarFallbackProps extends ComponentProps<typeof AvatarPrimitiveFallback> {
   sx?: stylex.StyleXStyles;
 }
 
 function AvatarFallback({ className, sx, ...props }: AvatarFallbackProps) {
   const sxProps = stylex.props(styles.fallback, sx);
   return (
-    <AvatarPrimitive.Fallback
+    <AvatarPrimitiveFallback
       data-slot="avatar-fallback"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -185,7 +199,7 @@ function AvatarFallback({ className, sx, ...props }: AvatarFallbackProps) {
   );
 }
 
-export interface AvatarGroupProps extends React.ComponentProps<'div'> {
+export interface AvatarGroupProps extends ComponentProps<'div'> {
   /** Maximum number of visible avatars before showing +N indicator */
   max?: number;
   /** Size for all avatars in group */
@@ -195,14 +209,14 @@ export interface AvatarGroupProps extends React.ComponentProps<'div'> {
 
 function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: AvatarGroupProps) {
   const sxProps = stylex.props(styles.group, sx);
-  const validChildren = React.Children.toArray(children).filter(React.isValidElement);
+  const validChildren = Children.toArray(children).filter(isValidElement);
 
   const visibleChildren = max !== undefined ? validChildren.slice(0, max) : validChildren;
   const hiddenChildren = max !== undefined ? validChildren.slice(max) : [];
   const overflowCount = max !== undefined ? Math.max(0, validChildren.length - max) : 0;
 
-  const [popoverOpen, setPopoverOpen] = React.useState(false);
-  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -215,13 +229,13 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
     }, 150);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
-  const contextValue = React.useMemo(() => ({ size, inGroup: true }), [size]);
+  const contextValue = useMemo(() => ({ size, inGroup: true }), [size]);
 
   return (
     <AvatarGroupContext.Provider value={contextValue}>

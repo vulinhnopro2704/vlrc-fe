@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type HTMLAttributes } from 'react';
 import type { Column } from '@tanstack/react-table';
 import { ArrowDown, ArrowUp, ArrowUpDown, EyeOff } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
@@ -31,10 +31,7 @@ const styles = stylex.create({
   },
 });
 
-export interface DataTableColumnHeaderProps<
-  TData,
-  TValue,
-> extends React.HTMLAttributes<HTMLDivElement> {
+export interface DataTableColumnHeaderProps<TData, TValue> extends HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
   title: string;
   sx?: stylex.StyleXStyles;

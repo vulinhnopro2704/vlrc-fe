@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, useState, type ElementType } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -161,7 +161,7 @@ const typeStyles: Record<TextType, stylex.StyleXStyles> = {
   inherit: styles.typeInherit,
 };
 
-export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
+export const Text = forwardRef<HTMLElement, TextProps>(function Text(
   {
     type,
     size = 'md',
@@ -209,7 +209,7 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   }: TextProps,
   ref,
 ) {
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
 
   let defaultComponent = 'span';
   if (keyboard) defaultComponent = 'kbd';
@@ -217,7 +217,7 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   else if (italic) defaultComponent = 'em';
   else if (isDelete) defaultComponent = 'del';
 
-  const Component = (as || defaultComponent) as React.ElementType;
+  const Component = (as || defaultComponent) as ElementType;
 
   const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis?.rows : undefined);
   const isSingleEllipsis =

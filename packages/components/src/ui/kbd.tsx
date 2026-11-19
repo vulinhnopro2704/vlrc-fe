@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -85,7 +85,7 @@ const variantStyles: Record<KbdVariant, stylex.StyleXStyles> = {
   outline: styles.outline,
 };
 
-export interface KbdProps extends React.ComponentProps<'kbd'> {
+export interface KbdProps extends ComponentProps<'kbd'> {
   size?: KbdSize;
   variant?: KbdVariant;
   asChild?: boolean;
@@ -116,7 +116,7 @@ function Kbd({
   );
 }
 
-export interface KbdGroupProps extends React.ComponentProps<'div'> {
+export interface KbdGroupProps extends ComponentProps<'div'> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }

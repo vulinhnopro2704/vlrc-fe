@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DatePicker, DateRangePicker } from './index';
 
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SingleDate: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>();
+    const [date, setDate] = useState<Date | undefined>();
     return (
       <div style={{ width: 320 }}>
         <DatePicker
@@ -33,7 +33,7 @@ export const SingleDate: Story = {
 
 export const WithInitialValue: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date(2026, 10, 8));
+    const [date, setDate] = useState<Date | undefined>(new Date(2026, 10, 8));
     return (
       <div style={{ width: 320 }}>
         <DatePicker
@@ -50,7 +50,7 @@ export const WithInitialValue: Story = {
 
 export const DateRange: Story = {
   render: () => {
-    const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>([
+    const [dates, setDates] = useState<[Date | undefined, Date | undefined]>([
       new Date(2026, 10, 5),
       new Date(2026, 10, 15),
     ]);
@@ -70,7 +70,7 @@ export const DateRange: Story = {
 
 export const DateTimePicker: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ width: 340 }}>
         <DatePicker
@@ -88,7 +88,7 @@ export const DateTimePicker: Story = {
 
 export const MonthPicker: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ width: 300 }}>
         <DatePicker
@@ -106,7 +106,7 @@ export const MonthPicker: Story = {
 
 export const YearPicker: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ width: 300 }}>
         <DatePicker
@@ -124,7 +124,7 @@ export const YearPicker: Story = {
 
 export const TimePickerOnly: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ width: 300 }}>
         <DatePicker
@@ -142,7 +142,7 @@ export const TimePickerOnly: Story = {
 
 export const Sizes: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     const tiers = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const;
 
     return (
@@ -164,7 +164,7 @@ export const Sizes: Story = {
 
 export const StatusStates: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 320 }}>
         <div>
@@ -186,7 +186,7 @@ export const StatusStates: Story = {
 
 export const DisabledDates: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>();
+    const [date, setDate] = useState<Date | undefined>();
     // Disable past dates and weekends
     const today = new Date();
     today.setHours(0, 0, 0, 0);

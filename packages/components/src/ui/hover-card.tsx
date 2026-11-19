@@ -1,7 +1,12 @@
 'use client';
 
-import * as React from 'react';
-import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
+import { type ComponentProps } from 'react';
+import {
+  Content as HoverCardPrimitiveContent,
+  Portal as HoverCardPrimitivePortal,
+  Root as HoverCardPrimitiveRoot,
+  Trigger as HoverCardPrimitiveTrigger,
+} from '@radix-ui/react-hover-card';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex } from '../theme/zIndex';
@@ -23,17 +28,15 @@ const styles = stylex.create({
   },
 });
 
-function HoverCard({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
-  return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />;
+function HoverCard({ ...props }: ComponentProps<typeof HoverCardPrimitiveRoot>) {
+  return <HoverCardPrimitiveRoot data-slot="hover-card" {...props} />;
 }
 
-function HoverCardTrigger({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Trigger>) {
-  return <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />;
+function HoverCardTrigger({ ...props }: ComponentProps<typeof HoverCardPrimitiveTrigger>) {
+  return <HoverCardPrimitiveTrigger data-slot="hover-card-trigger" {...props} />;
 }
 
-export interface HoverCardContentProps extends React.ComponentProps<
-  typeof HoverCardPrimitive.Content
-> {
+export interface HoverCardContentProps extends ComponentProps<typeof HoverCardPrimitiveContent> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -49,8 +52,8 @@ function HoverCardContent({
   const styleProps = stylex.props(styles.content, sx);
 
   return (
-    <HoverCardPrimitive.Portal data-slot="hover-card-portal">
-      <HoverCardPrimitive.Content
+    <HoverCardPrimitivePortal data-slot="hover-card-portal">
+      <HoverCardPrimitiveContent
         data-slot="hover-card-content"
         align={align}
         sideOffset={sideOffset}
@@ -59,7 +62,7 @@ function HoverCardContent({
         className={cn(styleProps.className, className)}
         {...props}
       />
-    </HoverCardPrimitive.Portal>
+    </HoverCardPrimitivePortal>
   );
 }
 

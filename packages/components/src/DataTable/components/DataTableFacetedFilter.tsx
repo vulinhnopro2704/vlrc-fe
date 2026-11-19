@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useMemo, type ComponentType } from 'react';
 import type { Column } from '@tanstack/react-table';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, spacing } from '../../theme/tokens.stylex';
@@ -87,7 +87,7 @@ const styles = stylex.create({
 export interface DataTableFacetedFilterOption {
   label: string;
   value: string;
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: ComponentType<{ className?: string }>;
   count?: number;
 }
 
@@ -110,7 +110,7 @@ export function DataTableFacetedFilter<TData, TValue = unknown>({
 }: DataTableFacetedFilterProps<TData, TValue>) {
   const columnFilterValue = column?.getFilterValue();
 
-  const selectedSet = React.useMemo<Set<string>>(() => {
+  const selectedSet = useMemo<Set<string>>(() => {
     if (controlledSelected !== undefined) {
       return new Set(controlledSelected);
     }

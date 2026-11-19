@@ -1,5 +1,8 @@
-import * as React from 'react';
-import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
+import { createContext, useContext, type ComponentProps } from 'react';
+import {
+  Item as ToggleGroupPrimitiveItem,
+  Root as ToggleGroupPrimitiveRoot,
+} from '@radix-ui/react-toggle-group';
 import * as stylex from '@stylexjs/stylex';
 import { radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -40,14 +43,14 @@ interface ToggleGroupContextValue {
   variant: ToggleVariant;
 }
 
-const ToggleGroupContext = React.createContext<ToggleGroupContextValue>({
+const ToggleGroupContext = createContext<ToggleGroupContextValue>({
   size: 'md',
   variant: 'default',
 });
 
 export type ToggleGroupProps = (
   | (Omit<
-      React.ComponentProps<typeof ToggleGroupPrimitive.Root>,
+      ComponentProps<typeof ToggleGroupPrimitiveRoot>,
       'size' | 'type' | 'value' | 'defaultValue' | 'onValueChange'
     > & {
       type: 'single';
@@ -56,7 +59,7 @@ export type ToggleGroupProps = (
       onValueChange?: (value: string) => void;
     })
   | (Omit<
-      React.ComponentProps<typeof ToggleGroupPrimitive.Root>,
+      ComponentProps<typeof ToggleGroupPrimitiveRoot>,
       'size' | 'type' | 'value' | 'defaultValue' | 'onValueChange'
     > & {
       type: 'multiple';
@@ -81,23 +84,23 @@ function ToggleGroup({
   const sxProps = stylex.props(styles.group, variant === 'outline' && styles.groupOutline, sx);
 
   return (
-    <ToggleGroupPrimitive.Root
+    <ToggleGroupPrimitiveRoot
       data-slot="toggle-group"
       data-variant={variant}
       data-size={size}
-      {...(props as React.ComponentProps<typeof ToggleGroupPrimitive.Root>)}
+      {...(props as ComponentProps<typeof ToggleGroupPrimitiveRoot>)}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
     >
       <ToggleGroupContext.Provider value={{ variant, size }}>
         {children}
       </ToggleGroupContext.Provider>
-    </ToggleGroupPrimitive.Root>
+    </ToggleGroupPrimitiveRoot>
   );
 }
 
 export interface ToggleGroupItemProps extends Omit<
-  React.ComponentProps<typeof ToggleGroupPrimitive.Item>,
+  ComponentProps<typeof ToggleGroupPrimitiveItem>,
   'size'
 > {
   size?: ComponentSize;
@@ -113,7 +116,7 @@ function ToggleGroupItem({
   sx,
   ...props
 }: ToggleGroupItemProps) {
-  const context = React.useContext(ToggleGroupContext);
+  const context = useContext(ToggleGroupContext);
   const resolvedVariant = variant ?? context.variant ?? 'default';
   const resolvedSize = size ?? context.size ?? 'md';
 
@@ -129,7 +132,7 @@ function ToggleGroupItem({
   );
 
   return (
-    <ToggleGroupPrimitive.Item
+    <ToggleGroupPrimitiveItem
       data-slot="toggle-group-item"
       data-variant={resolvedVariant}
       data-size={resolvedSize}
@@ -138,7 +141,7 @@ function ToggleGroupItem({
       {...props}
     >
       {children}
-    </ToggleGroupPrimitive.Item>
+    </ToggleGroupPrimitiveItem>
   );
 }
 

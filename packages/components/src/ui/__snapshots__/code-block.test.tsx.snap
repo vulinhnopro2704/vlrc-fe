@@ -1,0 +1,540 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CodeBlock > UI > should match snapshot in default state 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli code-block__styles.root x78zum5 xdt5ytf xh8yej3 xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x9f619 x4w1nh8"
+    data-collapsible="false"
+    data-expanded="false"
+    data-language="typescript"
+    data-slot="code-block"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    data-wrapped="false"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli code-block__styles.header x78zum5 x6s0dn4 x1qughib x7ai2fz x1yroua3 xso031l x1q0q8m5 x1j3e3tk x123ixkk x1m5ztt4"
+      data-slot="code-block-header"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <div
+        class="Box__styles.base x9f619 xeuugli code-block__styles.title x78zum5 x6s0dn4 x1m5ztt4 xk50ysn x1dcheo9 x8sa6tb"
+        data-slot="code-block-title"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
+          data-size="sm"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          greet.ts
+        </span>
+      </div>
+      <div
+        class="Box__styles.base x9f619 xeuugli code-block__styles.languageBadge x3nfvp2 x6s0dn4 xvg6gpc xvtg94q xqfady0 x12lo8hy xtvhhri x2ujxvm x1s688f xqlt9m5 x18r499t xmkeg23 x1y0btm7 x1f1eyqo"
+        data-slot="code-block-language"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        typescript
+      </div>
+      <button
+        aria-label="Copy code"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xrijj7p xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconSm xettwda xs5h3dt x1717udv"
+        data-copied="false"
+        data-size="icon-sm"
+        data-slot="code-block-copy"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:217"
+        data-variant="ghost"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-copy"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="14"
+            rx="2"
+            ry="2"
+            width="14"
+            x="8"
+            y="8"
+          />
+          <path
+            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="Box__styles.base x9f619 xeuugli code-block__styles.content x1n2onr6 xh8yej3 xw2csxc x10wlt62 x9f619 x1yroua3"
+      data-slot="code-block-content"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <pre
+        class="Box__styles.base xeuugli code-block__styles.codeSurface x1ghz6dp x1717udv xh8yej3 x9f619 x1dbl2gt x1dcheo9"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:110"
+      >
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="1"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutter x3nfvp2 x6s0dn4 x13a6bvl xvm51jw x2lah0s x1ozfwlo x87ps6o x18r499t xboafo0 x1hr2gdg"
+            data-slot="code-block-gutter"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:136"
+          >
+            1
+          </div>
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:164"
+            >
+              function
+            </span>
+             greet(name: string) {
+          </div>
+        </div>
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="2"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutter x3nfvp2 x6s0dn4 x13a6bvl xvm51jw x2lah0s x1ozfwlo x87ps6o x18r499t xboafo0 x1hr2gdg"
+            data-slot="code-block-gutter"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:136"
+          >
+            2
+          </div>
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+              
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:164"
+            >
+              return
+            </span>
+             
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenString x1spsc8"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:168"
+            >
+              \`Hello, \${name}!\`
+            </span>
+            ;
+          </div>
+        </div>
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="3"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutter x3nfvp2 x6s0dn4 x13a6bvl xvm51jw x2lah0s x1ozfwlo x87ps6o x18r499t xboafo0 x1hr2gdg"
+            data-slot="code-block-gutter"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:136"
+          >
+            3
+          </div>
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+            }
+          </div>
+        </div>
+      </pre>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CodeBlock > UI > should match snapshot when line numbers are hidden 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli code-block__styles.root x78zum5 xdt5ytf xh8yej3 xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x9f619 x4w1nh8"
+    data-collapsible="false"
+    data-expanded="false"
+    data-language="typescript"
+    data-slot="code-block"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    data-wrapped="false"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli code-block__styles.content x1n2onr6 xh8yej3 xw2csxc x10wlt62 x9f619 x1yroua3"
+      data-slot="code-block-content"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <pre
+        class="Box__styles.base xeuugli code-block__styles.codeSurface x1ghz6dp x1717udv xh8yej3 x9f619 x1dbl2gt x1dcheo9"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:110"
+      >
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="1"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:164"
+            >
+              function
+            </span>
+             greet(name: string) {
+          </div>
+        </div>
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="2"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+              
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:164"
+            >
+              return
+            </span>
+             
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenString x1spsc8"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:168"
+            >
+              \`Hello, \${name}!\`
+            </span>
+            ;
+          </div>
+        </div>
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="3"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+            }
+          </div>
+        </div>
+      </pre>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CodeBlock > UI > should match snapshot when maxLines is set 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli code-block__styles.root x78zum5 xdt5ytf xh8yej3 xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x9f619 x4w1nh8"
+    data-collapsible="true"
+    data-expanded="false"
+    data-language="typescript"
+    data-slot="code-block"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    data-wrapped="false"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli code-block__styles.content x1n2onr6 xh8yej3 xw2csxc x10wlt62 x9f619 x1yroua3"
+      data-slot="code-block-content"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <pre
+        class="Box__styles.base xeuugli code-block__styles.codeSurface x1ghz6dp x1717udv xh8yej3 x9f619 x1dbl2gt x1dcheo9"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:110"
+      >
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="1"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutter x3nfvp2 x6s0dn4 x13a6bvl xvm51jw x2lah0s x1ozfwlo x87ps6o x18r499t xboafo0 x1hr2gdg"
+            data-slot="code-block-gutter"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:136"
+          >
+            1
+          </div>
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:164"
+            >
+              function
+            </span>
+             greet(name: string) {
+          </div>
+        </div>
+      </pre>
+    </div>
+    <div
+      class="Box__styles.base x9f619 xeuugli code-block__styles.expandBar x78zum5 x6s0dn4 xl56j7k x1yroua3 x178xt8z x13fuv20 x1ffmyml x123ixkk"
+      data-slot="box"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:187"
+    >
+      <button
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
+        data-expanded="false"
+        data-size="sm"
+        data-slot="code-block-expand"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
+        data-variant="ghost"
+        type="button"
+      >
+        <div
+          class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+          data-direction="horizontal"
+          data-gap="1"
+        >
+          <span
+            class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.regular xo1l8bm"
+            data-size="xs"
+            data-slot="typography-text"
+            data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+            data-weight="regular"
+          >
+            Show more lines
+          </span>
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-chevron-down"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m6 9 6 6 6-6"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CodeBlock > UI > should match snapshot with highlighted lines and diff indicators 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli code-block__styles.root x78zum5 xdt5ytf xh8yej3 xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x9f619 x4w1nh8"
+    data-collapsible="false"
+    data-expanded="false"
+    data-language="typescript"
+    data-slot="code-block"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    data-wrapped="false"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli code-block__styles.header x78zum5 x6s0dn4 x1qughib x7ai2fz x1yroua3 xso031l x1q0q8m5 x1j3e3tk x123ixkk x1m5ztt4"
+      data-slot="code-block-header"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <div
+        class="Box__styles.base x9f619 xeuugli code-block__styles.title x78zum5 x6s0dn4 x1m5ztt4 xk50ysn x1dcheo9 x8sa6tb"
+        data-slot="code-block-title"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.medium xk50ysn"
+          data-size="sm"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          greet.ts
+        </span>
+      </div>
+    </div>
+    <div
+      class="Box__styles.base x9f619 xeuugli code-block__styles.content x1n2onr6 xh8yej3 xw2csxc x10wlt62 x9f619 x1yroua3"
+      data-slot="code-block-content"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <pre
+        class="Box__styles.base xeuugli code-block__styles.codeSurface x1ghz6dp x1717udv xh8yej3 x9f619 x1dbl2gt x1dcheo9"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:110"
+      >
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk code-block__styles.lineHighlighted xf8tm2s"
+          data-highlighted="true"
+          data-line-number="1"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118; @vlrc-fe/components:src/ui/code-block.tsx:127"
+        >
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutter x3nfvp2 x6s0dn4 x13a6bvl xvm51jw x2lah0s x1ozfwlo x87ps6o x18r499t xboafo0 x1hr2gdg"
+            data-slot="code-block-gutter"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:136"
+          >
+            1
+          </div>
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutterDiffSign xcdlrvm x2lah0s x1xlr1w8 x87ps6o"
+            data-slot="code-block-diff-sign"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:148"
+          >
+             
+          </div>
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:164"
+            >
+              function
+            </span>
+             greet(name: string) {
+          </div>
+        </div>
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk code-block__styles.lineAdded x1uvrfq6"
+          data-diff="added"
+          data-line-number="2"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118; @vlrc-fe/components:src/ui/code-block.tsx:130"
+        >
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutter x3nfvp2 x6s0dn4 x13a6bvl xvm51jw x2lah0s x1ozfwlo x87ps6o x18r499t xboafo0 x1hr2gdg"
+            data-slot="code-block-gutter"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:136"
+          >
+            2
+          </div>
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutterDiffSign xcdlrvm x2lah0s x1xlr1w8 x87ps6o code-block__styles.gutterDiffAdded x1spsc8"
+            data-slot="code-block-diff-sign"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:148; @vlrc-fe/components:src/ui/code-block.tsx:154"
+          >
+            +
+          </div>
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+              
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:164"
+            >
+              return
+            </span>
+             
+            <span
+              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenString x1spsc8"
+              data-slot="box"
+              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:168"
+            >
+              \`Hello, \${name}!\`
+            </span>
+            ;
+          </div>
+        </div>
+        <div
+          class="Box__styles.base xeuugli code-block__styles.line x78zum5 x1cy8zhl xh8yej3 x7ai2fz x9f619 x15406qy xx6bhzk"
+          data-line-number="3"
+          data-slot="code-block-line"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:118"
+        >
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutter x3nfvp2 x6s0dn4 x13a6bvl xvm51jw x2lah0s x1ozfwlo x87ps6o x18r499t xboafo0 x1hr2gdg"
+            data-slot="code-block-gutter"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:136"
+          >
+            3
+          </div>
+          <div
+            aria-hidden="true"
+            class="Box__styles.base x9f619 xeuugli code-block__styles.gutterDiffSign xcdlrvm x2lah0s x1xlr1w8 x87ps6o"
+            data-slot="code-block-diff-sign"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:148"
+          >
+             
+          </div>
+          <div
+            class="Box__styles.base x9f619 code-block__styles.lineContent x12lumcd xeuugli"
+            data-slot="code-block-line-content"
+            data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/code-block.tsx:160"
+          >
+            }
+          </div>
+        </div>
+      </pre>
+    </div>
+  </div>
+</DocumentFragment>
+`;

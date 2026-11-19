@@ -1,0 +1,395 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SignaturePad > UI > should match snapshot in default empty state 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli signature-pad__styles.root x78zum5 xdt5ytf x1n2onr6 xh8yej3 x9f619 x1m5ztt4"
+    data-empty="true"
+    data-slot="signature-pad"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
+      data-slot="signature-pad-area"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      tabindex="0"
+    >
+      <canvas
+        class="signature-pad__styles.canvas x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1lliihq x5ve5x3"
+        data-slot="signature-pad-canvas"
+        data-style-src="@vlrc-fe/components:src/ui/signature-pad.tsx:107"
+        height="200"
+        width="400"
+      />
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli signature-pad__styles.guide x10l6tqk x1xbu8f8 xcejyfz xss27dn xjm9jq1 xso031l xpvcztv xqhcqz8 x47corl x78zum5 x6s0dn4"
+        data-slot="signature-pad-guide"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <div
+          class="Box__styles.base x9f619 xeuugli signature-pad__styles.guideSign x10l6tqk xu96u03 xa17w4h x47corl"
+          data-slot="signature-pad-guide-sign"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/signature-pad.tsx:129"
+        >
+          <span
+            class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+            data-size="xs"
+            data-slot="typography-text"
+            data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+            data-type="secondary"
+            data-weight="regular"
+          >
+            ✕
+          </span>
+        </div>
+      </div>
+      <div
+        class="Box__styles.base x9f619 xeuugli signature-pad__styles.placeholder x10l6tqk xwa60dl x1nrll8i x11lhmoz x47corl x87ps6o"
+        data-slot="signature-pad-placeholder"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <span
+          class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+          data-size="sm"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+          data-type="secondary"
+          data-weight="regular"
+        >
+          Please draw your signature
+        </span>
+      </div>
+    </div>
+    <div
+      class="astryx-stack x78zum5 x1q0g3np signature-pad__styles.controls x78zum5 x6s0dn4 x13a6bvl x1m5ztt4"
+      data-direction="horizontal"
+      data-slot="signature-pad-controls"
+    >
+      <button
+        aria-label="Undo stroke"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
+        data-size="sm"
+        data-slot="signature-pad-undo"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
+        data-variant="ghost"
+        disabled=""
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-undo2 lucide-undo-2"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 14 4 9l5-5"
+          />
+          <path
+            d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="Redo stroke"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
+        data-size="sm"
+        data-slot="signature-pad-redo"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
+        data-variant="ghost"
+        disabled=""
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-redo2 lucide-redo-2"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m15 14 5-5-5-5"
+          />
+          <path
+            d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="Clear signature"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
+        data-size="sm"
+        data-slot="signature-pad-clear"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
+        data-variant="ghost"
+        disabled=""
+        type="button"
+      >
+        <div
+          class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+          data-direction="horizontal"
+          data-gap="1"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-rotate-ccw"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+            />
+            <path
+              d="M3 3v5h5"
+            />
+          </svg>
+          <span
+            class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.regular xo1l8bm"
+            data-size="xs"
+            data-slot="typography-text"
+            data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+            data-weight="regular"
+          >
+            Clear
+          </span>
+        </div>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SignaturePad > UI > should match snapshot when disabled 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli signature-pad__styles.root x78zum5 xdt5ytf x1n2onr6 xh8yej3 x9f619 x1m5ztt4 signature-pad__styles.rootDisabled xbyyjgo x47corl"
+    data-disabled="true"
+    data-empty="true"
+    data-slot="signature-pad"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
+      data-slot="signature-pad-area"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      tabindex="-1"
+    >
+      <canvas
+        class="signature-pad__styles.canvas x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1lliihq x5ve5x3"
+        data-slot="signature-pad-canvas"
+        data-style-src="@vlrc-fe/components:src/ui/signature-pad.tsx:107"
+        height="200"
+        width="400"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SignaturePad > UI > should match snapshot when readOnly 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli signature-pad__styles.root x78zum5 xdt5ytf x1n2onr6 xh8yej3 x9f619 x1m5ztt4"
+    data-empty="false"
+    data-readonly="true"
+    data-slot="signature-pad"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
+      data-slot="signature-pad-area"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      tabindex="0"
+    >
+      <canvas
+        class="signature-pad__styles.canvas x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1lliihq x5ve5x3"
+        data-slot="signature-pad-canvas"
+        data-style-src="@vlrc-fe/components:src/ui/signature-pad.tsx:107"
+        height="200"
+        width="400"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SignaturePad > UI > should match snapshot with defaultValue strokes present 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli signature-pad__styles.root x78zum5 xdt5ytf x1n2onr6 xh8yej3 x9f619 x1m5ztt4"
+    data-empty="false"
+    data-slot="signature-pad"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
+      data-slot="signature-pad-area"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      tabindex="0"
+    >
+      <canvas
+        class="signature-pad__styles.canvas x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1lliihq x5ve5x3"
+        data-slot="signature-pad-canvas"
+        data-style-src="@vlrc-fe/components:src/ui/signature-pad.tsx:107"
+        height="200"
+        width="400"
+      />
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli signature-pad__styles.guide x10l6tqk x1xbu8f8 xcejyfz xss27dn xjm9jq1 xso031l xpvcztv xqhcqz8 x47corl x78zum5 x6s0dn4"
+        data-slot="signature-pad-guide"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <div
+          class="Box__styles.base x9f619 xeuugli signature-pad__styles.guideSign x10l6tqk xu96u03 xa17w4h x47corl"
+          data-slot="signature-pad-guide-sign"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/signature-pad.tsx:129"
+        >
+          <span
+            class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+            data-size="xs"
+            data-slot="typography-text"
+            data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+            data-type="secondary"
+            data-weight="regular"
+          >
+            ✕
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="astryx-stack x78zum5 x1q0g3np signature-pad__styles.controls x78zum5 x6s0dn4 x13a6bvl x1m5ztt4"
+      data-direction="horizontal"
+      data-slot="signature-pad-controls"
+    >
+      <button
+        aria-label="Undo stroke"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
+        data-size="sm"
+        data-slot="signature-pad-undo"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
+        data-variant="ghost"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-undo2 lucide-undo-2"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 14 4 9l5-5"
+          />
+          <path
+            d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="Redo stroke"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
+        data-size="sm"
+        data-slot="signature-pad-redo"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
+        data-variant="ghost"
+        disabled=""
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-redo2 lucide-redo-2"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m15 14 5-5-5-5"
+          />
+          <path
+            d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="Clear signature"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
+        data-size="sm"
+        data-slot="signature-pad-clear"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168"
+        data-variant="ghost"
+        type="button"
+      >
+        <div
+          class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+          data-direction="horizontal"
+          data-gap="1"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-rotate-ccw"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+            />
+            <path
+              d="M3 3v5h5"
+            />
+          </svg>
+          <span
+            class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.regular xo1l8bm"
+            data-size="xs"
+            data-slot="typography-text"
+            data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+            data-weight="regular"
+          >
+            Clear
+          </span>
+        </div>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

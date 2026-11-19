@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import type { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
@@ -358,7 +358,7 @@ const defaultIconSizeForButton: Record<string, ComponentSize> = {
   'icon-xxl': 'xxl',
 };
 
-export interface ButtonProps extends Omit<React.ComponentProps<'button'>, 'prefix'> {
+export interface ButtonProps extends Omit<ComponentProps<'button'>, 'prefix'> {
   variant?: ButtonVariant;
   /** Size tier across 7-tier scale ('xxs' to 'xxl') or icon sizing */
   size?: ButtonSize;

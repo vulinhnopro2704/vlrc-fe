@@ -1,5 +1,15 @@
-import * as React from 'react';
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import { type ComponentProps } from 'react';
+import {
+  Action as AlertDialogPrimitiveAction,
+  Cancel as AlertDialogPrimitiveCancel,
+  Content as AlertDialogPrimitiveContent,
+  Description as AlertDialogPrimitiveDescription,
+  Overlay as AlertDialogPrimitiveOverlay,
+  Portal as AlertDialogPrimitivePortal,
+  Root as AlertDialogPrimitiveRoot,
+  Title as AlertDialogPrimitiveTitle,
+  Trigger as AlertDialogPrimitiveTrigger,
+} from '@radix-ui/react-alert-dialog';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
@@ -71,20 +81,20 @@ const styles = stylex.create({
   },
 });
 
-function AlertDialog(props: React.ComponentProps<typeof AlertDialogPrimitive.Root>) {
-  return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} />;
+function AlertDialog(props: ComponentProps<typeof AlertDialogPrimitiveRoot>) {
+  return <AlertDialogPrimitiveRoot data-slot="alert-dialog" {...props} />;
 }
 
-function AlertDialogTrigger(props: React.ComponentProps<typeof AlertDialogPrimitive.Trigger>) {
-  return <AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />;
+function AlertDialogTrigger(props: ComponentProps<typeof AlertDialogPrimitiveTrigger>) {
+  return <AlertDialogPrimitiveTrigger data-slot="alert-dialog-trigger" {...props} />;
 }
 
-function AlertDialogPortal(props: React.ComponentProps<typeof AlertDialogPrimitive.Portal>) {
-  return <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />;
+function AlertDialogPortal(props: ComponentProps<typeof AlertDialogPrimitivePortal>) {
+  return <AlertDialogPrimitivePortal data-slot="alert-dialog-portal" {...props} />;
 }
 
-export interface AlertDialogOverlayProps extends React.ComponentProps<
-  typeof AlertDialogPrimitive.Overlay
+export interface AlertDialogOverlayProps extends ComponentProps<
+  typeof AlertDialogPrimitiveOverlay
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -93,7 +103,7 @@ function AlertDialogOverlay({ className, sx, style, ...props }: AlertDialogOverl
   const zIndex = useZIndex('overlay');
   const sxProps = stylex.props(styles.overlay, sx);
   return (
-    <AlertDialogPrimitive.Overlay
+    <AlertDialogPrimitiveOverlay
       data-slot="alert-dialog-overlay"
       {...sxProps}
       style={{ zIndex, ...sxProps.style, ...style }}
@@ -103,8 +113,8 @@ function AlertDialogOverlay({ className, sx, style, ...props }: AlertDialogOverl
   );
 }
 
-export interface AlertDialogContentProps extends React.ComponentProps<
-  typeof AlertDialogPrimitive.Content
+export interface AlertDialogContentProps extends ComponentProps<
+  typeof AlertDialogPrimitiveContent
 > {
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
@@ -123,7 +133,7 @@ function AlertDialogContent({
   return (
     <AlertDialogPortal container={container}>
       <AlertDialogOverlay style={{ zIndex: baseZIndex }} />
-      <AlertDialogPrimitive.Content
+      <AlertDialogPrimitiveContent
         data-slot="alert-dialog-content"
         {...sxProps}
         style={{ zIndex: baseZIndex + 1, ...sxProps.style, ...style }}
@@ -131,7 +141,7 @@ function AlertDialogContent({
         {...props}
       >
         <ZIndexProvider value={baseZIndex + 10}>{children}</ZIndexProvider>
-      </AlertDialogPrimitive.Content>
+      </AlertDialogPrimitiveContent>
     </AlertDialogPortal>
   );
 }
@@ -140,7 +150,7 @@ function AlertDialogHeader({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <div
@@ -156,7 +166,7 @@ function AlertDialogFooter({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <div
@@ -172,10 +182,10 @@ function AlertDialogTitle({
   className,
   sx,
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Title> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<typeof AlertDialogPrimitiveTitle> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.title, sx);
   return (
-    <AlertDialogPrimitive.Title
+    <AlertDialogPrimitiveTitle
       data-slot="alert-dialog-title"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -188,10 +198,10 @@ function AlertDialogDescription({
   className,
   sx,
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Description> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<typeof AlertDialogPrimitiveDescription> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.description, sx);
   return (
-    <AlertDialogPrimitive.Description
+    <AlertDialogPrimitiveDescription
       data-slot="alert-dialog-description"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -203,10 +213,10 @@ function AlertDialogDescription({
 function AlertDialogAction({
   className,
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Action>) {
+}: ComponentProps<typeof AlertDialogPrimitiveAction>) {
   const btnClass = buttonVariants({ variant: 'default' });
   return (
-    <AlertDialogPrimitive.Action
+    <AlertDialogPrimitiveAction
       className={className ? `${btnClass} ${className}`.trim() : btnClass}
       {...props}
     />
@@ -216,10 +226,10 @@ function AlertDialogAction({
 function AlertDialogCancel({
   className,
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Cancel>) {
+}: ComponentProps<typeof AlertDialogPrimitiveCancel>) {
   const btnClass = buttonVariants({ variant: 'outline' });
   return (
-    <AlertDialogPrimitive.Cancel
+    <AlertDialogPrimitiveCancel
       className={className ? `${btnClass} ${className}`.trim() : btnClass}
       {...props}
     />

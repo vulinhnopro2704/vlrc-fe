@@ -5,7 +5,7 @@ exports[`Label > UI > should match snapshot in default state 1`] = `
   <label
     class="label__styles.base x3nfvp2 x6s0dn4 x1enigpx xkpwil5 xo5v014 xk50ysn x87ps6o x84br7x xaqnwrm xijokvz"
     data-slot="label"
-    data-style-src="@vlrc-fe/components:src/ui/label.tsx:7"
+    data-style-src="@vlrc-fe/components:src/ui/label.tsx:9"
     for="email-input"
   >
     Email Address
@@ -18,7 +18,7 @@ exports[`Label > UI > should match snapshot with custom className 1`] = `
   <label
     class="label__styles.base x3nfvp2 x6s0dn4 x1enigpx xkpwil5 xo5v014 xk50ysn x87ps6o x84br7x xaqnwrm xijokvz custom-label-class"
     data-slot="label"
-    data-style-src="@vlrc-fe/components:src/ui/label.tsx:7"
+    data-style-src="@vlrc-fe/components:src/ui/label.tsx:9"
     for="email-input"
   >
     Email Address

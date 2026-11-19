@@ -1,0 +1,1844 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
+    data-readonly="false"
+    data-slot="notion-editor"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base xeuugli ToolbarPlugin__styles.toolbar x78zum5 x6s0dn4 x1a02dak x1pe288y xbgekeq x39wta3 xso031l x1q0q8m5 xwvem2w xtrtlso x1ewf0uv xjfy4b8 x9f619 xnl6qn8 vlrc-editor-toolbar"
+      data-slot="editor-toolbar"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:128"
+    >
+      <div
+        class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+        data-direction="horizontal"
+        data-gap="1"
+      >
+        <button
+          aria-label="Undo"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          disabled=""
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-undo-2"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 14 4 9l5-5"
+            />
+            <path
+              d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Redo"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          disabled=""
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-redo-2"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m15 14 5-5-5-5"
+            />
+            <path
+              d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_0_"
+        type="button"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Normal
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_2_"
+        type="button"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Arial
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.fontSizeBox x78zum5 x6s0dn4 x195vfkc"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:161"
+      >
+        <button
+          aria-label="Decrease font size"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-minus"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12h14"
+            />
+          </svg>
+        </button>
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+          style="min-width: 20px; text-align: center;"
+        >
+          15
+        </span>
+        <button
+          aria-label="Increase font size"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-plus"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12h14"
+            />
+            <path
+              d="M12 5v14"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <div
+        class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+        data-direction="horizontal"
+        data-gap="1"
+      >
+        <button
+          aria-label="Bold"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-letter-b lucide-bold"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 12h9a4 4 0 010 8H7a1 1 0 01-1-1V5a1 1 0 011-1h7a4 4 0 010 8"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Italic"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-italic"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="19"
+              x2="10"
+              y1="4"
+              y2="4"
+            />
+            <line
+              x1="14"
+              x2="5"
+              y1="20"
+              y2="20"
+            />
+            <line
+              x1="15"
+              x2="9"
+              y1="4"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Underline"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-underline"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 4v6a6 6 0 0 0 12 0V4"
+            />
+            <line
+              x1="4"
+              x2="20"
+              y1="20"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Inline Code"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-code"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m16 18 6-6-6-6"
+            />
+            <path
+              d="m8 6-6 6 6 6"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Insert link"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-link"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+            />
+            <path
+              d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        aria-label="Text color"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+        data-size="icon-xs"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+        data-variant="ghost"
+        id="radix-_r_4_"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-baseline"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 20h16"
+          />
+          <path
+            d="m6 16 6-12 6 12"
+          />
+          <path
+            d="M8 12h8"
+          />
+        </svg>
+      </button>
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        aria-label="Background color"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+        data-size="icon-xs"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+        data-variant="ghost"
+        id="radix-_r_6_"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-paint-bucket"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11 7 6 2"
+          />
+          <path
+            d="M18.992 12H2.041"
+          />
+          <path
+            d="M21.145 18.38A3.34 3.34 0 0 1 20 16.5a3.3 3.3 0 0 1-1.145 1.88c-.575.46-.855 1.02-.855 1.595A2 2 0 0 0 20 22a2 2 0 0 0 2-2.025c0-.58-.285-1.13-.855-1.595"
+          />
+          <path
+            d="m8.5 4.5 2.148-2.148a1.205 1.205 0 0 1 1.704 0l7.296 7.296a1.205 1.205 0 0 1 0 1.704l-7.592 7.592a3.615 3.615 0 0 1-5.112 0l-3.888-3.888a3.615 3.615 0 0 1 0-5.112L5.67 7.33"
+          />
+        </svg>
+      </button>
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        aria-label="More text options"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_8_"
+        type="button"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Aa
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_a_"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-plus"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 12h14"
+          />
+          <path
+            d="M12 5v14"
+          />
+        </svg>
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Insert
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <div
+        class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+        data-direction="horizontal"
+        data-gap="1"
+      >
+        <button
+          aria-label="Align left"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-start lucide-text lucide-align-left"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H3"
+            />
+            <path
+              d="M15 12H3"
+            />
+            <path
+              d="M17 19H3"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Align center"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-center lucide-align-center"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H3"
+            />
+            <path
+              d="M17 12H7"
+            />
+            <path
+              d="M19 19H5"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Align right"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-end lucide-align-right"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H3"
+            />
+            <path
+              d="M21 12H9"
+            />
+            <path
+              d="M21 19H7"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Align justify"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-justify lucide-align-justify"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 5h18"
+            />
+            <path
+              d="M3 12h18"
+            />
+            <path
+              d="M3 19h18"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Outdent"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-list-indent-decrease lucide-outdent lucide-indent-decrease"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H11"
+            />
+            <path
+              d="M21 12H11"
+            />
+            <path
+              d="M21 19H11"
+            />
+            <path
+              d="m7 8-4 4 4 4"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Indent"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-list-indent-increase lucide-indent lucide-indent-increase"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H11"
+            />
+            <path
+              d="M21 12H11"
+            />
+            <path
+              d="M21 19H11"
+            />
+            <path
+              d="m3 8 4 4-4 4"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div
+      class="Box__styles.base x9f619 xeuugli"
+      data-slot="box"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      style="position: relative; width: 100%; flex: 1 1 0%;"
+    >
+      <div
+        aria-placeholder="Write your thoughts here..."
+        class="vlrc-editor-content editorTheme__editorStyles.contentEditable xz65tgg x1urbrih x1a2a7pz x9f619 x6u19be x11m8ghp xhlu91t"
+        contenteditable="true"
+        data-lexical-editor="true"
+        data-slot="editor-content"
+        role="textbox"
+        spellcheck="true"
+        style="user-select: text; white-space: pre-wrap; word-break: break-word;"
+      >
+        <p
+          class="lexical-paragraph"
+          dir="auto"
+        >
+          <br
+            data-lexical-managed-linebreak="true"
+          />
+        </p>
+      </div>
+      <div
+        aria-hidden="true"
+      >
+        <div
+          aria-hidden="true"
+          class="Box__styles.base x9f619 xeuugli editorTheme__editorStyles.placeholder x10l6tqk xrn8dig xp3tpw0 x47corl xf3olrv x6u19be x11m8ghp x87ps6o vlrc-editor-placeholder"
+          data-slot="box"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
+        >
+          Write your thoughts here...
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`NotionEditor > UI > should match snapshot when readOnly 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
+    data-readonly="true"
+    data-slot="notion-editor"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli"
+      data-slot="box"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      style="position: relative; width: 100%; flex: 1 1 0%;"
+    >
+      <div
+        aria-autocomplete="none"
+        aria-placeholder="Write your thoughts here..."
+        aria-readonly="true"
+        class="vlrc-editor-content editorTheme__editorStyles.contentEditable xz65tgg x1urbrih x1a2a7pz x9f619 x6u19be x11m8ghp xhlu91t"
+        contenteditable="false"
+        data-lexical-editor="true"
+        data-slot="editor-content"
+        role="textbox"
+        spellcheck="true"
+        style="user-select: text; white-space: pre-wrap; word-break: break-word;"
+        tabindex="-1"
+      >
+        <p
+          class="lexical-paragraph"
+          dir="auto"
+        >
+          <br
+            data-lexical-managed-linebreak="true"
+          />
+        </p>
+      </div>
+      <div
+        aria-hidden="true"
+      >
+        <div
+          aria-hidden="true"
+          class="Box__styles.base x9f619 xeuugli editorTheme__editorStyles.placeholder x10l6tqk xrn8dig xp3tpw0 x47corl xf3olrv x6u19be x11m8ghp x87ps6o vlrc-editor-placeholder"
+          data-slot="box"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
+        >
+          Write your thoughts here...
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`NotionEditor > UI > should match snapshot with initial markdown content 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
+    data-readonly="false"
+    data-slot="notion-editor"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base xeuugli ToolbarPlugin__styles.toolbar x78zum5 x6s0dn4 x1a02dak x1pe288y xbgekeq x39wta3 xso031l x1q0q8m5 xwvem2w xtrtlso x1ewf0uv xjfy4b8 x9f619 xnl6qn8 vlrc-editor-toolbar"
+      data-slot="editor-toolbar"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:128"
+    >
+      <div
+        class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+        data-direction="horizontal"
+        data-gap="1"
+      >
+        <button
+          aria-label="Undo"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          disabled=""
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-undo-2"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 14 4 9l5-5"
+            />
+            <path
+              d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Redo"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          disabled=""
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-redo-2"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m15 14 5-5-5-5"
+            />
+            <path
+              d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_f_"
+        type="button"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Normal
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_h_"
+        type="button"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Arial
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.fontSizeBox x78zum5 x6s0dn4 x195vfkc"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:161"
+      >
+        <button
+          aria-label="Decrease font size"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-minus"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12h14"
+            />
+          </svg>
+        </button>
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+          style="min-width: 20px; text-align: center;"
+        >
+          15
+        </span>
+        <button
+          aria-label="Increase font size"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-plus"
+            fill="none"
+            height="12"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12h14"
+            />
+            <path
+              d="M12 5v14"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <div
+        class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+        data-direction="horizontal"
+        data-gap="1"
+      >
+        <button
+          aria-label="Bold"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-letter-b lucide-bold"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 12h9a4 4 0 010 8H7a1 1 0 01-1-1V5a1 1 0 011-1h7a4 4 0 010 8"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Italic"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-italic"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="19"
+              x2="10"
+              y1="4"
+              y2="4"
+            />
+            <line
+              x1="14"
+              x2="5"
+              y1="20"
+              y2="20"
+            />
+            <line
+              x1="15"
+              x2="9"
+              y1="4"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Underline"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-underline"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 4v6a6 6 0 0 0 12 0V4"
+            />
+            <line
+              x1="4"
+              x2="20"
+              y1="20"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Inline Code"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-code"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m16 18 6-6-6-6"
+            />
+            <path
+              d="m8 6-6 6 6 6"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Insert link"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-active="false"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-link"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+            />
+            <path
+              d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        aria-label="Text color"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+        data-size="icon-xs"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+        data-variant="ghost"
+        id="radix-_r_j_"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-baseline"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 20h16"
+          />
+          <path
+            d="m6 16 6-12 6 12"
+          />
+          <path
+            d="M8 12h8"
+          />
+        </svg>
+      </button>
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        aria-label="Background color"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+        data-size="icon-xs"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+        data-variant="ghost"
+        id="radix-_r_l_"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-paint-bucket"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11 7 6 2"
+          />
+          <path
+            d="M18.992 12H2.041"
+          />
+          <path
+            d="M21.145 18.38A3.34 3.34 0 0 1 20 16.5a3.3 3.3 0 0 1-1.145 1.88c-.575.46-.855 1.02-.855 1.595A2 2 0 0 0 20 22a2 2 0 0 0 2-2.025c0-.58-.285-1.13-.855-1.595"
+          />
+          <path
+            d="m8.5 4.5 2.148-2.148a1.205 1.205 0 0 1 1.704 0l7.296 7.296a1.205 1.205 0 0 1 0 1.704l-7.592 7.592a3.615 3.615 0 0 1-5.112 0l-3.888-3.888a3.615 3.615 0 0 1 0-5.112L5.67 7.33"
+          />
+        </svg>
+      </button>
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        aria-label="More text options"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_n_"
+        type="button"
+      >
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Aa
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <button
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xrijj7p ToolbarPlugin__styles.dropdownTrigger x1fgtraw xdqyycr x1jnr06f x1dcheo9 xk50ysn"
+        data-size="sm"
+        data-slot="dropdown-menu-trigger"
+        data-state="closed"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:154"
+        data-variant="ghost"
+        id="radix-_r_p_"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-plus"
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 12h14"
+          />
+          <path
+            d="M12 5v14"
+          />
+        </svg>
+        <span
+          class="Text__styles.base x1heor9g Text__styles.sizeXs x2ohwh0 x37zpob weightStyles__styles.medium xk50ysn"
+          data-size="xs"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+          data-weight="medium"
+        >
+          Insert
+        </span>
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-chevron-down"
+          fill="none"
+          height="12"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6 9 6 6 6-6"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:144"
+      />
+      <div
+        class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+        data-direction="horizontal"
+        data-gap="1"
+      >
+        <button
+          aria-label="Align left"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-start lucide-text lucide-align-left"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H3"
+            />
+            <path
+              d="M15 12H3"
+            />
+            <path
+              d="M17 19H3"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Align center"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-center lucide-align-center"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H3"
+            />
+            <path
+              d="M17 12H7"
+            />
+            <path
+              d="M19 19H5"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Align right"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-end lucide-align-right"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H3"
+            />
+            <path
+              d="M21 12H9"
+            />
+            <path
+              d="M21 19H7"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Align justify"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-text-align-justify lucide-align-justify"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 5h18"
+            />
+            <path
+              d="M3 12h18"
+            />
+            <path
+              d="M3 19h18"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Outdent"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-list-indent-decrease lucide-outdent lucide-indent-decrease"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H11"
+            />
+            <path
+              d="M21 12H11"
+            />
+            <path
+              d="M21 19H11"
+            />
+            <path
+              d="m7 8-4 4 4 4"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Indent"
+          class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k x13z6uf9 xuxw1ft xkpwil5 xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeIconXs xb8l8e1 xh29eag x1717udv xqfady0 vlrc-editor-toolbar-btn"
+          data-size="icon-xs"
+          data-slot="button"
+          data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:211"
+          data-variant="ghost"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-list-indent-increase lucide-indent lucide-indent-increase"
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 5H11"
+            />
+            <path
+              d="M21 12H11"
+            />
+            <path
+              d="M21 19H11"
+            />
+            <path
+              d="m3 8 4 4-4 4"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div
+      class="Box__styles.base x9f619 xeuugli"
+      data-slot="box"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      style="position: relative; width: 100%; flex: 1 1 0%;"
+    >
+      <div
+        aria-placeholder="Write your thoughts here..."
+        class="vlrc-editor-content editorTheme__editorStyles.contentEditable xz65tgg x1urbrih x1a2a7pz x9f619 x6u19be x11m8ghp xhlu91t"
+        contenteditable="true"
+        data-lexical-editor="true"
+        data-slot="editor-content"
+        role="textbox"
+        spellcheck="true"
+        style="user-select: text; white-space: pre-wrap; word-break: break-word;"
+      >
+        <h1
+          class="lexical-heading-h1"
+          dir="auto"
+        >
+          <span
+            data-lexical-text="true"
+          >
+            Hello VLRC
+          </span>
+        </h1>
+        <p
+          class="lexical-paragraph"
+          dir="auto"
+        >
+          <span
+            data-lexical-text="true"
+          >
+            This is a Notion-like editor.
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`NotionEditor > UI > should match snapshot without toolbar 1`] = `
+<DocumentFragment>
+  <div
+    class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
+    data-readonly="false"
+    data-slot="notion-editor"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      class="Box__styles.base x9f619 xeuugli"
+      data-slot="box"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      style="position: relative; width: 100%; flex: 1 1 0%;"
+    >
+      <div
+        aria-placeholder="Write your thoughts here..."
+        class="vlrc-editor-content editorTheme__editorStyles.contentEditable xz65tgg x1urbrih x1a2a7pz x9f619 x6u19be x11m8ghp xhlu91t"
+        contenteditable="true"
+        data-lexical-editor="true"
+        data-slot="editor-content"
+        role="textbox"
+        spellcheck="true"
+        style="user-select: text; white-space: pre-wrap; word-break: break-word;"
+      >
+        <p
+          class="lexical-paragraph"
+          dir="auto"
+        >
+          <br
+            data-lexical-managed-linebreak="true"
+          />
+        </p>
+      </div>
+      <div
+        aria-hidden="true"
+      >
+        <div
+          aria-hidden="true"
+          class="Box__styles.base x9f619 xeuugli editorTheme__editorStyles.placeholder x10l6tqk xrn8dig xp3tpw0 x47corl xf3olrv x6u19be x11m8ghp x87ps6o vlrc-editor-placeholder"
+          data-slot="box"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
+        >
+          Write your thoughts here...
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

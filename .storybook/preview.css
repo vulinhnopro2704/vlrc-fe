@@ -1,4 +1,5 @@
 @import '../packages/components/src/theme/theme.css';
+@import '../packages/editor/src/theme/editor.css';
 
 *,
 *::before,

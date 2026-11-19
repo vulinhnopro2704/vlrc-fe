@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 
@@ -107,7 +107,7 @@ const styles = stylex.create({
   },
 });
 
-export interface ItemGroupProps extends React.ComponentProps<'div'> {
+export interface ItemGroupProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -124,7 +124,7 @@ function ItemGroup({ className, sx, ...props }: ItemGroupProps) {
   );
 }
 
-function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Separator>) {
+function ItemSeparator({ className, ...props }: ComponentProps<typeof Separator>) {
   return (
     <Separator
       data-slot="item-separator"
@@ -138,7 +138,7 @@ function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Sepa
 export type ItemVariant = 'default' | 'outline' | 'muted';
 export type ItemSize = 'default' | 'sm';
 
-export interface ItemProps extends React.ComponentProps<'div'> {
+export interface ItemProps extends ComponentProps<'div'> {
   variant?: ItemVariant;
   size?: ItemSize;
   asChild?: boolean;
@@ -177,7 +177,7 @@ function Item({
 
 export type ItemMediaVariant = 'default' | 'icon' | 'image';
 
-export interface ItemMediaProps extends React.ComponentProps<'div'> {
+export interface ItemMediaProps extends ComponentProps<'div'> {
   variant?: ItemMediaVariant;
   sx?: stylex.StyleXStyles;
 }
@@ -198,7 +198,7 @@ function ItemMedia({ className, variant = 'default', sx, ...props }: ItemMediaPr
   );
 }
 
-export interface ItemContentProps extends React.ComponentProps<'div'> {
+export interface ItemContentProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -214,7 +214,7 @@ function ItemContent({ className, sx, ...props }: ItemContentProps) {
   );
 }
 
-export interface ItemTitleProps extends React.ComponentProps<'div'> {
+export interface ItemTitleProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -232,7 +232,7 @@ function ItemTitle({ className, sx, ...props }: ItemTitleProps) {
   );
 }
 
-export interface ItemDescriptionProps extends React.ComponentProps<'p'> {
+export interface ItemDescriptionProps extends ComponentProps<'p'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -251,7 +251,7 @@ function ItemDescription({ className, sx, ...props }: ItemDescriptionProps) {
   );
 }
 
-export interface ItemActionsProps extends React.ComponentProps<'div'> {
+export interface ItemActionsProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -267,7 +267,7 @@ function ItemActions({ className, sx, ...props }: ItemActionsProps) {
   );
 }
 
-export interface ItemHeaderProps extends React.ComponentProps<'div'> {
+export interface ItemHeaderProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -283,7 +283,7 @@ function ItemHeader({ className, sx, ...props }: ItemHeaderProps) {
   );
 }
 
-export interface ItemFooterProps extends React.ComponentProps<'div'> {
+export interface ItemFooterProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 

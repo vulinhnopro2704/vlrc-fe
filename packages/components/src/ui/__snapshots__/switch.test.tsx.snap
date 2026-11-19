@@ -9,7 +9,7 @@ exports[`Switch > UI > should match snapshot in checked state 1`] = `
     data-size="md"
     data-slot="switch"
     data-state="checked"
-    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:8; @vlrc-fe/components:src/ui/switch.tsx:49; @vlrc-fe/components:src/ui/switch.tsx:32"
+    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:11; @vlrc-fe/components:src/ui/switch.tsx:52; @vlrc-fe/components:src/ui/switch.tsx:35"
     role="switch"
     type="button"
     value="on"
@@ -18,7 +18,7 @@ exports[`Switch > UI > should match snapshot in checked state 1`] = `
       class="switch__styles.thumb x47corl x1lliihq x9psvww x1mlyrtw x15wanwk x11xpdln x13dflua x9f619 switch__styles.thumbMd xaylbqo xsk17dz switch__styles.thumbCheckedMd xce01cc"
       data-slot="switch-thumb"
       data-state="checked"
-      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:66; @vlrc-fe/components:src/ui/switch.tsx:91; @vlrc-fe/components:src/ui/switch.tsx:118"
+      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:69; @vlrc-fe/components:src/ui/switch.tsx:94; @vlrc-fe/components:src/ui/switch.tsx:121"
     />
   </button>
 </DocumentFragment>
@@ -33,7 +33,7 @@ exports[`Switch > UI > should match snapshot in unchecked state 1`] = `
     data-size="md"
     data-slot="switch"
     data-state="unchecked"
-    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:8; @vlrc-fe/components:src/ui/switch.tsx:49"
+    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:11; @vlrc-fe/components:src/ui/switch.tsx:52"
     role="switch"
     type="button"
     value="on"
@@ -42,7 +42,7 @@ exports[`Switch > UI > should match snapshot in unchecked state 1`] = `
       class="switch__styles.thumb x47corl x1lliihq x9psvww x1mlyrtw x15wanwk x11xpdln x13dflua xbryuvx x9f619 switch__styles.thumbMd xaylbqo xsk17dz"
       data-slot="switch-thumb"
       data-state="unchecked"
-      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:66; @vlrc-fe/components:src/ui/switch.tsx:91"
+      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:69; @vlrc-fe/components:src/ui/switch.tsx:94"
     />
   </button>
 </DocumentFragment>
@@ -58,7 +58,7 @@ exports[`Switch > UI > should match snapshot when disabled 1`] = `
     data-size="md"
     data-slot="switch"
     data-state="unchecked"
-    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:8; @vlrc-fe/components:src/ui/switch.tsx:49"
+    data-style-src="@vlrc-fe/components:src/ui/switch.tsx:11; @vlrc-fe/components:src/ui/switch.tsx:52"
     disabled=""
     role="switch"
     type="button"
@@ -69,7 +69,7 @@ exports[`Switch > UI > should match snapshot when disabled 1`] = `
       data-disabled=""
       data-slot="switch-thumb"
       data-state="unchecked"
-      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:66; @vlrc-fe/components:src/ui/switch.tsx:91"
+      data-style-src="@vlrc-fe/components:src/ui/switch.tsx:69; @vlrc-fe/components:src/ui/switch.tsx:94"
     />
   </button>
 </DocumentFragment>

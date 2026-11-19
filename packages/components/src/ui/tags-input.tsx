@@ -1,4 +1,16 @@
-import * as React from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+  type ChangeEvent as ReactChangeEvent,
+  type ComponentProps,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type RefObject,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Text } from '../Typography';
@@ -12,15 +24,15 @@ interface TagsInputContextValue {
   clearAll: () => void;
   disabled: boolean;
   size: TagsInputSize;
-  inputRef: React.RefObject<HTMLInputElement | null>;
+  inputRef: RefObject<HTMLInputElement | null>;
   inputValue: string;
   setInputValue: (val: string) => void;
 }
 
-const TagsInputContext = React.createContext<TagsInputContextValue | null>(null);
+const TagsInputContext = createContext<TagsInputContextValue | null>(null);
 
 function useTagsInputContext(component: string): TagsInputContextValue {
-  const context = React.useContext(TagsInputContext);
+  const context = useContext(TagsInputContext);
   if (!context) {
     throw new Error(`${component} must be used within a TagsInput`);
   }
@@ -167,7 +179,7 @@ const sizeStyles: Record<TagsInputSize, stylex.StyleXStyles> = {
   lg: styles.sizeLg,
 };
 
-export interface TagsInputProps extends Omit<React.ComponentProps<'div'>, 'defaultValue'> {
+export interface TagsInputProps extends Omit<ComponentProps<'div'>, 'defaultValue'> {
   value?: string[];
   defaultValue?: string[];
   onValueChange?: (values: string[]) => void;
@@ -198,13 +210,13 @@ function TagsInput({
   onClick,
   ...props
 }: TagsInputProps) {
-  const [internalValue, setInternalValue] = React.useState<string[]>(defaultValue);
-  const [inputValue, setInputValue] = React.useState<string>('');
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const [internalValue, setInternalValue] = useState<string[]>(defaultValue);
+  const [inputValue, setInputValue] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const tags = controlledValue !== undefined ? controlledValue : internalValue;
 
-  const updateTags = React.useCallback(
+  const updateTags = useCallback(
     (nextTags: string[]) => {
       if (controlledValue === undefined) {
         setInternalValue(nextTags);
@@ -214,7 +226,7 @@ function TagsInput({
     [controlledValue, onValueChange],
   );
 
-  const addTag = React.useCallback(
+  const addTag = useCallback(
     (rawTag: string): boolean => {
       const trimmed = rawTag.trim();
       if (!trimmed) return false;
@@ -229,7 +241,7 @@ function TagsInput({
     [tags, max, allowDuplicates, validateTag, updateTags],
   );
 
-  const removeTag = React.useCallback(
+  const removeTag = useCallback(
     (index: number) => {
       if (disabled) return;
       updateTags(tags.filter((_, i) => i !== index));
@@ -237,20 +249,20 @@ function TagsInput({
     [disabled, tags, updateTags],
   );
 
-  const clearAll = React.useCallback(() => {
+  const clearAll = useCallback(() => {
     if (disabled) return;
     updateTags([]);
     setInputValue('');
   }, [disabled, updateTags]);
 
-  const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleContainerClick = (e: ReactMouseEvent<HTMLDivElement>) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
     if ((e.target as HTMLElement).closest('button')) return;
     inputRef.current?.focus();
   };
 
-  const contextValue = React.useMemo<TagsInputContextValue>(
+  const contextValue = useMemo<TagsInputContextValue>(
     () => ({
       value: tags,
       addTag,
@@ -292,7 +304,7 @@ function TagsInput({
   );
 }
 
-export interface TagsInputItemProps extends React.ComponentProps<'span'> {
+export interface TagsInputItemProps extends ComponentProps<'span'> {
   index: number;
   value: string;
   sx?: stylex.StyleXStyles;
@@ -323,7 +335,7 @@ function TagsInputItem({
   );
 }
 
-export interface TagsInputItemTextProps extends React.ComponentProps<'span'> {
+export interface TagsInputItemTextProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -342,7 +354,7 @@ function TagsInputItemText({ className, sx, children, ...props }: TagsInputItemT
   );
 }
 
-export interface TagsInputItemDeleteProps extends React.ComponentProps<'button'> {
+export interface TagsInputItemDeleteProps extends ComponentProps<'button'> {
   index: number;
   sx?: stylex.StyleXStyles;
 }
@@ -357,7 +369,7 @@ function TagsInputItemDelete({
 }: TagsInputItemDeleteProps) {
   const { removeTag, disabled } = useTagsInputContext('TagsInputItemDelete');
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented || disabled) return;
     e.stopPropagation();
@@ -397,7 +409,7 @@ function TagsInputItemDelete({
   );
 }
 
-export interface TagsInputInputProps extends React.ComponentProps<'input'> {
+export interface TagsInputInputProps extends ComponentProps<'input'> {
   delimiters?: string[];
   sx?: stylex.StyleXStyles;
 }
@@ -420,7 +432,7 @@ function TagsInputInput({
     disabled,
   } = useTagsInputContext('TagsInputInput');
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: ReactKeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(e);
     if (e.defaultPrevented || disabled) return;
 
@@ -433,7 +445,7 @@ function TagsInputInput({
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ReactChangeEvent<HTMLInputElement>) => {
     onChange?.(e);
     if (e.defaultPrevented) return;
     setInputValue(e.target.value);
@@ -457,7 +469,7 @@ function TagsInputInput({
   );
 }
 
-export interface TagsInputClearProps extends React.ComponentProps<'button'> {
+export interface TagsInputClearProps extends ComponentProps<'button'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -466,7 +478,7 @@ function TagsInputClear({ className, onClick, sx, children, ...props }: TagsInpu
 
   if (tags.length === 0) return null;
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented || disabled) return;
     e.stopPropagation();

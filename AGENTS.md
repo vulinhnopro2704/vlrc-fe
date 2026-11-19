@@ -40,7 +40,7 @@ Before generating or modifying component call sites, query component schemas dyn
 - **Zero Dependency Overhead for Consumer Apps**:
   All 30+ UI and headless dependencies (`@radix-ui/*`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `lodash-es`, `lucide-react`, `react-day-picker`, `react-number-format`, `react-resizable-panels`, `sonner`, `vaul`, `ahooks`) are packaged as internal `dependencies` of `@vlrc-fe/components`. Consumer apps do NOT need to install or manage any UI dependencies—they only install `react` and `react-dom` (and optionally `@stylexjs/stylex`).
 - **Subpath Exports**:
-  - `@vlrc-fe/components`: High-level enterprise wrapper components, layout primitives, typography, form base, and data table (372 kB bundle with tree-shaking).
+  - `@vlrc-fe/components`: High-level enterprise wrapper components, layout primitives, typography, form base, and data table (modular, tree-shakeable dist, ≈310 kB gzip; shipped unminified on purpose — keep `build.minify: false`, see `packages/components/README.md`).
   - `@vlrc-fe/components/astryx`: Direct access to 100% of Meta's Astryx primitives (447+ components, layout, and hooks) without bundle overhead.
   - `@vlrc-fe/components/theme`: Design tokens (`colors`, `radius`, `spacing`, `shadow`, `duration`, `easing`).
   - `@vlrc-fe/components/Icons`: Central Lucide icon registry.

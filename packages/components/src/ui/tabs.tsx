@@ -1,5 +1,10 @@
-import * as React from 'react';
-import * as TabsPrimitive from '@radix-ui/react-tabs';
+import { createContext, useContext, type ComponentProps } from 'react';
+import {
+  Content as TabsPrimitiveContent,
+  List as TabsPrimitiveList,
+  Root as TabsPrimitiveRoot,
+  Trigger as TabsPrimitiveTrigger,
+} from '@radix-ui/react-tabs';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -164,9 +169,9 @@ const triggerSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.triggerXxl,
 };
 
-const TabsContext = React.createContext<{ size: ComponentSize }>({ size: 'md' });
+const TabsContext = createContext<{ size: ComponentSize }>({ size: 'md' });
 
-export type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root> & {
+export type TabsProps = ComponentProps<typeof TabsPrimitiveRoot> & {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
@@ -176,7 +181,7 @@ function Tabs({ size = 'md', className, sx, ...props }: TabsProps) {
   const sxProps = stylex.props(styles.root, sx);
   return (
     <TabsContext.Provider value={{ size }}>
-      <TabsPrimitive.Root
+      <TabsPrimitiveRoot
         data-slot="tabs"
         data-size={size}
         {...sxProps}
@@ -187,19 +192,19 @@ function Tabs({ size = 'md', className, sx, ...props }: TabsProps) {
   );
 }
 
-export type TabsListProps = React.ComponentProps<typeof TabsPrimitive.List> & {
+export type TabsListProps = ComponentProps<typeof TabsPrimitiveList> & {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 };
 
 function TabsList({ size: propSize, className, sx, ...props }: TabsListProps) {
-  const context = React.useContext(TabsContext);
+  const context = useContext(TabsContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const sizeStyle = listSizeStyles[resolvedSize] ?? styles.listMd;
   const sxProps = stylex.props(styles.list, sizeStyle, sx);
 
   return (
-    <TabsPrimitive.List
+    <TabsPrimitiveList
       data-slot="tabs-list"
       data-size={resolvedSize}
       {...sxProps}
@@ -209,19 +214,19 @@ function TabsList({ size: propSize, className, sx, ...props }: TabsListProps) {
   );
 }
 
-export type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger> & {
+export type TabsTriggerProps = ComponentProps<typeof TabsPrimitiveTrigger> & {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 };
 
 function TabsTrigger({ size: propSize, className, sx, ...props }: TabsTriggerProps) {
-  const context = React.useContext(TabsContext);
+  const context = useContext(TabsContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const sizeStyle = triggerSizeStyles[resolvedSize] ?? styles.triggerMd;
   const sxProps = stylex.props(styles.trigger, sizeStyle, sx);
 
   return (
-    <TabsPrimitive.Trigger
+    <TabsPrimitiveTrigger
       data-slot="tabs-trigger"
       data-size={resolvedSize}
       {...sxProps}
@@ -231,14 +236,14 @@ function TabsTrigger({ size: propSize, className, sx, ...props }: TabsTriggerPro
   );
 }
 
-export type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content> & {
+export type TabsContentProps = ComponentProps<typeof TabsPrimitiveContent> & {
   sx?: stylex.StyleXStyles;
 };
 
 function TabsContent({ className, sx, ...props }: TabsContentProps) {
   const sxProps = stylex.props(styles.content, sx);
   return (
-    <TabsPrimitive.Content
+    <TabsPrimitiveContent
       data-slot="tabs-content"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

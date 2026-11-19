@@ -1,4 +1,15 @@
-import * as React from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ComponentProps,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type ReactNode,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
@@ -17,10 +28,10 @@ interface StepperContextValue {
   unregisterStep: (key: string) => void;
 }
 
-const StepperContext = React.createContext<StepperContextValue | null>(null);
+const StepperContext = createContext<StepperContextValue | null>(null);
 
 function useStepperContext(component: string): StepperContextValue {
-  const context = React.useContext(StepperContext);
+  const context = useContext(StepperContext);
   if (!context) {
     throw new Error(`${component} must be used within a Stepper`);
   }
@@ -34,10 +45,10 @@ interface StepperItemContextValue {
   disabled: boolean;
 }
 
-const StepperItemContext = React.createContext<StepperItemContextValue | null>(null);
+const StepperItemContext = createContext<StepperItemContextValue | null>(null);
 
 function useStepperItemContext(component: string): StepperItemContextValue {
-  const context = React.useContext(StepperItemContext);
+  const context = useContext(StepperItemContext);
   if (!context) {
     throw new Error(`${component} must be used within a StepperItem`);
   }
@@ -200,7 +211,7 @@ const styles = stylex.create({
   },
 });
 
-export interface StepperProps extends React.ComponentProps<'div'> {
+export interface StepperProps extends ComponentProps<'div'> {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
@@ -222,20 +233,20 @@ function Stepper({
   children,
   ...props
 }: StepperProps) {
-  const [internalValue, setInternalValue] = React.useState<string>(defaultValue);
-  const [stepKeys, setStepKeys] = React.useState<string[]>([]);
+  const [internalValue, setInternalValue] = useState<string>(defaultValue);
+  const [stepKeys, setStepKeys] = useState<string[]>([]);
 
   const currentValue = controlledValue !== undefined ? controlledValue : internalValue;
 
-  const registerStep = React.useCallback((key: string) => {
+  const registerStep = useCallback((key: string) => {
     setStepKeys((prev) => (prev.includes(key) ? prev : [...prev, key]));
   }, []);
 
-  const unregisterStep = React.useCallback((key: string) => {
+  const unregisterStep = useCallback((key: string) => {
     setStepKeys((prev) => prev.filter((k) => k !== key));
   }, []);
 
-  const setValue = React.useCallback(
+  const setValue = useCallback(
     async (nextValue: string): Promise<boolean> => {
       if (nextValue === currentValue) return true;
 
@@ -254,13 +265,13 @@ function Stepper({
   );
 
   // Auto-select first registered step if none selected
-  React.useEffect(() => {
+  useEffect(() => {
     if (!currentValue && stepKeys.length > 0 && stepKeys[0]) {
       setValue(stepKeys[0]);
     }
   }, [currentValue, stepKeys, setValue]);
 
-  const contextValue = React.useMemo<StepperContextValue>(
+  const contextValue = useMemo<StepperContextValue>(
     () => ({
       value: currentValue,
       setValue,
@@ -291,7 +302,7 @@ function Stepper({
   );
 }
 
-export interface StepperListProps extends React.ComponentProps<'div'> {
+export interface StepperListProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -314,7 +325,7 @@ function StepperList({ className, sx, children, ...props }: StepperListProps) {
   );
 }
 
-export interface StepperItemProps extends React.ComponentProps<'div'> {
+export interface StepperItemProps extends ComponentProps<'div'> {
   value: string;
   completed?: boolean;
   disabled?: boolean;
@@ -333,7 +344,7 @@ function StepperItem({
   const { value, stepKeys, registerStep, unregisterStep, linear, orientation } =
     useStepperContext('StepperItem');
 
-  React.useEffect(() => {
+  useEffect(() => {
     registerStep(itemValue);
     return () => unregisterStep(itemValue);
   }, [itemValue, registerStep, unregisterStep]);
@@ -341,7 +352,7 @@ function StepperItem({
   const stepIndex = stepKeys.indexOf(itemValue);
   const activeIndex = stepKeys.indexOf(value);
 
-  const status: StepStatus = React.useMemo(() => {
+  const status: StepStatus = useMemo(() => {
     if (completedProp) return 'completed';
     if (itemValue === value) return 'active';
     if (activeIndex > stepIndex && activeIndex !== -1) return 'completed';
@@ -350,7 +361,7 @@ function StepperItem({
 
   const disabled = disabledProp || (linear && status === 'inactive' && stepIndex > activeIndex + 1);
 
-  const itemContextValue = React.useMemo<StepperItemContextValue>(
+  const itemContextValue = useMemo<StepperItemContextValue>(
     () => ({
       value: itemValue,
       stepIndex,
@@ -380,7 +391,7 @@ function StepperItem({
   );
 }
 
-export interface StepperTriggerProps extends React.ComponentProps<'button'> {
+export interface StepperTriggerProps extends ComponentProps<'button'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -395,13 +406,13 @@ function StepperTrigger({
   const { setValue, stepKeys, orientation } = useStepperContext('StepperTrigger');
   const { value, status, disabled, stepIndex } = useStepperItemContext('StepperTrigger');
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented || disabled) return;
     await setValue(value);
   };
 
-  const handleKeyDown = async (e: React.KeyboardEvent<HTMLButtonElement>) => {
+  const handleKeyDown = async (e: ReactKeyboardEvent<HTMLButtonElement>) => {
     onKeyDown?.(e);
     if (e.defaultPrevented) return;
 
@@ -445,8 +456,8 @@ function StepperTrigger({
   );
 }
 
-export interface StepperIndicatorProps extends React.ComponentProps<'div'> {
-  children?: React.ReactNode;
+export interface StepperIndicatorProps extends ComponentProps<'div'> {
+  children?: ReactNode;
   sx?: stylex.StyleXStyles;
 }
 
@@ -498,7 +509,7 @@ function StepperIndicator({ className, sx, children, ...props }: StepperIndicato
   );
 }
 
-export interface StepperSeparatorProps extends React.ComponentProps<'div'> {
+export interface StepperSeparatorProps extends ComponentProps<'div'> {
   forceMount?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -533,7 +544,7 @@ function StepperSeparator({ className, forceMount = false, sx, ...props }: Stepp
   );
 }
 
-export interface StepperTitleProps extends React.ComponentProps<'span'> {
+export interface StepperTitleProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -554,7 +565,7 @@ function StepperTitle({ className, sx, children, ...props }: StepperTitleProps) 
   );
 }
 
-export interface StepperDescriptionProps extends React.ComponentProps<'span'> {
+export interface StepperDescriptionProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -574,7 +585,7 @@ function StepperDescription({ className, sx, children, ...props }: StepperDescri
   );
 }
 
-export interface StepperContentProps extends React.ComponentProps<'div'> {
+export interface StepperContentProps extends ComponentProps<'div'> {
   value: string;
   forceMount?: boolean;
   sx?: stylex.StyleXStyles;
@@ -624,7 +635,7 @@ function StepperNext({
   const isLast = currentIndex >= stepKeys.length - 1;
   const disabled = disabledProp || isLast;
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented || disabled) return;
     const nextKey = stepKeys[currentIndex + 1];
@@ -661,7 +672,7 @@ function StepperPrev({
   const isFirst = currentIndex <= 0;
   const disabled = disabledProp || isFirst;
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented || disabled) return;
     const prevKey = stepKeys[currentIndex - 1];
@@ -684,7 +695,7 @@ function StepperPrev({
   );
 }
 
-export interface StepperTextProps extends React.ComponentProps<'div'> {
+export interface StepperTextProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 

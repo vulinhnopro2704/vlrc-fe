@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 
@@ -49,7 +49,7 @@ const variantStyles: Record<AlertVariant, stylex.StyleXStyles> = {
   destructive: styles.variantDestructive,
 };
 
-export interface AlertProps extends React.ComponentProps<'div'> {
+export interface AlertProps extends ComponentProps<'div'> {
   variant?: AlertVariant;
   sx?: stylex.StyleXStyles;
 }
@@ -72,7 +72,7 @@ function AlertTitle({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <div
@@ -88,7 +88,7 @@ function AlertDescription({
   className,
   sx,
   ...props
-}: React.ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.description, sx);
   return (
     <div

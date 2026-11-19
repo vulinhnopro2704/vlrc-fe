@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { createContext, useContext, type ComponentProps } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
@@ -142,9 +142,9 @@ const iconSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.iconXxl,
 };
 
-const BreadcrumbContext = React.createContext<{ size: ComponentSize }>({ size: 'md' });
+const BreadcrumbContext = createContext<{ size: ComponentSize }>({ size: 'md' });
 
-export interface BreadcrumbProps extends React.ComponentProps<'nav'> {
+export interface BreadcrumbProps extends ComponentProps<'nav'> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
@@ -158,13 +158,13 @@ function Breadcrumb({ size = 'md', className, sx, ...props }: BreadcrumbProps) {
   );
 }
 
-export interface BreadcrumbListProps extends React.ComponentProps<'ol'> {
+export interface BreadcrumbListProps extends ComponentProps<'ol'> {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
 
 function BreadcrumbList({ size: propSize, className, sx, ...props }: BreadcrumbListProps) {
-  const context = React.useContext(BreadcrumbContext);
+  const context = useContext(BreadcrumbContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const sizeStyle = listSizeStyles[resolvedSize] ?? styles.md;
   const sxProps = stylex.props(styles.list, sizeStyle, sx);
@@ -180,7 +180,7 @@ function BreadcrumbList({ size: propSize, className, sx, ...props }: BreadcrumbL
   );
 }
 
-export interface BreadcrumbItemProps extends React.ComponentProps<'li'> {
+export interface BreadcrumbItemProps extends ComponentProps<'li'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -196,7 +196,7 @@ function BreadcrumbItem({ className, sx, ...props }: BreadcrumbItemProps) {
   );
 }
 
-export interface BreadcrumbLinkProps extends React.ComponentProps<'a'> {
+export interface BreadcrumbLinkProps extends ComponentProps<'a'> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -215,7 +215,7 @@ function BreadcrumbLink({ asChild, className, sx, ...props }: BreadcrumbLinkProp
   );
 }
 
-export interface BreadcrumbPageProps extends React.ComponentProps<'span'> {
+export interface BreadcrumbPageProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -235,7 +235,7 @@ function BreadcrumbPage({ className, sx, ...props }: BreadcrumbPageProps) {
   );
 }
 
-export interface BreadcrumbSeparatorProps extends React.ComponentProps<'li'> {
+export interface BreadcrumbSeparatorProps extends ComponentProps<'li'> {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
@@ -247,7 +247,7 @@ function BreadcrumbSeparator({
   sx,
   ...props
 }: BreadcrumbSeparatorProps) {
-  const context = React.useContext(BreadcrumbContext);
+  const context = useContext(BreadcrumbContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const iconSize = iconSizeStyles[resolvedSize] ?? styles.iconMd;
   const sxProps = stylex.props(styles.separator, sx);
@@ -266,13 +266,13 @@ function BreadcrumbSeparator({
   );
 }
 
-export interface BreadcrumbEllipsisProps extends React.ComponentProps<'span'> {
+export interface BreadcrumbEllipsisProps extends ComponentProps<'span'> {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
 
 function BreadcrumbEllipsis({ size: propSize, className, sx, ...props }: BreadcrumbEllipsisProps) {
-  const context = React.useContext(BreadcrumbContext);
+  const context = useContext(BreadcrumbContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const iconSize = iconSizeStyles[resolvedSize] ?? styles.iconMd;
   const sxProps = stylex.props(styles.ellipsis, sx);

@@ -1,4 +1,10 @@
-import * as React from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  type ComponentProps,
+  type MouseEvent as ReactMouseEvent,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
@@ -9,12 +15,12 @@ interface ActionBarContextValue {
   onOpenChange?: (open: boolean) => void;
 }
 
-const ActionBarContext = React.createContext<ActionBarContextValue>({
+const ActionBarContext = createContext<ActionBarContextValue>({
   open: false,
 });
 
 function useActionBarContext(component: string): ActionBarContextValue {
-  const context = React.useContext(ActionBarContext);
+  const context = useContext(ActionBarContext);
   if (!context) {
     throw new Error(`${component} must be used within an ActionBar`);
   }
@@ -67,7 +73,7 @@ const styles = stylex.create({
   },
 });
 
-export interface ActionBarProps extends React.ComponentProps<'div'> {
+export interface ActionBarProps extends ComponentProps<'div'> {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   onEscapeKeyDown?: (e: KeyboardEvent) => void;
@@ -83,7 +89,7 @@ function ActionBar({
   children,
   ...props
 }: ActionBarProps) {
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -119,7 +125,7 @@ function ActionBar({
   );
 }
 
-export interface ActionBarSelectionProps extends React.ComponentProps<'div'> {
+export interface ActionBarSelectionProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -137,7 +143,7 @@ function ActionBarSelection({ className, sx, children, ...props }: ActionBarSele
   );
 }
 
-export interface ActionBarGroupProps extends React.ComponentProps<'div'> {
+export interface ActionBarGroupProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -176,7 +182,7 @@ function ActionBarItem({
   );
 }
 
-export interface ActionBarSeparatorProps extends React.ComponentProps<'div'> {
+export interface ActionBarSeparatorProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -209,7 +215,7 @@ function ActionBarClose({
 }: ActionBarCloseProps) {
   const { onOpenChange } = useActionBarContext('ActionBarClose');
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
     onOpenChange?.(false);

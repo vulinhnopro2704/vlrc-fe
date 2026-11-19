@@ -1,5 +1,11 @@
-import * as React from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { createContext, useContext, type ComponentProps } from 'react';
+import {
+  Content as AccordionPrimitiveContent,
+  Header as AccordionPrimitiveHeader,
+  Item as AccordionPrimitiveItem,
+  Root as AccordionPrimitiveRoot,
+  Trigger as AccordionPrimitiveTrigger,
+} from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
@@ -200,9 +206,9 @@ const contentSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.contentXxl,
 };
 
-const AccordionContext = React.createContext<{ size: ComponentSize }>({ size: 'md' });
+const AccordionContext = createContext<{ size: ComponentSize }>({ size: 'md' });
 
-export type AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root> & {
+export type AccordionProps = ComponentProps<typeof AccordionPrimitiveRoot> & {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
@@ -212,10 +218,10 @@ function Accordion({ size = 'md', className, sx, ...props }: AccordionProps) {
   const sxProps = stylex.props(styles.root, sx);
   return (
     <AccordionContext.Provider value={{ size }}>
-      <AccordionPrimitive.Root
+      <AccordionPrimitiveRoot
         data-slot="accordion"
         data-size={size}
-        {...(props as React.ComponentProps<typeof AccordionPrimitive.Root>)}
+        {...(props as ComponentProps<typeof AccordionPrimitiveRoot>)}
         {...sxProps}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       />
@@ -223,14 +229,14 @@ function Accordion({ size = 'md', className, sx, ...props }: AccordionProps) {
   );
 }
 
-export interface AccordionItemProps extends React.ComponentProps<typeof AccordionPrimitive.Item> {
+export interface AccordionItemProps extends ComponentProps<typeof AccordionPrimitiveItem> {
   sx?: stylex.StyleXStyles;
 }
 
 function AccordionItem({ className, sx, ...props }: AccordionItemProps) {
   const sxProps = stylex.props(styles.item, sx);
   return (
-    <AccordionPrimitive.Item
+    <AccordionPrimitiveItem
       data-slot="accordion-item"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -239,9 +245,7 @@ function AccordionItem({ className, sx, ...props }: AccordionItemProps) {
   );
 }
 
-export interface AccordionTriggerProps extends React.ComponentProps<
-  typeof AccordionPrimitive.Trigger
-> {
+export interface AccordionTriggerProps extends ComponentProps<typeof AccordionPrimitiveTrigger> {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
@@ -253,7 +257,7 @@ function AccordionTrigger({
   sx,
   ...props
 }: AccordionTriggerProps) {
-  const context = React.useContext(AccordionContext);
+  const context = useContext(AccordionContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
 
   const triggerSize = triggerSizeStyles[resolvedSize] ?? styles.triggerMd;
@@ -261,8 +265,8 @@ function AccordionTrigger({
   const sxProps = stylex.props(styles.trigger, triggerSize, sx);
 
   return (
-    <AccordionPrimitive.Header {...stylex.props(styles.header)}>
-      <AccordionPrimitive.Trigger
+    <AccordionPrimitiveHeader {...stylex.props(styles.header)}>
+      <AccordionPrimitiveTrigger
         data-slot="accordion-trigger"
         data-size={resolvedSize}
         {...sxProps}
@@ -273,14 +277,12 @@ function AccordionTrigger({
           {children}
         </Text>
         <ChevronDownIcon {...stylex.props(styles.chevron, chevronSize)} />
-      </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
+      </AccordionPrimitiveTrigger>
+    </AccordionPrimitiveHeader>
   );
 }
 
-export interface AccordionContentProps extends React.ComponentProps<
-  typeof AccordionPrimitive.Content
-> {
+export interface AccordionContentProps extends ComponentProps<typeof AccordionPrimitiveContent> {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
@@ -292,14 +294,14 @@ function AccordionContent({
   sx,
   ...props
 }: AccordionContentProps) {
-  const context = React.useContext(AccordionContext);
+  const context = useContext(AccordionContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
 
   const contentSize = contentSizeStyles[resolvedSize] ?? styles.contentMd;
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <AccordionPrimitive.Content
+    <AccordionPrimitiveContent
       data-slot="accordion-content"
       data-size={resolvedSize}
       {...sxProps}
@@ -307,7 +309,7 @@ function AccordionContent({
       {...props}
     >
       <div {...stylex.props(styles.contentInner, contentSize)}>{children}</div>
-    </AccordionPrimitive.Content>
+    </AccordionPrimitiveContent>
   );
 }
 

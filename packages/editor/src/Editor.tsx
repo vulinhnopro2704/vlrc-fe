@@ -1,0 +1,242 @@
+import { useState, useMemo, useCallback, forwardRef } from 'react';
+import { LexicalComposer, type InitialConfigType } from '@lexical/react/LexicalComposer';
+import { ContentEditable } from '@lexical/react/LexicalContentEditable';
+import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { ListPlugin } from '@lexical/react/LexicalListPlugin';
+import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
+import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
+import { AutoLinkPlugin } from '@lexical/react/LexicalAutoLinkPlugin';
+import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
+import { HashtagPlugin } from '@lexical/react/LexicalHashtagPlugin';
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
+import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
+import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
+import { TabIndentationPlugin } from '@lexical/react/LexicalTabIndentationPlugin';
+import { HorizontalRulePlugin } from '@lexical/react/LexicalHorizontalRulePlugin';
+import {
+  HorizontalRuleNode,
+  $createHorizontalRuleNode,
+  $isHorizontalRuleNode,
+} from '@lexical/react/LexicalHorizontalRuleNode';
+import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
+import {
+  $convertFromMarkdownString,
+  $convertToMarkdownString,
+  TRANSFORMERS,
+  CHECK_LIST,
+  type ElementTransformer,
+} from '@lexical/markdown';
+import type { LexicalNode } from 'lexical';
+import { props as stylexProps } from '@stylexjs/stylex';
+import { Box } from '@vlrc-fe/components';
+import { EDITOR_NODES } from './nodes';
+import { editorStyles, editorTheme } from './theme/editorTheme';
+import { SlashMenuPlugin } from './plugins/SlashMenuPlugin';
+import { FloatingToolbarPlugin } from './plugins/FloatingToolbarPlugin';
+import { DraggableBlockPlugin } from './plugins/DraggableBlockPlugin';
+import { ToolbarPlugin } from './plugins/ToolbarPlugin';
+import { TreeViewPlugin } from './plugins/TreeViewPlugin';
+import { CodeHighlightPlugin } from './plugins/CodeHighlightPlugin';
+import { MentionsPlugin } from './plugins/MentionsPlugin';
+import { EmojisPlugin } from './plugins/EmojisPlugin';
+import { TableActionMenuPlugin } from './plugins/TableActionMenuPlugin';
+import { TableCellResizerPlugin } from './plugins/TableCellResizerPlugin';
+import { TableHoverActionsPlugin } from './plugins/TableHoverActionsPlugin';
+import type { NotionEditorProps } from './types';
+import './theme/editor.css';
+
+export const HR: ElementTransformer = {
+  dependencies: [HorizontalRuleNode],
+  export: (node: LexicalNode) => {
+    return $isHorizontalRuleNode(node) ? '***' : null;
+  },
+  regExp: /^(---|[*]{3}|_{3})\s?$/,
+  replace: (parentNode, _1, _2, isImport) => {
+    const line = $createHorizontalRuleNode();
+    if (isImport) {
+      parentNode.replace(line);
+    } else {
+      parentNode.insertBefore(line);
+    }
+    line.selectNext();
+  },
+  type: 'element',
+};
+
+export const EDITOR_TRANSFORMERS = [CHECK_LIST, HR, ...TRANSFORMERS];
+
+const URL_MATCHER =
+  /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
+
+const EMAIL_MATCHER =
+  /(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+
+const AUTO_LINK_MATCHERS = [
+  (text: string) => {
+    const match = URL_MATCHER.exec(text);
+    if (match === null) return null;
+    const fullMatch = match[0];
+    return {
+      index: match.index,
+      length: fullMatch.length,
+      text: fullMatch,
+      url: fullMatch.startsWith('http') ? fullMatch : `https://${fullMatch}`,
+    };
+  },
+  (text: string) => {
+    const match = EMAIL_MATCHER.exec(text);
+    if (match === null) return null;
+    const fullMatch = match[0];
+    return {
+      index: match.index,
+      length: fullMatch.length,
+      text: fullMatch,
+      url: `mailto:${fullMatch}`,
+    };
+  },
+];
+
+export const NotionEditor = forwardRef<HTMLDivElement, NotionEditorProps>(
+  (
+    {
+      defaultValue = '',
+      value: _value,
+      onChange,
+      placeholder = "Type '/' for commands, or write markdown...",
+      readOnly = false,
+      autoFocus = false,
+      showToolbar = true,
+      showFloatingToolbar = true,
+      showSlashMenu = true,
+      showDraggableBlocks = true,
+      showTreeView = false,
+      enableTabIndentation = true,
+      enableCodeHighlighting = true,
+      enableMentions = true,
+      enableEmojis = true,
+      enableHashtags = true,
+      sx,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const [anchorElem, setAnchorElem] = useState<HTMLDivElement | null>(null);
+
+    const initialConfig: InitialConfigType = useMemo(
+      () => ({
+        namespace: 'VLRCEditor',
+        nodes: EDITOR_NODES,
+        theme: editorTheme,
+        onError: (error: Error) => {
+          console.error('[VLRCEditor Error]:', error);
+        },
+        editable: !readOnly,
+        editorState: defaultValue
+          ? () => {
+              $convertFromMarkdownString(defaultValue, EDITOR_TRANSFORMERS);
+            }
+          : undefined,
+      }),
+      [defaultValue, readOnly],
+    );
+
+    const sxProps = stylexProps(editorStyles.root, sx);
+
+    const handleRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        if (typeof ref === 'function') ref(node);
+        else if (ref) ref.current = node;
+      },
+      [ref],
+    );
+
+    const rootClasses = ['vlrc-editor-root', sxProps.className, className]
+      .filter(Boolean)
+      .join(' ');
+
+    return (
+      <LexicalComposer initialConfig={initialConfig}>
+        <Box
+          ref={handleRef}
+          data-slot="notion-editor"
+          data-readonly={readOnly ? 'true' : 'false'}
+          className={rootClasses}
+          style={sxProps.style}
+          {...props}
+        >
+          {showToolbar && <ToolbarPlugin />}
+
+          <Box
+            ref={(node: HTMLDivElement | null) => setAnchorElem(node)}
+            style={{ position: 'relative', width: '100%', flex: 1 }}
+          >
+            <RichTextPlugin
+              contentEditable={
+                <ContentEditable
+                  data-slot="editor-content"
+                  className={`vlrc-editor-content ${stylexProps(editorStyles.contentEditable).className || ''}`.trim()}
+                  aria-placeholder={placeholder}
+                  placeholder={
+                    <Box
+                      className="vlrc-editor-placeholder"
+                      sx={editorStyles.placeholder}
+                      aria-hidden="true"
+                    >
+                      {placeholder}
+                    </Box>
+                  }
+                />
+              }
+              ErrorBoundary={LexicalErrorBoundary}
+            />
+
+            <HistoryPlugin />
+            <ListPlugin />
+            <CheckListPlugin />
+            <LinkPlugin />
+            <AutoLinkPlugin matchers={AUTO_LINK_MATCHERS} />
+            <TablePlugin />
+            <HorizontalRulePlugin />
+            {enableTabIndentation && <TabIndentationPlugin />}
+            {enableCodeHighlighting && <CodeHighlightPlugin />}
+            {enableHashtags && <HashtagPlugin />}
+            {enableMentions && !readOnly && <MentionsPlugin />}
+            {enableEmojis && !readOnly && <EmojisPlugin />}
+            <MarkdownShortcutPlugin transformers={EDITOR_TRANSFORMERS} />
+
+            <OnChangePlugin
+              onChange={(editorState, editor) => {
+                editorState.read(() => {
+                  const markdown = $convertToMarkdownString(EDITOR_TRANSFORMERS);
+                  onChange?.(markdown, editorState, editor);
+                });
+              }}
+            />
+
+            {autoFocus && <AutoFocusPlugin />}
+            {showSlashMenu && !readOnly && <SlashMenuPlugin />}
+            {showFloatingToolbar && !readOnly && <FloatingToolbarPlugin />}
+            {showDraggableBlocks && !readOnly && anchorElem && (
+              <DraggableBlockPlugin anchorElem={anchorElem} />
+            )}
+            {anchorElem && !readOnly && (
+              <>
+                <TableActionMenuPlugin anchorElem={anchorElem} />
+                <TableCellResizerPlugin anchorElem={anchorElem} />
+                <TableHoverActionsPlugin anchorElem={anchorElem} />
+              </>
+            )}
+            {showTreeView && <TreeViewPlugin />}
+          </Box>
+        </Box>
+      </LexicalComposer>
+    );
+  },
+);
+
+NotionEditor.displayName = 'NotionEditor';
+
+export { NotionEditor as Editor };
+export default NotionEditor;

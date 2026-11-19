@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import * as React from 'react';
+import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import {
   FileUploader,
@@ -213,7 +213,7 @@ export const ReactHookFormIntegration: Story = {
 
 export const PrimitivesCustomLayout: Story = {
   render: () => {
-    const [files, setFiles] = React.useState<File[]>([]);
+    const [files, setFiles] = useState<File[]>([]);
 
     return (
       <div style={{ width: '500px', display: 'flex', flexDirection: 'column', gap: '1rem' }}>

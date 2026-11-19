@@ -1,5 +1,12 @@
-import * as React from 'react';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { type ComponentProps } from 'react';
+import {
+  Arrow as TooltipPrimitiveArrow,
+  Content as TooltipPrimitiveContent,
+  Portal as TooltipPrimitivePortal,
+  Provider as TooltipPrimitiveProvider,
+  Root as TooltipPrimitiveRoot,
+  Trigger as TooltipPrimitiveTrigger,
+} from '@radix-ui/react-tooltip';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex } from '../theme/zIndex';
@@ -32,9 +39,9 @@ const styles = stylex.create({
 function TooltipProvider({
   delayDuration = 0,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
+}: ComponentProps<typeof TooltipPrimitiveProvider>) {
   return (
-    <TooltipPrimitive.Provider
+    <TooltipPrimitiveProvider
       data-slot="tooltip-provider"
       delayDuration={delayDuration}
       {...props}
@@ -42,19 +49,19 @@ function TooltipProvider({
   );
 }
 
-function Tooltip(props: React.ComponentProps<typeof TooltipPrimitive.Root>) {
+function Tooltip(props: ComponentProps<typeof TooltipPrimitiveRoot>) {
   return (
     <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+      <TooltipPrimitiveRoot data-slot="tooltip" {...props} />
     </TooltipProvider>
   );
 }
 
-function TooltipTrigger(props: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
+function TooltipTrigger(props: ComponentProps<typeof TooltipPrimitiveTrigger>) {
+  return <TooltipPrimitiveTrigger data-slot="tooltip-trigger" {...props} />;
 }
 
-export interface TooltipContentProps extends React.ComponentProps<typeof TooltipPrimitive.Content> {
+export interface TooltipContentProps extends ComponentProps<typeof TooltipPrimitiveContent> {
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
 }
@@ -72,8 +79,8 @@ function TooltipContent({
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <TooltipPrimitive.Portal container={container}>
-      <TooltipPrimitive.Content
+    <TooltipPrimitivePortal container={container}>
+      <TooltipPrimitiveContent
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         {...sxProps}
@@ -82,9 +89,9 @@ function TooltipContent({
         {...props}
       >
         {children}
-        <TooltipPrimitive.Arrow {...stylex.props(styles.arrow)} />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>
+        <TooltipPrimitiveArrow {...stylex.props(styles.arrow)} />
+      </TooltipPrimitiveContent>
+    </TooltipPrimitivePortal>
   );
 }
 

@@ -1,4 +1,10 @@
-import * as React from 'react';
+import {
+  createContext,
+  useContext,
+  useMemo,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+} from 'react';
 import type * as stylex from '@stylexjs/stylex';
 import {
   Dialog,
@@ -36,16 +42,16 @@ interface ResponsiveDialogContextValue {
   isDesktop: boolean;
 }
 
-const ResponsiveDialogContext = React.createContext<ResponsiveDialogContextValue>({
+const ResponsiveDialogContext = createContext<ResponsiveDialogContextValue>({
   isDesktop: true,
 });
 
 export function useResponsiveDialogContext() {
-  return React.useContext(ResponsiveDialogContext);
+  return useContext(ResponsiveDialogContext);
 }
 
 export interface ResponsiveDialogProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -67,7 +73,7 @@ export function ResponsiveDialog({
   const isDesktop =
     forceMode === 'desktop' ? true : forceMode === 'mobile' ? false : Boolean(screens[breakpoint]);
 
-  const contextValue = React.useMemo(() => ({ isDesktop }), [isDesktop]);
+  const contextValue = useMemo(() => ({ isDesktop }), [isDesktop]);
 
   if (isDesktop) {
     return (
@@ -88,7 +94,7 @@ export function ResponsiveDialog({
   );
 }
 
-export interface ResponsiveDialogTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ResponsiveDialogTriggerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
@@ -112,7 +118,7 @@ export function ResponsiveDialogTrigger({
   );
 }
 
-export interface ResponsiveDialogCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ResponsiveDialogCloseProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
@@ -136,7 +142,7 @@ export interface ResponsiveDialogContentProps extends Omit<
   DialogContentProps & DrawerContentProps,
   'ref'
 > {
-  children?: React.ReactNode;
+  children?: ReactNode;
   sx?: stylex.StyleXStyles;
   className?: string;
 }
@@ -166,7 +172,7 @@ export interface ResponsiveDialogHeaderProps extends Omit<
   DialogHeaderProps & DrawerHeaderProps,
   'ref'
 > {
-  children?: React.ReactNode;
+  children?: ReactNode;
   sx?: stylex.StyleXStyles;
   className?: string;
 }
@@ -196,7 +202,7 @@ export interface ResponsiveDialogFooterProps extends Omit<
   DialogFooterProps & DrawerFooterProps,
   'ref'
 > {
-  children?: React.ReactNode;
+  children?: ReactNode;
   sx?: stylex.StyleXStyles;
   className?: string;
 }
@@ -226,7 +232,7 @@ export interface ResponsiveDialogTitleProps extends Omit<
   DialogTitleProps & DrawerTitleProps,
   'ref'
 > {
-  children?: React.ReactNode;
+  children?: ReactNode;
   sx?: stylex.StyleXStyles;
   className?: string;
 }
@@ -256,7 +262,7 @@ export interface ResponsiveDialogDescriptionProps extends Omit<
   DialogDescriptionProps & DrawerDescriptionProps,
   'ref'
 > {
-  children?: React.ReactNode;
+  children?: ReactNode;
   sx?: stylex.StyleXStyles;
   className?: string;
 }

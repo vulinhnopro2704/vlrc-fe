@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import { Command as CommandPrimitive } from 'cmdk';
 import { SearchIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
@@ -134,7 +134,7 @@ const styles = stylex.create({
   },
 });
 
-export interface CommandProps extends React.ComponentProps<typeof CommandPrimitive> {
+export interface CommandProps extends ComponentProps<typeof CommandPrimitive> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -157,7 +157,7 @@ function CommandDialog({
   className,
   showCloseButton = true,
   ...props
-}: React.ComponentProps<typeof Dialog> & {
+}: ComponentProps<typeof Dialog> & {
   title?: string;
   description?: string;
   className?: string;
@@ -180,7 +180,7 @@ function CommandDialog({
   );
 }
 
-export interface CommandInputProps extends React.ComponentProps<typeof CommandPrimitive.Input> {
+export interface CommandInputProps extends ComponentProps<typeof CommandPrimitive.Input> {
   wrapperSx?: stylex.StyleXStyles;
   sx?: stylex.StyleXStyles;
 }
@@ -204,7 +204,7 @@ function CommandInput({ className, wrapperSx, sx, ...props }: CommandInputProps)
   );
 }
 
-export interface CommandListProps extends React.ComponentProps<typeof CommandPrimitive.List> {
+export interface CommandListProps extends ComponentProps<typeof CommandPrimitive.List> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -220,7 +220,7 @@ function CommandList({ className, sx, ...props }: CommandListProps) {
   );
 }
 
-export interface CommandEmptyProps extends React.ComponentProps<typeof CommandPrimitive.Empty> {
+export interface CommandEmptyProps extends ComponentProps<typeof CommandPrimitive.Empty> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -236,7 +236,7 @@ function CommandEmpty({ className, sx, ...props }: CommandEmptyProps) {
   );
 }
 
-export interface CommandGroupProps extends React.ComponentProps<typeof CommandPrimitive.Group> {
+export interface CommandGroupProps extends ComponentProps<typeof CommandPrimitive.Group> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -261,9 +261,7 @@ function CommandGroup({ className, sx, heading, children, ...props }: CommandGro
   );
 }
 
-export interface CommandSeparatorProps extends React.ComponentProps<
-  typeof CommandPrimitive.Separator
-> {
+export interface CommandSeparatorProps extends ComponentProps<typeof CommandPrimitive.Separator> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -279,7 +277,7 @@ function CommandSeparator({ className, sx, ...props }: CommandSeparatorProps) {
   );
 }
 
-export interface CommandItemProps extends React.ComponentProps<typeof CommandPrimitive.Item> {
+export interface CommandItemProps extends ComponentProps<typeof CommandPrimitive.Item> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -295,7 +293,7 @@ function CommandItem({ className, sx, ...props }: CommandItemProps) {
   );
 }
 
-export interface CommandShortcutProps extends React.ComponentProps<'span'> {
+export interface CommandShortcutProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 

@@ -1,4 +1,12 @@
-import * as React from 'react';
+import {
+  forwardRef,
+  type CSSProperties,
+  type ComponentPropsWithRef,
+  type ElementType,
+  type ReactElement,
+  type ReactNode,
+  type Ref,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { spacing } from '../theme/tokens.stylex';
 import { cn } from '../utils';
@@ -34,11 +42,11 @@ const styles = stylex.create({
 
 export type BoxSpacingTier = '0' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-export interface BoxProps<T extends React.ElementType = 'div'> {
+export interface BoxProps<T extends ElementType = 'div'> {
   as?: T;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   sx?: stylex.StyleXStyles;
   p?: BoxSpacingTier;
   m?: BoxSpacingTier | 'auto';
@@ -46,13 +54,13 @@ export interface BoxProps<T extends React.ElementType = 'div'> {
   my?: 'auto';
 }
 
-export type PolymorphicBoxProps<T extends React.ElementType> = BoxProps<T> &
-  Omit<React.ComponentPropsWithRef<T>, keyof BoxProps<T>>;
+export type PolymorphicBoxProps<T extends ElementType> = BoxProps<T> &
+  Omit<ComponentPropsWithRef<T>, keyof BoxProps<T>>;
 
-export const Box = React.forwardRef(
-  <T extends React.ElementType = 'div'>(
+export const Box = forwardRef(
+  <T extends ElementType = 'div'>(
     { as, children, className, style, sx, p, m, mx, my, ...props }: PolymorphicBoxProps<T>,
-    ref: React.Ref<any>,
+    ref: Ref<any>,
   ) => {
     const Component = as || 'div';
 
@@ -61,23 +69,23 @@ export const Box = React.forwardRef(
     const mxStyle = mx === 'auto' ? styles.mx_auto : null;
     const myStyle = my === 'auto' ? styles.my_auto : null;
 
-    const stylexProps = stylex.props(styles.base, pStyle, mStyle, mxStyle, myStyle, sx);
+    const resolvedProps = stylex.props(styles.base, pStyle, mStyle, mxStyle, myStyle, sx);
 
     return (
       <Component
         ref={ref}
         data-slot="box"
         {...props}
-        {...stylexProps}
-        style={{ ...stylexProps.style, ...style }}
-        className={cn(stylexProps.className, className)}
+        {...resolvedProps}
+        style={{ ...resolvedProps.style, ...style }}
+        className={cn(resolvedProps.className, className)}
       >
         {children}
       </Component>
     );
   },
-) as <T extends React.ElementType = 'div'>(
-  props: PolymorphicBoxProps<T> & { ref?: React.Ref<any> },
-) => React.ReactElement | null;
+) as <T extends ElementType = 'div'>(
+  props: PolymorphicBoxProps<T> & { ref?: Ref<any> },
+) => ReactElement | null;
 
 (Box as any).displayName = 'Box';

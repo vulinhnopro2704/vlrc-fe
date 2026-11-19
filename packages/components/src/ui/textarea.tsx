@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
@@ -97,7 +97,7 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.sizeXxl,
 };
 
-export interface TextareaProps extends React.ComponentProps<'textarea'> {
+export interface TextareaProps extends ComponentProps<'textarea'> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, type CSSProperties, type ElementType, type HTMLAttributes } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 import { spacing } from '../theme/tokens.stylex';
@@ -40,7 +40,7 @@ export type FlexWrap = boolean | 'nowrap' | 'wrap' | 'wrap-reverse';
 
 export type FlexType = 'flex' | 'inline-flex' | 'inline' | 'block';
 
-export interface FlexProps extends React.HTMLAttributes<HTMLElement> {
+export interface FlexProps extends HTMLAttributes<HTMLElement> {
   /**
    * Shorthand for vertical flex direction (flex-direction: column).
    * Takes precedence over `direction` when true.
@@ -83,7 +83,7 @@ export interface FlexProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Shorthand for CSS `flex` property (e.g. '1', '1 1 auto', 'none').
    */
-  flex?: React.CSSProperties['flex'];
+  flex?: CSSProperties['flex'];
   /**
    * Flex grow factor. Can be boolean (true -> 1, false -> 0) or numeric.
    */
@@ -95,7 +95,7 @@ export interface FlexProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Flex basis value.
    */
-  basis?: React.CSSProperties['flexBasis'];
+  basis?: CSSProperties['flexBasis'];
   /**
    * Semantic component width preset or custom length.
    */
@@ -112,7 +112,7 @@ export interface FlexProps extends React.HTMLAttributes<HTMLElement> {
    * Underlying HTML tag or React component to render (e.g. 'section', 'nav', 'main').
    * @default 'div'
    */
-  as?: React.ElementType;
+  as?: ElementType;
   /**
    * Meta StyleX custom override styles.
    */
@@ -213,7 +213,7 @@ const gapTierStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.gapXxl,
 };
 
-export const Flex = React.forwardRef<HTMLElement, FlexProps>(function Flex(
+export const Flex = forwardRef<HTMLElement, FlexProps>(function Flex(
   {
     vertical,
     direction = 'row',
@@ -269,7 +269,7 @@ export const Flex = React.forwardRef<HTMLElement, FlexProps>(function Flex(
     : sxProps.className;
 
   // Dynamic style calculation for non-static values
-  const dynamicStyle: React.CSSProperties = { ...sxProps.style, ...style };
+  const dynamicStyle: CSSProperties = { ...sxProps.style, ...style };
 
   if (gap !== undefined && !isStaticTier) {
     dynamicStyle.gap = resolveGap(gap);

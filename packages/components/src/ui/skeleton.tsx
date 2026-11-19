@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 
@@ -18,7 +18,7 @@ const styles = stylex.create({
   },
 });
 
-export interface SkeletonProps extends React.ComponentProps<'div'> {
+export interface SkeletonProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 

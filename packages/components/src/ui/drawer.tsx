@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import { Drawer as DrawerPrimitive } from 'vaul';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -87,7 +87,7 @@ const styles = stylex.create({
 function Drawer({
   shouldScaleBackground = true,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) {
+}: ComponentProps<typeof DrawerPrimitive.Root>) {
   return (
     <DrawerPrimitive.Root
       data-slot="drawer"
@@ -97,19 +97,19 @@ function Drawer({
   );
 }
 
-function DrawerTrigger(props: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
+function DrawerTrigger(props: ComponentProps<typeof DrawerPrimitive.Trigger>) {
   return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />;
 }
 
-function DrawerPortal(props: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
+function DrawerPortal(props: ComponentProps<typeof DrawerPrimitive.Portal>) {
   return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />;
 }
 
-function DrawerClose(props: React.ComponentProps<typeof DrawerPrimitive.Close>) {
+function DrawerClose(props: ComponentProps<typeof DrawerPrimitive.Close>) {
   return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />;
 }
 
-export interface DrawerOverlayProps extends React.ComponentProps<typeof DrawerPrimitive.Overlay> {
+export interface DrawerOverlayProps extends ComponentProps<typeof DrawerPrimitive.Overlay> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -127,7 +127,7 @@ function DrawerOverlay({ className, sx, style, ...props }: DrawerOverlayProps) {
   );
 }
 
-export interface DrawerContentProps extends React.ComponentProps<typeof DrawerPrimitive.Content> {
+export interface DrawerContentProps extends ComponentProps<typeof DrawerPrimitive.Content> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -153,7 +153,7 @@ function DrawerContent({ className, children, sx, style, ...props }: DrawerConte
   );
 }
 
-export interface DrawerHeaderProps extends React.ComponentProps<'div'> {
+export interface DrawerHeaderProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -169,7 +169,7 @@ function DrawerHeader({ className, sx, ...props }: DrawerHeaderProps) {
   );
 }
 
-export interface DrawerFooterProps extends React.ComponentProps<'div'> {
+export interface DrawerFooterProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -185,7 +185,7 @@ function DrawerFooter({ className, sx, ...props }: DrawerFooterProps) {
   );
 }
 
-export interface DrawerTitleProps extends React.ComponentProps<typeof DrawerPrimitive.Title> {
+export interface DrawerTitleProps extends ComponentProps<typeof DrawerPrimitive.Title> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -201,9 +201,7 @@ function DrawerTitle({ className, sx, ...props }: DrawerTitleProps) {
   );
 }
 
-export interface DrawerDescriptionProps extends React.ComponentProps<
-  typeof DrawerPrimitive.Description
-> {
+export interface DrawerDescriptionProps extends ComponentProps<typeof DrawerPrimitive.Description> {
   sx?: stylex.StyleXStyles;
 }
 

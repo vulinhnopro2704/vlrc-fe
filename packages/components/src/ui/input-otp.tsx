@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { createContext, useContext, type ComponentProps } from 'react';
 import { OTPInput, OTPInputContext } from 'input-otp';
 import { MinusIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
@@ -128,15 +128,15 @@ const slotSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.slotXxl,
 };
 
-const InputOTPContext = React.createContext<{ size: ComponentSize }>({ size: 'md' });
+const InputOTPContext = createContext<{ size: ComponentSize }>({ size: 'md' });
 
 export type InputOTPProps = {
   size?: ComponentSize;
   containerSx?: stylex.StyleXStyles;
   sx?: stylex.StyleXStyles;
 } & (
-  | (Omit<React.ComponentProps<typeof OTPInput>, 'size' | 'render'> & { render?: never })
-  | (Omit<React.ComponentProps<typeof OTPInput>, 'size' | 'children'> & { children?: never })
+  | (Omit<ComponentProps<typeof OTPInput>, 'size' | 'render'> & { render?: never })
+  | (Omit<ComponentProps<typeof OTPInput>, 'size' | 'children'> & { children?: never })
 );
 
 function InputOTP({
@@ -164,13 +164,13 @@ function InputOTP({
             : containerSxProps.className
         }
         className={mergedInputClassName}
-        {...(props as React.ComponentProps<typeof OTPInput>)}
+        {...(props as ComponentProps<typeof OTPInput>)}
       />
     </InputOTPContext.Provider>
   );
 }
 
-export interface InputOTPGroupProps extends React.ComponentProps<'div'> {
+export interface InputOTPGroupProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -186,16 +186,16 @@ function InputOTPGroup({ className, sx, ...props }: InputOTPGroupProps) {
   );
 }
 
-export interface InputOTPSlotProps extends React.ComponentProps<'div'> {
+export interface InputOTPSlotProps extends ComponentProps<'div'> {
   index: number;
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
 
 function InputOTPSlot({ index, size: propSize, className, sx, ...props }: InputOTPSlotProps) {
-  const context = React.useContext(InputOTPContext);
+  const context = useContext(InputOTPContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
-  const inputOTPContext = React.useContext(OTPInputContext);
+  const inputOTPContext = useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};
 
   const sizeStyle = slotSizeStyles[resolvedSize] ?? styles.slotMd;
@@ -220,7 +220,7 @@ function InputOTPSlot({ index, size: propSize, className, sx, ...props }: InputO
   );
 }
 
-export interface InputOTPSeparatorProps extends React.ComponentProps<'div'> {
+export interface InputOTPSeparatorProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 

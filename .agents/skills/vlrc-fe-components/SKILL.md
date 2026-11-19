@@ -68,7 +68,7 @@ Before writing or editing components, leverage Astryx's official tooling:
 
 7. **Zero Consumer UI Dependency Overhead & Subpath Architecture**:
    - All 30+ UI and headless dependencies (`@radix-ui/*`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `lodash-es`, `lucide-react`, `react-day-picker`, `react-number-format`, `react-resizable-panels`, `sonner`, `vaul`, `ahooks`) are packaged in `dependencies` of `@vlrc-fe/components`. Consumer apps do not need to install or manage any UI dependencies; they only install `react` and `react-dom`.
-   - **Subpath Exports**: `@vlrc-fe/components` provides optimized enterprise wrappers (372 kB bundle). `@vlrc-fe/components/astryx` provides 100% of Astryx primitives (447+ components, layout, and hooks) on-demand without bloating the consumer's base bundle. Design tokens are at `@vlrc-fe/components/theme`.
+   - **Subpath Exports**: `@vlrc-fe/components` provides optimized enterprise wrappers (modular dist ≈310 kB gzip, shipped unminified on purpose — keep `build.minify: false`). `@vlrc-fe/components/astryx` provides 100% of Astryx primitives (447+ components, layout, and hooks) on-demand without bloating the consumer's base bundle. Design tokens are at `@vlrc-fe/components/theme`.
 
 ---
 

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as SwitchPrimitive from '@radix-ui/react-switch';
+import { useEffect, useState, type ComponentProps } from 'react';
+import { Root as SwitchPrimitiveRoot, Thumb as SwitchPrimitiveThumb } from '@radix-ui/react-switch';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -159,7 +159,7 @@ const thumbCheckedStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.thumbCheckedXxl,
 };
 
-export interface SwitchProps extends React.ComponentProps<typeof SwitchPrimitive.Root> {
+export interface SwitchProps extends ComponentProps<typeof SwitchPrimitiveRoot> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
@@ -176,10 +176,10 @@ function Switch({
   ...props
 }: SwitchProps) {
   const isControlled = controlledChecked !== undefined;
-  const [uncontrolledChecked, setUncontrolledChecked] = React.useState(defaultChecked);
+  const [uncontrolledChecked, setUncontrolledChecked] = useState(defaultChecked);
   const isChecked = isControlled ? Boolean(controlledChecked) : uncontrolledChecked;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isControlled && defaultChecked !== undefined) {
       setUncontrolledChecked(defaultChecked);
     }
@@ -200,7 +200,7 @@ function Switch({
   const thumbSxProps = stylex.props(styles.thumb, thumbSize, isChecked && thumbCheckedStyle);
 
   return (
-    <SwitchPrimitive.Root
+    <SwitchPrimitiveRoot
       data-slot="switch"
       data-size={size}
       checked={isChecked}
@@ -210,8 +210,8 @@ function Switch({
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <SwitchPrimitive.Thumb data-slot="switch-thumb" {...thumbSxProps} />
-    </SwitchPrimitive.Root>
+      <SwitchPrimitiveThumb data-slot="switch-thumb" {...thumbSxProps} />
+    </SwitchPrimitiveRoot>
   );
 }
 

@@ -6,7 +6,10 @@ export default defineConfig({
   base: process.env.BASE_URL || (process.env.GITHUB_ACTIONS ? '/vlrc-fe/' : '/'),
   plugins: [
     stylex.vite({
-      useCSSLayers: true,
+      useCSSLayers: {
+        before: ['reset', 'astryx-base', 'astryx-theme'],
+        after: ['product'],
+      },
       dev: true,
       runtimeInjection: false,
       unstable_moduleResolution: {

@@ -1,5 +1,14 @@
-import * as React from 'react';
-import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
+import { type ComponentProps } from 'react';
+import {
+  Content as NavigationMenuPrimitiveContent,
+  Indicator as NavigationMenuPrimitiveIndicator,
+  Item as NavigationMenuPrimitiveItem,
+  Link as NavigationMenuPrimitiveLink,
+  List as NavigationMenuPrimitiveList,
+  Root as NavigationMenuPrimitiveRoot,
+  Trigger as NavigationMenuPrimitiveTrigger,
+  Viewport as NavigationMenuPrimitiveViewport,
+} from '@radix-ui/react-navigation-menu';
 import { ChevronDownIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 
@@ -141,9 +150,7 @@ const styles = stylex.create({
   },
 });
 
-export interface NavigationMenuProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.Root
-> {
+export interface NavigationMenuProps extends ComponentProps<typeof NavigationMenuPrimitiveRoot> {
   viewport?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -157,7 +164,7 @@ function NavigationMenu({
 }: NavigationMenuProps) {
   const styleProps = stylex.props(styles.root, sx);
   return (
-    <NavigationMenuPrimitive.Root
+    <NavigationMenuPrimitiveRoot
       data-slot="navigation-menu"
       data-viewport={viewport}
       {...styleProps}
@@ -166,12 +173,12 @@ function NavigationMenu({
     >
       {children}
       {viewport && <NavigationMenuViewport />}
-    </NavigationMenuPrimitive.Root>
+    </NavigationMenuPrimitiveRoot>
   );
 }
 
-export interface NavigationMenuListProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.List
+export interface NavigationMenuListProps extends ComponentProps<
+  typeof NavigationMenuPrimitiveList
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -179,7 +186,7 @@ export interface NavigationMenuListProps extends React.ComponentProps<
 function NavigationMenuList({ className, sx, ...props }: NavigationMenuListProps) {
   const styleProps = stylex.props(styles.list, sx);
   return (
-    <NavigationMenuPrimitive.List
+    <NavigationMenuPrimitiveList
       data-slot="navigation-menu-list"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -188,8 +195,8 @@ function NavigationMenuList({ className, sx, ...props }: NavigationMenuListProps
   );
 }
 
-export interface NavigationMenuItemProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.Item
+export interface NavigationMenuItemProps extends ComponentProps<
+  typeof NavigationMenuPrimitiveItem
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -197,7 +204,7 @@ export interface NavigationMenuItemProps extends React.ComponentProps<
 function NavigationMenuItem({ className, sx, ...props }: NavigationMenuItemProps) {
   const styleProps = stylex.props(styles.item, sx);
   return (
-    <NavigationMenuPrimitive.Item
+    <NavigationMenuPrimitiveItem
       data-slot="navigation-menu-item"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -210,8 +217,8 @@ const navigationMenuTriggerStyle = () => {
   return '';
 };
 
-export interface NavigationMenuTriggerProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.Trigger
+export interface NavigationMenuTriggerProps extends ComponentProps<
+  typeof NavigationMenuPrimitiveTrigger
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -219,19 +226,19 @@ export interface NavigationMenuTriggerProps extends React.ComponentProps<
 function NavigationMenuTrigger({ className, children, sx, ...props }: NavigationMenuTriggerProps) {
   const styleProps = stylex.props(styles.trigger, sx);
   return (
-    <NavigationMenuPrimitive.Trigger
+    <NavigationMenuPrimitiveTrigger
       data-slot="navigation-menu-trigger"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
     >
       {children} <ChevronDownIcon {...stylex.props(styles.chevron)} aria-hidden="true" />
-    </NavigationMenuPrimitive.Trigger>
+    </NavigationMenuPrimitiveTrigger>
   );
 }
 
-export interface NavigationMenuContentProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.Content
+export interface NavigationMenuContentProps extends ComponentProps<
+  typeof NavigationMenuPrimitiveContent
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -239,7 +246,7 @@ export interface NavigationMenuContentProps extends React.ComponentProps<
 function NavigationMenuContent({ className, sx, ...props }: NavigationMenuContentProps) {
   const styleProps = stylex.props(styles.content, sx);
   return (
-    <NavigationMenuPrimitive.Content
+    <NavigationMenuPrimitiveContent
       data-slot="navigation-menu-content"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -248,8 +255,8 @@ function NavigationMenuContent({ className, sx, ...props }: NavigationMenuConten
   );
 }
 
-export interface NavigationMenuViewportProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.Viewport
+export interface NavigationMenuViewportProps extends ComponentProps<
+  typeof NavigationMenuPrimitiveViewport
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -258,7 +265,7 @@ function NavigationMenuViewport({ className, sx, ...props }: NavigationMenuViewp
   const styleProps = stylex.props(styles.viewport, sx);
   return (
     <div {...stylex.props(styles.viewportContainer)}>
-      <NavigationMenuPrimitive.Viewport
+      <NavigationMenuPrimitiveViewport
         data-slot="navigation-menu-viewport"
         {...styleProps}
         className={cn(styleProps.className, className)}
@@ -268,8 +275,8 @@ function NavigationMenuViewport({ className, sx, ...props }: NavigationMenuViewp
   );
 }
 
-export interface NavigationMenuLinkProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.Link
+export interface NavigationMenuLinkProps extends ComponentProps<
+  typeof NavigationMenuPrimitiveLink
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -277,7 +284,7 @@ export interface NavigationMenuLinkProps extends React.ComponentProps<
 function NavigationMenuLink({ className, sx, ...props }: NavigationMenuLinkProps) {
   const styleProps = stylex.props(styles.link, sx);
   return (
-    <NavigationMenuPrimitive.Link
+    <NavigationMenuPrimitiveLink
       data-slot="navigation-menu-link"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -286,8 +293,8 @@ function NavigationMenuLink({ className, sx, ...props }: NavigationMenuLinkProps
   );
 }
 
-export interface NavigationMenuIndicatorProps extends React.ComponentProps<
-  typeof NavigationMenuPrimitive.Indicator
+export interface NavigationMenuIndicatorProps extends ComponentProps<
+  typeof NavigationMenuPrimitiveIndicator
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -295,14 +302,14 @@ export interface NavigationMenuIndicatorProps extends React.ComponentProps<
 function NavigationMenuIndicator({ className, sx, ...props }: NavigationMenuIndicatorProps) {
   const styleProps = stylex.props(styles.indicator, sx);
   return (
-    <NavigationMenuPrimitive.Indicator
+    <NavigationMenuPrimitiveIndicator
       data-slot="navigation-menu-indicator"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
     >
       <div {...stylex.props(styles.indicatorArrow)} />
-    </NavigationMenuPrimitive.Indicator>
+    </NavigationMenuPrimitiveIndicator>
   );
 }
 

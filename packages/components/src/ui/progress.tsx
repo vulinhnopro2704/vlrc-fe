@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, type HTMLAttributes } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 
@@ -21,12 +21,12 @@ const styles = stylex.create({
   },
 });
 
-export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
   value?: number;
   sx?: stylex.StyleXStyles;
 }
 
-const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
+const Progress = forwardRef<HTMLDivElement, ProgressProps>(
   ({ className, value = 0, sx, style, ...props }, ref) => {
     const safeValue = Math.min(Math.max(value, 0), 100);
     const sxProps = stylex.props(styles.root, sx);

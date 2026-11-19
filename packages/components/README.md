@@ -21,7 +21,7 @@ Accessible, enterprise-grade React UI component library built natively on Meta's
 
 - **Astryx Design System Core** — 174+ upstream primitives, unified design tokens, rich text editor (`@astryxdesign/richtext`), and native internationalization.
 - **Zero UI Dependency Burden** — all 30+ UI primitives and headless libraries (`@radix-ui/*`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `lucide-react`, `sonner`, `vaul`, etc.) are packaged directly in `dependencies`. Consumer applications only need to install `react` and `react-dom`.
-- **Subpath Architecture & Tree-Shaking** — lightweight main entry (372 kB bundle) for enterprise wrappers, plus a dedicated `@vlrc-fe/components/astryx` subpath for 100% of Meta's Astryx primitives.
+- **Subpath Architecture & Tree-Shaking** — modular, tree-shakeable dist (≈1.6 MB ESM / ≈310 kB gzip, shipped unminified for toolchain compatibility) for enterprise wrappers, plus a dedicated `@vlrc-fe/components/astryx` subpath for 100% of Meta's Astryx primitives.
 - **Meta StyleX Styling** — compile-time atomic CSS-in-JS with deterministic specificity and zero runtime overhead.
 - **CLI Bridge & Schema Inspection** — run `npx vlrc component <ComponentName> --json` or `--props` to inspect schemas directly from Astryx.
 - **Enterprise Wrapper Extensions**:
@@ -107,6 +107,15 @@ This automatically declares native CSS cascade layers in the required order:
 ```css
 @layer reset, astryx-base, astryx-theme, product;
 ```
+
+### 3. Do Not Run the StyleX Babel Plugin Over This Package's Dist
+
+The published `dist` is **pre-compiled plain ESM/CJS** — StyleX is already compiled at build time — and needs no transpilation on the consumer side. Your toolchain must therefore **not** run `@stylexjs/babel-plugin` over `node_modules/@vlrc-fe/components`:
+
+- **Next.js**: do **not** add `@vlrc-fe/components` to `transpilePackages`. If the app uses StyleX, Next would run the StyleX Babel plugin over this package's dist, which can silently erase runtime calls (in v3.0.3 this broke `FormFileUpload` delete / "Clear all" — fixed in 3.0.4+).
+- **Vite / other**: keep the StyleX plugin scoped to your own sources; the default Vite setup (which leaves `node_modules` untouched by Babel) is safe.
+
+The package enforces its side of this contract in CI: the dist is built without identifier minification and a post-build check fails the build if any dist file ever shadows the stylex import binding with a local binding.
 
 ---
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { vi } from 'date-fns/locale';
 import { Calendar } from './calendar';
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ border: '1px solid var(--border)', borderRadius: '0.75rem' }}>
         <Calendar mode="single" selected={date} onSelect={setDate} />
@@ -28,7 +28,7 @@ export const Default: Story = {
 
 export const WithDropdownCaption: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ border: '1px solid var(--border)', borderRadius: '0.75rem' }}>
         <Calendar
@@ -47,7 +47,7 @@ export const WithDropdownCaption: Story = {
 
 export const RangeSelection: Story = {
   render: () => {
-    const [range, setRange] = React.useState<{ from: Date | undefined; to?: Date | undefined }>({
+    const [range, setRange] = useState<{ from: Date | undefined; to?: Date | undefined }>({
       from: new Date(),
       to: new Date(new Date().setDate(new Date().getDate() + 5)),
     });
@@ -61,7 +61,7 @@ export const RangeSelection: Story = {
 
 export const MultipleMonths: Story = {
   render: () => {
-    const [range, setRange] = React.useState<{ from: Date | undefined; to?: Date | undefined }>({
+    const [range, setRange] = useState<{ from: Date | undefined; to?: Date | undefined }>({
       from: new Date(),
       to: new Date(new Date().setDate(new Date().getDate() + 10)),
     });
@@ -75,7 +75,7 @@ export const MultipleMonths: Story = {
 
 export const DisabledWeekends: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ border: '1px solid var(--border)', borderRadius: '0.75rem' }}>
         <Calendar
@@ -91,7 +91,7 @@ export const DisabledWeekends: Story = {
 
 export const HiddenOutsideDays: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <div style={{ border: '1px solid var(--border)', borderRadius: '0.75rem' }}>
         <Calendar mode="single" selected={date} onSelect={setDate} showOutsideDays={false} />
@@ -102,7 +102,7 @@ export const HiddenOutsideDays: Story = {
 
 export const CalendarSizes: Story = {
   render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     const sizes = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const;
 
     return (

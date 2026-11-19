@@ -94,7 +94,7 @@ exports[`DataTableFacetedFilter > UI > should match snapshot with multiple selec
       class="separator__styles.base xwefxjc x2lah0s xc342km separator__styles.vertical x1i1rx1s DataTableFacetedFilter__styles.separator x1l36t39 x1c334mu"
       data-orientation="vertical"
       data-slot="separator"
-      data-style-src="@vlrc-fe/components:src/ui/separator.tsx:7; @vlrc-fe/components:src/ui/separator.tsx:16; @vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:76"
+      data-style-src="@vlrc-fe/components:src/ui/separator.tsx:9; @vlrc-fe/components:src/ui/separator.tsx:18; @vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:76"
       role="none"
     />
     <span
@@ -171,7 +171,7 @@ exports[`DataTableFacetedFilter > UI > should match snapshot with single selecte
       class="separator__styles.base xwefxjc x2lah0s xc342km separator__styles.vertical x1i1rx1s DataTableFacetedFilter__styles.separator x1l36t39 x1c334mu"
       data-orientation="vertical"
       data-slot="separator"
-      data-style-src="@vlrc-fe/components:src/ui/separator.tsx:7; @vlrc-fe/components:src/ui/separator.tsx:16; @vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:76"
+      data-style-src="@vlrc-fe/components:src/ui/separator.tsx:9; @vlrc-fe/components:src/ui/separator.tsx:18; @vlrc-fe/components:src/DataTable/components/DataTableFacetedFilter.tsx:76"
       role="none"
     />
     <span

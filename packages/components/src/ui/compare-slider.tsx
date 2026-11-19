@@ -1,4 +1,14 @@
-import * as React from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useRef,
+  useState,
+  type CSSProperties,
+  type HTMLAttributes,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { ChevronsLeftRight } from 'lucide-react';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
@@ -98,21 +108,21 @@ const styles = stylex.create({
 
 export type CompareSliderOrientation = 'horizontal' | 'vertical';
 
-export interface CompareSliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  itemOne: React.ReactNode;
-  itemTwo: React.ReactNode;
+export interface CompareSliderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  itemOne: ReactNode;
+  itemTwo: ReactNode;
   value?: number;
   defaultValue?: number;
   onValueChange?: (value: number) => void;
   orientation?: CompareSliderOrientation;
   showLabels?: boolean;
-  labelOne?: React.ReactNode;
-  labelTwo?: React.ReactNode;
+  labelOne?: ReactNode;
+  labelTwo?: ReactNode;
   disabled?: boolean;
   sx?: stylex.StyleXStyles;
 }
 
-export const CompareSlider = React.forwardRef<HTMLDivElement, CompareSliderProps>(
+export const CompareSlider = forwardRef<HTMLDivElement, CompareSliderProps>(
   (
     {
       itemOne,
@@ -133,13 +143,13 @@ export const CompareSlider = React.forwardRef<HTMLDivElement, CompareSliderProps
     ref,
   ) => {
     const isControlled = controlledValue !== undefined;
-    const [internalValue, setInternalValue] = React.useState<number>(defaultValue);
-    const [isDragging, setIsDragging] = React.useState<boolean>(false);
-    const containerRef = React.useRef<HTMLDivElement | null>(null);
+    const [internalValue, setInternalValue] = useState<number>(defaultValue);
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+    const containerRef = useRef<HTMLDivElement | null>(null);
 
     const position = isControlled ? controlledValue : internalValue;
 
-    const setPosition = React.useCallback(
+    const setPosition = useCallback(
       (nextPos: number) => {
         if (disabled) return;
         const clamped = Math.max(0, Math.min(100, Math.round(nextPos)));
@@ -151,7 +161,7 @@ export const CompareSlider = React.forwardRef<HTMLDivElement, CompareSliderProps
       [disabled, isControlled, onValueChange],
     );
 
-    const handlePointerMove = React.useCallback(
+    const handlePointerMove = useCallback(
       (clientX: number, clientY: number) => {
         const container = containerRef.current;
         if (!container) return;
@@ -170,19 +180,19 @@ export const CompareSlider = React.forwardRef<HTMLDivElement, CompareSliderProps
       [orientation, setPosition],
     );
 
-    const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const handlePointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
       if (disabled) return;
       setIsDragging(true);
       (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
       handlePointerMove(e.clientX, e.clientY);
     };
 
-    const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
       if (!isDragging || disabled) return;
       handlePointerMove(e.clientX, e.clientY);
     };
 
-    const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
       setIsDragging(false);
       try {
         (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
@@ -191,7 +201,7 @@ export const CompareSlider = React.forwardRef<HTMLDivElement, CompareSliderProps
       }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
       if (disabled) return;
       const step = e.shiftKey ? 10 : 2;
 
@@ -212,11 +222,11 @@ export const CompareSlider = React.forwardRef<HTMLDivElement, CompareSliderProps
 
     const isHorizontal = orientation === 'horizontal';
 
-    const clipStyle: React.CSSProperties = isHorizontal
+    const clipStyle: CSSProperties = isHorizontal
       ? { clipPath: `inset(0 ${100 - position}% 0 0)` }
       : { clipPath: `inset(0 0 ${100 - position}% 0)` };
 
-    const dividerStyle: React.CSSProperties = isHorizontal
+    const dividerStyle: CSSProperties = isHorizontal
       ? { left: `${position}%` }
       : { top: `${position}%` };
 

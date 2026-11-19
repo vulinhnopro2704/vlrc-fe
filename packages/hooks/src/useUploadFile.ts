@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 export interface UploadedFile {
   key: string;
@@ -285,13 +285,13 @@ export interface UseUploadFileOptions {
 export function useUploadFile(options: UseUploadFileOptions = {}) {
   const { uploadHandler, defaultUploadedFiles = [], onSuccess, onError } = options;
 
-  const [uploadedFiles, setUploadedFiles] = React.useState<UploadedFile[]>(defaultUploadedFiles);
-  const [progresses, setProgresses] = React.useState<Record<string, number>>({});
-  const [isUploading, setIsUploading] = React.useState(false);
-  const [error, setError] = React.useState<Error | null>(null);
-  const abortControllerRef = React.useRef<AbortController | null>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>(defaultUploadedFiles);
+  const [progresses, setProgresses] = useState<Record<string, number>>({});
+  const [isUploading, setIsUploading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
-  const abort = React.useCallback(() => {
+  const abort = useCallback(() => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
       abortControllerRef.current = null;
@@ -299,14 +299,14 @@ export function useUploadFile(options: UseUploadFileOptions = {}) {
     setIsUploading(false);
   }, []);
 
-  const reset = React.useCallback(() => {
+  const reset = useCallback(() => {
     abort();
     setUploadedFiles([]);
     setProgresses({});
     setError(null);
   }, [abort]);
 
-  const onUpload = React.useCallback(
+  const onUpload = useCallback(
     async (files: File[], handlerOverride?: UploadHandler): Promise<UploadedFile[]> => {
       const handler = handlerOverride || uploadHandler;
       if (!handler) {

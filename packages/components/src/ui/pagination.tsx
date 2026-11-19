@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { createContext, useContext, type ComponentProps } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -170,9 +170,9 @@ const iconSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.iconXxl,
 };
 
-const PaginationContext = React.createContext<{ size: ComponentSize }>({ size: 'md' });
+const PaginationContext = createContext<{ size: ComponentSize }>({ size: 'md' });
 
-export interface PaginationProps extends React.ComponentProps<'nav'> {
+export interface PaginationProps extends ComponentProps<'nav'> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
@@ -195,7 +195,7 @@ function Pagination({ size = 'md', className, sx, ...props }: PaginationProps) {
   );
 }
 
-export interface PaginationContentProps extends React.ComponentProps<'ul'> {
+export interface PaginationContentProps extends ComponentProps<'ul'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -211,7 +211,7 @@ function PaginationContent({ className, sx, ...props }: PaginationContentProps) 
   );
 }
 
-export interface PaginationItemProps extends React.ComponentProps<'li'> {
+export interface PaginationItemProps extends ComponentProps<'li'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -227,7 +227,7 @@ function PaginationItem({ className, sx, ...props }: PaginationItemProps) {
   );
 }
 
-export interface PaginationLinkProps extends Omit<React.ComponentProps<'a'>, 'type'> {
+export interface PaginationLinkProps extends Omit<ComponentProps<'a'>, 'type'> {
   isActive?: boolean;
   size?: ComponentSize;
   type?: TextType;
@@ -241,7 +241,7 @@ function PaginationLink({
   sx,
   ...props
 }: PaginationLinkProps) {
-  const context = React.useContext(PaginationContext);
+  const context = useContext(PaginationContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const sizeStyle = linkSizeStyles[resolvedSize] ?? styles.linkMd;
   const sxProps = stylex.props(styles.link, sizeStyle, isActive && styles.linkActive, sx);
@@ -267,8 +267,8 @@ function PaginationPrevious({
   size: propSize,
   sx,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
-  const context = React.useContext(PaginationContext);
+}: ComponentProps<typeof PaginationLink>) {
+  const context = useContext(PaginationContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const iconSize = iconSizeStyles[resolvedSize] ?? styles.iconMd;
 
@@ -294,8 +294,8 @@ function PaginationNext({
   size: propSize,
   sx,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
-  const context = React.useContext(PaginationContext);
+}: ComponentProps<typeof PaginationLink>) {
+  const context = useContext(PaginationContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const iconSize = iconSizeStyles[resolvedSize] ?? styles.iconMd;
 
@@ -320,8 +320,8 @@ function PaginationEllipsis({
   size: propSize,
   sx,
   ...props
-}: React.ComponentProps<'span'> & { size?: ComponentSize; sx?: stylex.StyleXStyles }) {
-  const context = React.useContext(PaginationContext);
+}: ComponentProps<'span'> & { size?: ComponentSize; sx?: stylex.StyleXStyles }) {
+  const context = useContext(PaginationContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
   const iconSize = iconSizeStyles[resolvedSize] ?? styles.iconMd;
   const sizeStyle = linkSizeStyles[resolvedSize] ?? styles.linkMd;

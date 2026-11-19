@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Copy, Check } from 'lucide-react';
 import { colors } from '../theme/tokens.stylex';
@@ -49,7 +49,7 @@ export interface CopyButtonProps extends Omit<ButtonProps, 'onClick' | 'onCopy'>
   copiedLabel?: string;
 }
 
-export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
+export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
   (
     {
       value,
@@ -68,10 +68,10 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
     },
     ref,
   ) => {
-    const [copied, setCopied] = React.useState(false);
-    const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+    const [copied, setCopied] = useState(false);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
       return () => {
         if (timeoutRef.current !== null) {
           clearTimeout(timeoutRef.current);
@@ -79,7 +79,7 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
       };
     }, []);
 
-    const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleCopy = async (e: ReactMouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
 
       if (!navigator?.clipboard?.writeText) {

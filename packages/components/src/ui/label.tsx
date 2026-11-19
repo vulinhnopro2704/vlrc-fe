@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as LabelPrimitive from '@radix-ui/react-label';
+import { type ComponentProps } from 'react';
+import { Root as LabelPrimitiveRoot } from '@radix-ui/react-label';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 
@@ -20,14 +20,14 @@ const styles = stylex.create({
   },
 });
 
-export interface LabelProps extends React.ComponentProps<typeof LabelPrimitive.Root> {
+export interface LabelProps extends ComponentProps<typeof LabelPrimitiveRoot> {
   sx?: stylex.StyleXStyles;
 }
 
 function Label({ className, sx, ...props }: LabelProps) {
   const sxProps = stylex.props(styles.base, sx);
   return (
-    <LabelPrimitive.Root
+    <LabelPrimitiveRoot
       data-slot="label"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

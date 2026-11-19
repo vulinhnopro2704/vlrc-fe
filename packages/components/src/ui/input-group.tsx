@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, type ComponentProps, type MouseEvent as ReactMouseEvent } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
@@ -137,7 +137,7 @@ const sizeStyles: Record<InputGroupSize, stylex.StyleXStyles> = {
   lg: styles.sizeLg,
 };
 
-export interface InputGroupProps extends React.ComponentProps<'div'> {
+export interface InputGroupProps extends ComponentProps<'div'> {
   size?: InputGroupSize;
   disabled?: boolean;
   invalid?: boolean;
@@ -177,7 +177,7 @@ function InputGroup({
   );
 }
 
-export interface InputGroupAddonProps extends React.ComponentProps<'div'> {
+export interface InputGroupAddonProps extends ComponentProps<'div'> {
   align?: InputGroupAlign;
   sx?: stylex.StyleXStyles;
 }
@@ -193,7 +193,7 @@ function InputGroupAddon({
   const alignStyle = align === 'inline-start' ? styles.addonStart : styles.addonEnd;
   const sxProps = stylex.props(styles.addon, alignStyle, sx);
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLDivElement>) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
     if ((e.target as HTMLElement).closest('button, a, input, select, textarea')) {
@@ -220,7 +220,7 @@ function InputGroupAddon({
   );
 }
 
-export interface InputGroupTextProps extends React.ComponentProps<'span'> {
+export interface InputGroupTextProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -267,11 +267,11 @@ function InputGroupButton({
   );
 }
 
-export interface InputGroupInputProps extends React.ComponentProps<'input'> {
+export interface InputGroupInputProps extends ComponentProps<'input'> {
   sx?: stylex.StyleXStyles;
 }
 
-const InputGroupInput = React.forwardRef<HTMLInputElement, InputGroupInputProps>(
+const InputGroupInput = forwardRef<HTMLInputElement, InputGroupInputProps>(
   ({ className, sx, ...props }, ref) => {
     const sxProps = stylex.props(styles.innerInput, sx);
     return (
@@ -287,11 +287,11 @@ const InputGroupInput = React.forwardRef<HTMLInputElement, InputGroupInputProps>
 );
 InputGroupInput.displayName = 'InputGroupInput';
 
-export interface InputGroupTextareaProps extends React.ComponentProps<'textarea'> {
+export interface InputGroupTextareaProps extends ComponentProps<'textarea'> {
   sx?: stylex.StyleXStyles;
 }
 
-const InputGroupTextarea = React.forwardRef<HTMLTextAreaElement, InputGroupTextareaProps>(
+const InputGroupTextarea = forwardRef<HTMLTextAreaElement, InputGroupTextareaProps>(
   ({ className, sx, ...props }, ref) => {
     const sxProps = stylex.props(styles.innerTextarea, sx);
     return (

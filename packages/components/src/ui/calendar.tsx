@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import { createContext, useContext, useEffect, useRef, type ComponentProps } from 'react';
 import { DayPicker, getDefaultClassNames, type DayButton } from 'react-day-picker';
 import * as stylex from '@stylexjs/stylex';
 
@@ -324,10 +324,10 @@ const weekdaySizeStyles = stylex.create({
 interface CalendarContextValue {
   size: ComponentSize;
 }
-const CalendarContext = React.createContext<CalendarContextValue>({ size: 'md' });
+const CalendarContext = createContext<CalendarContextValue>({ size: 'md' });
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker> & {
-  buttonVariant?: React.ComponentProps<typeof Button>['variant'];
+export type CalendarProps = ComponentProps<typeof DayPicker> & {
+  buttonVariant?: ComponentProps<typeof Button>['variant'];
   size?: DatePickerSize;
   sx?: stylex.StyleXStyles;
 };
@@ -480,12 +480,12 @@ function CalendarDayButton({
   day,
   modifiers,
   ...props
-}: React.ComponentProps<typeof DayButton>) {
+}: ComponentProps<typeof DayButton>) {
   const defaultClassNames = getDefaultClassNames();
-  const { size } = React.useContext(CalendarContext);
+  const { size } = useContext(CalendarContext);
 
-  const ref = React.useRef<HTMLButtonElement>(null);
-  React.useEffect(() => {
+  const ref = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
     if (modifiers.focused) ref.current?.focus();
   }, [modifiers.focused]);
 

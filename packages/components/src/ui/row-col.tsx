@@ -1,4 +1,12 @@
-import * as React from 'react';
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  useMemo,
+  type CSSProperties,
+  type ElementType,
+  type HTMLAttributes,
+} from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 import { resolveSpacing, isComponentSize, type SpacingValue } from '../theme';
@@ -28,15 +36,15 @@ export interface RowContextType {
   gutter: [string, string];
 }
 
-export const RowContext = React.createContext<RowContextType>({
+export const RowContext = createContext<RowContextType>({
   gutter: ['0px', '0px'],
 });
 
 export function useRowContext(): RowContextType {
-  return React.useContext(RowContext);
+  return useContext(RowContext);
 }
 
-export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RowProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Grid gutter spacing.
    * Accepts standard 7-tier scale ('xxs'..'xxl'), number (in px), string ('1rem'),
@@ -66,7 +74,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
    * Custom underlying HTML tag (e.g. 'ul', 'section', 'nav').
    * @default 'div'
    */
-  as?: React.ElementType;
+  as?: ElementType;
   /**
    * Meta StyleX custom override styles.
    */
@@ -81,12 +89,12 @@ export interface ColResponsiveConfig {
   order?: number;
   pull?: number;
   push?: number;
-  flex?: React.CSSProperties['flex'];
+  flex?: CSSProperties['flex'];
 }
 
 export type ColBreakpointProp = ColSpanType | ColResponsiveConfig;
 
-export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ColProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Number of columns to span (0 to 24, or 'auto').
    * 0 sets display to 'none'.
@@ -111,7 +119,7 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Flex layout property for custom flex item sizing.
    */
-  flex?: React.CSSProperties['flex'];
+  flex?: CSSProperties['flex'];
   /**
    * Extra small screen (< 576px) breakpoint config.
    */
@@ -144,7 +152,7 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
    * Custom underlying HTML tag (e.g. 'li', 'article', 'div').
    * @default 'div'
    */
-  as?: React.ElementType;
+  as?: ElementType;
   /**
    * Meta StyleX custom override styles.
    */
@@ -374,7 +382,7 @@ function resolveRowGutter(
 // Row Component
 // ============================================================================
 
-export const Row = React.forwardRef<HTMLDivElement, RowProps>(function Row(
+export const Row = forwardRef<HTMLDivElement, RowProps>(function Row(
   {
     gutter = 0,
     align = 'top',
@@ -391,10 +399,7 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(function Row(
   ref,
 ) {
   const screens = useBreakpoint();
-  const [gutterX, gutterY] = React.useMemo(
-    () => resolveRowGutter(gutter, screens),
-    [gutter, screens],
-  );
+  const [gutterX, gutterY] = useMemo(() => resolveRowGutter(gutter, screens), [gutter, screens]);
 
   const sxProps = stylex.props(
     styles.rowBase,
@@ -408,14 +413,14 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(function Row(
     ? `${sxProps.className || ''} ${className}`.trim()
     : sxProps.className;
 
-  const dynamicStyle: React.CSSProperties & Record<`--${string}`, string | number | undefined> = {
+  const dynamicStyle: CSSProperties & Record<`--${string}`, string | number | undefined> = {
     ...sxProps.style,
     ...style,
     '--gutter-x': gutterX,
     '--gutter-y': gutterY,
   };
 
-  const contextValue = React.useMemo<RowContextType>(
+  const contextValue = useMemo<RowContextType>(
     () => ({ gutter: [gutterX, gutterY] }),
     [gutterX, gutterY],
   );
@@ -446,7 +451,7 @@ Row.displayName = 'Row';
 // Col Component
 // ============================================================================
 
-export const Col = React.forwardRef<HTMLDivElement, ColProps>(function Col(
+export const Col = forwardRef<HTMLDivElement, ColProps>(function Col(
   {
     span,
     offset,
@@ -473,7 +478,7 @@ export const Col = React.forwardRef<HTMLDivElement, ColProps>(function Col(
   const screens = useBreakpoint();
 
   // Resolve responsive configuration based on active breakpoint
-  const responsiveConfig = React.useMemo<ColResponsiveConfig>(() => {
+  const responsiveConfig = useMemo<ColResponsiveConfig>(() => {
     const breakpoints: Array<{ bp: Breakpoint; val?: ColBreakpointProp }> = [
       { bp: 'xxl', val: xxl },
       { bp: 'xl', val: xl },
@@ -521,7 +526,7 @@ export const Col = React.forwardRef<HTMLDivElement, ColProps>(function Col(
     ? `${sxProps.className || ''} ${className}`.trim()
     : sxProps.className;
 
-  const dynamicStyle: React.CSSProperties = { ...sxProps.style, ...style };
+  const dynamicStyle: CSSProperties = { ...sxProps.style, ...style };
 
   if (activeFlex !== undefined) {
     dynamicStyle.flex = activeFlex;

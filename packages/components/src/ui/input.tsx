@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -301,7 +301,7 @@ const defaultIconSizeForInput: Record<ComponentSize, ComponentSize> = {
   xxl: 'xl',
 };
 
-export interface InputProps extends Omit<React.ComponentProps<'input'>, 'prefix' | 'size'> {
+export interface InputProps extends Omit<ComponentProps<'input'>, 'prefix' | 'size'> {
   /** 7-tier sizing scale for the input component ('xxs' to 'xxl', defaults to 'md') */
   size?: ComponentSize;
   /** Custom StyleX style overrides for the input element */

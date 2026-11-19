@@ -9,7 +9,10 @@ export default defineConfig({
   },
   plugins: [
     stylex.vite({
-      useCSSLayers: true,
+      useCSSLayers: {
+        before: ['reset', 'astryx-base', 'astryx-theme'],
+        after: ['product'],
+      },
       dev: true,
       runtimeInjection: false,
       unstable_moduleResolution: {
@@ -21,6 +24,10 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      '@vlrc-fe/components/theme/tokens.stylex': resolve(
+        import.meta.dirname,
+        './packages/components/src/theme/tokens.stylex.ts',
+      ),
       '@vlrc-fe/components/theme': resolve(
         import.meta.dirname,
         './packages/components/src/theme/tokens.stylex.ts',
@@ -31,6 +38,7 @@ export default defineConfig({
       ),
       '@vlrc-fe/components': resolve(import.meta.dirname, './packages/components/src/index.ts'),
       '@vlrc-fe/hooks': resolve(import.meta.dirname, './packages/hooks/src/index.ts'),
+      '@vlrc-fe/editor': resolve(import.meta.dirname, './packages/editor/src/index.ts'),
     },
   },
   test: {

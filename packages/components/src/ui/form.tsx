@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import { createContext, useContext, useId, type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import type * as LabelPrimitive from '@radix-ui/react-label';
 import { Slot } from '@radix-ui/react-slot';
@@ -49,7 +49,7 @@ type FormFieldContextValue<
   name: TName;
 };
 
-const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFieldContextValue);
+const FormFieldContext = createContext<FormFieldContextValue>({} as FormFieldContextValue);
 
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
@@ -65,8 +65,8 @@ const FormField = <
 };
 
 const useFormField = () => {
-  const fieldContext = React.useContext(FormFieldContext);
-  const itemContext = React.useContext(FormItemContext);
+  const fieldContext = useContext(FormFieldContext);
+  const itemContext = useContext(FormItemContext);
   const formContext = useFormContext();
   const formState = useFormState({ name: fieldContext?.name });
   const fieldState = formContext?.getFieldState
@@ -93,16 +93,16 @@ type FormItemContextValue = {
   id: string;
 };
 
-const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue);
+const FormItemContext = createContext<FormItemContextValue>({} as FormItemContextValue);
 
-export interface FormItemProps extends React.ComponentProps<'div'> {
+export interface FormItemProps extends ComponentProps<'div'> {
   /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
   width?: ComponentWidth;
   sx?: stylex.StyleXStyles;
 }
 
 function FormItem({ className, width, style, sx, ...props }: FormItemProps) {
-  const id = React.useId();
+  const id = useId();
   const resolvedWidth = resolveWidth(width);
   const styleProps = stylex.props(styles.item, sx);
 
@@ -124,7 +124,7 @@ function FormItem({ className, width, style, sx, ...props }: FormItemProps) {
   );
 }
 
-export interface FormLabelProps extends React.ComponentProps<typeof LabelPrimitive.Root> {
+export interface FormLabelProps extends ComponentProps<typeof LabelPrimitive.Root> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -143,7 +143,7 @@ function FormLabel({ className, sx, ...props }: FormLabelProps) {
   );
 }
 
-function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+function FormControl({ ...props }: ComponentProps<typeof Slot>) {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
 
   return (
@@ -157,7 +157,7 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
   );
 }
 
-export interface FormDescriptionProps extends React.ComponentProps<'p'> {
+export interface FormDescriptionProps extends ComponentProps<'p'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -178,7 +178,7 @@ function FormDescription({ className, sx, ...props }: FormDescriptionProps) {
   );
 }
 
-export interface FormMessageProps extends React.ComponentProps<'p'> {
+export interface FormMessageProps extends ComponentProps<'p'> {
   sx?: stylex.StyleXStyles;
 }
 

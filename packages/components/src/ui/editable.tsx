@@ -1,4 +1,17 @@
-import * as React from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ChangeEvent as ReactChangeEvent,
+  type ComponentProps,
+  type FocusEvent as ReactFocusEvent,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
@@ -19,10 +32,10 @@ interface EditableContextValue {
   edit: () => void;
 }
 
-const EditableContext = React.createContext<EditableContextValue | null>(null);
+const EditableContext = createContext<EditableContextValue | null>(null);
 
 function useEditableContext(component: string): EditableContextValue {
-  const context = React.useContext(EditableContext);
+  const context = useContext(EditableContext);
   if (!context) {
     throw new Error(`${component} must be used within an Editable`);
   }
@@ -92,7 +105,7 @@ const styles = stylex.create({
   },
 });
 
-export interface EditableProps extends Omit<React.ComponentProps<'div'>, 'onSubmit'> {
+export interface EditableProps extends Omit<ComponentProps<'div'>, 'onSubmit'> {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
@@ -128,14 +141,14 @@ function Editable({
   children,
   ...props
 }: EditableProps) {
-  const [internalValue, setInternalValue] = React.useState<string>(defaultValue);
-  const [internalEditing, setInternalEditing] = React.useState<boolean>(defaultEditing);
-  const previousValueRef = React.useRef<string>(defaultValue);
+  const [internalValue, setInternalValue] = useState<string>(defaultValue);
+  const [internalEditing, setInternalEditing] = useState<boolean>(defaultEditing);
+  const previousValueRef = useRef<string>(defaultValue);
 
   const currentValue = controlledValue !== undefined ? controlledValue : internalValue;
   const isEditing = controlledEditing !== undefined ? controlledEditing : internalEditing;
 
-  const setEditing = React.useCallback(
+  const setEditing = useCallback(
     (nextEditing: boolean) => {
       if (disabled || readOnly) return;
       if (controlledEditing === undefined) {
@@ -146,7 +159,7 @@ function Editable({
     [disabled, readOnly, controlledEditing, onEditingChange],
   );
 
-  const setValue = React.useCallback(
+  const setValue = useCallback(
     (nextValue: string) => {
       if (controlledValue === undefined) {
         setInternalValue(nextValue);
@@ -156,26 +169,26 @@ function Editable({
     [controlledValue, onValueChange],
   );
 
-  const edit = React.useCallback(() => {
+  const edit = useCallback(() => {
     if (disabled || readOnly) return;
     previousValueRef.current = currentValue;
     setEditing(true);
   }, [disabled, readOnly, currentValue, setEditing]);
 
-  const submit = React.useCallback(() => {
+  const submit = useCallback(() => {
     if (!isEditing) return;
     setEditing(false);
     onSubmit?.(currentValue);
   }, [isEditing, setEditing, onSubmit, currentValue]);
 
-  const cancel = React.useCallback(() => {
+  const cancel = useCallback(() => {
     if (!isEditing) return;
     setValue(previousValueRef.current);
     setEditing(false);
     onCancel?.();
   }, [isEditing, setValue, setEditing, onCancel]);
 
-  const contextValue = React.useMemo<EditableContextValue>(
+  const contextValue = useMemo<EditableContextValue>(
     () => ({
       value: currentValue,
       setValue,
@@ -225,7 +238,7 @@ function Editable({
   );
 }
 
-export interface EditableAreaProps extends React.ComponentProps<'div'> {
+export interface EditableAreaProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -243,7 +256,7 @@ function EditableArea({ className, sx, children, ...props }: EditableAreaProps) 
   );
 }
 
-export interface EditablePreviewProps extends React.ComponentProps<'span'> {
+export interface EditablePreviewProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -259,7 +272,7 @@ function EditablePreview({
 
   if (editing) return null;
 
-  const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLSpanElement>) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
     if (triggerMode === 'click') {
@@ -267,7 +280,7 @@ function EditablePreview({
     }
   };
 
-  const handleDoubleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const handleDoubleClick = (e: ReactMouseEvent<HTMLSpanElement>) => {
     onDoubleClick?.(e);
     if (e.defaultPrevented) return;
     if (triggerMode === 'dblclick') {
@@ -299,7 +312,7 @@ function EditablePreview({
   );
 }
 
-export interface EditableInputProps extends React.ComponentProps<'input'> {
+export interface EditableInputProps extends ComponentProps<'input'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -322,9 +335,9 @@ function EditableInput({
     readOnly,
     placeholder,
   } = useEditableContext('EditableInput');
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (editing) {
       inputRef.current?.focus();
       inputRef.current?.select();
@@ -333,7 +346,7 @@ function EditableInput({
 
   if (!editing) return null;
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: ReactKeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(e);
     if (e.defaultPrevented) return;
 
@@ -346,7 +359,7 @@ function EditableInput({
     }
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleBlur = (e: ReactFocusEvent<HTMLInputElement>) => {
     onBlur?.(e);
     if (e.defaultPrevented) return;
     if (submitOnBlur) {
@@ -356,7 +369,7 @@ function EditableInput({
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ReactChangeEvent<HTMLInputElement>) => {
     onChange?.(e);
     if (e.defaultPrevented) return;
     setValue(e.target.value);
@@ -383,7 +396,7 @@ function EditableInput({
   );
 }
 
-export interface EditableToolbarProps extends React.ComponentProps<'div'> {
+export interface EditableToolbarProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -417,7 +430,7 @@ function EditableTrigger({
 
   if (editing || disabled || readOnly) return null;
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
     edit();
@@ -467,7 +480,7 @@ function EditableSubmit({
 
   if (!editing) return null;
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
     submit();
@@ -516,7 +529,7 @@ function EditableCancel({
 
   if (!editing) return null;
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
     onClick?.(e);
     if (e.defaultPrevented) return;
     cancel();

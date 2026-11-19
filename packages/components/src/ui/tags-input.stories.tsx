@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   TagsInput,
@@ -30,7 +30,7 @@ type Story = StoryObj<typeof TagsInput>;
 
 export const Default: Story = {
   render: () => {
-    const [tags, setTags] = React.useState(['React', 'TypeScript', 'StyleX']);
+    const [tags, setTags] = useState(['React', 'TypeScript', 'StyleX']);
     return (
       <div style={{ maxWidth: 450 }}>
         <TagsInput value={tags} onValueChange={setTags}>

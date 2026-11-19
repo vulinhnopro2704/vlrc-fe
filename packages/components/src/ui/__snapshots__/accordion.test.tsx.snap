@@ -7,20 +7,20 @@ exports[`Accordion > UI > should match snapshot in default state 1`] = `
     data-orientation="vertical"
     data-size="md"
     data-slot="accordion"
-    data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:10"
+    data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:16"
   >
     <div
       class="accordion__styles.item xso031l x1q0q8m5 x1c03eaz"
       data-orientation="vertical"
       data-slot="accordion-item"
       data-state="open"
-      data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:13"
+      data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:19"
     >
       <h3
         class="accordion__styles.header x78zum5 x1ghz6dp xh8yej3"
         data-orientation="vertical"
         data-state="open"
-        data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:18"
+        data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:24"
       >
         <button
           aria-controls="radix-_r_1_"
@@ -31,7 +31,7 @@ exports[`Accordion > UI > should match snapshot in default state 1`] = `
           data-size="md"
           data-slot="accordion-trigger"
           data-state="open"
-          data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:23; @vlrc-fe/components:src/ui/accordion.tsx:71"
+          data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:29; @vlrc-fe/components:src/ui/accordion.tsx:77"
           id="radix-_r_0_"
           type="button"
         >
@@ -48,7 +48,7 @@ exports[`Accordion > UI > should match snapshot in default state 1`] = `
           <svg
             aria-hidden="true"
             class="lucide lucide-chevron-down accordion__styles.chevron xw3nh4a x2lah0s x47corl x11xpdln x13dflua accordion__styles.chevronMd xcdlrvm x1l36t39"
-            data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:96; @vlrc-fe/components:src/ui/accordion.tsx:117"
+            data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:102; @vlrc-fe/components:src/ui/accordion.tsx:123"
             fill="none"
             height="24"
             stroke="currentColor"
@@ -72,14 +72,14 @@ exports[`Accordion > UI > should match snapshot in default state 1`] = `
         data-size="md"
         data-slot="accordion-content"
         data-state="open"
-        data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:134"
+        data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:140"
         id="radix-_r_1_"
         role="region"
         style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
       >
         <div
           class="accordion__styles.contentInner x1evy7pa accordion__styles.contentMd x2yie3v xkpwil5"
-          data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:138; @vlrc-fe/components:src/ui/accordion.tsx:155"
+          data-style-src="@vlrc-fe/components:src/ui/accordion.tsx:144; @vlrc-fe/components:src/ui/accordion.tsx:161"
         >
           Test Content
         </div>

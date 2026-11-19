@@ -1,0 +1,389 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Questionnaire > UI > should match snapshot for progress bar variant 1`] = `
+<DocumentFragment>
+  <form
+    class="Box__styles.base x9f619 xeuugli questionnaire__styles.root x78zum5 xdt5ytf xh8yej3 x9f619 x1b1hbqf"
+    data-slot="questionnaire"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      aria-valuemax="1"
+      aria-valuemin="1"
+      aria-valuenow="1"
+      aria-valuetext="Question 1 of 1"
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressRoot xh8yej3 x78zum5 xdt5ytf xtkdzsq"
+      data-slot="questionnaire-progress"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
+        data-size="xs"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="secondary"
+        data-weight="medium"
+      >
+        Question 1 of 1
+      </span>
+      <div
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressBarTrack xh8yej3 x4j2xbe x9psvww x123ixkk xb3r6kr x1n2onr6"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/questionnaire.tsx:103"
+      >
+        <div
+          aria-hidden="true"
+          class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressBarIndicator x5yr21d x1j7ufkg x9psvww xxrbq2n x1d8287x xz4gly6"
+          data-slot="box"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/questionnaire.tsx:111"
+          style="width: 100%;"
+        />
+      </div>
+    </div>
+    <fieldset
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.item x78zum5 xdt5ytf xh8yej3 x9f619 xc342km x1717udv x1ghz6dp xdkmor2"
+      data-active="true"
+      data-slot="questionnaire-item"
+      data-step-name="role"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <legend
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
+        data-slot="questionnaire-title"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <h4
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
+          data-level="4"
+          data-size="md"
+          data-slot="typography-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:35; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
+          data-variant="default"
+          style="margin: 0px;"
+        >
+          <span>
+            What is your primary role?
+          </span>
+        </h4>
+      </legend>
+    </fieldset>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Questionnaire > UI > should match snapshot for progress segmented variant 1`] = `
+<DocumentFragment>
+  <form
+    class="Box__styles.base x9f619 xeuugli questionnaire__styles.root x78zum5 xdt5ytf xh8yej3 x9f619 x1b1hbqf"
+    data-slot="questionnaire"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      aria-valuemax="1"
+      aria-valuemin="1"
+      aria-valuenow="1"
+      aria-valuetext="Question 1 of 1"
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressRoot xh8yej3 x78zum5 xdt5ytf xtkdzsq"
+      data-slot="questionnaire-progress"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
+        data-size="xs"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="secondary"
+        data-weight="medium"
+      >
+        Question 1 of 1
+      </span>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedTrack x78zum5 xh8yej3 xtkdzsq x6s0dn4"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/questionnaire.tsx:119"
+      >
+        <div
+          class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedBar x845mor x4j2xbe x9psvww x15406qy x13dflua questionnaire__styles.segmentedBarActive x1j7ufkg"
+          data-slot="box"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/questionnaire.tsx:125; @vlrc-fe/components:src/ui/questionnaire.tsx:133"
+        />
+      </div>
+    </div>
+    <fieldset
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.item x78zum5 xdt5ytf xh8yej3 x9f619 xc342km x1717udv x1ghz6dp xdkmor2"
+      data-active="true"
+      data-slot="questionnaire-item"
+      data-step-name="role"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <legend
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
+        data-slot="questionnaire-title"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <h4
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
+          data-level="4"
+          data-size="md"
+          data-slot="typography-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:35; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
+          data-variant="default"
+          style="margin: 0px;"
+        >
+          <span>
+            What is your primary role?
+          </span>
+        </h4>
+      </legend>
+    </fieldset>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] = `
+<DocumentFragment>
+  <form
+    class="Box__styles.base x9f619 xeuugli questionnaire__styles.root x78zum5 xdt5ytf xh8yej3 x9f619 x1b1hbqf"
+    data-slot="questionnaire"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+  >
+    <div
+      aria-valuemax="2"
+      aria-valuemin="1"
+      aria-valuenow="1"
+      aria-valuetext="Question 1 of 2"
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressRoot xh8yej3 x78zum5 xdt5ytf xtkdzsq"
+      data-slot="questionnaire-progress"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <span
+        class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
+        data-size="xs"
+        data-slot="typography-text"
+        data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:17"
+        data-type="secondary"
+        data-weight="medium"
+      >
+        Question 1 of 2
+      </span>
+      <div
+        aria-hidden="true"
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedTrack x78zum5 xh8yej3 xtkdzsq x6s0dn4"
+        data-slot="box"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/questionnaire.tsx:119"
+      >
+        <div
+          class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedBar x845mor x4j2xbe x9psvww x15406qy x13dflua questionnaire__styles.segmentedBarActive x1j7ufkg"
+          data-slot="box"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/questionnaire.tsx:125; @vlrc-fe/components:src/ui/questionnaire.tsx:133"
+        />
+        <div
+          class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedBar x845mor x4j2xbe x9psvww x123ixkk x15406qy x13dflua"
+          data-slot="box"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7; @vlrc-fe/components:src/ui/questionnaire.tsx:125"
+        />
+      </div>
+    </div>
+    <fieldset
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.item x78zum5 xdt5ytf xh8yej3 x9f619 xc342km x1717udv x1ghz6dp xdkmor2"
+      data-active="true"
+      data-slot="questionnaire-item"
+      data-step-name="role"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <legend
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
+        data-slot="questionnaire-title"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <h4
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
+          data-level="4"
+          data-size="md"
+          data-slot="typography-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:35; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
+          data-variant="default"
+          style="margin: 0px;"
+        >
+          <span>
+            What is your primary role?
+          </span>
+        </h4>
+      </legend>
+      <div
+        class="Box__styles.base x9f619 xeuugli"
+        data-slot="questionnaire-description"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <span
+          class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+          data-size="sm"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+          data-type="secondary"
+          data-weight="regular"
+        >
+          Select the option that best describes your position.
+        </span>
+      </div>
+      <div
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.content x78zum5 xdt5ytf xh8yej3 xdkmor2"
+        data-slot="questionnaire-content"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <input
+          data-testid="input-role"
+          value="engineer"
+        />
+      </div>
+    </fieldset>
+    <fieldset
+      aria-hidden="true"
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.item xdt5ytf xh8yej3 x9f619 xc342km x1717udv x1ghz6dp xdkmor2 questionnaire__styles.itemHidden x1s85apg"
+      data-active="false"
+      data-slot="questionnaire-item"
+      data-step-name="experience"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      tabindex="-1"
+    >
+      <legend
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
+        data-slot="questionnaire-title"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <h4
+          class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
+          data-level="4"
+          data-size="md"
+          data-slot="typography-title"
+          data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:35; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70"
+          data-variant="default"
+          style="margin: 0px;"
+        >
+          <span>
+            Years of experience
+          </span>
+        </h4>
+      </legend>
+      <div
+        class="Box__styles.base x9f619 xeuugli"
+        data-slot="questionnaire-description"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <span
+          class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+          data-size="sm"
+          data-slot="typography-text"
+          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+          data-type="secondary"
+          data-weight="regular"
+        >
+          Optional feedback on your background.
+        </span>
+      </div>
+      <div
+        class="Box__styles.base x9f619 xeuugli questionnaire__styles.content x78zum5 xdt5ytf xh8yej3 xdkmor2"
+        data-slot="questionnaire-content"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+      >
+        <input
+          data-testid="input-exp"
+          value="5"
+        />
+      </div>
+    </fieldset>
+    <div
+      class="Box__styles.base x9f619 xeuugli questionnaire__styles.actions x78zum5 x6s0dn4 x1qughib xh8yej3 x1m5ztt4 x151zptn x178xt8z x13fuv20 x1ffmyml"
+      data-slot="questionnaire-actions"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:7"
+    >
+      <button
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"
+        data-size="md"
+        data-slot="questionnaire-previous"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175"
+        data-variant="ghost"
+        disabled=""
+        type="button"
+      >
+        <div
+          class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+          data-direction="horizontal"
+          data-gap="1"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-chevron-left"
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m15 18-6-6 6-6"
+            />
+          </svg>
+          <span
+            class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm"
+            data-size="sm"
+            data-slot="typography-text"
+            data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+            data-weight="regular"
+          >
+            Back
+          </span>
+        </div>
+      </button>
+      <button
+        class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"
+        data-size="md"
+        data-slot="questionnaire-next"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:67; @vlrc-fe/components:src/ui/button.tsx:175"
+        data-variant="default"
+        disabled=""
+        type="submit"
+      >
+        <div
+          class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
+          data-direction="horizontal"
+          data-gap="1"
+        >
+          <span
+            class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm"
+            data-size="sm"
+            data-slot="typography-text"
+            data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
+            data-weight="regular"
+            style="color: inherit;"
+          >
+            Next
+          </span>
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-chevron-right"
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m9 18 6-6-6-6"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;

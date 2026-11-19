@@ -1,5 +1,14 @@
-import * as React from 'react';
-import * as SheetPrimitive from '@radix-ui/react-dialog';
+import { type ComponentProps } from 'react';
+import {
+  Close as SheetPrimitiveClose,
+  Content as SheetPrimitiveContent,
+  Description as SheetPrimitiveDescription,
+  Overlay as SheetPrimitiveOverlay,
+  Portal as SheetPrimitivePortal,
+  Root as SheetPrimitiveRoot,
+  Title as SheetPrimitiveTitle,
+  Trigger as SheetPrimitiveTrigger,
+} from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -179,23 +188,23 @@ const sideStyles: Record<SheetSide, stylex.StyleXStyles> = {
   bottom: styles.bottom,
 };
 
-function Sheet(props: React.ComponentProps<typeof SheetPrimitive.Root>) {
-  return <SheetPrimitive.Root data-slot="sheet" {...props} />;
+function Sheet(props: ComponentProps<typeof SheetPrimitiveRoot>) {
+  return <SheetPrimitiveRoot data-slot="sheet" {...props} />;
 }
 
-function SheetTrigger(props: React.ComponentProps<typeof SheetPrimitive.Trigger>) {
-  return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />;
+function SheetTrigger(props: ComponentProps<typeof SheetPrimitiveTrigger>) {
+  return <SheetPrimitiveTrigger data-slot="sheet-trigger" {...props} />;
 }
 
-function SheetClose(props: React.ComponentProps<typeof SheetPrimitive.Close>) {
-  return <SheetPrimitive.Close data-slot="sheet-close" {...props} />;
+function SheetClose(props: ComponentProps<typeof SheetPrimitiveClose>) {
+  return <SheetPrimitiveClose data-slot="sheet-close" {...props} />;
 }
 
-function SheetPortal(props: React.ComponentProps<typeof SheetPrimitive.Portal>) {
-  return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />;
+function SheetPortal(props: ComponentProps<typeof SheetPrimitivePortal>) {
+  return <SheetPrimitivePortal data-slot="sheet-portal" {...props} />;
 }
 
-export interface SheetOverlayProps extends React.ComponentProps<typeof SheetPrimitive.Overlay> {
+export interface SheetOverlayProps extends ComponentProps<typeof SheetPrimitiveOverlay> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -203,7 +212,7 @@ function SheetOverlay({ className, sx, style, ...props }: SheetOverlayProps) {
   const zIndex = useZIndex('overlay');
   const sxProps = stylex.props(styles.overlay, sx);
   return (
-    <SheetPrimitive.Overlay
+    <SheetPrimitiveOverlay
       data-slot="sheet-overlay"
       {...sxProps}
       style={{ zIndex, ...sxProps.style, ...style }}
@@ -213,7 +222,7 @@ function SheetOverlay({ className, sx, style, ...props }: SheetOverlayProps) {
   );
 }
 
-export interface SheetContentProps extends React.ComponentProps<typeof SheetPrimitive.Content> {
+export interface SheetContentProps extends ComponentProps<typeof SheetPrimitiveContent> {
   side?: SheetSide;
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
@@ -235,7 +244,7 @@ function SheetContent({
   return (
     <SheetPortal container={container}>
       <SheetOverlay style={{ zIndex: baseZIndex }} />
-      <SheetPrimitive.Content
+      <SheetPrimitiveContent
         data-slot="sheet-content"
         data-side={side}
         {...sxProps}
@@ -244,16 +253,16 @@ function SheetContent({
         {...props}
       >
         <ZIndexProvider value={baseZIndex + 10}>{children}</ZIndexProvider>
-        <SheetPrimitive.Close {...stylex.props(styles.closeBtn)} aria-label="Close">
+        <SheetPrimitiveClose {...stylex.props(styles.closeBtn)} aria-label="Close">
           <XIcon {...stylex.props(styles.closeIcon)} />
           <span {...stylex.props(styles.srOnly)}>Close</span>
-        </SheetPrimitive.Close>
-      </SheetPrimitive.Content>
+        </SheetPrimitiveClose>
+      </SheetPrimitiveContent>
     </SheetPortal>
   );
 }
 
-export interface SheetHeaderProps extends React.ComponentProps<'div'> {
+export interface SheetHeaderProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -269,7 +278,7 @@ function SheetHeader({ className, sx, ...props }: SheetHeaderProps) {
   );
 }
 
-export interface SheetFooterProps extends React.ComponentProps<'div'> {
+export interface SheetFooterProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -285,14 +294,14 @@ function SheetFooter({ className, sx, ...props }: SheetFooterProps) {
   );
 }
 
-export interface SheetTitleProps extends React.ComponentProps<typeof SheetPrimitive.Title> {
+export interface SheetTitleProps extends ComponentProps<typeof SheetPrimitiveTitle> {
   sx?: stylex.StyleXStyles;
 }
 
 function SheetTitle({ className, sx, ...props }: SheetTitleProps) {
   const sxProps = stylex.props(styles.title, sx);
   return (
-    <SheetPrimitive.Title
+    <SheetPrimitiveTitle
       data-slot="sheet-title"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -301,16 +310,14 @@ function SheetTitle({ className, sx, ...props }: SheetTitleProps) {
   );
 }
 
-export interface SheetDescriptionProps extends React.ComponentProps<
-  typeof SheetPrimitive.Description
-> {
+export interface SheetDescriptionProps extends ComponentProps<typeof SheetPrimitiveDescription> {
   sx?: stylex.StyleXStyles;
 }
 
 function SheetDescription({ className, sx, ...props }: SheetDescriptionProps) {
   const sxProps = stylex.props(styles.description, sx);
   return (
-    <SheetPrimitive.Description
+    <SheetPrimitiveDescription
       data-slot="sheet-description"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

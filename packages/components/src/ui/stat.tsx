@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, type HTMLAttributes } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { colors, radius, spacing } from '../theme/tokens.stylex';
@@ -51,12 +51,12 @@ const styles = stylex.create({
   },
 });
 
-export interface StatProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StatProps extends HTMLAttributes<HTMLDivElement> {
   bordered?: boolean;
   sx?: stylex.StyleXStyles;
 }
 
-export const Stat = React.forwardRef<HTMLDivElement, StatProps>(
+export const Stat = forwardRef<HTMLDivElement, StatProps>(
   ({ bordered = true, sx, className, children, ...props }, ref) => {
     return (
       <Flex
@@ -75,11 +75,11 @@ export const Stat = React.forwardRef<HTMLDivElement, StatProps>(
 );
 Stat.displayName = 'Stat';
 
-export interface StatHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StatHeaderProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const StatHeader = React.forwardRef<HTMLDivElement, StatHeaderProps>(
+export const StatHeader = forwardRef<HTMLDivElement, StatHeaderProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Flex
@@ -99,11 +99,11 @@ export const StatHeader = React.forwardRef<HTMLDivElement, StatHeaderProps>(
 );
 StatHeader.displayName = 'StatHeader';
 
-export interface StatLabelProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface StatLabelProps extends HTMLAttributes<HTMLSpanElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const StatLabel = React.forwardRef<HTMLSpanElement, StatLabelProps>(
+export const StatLabel = forwardRef<HTMLSpanElement, StatLabelProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Text
@@ -124,11 +124,11 @@ export const StatLabel = React.forwardRef<HTMLSpanElement, StatLabelProps>(
 );
 StatLabel.displayName = 'StatLabel';
 
-export interface StatValueProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StatValueProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const StatValue = React.forwardRef<HTMLDivElement, StatValueProps>(
+export const StatValue = forwardRef<HTMLDivElement, StatValueProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Text
@@ -149,14 +149,14 @@ StatValue.displayName = 'StatValue';
 
 export type StatTrendDirection = 'up' | 'down' | 'neutral';
 
-export interface StatTrendProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface StatTrendProps extends HTMLAttributes<HTMLSpanElement> {
   direction?: StatTrendDirection;
   /** Invert colors: down becomes positive/green and up becomes negative/red (e.g. latency, bounce rate) */
   inverted?: boolean;
   sx?: stylex.StyleXStyles;
 }
 
-export const StatTrend = React.forwardRef<HTMLSpanElement, StatTrendProps>(
+export const StatTrend = forwardRef<HTMLSpanElement, StatTrendProps>(
   ({ direction = 'neutral', inverted = false, sx, className, children, ...props }, ref) => {
     const isPositive = (!inverted && direction === 'up') || (inverted && direction === 'down');
 
@@ -190,11 +190,11 @@ export const StatTrend = React.forwardRef<HTMLSpanElement, StatTrendProps>(
 );
 StatTrend.displayName = 'StatTrend';
 
-export interface StatDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {
+export interface StatDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const StatDescription = React.forwardRef<HTMLParagraphElement, StatDescriptionProps>(
+export const StatDescription = forwardRef<HTMLParagraphElement, StatDescriptionProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Text
@@ -214,11 +214,11 @@ export const StatDescription = React.forwardRef<HTMLParagraphElement, StatDescri
 );
 StatDescription.displayName = 'StatDescription';
 
-export interface StatIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StatIndicatorProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const StatIndicator = React.forwardRef<HTMLDivElement, StatIndicatorProps>(
+export const StatIndicator = forwardRef<HTMLDivElement, StatIndicatorProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Flex

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as TogglePrimitive from '@radix-ui/react-toggle';
+import { type ComponentProps } from 'react';
+import { Root as TogglePrimitiveRoot } from '@radix-ui/react-toggle';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -132,10 +132,7 @@ export const toggleSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: toggleStyles.sizeXxl,
 };
 
-export interface ToggleProps extends Omit<
-  React.ComponentProps<typeof TogglePrimitive.Root>,
-  'size'
-> {
+export interface ToggleProps extends Omit<ComponentProps<typeof TogglePrimitiveRoot>, 'size'> {
   /** 7-tier sizing scale ('xxs' to 'xxl', defaults to 'md') */
   size?: ComponentSize;
   /** Visual variant ('default' or 'outline') */
@@ -150,7 +147,7 @@ function Toggle({ className, variant = 'default', size = 'md', sx, ...props }: T
   const sxProps = stylex.props(toggleStyles.base, currentVariant, currentSize, sx);
 
   return (
-    <TogglePrimitive.Root
+    <TogglePrimitiveRoot
       data-slot="toggle"
       data-variant={variant}
       data-size={size}

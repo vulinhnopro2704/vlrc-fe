@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import { type ComponentProps } from 'react';
+import { Root as SeparatorPrimitiveRoot } from '@radix-ui/react-separator';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 
@@ -19,7 +19,7 @@ const styles = stylex.create({
   },
 });
 
-export interface SeparatorProps extends React.ComponentProps<typeof SeparatorPrimitive.Root> {
+export interface SeparatorProps extends ComponentProps<typeof SeparatorPrimitiveRoot> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -37,7 +37,7 @@ function Separator({
   );
 
   return (
-    <SeparatorPrimitive.Root
+    <SeparatorPrimitiveRoot
       data-slot="separator"
       decorative={decorative}
       orientation={orientation}

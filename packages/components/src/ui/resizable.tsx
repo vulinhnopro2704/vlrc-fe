@@ -1,8 +1,8 @@
 'use client';
 
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import { GripVerticalIcon } from 'lucide-react';
-import * as ResizablePrimitive from 'react-resizable-panels';
+import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 import { cn } from '../utils';
@@ -41,9 +41,7 @@ const styles = stylex.create({
   },
 });
 
-export interface ResizablePanelGroupProps extends React.ComponentProps<
-  typeof ResizablePrimitive.PanelGroup
-> {
+export interface ResizablePanelGroupProps extends ComponentProps<typeof PanelGroup> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -51,7 +49,7 @@ function ResizablePanelGroup({ className, sx, ...props }: ResizablePanelGroupPro
   const styleProps = stylex.props(styles.panelGroup, sx);
 
   return (
-    <ResizablePrimitive.PanelGroup
+    <PanelGroup
       data-slot="resizable-panel-group"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -60,13 +58,11 @@ function ResizablePanelGroup({ className, sx, ...props }: ResizablePanelGroupPro
   );
 }
 
-function ResizablePanel({ ...props }: React.ComponentProps<typeof ResizablePrimitive.Panel>) {
-  return <ResizablePrimitive.Panel data-slot="resizable-panel" {...props} />;
+function ResizablePanel({ ...props }: ComponentProps<typeof Panel>) {
+  return <Panel data-slot="resizable-panel" {...props} />;
 }
 
-export interface ResizableHandleProps extends React.ComponentProps<
-  typeof ResizablePrimitive.PanelResizeHandle
-> {
+export interface ResizableHandleProps extends ComponentProps<typeof PanelResizeHandle> {
   withHandle?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -75,7 +71,7 @@ function ResizableHandle({ withHandle, className, sx, ...props }: ResizableHandl
   const styleProps = stylex.props(styles.handle, sx);
 
   return (
-    <ResizablePrimitive.PanelResizeHandle
+    <PanelResizeHandle
       data-slot="resizable-handle"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -86,7 +82,7 @@ function ResizableHandle({ withHandle, className, sx, ...props }: ResizableHandl
           <GripVerticalIcon {...stylex.props(styles.icon)} />
         </div>
       )}
-    </ResizablePrimitive.PanelResizeHandle>
+    </PanelResizeHandle>
   );
 }
 

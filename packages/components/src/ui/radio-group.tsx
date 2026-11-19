@@ -1,5 +1,9 @@
-import * as React from 'react';
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import { createContext, useContext, type ComponentProps } from 'react';
+import {
+  Indicator as RadioGroupPrimitiveIndicator,
+  Item as RadioGroupPrimitiveItem,
+  Root as RadioGroupPrimitiveRoot,
+} from '@radix-ui/react-radio-group';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -133,9 +137,9 @@ const dotSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.dotXxl,
 };
 
-const RadioGroupContext = React.createContext<{ size: ComponentSize }>({ size: 'md' });
+const RadioGroupContext = createContext<{ size: ComponentSize }>({ size: 'md' });
 
-export interface RadioGroupProps extends React.ComponentProps<typeof RadioGroupPrimitive.Root> {
+export interface RadioGroupProps extends ComponentProps<typeof RadioGroupPrimitiveRoot> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
@@ -145,7 +149,7 @@ function RadioGroup({ size = 'md', className, sx, ...props }: RadioGroupProps) {
   const sxProps = stylex.props(styles.root, sx);
   return (
     <RadioGroupContext.Provider value={{ size }}>
-      <RadioGroupPrimitive.Root
+      <RadioGroupPrimitiveRoot
         data-slot="radio-group"
         data-size={size}
         {...sxProps}
@@ -156,13 +160,13 @@ function RadioGroup({ size = 'md', className, sx, ...props }: RadioGroupProps) {
   );
 }
 
-export interface RadioGroupItemProps extends React.ComponentProps<typeof RadioGroupPrimitive.Item> {
+export interface RadioGroupItemProps extends ComponentProps<typeof RadioGroupPrimitiveItem> {
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
 }
 
 function RadioGroupItem({ size: propSize, className, sx, ...props }: RadioGroupItemProps) {
-  const context = React.useContext(RadioGroupContext);
+  const context = useContext(RadioGroupContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
 
   const itemSize = itemSizeStyles[resolvedSize] ?? styles.itemMd;
@@ -170,20 +174,20 @@ function RadioGroupItem({ size: propSize, className, sx, ...props }: RadioGroupI
   const sxProps = stylex.props(styles.item, itemSize, sx);
 
   return (
-    <RadioGroupPrimitive.Item
+    <RadioGroupPrimitiveItem
       data-slot="radio-group-item"
       data-size={resolvedSize}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator
+      <RadioGroupPrimitiveIndicator
         data-slot="radio-group-indicator"
         {...stylex.props(styles.indicator)}
       >
         <span {...stylex.props(styles.dot, dotSize)} />
-      </RadioGroupPrimitive.Indicator>
-    </RadioGroupPrimitive.Item>
+      </RadioGroupPrimitiveIndicator>
+    </RadioGroupPrimitiveItem>
   );
 }
 

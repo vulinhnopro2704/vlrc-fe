@@ -1,5 +1,14 @@
-import * as React from 'react';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { type ComponentProps } from 'react';
+import {
+  Close as DialogPrimitiveClose,
+  Content as DialogPrimitiveContent,
+  Description as DialogPrimitiveDescription,
+  Overlay as DialogPrimitiveOverlay,
+  Portal as DialogPrimitivePortal,
+  Root as DialogPrimitiveRoot,
+  Title as DialogPrimitiveTitle,
+  Trigger as DialogPrimitiveTrigger,
+} from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -114,23 +123,23 @@ const styles = stylex.create({
   },
 });
 
-function Dialog(props: React.ComponentProps<typeof DialogPrimitive.Root>) {
-  return <DialogPrimitive.Root data-slot="dialog" {...props} />;
+function Dialog(props: ComponentProps<typeof DialogPrimitiveRoot>) {
+  return <DialogPrimitiveRoot data-slot="dialog" {...props} />;
 }
 
-function DialogTrigger(props: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
-  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
+function DialogTrigger(props: ComponentProps<typeof DialogPrimitiveTrigger>) {
+  return <DialogPrimitiveTrigger data-slot="dialog-trigger" {...props} />;
 }
 
-function DialogPortal(props: React.ComponentProps<typeof DialogPrimitive.Portal>) {
-  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
+function DialogPortal(props: ComponentProps<typeof DialogPrimitivePortal>) {
+  return <DialogPrimitivePortal data-slot="dialog-portal" {...props} />;
 }
 
-function DialogClose(props: React.ComponentProps<typeof DialogPrimitive.Close>) {
-  return <DialogPrimitive.Close data-slot="dialog-close" {...props} />;
+function DialogClose(props: ComponentProps<typeof DialogPrimitiveClose>) {
+  return <DialogPrimitiveClose data-slot="dialog-close" {...props} />;
 }
 
-export interface DialogOverlayProps extends React.ComponentProps<typeof DialogPrimitive.Overlay> {
+export interface DialogOverlayProps extends ComponentProps<typeof DialogPrimitiveOverlay> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -138,7 +147,7 @@ function DialogOverlay({ className, sx, style, ...props }: DialogOverlayProps) {
   const zIndex = useZIndex('overlay');
   const sxProps = stylex.props(styles.overlay, sx);
   return (
-    <DialogPrimitive.Overlay
+    <DialogPrimitiveOverlay
       data-slot="dialog-overlay"
       {...sxProps}
       style={{ zIndex, ...sxProps.style, ...style }}
@@ -148,7 +157,7 @@ function DialogOverlay({ className, sx, style, ...props }: DialogOverlayProps) {
   );
 }
 
-export interface DialogContentProps extends React.ComponentProps<typeof DialogPrimitive.Content> {
+export interface DialogContentProps extends ComponentProps<typeof DialogPrimitiveContent> {
   showCloseButton?: boolean;
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
@@ -168,7 +177,7 @@ function DialogContent({
   return (
     <DialogPortal data-slot="dialog-portal" container={container}>
       <DialogOverlay style={{ zIndex: baseZIndex }} />
-      <DialogPrimitive.Content
+      <DialogPrimitiveContent
         data-slot="dialog-content"
         {...sxProps}
         style={{ zIndex: baseZIndex + 1, ...sxProps.style, ...style }}
@@ -177,17 +186,17 @@ function DialogContent({
       >
         <ZIndexProvider value={baseZIndex + 10}>{children}</ZIndexProvider>
         {showCloseButton && (
-          <DialogPrimitive.Close data-slot="dialog-close" {...stylex.props(styles.closeButton)}>
+          <DialogPrimitiveClose data-slot="dialog-close" {...stylex.props(styles.closeButton)}>
             <XIcon {...stylex.props(styles.closeIcon)} />
             <span {...stylex.props(styles.srOnly)}>Close</span>
-          </DialogPrimitive.Close>
+          </DialogPrimitiveClose>
         )}
-      </DialogPrimitive.Content>
+      </DialogPrimitiveContent>
     </DialogPortal>
   );
 }
 
-export type DialogHeaderProps = React.ComponentProps<'div'> & {
+export type DialogHeaderProps = ComponentProps<'div'> & {
   sx?: stylex.StyleXStyles;
 };
 
@@ -203,7 +212,7 @@ function DialogHeader({ className, sx, ...props }: DialogHeaderProps) {
   );
 }
 
-export type DialogFooterProps = React.ComponentProps<'div'> & {
+export type DialogFooterProps = ComponentProps<'div'> & {
   sx?: stylex.StyleXStyles;
 };
 
@@ -219,14 +228,14 @@ function DialogFooter({ className, sx, ...props }: DialogFooterProps) {
   );
 }
 
-export type DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title> & {
+export type DialogTitleProps = ComponentProps<typeof DialogPrimitiveTitle> & {
   sx?: stylex.StyleXStyles;
 };
 
 function DialogTitle({ className, sx, ...props }: DialogTitleProps) {
   const sxProps = stylex.props(styles.title, sx);
   return (
-    <DialogPrimitive.Title
+    <DialogPrimitiveTitle
       data-slot="dialog-title"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -235,14 +244,14 @@ function DialogTitle({ className, sx, ...props }: DialogTitleProps) {
   );
 }
 
-export type DialogDescriptionProps = React.ComponentProps<typeof DialogPrimitive.Description> & {
+export type DialogDescriptionProps = ComponentProps<typeof DialogPrimitiveDescription> & {
   sx?: stylex.StyleXStyles;
 };
 
 function DialogDescription({ className, sx, ...props }: DialogDescriptionProps) {
   const sxProps = stylex.props(styles.description, sx);
   return (
-    <DialogPrimitive.Description
+    <DialogPrimitiveDescription
       data-slot="dialog-description"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

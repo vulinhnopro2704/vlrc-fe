@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { spacing } from '../theme/tokens.stylex';
 import { Badge } from './badge';
@@ -28,11 +28,11 @@ const styles = stylex.create({
   },
 });
 
-export interface BadgeOverflowProps<T = string> extends React.ComponentProps<'div'> {
+export interface BadgeOverflowProps<T = string> extends ComponentProps<'div'> {
   items: T[];
   max?: number;
-  renderBadge?: (item: T, index: number) => React.ReactNode;
-  renderOverflow?: (hiddenCount: number, hiddenItems: T[]) => React.ReactNode;
+  renderBadge?: (item: T, index: number) => ReactNode;
+  renderOverflow?: (hiddenCount: number, hiddenItems: T[]) => ReactNode;
   showPopover?: boolean;
   sx?: stylex.StyleXStyles;
 }

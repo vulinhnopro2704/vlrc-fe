@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { createContext, useContext, useMemo, type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Title, Text } from '../Typography';
@@ -13,7 +13,7 @@ interface TimelineContextValue {
   activeIndex?: number;
 }
 
-const TimelineContext = React.createContext<TimelineContextValue>({
+const TimelineContext = createContext<TimelineContextValue>({
   orientation: 'vertical',
 });
 
@@ -23,7 +23,7 @@ interface TimelineItemContextValue {
   isLast: boolean;
 }
 
-const TimelineItemContext = React.createContext<TimelineItemContextValue>({
+const TimelineItemContext = createContext<TimelineItemContextValue>({
   status: 'pending',
   step: 0,
   isLast: false,
@@ -194,7 +194,7 @@ const dotStatusStyles: Record<TimelineStatus, stylex.StyleXStyles> = {
   pending: styles.dotPending,
 };
 
-export interface TimelineProps extends React.ComponentProps<'div'> {
+export interface TimelineProps extends ComponentProps<'div'> {
   orientation?: TimelineOrientation;
   activeIndex?: number;
   sx?: stylex.StyleXStyles;
@@ -208,10 +208,7 @@ function Timeline({
   children,
   ...props
 }: TimelineProps) {
-  const contextValue = React.useMemo(
-    () => ({ orientation, activeIndex }),
-    [orientation, activeIndex],
-  );
+  const contextValue = useMemo(() => ({ orientation, activeIndex }), [orientation, activeIndex]);
 
   const orientationStyle = orientation === 'vertical' ? styles.rootVertical : styles.rootHorizontal;
   const sxProps = stylex.props(styles.root, orientationStyle, sx);
@@ -232,7 +229,7 @@ function Timeline({
   );
 }
 
-export interface TimelineItemProps extends React.ComponentProps<'div'> {
+export interface TimelineItemProps extends ComponentProps<'div'> {
   step?: number;
   status?: TimelineStatus;
   isLast?: boolean;
@@ -248,9 +245,9 @@ function TimelineItem({
   children,
   ...props
 }: TimelineItemProps) {
-  const { orientation, activeIndex } = React.useContext(TimelineContext);
+  const { orientation, activeIndex } = useContext(TimelineContext);
 
-  const status: TimelineStatus = React.useMemo(() => {
+  const status: TimelineStatus = useMemo(() => {
     if (statusProp) return statusProp;
     if (activeIndex === undefined) return 'pending';
     if (step < activeIndex) return 'completed';
@@ -258,7 +255,7 @@ function TimelineItem({
     return 'pending';
   }, [statusProp, activeIndex, step]);
 
-  const itemContextValue = React.useMemo(() => ({ status, step, isLast }), [status, step, isLast]);
+  const itemContextValue = useMemo(() => ({ status, step, isLast }), [status, step, isLast]);
 
   const itemOrientationStyle =
     orientation === 'vertical' ? styles.itemVertical : styles.itemHorizontal;
@@ -281,10 +278,10 @@ function TimelineItem({
   );
 }
 
-export interface TimelineDotProps extends React.ComponentProps<'div'> {
+export interface TimelineDotProps extends ComponentProps<'div'> {
   size?: TimelineDotSize;
   status?: TimelineStatus;
-  customIcon?: React.ReactNode;
+  customIcon?: ReactNode;
   sx?: stylex.StyleXStyles;
 }
 
@@ -297,7 +294,7 @@ function TimelineDot({
   children,
   ...props
 }: TimelineDotProps) {
-  const itemContext = React.useContext(TimelineItemContext);
+  const itemContext = useContext(TimelineItemContext);
   const resolvedStatus = statusProp ?? itemContext.status;
 
   const sxProps = stylex.props(
@@ -356,7 +353,7 @@ function TimelineDot({
   );
 }
 
-export interface TimelineConnectorProps extends React.ComponentProps<'div'> {
+export interface TimelineConnectorProps extends ComponentProps<'div'> {
   forceMount?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -367,8 +364,8 @@ function TimelineConnector({
   sx,
   ...props
 }: TimelineConnectorProps) {
-  const { orientation } = React.useContext(TimelineContext);
-  const { status, isLast } = React.useContext(TimelineItemContext);
+  const { orientation } = useContext(TimelineContext);
+  const { status, isLast } = useContext(TimelineItemContext);
 
   if (isLast && !forceMount) {
     return null;
@@ -397,12 +394,12 @@ function TimelineConnector({
   );
 }
 
-export interface TimelineTrackProps extends React.ComponentProps<'div'> {
+export interface TimelineTrackProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
 function TimelineTrack({ className, sx, children, ...props }: TimelineTrackProps) {
-  const { orientation } = React.useContext(TimelineContext);
+  const { orientation } = useContext(TimelineContext);
   const trackStyle = orientation === 'vertical' ? styles.trackVertical : styles.trackHorizontal;
   const sxProps = stylex.props(trackStyle, sx);
 
@@ -418,13 +415,13 @@ function TimelineTrack({ className, sx, children, ...props }: TimelineTrackProps
   );
 }
 
-export interface TimelineContentProps extends React.ComponentProps<'div'> {
+export interface TimelineContentProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
 function TimelineContent({ className, sx, children, ...props }: TimelineContentProps) {
-  const { isLast } = React.useContext(TimelineItemContext);
-  const { orientation } = React.useContext(TimelineContext);
+  const { isLast } = useContext(TimelineItemContext);
+  const { orientation } = useContext(TimelineContext);
   const isVertical = orientation === 'vertical';
 
   const sxProps = stylex.props(
@@ -444,7 +441,7 @@ function TimelineContent({ className, sx, children, ...props }: TimelineContentP
   );
 }
 
-export interface TimelineHeaderProps extends React.ComponentProps<'div'> {
+export interface TimelineHeaderProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -462,7 +459,7 @@ function TimelineHeader({ className, sx, children, ...props }: TimelineHeaderPro
   );
 }
 
-export interface TimelineTitleProps extends React.ComponentProps<'div'> {
+export interface TimelineTitleProps extends ComponentProps<'div'> {
   asChild?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -475,7 +472,7 @@ function TimelineTitle({ className, children, ...props }: TimelineTitleProps) {
   );
 }
 
-export interface TimelineDescriptionProps extends React.ComponentProps<'div'> {
+export interface TimelineDescriptionProps extends ComponentProps<'div'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -494,7 +491,7 @@ function TimelineDescription({ className, children, ...props }: TimelineDescript
   );
 }
 
-export interface TimelineTimeProps extends React.ComponentProps<'time'> {
+export interface TimelineTimeProps extends ComponentProps<'time'> {
   sx?: stylex.StyleXStyles;
 }
 

@@ -7,7 +7,10 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [
     stylex.vite({
-      useCSSLayers: true,
+      useCSSLayers: {
+        before: ['reset', 'astryx-base', 'astryx-theme'],
+        after: ['product'],
+      },
       dev: false,
       runtimeInjection: false,
       unstable_moduleResolution: {
@@ -21,6 +24,15 @@ export default defineConfig({
     }),
   ],
   build: {
+    // The published dist must NOT minify identifiers: @stylexjs/babel-plugin
+    // (run by consumers over this dist, e.g. Next.js `transpilePackages` in a
+    // StyleX app) rewrites call expressions by matching the callee name against
+    // the file's stylex import binding without scope analysis. Minified locals
+    // that shadow that binding (e.g. `function s()` under `import * as s`)
+    // get their direct calls erased to `""` — the v3.0.3 FormFileUpload
+    // delete/clear-all bug. Keeping source-level names makes that impossible;
+    // scripts/check-stylex-shadowing.mjs enforces it after every build.
+    minify: false,
     lib: {
       entry: {
         index: resolve(import.meta.dirname, 'src/index.ts'),

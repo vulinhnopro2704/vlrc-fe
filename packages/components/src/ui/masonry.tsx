@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Children, forwardRef, useMemo, type HTMLAttributes, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Flex, type FlexProps } from './flex';
 import { useBreakpoint, type Breakpoint, BREAKPOINTS } from './useBreakpoint';
@@ -18,18 +18,18 @@ export type ResponsiveColumns = Partial<Record<Breakpoint, number>> & {
   default?: number;
 };
 
-export interface MasonryProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
+export interface MasonryProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   columns?: number | ResponsiveColumns;
   gap?: FlexProps['gap'];
-  children: React.ReactNode;
+  children: ReactNode;
   sx?: stylex.StyleXStyles;
 }
 
-export const Masonry = React.forwardRef<HTMLDivElement, MasonryProps>(
+export const Masonry = forwardRef<HTMLDivElement, MasonryProps>(
   ({ columns = 3, gap = 'md', children, sx, className, ...props }, ref) => {
     const screens = useBreakpoint();
 
-    const columnCount = React.useMemo(() => {
+    const columnCount = useMemo(() => {
       if (typeof columns === 'number') {
         return Math.max(1, columns);
       }
@@ -46,10 +46,10 @@ export const Masonry = React.forwardRef<HTMLDivElement, MasonryProps>(
     }, [columns, screens]);
 
     // Partition children into column buckets
-    const childArray = React.Children.toArray(children).filter(Boolean);
+    const childArray = Children.toArray(children).filter(Boolean);
 
-    const columnBuckets = React.useMemo(() => {
-      const buckets: React.ReactNode[][] = Array.from({ length: columnCount }, () => []);
+    const columnBuckets = useMemo(() => {
+      const buckets: ReactNode[][] = Array.from({ length: columnCount }, () => []);
 
       childArray.forEach((child, index) => {
         buckets[index % columnCount].push(child);

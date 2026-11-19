@@ -1,5 +1,8 @@
-import * as React from 'react';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { useEffect, useState, type ComponentProps } from 'react';
+import {
+  Indicator as CheckboxPrimitiveIndicator,
+  Root as CheckboxPrimitiveRoot,
+} from '@radix-ui/react-checkbox';
 import { CheckIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, shadow } from '../theme/tokens.stylex';
@@ -135,7 +138,7 @@ const iconSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.iconXxl,
 };
 
-export interface CheckboxProps extends React.ComponentProps<typeof CheckboxPrimitive.Root> {
+export interface CheckboxProps extends ComponentProps<typeof CheckboxPrimitiveRoot> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
@@ -152,10 +155,10 @@ function Checkbox({
   ...props
 }: CheckboxProps) {
   const isControlled = controlledChecked !== undefined;
-  const [uncontrolledChecked, setUncontrolledChecked] = React.useState(defaultChecked);
+  const [uncontrolledChecked, setUncontrolledChecked] = useState(defaultChecked);
   const isChecked = isControlled ? Boolean(controlledChecked) : uncontrolledChecked;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isControlled && defaultChecked !== undefined) {
       setUncontrolledChecked(defaultChecked);
     }
@@ -174,7 +177,7 @@ function Checkbox({
   const sxProps = stylex.props(styles.root, rootSize, isChecked && styles.rootChecked, sx);
 
   return (
-    <CheckboxPrimitive.Root
+    <CheckboxPrimitiveRoot
       data-slot="checkbox"
       data-size={size}
       checked={isChecked}
@@ -184,13 +187,13 @@ function Checkbox({
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <CheckboxPrimitive.Indicator
+      <CheckboxPrimitiveIndicator
         data-slot="checkbox-indicator"
         {...stylex.props(styles.indicator)}
       >
         <CheckIcon {...stylex.props(iconSize)} strokeWidth={3} />
-      </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
+      </CheckboxPrimitiveIndicator>
+    </CheckboxPrimitiveRoot>
   );
 }
 

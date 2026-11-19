@@ -1,0 +1,730 @@
+/* @vlrc-fe/editor unified theme & Lexical editor typography */
+
+.vlrc-editor-root {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  box-sizing: border-box;
+  border-radius: var(--radius-md, 6px);
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  background-color: var(--color-surface-default, var(--background, #ffffff));
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xs, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+  transition: border-color var(--duration-fast, 100ms) var(--easing-standard, ease);
+}
+
+.vlrc-editor-root:focus-within {
+  border-color: var(--color-focus-ring, var(--ring, #3b82f6));
+}
+
+.vlrc-editor-content {
+  min-height: 200px;
+  padding: 1rem 1.25rem 1rem 2.25rem;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: inherit;
+  caret-color: var(--primary, #3b82f6);
+  position: relative;
+  tab-size: 2;
+}
+
+.vlrc-editor-placeholder {
+  position: absolute;
+  top: 1rem;
+  left: 2.25rem;
+  pointer-events: none;
+  color: var(--color-fg-muted, var(--muted-foreground, #64748b));
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  user-select: none;
+}
+
+/* Paragraph */
+.lexical-paragraph {
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+
+/* Headings */
+.lexical-heading-h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem 0;
+  line-height: 1.25;
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+.lexical-heading-h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+  line-height: 1.3;
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+.lexical-heading-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0.375rem 0;
+  line-height: 1.35;
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+/* Blockquote */
+.lexical-quote {
+  margin: 0.75rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--primary, #3b82f6);
+  color: var(--color-fg-muted, var(--muted-foreground, #64748b));
+  font-style: italic;
+}
+
+/* Lists */
+.lexical-ul {
+  list-style-type: disc;
+  margin: 0 0 0.5rem 0;
+  padding-left: 1.75rem !important;
+}
+
+.lexical-ol {
+  list-style-type: decimal;
+  margin: 0 0 0.5rem 0;
+  padding-left: 1.75rem !important;
+}
+
+.lexical-nested-listitem {
+  list-style-type: none !important;
+}
+
+.lexical-nested-listitem::before,
+.lexical-nested-listitem::after {
+  display: none !important;
+}
+
+ul.lexical-ul1 {
+  list-style-type: disc !important;
+}
+
+ul.lexical-ul2 {
+  list-style-type: circle !important;
+}
+
+ul.lexical-ul3 {
+  list-style-type: square !important;
+}
+
+ul.lexical-ul4 {
+  list-style-type: disc !important;
+}
+
+ul.lexical-ul5 {
+  list-style-type: circle !important;
+}
+
+ol.lexical-ol1 {
+  list-style-type: decimal !important;
+}
+
+ol.lexical-ol2 {
+  list-style-type: lower-alpha !important;
+}
+
+ol.lexical-ol3 {
+  list-style-type: lower-roman !important;
+}
+
+ol.lexical-ol4 {
+  list-style-type: decimal !important;
+}
+
+ol.lexical-ol5 {
+  list-style-type: lower-alpha !important;
+}
+
+.lexical-ul ul,
+.lexical-ul ol,
+.lexical-ol ul,
+.lexical-ol ol {
+  margin: 0.125rem 0;
+  padding-left: 1.5rem !important;
+}
+
+.lexical-listitem {
+  margin-bottom: 0.25rem;
+  line-height: 1.6;
+}
+
+/* Horizontal Rule */
+.lexical-hr {
+  border: none;
+  border-top: 2px solid var(--color-border-default, var(--border, #e2e8f0));
+  margin: 1.5rem 0;
+  cursor: pointer;
+  transition: border-color var(--duration-fast, 100ms) var(--easing-standard, ease);
+}
+
+.lexical-hr:hover {
+  border-top-color: var(--primary, #3b82f6);
+}
+
+/* Checklist / To-do list */
+.lexical-checklist {
+  list-style-type: none !important;
+  margin: 0 0 0.5rem 0;
+  padding-left: 0 !important;
+}
+
+.lexical-checklist-item-checked,
+.lexical-checklist-item-unchecked {
+  position: relative;
+  list-style-type: none !important;
+  margin-left: 0 !important;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.375rem;
+  min-height: 1.5rem;
+  outline: none;
+  cursor: pointer;
+  user-select: text;
+}
+
+.lexical-checklist-item-checked::before,
+.lexical-checklist-item-unchecked::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  border-radius: var(--radius-sm, 4px);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all var(--duration-fast, 100ms) var(--easing-standard, ease);
+}
+
+.lexical-checklist-item-unchecked::before {
+  border: 1.5px solid var(--color-border-default, var(--border, #cbd5e1));
+  background-color: transparent;
+}
+
+.lexical-checklist-item-unchecked:hover::before {
+  border-color: var(--primary, #3b82f6);
+  background-color: var(--color-surface-subtle, var(--secondary, #f1f5f9));
+}
+
+.lexical-checklist-item-checked::before {
+  border: 1.5px solid var(--primary, #3b82f6);
+  background-color: var(--primary, #3b82f6);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' stroke='%23ffffff' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.lexical-checklist-item-checked {
+  text-decoration: line-through;
+  color: var(--color-fg-muted, var(--muted-foreground, #64748b));
+}
+
+/* Code block */
+.lexical-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background-color: var(--color-surface-subtle, var(--secondary, #f8fafc));
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  border-radius: var(--radius-md, 6px);
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  display: block;
+  overflow-x: auto;
+}
+
+/* Syntax Highlighting Tokens (Prism) */
+.lexical-tokenComment {
+  color: #64748b;
+  font-style: italic;
+}
+.lexical-tokenPunctuation {
+  color: #94a3b8;
+}
+.lexical-tokenProperty {
+  color: #0284c7;
+}
+.lexical-tokenSelector {
+  color: #16a34a;
+}
+.lexical-tokenOperator {
+  color: #d97706;
+}
+.lexical-tokenAttr {
+  color: #7c3aed;
+  font-weight: 500;
+}
+.lexical-tokenVariable {
+  color: #e11d48;
+}
+.lexical-tokenFunction {
+  color: #2563eb;
+}
+
+/* Table */
+.lexical-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  border-radius: var(--radius-md, 6px);
+  overflow: hidden;
+}
+
+.lexical-table-cell-header {
+  position: relative;
+  background-color: var(--color-surface-subtle, var(--secondary, #f8fafc));
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.lexical-table-cell {
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  min-width: 80px;
+  vertical-align: top;
+  font-size: 0.875rem;
+}
+
+.lexical-table-cell-selected {
+  background-color: var(--color-surface-selected, rgba(59, 130, 246, 0.12)) !important;
+}
+
+/* Collapsible section */
+.lexical-collapsible-container {
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  border-radius: var(--radius-md, 6px);
+  margin: 0.75rem 0;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-surface-default, var(--background, #ffffff));
+}
+
+.lexical-collapsible-title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+.lexical-collapsible-content {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-border-default, var(--border, #e2e8f0));
+}
+
+/* Mentions & Hashtags */
+.lexical-mention {
+  color: var(--primary, #3b82f6);
+  background-color: color-mix(in srgb, var(--primary, #3b82f6) 12%, transparent);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-sm, 4px);
+  font-weight: 500;
+}
+
+.lexical-hashtag {
+  color: #0284c7;
+  background-color: rgba(2, 132, 199, 0.1);
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-sm, 4px);
+}
+
+/* Typeahead Floating Menus */
+.vlrc-typeahead-menu {
+  position: absolute;
+  z-index: 60;
+  background: var(--color-surface-default, var(--popover, #ffffff));
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  border-radius: var(--radius-md, 6px);
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+  padding: 4px;
+  min-width: 160px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.vlrc-typeahead-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm, 4px);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--duration-fast, 100ms) var(--easing-standard, ease);
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+.vlrc-typeahead-item:hover,
+.vlrc-typeahead-item[data-selected='true'] {
+  background-color: var(--color-surface-subtle, var(--accent, #f1f5f9));
+}
+
+/* Inline typography */
+.lexical-text-bold {
+  font-weight: 700;
+}
+
+.lexical-text-italic {
+  font-style: italic;
+}
+
+.lexical-text-underline {
+  text-decoration: underline;
+}
+
+.lexical-text-strikethrough {
+  text-decoration: line-through;
+}
+
+.lexical-text-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background-color: var(--color-surface-subtle, var(--secondary, #f1f5f9));
+  padding-inline: 0.25rem;
+  padding-block: 0.125rem;
+  border-radius: var(--radius-sm, 4px);
+  font-size: 0.875em;
+  color: var(--color-fg-accent, var(--primary, #3b82f6));
+}
+
+.lexical-text-highlight {
+  background-color: color-mix(in srgb, var(--color-warning, #eab308) 25%, transparent);
+  border-radius: var(--radius-sm, 2px);
+  padding-inline: 0.25rem;
+}
+
+.lexical-link {
+  color: var(--primary, #3b82f6);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Callout block */
+.lexical-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: var(--color-surface-subtle, var(--secondary, #f8fafc));
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  border-radius: var(--radius-md, 6px);
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* Slash menu popup */
+.vlrc-slash-menu {
+  position: absolute;
+  z-index: 50;
+  width: 280px;
+  max-height: 320px;
+  overflow-y: auto;
+  border-radius: var(--radius-lg, 8px);
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  background-color: var(--color-surface-default, var(--popover, var(--background, #ffffff)));
+  box-shadow: var(
+    --shadow-lg,
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1)
+  );
+  padding: 0.375rem;
+  box-sizing: border-box;
+}
+
+.vlrc-slash-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: var(--radius-md, 6px);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--duration-fast, 100ms) var(--easing-standard, ease);
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+.vlrc-slash-menu-item:hover,
+.vlrc-slash-menu-item[data-selected='true'] {
+  background-color: var(--color-surface-subtle, var(--accent, #f1f5f9));
+}
+
+.vlrc-slash-menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--color-surface-subtle, var(--secondary, #f1f5f9));
+  color: var(--color-fg-muted, var(--muted-foreground, #64748b));
+  flex-shrink: 0;
+}
+
+/* Toolbar */
+.vlrc-editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.5rem;
+  border-bottom: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  background-color: var(--color-surface-subtle, var(--secondary, #f8fafc));
+  border-top-left-radius: var(--radius-md, 6px);
+  border-top-right-radius: var(--radius-md, 6px);
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.vlrc-editor-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm, 4px);
+  border: none;
+  background: transparent;
+  color: var(--color-fg-muted, var(--muted-foreground, #64748b));
+  cursor: pointer;
+  transition: all var(--duration-fast, 100ms) var(--easing-standard, ease);
+  outline: none;
+  padding: 0;
+}
+
+.vlrc-editor-toolbar-btn:hover:not(:disabled) {
+  background-color: var(--color-surface-default, var(--accent, #e2e8f0));
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+.vlrc-editor-toolbar-btn[data-active='true'] {
+  background-color: var(--color-surface-default, var(--background, #ffffff));
+  color: var(--primary, #3b82f6);
+  box-shadow: var(--shadow-xs, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+}
+
+.vlrc-editor-toolbar-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.vlrc-editor-toolbar-divider {
+  width: 1px;
+  height: 16px;
+  background-color: var(--color-border-default, var(--border, #e2e8f0));
+  margin: 0 0.25rem;
+}
+
+/* Floating bubble toolbar */
+.vlrc-floating-toolbar {
+  position: absolute;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.375rem;
+  border-radius: var(--radius-lg, 8px);
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  background-color: var(--color-surface-default, var(--popover, var(--background, #ffffff)));
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+}
+
+/* Draggable block handle & target line */
+.vlrc-draggable-handle-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+  display: none;
+  opacity: 0;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+  z-index: 30;
+  transition: opacity var(--duration-fast, 100ms) var(--easing-standard, ease);
+}
+
+.vlrc-draggable-handle-container:active {
+  cursor: grabbing;
+}
+
+.vlrc-draggable-handle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 24px;
+  border-radius: var(--radius-sm, 4px);
+  color: var(--color-fg-muted, var(--muted-foreground, #94a3b8));
+  background-color: transparent;
+  border: none;
+  cursor: grab;
+  padding: 2px;
+  transition: all var(--duration-fast, 100ms) var(--easing-standard, ease);
+}
+
+.vlrc-draggable-handle-btn:hover {
+  background-color: var(--color-surface-subtle, var(--secondary, #f1f5f9));
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+}
+
+.vlrc-draggable-handle-btn:active {
+  cursor: grabbing;
+}
+
+.vlrc-draggable-target-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+  height: 3px;
+  background-color: var(--primary, #3b82f6);
+  border-radius: 9999px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 25;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  transition: opacity var(--duration-fast, 100ms) var(--easing-standard, ease);
+}
+
+.vlrc-draggable-menu {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  z-index: 60;
+  border-radius: var(--radius-md, 6px);
+  border: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+  background-color: var(--color-surface-default, var(--popover, var(--background, #ffffff)));
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 120px;
+}
+
+.vlrc-draggable-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm, 4px);
+  font-size: 0.75rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  color: var(--color-fg-default, var(--foreground, #0f172a));
+  transition: background-color var(--duration-fast, 100ms) var(--easing-standard, ease);
+}
+
+.vlrc-draggable-menu-item:hover {
+  background-color: var(--color-surface-subtle, var(--accent, #f1f5f9));
+}
+
+.vlrc-draggable-menu-item[data-danger='true'] {
+  color: var(--destructive, #ef4444);
+}
+
+/* TreeView Debug Console */
+.vlrc-editor-treeview-wrapper {
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border-default, var(--border, #e2e8f0));
+}
+
+.tree-view-output {
+  display: block;
+  background: #0b1120;
+  color: #f1f5f9;
+  padding: 1rem;
+  font-size: 11px;
+  line-height: 1.5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  position: relative;
+  border-bottom-left-radius: var(--radius-md, 6px);
+  border-bottom-right-radius: var(--radius-md, 6px);
+  overflow: hidden;
+  max-height: 350px;
+}
+
+.tree-view-output pre {
+  margin: 0;
+  overflow: auto;
+  max-height: 300px;
+  color: #e2e8f0;
+}
+
+.debug-treetype-button,
+.debug-timetravel-button {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 150ms ease;
+}
+
+.debug-treetype-button:hover,
+.debug-timetravel-button:hover {
+  background: #334155;
+  color: #f8fafc;
+}
+
+.debug-treetype-button {
+  right: 100px;
+}
+
+.debug-timetravel-panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #1e293b;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.debug-timetravel-panel-slider {
+  flex: 1;
+  accent-color: #3b82f6;
+}
+
+.debug-timetravel-panel-button {
+  background: #334155;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}

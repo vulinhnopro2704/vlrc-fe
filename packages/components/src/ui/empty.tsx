@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Children, forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Inbox } from 'lucide-react';
 import { colors, spacing } from '../theme/tokens.stylex';
@@ -33,17 +33,17 @@ const styles = stylex.create({
   },
 });
 
-export interface EmptyProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  image?: React.ReactNode;
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  action?: React.ReactNode;
+export interface EmptyProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+  image?: ReactNode;
+  title?: ReactNode;
+  description?: ReactNode;
+  action?: ReactNode;
   sx?: stylex.StyleXStyles;
 }
 
-export const Empty = React.forwardRef<HTMLDivElement, EmptyProps>(
+export const Empty = forwardRef<HTMLDivElement, EmptyProps>(
   ({ image, title, description, action, children, sx, className, ...props }, ref) => {
-    const isCompound = React.Children.count(children) > 0;
+    const isCompound = Children.count(children) > 0;
 
     return (
       <Flex
@@ -73,11 +73,11 @@ export const Empty = React.forwardRef<HTMLDivElement, EmptyProps>(
 );
 Empty.displayName = 'Empty';
 
-export interface EmptyImageProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface EmptyImageProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const EmptyImage = React.forwardRef<HTMLDivElement, EmptyImageProps>(
+export const EmptyImage = forwardRef<HTMLDivElement, EmptyImageProps>(
   ({ sx, className, children, ...props }, ref) => {
     const sxProps = stylex.props(styles.imageWrapper, sx);
     return (
@@ -95,11 +95,11 @@ export const EmptyImage = React.forwardRef<HTMLDivElement, EmptyImageProps>(
 );
 EmptyImage.displayName = 'EmptyImage';
 
-export interface EmptyTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
+export interface EmptyTitleProps extends HTMLAttributes<HTMLHeadingElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const EmptyTitle = React.forwardRef<HTMLHeadingElement, EmptyTitleProps>(
+export const EmptyTitle = forwardRef<HTMLHeadingElement, EmptyTitleProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Text
@@ -119,11 +119,11 @@ export const EmptyTitle = React.forwardRef<HTMLHeadingElement, EmptyTitleProps>(
 );
 EmptyTitle.displayName = 'EmptyTitle';
 
-export interface EmptyDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {
+export interface EmptyDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const EmptyDescription = React.forwardRef<HTMLParagraphElement, EmptyDescriptionProps>(
+export const EmptyDescription = forwardRef<HTMLParagraphElement, EmptyDescriptionProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Text
@@ -143,11 +143,11 @@ export const EmptyDescription = React.forwardRef<HTMLParagraphElement, EmptyDesc
 );
 EmptyDescription.displayName = 'EmptyDescription';
 
-export interface EmptyActionsProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface EmptyActionsProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
 }
 
-export const EmptyActions = React.forwardRef<HTMLDivElement, EmptyActionsProps>(
+export const EmptyActions = forwardRef<HTMLDivElement, EmptyActionsProps>(
   ({ sx, className, children, ...props }, ref) => {
     return (
       <Flex

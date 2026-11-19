@@ -1,7 +1,24 @@
 'use client';
 
-import * as React from 'react';
-import * as MenubarPrimitive from '@radix-ui/react-menubar';
+import { type ComponentProps } from 'react';
+import {
+  CheckboxItem as MenubarPrimitiveCheckboxItem,
+  Content as MenubarPrimitiveContent,
+  Group as MenubarPrimitiveGroup,
+  Item as MenubarPrimitiveItem,
+  ItemIndicator as MenubarPrimitiveItemIndicator,
+  Label as MenubarPrimitiveLabel,
+  Menu as MenubarPrimitiveMenu,
+  Portal as MenubarPrimitivePortal,
+  RadioGroup as MenubarPrimitiveRadioGroup,
+  RadioItem as MenubarPrimitiveRadioItem,
+  Root as MenubarPrimitiveRoot,
+  Separator as MenubarPrimitiveSeparator,
+  Sub as MenubarPrimitiveSub,
+  SubContent as MenubarPrimitiveSubContent,
+  SubTrigger as MenubarPrimitiveSubTrigger,
+  Trigger as MenubarPrimitiveTrigger,
+} from '@radix-ui/react-menubar';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -179,14 +196,14 @@ const styles = stylex.create({
   },
 });
 
-export interface MenubarProps extends React.ComponentProps<typeof MenubarPrimitive.Root> {
+export interface MenubarProps extends ComponentProps<typeof MenubarPrimitiveRoot> {
   sx?: stylex.StyleXStyles;
 }
 
 function Menubar({ className, sx, ...props }: MenubarProps) {
   const styleProps = stylex.props(styles.root, sx);
   return (
-    <MenubarPrimitive.Root
+    <MenubarPrimitiveRoot
       data-slot="menubar"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -195,30 +212,30 @@ function Menubar({ className, sx, ...props }: MenubarProps) {
   );
 }
 
-function MenubarMenu({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Menu>) {
-  return <MenubarPrimitive.Menu data-slot="menubar-menu" {...props} />;
+function MenubarMenu({ ...props }: ComponentProps<typeof MenubarPrimitiveMenu>) {
+  return <MenubarPrimitiveMenu data-slot="menubar-menu" {...props} />;
 }
 
-function MenubarGroup({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Group>) {
-  return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />;
+function MenubarGroup({ ...props }: ComponentProps<typeof MenubarPrimitiveGroup>) {
+  return <MenubarPrimitiveGroup data-slot="menubar-group" {...props} />;
 }
 
-function MenubarPortal({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Portal>) {
-  return <MenubarPrimitive.Portal data-slot="menubar-portal" {...props} />;
+function MenubarPortal({ ...props }: ComponentProps<typeof MenubarPrimitivePortal>) {
+  return <MenubarPrimitivePortal data-slot="menubar-portal" {...props} />;
 }
 
-function MenubarRadioGroup({ ...props }: React.ComponentProps<typeof MenubarPrimitive.RadioGroup>) {
-  return <MenubarPrimitive.RadioGroup data-slot="menubar-radio-group" {...props} />;
+function MenubarRadioGroup({ ...props }: ComponentProps<typeof MenubarPrimitiveRadioGroup>) {
+  return <MenubarPrimitiveRadioGroup data-slot="menubar-radio-group" {...props} />;
 }
 
-export interface MenubarTriggerProps extends React.ComponentProps<typeof MenubarPrimitive.Trigger> {
+export interface MenubarTriggerProps extends ComponentProps<typeof MenubarPrimitiveTrigger> {
   sx?: stylex.StyleXStyles;
 }
 
 function MenubarTrigger({ className, sx, ...props }: MenubarTriggerProps) {
   const styleProps = stylex.props(styles.trigger, sx);
   return (
-    <MenubarPrimitive.Trigger
+    <MenubarPrimitiveTrigger
       data-slot="menubar-trigger"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -227,7 +244,7 @@ function MenubarTrigger({ className, sx, ...props }: MenubarTriggerProps) {
   );
 }
 
-export interface MenubarContentProps extends React.ComponentProps<typeof MenubarPrimitive.Content> {
+export interface MenubarContentProps extends ComponentProps<typeof MenubarPrimitiveContent> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -245,7 +262,7 @@ function MenubarContent({
   const styleProps = stylex.props(styles.content, sx);
   return (
     <MenubarPortal>
-      <MenubarPrimitive.Content
+      <MenubarPrimitiveContent
         data-slot="menubar-content"
         align={align}
         alignOffset={alignOffset}
@@ -256,12 +273,12 @@ function MenubarContent({
         {...props}
       >
         <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
-      </MenubarPrimitive.Content>
+      </MenubarPrimitiveContent>
     </MenubarPortal>
   );
 }
 
-export interface MenubarItemProps extends React.ComponentProps<typeof MenubarPrimitive.Item> {
+export interface MenubarItemProps extends ComponentProps<typeof MenubarPrimitiveItem> {
   inset?: boolean;
   variant?: 'default' | 'destructive';
   sx?: stylex.StyleXStyles;
@@ -275,7 +292,7 @@ function MenubarItem({ className, inset, variant = 'default', sx, ...props }: Me
     sx,
   );
   return (
-    <MenubarPrimitive.Item
+    <MenubarPrimitiveItem
       data-slot="menubar-item"
       data-inset={inset}
       data-variant={variant}
@@ -286,8 +303,8 @@ function MenubarItem({ className, inset, variant = 'default', sx, ...props }: Me
   );
 }
 
-export interface MenubarCheckboxItemProps extends React.ComponentProps<
-  typeof MenubarPrimitive.CheckboxItem
+export interface MenubarCheckboxItemProps extends ComponentProps<
+  typeof MenubarPrimitiveCheckboxItem
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -301,7 +318,7 @@ function MenubarCheckboxItem({
 }: MenubarCheckboxItemProps) {
   const styleProps = stylex.props(styles.item, styles.itemInset, sx);
   return (
-    <MenubarPrimitive.CheckboxItem
+    <MenubarPrimitiveCheckboxItem
       data-slot="menubar-checkbox-item"
       checked={checked}
       {...styleProps}
@@ -309,41 +326,39 @@ function MenubarCheckboxItem({
       {...props}
     >
       <span {...stylex.props(styles.indicatorContainer)}>
-        <MenubarPrimitive.ItemIndicator>
+        <MenubarPrimitiveItemIndicator>
           <CheckIcon {...stylex.props(styles.icon)} />
-        </MenubarPrimitive.ItemIndicator>
+        </MenubarPrimitiveItemIndicator>
       </span>
       {children}
-    </MenubarPrimitive.CheckboxItem>
+    </MenubarPrimitiveCheckboxItem>
   );
 }
 
-export interface MenubarRadioItemProps extends React.ComponentProps<
-  typeof MenubarPrimitive.RadioItem
-> {
+export interface MenubarRadioItemProps extends ComponentProps<typeof MenubarPrimitiveRadioItem> {
   sx?: stylex.StyleXStyles;
 }
 
 function MenubarRadioItem({ className, children, sx, ...props }: MenubarRadioItemProps) {
   const styleProps = stylex.props(styles.item, styles.itemInset, sx);
   return (
-    <MenubarPrimitive.RadioItem
+    <MenubarPrimitiveRadioItem
       data-slot="menubar-radio-item"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
     >
       <span {...stylex.props(styles.indicatorContainer)}>
-        <MenubarPrimitive.ItemIndicator>
+        <MenubarPrimitiveItemIndicator>
           <CircleIcon {...stylex.props(styles.circleIcon)} />
-        </MenubarPrimitive.ItemIndicator>
+        </MenubarPrimitiveItemIndicator>
       </span>
       {children}
-    </MenubarPrimitive.RadioItem>
+    </MenubarPrimitiveRadioItem>
   );
 }
 
-export interface MenubarLabelProps extends React.ComponentProps<typeof MenubarPrimitive.Label> {
+export interface MenubarLabelProps extends ComponentProps<typeof MenubarPrimitiveLabel> {
   inset?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -351,7 +366,7 @@ export interface MenubarLabelProps extends React.ComponentProps<typeof MenubarPr
 function MenubarLabel({ className, inset, sx, ...props }: MenubarLabelProps) {
   const styleProps = stylex.props(styles.label, inset ? styles.itemInset : undefined, sx);
   return (
-    <MenubarPrimitive.Label
+    <MenubarPrimitiveLabel
       data-slot="menubar-label"
       data-inset={inset}
       {...styleProps}
@@ -361,16 +376,14 @@ function MenubarLabel({ className, inset, sx, ...props }: MenubarLabelProps) {
   );
 }
 
-export interface MenubarSeparatorProps extends React.ComponentProps<
-  typeof MenubarPrimitive.Separator
-> {
+export interface MenubarSeparatorProps extends ComponentProps<typeof MenubarPrimitiveSeparator> {
   sx?: stylex.StyleXStyles;
 }
 
 function MenubarSeparator({ className, sx, ...props }: MenubarSeparatorProps) {
   const styleProps = stylex.props(styles.separator, sx);
   return (
-    <MenubarPrimitive.Separator
+    <MenubarPrimitiveSeparator
       data-slot="menubar-separator"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -379,7 +392,7 @@ function MenubarSeparator({ className, sx, ...props }: MenubarSeparatorProps) {
   );
 }
 
-export interface MenubarShortcutProps extends React.ComponentProps<'span'> {
+export interface MenubarShortcutProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -398,13 +411,11 @@ function MenubarShortcut({ className, sx, ...props }: MenubarShortcutProps) {
   );
 }
 
-function MenubarSub({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Sub>) {
-  return <MenubarPrimitive.Sub data-slot="menubar-sub" {...props} />;
+function MenubarSub({ ...props }: ComponentProps<typeof MenubarPrimitiveSub>) {
+  return <MenubarPrimitiveSub data-slot="menubar-sub" {...props} />;
 }
 
-export interface MenubarSubTriggerProps extends React.ComponentProps<
-  typeof MenubarPrimitive.SubTrigger
-> {
+export interface MenubarSubTriggerProps extends ComponentProps<typeof MenubarPrimitiveSubTrigger> {
   inset?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -412,7 +423,7 @@ export interface MenubarSubTriggerProps extends React.ComponentProps<
 function MenubarSubTrigger({ className, inset, children, sx, ...props }: MenubarSubTriggerProps) {
   const styleProps = stylex.props(styles.subTrigger, inset ? styles.itemInset : undefined, sx);
   return (
-    <MenubarPrimitive.SubTrigger
+    <MenubarPrimitiveSubTrigger
       data-slot="menubar-sub-trigger"
       data-inset={inset}
       {...styleProps}
@@ -421,13 +432,11 @@ function MenubarSubTrigger({ className, inset, children, sx, ...props }: Menubar
     >
       {children}
       <ChevronRightIcon {...stylex.props(styles.chevronRight)} />
-    </MenubarPrimitive.SubTrigger>
+    </MenubarPrimitiveSubTrigger>
   );
 }
 
-export interface MenubarSubContentProps extends React.ComponentProps<
-  typeof MenubarPrimitive.SubContent
-> {
+export interface MenubarSubContentProps extends ComponentProps<typeof MenubarPrimitiveSubContent> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -435,7 +444,7 @@ function MenubarSubContent({ className, sx, style, children, ...props }: Menubar
   const zIndex = useZIndex('popover', 1);
   const styleProps = stylex.props(styles.subContent, sx);
   return (
-    <MenubarPrimitive.SubContent
+    <MenubarPrimitiveSubContent
       data-slot="menubar-sub-content"
       {...styleProps}
       style={{ zIndex, ...styleProps.style, ...style }}
@@ -443,7 +452,7 @@ function MenubarSubContent({ className, sx, style, children, ...props }: Menubar
       {...props}
     >
       <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
-    </MenubarPrimitive.SubContent>
+    </MenubarPrimitiveSubContent>
   );
 }
 

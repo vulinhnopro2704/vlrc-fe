@@ -1,5 +1,10 @@
-import * as React from 'react';
-import * as SliderPrimitive from '@radix-ui/react-slider';
+import { useMemo, type ComponentProps } from 'react';
+import {
+  Range as SliderPrimitiveRange,
+  Root as SliderPrimitiveRoot,
+  Thumb as SliderPrimitiveThumb,
+  Track as SliderPrimitiveTrack,
+} from '@radix-ui/react-slider';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 
@@ -49,12 +54,12 @@ const styles = stylex.create({
   },
 });
 
-export interface SliderProps extends React.ComponentProps<typeof SliderPrimitive.Root> {
+export interface SliderProps extends ComponentProps<typeof SliderPrimitiveRoot> {
   sx?: stylex.StyleXStyles;
 }
 
 function Slider({ className, defaultValue, value, min = 0, max = 100, sx, ...props }: SliderProps) {
-  const _values = React.useMemo(
+  const _values = useMemo(
     () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
     [value, defaultValue, min, max],
   );
@@ -62,7 +67,7 @@ function Slider({ className, defaultValue, value, min = 0, max = 100, sx, ...pro
   const sxProps = stylex.props(styles.root, sx);
 
   return (
-    <SliderPrimitive.Root
+    <SliderPrimitiveRoot
       data-slot="slider"
       defaultValue={defaultValue}
       value={value}
@@ -72,17 +77,17 @@ function Slider({ className, defaultValue, value, min = 0, max = 100, sx, ...pro
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <SliderPrimitive.Track data-slot="slider-track" {...stylex.props(styles.track)}>
-        <SliderPrimitive.Range data-slot="slider-range" {...stylex.props(styles.range)} />
-      </SliderPrimitive.Track>
+      <SliderPrimitiveTrack data-slot="slider-track" {...stylex.props(styles.track)}>
+        <SliderPrimitiveRange data-slot="slider-range" {...stylex.props(styles.range)} />
+      </SliderPrimitiveTrack>
       {Array.from({ length: _values.length }, (_, index) => (
-        <SliderPrimitive.Thumb
+        <SliderPrimitiveThumb
           data-slot="slider-thumb"
           key={index}
           {...stylex.props(styles.thumb)}
         />
       ))}
-    </SliderPrimitive.Root>
+    </SliderPrimitiveRoot>
   );
 }
 

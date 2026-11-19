@@ -1,4 +1,11 @@
-import * as React from 'react';
+import {
+  forwardRef,
+  type CSSProperties,
+  type ElementType,
+  type ForwardRefExoticComponent,
+  type HTMLAttributes,
+  type RefAttributes,
+} from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 import { spacing } from '../theme/tokens.stylex';
@@ -32,7 +39,7 @@ export type GridJustify =
 
 export type ResponsiveGridColumns = Partial<Record<Breakpoint, number | string>>;
 
-export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface GridProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Number of columns or explicit CSS template string.
    * Can also be responsive object: `{ xs: 1, sm: 2, md: 3, lg: 4 }`.
@@ -93,14 +100,14 @@ export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
    * Underlying HTML tag (e.g. 'ul', 'section', 'nav').
    * @default 'div'
    */
-  as?: React.ElementType;
+  as?: ElementType;
   /**
    * Meta StyleX custom override styles.
    */
   sx?: stylex.StyleXStyles;
 }
 
-export interface GridItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface GridItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Number of columns this item spans.
    * e.g. `colSpan={2}` produces `grid-column: span 2 / span 2`.
@@ -139,7 +146,7 @@ export interface GridItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Underlying HTML tag (e.g. 'li', 'article', 'div').
    * @default 'div'
    */
-  as?: React.ElementType;
+  as?: ElementType;
   /**
    * Meta StyleX custom override styles.
    */
@@ -234,7 +241,7 @@ const gapTierStyles: Record<ComponentSize, stylex.StyleXStyles> = {
 // Grid Item Component
 // ============================================================================
 
-export const GridItem = React.forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
+export const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
   {
     colSpan,
     rowSpan,
@@ -259,7 +266,7 @@ export const GridItem = React.forwardRef<HTMLDivElement, GridItemProps>(function
     ? `${sxProps.className || ''} ${className}`.trim()
     : sxProps.className;
 
-  const dynamicStyle: React.CSSProperties = { ...sxProps.style, ...style };
+  const dynamicStyle: CSSProperties = { ...sxProps.style, ...style };
 
   if (colSpan !== undefined) {
     dynamicStyle.gridColumn = colSpan === 'auto' ? 'auto' : `span ${colSpan} / span ${colSpan}`;
@@ -295,8 +302,8 @@ GridItem.displayName = 'GridItem';
 // Grid Component
 // ============================================================================
 
-interface GridComponent extends React.ForwardRefExoticComponent<
-  GridProps & React.RefAttributes<HTMLDivElement>
+interface GridComponent extends ForwardRefExoticComponent<
+  GridProps & RefAttributes<HTMLDivElement>
 > {
   Row: typeof Row;
   Col: typeof Col;
@@ -305,7 +312,7 @@ interface GridComponent extends React.ForwardRefExoticComponent<
   useBreakpoint: typeof useBreakpoint;
 }
 
-export const Grid = React.forwardRef<HTMLDivElement, GridProps>(function Grid(
+export const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
   {
     columns,
     rows,
@@ -349,7 +356,7 @@ export const Grid = React.forwardRef<HTMLDivElement, GridProps>(function Grid(
     ? `${sxProps.className || ''} ${className}`.trim()
     : sxProps.className;
 
-  const dynamicStyle: React.CSSProperties = { ...sxProps.style, ...style };
+  const dynamicStyle: CSSProperties = { ...sxProps.style, ...style };
 
   // Resolve columns
   if (minChildWidth !== undefined) {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, useState, type ElementType } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -161,7 +161,7 @@ const trackingStyles: Record<TitleTracking, stylex.StyleXStyles> = {
   wide: styles.wide,
 };
 
-export const Title = React.forwardRef<HTMLElement, TitleProps>(function Title(
+export const Title = forwardRef<HTMLElement, TitleProps>(function Title(
   {
     level = 1,
     size,
@@ -208,10 +208,10 @@ export const Title = React.forwardRef<HTMLElement, TitleProps>(function Title(
   }: TitleProps,
   ref,
 ) {
-  const Component = (as || `h${level}`) as React.ElementType;
-  const [copied, setCopied] = React.useState(false);
-  const [isEditing, setIsEditing] = React.useState(false);
-  const [textValue, setTextValue] = React.useState(typeof children === 'string' ? children : '');
+  const Component = (as || `h${level}`) as ElementType;
+  const [copied, setCopied] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [textValue, setTextValue] = useState(typeof children === 'string' ? children : '');
 
   const resolvedSize = size ?? defaultLevelSizes[level] ?? 'xxl';
   const currentSizeStyle = titleSizeStyles[resolvedSize] ?? styles.sizeXxl;

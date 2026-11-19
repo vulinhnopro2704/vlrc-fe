@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import { Text } from '../Typography/Text';
@@ -81,7 +81,7 @@ const SIZE_CONFIGS: Record<
   xl: { size: 96, strokeWidth: 6, textSize: 'lg' },
 };
 
-export interface CircularProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CircularProgressProps extends HTMLAttributes<HTMLDivElement> {
   value?: number;
   min?: number;
   max?: number;
@@ -90,11 +90,11 @@ export interface CircularProgressProps extends React.HTMLAttributes<HTMLDivEleme
   variant?: CircularProgressVariant;
   indeterminate?: boolean;
   showValue?: boolean;
-  formatValue?: (value: number) => React.ReactNode;
+  formatValue?: (value: number) => ReactNode;
   sx?: stylex.StyleXStyles;
 }
 
-export const CircularProgress = React.forwardRef<HTMLDivElement, CircularProgressProps>(
+export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>(
   (
     {
       value,

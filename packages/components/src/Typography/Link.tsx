@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -103,7 +103,7 @@ const underlineStyles: Record<LinkUnderline, stylex.StyleXStyles> = {
   none: styles.none,
 };
 
-export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
   {
     href,
     size = 'md',

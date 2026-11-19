@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import { Loader2Icon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import type { ComponentSize } from '../theme/types';
@@ -56,7 +56,7 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.sizeXxl,
 };
 
-export interface SpinnerProps extends React.ComponentProps<'svg'> {
+export interface SpinnerProps extends ComponentProps<'svg'> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;

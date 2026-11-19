@@ -1,7 +1,23 @@
 'use client';
 
-import * as React from 'react';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import { type ComponentProps } from 'react';
+import {
+  CheckboxItem as ContextMenuPrimitiveCheckboxItem,
+  Content as ContextMenuPrimitiveContent,
+  Group as ContextMenuPrimitiveGroup,
+  Item as ContextMenuPrimitiveItem,
+  ItemIndicator as ContextMenuPrimitiveItemIndicator,
+  Label as ContextMenuPrimitiveLabel,
+  Portal as ContextMenuPrimitivePortal,
+  RadioGroup as ContextMenuPrimitiveRadioGroup,
+  RadioItem as ContextMenuPrimitiveRadioItem,
+  Root as ContextMenuPrimitiveRoot,
+  Separator as ContextMenuPrimitiveSeparator,
+  Sub as ContextMenuPrimitiveSub,
+  SubContent as ContextMenuPrimitiveSubContent,
+  SubTrigger as ContextMenuPrimitiveSubTrigger,
+  Trigger as ContextMenuPrimitiveTrigger,
+} from '@radix-ui/react-context-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -133,36 +149,34 @@ const styles = stylex.create({
   },
 });
 
-function ContextMenu({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {
-  return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />;
+function ContextMenu({ ...props }: ComponentProps<typeof ContextMenuPrimitiveRoot>) {
+  return <ContextMenuPrimitiveRoot data-slot="context-menu" {...props} />;
 }
 
-function ContextMenuTrigger({
-  ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Trigger>) {
-  return <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props} />;
+function ContextMenuTrigger({ ...props }: ComponentProps<typeof ContextMenuPrimitiveTrigger>) {
+  return <ContextMenuPrimitiveTrigger data-slot="context-menu-trigger" {...props} />;
 }
 
-function ContextMenuGroup({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Group>) {
-  return <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />;
+function ContextMenuGroup({ ...props }: ComponentProps<typeof ContextMenuPrimitiveGroup>) {
+  return <ContextMenuPrimitiveGroup data-slot="context-menu-group" {...props} />;
 }
 
-function ContextMenuPortal({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Portal>) {
-  return <ContextMenuPrimitive.Portal data-slot="context-menu-portal" {...props} />;
+function ContextMenuPortal({ ...props }: ComponentProps<typeof ContextMenuPrimitivePortal>) {
+  return <ContextMenuPrimitivePortal data-slot="context-menu-portal" {...props} />;
 }
 
-function ContextMenuSub({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Sub>) {
-  return <ContextMenuPrimitive.Sub data-slot="context-menu-sub" {...props} />;
+function ContextMenuSub({ ...props }: ComponentProps<typeof ContextMenuPrimitiveSub>) {
+  return <ContextMenuPrimitiveSub data-slot="context-menu-sub" {...props} />;
 }
 
 function ContextMenuRadioGroup({
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.RadioGroup>) {
-  return <ContextMenuPrimitive.RadioGroup data-slot="context-menu-radio-group" {...props} />;
+}: ComponentProps<typeof ContextMenuPrimitiveRadioGroup>) {
+  return <ContextMenuPrimitiveRadioGroup data-slot="context-menu-radio-group" {...props} />;
 }
 
-export interface ContextMenuSubTriggerProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.SubTrigger
+export interface ContextMenuSubTriggerProps extends ComponentProps<
+  typeof ContextMenuPrimitiveSubTrigger
 > {
   inset?: boolean;
   sx?: stylex.StyleXStyles;
@@ -178,7 +192,7 @@ function ContextMenuSubTrigger({
   const styleProps = stylex.props(styles.subTrigger, inset ? styles.itemInset : undefined, sx);
 
   return (
-    <ContextMenuPrimitive.SubTrigger
+    <ContextMenuPrimitiveSubTrigger
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
       {...styleProps}
@@ -187,12 +201,12 @@ function ContextMenuSubTrigger({
     >
       {children}
       <ChevronRightIcon {...stylex.props(styles.chevronRight)} />
-    </ContextMenuPrimitive.SubTrigger>
+    </ContextMenuPrimitiveSubTrigger>
   );
 }
 
-export interface ContextMenuSubContentProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.SubContent
+export interface ContextMenuSubContentProps extends ComponentProps<
+  typeof ContextMenuPrimitiveSubContent
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -201,7 +215,7 @@ function ContextMenuSubContent({ className, sx, ...props }: ContextMenuSubConten
   const styleProps = stylex.props(styles.content, sx);
 
   return (
-    <ContextMenuPrimitive.SubContent
+    <ContextMenuPrimitiveSubContent
       data-slot="context-menu-sub-content"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -210,8 +224,8 @@ function ContextMenuSubContent({ className, sx, ...props }: ContextMenuSubConten
   );
 }
 
-export interface ContextMenuContentProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.Content
+export interface ContextMenuContentProps extends ComponentProps<
+  typeof ContextMenuPrimitiveContent
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -221,8 +235,8 @@ function ContextMenuContent({ className, sx, style, children, ...props }: Contex
   const styleProps = stylex.props(styles.content, sx);
 
   return (
-    <ContextMenuPrimitive.Portal>
-      <ContextMenuPrimitive.Content
+    <ContextMenuPrimitivePortal>
+      <ContextMenuPrimitiveContent
         data-slot="context-menu-content"
         {...styleProps}
         style={{ zIndex, ...styleProps.style, ...style }}
@@ -230,14 +244,12 @@ function ContextMenuContent({ className, sx, style, children, ...props }: Contex
         {...props}
       >
         <ZIndexProvider value={zIndex + 10}>{children}</ZIndexProvider>
-      </ContextMenuPrimitive.Content>
-    </ContextMenuPrimitive.Portal>
+      </ContextMenuPrimitiveContent>
+    </ContextMenuPrimitivePortal>
   );
 }
 
-export interface ContextMenuItemProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.Item
-> {
+export interface ContextMenuItemProps extends ComponentProps<typeof ContextMenuPrimitiveItem> {
   inset?: boolean;
   variant?: 'default' | 'destructive';
   sx?: stylex.StyleXStyles;
@@ -258,7 +270,7 @@ function ContextMenuItem({
   );
 
   return (
-    <ContextMenuPrimitive.Item
+    <ContextMenuPrimitiveItem
       data-slot="context-menu-item"
       data-inset={inset}
       data-variant={variant}
@@ -269,8 +281,8 @@ function ContextMenuItem({
   );
 }
 
-export interface ContextMenuCheckboxItemProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.CheckboxItem
+export interface ContextMenuCheckboxItemProps extends ComponentProps<
+  typeof ContextMenuPrimitiveCheckboxItem
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -285,7 +297,7 @@ function ContextMenuCheckboxItem({
   const styleProps = stylex.props(styles.item, styles.itemInset, sx);
 
   return (
-    <ContextMenuPrimitive.CheckboxItem
+    <ContextMenuPrimitiveCheckboxItem
       data-slot="context-menu-checkbox-item"
       checked={checked}
       {...styleProps}
@@ -293,17 +305,17 @@ function ContextMenuCheckboxItem({
       {...props}
     >
       <span {...stylex.props(styles.indicatorContainer)}>
-        <ContextMenuPrimitive.ItemIndicator>
+        <ContextMenuPrimitiveItemIndicator>
           <CheckIcon {...stylex.props(styles.icon)} />
-        </ContextMenuPrimitive.ItemIndicator>
+        </ContextMenuPrimitiveItemIndicator>
       </span>
       {children}
-    </ContextMenuPrimitive.CheckboxItem>
+    </ContextMenuPrimitiveCheckboxItem>
   );
 }
 
-export interface ContextMenuRadioItemProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.RadioItem
+export interface ContextMenuRadioItemProps extends ComponentProps<
+  typeof ContextMenuPrimitiveRadioItem
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -312,25 +324,23 @@ function ContextMenuRadioItem({ className, children, sx, ...props }: ContextMenu
   const styleProps = stylex.props(styles.item, styles.itemInset, sx);
 
   return (
-    <ContextMenuPrimitive.RadioItem
+    <ContextMenuPrimitiveRadioItem
       data-slot="context-menu-radio-item"
       {...styleProps}
       className={cn(styleProps.className, className)}
       {...props}
     >
       <span {...stylex.props(styles.indicatorContainer)}>
-        <ContextMenuPrimitive.ItemIndicator>
+        <ContextMenuPrimitiveItemIndicator>
           <CircleIcon {...stylex.props(styles.circleIcon)} />
-        </ContextMenuPrimitive.ItemIndicator>
+        </ContextMenuPrimitiveItemIndicator>
       </span>
       {children}
-    </ContextMenuPrimitive.RadioItem>
+    </ContextMenuPrimitiveRadioItem>
   );
 }
 
-export interface ContextMenuLabelProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.Label
-> {
+export interface ContextMenuLabelProps extends ComponentProps<typeof ContextMenuPrimitiveLabel> {
   inset?: boolean;
   sx?: stylex.StyleXStyles;
 }
@@ -339,7 +349,7 @@ function ContextMenuLabel({ className, inset, sx, ...props }: ContextMenuLabelPr
   const styleProps = stylex.props(styles.label, inset ? styles.itemInset : undefined, sx);
 
   return (
-    <ContextMenuPrimitive.Label
+    <ContextMenuPrimitiveLabel
       data-slot="context-menu-label"
       data-inset={inset}
       {...styleProps}
@@ -349,8 +359,8 @@ function ContextMenuLabel({ className, inset, sx, ...props }: ContextMenuLabelPr
   );
 }
 
-export interface ContextMenuSeparatorProps extends React.ComponentProps<
-  typeof ContextMenuPrimitive.Separator
+export interface ContextMenuSeparatorProps extends ComponentProps<
+  typeof ContextMenuPrimitiveSeparator
 > {
   sx?: stylex.StyleXStyles;
 }
@@ -359,7 +369,7 @@ function ContextMenuSeparator({ className, sx, ...props }: ContextMenuSeparatorP
   const styleProps = stylex.props(styles.separator, sx);
 
   return (
-    <ContextMenuPrimitive.Separator
+    <ContextMenuPrimitiveSeparator
       data-slot="context-menu-separator"
       {...styleProps}
       className={cn(styleProps.className, className)}
@@ -368,7 +378,7 @@ function ContextMenuSeparator({ className, sx, ...props }: ContextMenuSeparatorP
   );
 }
 
-export interface ContextMenuShortcutProps extends React.ComponentProps<'span'> {
+export interface ContextMenuShortcutProps extends ComponentProps<'span'> {
   sx?: stylex.StyleXStyles;
 }
 

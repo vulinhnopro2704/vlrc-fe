@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 
@@ -63,7 +63,7 @@ function Table({
   className,
   sx,
   ...props
-}: React.ComponentProps<'table'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'table'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.table, sx);
   return (
     <div data-slot="table-container" {...stylex.props(styles.container)}>
@@ -81,7 +81,7 @@ function TableHeader({
   className,
   sx,
   ...props
-}: React.ComponentProps<'thead'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'thead'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.header, sx);
   return (
     <thead
@@ -97,7 +97,7 @@ function TableBody({
   className,
   sx,
   ...props
-}: React.ComponentProps<'tbody'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'tbody'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.body, sx);
   return (
     <tbody
@@ -113,7 +113,7 @@ function TableFooter({
   className,
   sx,
   ...props
-}: React.ComponentProps<'tfoot'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'tfoot'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.footer, sx);
   return (
     <tfoot
@@ -129,7 +129,7 @@ function TableRow({
   className,
   sx,
   ...props
-}: React.ComponentProps<'tr'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'tr'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.row, sx);
   return (
     <tr
@@ -145,7 +145,7 @@ function TableHead({
   className,
   sx,
   ...props
-}: React.ComponentProps<'th'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'th'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.head, sx);
   return (
     <th
@@ -161,7 +161,7 @@ function TableCell({
   className,
   sx,
   ...props
-}: React.ComponentProps<'td'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'td'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.cell, sx);
   return (
     <td
@@ -177,7 +177,7 @@ function TableCaption({
   className,
   sx,
   ...props
-}: React.ComponentProps<'caption'> & { sx?: stylex.StyleXStyles }) {
+}: ComponentProps<'caption'> & { sx?: stylex.StyleXStyles }) {
   const sxProps = stylex.props(styles.caption, sx);
   return (
     <caption
