@@ -38,11 +38,11 @@ jobs:
       - name: Check formatting
         run: pnpm format:check
 
+      - name: Build packages & verify type emissions
+        run: pnpm build
+
       - name: Run typecheck
         run: pnpm typecheck
 
       - name: Run tests
         run: pnpm test
-
-      - name: Build packages & verify type emissions
-        run: pnpm build
