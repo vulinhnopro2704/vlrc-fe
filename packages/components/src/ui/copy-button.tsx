@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
+import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Copy, Check } from 'lucide-react';
 import { colors } from '../theme/tokens.stylex';
@@ -49,105 +49,92 @@ export interface CopyButtonProps extends Omit<ButtonProps, 'onClick' | 'onCopy'>
   copiedLabel?: string;
 }
 
-export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
-  (
-    {
-      value,
-      timeout = 2000,
-      onCopy,
-      showLabel = false,
-      copyLabel = 'Copy',
-      copiedLabel = 'Copied',
-      variant = 'ghost',
-      size = 'icon',
-      children,
-      sx,
-      className,
-      'aria-label': ariaLabel,
-      ...props
-    },
-    ref,
-  ) => {
-    const [copied, setCopied] = useState(false);
-    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+export function CopyButton({
+  value,
+  timeout = 2000,
+  onCopy,
+  showLabel = false,
+  copyLabel = 'Copy',
+  copiedLabel = 'Copied',
+  variant = 'ghost',
+  size = 'icon',
+  children,
+  sx,
+  className,
+  'aria-label': ariaLabel,
+  ref,
+  ...props
+}: CopyButtonProps) {
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    useEffect(() => {
-      return () => {
-        if (timeoutRef.current !== null) {
-          clearTimeout(timeoutRef.current);
-        }
-      };
-    }, []);
-
-    const handleCopy = async (e: ReactMouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-
-      if (!navigator?.clipboard?.writeText) {
-        return;
-      }
-
-      try {
-        await navigator.clipboard.writeText(value);
-        setCopied(true);
-        onCopy?.(value);
-
-        if (timeoutRef.current !== null) {
-          clearTimeout(timeoutRef.current);
-        }
-
-        timeoutRef.current = setTimeout(() => {
-          setCopied(false);
-          timeoutRef.current = null;
-        }, timeout);
-      } catch {
-        setCopied(false);
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
       }
     };
+  }, []);
 
-    const iconSizeStyle =
-      size === 'sm' || size === 'xs'
-        ? styles.iconSm
-        : size === 'lg'
-          ? styles.iconLg
-          : styles.iconMd;
+  const handleCopy = async (e: ReactMouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
 
-    const currentAriaLabel = ariaLabel ?? (copied ? 'Copied to clipboard' : 'Copy to clipboard');
+    if (!navigator?.clipboard?.writeText) {
+      return;
+    }
 
-    return (
-      <Button
-        ref={ref}
-        type="button"
-        variant={variant}
-        size={size}
-        onClick={handleCopy}
-        aria-label={currentAriaLabel}
-        data-slot="copy-button"
-        data-copied={copied ? 'true' : 'false'}
-        sx={sx}
-        className={className}
-        {...props}
-      >
-        <span {...stylex.props(styles.iconWrapper)}>
-          {copied ? (
-            <Check
-              data-slot="copy-icon-check"
-              {...stylex.props(iconSizeStyle, styles.copiedIcon)}
-            />
-          ) : (
-            <Copy data-slot="copy-icon" {...stylex.props(iconSizeStyle)} />
-          )}
-        </span>
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      onCopy?.(value);
 
-        {showLabel && (
-          <Text as="span" size="sm" sx={[styles.label]}>
-            {copied ? copiedLabel : copyLabel}
-          </Text>
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      timeoutRef.current = setTimeout(() => {
+        setCopied(false);
+        timeoutRef.current = null;
+      }, timeout);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  const iconSizeStyle =
+    size === 'sm' || size === 'xs' ? styles.iconSm : size === 'lg' ? styles.iconLg : styles.iconMd;
+
+  const currentAriaLabel = ariaLabel ?? (copied ? 'Copied to clipboard' : 'Copy to clipboard');
+
+  return (
+    <Button
+      ref={ref}
+      type="button"
+      variant={variant}
+      size={size}
+      onClick={handleCopy}
+      aria-label={currentAriaLabel}
+      data-slot="copy-button"
+      data-copied={copied ? 'true' : 'false'}
+      sx={sx}
+      className={className}
+      {...props}
+    >
+      <span {...stylex.props(styles.iconWrapper)}>
+        {copied ? (
+          <Check data-slot="copy-icon-check" {...stylex.props(iconSizeStyle, styles.copiedIcon)} />
+        ) : (
+          <Copy data-slot="copy-icon" {...stylex.props(iconSizeStyle)} />
         )}
+      </span>
 
-        {children}
-      </Button>
-    );
-  },
-);
+      {showLabel && (
+        <Text as="span" size="sm" sx={[styles.label]}>
+          {copied ? copiedLabel : copyLabel}
+        </Text>
+      )}
 
-CopyButton.displayName = 'CopyButton';
+      {children}
+    </Button>
+  );
+}

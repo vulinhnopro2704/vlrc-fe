@@ -1,4 +1,4 @@
-import { useEffect, useState, type ComponentProps } from 'react';
+import { useState, type ComponentProps } from 'react';
 import {
   Indicator as CheckboxPrimitiveIndicator,
   Root as CheckboxPrimitiveRoot,
@@ -147,33 +147,25 @@ export interface CheckboxProps extends ComponentProps<typeof CheckboxPrimitiveRo
 function Checkbox({
   className,
   size = 'md',
-  checked: controlledChecked,
+  checked,
   defaultChecked = false,
   onCheckedChange,
   disabled,
   sx,
   ...props
 }: CheckboxProps) {
-  const isControlled = controlledChecked !== undefined;
-  const [uncontrolledChecked, setUncontrolledChecked] = useState(defaultChecked);
-  const isChecked = isControlled ? Boolean(controlledChecked) : uncontrolledChecked;
-
-  useEffect(() => {
-    if (!isControlled && defaultChecked !== undefined) {
-      setUncontrolledChecked(defaultChecked);
-    }
-  }, [defaultChecked, isControlled]);
+  const [internalChecked, setInternalChecked] = useState(defaultChecked);
+  const isChecked = checked !== undefined ? Boolean(checked) : internalChecked;
 
   const handleCheckedChange = (nextChecked: boolean | 'indeterminate') => {
-    if (!isControlled) {
-      setUncontrolledChecked(nextChecked === true);
+    if (checked === undefined) {
+      setInternalChecked(nextChecked === true);
     }
     onCheckedChange?.(nextChecked);
   };
 
   const rootSize = rootSizeStyles[size] ?? styles.sizeMd;
   const iconSize = iconSizeStyles[size] ?? styles.iconMd;
-
   const sxProps = stylex.props(styles.root, rootSize, isChecked && styles.rootChecked, sx);
 
   return (

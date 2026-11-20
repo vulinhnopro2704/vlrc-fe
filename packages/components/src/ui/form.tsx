@@ -1,5 +1,3 @@
-'use client';
-
 import { createContext, useContext, useId, type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import type * as LabelPrimitive from '@radix-ui/react-label';

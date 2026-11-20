@@ -105,6 +105,8 @@ export type ParagraphWeight = TypographyWeight;
 export type TypographyTooltip = boolean | ReactNode | { title?: ReactNode };
 
 export interface BaseTypographyProps extends React.HTMLAttributes<HTMLElement> {
+  /** Reference to the underlying DOM element */
+  ref?: React.Ref<HTMLElement>;
   /** Polymorphic component to override the semantic HTML tag */
   as?: ElementType;
   /** Additional CSS class name */
@@ -247,6 +249,8 @@ export interface TextProps extends BaseTypographyProps {
 export type LinkUnderline = 'always' | 'hover' | 'none';
 
 export interface LinkProps extends Omit<BaseTypographyProps, 'onClick'> {
+  /** Reference to the underlying anchor element */
+  ref?: React.Ref<HTMLAnchorElement>;
   /** Target URL */
   href?: string;
   /** 7-tier sizing scale (xxs: 8px, xs: 10px, sm: 12px, md: 14px [default], lg: 16px, xl: 20px, xxl: 24px) */

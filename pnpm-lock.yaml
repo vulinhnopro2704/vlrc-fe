@@ -470,6 +470,9 @@ importers:
       '@types/prismjs':
         specifier: ^1.26.6
         version: 1.26.6
+      '@vlrc-fe/components':
+        specifier: workspace:*
+        version: link:../components
       lexical:
         specifier: ^0.52.0
         version: 0.52.0(typescript@7.0.2)
@@ -489,9 +492,6 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.1.2
         version: 6.1.2(@rolldown/plugin-babel@0.2.3(@babel/core@8.0.1)(@babel/runtime@7.29.7)(rolldown@1.2.15)(vite@8.3.5(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
-      '@vlrc-fe/components':
-        specifier: workspace:*
-        version: link:../components
       react:
         specifier: ^19.3.1
         version: 19.3.1

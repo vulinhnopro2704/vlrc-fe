@@ -172,6 +172,7 @@ export const useMultiSelect = ({
 
   const handleInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (disabled) return;
+    if (event.nativeEvent.isComposing || event.keyCode === 229) return;
     if (event.key === 'Enter') {
       setIsPopoverOpen(true);
     } else if (event.key === 'Backspace' && !event.currentTarget.value) {

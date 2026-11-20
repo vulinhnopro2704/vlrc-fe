@@ -26,6 +26,7 @@ const styles = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     gap: '1.25rem',
+    overscrollBehavior: 'contain',
   },
   sizeXxs: { maxWidth: 320 },
   sizeXs: { maxWidth: 380 },
@@ -178,10 +179,6 @@ const styles = stylex.create({
     width: 24,
     height: 24,
   },
-  loadingContent: {
-    display: 'inline-flex',
-    alignItems: 'center',
-  },
 });
 
 const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
@@ -194,27 +191,19 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.sizeXxl,
 };
 
-export type ConfirmModalType = 'warning' | 'info' | 'success' | 'danger' | 'error';
+export type ConfirmModalType = 'warning' | 'info' | 'success' | 'danger';
 
 export interface ConfirmModalProps {
   /** Controls visibility of the confirmation modal dialog. */
   open?: boolean;
-  /** Alias for `open` maintaining backward compatibility. */
-  isOpen?: boolean;
   /** Callback fired when the dialog is dismissed or cancel button clicked. */
-  onClose?: () => void;
-  /** Alias for `onClose` (consistent with Modal `onCancel`). */
   onCancel?: () => void;
   /** Callback fired when the user confirms the action. */
   onConfirm?: () => void;
-  /** Alias for `onConfirm`. */
-  onOk?: () => void;
   /** Dialog heading title summarizing the intent. */
   title: ReactNode;
-  /** Detailed explanatory message describing the consequences of the action. */
+  /** Explanatory message describing the consequences of the action. */
   message?: ReactNode;
-  /** Alias for `message` (consistent with Modal `description`). */
-  description?: ReactNode;
   /** Optional body content rendered inside the dialog body. */
   children?: ReactNode;
   /** Text shown on the confirmation button (defaults to "Confirm"). */
@@ -225,16 +214,12 @@ export interface ConfirmModalProps {
   closeLabel?: string;
   /** Text shown when an async confirmation is pending (defaults to "Processing..."). */
   processingText?: string;
-  /** Alias for `processingText` (consistent with Modal `loadingText`). */
+  /** Alias for processingText */
   loadingText?: string;
   /** Semantic type determining the accent color and icon. */
   type?: ConfirmModalType;
-  /** Alias for `type` to follow design system variant conventions. */
-  variant?: ConfirmModalType;
   /** Whether the confirmation request is currently pending. */
   isLoading?: boolean;
-  /** Alias for `isLoading`. */
-  loading?: boolean;
   /** Sizing tier across the universal 7-level scale. Defaults to 'md'. */
   size?: ComponentSize;
   /** Maximum width in pixels or CSS unit (overrides size preset). */
@@ -247,94 +232,70 @@ export interface ConfirmModalProps {
   className?: string;
 }
 
-/** Legacy type alias */
-export type ConfirmationDialogProps = ConfirmModalProps;
+const TYPE_CONFIG = {
+  warning: {
+    Icon: Icons.AlertTriangle,
+    iconStyle: styles.iconWarning,
+    btnStyle: styles.btnWarning,
+  },
+  info: { Icon: Icons.Info, iconStyle: styles.iconInfo, btnStyle: styles.btnInfo },
+  success: { Icon: Icons.CheckCircle2, iconStyle: styles.iconSuccess, btnStyle: styles.btnSuccess },
+  danger: { Icon: Icons.XCircle, iconStyle: styles.iconDanger, btnStyle: styles.btnDanger },
+} as const;
 
 /**
  * Confirmation dialog for critical user actions (deletions, warnings, approvals).
- * Features smooth animations, escape-key support, semantic type palettes,
- * 7-tier sizing scale, and unified prop conventions matching Modal.
+ * Built with Meta StyleX and Radix UI Dialog with native overscroll containment.
  */
 export function ConfirmModal({
-  open,
-  isOpen,
-  onClose,
+  open = true,
   onCancel,
   onConfirm,
-  onOk,
   title,
   message,
-  description,
   children,
   confirmText = 'Confirm',
   cancelText = 'Cancel',
   closeLabel = 'Close',
-  processingText,
+  processingText = 'Processing...',
   loadingText,
-  type,
-  variant = 'warning',
-  isLoading,
-  loading,
+  type = 'warning',
+  isLoading = false,
   size = 'md',
   width,
   footer,
   sx,
   className,
 }: ConfirmModalProps) {
-  const isModalOpen = open ?? isOpen ?? true;
-  const isPending = isLoading ?? loading ?? false;
-  const rawType = type ?? variant ?? 'warning';
-  const resolvedType: 'warning' | 'info' | 'success' | 'danger' =
-    rawType === 'error' ? 'danger' : rawType;
-  const resolvedMessage = message ?? description;
-  const resolvedLoadingText = loadingText ?? processingText ?? 'Processing...';
-
   const handleDismiss = () => {
-    if (!isPending) {
-      (onCancel ?? onClose)?.();
-    }
+    if (!isLoading) onCancel?.();
   };
 
   const handleConfirm = () => {
-    if (!isPending) {
-      (onConfirm ?? onOk)?.();
-    }
+    if (!isLoading) onConfirm?.();
   };
 
-  const Icon = {
-    warning: Icons.AlertTriangle,
-    info: Icons.Info,
-    success: Icons.CheckCircle2,
-    danger: Icons.XCircle,
-  }[resolvedType];
-
-  const typeStyles = {
-    warning: { icon: styles.iconWarning, btn: styles.btnWarning },
-    info: { icon: styles.iconInfo, btn: styles.btnInfo },
-    success: { icon: styles.iconSuccess, btn: styles.btnSuccess },
-    danger: { icon: styles.iconDanger, btn: styles.btnDanger },
-  }[resolvedType];
-
+  const { Icon, iconStyle, btnStyle } = TYPE_CONFIG[type] ?? TYPE_CONFIG.warning;
   const sizeStyle = sizeStyles[size] ?? styles.sizeMd;
 
   return (
-    <Dialog open={isModalOpen} onOpenChange={(val) => !val && handleDismiss()}>
+    <Dialog open={open} onOpenChange={(val) => !val && handleDismiss()}>
       <DialogContent
         showCloseButton={false}
         sx={[styles.dialog, sizeStyle, sx]}
         className={className}
         style={width ? { maxWidth: width } : undefined}
         onEscapeKeyDown={(e) => {
-          if (isPending) e.preventDefault();
+          if (isLoading) e.preventDefault();
         }}
         onPointerDownOutside={(e) => {
-          if (isPending) e.preventDefault();
+          if (isLoading) e.preventDefault();
         }}
       >
         <button
           type="button"
           onClick={handleDismiss}
-          disabled={isPending}
+          disabled={isLoading}
           {...stylex.props(styles.closeBtn)}
           aria-label={closeLabel}
         >
@@ -343,7 +304,7 @@ export function ConfirmModal({
 
         <div {...stylex.props(styles.header)}>
           <div {...stylex.props(styles.iconWrap)}>
-            <Icon {...stylex.props(styles.typeIcon, typeStyles.icon)} />
+            <Icon {...stylex.props(styles.typeIcon, iconStyle)} />
           </div>
           <div {...stylex.props(styles.body)}>
             <DialogTitle asChild>
@@ -351,10 +312,10 @@ export function ConfirmModal({
                 {title}
               </Title>
             </DialogTitle>
-            {resolvedMessage ? (
+            {message ? (
               <DialogDescription asChild>
                 <Text type="muted" sx={styles.message}>
-                  {resolvedMessage}
+                  {message}
                 </Text>
               </DialogDescription>
             ) : null}
@@ -362,15 +323,13 @@ export function ConfirmModal({
           </div>
         </div>
 
-        {footer ? (
-          footer
-        ) : (
+        {footer ?? (
           <div {...stylex.props(styles.footer)}>
             <Button
               type="button"
               variant="outline"
               onClick={handleDismiss}
-              disabled={isPending}
+              disabled={isLoading}
               sx={styles.cancelBtn}
             >
               {cancelText}
@@ -379,10 +338,10 @@ export function ConfirmModal({
               type="button"
               variant={type === 'danger' ? 'destructive' : 'default'}
               onClick={handleConfirm}
-              isLoading={isPending}
-              sx={[styles.confirmBtn, typeStyles.btn]}
+              isLoading={isLoading}
+              sx={[styles.confirmBtn, btnStyle]}
             >
-              {isPending ? resolvedLoadingText : confirmText}
+              {isLoading ? (loadingText ?? processingText) : confirmText}
             </Button>
           </div>
         )}
@@ -390,5 +349,3 @@ export function ConfirmModal({
     </Dialog>
   );
 }
-
-export default ConfirmModal;

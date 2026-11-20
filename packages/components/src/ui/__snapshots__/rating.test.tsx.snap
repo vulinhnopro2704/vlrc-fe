@@ -11,7 +11,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
     data-direction="row"
     data-inline="true"
     data-slot="rating"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:14"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:128; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/rating.tsx:14"
     role="slider"
     tabindex="0"
   >
@@ -321,7 +321,7 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
     data-direction="row"
     data-inline="true"
     data-slot="rating"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:14; @vlrc-fe/components:src/ui/rating.tsx:21"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:128; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/rating.tsx:14; @vlrc-fe/components:src/ui/rating.tsx:21"
     role="slider"
     tabindex="-1"
   >
@@ -601,7 +601,7 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
     data-direction="row"
     data-inline="true"
     data-slot="rating"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:14"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:128; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/rating.tsx:14"
     role="slider"
     tabindex="-1"
   >

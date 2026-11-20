@@ -5,7 +5,7 @@ exports[`Questionnaire > UI > should match snapshot for progress bar variant 1`]
   <form
     class="Box__styles.base x9f619 xeuugli questionnaire__styles.root x78zum5 xdt5ytf xh8yej3 x9f619 x1b1hbqf"
     data-slot="questionnaire"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       aria-valuemax="1"
@@ -14,7 +14,7 @@ exports[`Questionnaire > UI > should match snapshot for progress bar variant 1`]
       aria-valuetext="Question 1 of 1"
       class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressRoot xh8yej3 x78zum5 xdt5ytf xtkdzsq"
       data-slot="questionnaire-progress"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
@@ -29,13 +29,13 @@ exports[`Questionnaire > UI > should match snapshot for progress bar variant 1`]
       <div
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressBarTrack xh8yej3 x4j2xbe x9psvww x123ixkk xb3r6kr x1n2onr6"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/questionnaire.tsx:115"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/questionnaire.tsx:115"
       >
         <div
           aria-hidden="true"
           class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressBarIndicator x5yr21d x1j7ufkg x9psvww xxrbq2n x1d8287x xz4gly6"
           data-slot="box"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/questionnaire.tsx:123"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/questionnaire.tsx:123"
           style="width: 100%;"
         />
       </div>
@@ -45,12 +45,12 @@ exports[`Questionnaire > UI > should match snapshot for progress bar variant 1`]
       data-active="true"
       data-slot="questionnaire-item"
       data-step-name="role"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <legend
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
         data-slot="questionnaire-title"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <h4
           class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
@@ -76,7 +76,7 @@ exports[`Questionnaire > UI > should match snapshot for progress segmented varia
   <form
     class="Box__styles.base x9f619 xeuugli questionnaire__styles.root x78zum5 xdt5ytf xh8yej3 x9f619 x1b1hbqf"
     data-slot="questionnaire"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       aria-valuemax="1"
@@ -85,7 +85,7 @@ exports[`Questionnaire > UI > should match snapshot for progress segmented varia
       aria-valuetext="Question 1 of 1"
       class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressRoot xh8yej3 x78zum5 xdt5ytf xtkdzsq"
       data-slot="questionnaire-progress"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
@@ -101,12 +101,12 @@ exports[`Questionnaire > UI > should match snapshot for progress segmented varia
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedTrack x78zum5 xh8yej3 xtkdzsq x6s0dn4"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/questionnaire.tsx:131"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/questionnaire.tsx:131"
       >
         <div
           class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedBar x845mor x4j2xbe x9psvww x15406qy x13dflua questionnaire__styles.segmentedBarActive x1j7ufkg"
           data-slot="box"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/questionnaire.tsx:137; @vlrc-fe/components:src/ui/questionnaire.tsx:145"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/questionnaire.tsx:137; @vlrc-fe/components:src/ui/questionnaire.tsx:145"
         />
       </div>
     </div>
@@ -115,12 +115,12 @@ exports[`Questionnaire > UI > should match snapshot for progress segmented varia
       data-active="true"
       data-slot="questionnaire-item"
       data-step-name="role"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <legend
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
         data-slot="questionnaire-title"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <h4
           class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
@@ -146,7 +146,7 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
   <form
     class="Box__styles.base x9f619 xeuugli questionnaire__styles.root x78zum5 xdt5ytf xh8yej3 x9f619 x1b1hbqf"
     data-slot="questionnaire"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       aria-valuemax="2"
@@ -155,7 +155,7 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
       aria-valuetext="Question 1 of 2"
       class="Box__styles.base x9f619 xeuugli questionnaire__styles.progressRoot xh8yej3 x78zum5 xdt5ytf xtkdzsq"
       data-slot="questionnaire-progress"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
@@ -171,17 +171,17 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedTrack x78zum5 xh8yej3 xtkdzsq x6s0dn4"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/questionnaire.tsx:131"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/questionnaire.tsx:131"
       >
         <div
           class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedBar x845mor x4j2xbe x9psvww x15406qy x13dflua questionnaire__styles.segmentedBarActive x1j7ufkg"
           data-slot="box"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/questionnaire.tsx:137; @vlrc-fe/components:src/ui/questionnaire.tsx:145"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/questionnaire.tsx:137; @vlrc-fe/components:src/ui/questionnaire.tsx:145"
         />
         <div
           class="Box__styles.base x9f619 xeuugli questionnaire__styles.segmentedBar x845mor x4j2xbe x9psvww x123ixkk x15406qy x13dflua"
           data-slot="box"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/questionnaire.tsx:137"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/questionnaire.tsx:137"
         />
       </div>
     </div>
@@ -190,12 +190,12 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
       data-active="true"
       data-slot="questionnaire-item"
       data-step-name="role"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <legend
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
         data-slot="questionnaire-title"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <h4
           class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
@@ -214,7 +214,7 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
       <div
         class="Box__styles.base x9f619 xeuugli"
         data-slot="questionnaire-description"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <span
           class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
@@ -230,7 +230,7 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
       <div
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.content x78zum5 xdt5ytf xh8yej3 xdkmor2"
         data-slot="questionnaire-content"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <input
           data-testid="input-role"
@@ -244,13 +244,13 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
       data-active="false"
       data-slot="questionnaire-item"
       data-step-name="experience"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       tabindex="-1"
     >
       <legend
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.title x1717udv x1ghz6dp x1wwzmr"
         data-slot="questionnaire-title"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <h4
           class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh"
@@ -269,7 +269,7 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
       <div
         class="Box__styles.base x9f619 xeuugli"
         data-slot="questionnaire-description"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <span
           class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
@@ -285,7 +285,7 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
       <div
         class="Box__styles.base x9f619 xeuugli questionnaire__styles.content x78zum5 xdt5ytf xh8yej3 xdkmor2"
         data-slot="questionnaire-content"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <input
           data-testid="input-exp"
@@ -296,7 +296,7 @@ exports[`Questionnaire > UI > should match snapshot in default step 1 state 1`] 
     <div
       class="Box__styles.base x9f619 xeuugli questionnaire__styles.actions x78zum5 x6s0dn4 x1qughib xh8yej3 x1m5ztt4 x151zptn x178xt8z x13fuv20 x1ffmyml"
       data-slot="questionnaire-actions"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <button
         class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"

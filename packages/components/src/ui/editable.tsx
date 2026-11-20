@@ -349,6 +349,7 @@ function EditableInput({
   const handleKeyDown = (e: ReactKeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(e);
     if (e.defaultPrevented) return;
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
 
     if (e.key === 'Enter') {
       e.preventDefault();

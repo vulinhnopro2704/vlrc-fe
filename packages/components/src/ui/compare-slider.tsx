@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useCallback,
   useRef,
   useState,
@@ -8,6 +7,7 @@ import {
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
+  type Ref,
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { ChevronsLeftRight } from 'lucide-react';
@@ -120,180 +120,175 @@ export interface CompareSliderProps extends Omit<HTMLAttributes<HTMLDivElement>,
   labelTwo?: ReactNode;
   disabled?: boolean;
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const CompareSlider = forwardRef<HTMLDivElement, CompareSliderProps>(
-  (
-    {
-      itemOne,
-      itemTwo,
-      value: controlledValue,
-      defaultValue = 50,
-      onValueChange,
-      orientation = 'horizontal',
-      showLabels = false,
-      labelOne = 'Before',
-      labelTwo = 'After',
-      disabled = false,
-      sx,
-      className,
-      'aria-label': ariaLabel = 'Comparison slider',
-      ...props
+export function CompareSlider({
+  itemOne,
+  itemTwo,
+  value: controlledValue,
+  defaultValue = 50,
+  onValueChange,
+  orientation = 'horizontal',
+  showLabels = false,
+  labelOne = 'Before',
+  labelTwo = 'After',
+  disabled = false,
+  sx,
+  className,
+  'aria-label': ariaLabel = 'Comparison slider',
+  ref,
+  ...props
+}: CompareSliderProps) {
+  const isControlled = controlledValue !== undefined;
+  const [internalValue, setInternalValue] = useState<number>(defaultValue);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const position = isControlled ? controlledValue : internalValue;
+
+  const setPosition = useCallback(
+    (nextPos: number) => {
+      if (disabled) return;
+      const clamped = Math.max(0, Math.min(100, Math.round(nextPos)));
+      if (!isControlled) {
+        setInternalValue(clamped);
+      }
+      onValueChange?.(clamped);
     },
-    ref,
-  ) => {
-    const isControlled = controlledValue !== undefined;
-    const [internalValue, setInternalValue] = useState<number>(defaultValue);
-    const [isDragging, setIsDragging] = useState<boolean>(false);
-    const containerRef = useRef<HTMLDivElement | null>(null);
+    [disabled, isControlled, onValueChange],
+  );
 
-    const position = isControlled ? controlledValue : internalValue;
+  const handlePointerMove = useCallback(
+    (clientX: number, clientY: number) => {
+      const container = containerRef.current;
+      if (!container) return;
 
-    const setPosition = useCallback(
-      (nextPos: number) => {
-        if (disabled) return;
-        const clamped = Math.max(0, Math.min(100, Math.round(nextPos)));
-        if (!isControlled) {
-          setInternalValue(clamped);
-        }
-        onValueChange?.(clamped);
-      },
-      [disabled, isControlled, onValueChange],
-    );
-
-    const handlePointerMove = useCallback(
-      (clientX: number, clientY: number) => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        const rect = container.getBoundingClientRect();
-        if (orientation === 'horizontal') {
-          const offsetX = clientX - rect.left;
-          const nextPercent = (offsetX / rect.width) * 100;
-          setPosition(nextPercent);
-        } else {
-          const offsetY = clientY - rect.top;
-          const nextPercent = (offsetY / rect.height) * 100;
-          setPosition(nextPercent);
-        }
-      },
-      [orientation, setPosition],
-    );
-
-    const handlePointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
-      if (disabled) return;
-      setIsDragging(true);
-      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-      handlePointerMove(e.clientX, e.clientY);
-    };
-
-    const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
-      if (!isDragging || disabled) return;
-      handlePointerMove(e.clientX, e.clientY);
-    };
-
-    const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
-      setIsDragging(false);
-      try {
-        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
-      } catch {
-        // Ignored
+      const rect = container.getBoundingClientRect();
+      if (orientation === 'horizontal') {
+        const offsetX = clientX - rect.left;
+        const nextPercent = (offsetX / rect.width) * 100;
+        setPosition(nextPercent);
+      } else {
+        const offsetY = clientY - rect.top;
+        const nextPercent = (offsetY / rect.height) * 100;
+        setPosition(nextPercent);
       }
-    };
+    },
+    [orientation, setPosition],
+  );
 
-    const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
-      if (disabled) return;
-      const step = e.shiftKey ? 10 : 2;
+  const handlePointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (disabled) return;
+    setIsDragging(true);
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    handlePointerMove(e.clientX, e.clientY);
+  };
 
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        setPosition(position - step);
-      } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        setPosition(position + step);
-      } else if (e.key === 'Home') {
-        e.preventDefault();
-        setPosition(0);
-      } else if (e.key === 'End') {
-        e.preventDefault();
-        setPosition(100);
-      }
-    };
+  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (!isDragging || disabled) return;
+    handlePointerMove(e.clientX, e.clientY);
+  };
 
-    const isHorizontal = orientation === 'horizontal';
+  const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+    setIsDragging(false);
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      // Ignored
+    }
+  };
 
-    const clipStyle: CSSProperties = isHorizontal
-      ? { clipPath: `inset(0 ${100 - position}% 0 0)` }
-      : { clipPath: `inset(0 0 ${100 - position}% 0)` };
+  const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (disabled) return;
+    const step = e.shiftKey ? 10 : 2;
 
-    const dividerStyle: CSSProperties = isHorizontal
-      ? { left: `${position}%` }
-      : { top: `${position}%` };
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      setPosition(position - step);
+    } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      setPosition(position + step);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      setPosition(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      setPosition(100);
+    }
+  };
 
-    const rootSx = stylex.props(styles.root, sx);
+  const isHorizontal = orientation === 'horizontal';
 
-    return (
+  const clipStyle: CSSProperties = isHorizontal
+    ? { clipPath: `inset(0 ${100 - position}% 0 0)` }
+    : { clipPath: `inset(0 0 ${100 - position}% 0)` };
+
+  const dividerStyle: CSSProperties = isHorizontal
+    ? { left: `${position}%` }
+    : { top: `${position}%` };
+
+  const rootSx = stylex.props(styles.root, sx);
+
+  return (
+    <div
+      ref={(node) => {
+        containerRef.current = node;
+        if (typeof ref === 'function') ref(node);
+        else if (ref) (ref as any).current = node;
+      }}
+      data-slot="compare-slider"
+      data-orientation={orientation}
+      onPointerDown={handlePointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      {...rootSx}
+      className={className ? `${rootSx.className || ''} ${className}`.trim() : rootSx.className}
+      {...props}
+    >
+      {/* Layer Two (Base / After item) */}
+      <div data-slot="compare-layer-two" {...stylex.props(styles.layerTwo)}>
+        {itemTwo}
+      </div>
+
+      {/* Layer One (Foreground / Before item with dynamic clip-path) */}
+      <div data-slot="compare-layer-one" {...stylex.props(styles.layerOne)} style={clipStyle}>
+        {itemOne}
+      </div>
+
+      {/* Labels */}
+      {showLabels && (
+        <>
+          <Badge variant="secondary" data-slot="compare-label-one" sx={[styles.labelLeft]}>
+            {labelOne}
+          </Badge>
+          <Badge variant="secondary" data-slot="compare-label-two" sx={[styles.labelRight]}>
+            {labelTwo}
+          </Badge>
+        </>
+      )}
+
+      {/* Divider and Draggable Handle */}
       <div
-        ref={(node) => {
-          containerRef.current = node;
-          if (typeof ref === 'function') ref(node);
-          else if (ref) ref.current = node;
-        }}
-        data-slot="compare-slider"
-        data-orientation={orientation}
-        onPointerDown={handlePointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
-        {...rootSx}
-        className={className ? `${rootSx.className || ''} ${className}`.trim() : rootSx.className}
-        {...props}
+        data-slot="compare-divider"
+        {...stylex.props(isHorizontal ? styles.dividerHorizontal : styles.dividerVertical)}
+        style={dividerStyle}
       >
-        {/* Layer Two (Base / After item) */}
-        <div data-slot="compare-layer-two" {...stylex.props(styles.layerTwo)}>
-          {itemTwo}
-        </div>
-
-        {/* Layer One (Foreground / Before item with dynamic clip-path) */}
-        <div data-slot="compare-layer-one" {...stylex.props(styles.layerOne)} style={clipStyle}>
-          {itemOne}
-        </div>
-
-        {/* Labels */}
-        {showLabels && (
-          <>
-            <Badge variant="secondary" data-slot="compare-label-one" sx={[styles.labelLeft]}>
-              {labelOne}
-            </Badge>
-            <Badge variant="secondary" data-slot="compare-label-two" sx={[styles.labelRight]}>
-              {labelTwo}
-            </Badge>
-          </>
-        )}
-
-        {/* Divider and Draggable Handle */}
         <div
-          data-slot="compare-divider"
-          {...stylex.props(isHorizontal ? styles.dividerHorizontal : styles.dividerVertical)}
-          style={dividerStyle}
+          role="slider"
+          aria-valuenow={position}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={ariaLabel}
+          tabIndex={disabled ? -1 : 0}
+          onKeyDown={handleKeyDown}
+          data-slot="compare-handle"
+          {...stylex.props(styles.handle, isDragging && styles.handleDragging)}
         >
-          <div
-            role="slider"
-            aria-valuenow={position}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label={ariaLabel}
-            tabIndex={disabled ? -1 : 0}
-            onKeyDown={handleKeyDown}
-            data-slot="compare-handle"
-            {...stylex.props(styles.handle, isDragging && styles.handleDragging)}
-          >
-            <ChevronsLeftRight size={16} />
-          </div>
+          <ChevronsLeftRight size={16} />
         </div>
       </div>
-    );
-  },
-);
-
-CompareSlider.displayName = 'CompareSlider';
+    </div>
+  );
+}

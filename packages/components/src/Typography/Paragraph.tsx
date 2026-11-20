@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -171,51 +170,49 @@ const paragraphTypeStyles: Record<TextType, stylex.StyleXStyles> = {
   inherit: styles.typeInherit,
 };
 
-export const Paragraph = forwardRef<HTMLElement, ParagraphProps>(function Paragraph(
-  {
-    size = 'md',
-    variant = 'default',
-    type,
-    spacing = 'none',
-    align = 'left',
-    weight,
-    required,
-    customSize,
-    lines,
-    rows,
-    lineHeight,
-    ellipsis,
-    tooltip,
-    textDecoration,
-    textDecorationLine,
-    textDecorationStyle,
-    textDecorationColor,
-    textDecorationThickness,
-    textUnderlineOffset,
-    color,
-    margin,
-    m,
-    marginTop,
-    mt,
-    marginBottom,
-    mb,
-    marginLeft,
-    ml,
-    marginRight,
-    mr,
-    marginInline,
-    mx,
-    marginBlock,
-    my,
-    letterSpacing,
-    as: Component = 'p',
-    className,
-    children,
-    sx,
-    ...props
-  }: ParagraphProps,
+export function Paragraph({
+  size = 'md',
+  variant = 'default',
+  type,
+  spacing = 'none',
+  align = 'left',
+  weight,
+  required,
+  customSize,
+  lines,
+  rows,
+  lineHeight,
+  ellipsis,
+  tooltip,
+  textDecoration,
+  textDecorationLine,
+  textDecorationStyle,
+  textDecorationColor,
+  textDecorationThickness,
+  textUnderlineOffset,
+  color,
+  margin,
+  m,
+  marginTop,
+  mt,
+  marginBottom,
+  mb,
+  marginLeft,
+  ml,
+  marginRight,
+  mr,
+  marginInline,
+  mx,
+  marginBlock,
+  my,
+  letterSpacing,
+  as: Component = 'p',
+  className,
+  children,
+  sx,
   ref,
-) {
+  ...props
+}: ParagraphProps) {
   const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis?.rows : undefined);
   const isSingleEllipsis =
     (ellipsis === true || (typeof ellipsis === 'object' && ellipsis !== null && !ellipsis.rows)) &&
@@ -289,6 +286,4 @@ export const Paragraph = forwardRef<HTMLElement, ParagraphProps>(function Paragr
   );
 
   return renderWithTooltip(element, tooltipContent);
-});
-
-Paragraph.displayName = 'Typography.Paragraph';
+}

@@ -1,4 +1,4 @@
-import { forwardRef, useState, type ElementType } from 'react';
+import { useState, type ElementType } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -161,53 +161,51 @@ const trackingStyles: Record<TitleTracking, stylex.StyleXStyles> = {
   wide: styles.wide,
 };
 
-export const Title = forwardRef<HTMLElement, TitleProps>(function Title(
-  {
-    level = 1,
-    size,
-    variant = 'default',
-    tracking = 'normal',
-    weight,
-    customSize,
-    lines,
-    rows,
-    lineHeight,
-    ellipsis,
-    tooltip,
-    textDecoration,
-    textDecorationLine,
-    textDecorationStyle,
-    textDecorationColor,
-    textDecorationThickness,
-    textUnderlineOffset,
-    color,
-    margin,
-    m,
-    marginTop,
-    mt,
-    marginBottom,
-    mb,
-    marginLeft,
-    ml,
-    marginRight,
-    mr,
-    marginInline,
-    mx,
-    marginBlock,
-    my,
-    letterSpacing,
-    editable,
-    copyable,
-    onEdit,
-    required,
-    as,
-    className,
-    children,
-    sx,
-    ...props
-  }: TitleProps,
+export function Title({
+  level = 1,
+  size,
+  variant = 'default',
+  tracking = 'normal',
+  weight,
+  customSize,
+  lines,
+  rows,
+  lineHeight,
+  ellipsis,
+  tooltip,
+  textDecoration,
+  textDecorationLine,
+  textDecorationStyle,
+  textDecorationColor,
+  textDecorationThickness,
+  textUnderlineOffset,
+  color,
+  margin,
+  m,
+  marginTop,
+  mt,
+  marginBottom,
+  mb,
+  marginLeft,
+  ml,
+  marginRight,
+  mr,
+  marginInline,
+  mx,
+  marginBlock,
+  my,
+  letterSpacing,
+  editable,
+  copyable,
+  onEdit,
+  required,
+  as,
+  className,
+  children,
+  sx,
   ref,
-) {
+  ...props
+}: TitleProps) {
   const Component = (as || `h${level}`) as ElementType;
   const [copied, setCopied] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -299,6 +297,7 @@ export const Title = forwardRef<HTMLElement, TitleProps>(function Title(
           onChange={(e) => setTextValue(e.target.value)}
           onBlur={handleEditSubmit}
           onKeyDown={(e) => {
+            if (e.nativeEvent.isComposing || e.keyCode === 229) return;
             if (e.key === 'Enter') handleEditSubmit();
             if (e.key === 'Escape') setIsEditing(false);
           }}
@@ -344,6 +343,4 @@ export const Title = forwardRef<HTMLElement, TitleProps>(function Title(
   );
 
   return renderWithTooltip(element, tooltipContent);
-});
-
-Title.displayName = 'Typography.Title';
+}

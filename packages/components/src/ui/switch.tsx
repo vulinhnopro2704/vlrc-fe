@@ -1,4 +1,4 @@
-import { useEffect, useState, type ComponentProps } from 'react';
+import { useState, type ComponentProps } from 'react';
 import { Root as SwitchPrimitiveRoot, Thumb as SwitchPrimitiveThumb } from '@radix-ui/react-switch';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -168,26 +168,19 @@ export interface SwitchProps extends ComponentProps<typeof SwitchPrimitiveRoot> 
 function Switch({
   className,
   size = 'md',
-  checked: controlledChecked,
+  checked,
   defaultChecked = false,
   onCheckedChange,
   disabled,
   sx,
   ...props
 }: SwitchProps) {
-  const isControlled = controlledChecked !== undefined;
-  const [uncontrolledChecked, setUncontrolledChecked] = useState(defaultChecked);
-  const isChecked = isControlled ? Boolean(controlledChecked) : uncontrolledChecked;
-
-  useEffect(() => {
-    if (!isControlled && defaultChecked !== undefined) {
-      setUncontrolledChecked(defaultChecked);
-    }
-  }, [defaultChecked, isControlled]);
+  const [internalChecked, setInternalChecked] = useState(defaultChecked);
+  const isChecked = checked !== undefined ? Boolean(checked) : internalChecked;
 
   const handleCheckedChange = (nextChecked: boolean) => {
-    if (!isControlled) {
-      setUncontrolledChecked(nextChecked);
+    if (checked === undefined) {
+      setInternalChecked(nextChecked);
     }
     onCheckedChange?.(nextChecked);
   };

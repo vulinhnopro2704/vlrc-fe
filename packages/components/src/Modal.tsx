@@ -20,6 +20,7 @@ const styles = stylex.create({
     gap: 0,
     padding: 0,
     width: '100%',
+    overscrollBehavior: 'contain',
   },
   sizeXxs: { maxWidth: 320 },
   sizeXs: { maxWidth: 380 },
@@ -74,18 +75,12 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
 export interface ModalProps {
   /** Whether the modal dialog is currently visible and open. */
   open?: boolean;
-  /** Alias for `open` for consistent prop usage across modal components. */
-  isOpen?: boolean;
   /** Callback fired when the cancel button, close icon, or backdrop is clicked. */
   onCancel?: () => void;
-  /** Alias for `onCancel` (consistent with ConfirmModal `onClose`). */
-  onClose?: () => void;
   /** Primary title rendered in the modal header. */
   title: ReactNode;
   /** Optional secondary subtitle or description below the title. */
   description?: ReactNode;
-  /** Alias for `description` (consistent with ConfirmModal `message`). */
-  message?: ReactNode;
   /** Main body content rendered inside the scrollable dialog area. */
   children?: ReactNode;
   /** Custom footer node replacing the default cancel/confirm button row. */
@@ -100,12 +95,8 @@ export interface ModalProps {
   cancelText?: string;
   /** Callback fired when the primary confirmation button is clicked. */
   onConfirm?: () => void;
-  /** Alias for `onConfirm`. */
-  onOk?: () => void;
   /** If true, displays a loading state and disables modal action buttons. */
   isLoading?: boolean;
-  /** Alias for `isLoading`. */
-  loading?: boolean;
   /** Text displayed when confirmation action is loading. */
   loadingText?: string;
   /** Custom StyleX style overrides applied to the dialog container. */
@@ -116,51 +107,38 @@ export interface ModalProps {
 
 /**
  * Standard modal dialog component for VLRC applications.
- * Built on top of Radix UI Dialog and styled with Meta StyleX.
- * Supports configurable 7-tier sizing ('xxs' - 'xxl'), built-in loading states,
- * and unified prop conventions aligned with ConfirmModal.
+ * Built on top of Radix UI Dialog and styled with Meta StyleX with overscroll containment.
  */
 export function Modal({
-  open,
-  isOpen,
+  open = true,
   title,
   description,
-  message,
   children,
   footer,
   size = 'md',
   width,
   confirmText = 'Confirm',
   cancelText = 'Cancel',
-  isLoading,
-  loading,
+  isLoading = false,
   loadingText,
   onCancel,
-  onClose,
   onConfirm,
-  onOk,
   sx,
   className,
 }: ModalProps) {
-  const isVisible = open ?? isOpen ?? true;
-  const isPending = isLoading ?? loading ?? false;
-  const resolvedDescription = description ?? message;
   const handleDismiss = () => {
-    if (!isPending) {
-      (onCancel ?? onClose)?.();
-    }
-  };
-  const handleConfirm = () => {
-    if (!isPending) {
-      (onConfirm ?? onOk)?.();
-    }
+    if (!isLoading) onCancel?.();
   };
 
-  const hasConfirmAction = Boolean(onConfirm || onOk);
+  const handleConfirm = () => {
+    if (!isLoading) onConfirm?.();
+  };
+
+  const hasConfirmAction = Boolean(onConfirm);
   const sizeStyle = sizeStyles[size] ?? styles.sizeMd;
 
   return (
-    <Dialog open={isVisible} onOpenChange={(val) => !val && handleDismiss()}>
+    <Dialog open={open} onOpenChange={(val) => !val && handleDismiss()}>
       <DialogContent
         sx={[styles.content, sizeStyle, sx]}
         className={className}
@@ -168,25 +146,21 @@ export function Modal({
       >
         <DialogHeader sx={styles.header}>
           <DialogTitle>{title}</DialogTitle>
-          {resolvedDescription ? (
-            <DialogDescription>{resolvedDescription}</DialogDescription>
-          ) : null}
+          {description ? <DialogDescription>{description}</DialogDescription> : null}
         </DialogHeader>
 
         {children ? <div {...stylex.props(styles.body)}>{children}</div> : null}
 
         {(footer || hasConfirmAction) && (
           <DialogFooter sx={styles.footer}>
-            {footer ? (
-              footer
-            ) : (
+            {footer ?? (
               <div {...stylex.props(styles.actions)}>
-                <Button variant="outline" onClick={handleDismiss} disabled={isPending}>
+                <Button variant="outline" onClick={handleDismiss} disabled={isLoading}>
                   {cancelText}
                 </Button>
                 {hasConfirmAction ? (
-                  <Button onClick={handleConfirm} disabled={isPending}>
-                    {isPending && loadingText ? loadingText : confirmText}
+                  <Button onClick={handleConfirm} disabled={isLoading}>
+                    {isLoading && loadingText ? loadingText : confirmText}
                   </Button>
                 ) : null}
               </div>

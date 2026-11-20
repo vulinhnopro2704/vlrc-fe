@@ -22,6 +22,7 @@ const styles = stylex.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     animationName: fadeIn,
     animationDuration: '200ms',
+    overscrollBehavior: 'contain',
   },
   content: {
     position: 'fixed',
@@ -45,6 +46,7 @@ const styles = stylex.create({
     animationName: slideUp,
     animationDuration: '250ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    overscrollBehavior: 'contain',
   },
   handle: {
     marginInline: 'auto',

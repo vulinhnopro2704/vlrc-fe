@@ -1,4 +1,4 @@
-import { forwardRef, type HTMLAttributes } from 'react';
+import type { ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 
@@ -21,31 +21,30 @@ const styles = stylex.create({
   },
 });
 
-export interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
+export interface ProgressProps extends ComponentProps<'div'> {
   value?: number;
   sx?: stylex.StyleXStyles;
 }
 
-const Progress = forwardRef<HTMLDivElement, ProgressProps>(
-  ({ className, value = 0, sx, style, ...props }, ref) => {
-    const safeValue = Math.min(Math.max(value, 0), 100);
-    const sxProps = stylex.props(styles.root, sx);
+function Progress({ className, value = 0, sx, style, ...props }: ProgressProps) {
+  const safeValue = Math.min(Math.max(value, 0), 100);
+  const sxProps = stylex.props(styles.root, sx);
 
-    return (
-      <div
-        ref={ref}
-        data-slot="progress"
-        {...sxProps}
-        style={style}
-        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-        {...props}
-      >
-        <div {...stylex.props(styles.indicator)} style={{ width: `${safeValue}%` }} />
-      </div>
-    );
-  },
-);
-
-Progress.displayName = 'Progress';
+  return (
+    <div
+      role="progressbar"
+      aria-valuenow={safeValue}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      data-slot="progress"
+      {...sxProps}
+      style={style}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+      {...props}
+    >
+      <div {...stylex.props(styles.indicator)} style={{ width: `${safeValue}%` }} />
+    </div>
+  );
+}
 
 export { Progress };

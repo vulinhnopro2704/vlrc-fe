@@ -1,6 +1,4 @@
-'use client';
-
-import { type ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import {
   Corner as ScrollAreaPrimitiveCorner,
   Root as ScrollAreaPrimitiveRoot,
@@ -10,7 +8,6 @@ import {
 } from '@radix-ui/react-scroll-area';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
-import { cn } from '../utils';
 
 const styles = stylex.create({
   root: {
@@ -63,7 +60,9 @@ function ScrollArea({ className, children, sx, ...props }: ScrollAreaProps) {
     <ScrollAreaPrimitiveRoot
       data-slot="scroll-area"
       {...styleProps}
-      className={cn(styleProps.className, className)}
+      className={
+        className ? `${styleProps.className || ''} ${className}`.trim() : styleProps.className
+      }
       {...props}
     >
       <ScrollAreaPrimitiveViewport
@@ -96,7 +95,9 @@ function ScrollBar({ className, orientation = 'vertical', sx, ...props }: Scroll
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
       {...styleProps}
-      className={cn(styleProps.className, className)}
+      className={
+        className ? `${styleProps.className || ''} ${className}`.trim() : styleProps.className
+      }
       {...props}
     >
       <ScrollAreaPrimitiveScrollAreaThumb

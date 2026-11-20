@@ -6,14 +6,14 @@ exports[`Marker > UI > should match snapshot for border variant 1`] = `
     class="Box__styles.base x9f619 xeuugli marker__styles.root x78zum5 x6s0dn4 xh8yej3 x9f619 xeuugli marker__styles.variantBorder x1m5ztt4 xzd3y66 xso031l x1q0q8m5 x1j3e3tk marker__styles.sizeDefault xkpwil5"
     data-size="default"
     data-slot="marker"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     data-variant="border"
   >
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.icon x3nfvp2 x6s0dn4 xl56j7k x2lah0s x18r499t marker__styles.iconDefault xcdlrvm x1l36t39"
       data-slot="marker-icon"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         data-testid="status-icon"
@@ -24,7 +24,7 @@ exports[`Marker > UI > should match snapshot for border variant 1`] = `
     <div
       class="Box__styles.base x9f619 xeuugli marker__styles.content x78zum5 x6s0dn4 x1m5ztt4 xeuugli x12lumcd x1mzt3pk x13faqbe x8sa6tb"
       data-slot="marker-content"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm"
@@ -47,14 +47,14 @@ exports[`Marker > UI > should match snapshot for default size 1`] = `
     class="Box__styles.base x9f619 xeuugli marker__styles.root x78zum5 x6s0dn4 xh8yej3 x9f619 xeuugli marker__styles.variantDefault x1m5ztt4 x6do0f7 marker__styles.sizeDefault xkpwil5"
     data-size="default"
     data-slot="marker"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     data-variant="default"
   >
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.icon x3nfvp2 x6s0dn4 xl56j7k x2lah0s x18r499t marker__styles.iconDefault xcdlrvm x1l36t39"
       data-slot="marker-icon"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         data-testid="status-icon"
@@ -65,7 +65,7 @@ exports[`Marker > UI > should match snapshot for default size 1`] = `
     <div
       class="Box__styles.base x9f619 xeuugli marker__styles.content x78zum5 x6s0dn4 x1m5ztt4 xeuugli x12lumcd x1mzt3pk x13faqbe x8sa6tb"
       data-slot="marker-content"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm"
@@ -88,14 +88,14 @@ exports[`Marker > UI > should match snapshot for default variant 1`] = `
     class="Box__styles.base x9f619 xeuugli marker__styles.root x78zum5 x6s0dn4 xh8yej3 x9f619 xeuugli marker__styles.variantDefault x1m5ztt4 x6do0f7 marker__styles.sizeDefault xkpwil5"
     data-size="default"
     data-slot="marker"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     data-variant="default"
   >
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.icon x3nfvp2 x6s0dn4 xl56j7k x2lah0s x18r499t marker__styles.iconDefault xcdlrvm x1l36t39"
       data-slot="marker-icon"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         data-testid="status-icon"
@@ -106,7 +106,7 @@ exports[`Marker > UI > should match snapshot for default variant 1`] = `
     <div
       class="Box__styles.base x9f619 xeuugli marker__styles.content x78zum5 x6s0dn4 x1m5ztt4 xeuugli x12lumcd x1mzt3pk x13faqbe x8sa6tb"
       data-slot="marker-content"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm"
@@ -129,14 +129,14 @@ exports[`Marker > UI > should match snapshot for lg size 1`] = `
     class="Box__styles.base x9f619 xeuugli marker__styles.root x78zum5 x6s0dn4 xh8yej3 x9f619 xeuugli marker__styles.variantDefault x1m5ztt4 x6do0f7 marker__styles.sizeLg x1jchvi3"
     data-size="lg"
     data-slot="marker"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     data-variant="default"
   >
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.icon x3nfvp2 x6s0dn4 xl56j7k x2lah0s x18r499t marker__styles.iconLg xwqq7k2 xmll18r"
       data-slot="marker-icon"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         data-testid="status-icon"
@@ -147,7 +147,7 @@ exports[`Marker > UI > should match snapshot for lg size 1`] = `
     <div
       class="Box__styles.base x9f619 xeuugli marker__styles.content x78zum5 x6s0dn4 x1m5ztt4 xeuugli x12lumcd x1mzt3pk x13faqbe x8sa6tb"
       data-slot="marker-content"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm"
@@ -170,20 +170,20 @@ exports[`Marker > UI > should match snapshot for separator variant 1`] = `
     class="Box__styles.base x9f619 xeuugli marker__styles.root x78zum5 x6s0dn4 xh8yej3 x9f619 xeuugli marker__styles.variantSeparator x1n2onr6 xdkmor2 x177z9pp xl56j7k marker__styles.sizeDefault xkpwil5"
     data-size="default"
     data-slot="marker"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     data-variant="separator"
   >
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.separatorLine x845mor xjm9jq1 x12c1v1n xc342km"
       data-slot="marker-rule-left"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/marker.tsx:65"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/marker.tsx:65"
     />
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.icon x3nfvp2 x6s0dn4 xl56j7k x2lah0s x18r499t marker__styles.iconDefault xcdlrvm x1l36t39"
       data-slot="marker-icon"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         data-testid="status-icon"
@@ -194,7 +194,7 @@ exports[`Marker > UI > should match snapshot for separator variant 1`] = `
     <div
       class="Box__styles.base x9f619 xeuugli marker__styles.content x78zum5 x6s0dn4 x1m5ztt4 xeuugli x1mzt3pk x13faqbe marker__styles.contentSeparator x3psx0u x18r499t"
       data-slot="marker-content"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
@@ -211,7 +211,7 @@ exports[`Marker > UI > should match snapshot for separator variant 1`] = `
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.separatorLine x845mor xjm9jq1 x12c1v1n xc342km"
       data-slot="marker-rule-right"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/marker.tsx:65"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/marker.tsx:65"
     />
   </div>
 </DocumentFragment>
@@ -223,14 +223,14 @@ exports[`Marker > UI > should match snapshot for sm size 1`] = `
     class="Box__styles.base x9f619 xeuugli marker__styles.root x78zum5 x6s0dn4 xh8yej3 x9f619 xeuugli marker__styles.variantDefault x1m5ztt4 x6do0f7 marker__styles.sizeSm xboafo0"
     data-size="sm"
     data-slot="marker"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     data-variant="default"
   >
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.icon x3nfvp2 x6s0dn4 xl56j7k x2lah0s x18r499t marker__styles.iconSm x1xvt488 xf08kfj"
       data-slot="marker-icon"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         data-testid="status-icon"
@@ -241,7 +241,7 @@ exports[`Marker > UI > should match snapshot for sm size 1`] = `
     <div
       class="Box__styles.base x9f619 xeuugli marker__styles.content x78zum5 x6s0dn4 x1m5ztt4 xeuugli x12lumcd x1mzt3pk x13faqbe x8sa6tb"
       data-slot="marker-content"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm"
@@ -264,14 +264,14 @@ exports[`Marker > UI > should match snapshot in default state 1`] = `
     class="Box__styles.base x9f619 xeuugli marker__styles.root x78zum5 x6s0dn4 xh8yej3 x9f619 xeuugli marker__styles.variantDefault x1m5ztt4 x6do0f7 marker__styles.sizeDefault xkpwil5"
     data-size="default"
     data-slot="marker"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     data-variant="default"
   >
     <div
       aria-hidden="true"
       class="Box__styles.base x9f619 xeuugli marker__styles.icon x3nfvp2 x6s0dn4 xl56j7k x2lah0s x18r499t marker__styles.iconDefault xcdlrvm x1l36t39"
       data-slot="marker-icon"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         data-testid="status-icon"
@@ -282,7 +282,7 @@ exports[`Marker > UI > should match snapshot in default state 1`] = `
     <div
       class="Box__styles.base x9f619 xeuugli marker__styles.content x78zum5 x6s0dn4 x1m5ztt4 xeuugli x12lumcd x1mzt3pk x13faqbe x8sa6tb"
       data-slot="marker-content"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
     >
       <span
         class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeDefault x84br7x weightStyles__styles.regular xo1l8bm"

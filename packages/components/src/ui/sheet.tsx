@@ -50,6 +50,7 @@ const styles = stylex.create({
     animationName: fadeIn,
     animationDuration: '200ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    overscrollBehavior: 'contain',
   },
   baseContent: {
     position: 'fixed',
@@ -63,6 +64,7 @@ const styles = stylex.create({
     boxSizing: 'border-box',
     animationDuration: '250ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    overscrollBehavior: 'contain',
   },
   right: {
     top: 0,

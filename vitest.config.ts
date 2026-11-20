@@ -46,8 +46,8 @@ export default defineConfig({
     environment: 'jsdom',
     pool: 'forks',
     teardownTimeout: 100,
-    setupFiles: ['./vitest.setup.ts'],
-    include: ['packages/**/*.test.{ts,tsx}'],
+    setupFiles: [resolve(import.meta.dirname, './vitest.setup.ts')],
+    include: ['src/**/*.test.{ts,tsx}', 'packages/**/*.test.{ts,tsx}'],
     watch: false,
   },
 });

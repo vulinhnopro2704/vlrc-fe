@@ -3,16 +3,16 @@
 exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
 <DocumentFragment>
   <div
-    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root xjixspg x1ez7q3a x1rexohn xk0jn7w stat__styles.bordered xmkeg23 x1y0btm7 xb30jbz"
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root x1rexohn x1ez7q3a xomzojh x1n2onr6 x16mfhj0 x13dflua stat__styles.bordered xmkeg23 x1y0btm7 xb30jbz"
     data-direction="column"
     data-slot="stat"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/stat.tsx:9; @vlrc-fe/components:src/ui/stat.tsx:15"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/stat.tsx:9; @vlrc-fe/components:src/ui/stat.tsx:17"
   >
     <div
       class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.justifyBetween x1qughib flex__styles.gapSm xdkmor2 stat__styles.header xh8yej3"
       data-direction="row"
       data-slot="stat-header"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:148; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/stat.tsx:20"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:149; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/stat.tsx:22"
     >
       <span
         class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
@@ -26,26 +26,26 @@ exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
       </span>
     </div>
     <span
-      class="Text__styles.base Text__styles.sizeXxl weightStyles__styles.bold stat__styles.value xcg35fi x16n75kc x1xlr1w8 x1w69ole x84br7x"
+      class="Text__styles.base x1heor9g Text__styles.sizeXxl xngnso2 weightStyles__styles.bold x1xlr1w8 stat__styles.value x1159mfc x72az59"
       data-size="xxl"
       data-slot="stat-value"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:23"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:25"
       data-weight="bold"
     >
       $45,231.89
     </span>
     <div
-      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xkpwil5 x8r4c90 xk50ysn stat__styles.trendPositive x1spsc8"
+      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xboafo0 x1s688f xo5v014 x18a9hih x1dus959 xqfady0 stat__styles.trendPositive x1spsc8 xnzxb0n"
       data-direction="up"
       data-inline="true"
       data-slot="stat-trend"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/stat.tsx:30; @vlrc-fe/components:src/ui/stat.tsx:35"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:128; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/stat.tsx:29; @vlrc-fe/components:src/ui/stat.tsx:37"
     >
       <svg
         aria-hidden="true"
-        class="lucide lucide-trending-up stat__styles.trendIcon xcdlrvm x1l36t39 x2lah0s"
+        class="lucide lucide-trending-up stat__styles.trendIcon x1xvt488 xf08kfj x2lah0s"
         data-slot="stat-trend-icon"
-        data-style-src="@vlrc-fe/components:src/ui/stat.tsx:44"
+        data-style-src="@vlrc-fe/components:src/ui/stat.tsx:49"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -82,16 +82,16 @@ exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
 exports[`Stat > UI > should match snapshot with inverted negative trend 1`] = `
 <DocumentFragment>
   <div
-    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root xjixspg x1ez7q3a x1rexohn xk0jn7w"
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapXs x1m5ztt4 stat__styles.root x1rexohn x1ez7q3a xomzojh x1n2onr6 x16mfhj0 x13dflua"
     data-direction="column"
     data-slot="stat"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/stat.tsx:9"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/stat.tsx:9"
   >
     <div
       class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.justifyBetween x1qughib flex__styles.gapSm xdkmor2 stat__styles.header xh8yej3"
       data-direction="row"
       data-slot="stat-header"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:148; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/stat.tsx:20"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:149; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/stat.tsx:22"
     >
       <span
         class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.medium xk50ysn"
@@ -105,26 +105,26 @@ exports[`Stat > UI > should match snapshot with inverted negative trend 1`] = `
       </span>
     </div>
     <span
-      class="Text__styles.base Text__styles.sizeXxl weightStyles__styles.bold stat__styles.value xcg35fi x16n75kc x1xlr1w8 x1w69ole x84br7x"
+      class="Text__styles.base x1heor9g Text__styles.sizeXxl xngnso2 weightStyles__styles.bold x1xlr1w8 stat__styles.value x1159mfc x72az59"
       data-size="xxl"
       data-slot="stat-value"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:23"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:42; @vlrc-fe/components:src/Typography/weightStyles.ts:23; @vlrc-fe/components:src/ui/stat.tsx:25"
       data-weight="bold"
     >
       0.08%
     </span>
     <div
-      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xkpwil5 x8r4c90 xk50ysn stat__styles.trendPositive x1spsc8"
+      class="flex__styles.base x9f619 flex__styles.inline x3nfvp2 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.gapXxs x118fsrc stat__styles.trend xboafo0 x1s688f xo5v014 x18a9hih x1dus959 xqfady0 stat__styles.trendPositive x1spsc8 xnzxb0n"
       data-direction="down"
       data-inline="true"
       data-slot="stat-trend"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/stat.tsx:30; @vlrc-fe/components:src/ui/stat.tsx:35"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:128; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:160; @vlrc-fe/components:src/ui/stat.tsx:29; @vlrc-fe/components:src/ui/stat.tsx:37"
     >
       <svg
         aria-hidden="true"
-        class="lucide lucide-trending-down stat__styles.trendIcon xcdlrvm x1l36t39 x2lah0s"
+        class="lucide lucide-trending-down stat__styles.trendIcon x1xvt488 xf08kfj x2lah0s"
         data-slot="stat-trend-icon"
-        data-style-src="@vlrc-fe/components:src/ui/stat.tsx:44"
+        data-style-src="@vlrc-fe/components:src/ui/stat.tsx:49"
         fill="none"
         height="24"
         stroke="currentColor"

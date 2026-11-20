@@ -11,6 +11,8 @@ export { CodeHighlightPlugin } from './plugins/CodeHighlightPlugin';
 export { MentionsPlugin } from './plugins/MentionsPlugin';
 export { EmojisPlugin } from './plugins/EmojisPlugin';
 export { InsertTableDialog } from './plugins/InsertTableDialog';
+export { InsertMediaDialog } from './plugins/InsertMediaDialog';
+export { InsertLinkDialog } from './plugins/InsertLinkDialog';
 export { TableActionMenuPlugin } from './plugins/TableActionMenuPlugin';
 export { TableCellResizerPlugin } from './plugins/TableCellResizerPlugin';
 export { TableHoverActionsPlugin } from './plugins/TableHoverActionsPlugin';

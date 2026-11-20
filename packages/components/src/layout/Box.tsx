@@ -1,15 +1,6 @@
-import {
-  forwardRef,
-  type CSSProperties,
-  type ComponentPropsWithRef,
-  type ElementType,
-  type ReactElement,
-  type ReactNode,
-  type Ref,
-} from 'react';
+import type { CSSProperties, ComponentPropsWithRef, ElementType, ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { spacing } from '../theme/tokens.stylex';
-import { cn } from '../utils';
 
 const styles = stylex.create({
   base: {
@@ -54,38 +45,43 @@ export interface BoxProps<T extends ElementType = 'div'> {
   my?: 'auto';
 }
 
-export type PolymorphicBoxProps<T extends ElementType> = BoxProps<T> &
+export type PolymorphicBoxProps<T extends ElementType = 'div'> = BoxProps<T> &
   Omit<ComponentPropsWithRef<T>, keyof BoxProps<T>>;
 
-export const Box = forwardRef(
-  <T extends ElementType = 'div'>(
-    { as, children, className, style, sx, p, m, mx, my, ...props }: PolymorphicBoxProps<T>,
-    ref: Ref<any>,
-  ) => {
-    const Component = as || 'div';
+export function Box<T extends ElementType = 'div'>({
+  as,
+  children,
+  className,
+  style,
+  sx,
+  p,
+  m,
+  mx,
+  my,
+  ...props
+}: PolymorphicBoxProps<T>) {
+  const Component = as ?? 'div';
 
-    const pStyle = p ? (styles as any)[`p_${p}`] : null;
-    const mStyle = m ? (styles as any)[`m_${m}`] : null;
-    const mxStyle = mx === 'auto' ? styles.mx_auto : null;
-    const myStyle = my === 'auto' ? styles.my_auto : null;
+  // oxlint-disable-next-line typescript/no-explicit-any
+  const pStyle = p ? (styles as any)[`p_${p}`] : null;
+  // oxlint-disable-next-line typescript/no-explicit-any
+  const mStyle = m ? (styles as any)[`m_${m}`] : null;
+  const mxStyle = mx === 'auto' ? styles.mx_auto : null;
+  const myStyle = my === 'auto' ? styles.my_auto : null;
 
-    const resolvedProps = stylex.props(styles.base, pStyle, mStyle, mxStyle, myStyle, sx);
+  const resolvedProps = stylex.props(styles.base, pStyle, mStyle, mxStyle, myStyle, sx);
 
-    return (
-      <Component
-        ref={ref}
-        data-slot="box"
-        {...props}
-        {...resolvedProps}
-        style={{ ...resolvedProps.style, ...style }}
-        className={cn(resolvedProps.className, className)}
-      >
-        {children}
-      </Component>
-    );
-  },
-) as <T extends ElementType = 'div'>(
-  props: PolymorphicBoxProps<T> & { ref?: Ref<any> },
-) => ReactElement | null;
-
-(Box as any).displayName = 'Box';
+  return (
+    <Component
+      data-slot="box"
+      {...props}
+      {...resolvedProps}
+      style={{ ...resolvedProps.style, ...style }}
+      className={
+        className ? `${resolvedProps.className || ''} ${className}`.trim() : resolvedProps.className
+      }
+    >
+      {children}
+    </Component>
+  );
+}

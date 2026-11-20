@@ -1,10 +1,9 @@
 import { lazy, Suspense, type ComponentProps, type ComponentType, type ReactNode } from 'react';
 
-// The helper mirrors React.lazy and needs to preserve any component prop shape.
 // oxlint-disable-next-line typescript/no-explicit-any
 export function lazyLoad<T extends ComponentType<any>>(
   importFunc: () => Promise<{ default: T }>,
-  fallback: ReactNode = <div>Loading...</div>,
+  fallback: ReactNode = null,
 ) {
   const LazyComponent = lazy(importFunc);
 

@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -103,36 +102,34 @@ const underlineStyles: Record<LinkUnderline, stylex.StyleXStyles> = {
   none: styles.none,
 };
 
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
-  {
-    href,
-    size = 'md',
-    external,
-    underline = 'hover',
-    disabled,
-    weight,
-    target,
-    rel,
-    customSize,
-    lines,
-    rows,
-    lineHeight,
-    ellipsis,
-    tooltip,
-    textDecoration,
-    textDecorationLine,
-    textDecorationStyle,
-    textDecorationColor,
-    textDecorationThickness,
-    textUnderlineOffset,
-    as: Component = 'a',
-    className,
-    children,
-    sx,
-    ...props
-  }: LinkProps,
+export function Link({
+  href,
+  size = 'md',
+  external,
+  underline = 'hover',
+  disabled,
+  weight,
+  target,
+  rel,
+  customSize,
+  lines,
+  rows,
+  lineHeight,
+  ellipsis,
+  tooltip,
+  textDecoration,
+  textDecorationLine,
+  textDecorationStyle,
+  textDecorationColor,
+  textDecorationThickness,
+  textUnderlineOffset,
+  as: Component = 'a',
+  className,
+  children,
+  sx,
   ref,
-) {
+  ...props
+}: LinkProps) {
   const resolvedTarget = external ? (target ?? '_blank') : target;
   const resolvedRel = external ? (rel ?? 'noopener noreferrer') : rel;
 
@@ -190,6 +187,4 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
   );
 
   return renderWithTooltip(element, tooltipContent);
-});
-
-Link.displayName = 'Typography.Link';
+}

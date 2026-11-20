@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import {
   Stack as AstryxStack,
   HStack as AstryxHStack,
@@ -6,7 +6,6 @@ import {
   StackItem as AstryxStackItem,
 } from '@astryxdesign/core';
 import type * as stylex from '@stylexjs/stylex';
-import { cn } from '../utils';
 
 export type AstryxSpacingStep = 0 | 0.5 | 1 | 1.5 | 2 | 3 | 4 | 5 | 6 | 8 | 10;
 export type SpacingTier = '0' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
@@ -34,67 +33,51 @@ export interface StackProps extends Omit<ComponentProps<typeof AstryxStack>, 'ga
   sx?: stylex.StyleXStyles;
 }
 
-export const Stack = forwardRef<HTMLElement, StackProps>(
-  ({ gap, sx, className, children, ...props }, ref) => {
-    const resolvedGap = resolveStackGap(gap);
-    return (
-      <AstryxStack ref={ref} gap={resolvedGap} xstyle={sx} className={cn(className)} {...props}>
-        {children}
-      </AstryxStack>
-    );
-  },
-);
-
-Stack.displayName = 'Stack';
+export function Stack({ gap, sx, className, children, ...props }: StackProps) {
+  const resolvedGap = resolveStackGap(gap);
+  return (
+    <AstryxStack gap={resolvedGap} xstyle={sx} className={className} {...props}>
+      {children}
+    </AstryxStack>
+  );
+}
 
 export interface HStackProps extends Omit<ComponentProps<typeof AstryxHStack>, 'gap' | 'xstyle'> {
   gap?: StackGap;
   sx?: stylex.StyleXStyles;
 }
 
-export const HStack = forwardRef<HTMLElement, HStackProps>(
-  ({ gap, sx, className, children, ...props }, ref) => {
-    const resolvedGap = resolveStackGap(gap);
-    return (
-      <AstryxHStack ref={ref} gap={resolvedGap} xstyle={sx} className={cn(className)} {...props}>
-        {children}
-      </AstryxHStack>
-    );
-  },
-);
-
-HStack.displayName = 'HStack';
+export function HStack({ gap, sx, className, children, ...props }: HStackProps) {
+  const resolvedGap = resolveStackGap(gap);
+  return (
+    <AstryxHStack gap={resolvedGap} xstyle={sx} className={className} {...props}>
+      {children}
+    </AstryxHStack>
+  );
+}
 
 export interface VStackProps extends Omit<ComponentProps<typeof AstryxVStack>, 'gap' | 'xstyle'> {
   gap?: StackGap;
   sx?: stylex.StyleXStyles;
 }
 
-export const VStack = forwardRef<HTMLElement, VStackProps>(
-  ({ gap, sx, className, children, ...props }, ref) => {
-    const resolvedGap = resolveStackGap(gap);
-    return (
-      <AstryxVStack ref={ref} gap={resolvedGap} xstyle={sx} className={cn(className)} {...props}>
-        {children}
-      </AstryxVStack>
-    );
-  },
-);
-
-VStack.displayName = 'VStack';
+export function VStack({ gap, sx, className, children, ...props }: VStackProps) {
+  const resolvedGap = resolveStackGap(gap);
+  return (
+    <AstryxVStack gap={resolvedGap} xstyle={sx} className={className} {...props}>
+      {children}
+    </AstryxVStack>
+  );
+}
 
 export interface StackItemProps extends Omit<ComponentProps<typeof AstryxStackItem>, 'xstyle'> {
   sx?: stylex.StyleXStyles;
 }
 
-export const StackItem = forwardRef<HTMLElement, StackItemProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    return (
-      <AstryxStackItem ref={ref} xstyle={sx} className={cn(className)} {...props}>
-        {children}
-      </AstryxStackItem>
-    );
-  },
-);
-
-StackItem.displayName = 'StackItem';
+export function StackItem({ sx, className, children, ...props }: StackItemProps) {
+  return (
+    <AstryxStackItem xstyle={sx} className={className} {...props}>
+      {children}
+    </AstryxStackItem>
+  );
+}

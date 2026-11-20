@@ -27,8 +27,8 @@ export const isGroupedOptions = (
 
 export const arraysEqual = (a: string[], b: string[]): boolean => {
   if (a.length !== b.length) return false;
-  const sortedA = [...a].sort();
-  const sortedB = [...b].sort();
+  const sortedA = a.toSorted();
+  const sortedB = b.toSorted();
   return sortedA.every((val, index) => val === sortedB[index]);
 };
 

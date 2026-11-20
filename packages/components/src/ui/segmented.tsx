@@ -1,10 +1,10 @@
 import {
-  forwardRef,
   useMemo,
   useState,
   type HTMLAttributes,
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
+  type Ref,
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
@@ -117,6 +117,7 @@ export interface SegmentedProps extends Omit<HTMLAttributes<HTMLDivElement>, 'on
   block?: boolean;
   disabled?: boolean;
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLElement>;
 }
 
 function normalizeOption(option: SegmentedOption): SegmentedOptionObject {
@@ -126,112 +127,106 @@ function normalizeOption(option: SegmentedOption): SegmentedOptionObject {
   return option;
 }
 
-export const Segmented = forwardRef<HTMLDivElement, SegmentedProps>(
-  (
-    {
-      options,
-      value: controlledValue,
-      defaultValue,
-      onValueChange,
-      size = 'md',
-      block = false,
-      disabled = false,
-      sx,
-      className,
-      'aria-label': ariaLabel = 'Segmented options',
-      ...props
-    },
-    ref,
-  ) => {
-    const normalizedOptions = useMemo(() => options.map(normalizeOption), [options]);
+export function Segmented({
+  options,
+  value: controlledValue,
+  defaultValue,
+  onValueChange,
+  size = 'md',
+  block = false,
+  disabled = false,
+  sx,
+  className,
+  'aria-label': ariaLabel = 'Segmented options',
+  ref,
+  ...props
+}: SegmentedProps) {
+  const normalizedOptions = useMemo(() => options.map(normalizeOption), [options]);
 
-    const initialValue = defaultValue ?? normalizedOptions[0]?.value ?? '';
-    const [internalValue, setInternalValue] = useState<string | number>(initialValue);
+  const initialValue = defaultValue ?? normalizedOptions[0]?.value ?? '';
+  const [internalValue, setInternalValue] = useState<string | number>(initialValue);
 
-    const isControlled = controlledValue !== undefined;
-    const activeValue = isControlled ? controlledValue : internalValue;
+  const isControlled = controlledValue !== undefined;
+  const activeValue = isControlled ? controlledValue : internalValue;
 
-    const handleSelect = (val: string | number) => {
-      if (disabled) return;
-      if (!isControlled) {
-        setInternalValue(val);
-      }
-      onValueChange?.(val);
-    };
+  const handleSelect = (val: string | number) => {
+    if (disabled) return;
+    if (!isControlled) {
+      setInternalValue(val);
+    }
+    onValueChange?.(val);
+  };
 
-    const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
-      if (disabled) return;
-      const enabledOptions = normalizedOptions.filter((opt) => !opt.disabled);
-      const currentIndex = enabledOptions.findIndex((opt) => opt.value === activeValue);
+  const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (disabled) return;
+    const enabledOptions = normalizedOptions.filter((opt) => !opt.disabled);
+    const currentIndex = enabledOptions.findIndex((opt) => opt.value === activeValue);
 
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        const nextIndex = (currentIndex + 1) % enabledOptions.length;
-        const nextOption = enabledOptions[nextIndex];
-        if (nextOption) handleSelect(nextOption.value);
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        const prevIndex = (currentIndex - 1 + enabledOptions.length) % enabledOptions.length;
-        const prevOption = enabledOptions[prevIndex];
-        if (prevOption) handleSelect(prevOption.value);
-      }
-    };
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = (currentIndex + 1) % enabledOptions.length;
+      const nextOption = enabledOptions[nextIndex];
+      if (nextOption) handleSelect(nextOption.value);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = (currentIndex - 1 + enabledOptions.length) % enabledOptions.length;
+      const prevOption = enabledOptions[prevIndex];
+      if (prevOption) handleSelect(prevOption.value);
+    }
+  };
 
-    const sizeStyle = size === 'sm' ? styles.sizeSm : size === 'lg' ? styles.sizeLg : styles.sizeMd;
+  const sizeStyle = size === 'sm' ? styles.sizeSm : size === 'lg' ? styles.sizeLg : styles.sizeMd;
 
-    return (
-      <Flex
-        ref={ref}
-        inline={!block}
-        align="center"
-        role="radiogroup"
-        aria-label={ariaLabel}
-        tabIndex={disabled ? -1 : 0}
-        onKeyDown={handleKeyDown}
-        data-slot="segmented"
-        sx={[styles.root, block && styles.block, disabled && styles.disabled, sx]}
-        className={className}
-        {...props}
-      >
-        {normalizedOptions.map((option) => {
-          const isSelected = activeValue === option.value;
-          const isItemDisabled = disabled || Boolean(option.disabled);
+  return (
+    <Flex
+      ref={ref}
+      inline={!block}
+      align="center"
+      role="radiogroup"
+      aria-label={ariaLabel}
+      tabIndex={disabled ? -1 : 0}
+      onKeyDown={handleKeyDown}
+      data-slot="segmented"
+      sx={[styles.root, block && styles.block, disabled && styles.disabled, sx]}
+      className={className}
+      {...props}
+    >
+      {normalizedOptions.map((option) => {
+        const isSelected = activeValue === option.value;
+        const isItemDisabled = disabled || Boolean(option.disabled);
 
-          const itemSx = stylex.props(
-            styles.item,
-            sizeStyle,
-            block && styles.itemBlock,
-            isSelected && styles.itemActive,
-            isItemDisabled && styles.itemDisabled,
-          );
+        const itemSx = stylex.props(
+          styles.item,
+          sizeStyle,
+          block && styles.itemBlock,
+          isSelected && styles.itemActive,
+          isItemDisabled && styles.itemDisabled,
+        );
 
-          return (
-            <button
-              key={String(option.value)}
-              type="button"
-              role="radio"
-              aria-checked={isSelected}
-              disabled={isItemDisabled}
-              data-slot="segmented-item"
-              data-value={String(option.value)}
-              data-state={isSelected ? 'active' : 'inactive'}
-              onClick={() => handleSelect(option.value)}
-              {...itemSx}
+        return (
+          <button
+            key={String(option.value)}
+            type="button"
+            role="radio"
+            aria-checked={isSelected}
+            disabled={isItemDisabled}
+            data-slot="segmented-item"
+            data-value={String(option.value)}
+            data-state={isSelected ? 'active' : 'inactive'}
+            onClick={() => handleSelect(option.value)}
+            {...itemSx}
+          >
+            {option.icon && <span {...stylex.props(styles.icon)}>{option.icon}</span>}
+            <Text
+              as="span"
+              size={size === 'sm' ? 'xs' : size === 'lg' ? 'md' : 'sm'}
+              weight={isSelected ? 'semibold' : 'medium'}
             >
-              {option.icon && <span {...stylex.props(styles.icon)}>{option.icon}</span>}
-              <Text
-                as="span"
-                size={size === 'sm' ? 'xs' : size === 'lg' ? 'md' : 'sm'}
-                weight={isSelected ? 'semibold' : 'medium'}
-              >
-                {option.label}
-              </Text>
-            </button>
-          );
-        })}
-      </Flex>
-    );
-  },
-);
-
-Segmented.displayName = 'Segmented';
+              {option.label}
+            </Text>
+          </button>
+        );
+      })}
+    </Flex>
+  );
+}

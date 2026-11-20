@@ -7,7 +7,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 6 and offset 2 1`] 
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
@@ -15,7 +15,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 6 and offset 2 1`] 
       data-offset="2"
       data-slot="col"
       data-span="6"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:217; @vlrc-fe/components:src/ui/row-col.tsx:239"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:219; @vlrc-fe/components:src/ui/row-col.tsx:241"
     >
       Col 1
     </div>
@@ -30,7 +30,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 8 and offset 4 1`] 
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
@@ -38,7 +38,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 8 and offset 4 1`] 
       data-offset="4"
       data-slot="col"
       data-span="8"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:219; @vlrc-fe/components:src/ui/row-col.tsx:241"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:221; @vlrc-fe/components:src/ui/row-col.tsx:243"
     >
       Col 1
     </div>
@@ -53,7 +53,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 12 and offset 6 1`]
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
@@ -61,7 +61,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 12 and offset 6 1`]
       data-offset="6"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223; @vlrc-fe/components:src/ui/row-col.tsx:243"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225; @vlrc-fe/components:src/ui/row-col.tsx:245"
     >
       Col 1
     </div>
@@ -76,7 +76,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 24 and offset 0 1`]
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
@@ -84,7 +84,7 @@ exports[`Row & Col > UI > should match snapshot for Col span 24 and offset 0 1`]
       data-offset="0"
       data-slot="col"
       data-span="24"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:235"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:237"
     >
       Col 1
     </div>
@@ -99,14 +99,14 @@ exports[`Row & Col > UI > should match snapshot for row align "bottom" 1`] = `
     data-align="bottom"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:187; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -115,7 +115,7 @@ exports[`Row & Col > UI > should match snapshot for row align "bottom" 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -131,14 +131,14 @@ exports[`Row & Col > UI > should match snapshot for row align "middle" 1`] = `
     data-align="middle"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:184; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:186; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -147,7 +147,7 @@ exports[`Row & Col > UI > should match snapshot for row align "middle" 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -163,14 +163,14 @@ exports[`Row & Col > UI > should match snapshot for row align "stretch" 1`] = `
     data-align="stretch"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:186; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:188; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -179,7 +179,7 @@ exports[`Row & Col > UI > should match snapshot for row align "stretch" 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -195,14 +195,14 @@ exports[`Row & Col > UI > should match snapshot for row align "top" 1`] = `
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -211,7 +211,7 @@ exports[`Row & Col > UI > should match snapshot for row align "top" 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -227,14 +227,14 @@ exports[`Row & Col > UI > should match snapshot for row justify "center" 1`] = `
     data-align="top"
     data-justify="center"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:191"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:193"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -243,7 +243,7 @@ exports[`Row & Col > UI > should match snapshot for row justify "center" 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -259,14 +259,14 @@ exports[`Row & Col > UI > should match snapshot for row justify "end" 1`] = `
     data-align="top"
     data-justify="end"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:190"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:192"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -275,7 +275,7 @@ exports[`Row & Col > UI > should match snapshot for row justify "end" 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -291,14 +291,14 @@ exports[`Row & Col > UI > should match snapshot for row justify "space-around" 1
     data-align="top"
     data-justify="space-around"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:192"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:194"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -307,7 +307,7 @@ exports[`Row & Col > UI > should match snapshot for row justify "space-around" 1
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -323,14 +323,14 @@ exports[`Row & Col > UI > should match snapshot for row justify "space-between" 
     data-align="top"
     data-justify="space-between"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:193"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:195"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -339,7 +339,7 @@ exports[`Row & Col > UI > should match snapshot for row justify "space-between" 
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -355,14 +355,14 @@ exports[`Row & Col > UI > should match snapshot for row justify "start" 1`] = `
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -371,7 +371,7 @@ exports[`Row & Col > UI > should match snapshot for row justify "start" 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -387,14 +387,14 @@ exports[`Row & Col > UI > should match snapshot in default state 1`] = `
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: 0px; --gutter-y: 0px;"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -403,7 +403,7 @@ exports[`Row & Col > UI > should match snapshot in default state 1`] = `
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2
@@ -419,14 +419,14 @@ exports[`Row & Col > UI > should match snapshot with single and tuple gutters 1`
     data-align="top"
     data-justify="start"
     data-slot="row"
-    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:168; @vlrc-fe/components:src/ui/row-col.tsx:175; @vlrc-fe/components:src/ui/row-col.tsx:183; @vlrc-fe/components:src/ui/row-col.tsx:189"
+    data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:170; @vlrc-fe/components:src/ui/row-col.tsx:177; @vlrc-fe/components:src/ui/row-col.tsx:185; @vlrc-fe/components:src/ui/row-col.tsx:191"
     style="--gutter-x: var(--spacing-sm, 0.75rem); --gutter-y: var(--spacing-lg, 1.5rem);"
   >
     <div
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-1"
     >
       Col 1
@@ -435,7 +435,7 @@ exports[`Row & Col > UI > should match snapshot with single and tuple gutters 1`
       class="row-col__styles.colBase x1n2onr6 x4zw9a1 x9f619 x9rm8wx xwalvtm row-col__styles.col12 x1wjg7b4 xthy2uy"
       data-slot="col"
       data-span="12"
-      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:197; @vlrc-fe/components:src/ui/row-col.tsx:223"
+      data-style-src="@vlrc-fe/components:src/ui/row-col.tsx:199; @vlrc-fe/components:src/ui/row-col.tsx:225"
       data-testid="test-col-2"
     >
       Col 2

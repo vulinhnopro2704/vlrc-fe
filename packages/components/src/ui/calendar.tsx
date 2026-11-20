@@ -1,5 +1,3 @@
-'use client';
-
 import { createContext, useContext, useEffect, useRef, type ComponentProps } from 'react';
 import { DayPicker, getDefaultClassNames, type DayButton } from 'react-day-picker';
 import * as stylex from '@stylexjs/stylex';

@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.0.5] - 2026-11-20
+
+### Patch Changes
+
+- **Modern Web Guidance & Baseline 2026 Enhancements**:
+  - Enhanced all UI primitives and composite components to meet the Modern Web Baseline 2026 standard.
+  - Eliminated redundant `forwardRef` wrappers and legacy workarounds in favor of React 19 standard ref-as-prop pattern.
+  - Refined Typography (`Text`, `Title`, `Paragraph`, `Link`) and Layout primitives (`Box`, `Stack`, `Container`, `Center`, `Flex`) with strict zero magic values, leveraging design tokens exclusively.
+  - Modernized Modal and Dialog components with accessible ARIA landmarks, CSS Anchor Positioning compatibility, and focus management.
+  - Validated 0 findings across the entire Modern Web Guidance analyzer corpus (38 qualified guides).
+  - Cleaned up redundant split files and exports across core packages for minimal footprint.
+
 ## [3.0.4] - 2026-11-19
 
 ### Patch Changes

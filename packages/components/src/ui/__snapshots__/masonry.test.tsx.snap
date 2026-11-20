@@ -7,14 +7,14 @@ exports[`Masonry > UI > should match snapshot with fixed columns count 1`] = `
     data-columns="3"
     data-direction="row"
     data-slot="masonry"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:7"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:7"
   >
     <div
       class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapMd x1b1hbqf masonry__styles.column x98rzlu xeuugli"
       data-column-index="0"
       data-direction="column"
       data-slot="masonry-column"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:11"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:11"
     >
       <div
         data-testid="item-1"
@@ -32,7 +32,7 @@ exports[`Masonry > UI > should match snapshot with fixed columns count 1`] = `
       data-column-index="1"
       data-direction="column"
       data-slot="masonry-column"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:11"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:11"
     >
       <div
         data-testid="item-2"
@@ -50,7 +50,7 @@ exports[`Masonry > UI > should match snapshot with fixed columns count 1`] = `
       data-column-index="2"
       data-direction="column"
       data-slot="masonry-column"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/masonry.tsx:11"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:11"
     >
       <div
         data-testid="item-3"
@@ -69,14 +69,14 @@ exports[`Masonry > UI > should match snapshot with responsive columns config 1`]
     data-columns="1"
     data-direction="row"
     data-slot="masonry"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:7"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:164; @vlrc-fe/components:src/ui/masonry.tsx:7"
   >
     <div
       class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf flex__styles.gapLg x1oqwmkw masonry__styles.column x98rzlu xeuugli"
       data-column-index="0"
       data-direction="column"
       data-slot="masonry-column"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:163; @vlrc-fe/components:src/ui/masonry.tsx:11"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:164; @vlrc-fe/components:src/ui/masonry.tsx:11"
     >
       <div
         data-testid="item-1"

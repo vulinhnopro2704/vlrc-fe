@@ -1,6 +1,5 @@
 import {
   createContext,
-  forwardRef,
   useCallback,
   useContext,
   useEffect,
@@ -12,6 +11,7 @@ import {
   type MutableRefObject,
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
+  type Ref,
   type RefCallback,
   type RefObject,
 } from 'react';
@@ -232,565 +232,582 @@ export interface SignaturePadProps extends Omit<
   required?: boolean;
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const SignaturePad = forwardRef<HTMLDivElement, SignaturePadProps>(
-  (
-    {
-      value: controlledValue,
-      defaultValue,
-      onValueChange,
-      onStrokeStart,
-      onStrokeEnd,
-      apiRef,
-      color = 'currentColor',
-      minWidth = 1.5,
-      maxWidth = 3.5,
-      smoothing = 0.5,
-      widthSource = 'auto',
-      allowedPointers = ['mouse', 'touch', 'pen'],
-      disabled = false,
-      readOnly = false,
-      name,
-      required = false,
-      sx,
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const isControlled = controlledValue !== undefined;
-    const [internalStrokes, setInternalStrokes] = useState<SignaturePadStroke[]>(
-      defaultValue || [],
-    );
-    const strokes = isControlled ? controlledValue : internalStrokes;
+export function SignaturePad({
+  value: controlledValue,
+  defaultValue,
+  onValueChange,
+  onStrokeStart,
+  onStrokeEnd,
+  apiRef,
+  color = 'currentColor',
+  minWidth = 1.5,
+  maxWidth = 3.5,
+  smoothing = 0.5,
+  widthSource = 'auto',
+  allowedPointers = ['mouse', 'touch', 'pen'],
+  disabled = false,
+  readOnly = false,
+  name,
+  required = false,
+  sx,
+  className,
+  ref,
+  children,
+  ...props
+}: SignaturePadProps) {
+  const isControlled = controlledValue !== undefined;
+  const [internalStrokes, setInternalStrokes] = useState<SignaturePadStroke[]>(defaultValue || []);
+  const strokes = isControlled ? controlledValue : internalStrokes;
 
-    const [history, setHistory] = useState<SignaturePadStroke[][]>([]);
-    const [historyIndex, setHistoryIndex] = useState<number>(-1);
-    const [currentPoints, setCurrentPoints] = useState<SignaturePoint[]>([]);
-    const [isDrawing, setIsDrawing] = useState(false);
+  const [history, setHistory] = useState<SignaturePadStroke[][]>([]);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const [currentPoints, setCurrentPoints] = useState<SignaturePoint[]>([]);
+  const [isDrawing, setIsDrawing] = useState(false);
 
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    const updateStrokes = useCallback(
-      (newStrokes: SignaturePadStroke[]) => {
-        if (!isControlled) {
-          setInternalStrokes(newStrokes);
-        }
-        onValueChange?.(newStrokes);
-
-        // Update undo/redo history
-        setHistory((prev) => {
-          const next = prev.slice(0, historyIndex + 1);
-          return [...next, newStrokes];
-        });
-        setHistoryIndex((prev) => prev + 1);
-      },
-      [isControlled, historyIndex, onValueChange],
-    );
-
-    const clear = useCallback(() => {
-      if (disabled || readOnly) return;
-      updateStrokes([]);
-    }, [disabled, readOnly, updateStrokes]);
-
-    const undo = useCallback(() => {
-      if (disabled || readOnly || strokes.length === 0) return;
-      const nextStrokes = strokes.slice(0, -1);
+  const updateStrokes = useCallback(
+    (newStrokes: SignaturePadStroke[]) => {
       if (!isControlled) {
-        setInternalStrokes(nextStrokes);
+        setInternalStrokes(newStrokes);
       }
-      onValueChange?.(nextStrokes);
-      setHistoryIndex((prev) => Math.max(-1, prev - 1));
-    }, [disabled, readOnly, strokes, isControlled, onValueChange]);
+      onValueChange?.(newStrokes);
 
-    const redo = useCallback(() => {
+      // Update undo/redo history
+      setHistory((prev) => {
+        const next = prev.slice(0, historyIndex + 1);
+        return [...next, newStrokes];
+      });
+      setHistoryIndex((prev) => prev + 1);
+    },
+    [isControlled, historyIndex, onValueChange],
+  );
+
+  const clear = useCallback(() => {
+    if (disabled || readOnly) return;
+    updateStrokes([]);
+  }, [disabled, readOnly, updateStrokes]);
+
+  const undo = useCallback(() => {
+    if (disabled || readOnly || strokes.length === 0) return;
+    const nextStrokes = strokes.slice(0, -1);
+    if (!isControlled) {
+      setInternalStrokes(nextStrokes);
+    }
+    onValueChange?.(nextStrokes);
+    setHistoryIndex((prev) => Math.max(-1, prev - 1));
+  }, [disabled, readOnly, strokes, isControlled, onValueChange]);
+
+  const redo = useCallback(() => {
+    if (disabled || readOnly) return;
+    if (historyIndex < history.length - 1) {
+      const nextIndex = historyIndex + 1;
+      const nextStrokes = history[nextIndex];
+      if (nextStrokes) {
+        if (!isControlled) {
+          setInternalStrokes(nextStrokes);
+        }
+        onValueChange?.(nextStrokes);
+        setHistoryIndex(nextIndex);
+      }
+    }
+  }, [disabled, readOnly, historyIndex, history, isControlled, onValueChange]);
+
+  const toSVG = useCallback((): string => {
+    const canvas = canvasRef.current;
+    const width = canvas ? canvas.clientWidth || 400 : 400;
+    const height = canvas ? canvas.clientHeight || 200 : 200;
+
+    const paths = strokes
+      .map((stroke) => {
+        const pathData = strokeToSvgPath(stroke);
+        const strokeColor = stroke.color || 'currentColor';
+        const strokeWidth = ((stroke.minWidth ?? minWidth) + (stroke.maxWidth ?? maxWidth)) / 2;
+        return `<path d="${pathData}" fill="none" stroke="${strokeColor}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" />`;
+      })
+      .join('\n  ');
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">\n  ${paths}\n</svg>`;
+  }, [strokes, minWidth, maxWidth]);
+
+  const toDataURL = useCallback((type = 'image/png', quality = 0.92): string => {
+    if (!canvasRef.current) return '';
+    return canvasRef.current.toDataURL(type, quality);
+  }, []);
+
+  const startStroke = useCallback(
+    (point: SignaturePoint) => {
       if (disabled || readOnly) return;
-      if (historyIndex < history.length - 1) {
-        const nextIndex = historyIndex + 1;
-        const nextStrokes = history[nextIndex];
-        if (nextStrokes) {
-          if (!isControlled) {
-            setInternalStrokes(nextStrokes);
-          }
-          onValueChange?.(nextStrokes);
-          setHistoryIndex(nextIndex);
-        }
-      }
-    }, [disabled, readOnly, historyIndex, history, isControlled, onValueChange]);
+      setIsDrawing(true);
+      setCurrentPoints([point]);
+    },
+    [disabled, readOnly],
+  );
 
-    const toSVG = useCallback((): string => {
-      const canvas = canvasRef.current;
-      const width = canvas ? canvas.clientWidth || 400 : 400;
-      const height = canvas ? canvas.clientHeight || 200 : 200;
-
-      const paths = strokes
-        .map((stroke) => {
-          const pathData = strokeToSvgPath(stroke);
-          const strokeColor = stroke.color || 'currentColor';
-          const strokeWidth = ((stroke.minWidth ?? minWidth) + (stroke.maxWidth ?? maxWidth)) / 2;
-          return `<path d="${pathData}" fill="none" stroke="${strokeColor}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" />`;
-        })
-        .join('\n  ');
-
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">\n  ${paths}\n</svg>`;
-    }, [strokes, minWidth, maxWidth]);
-
-    const toDataURL = useCallback((type = 'image/png', quality = 0.92): string => {
-      if (!canvasRef.current) return '';
-      return canvasRef.current.toDataURL(type, quality);
-    }, []);
-
-    const startStroke = useCallback(
-      (point: SignaturePoint) => {
-        if (disabled || readOnly) return;
-        setIsDrawing(true);
-        setCurrentPoints([point]);
-      },
-      [disabled, readOnly],
-    );
-
-    const updateStroke = useCallback(
-      (point: SignaturePoint) => {
-        if (!isDrawing || disabled || readOnly) return;
-        setCurrentPoints((prev) => [...prev, point]);
-      },
-      [isDrawing, disabled, readOnly],
-    );
-
-    const endStroke = useCallback(() => {
+  const updateStroke = useCallback(
+    (point: SignaturePoint) => {
       if (!isDrawing || disabled || readOnly) return;
-      setIsDrawing(false);
+      setCurrentPoints((prev) => [...prev, point]);
+    },
+    [isDrawing, disabled, readOnly],
+  );
 
-      if (currentPoints.length > 0) {
-        const newStroke: SignaturePadStroke = {
-          points: currentPoints,
-          color,
-          minWidth,
-          maxWidth,
-        };
-        const nextStrokes = [...strokes, newStroke];
-        updateStrokes(nextStrokes);
-        onStrokeEnd?.(newStroke);
-      }
-      setCurrentPoints([]);
-    }, [
-      isDrawing,
-      disabled,
-      readOnly,
-      currentPoints,
-      color,
-      minWidth,
-      maxWidth,
-      strokes,
-      updateStrokes,
-      onStrokeEnd,
-    ]);
+  const endStroke = useCallback(() => {
+    if (!isDrawing || disabled || readOnly) return;
+    setIsDrawing(false);
 
-    // Redraw canvas on stroke changes
-    useEffect(() => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
+    if (currentPoints.length > 0) {
+      const newStroke: SignaturePadStroke = {
+        points: currentPoints,
+        color,
+        minWidth,
+        maxWidth,
+      };
+      const nextStrokes = [...strokes, newStroke];
+      updateStrokes(nextStrokes);
+      onStrokeEnd?.(newStroke);
+    }
+    setCurrentPoints([]);
+  }, [
+    isDrawing,
+    disabled,
+    readOnly,
+    currentPoints,
+    color,
+    minWidth,
+    maxWidth,
+    strokes,
+    updateStrokes,
+    onStrokeEnd,
+  ]);
 
-      const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
-      const rect = canvas.getBoundingClientRect();
-      const width = rect.width || canvas.clientWidth || 400;
-      const height = rect.height || canvas.clientHeight || 200;
+  // Redraw canvas on stroke changes
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-      if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-      }
+    const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width || canvas.clientWidth || 400;
+    const height = rect.height || canvas.clientHeight || 200;
 
-      ctx.save();
-      ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, width, height);
+    if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+    }
 
-      const renderStrokes = [...strokes];
-      if (currentPoints.length > 0) {
-        renderStrokes.push({
-          points: currentPoints,
-          color,
-          minWidth,
-          maxWidth,
-        });
-      }
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, width, height);
 
-      for (const stroke of renderStrokes) {
-        const pts = stroke.points;
-        if (pts.length === 0) continue;
+    const renderStrokes = [...strokes];
+    if (currentPoints.length > 0) {
+      renderStrokes.push({
+        points: currentPoints,
+        color,
+        minWidth,
+        maxWidth,
+      });
+    }
 
-        ctx.strokeStyle = stroke.color || color;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
+    for (const stroke of renderStrokes) {
+      const pts = stroke.points;
+      if (pts.length === 0) continue;
 
-        if (pts.length === 1) {
-          ctx.beginPath();
-          ctx.arc(pts[0].x, pts[0].y, (stroke.minWidth ?? minWidth) / 2, 0, Math.PI * 2);
-          ctx.fillStyle = stroke.color || color;
-          ctx.fill();
-          continue;
-        }
+      ctx.strokeStyle = stroke.color || color;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
 
+      if (pts.length === 1) {
         ctx.beginPath();
-        ctx.moveTo(pts[0].x, pts[0].y);
+        ctx.arc(pts[0].x, pts[0].y, (stroke.minWidth ?? minWidth) / 2, 0, Math.PI * 2);
+        ctx.fillStyle = stroke.color || color;
+        ctx.fill();
+        continue;
+      }
 
-        for (let i = 1; i < pts.length - 1; i++) {
-          const xc = (pts[i].x + pts[i + 1].x) / 2;
-          const yc = (pts[i].y + pts[i + 1].y) / 2;
-          const strokeW = calculateStrokeWidth(
-            pts[i - 1],
-            pts[i],
-            stroke.minWidth ?? minWidth,
-            stroke.maxWidth ?? maxWidth,
-            widthSource,
-          );
-          ctx.lineWidth = strokeW;
-          ctx.quadraticCurveTo(pts[i].x, pts[i].y, xc, yc);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(xc, yc);
-        }
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
 
-        const last = pts[pts.length - 1];
-        const prev = pts[pts.length - 2];
-        ctx.lineWidth = calculateStrokeWidth(
-          prev,
-          last,
+      for (let i = 1; i < pts.length - 1; i++) {
+        const xc = (pts[i].x + pts[i + 1].x) / 2;
+        const yc = (pts[i].y + pts[i + 1].y) / 2;
+        const strokeW = calculateStrokeWidth(
+          pts[i - 1],
+          pts[i],
           stroke.minWidth ?? minWidth,
           stroke.maxWidth ?? maxWidth,
           widthSource,
         );
-        ctx.lineTo(last.x, last.y);
+        ctx.lineWidth = strokeW;
+        ctx.quadraticCurveTo(pts[i].x, pts[i].y, xc, yc);
         ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(xc, yc);
       }
 
-      ctx.restore();
-    }, [strokes, currentPoints, color, minWidth, maxWidth, widthSource]);
+      const last = pts[pts.length - 1];
+      const prev = pts[pts.length - 2];
+      ctx.lineWidth = calculateStrokeWidth(
+        prev,
+        last,
+        stroke.minWidth ?? minWidth,
+        stroke.maxWidth ?? maxWidth,
+        widthSource,
+      );
+      ctx.lineTo(last.x, last.y);
+      ctx.stroke();
+    }
 
-    const api = useMemo<SignaturePadAPI>(
-      () => ({
-        clear,
-        undo,
-        redo,
-        toSVG,
-        toDataURL,
-        isEmpty: () => strokes.length === 0,
-        getStrokes: () => strokes,
-      }),
-      [clear, undo, redo, toSVG, toDataURL, strokes],
-    );
+    ctx.restore();
+  }, [strokes, currentPoints, color, minWidth, maxWidth, widthSource]);
 
-    useImperativeHandle(apiRef as any, () => api, [api]);
-
-    const contextValue: SignaturePadContextValue = {
-      strokes,
-      currentPoints,
-      isEmpty: strokes.length === 0 && currentPoints.length === 0,
-      isDrawing,
-      canUndo: strokes.length > 0,
-      canRedo: historyIndex < history.length - 1,
-      disabled,
-      readOnly,
-      color,
-      minWidth,
-      maxWidth,
-      smoothing,
-      widthSource,
-      allowedPointers,
+  const api = useMemo<SignaturePadAPI>(
+    () => ({
       clear,
       undo,
       redo,
       toSVG,
       toDataURL,
-      canvasRef,
-      startStroke,
-      updateStroke,
-      endStroke,
-    };
+      isEmpty: () => strokes.length === 0,
+      getStrokes: () => strokes,
+    }),
+    [clear, undo, redo, toSVG, toDataURL, strokes],
+  );
 
-    const sxProps = stylex.props(styles.root, disabled && styles.rootDisabled, sx);
+  useImperativeHandle(apiRef as any, () => api, [api]);
 
-    return (
-      <SignaturePadContext.Provider value={contextValue}>
-        <Box
-          ref={ref}
-          data-slot="signature-pad"
-          data-disabled={disabled ? 'true' : undefined}
-          data-readonly={readOnly ? 'true' : undefined}
-          data-empty={strokes.length === 0 ? 'true' : 'false'}
-          className={cn(sxProps.className, className)}
-          style={sxProps.style}
-          {...props}
-        >
-          {name && (
-            <input
-              type="hidden"
-              name={name}
-              value={strokes.length > 0 ? toSVG() : ''}
-              required={required}
-            />
-          )}
-          {children}
-        </Box>
-      </SignaturePadContext.Provider>
-    );
-  },
-);
+  const contextValue: SignaturePadContextValue = {
+    strokes,
+    currentPoints,
+    isEmpty: strokes.length === 0 && currentPoints.length === 0,
+    isDrawing,
+    canUndo: strokes.length > 0,
+    canRedo: historyIndex < history.length - 1,
+    disabled,
+    readOnly,
+    color,
+    minWidth,
+    maxWidth,
+    smoothing,
+    widthSource,
+    allowedPointers,
+    clear,
+    undo,
+    redo,
+    toSVG,
+    toDataURL,
+    canvasRef,
+    startStroke,
+    updateStroke,
+    endStroke,
+  };
 
-SignaturePad.displayName = 'SignaturePad';
+  const sxProps = stylex.props(styles.root, disabled && styles.rootDisabled, sx);
+
+  return (
+    <SignaturePadContext.Provider value={contextValue}>
+      <Box
+        ref={ref}
+        data-slot="signature-pad"
+        data-disabled={disabled ? 'true' : undefined}
+        data-readonly={readOnly ? 'true' : undefined}
+        data-empty={strokes.length === 0 ? 'true' : 'false'}
+        className={cn(sxProps.className, className)}
+        style={sxProps.style}
+        {...props}
+      >
+        {name && (
+          <input
+            type="hidden"
+            name={name}
+            value={strokes.length > 0 ? toSVG() : ''}
+            required={required}
+          />
+        )}
+        {children}
+      </Box>
+    </SignaturePadContext.Provider>
+  );
+}
 
 export interface SignaturePadAreaProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const SignaturePadArea = forwardRef<HTMLDivElement, SignaturePadAreaProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const { canvasRef, allowedPointers, startStroke, updateStroke, endStroke, disabled, readOnly } =
-      useSignaturePad();
+export function SignaturePadArea({
+  sx,
+  className,
+  children,
+  ref,
+  ...props
+}: SignaturePadAreaProps) {
+  const { canvasRef, allowedPointers, startStroke, updateStroke, endStroke, disabled, readOnly } =
+    useSignaturePad();
 
-    const handlePointerDown = (e: ReactPointerEvent<HTMLCanvasElement>) => {
-      if (disabled || readOnly) return;
-      if (!allowedPointers.includes(e.pointerType as SignaturePointerType)) return;
+  const handlePointerDown = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (disabled || readOnly) return;
+    if (!allowedPointers.includes(e.pointerType as SignaturePointerType)) return;
 
-      e.currentTarget.setPointerCapture(e.pointerId);
-      const rect = e.currentTarget.getBoundingClientRect();
-      startStroke({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        pressure: e.pressure,
-        time: Date.now(),
-      });
-    };
+    e.currentTarget.setPointerCapture(e.pointerId);
+    const rect = e.currentTarget.getBoundingClientRect();
+    startStroke({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      pressure: e.pressure,
+      time: Date.now(),
+    });
+  };
 
-    const handlePointerMove = (e: ReactPointerEvent<HTMLCanvasElement>) => {
-      if (disabled || readOnly) return;
-      if (!allowedPointers.includes(e.pointerType as SignaturePointerType)) return;
+  const handlePointerMove = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (disabled || readOnly) return;
+    if (!allowedPointers.includes(e.pointerType as SignaturePointerType)) return;
 
-      const rect = e.currentTarget.getBoundingClientRect();
-      updateStroke({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        pressure: e.pressure,
-        time: Date.now(),
-      });
-    };
+    const rect = e.currentTarget.getBoundingClientRect();
+    updateStroke({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      pressure: e.pressure,
+      time: Date.now(),
+    });
+  };
 
-    const handlePointerUp = (e: ReactPointerEvent<HTMLCanvasElement>) => {
-      if (disabled || readOnly) return;
-      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
-        e.currentTarget.releasePointerCapture(e.pointerId);
-      }
-      endStroke();
-    };
+  const handlePointerUp = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (disabled || readOnly) return;
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+    endStroke();
+  };
 
-    const sxProps = stylex.props(styles.areaWrapper, sx);
+  const sxProps = stylex.props(styles.areaWrapper, sx);
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="signature-pad-area"
-        tabIndex={disabled ? -1 : 0}
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        <canvas
-          ref={canvasRef}
-          data-slot="signature-pad-canvas"
-          {...stylex.props(styles.canvas)}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
-        />
-        {children}
-      </Box>
-    );
-  },
-);
-
-SignaturePadArea.displayName = 'SignaturePadArea';
+  return (
+    <Box
+      ref={ref}
+      data-slot="signature-pad-area"
+      tabIndex={disabled ? -1 : 0}
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      <canvas
+        ref={canvasRef}
+        data-slot="signature-pad-canvas"
+        {...stylex.props(styles.canvas)}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      />
+      {children}
+    </Box>
+  );
+}
 
 export interface SignaturePadGuideProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const SignaturePadGuide = forwardRef<HTMLDivElement, SignaturePadGuideProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const sxProps = stylex.props(styles.guide, sx);
+export function SignaturePadGuide({
+  sx,
+  className,
+  children,
+  ref,
+  ...props
+}: SignaturePadGuideProps) {
+  const sxProps = stylex.props(styles.guide, sx);
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="signature-pad-guide"
-        aria-hidden="true"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        <Box data-slot="signature-pad-guide-sign" sx={styles.guideSign}>
-          <Text size="xs" type="secondary">
-            ✕
-          </Text>
-        </Box>
-        {children}
+  return (
+    <Box
+      ref={ref}
+      data-slot="signature-pad-guide"
+      aria-hidden="true"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      <Box data-slot="signature-pad-guide-sign" sx={styles.guideSign}>
+        <Text size="xs" type="secondary">
+          ✕
+        </Text>
       </Box>
-    );
-  },
-);
-
-SignaturePadGuide.displayName = 'SignaturePadGuide';
+      {children}
+    </Box>
+  );
+}
 
 export interface SignaturePadPlaceholderProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const SignaturePadPlaceholder = forwardRef<HTMLDivElement, SignaturePadPlaceholderProps>(
-  ({ sx, className, children = 'Sign here', ...props }, ref) => {
-    const { isEmpty } = useSignaturePad();
-    if (!isEmpty) return null;
+export function SignaturePadPlaceholder({
+  sx,
+  className,
+  children = 'Sign here',
+  ref,
+  ...props
+}: SignaturePadPlaceholderProps) {
+  const { isEmpty } = useSignaturePad();
+  if (!isEmpty) return null;
 
-    const sxProps = stylex.props(styles.placeholder, sx);
+  const sxProps = stylex.props(styles.placeholder, sx);
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="signature-pad-placeholder"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        {typeof children === 'string' ? (
-          <Text size="sm" type="secondary">
-            {children}
-          </Text>
-        ) : (
-          children
-        )}
-      </Box>
-    );
-  },
-);
-
-SignaturePadPlaceholder.displayName = 'SignaturePadPlaceholder';
+  return (
+    <Box
+      ref={ref}
+      data-slot="signature-pad-placeholder"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      {typeof children === 'string' ? (
+        <Text size="sm" type="secondary">
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
+    </Box>
+  );
+}
 
 export interface SignaturePadControlsProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const SignaturePadControls = forwardRef<HTMLDivElement, SignaturePadControlsProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const sxProps = stylex.props(styles.controls, sx);
+export function SignaturePadControls({
+  sx,
+  className,
+  children,
+  ref,
+  ...props
+}: SignaturePadControlsProps) {
+  const sxProps = stylex.props(styles.controls, sx);
 
-    return (
-      <HStack
-        ref={ref as any}
-        data-slot="signature-pad-controls"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        {children}
-      </HStack>
-    );
-  },
-);
-
-SignaturePadControls.displayName = 'SignaturePadControls';
+  return (
+    <HStack
+      ref={ref as any}
+      data-slot="signature-pad-controls"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      {children}
+    </HStack>
+  );
+}
 
 export interface SignaturePadUndoProps extends Omit<ButtonProps, 'onClick'> {
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLButtonElement>;
 }
 
-export const SignaturePadUndo = forwardRef<HTMLButtonElement, SignaturePadUndoProps>(
-  ({ variant = 'ghost', size = 'sm', children, disabled: buttonDisabled, ...props }, ref) => {
-    const { undo, canUndo, disabled, readOnly } = useSignaturePad();
-    const isButtonDisabled = buttonDisabled ?? (!canUndo || disabled || readOnly);
+export function SignaturePadUndo({
+  variant = 'ghost',
+  size = 'sm',
+  children,
+  disabled: buttonDisabled,
+  ref,
+  ...props
+}: SignaturePadUndoProps) {
+  const { undo, canUndo, disabled, readOnly } = useSignaturePad();
+  const isButtonDisabled = buttonDisabled ?? (!canUndo || disabled || readOnly);
 
-    return (
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        disabled={isButtonDisabled}
-        onClick={undo}
-        aria-label="Undo stroke"
-        data-slot="signature-pad-undo"
-        {...props}
-      >
-        {children || <Undo2 size={14} />}
-      </Button>
-    );
-  },
-);
-
-SignaturePadUndo.displayName = 'SignaturePadUndo';
+  return (
+    <Button
+      ref={ref}
+      variant={variant}
+      size={size}
+      disabled={isButtonDisabled}
+      onClick={undo}
+      aria-label="Undo stroke"
+      data-slot="signature-pad-undo"
+      {...props}
+    >
+      {children || <Undo2 size={14} />}
+    </Button>
+  );
+}
 
 export interface SignaturePadRedoProps extends Omit<ButtonProps, 'onClick'> {
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLButtonElement>;
 }
 
-export const SignaturePadRedo = forwardRef<HTMLButtonElement, SignaturePadRedoProps>(
-  ({ variant = 'ghost', size = 'sm', children, disabled: buttonDisabled, ...props }, ref) => {
-    const { redo, canRedo, disabled, readOnly } = useSignaturePad();
-    const isButtonDisabled = buttonDisabled ?? (!canRedo || disabled || readOnly);
+export function SignaturePadRedo({
+  variant = 'ghost',
+  size = 'sm',
+  children,
+  disabled: buttonDisabled,
+  ref,
+  ...props
+}: SignaturePadRedoProps) {
+  const { redo, canRedo, disabled, readOnly } = useSignaturePad();
+  const isButtonDisabled = buttonDisabled ?? (!canRedo || disabled || readOnly);
 
-    return (
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        disabled={isButtonDisabled}
-        onClick={redo}
-        aria-label="Redo stroke"
-        data-slot="signature-pad-redo"
-        {...props}
-      >
-        {children || <Redo2 size={14} />}
-      </Button>
-    );
-  },
-);
-
-SignaturePadRedo.displayName = 'SignaturePadRedo';
+  return (
+    <Button
+      ref={ref}
+      variant={variant}
+      size={size}
+      disabled={isButtonDisabled}
+      onClick={redo}
+      aria-label="Redo stroke"
+      data-slot="signature-pad-redo"
+      {...props}
+    >
+      {children || <Redo2 size={14} />}
+    </Button>
+  );
+}
 
 export interface SignaturePadClearProps extends Omit<ButtonProps, 'onClick'> {
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLButtonElement>;
 }
 
-export const SignaturePadClear = forwardRef<HTMLButtonElement, SignaturePadClearProps>(
-  ({ variant = 'ghost', size = 'sm', children, disabled: buttonDisabled, ...props }, ref) => {
-    const { clear, isEmpty, disabled, readOnly } = useSignaturePad();
-    const isButtonDisabled = buttonDisabled ?? (isEmpty || disabled || readOnly);
+export function SignaturePadClear({
+  variant = 'ghost',
+  size = 'sm',
+  children,
+  disabled: buttonDisabled,
+  ref,
+  ...props
+}: SignaturePadClearProps) {
+  const { clear, isEmpty, disabled, readOnly } = useSignaturePad();
+  const isButtonDisabled = buttonDisabled ?? (isEmpty || disabled || readOnly);
 
-    return (
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        disabled={isButtonDisabled}
-        onClick={clear}
-        aria-label="Clear signature"
-        data-slot="signature-pad-clear"
-        {...props}
-      >
-        {children || (
-          <HStack gap="xxs">
-            <RotateCcw size={14} />
-            <Text size="xs">Clear</Text>
-          </HStack>
-        )}
-      </Button>
-    );
-  },
-);
-
-SignaturePadClear.displayName = 'SignaturePadClear';
+  return (
+    <Button
+      ref={ref}
+      variant={variant}
+      size={size}
+      disabled={isButtonDisabled}
+      onClick={clear}
+      aria-label="Clear signature"
+      data-slot="signature-pad-clear"
+      {...props}
+    >
+      {children || (
+        <HStack gap="xxs">
+          <RotateCcw size={14} />
+          <Text size="xs">Clear</Text>
+        </HStack>
+      )}
+    </Button>
+  );
+}

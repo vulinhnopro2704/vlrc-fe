@@ -6,7 +6,7 @@ exports[`Empty > UI > should match snapshot with compound subcomponents 1`] = `
     class="flex__styles.base x78zum5 flex__styles.dirCol xdt5ytf flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.root x1kuf5yo x9f619 xh8yej3 x2b8uid"
     data-direction="column"
     data-slot="empty"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:9"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:147; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/empty.tsx:9"
   >
     <div
       class="empty__styles.imageWrapper x78zum5 x6s0dn4 xl56j7k xw3nh4a x197sbye x1wwzmr"
@@ -42,7 +42,7 @@ exports[`Empty > UI > should match snapshot with compound subcomponents 1`] = `
       class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.actions xmc9es9"
       data-direction="row"
       data-slot="empty-actions"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:31"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:147; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/empty.tsx:31"
     >
       <button
         class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantOutline xmkeg23 x1y0btm7 xb30jbz x1mlyrtw xfk7h2l x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"
@@ -65,7 +65,7 @@ exports[`Empty > UI > should match snapshot with default shorthand props 1`] = `
     class="flex__styles.base x78zum5 flex__styles.dirCol xdt5ytf flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.root x1kuf5yo x9f619 xh8yej3 x2b8uid"
     data-direction="column"
     data-slot="empty"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:9"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:147; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/empty.tsx:9"
   >
     <div
       class="empty__styles.imageWrapper x78zum5 x6s0dn4 xl56j7k xw3nh4a x197sbye x1wwzmr"
@@ -117,7 +117,7 @@ exports[`Empty > UI > should match snapshot with default shorthand props 1`] = `
       class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4 flex__styles.justifyCenter xl56j7k flex__styles.gapSm xdkmor2 empty__styles.actions xmc9es9"
       data-direction="row"
       data-slot="empty-actions"
-      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:146; @vlrc-fe/components:src/ui/flex.tsx:161; @vlrc-fe/components:src/ui/empty.tsx:31"
+      data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/flex.tsx:147; @vlrc-fe/components:src/ui/flex.tsx:162; @vlrc-fe/components:src/ui/empty.tsx:31"
     >
       <button
         class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantDefault x1j7ufkg xstwp1q x18uuni6 button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"

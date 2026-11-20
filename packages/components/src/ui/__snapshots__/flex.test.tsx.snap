@@ -6,7 +6,7 @@ exports[`Flex > UI > should match snapshot for 7-tier gap size "lg" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.gapLg x1oqwmkw"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:163"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:164"
   >
     <div>
       Item 1
@@ -24,7 +24,7 @@ exports[`Flex > UI > should match snapshot for 7-tier gap size "md" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.gapMd x1b1hbqf"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:162"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:163"
   >
     <div>
       Item 1
@@ -42,7 +42,7 @@ exports[`Flex > UI > should match snapshot for 7-tier gap size "sm" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.gapSm xdkmor2"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:161"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:162"
   >
     <div>
       Item 1
@@ -60,7 +60,7 @@ exports[`Flex > UI > should match snapshot for 7-tier gap size "xxl" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.gapXxl x12iavo"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:165"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:166"
   >
     <div>
       Item 1
@@ -78,7 +78,7 @@ exports[`Flex > UI > should match snapshot for 7-tier gap size "xxs" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.gapXxs x118fsrc"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:159"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:160"
   >
     <div>
       Item 1
@@ -96,7 +96,7 @@ exports[`Flex > UI > should match snapshot for align "baseline" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignBaseline x1pha0wt"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:141"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:142"
   >
     <div>
       Item 1
@@ -114,7 +114,7 @@ exports[`Flex > UI > should match snapshot for align "center" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignCenter x6s0dn4"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140"
   >
     <div>
       Item 1
@@ -132,7 +132,7 @@ exports[`Flex > UI > should match snapshot for align "end" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignEnd xuk3077"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:140"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:141"
   >
     <div>
       Item 1
@@ -150,7 +150,7 @@ exports[`Flex > UI > should match snapshot for align "start" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignStart x1cy8zhl"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:138"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:139"
   >
     <div>
       Item 1
@@ -168,7 +168,7 @@ exports[`Flex > UI > should match snapshot for align "stretch" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.alignStretch x1qjc9v5"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:142"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:143"
   >
     <div>
       Item 1
@@ -186,7 +186,7 @@ exports[`Flex > UI > should match snapshot for justify "center" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.justifyCenter xl56j7k"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:146"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:147"
   >
     <div>
       Item 1
@@ -204,7 +204,7 @@ exports[`Flex > UI > should match snapshot for justify "end" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.justifyEnd x13a6bvl"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:147"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:148"
   >
     <div>
       Item 1
@@ -222,7 +222,7 @@ exports[`Flex > UI > should match snapshot for justify "space-around" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.justifyAround x1l1ennw"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:149"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:150"
   >
     <div>
       Item 1
@@ -240,7 +240,7 @@ exports[`Flex > UI > should match snapshot for justify "space-between" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.justifyBetween x1qughib"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:148"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:149"
   >
     <div>
       Item 1
@@ -258,7 +258,7 @@ exports[`Flex > UI > should match snapshot for justify "space-evenly" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.justifyEvenly xaw8158"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:150"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:151"
   >
     <div>
       Item 1
@@ -276,7 +276,7 @@ exports[`Flex > UI > should match snapshot for justify "start" 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np flex__styles.justifyStart x1nhvcw1"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:145"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:146"
   >
     <div>
       Item 1
@@ -294,7 +294,7 @@ exports[`Flex > UI > should match snapshot in default state 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np"
     data-direction="row"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133"
   >
     <div>
       Item 1
@@ -313,7 +313,7 @@ exports[`Flex > UI > should match snapshot with inline display 1`] = `
     data-direction="row"
     data-inline="true"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:128; @vlrc-fe/components:src/ui/flex.tsx:133"
   >
     <div>
       Item 1
@@ -331,7 +331,7 @@ exports[`Flex > UI > should match snapshot with vertical direction 1`] = `
     class="flex__styles.base x78zum5 x9f619 flex__styles.dirCol xdt5ytf"
     data-direction="column"
     data-slot="flex"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:134"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:135"
   >
     <div>
       Item 1

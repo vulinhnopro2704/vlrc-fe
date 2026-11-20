@@ -1,5 +1,3 @@
-'use client';
-
 import { type ComponentProps } from 'react';
 import { GripVerticalIcon } from 'lucide-react';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';

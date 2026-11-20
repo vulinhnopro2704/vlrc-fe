@@ -1,6 +1,5 @@
-export { ConfirmModal, default as ConfirmModalDefault } from './ConfirmModal';
-export { default as ConfirmationDialog } from './ConfirmModal';
-export type { ConfirmModalProps, ConfirmationDialogProps } from './ConfirmModal';
+export { ConfirmModal } from './ConfirmModal';
+export type { ConfirmModalProps } from './ConfirmModal';
 export { Modal } from './Modal';
 export type { ModalProps } from './Modal';
 export { lazyLoad } from './lazyLoad';

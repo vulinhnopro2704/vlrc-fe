@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import { createContext, useContext, type ReactNode } from 'react';
 
 /**
  * Standard W3C & Design System semantic z-index scale.
@@ -47,7 +47,7 @@ export function useZIndex(defaultLayer: ZIndexLayer | number, step = 0): number 
 export interface ZIndexProviderProps {
   /** The base z-index value provided to children */
   value: number;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 /**

@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.1] - 2026-11-20
+
+### Patch Changes
+
+- **Slash Menu Enhancements & Overflow Fixes**:
+  - Migrated Slash Menu to `createPortal(..., document.body)` with anchored fixed coordinates, eliminating clipping by parent scroll containers.
+  - Added auto-flip and collision detection against viewport boundaries with modern CSS Anchor Positioning (`positionArea`, `positionTryFallbacks`) and fallback rect calculation.
+  - Implemented keyboard navigation auto-scroll (`scrollIntoView({ block: 'nearest' })`) when cycling options via ArrowDown and ArrowUp.
+  - Grouped commands into "Basic blocks" and "Media & embeds" with cohesive Astryx surface and border tokens.
+- **Enterprise Dialogs Integration**:
+  - Integrated `InsertMediaDialog` for web images with captions, interactive YouTube video embeds, and Figma design embeds.
+  - Integrated `InsertLinkDialog` for wrapping text selections in hyperlinks.
+  - Consumes standard `@vlrc-fe/components` UI primitives (`Dialog`, `Button`, `Input`, `Label`, `Checkbox`, `Text`, `VStack`, `HStack`) ensuring zero UI divergence.
+
 ## [1.0.0] - 2026-11-19
 
 ### Initial Release

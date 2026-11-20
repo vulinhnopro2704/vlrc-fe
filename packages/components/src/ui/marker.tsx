@@ -1,10 +1,10 @@
 import {
   createContext,
-  forwardRef,
   useContext,
   useMemo,
   type HTMLAttributes,
   type ReactNode,
+  type Ref,
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, spacing } from '../theme/tokens.stylex';
@@ -110,113 +110,112 @@ export interface MarkerProps extends HTMLAttributes<HTMLDivElement> {
   size?: MarkerSize;
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const Marker = forwardRef<HTMLDivElement, MarkerProps>(
-  ({ variant = 'default', size = 'default', sx, className, children, ...props }, ref) => {
-    const isSeparator = variant === 'separator';
+export function Marker({
+  variant = 'default',
+  size = 'default',
+  sx,
+  className,
+  children,
+  ref,
+  ...props
+}: MarkerProps) {
+  const isSeparator = variant === 'separator';
 
-    const sxProps = stylex.props(
-      styles.root,
-      variant === 'default' && styles.variantDefault,
-      variant === 'border' && styles.variantBorder,
-      variant === 'separator' && styles.variantSeparator,
-      size === 'sm' && styles.sizeSm,
-      size === 'default' && styles.sizeDefault,
-      size === 'lg' && styles.sizeLg,
-      sx,
-    );
+  const sxProps = stylex.props(
+    styles.root,
+    variant === 'default' && styles.variantDefault,
+    variant === 'border' && styles.variantBorder,
+    variant === 'separator' && styles.variantSeparator,
+    size === 'sm' && styles.sizeSm,
+    size === 'default' && styles.sizeDefault,
+    size === 'lg' && styles.sizeLg,
+    sx,
+  );
 
-    const contextValue = useMemo(() => ({ variant, size }), [variant, size]);
+  const contextValue = useMemo(() => ({ variant, size }), [variant, size]);
 
-    return (
-      <MarkerContext.Provider value={contextValue}>
-        <Box
-          ref={ref}
-          data-slot="marker"
-          data-variant={variant}
-          data-size={size}
-          className={cn(sxProps.className, className)}
-          style={sxProps.style}
-          {...props}
-        >
-          {isSeparator && (
-            <Box data-slot="marker-rule-left" sx={styles.separatorLine} aria-hidden="true" />
-          )}
-          {children}
-          {isSeparator && (
-            <Box data-slot="marker-rule-right" sx={styles.separatorLine} aria-hidden="true" />
-          )}
-        </Box>
-      </MarkerContext.Provider>
-    );
-  },
-);
-
-Marker.displayName = 'Marker';
+  return (
+    <MarkerContext.Provider value={contextValue}>
+      <Box
+        ref={ref}
+        data-slot="marker"
+        data-variant={variant}
+        data-size={size}
+        className={cn(sxProps.className, className)}
+        style={sxProps.style}
+        {...props}
+      >
+        {isSeparator && (
+          <Box data-slot="marker-rule-left" sx={styles.separatorLine} aria-hidden="true" />
+        )}
+        {children}
+        {isSeparator && (
+          <Box data-slot="marker-rule-right" sx={styles.separatorLine} aria-hidden="true" />
+        )}
+      </Box>
+    </MarkerContext.Provider>
+  );
+}
 
 export interface MarkerIconProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const MarkerIcon = forwardRef<HTMLDivElement, MarkerIconProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const { size } = useContext(MarkerContext);
+export function MarkerIcon({ sx, className, children, ref, ...props }: MarkerIconProps) {
+  const { size } = useContext(MarkerContext);
 
-    const sxProps = stylex.props(
-      styles.icon,
-      size === 'sm' && styles.iconSm,
-      size === 'default' && styles.iconDefault,
-      size === 'lg' && styles.iconLg,
-      sx,
-    );
+  const sxProps = stylex.props(
+    styles.icon,
+    size === 'sm' && styles.iconSm,
+    size === 'default' && styles.iconDefault,
+    size === 'lg' && styles.iconLg,
+    sx,
+  );
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="marker-icon"
-        aria-hidden="true"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        {children}
-      </Box>
-    );
-  },
-);
-
-MarkerIcon.displayName = 'MarkerIcon';
+  return (
+    <Box
+      ref={ref}
+      data-slot="marker-icon"
+      aria-hidden="true"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
 
 export interface MarkerContentProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const MarkerContent = forwardRef<HTMLDivElement, MarkerContentProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const { variant } = useContext(MarkerContext);
-    const isSeparator = variant === 'separator';
+export function MarkerContent({ sx, className, children, ref, ...props }: MarkerContentProps) {
+  const { variant } = useContext(MarkerContext);
+  const isSeparator = variant === 'separator';
 
-    const sxProps = stylex.props(styles.content, isSeparator && styles.contentSeparator, sx);
+  const sxProps = stylex.props(styles.content, isSeparator && styles.contentSeparator, sx);
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="marker-content"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        {typeof children === 'string' ? (
-          <Text type={isSeparator ? 'secondary' : 'default'}>{children}</Text>
-        ) : (
-          children
-        )}
-      </Box>
-    );
-  },
-);
-
-MarkerContent.displayName = 'MarkerContent';
+  return (
+    <Box
+      ref={ref}
+      data-slot="marker-content"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      {typeof children === 'string' ? (
+        <Text type={isSeparator ? 'secondary' : 'default'}>{children}</Text>
+      ) : (
+        children
+      )}
+    </Box>
+  );
+}

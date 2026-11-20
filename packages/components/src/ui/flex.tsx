@@ -1,4 +1,4 @@
-import { forwardRef, type CSSProperties, type ElementType, type HTMLAttributes } from 'react';
+import { type CSSProperties, type ElementType, type HTMLAttributes, type Ref } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
 import { spacing } from '../theme/tokens.stylex';
@@ -117,6 +117,7 @@ export interface FlexProps extends HTMLAttributes<HTMLElement> {
    * Meta StyleX custom override styles.
    */
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLElement>;
 }
 
 const styles = stylex.create({
@@ -213,32 +214,30 @@ const gapTierStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.gapXxl,
 };
 
-export const Flex = forwardRef<HTMLElement, FlexProps>(function Flex(
-  {
-    vertical,
-    direction = 'row',
-    align,
-    justify,
-    wrap,
-    gap,
-    type = 'flex',
-    inline = false,
-    flex,
-    grow,
-    shrink,
-    basis,
-    width,
-    height,
-    asChild = false,
-    as = 'div',
-    className,
-    style,
-    sx,
-    children,
-    ...props
-  },
+export function Flex({
+  vertical,
+  direction = 'row',
+  align,
+  justify,
+  wrap,
+  gap,
+  type = 'flex',
+  inline = false,
+  flex,
+  grow,
+  shrink,
+  basis,
+  width,
+  height,
+  asChild = false,
+  as = 'div',
+  className,
+  style,
+  sx,
   ref,
-) {
+  children,
+  ...props
+}: FlexProps) {
   const isInline = inline || type === 'inline-flex' || type === 'inline';
   const effectiveDirection: FlexDirection = vertical ? 'column' : direction;
 
@@ -316,6 +315,4 @@ export const Flex = forwardRef<HTMLElement, FlexProps>(function Flex(
       {children}
     </Comp>
   );
-});
-
-Flex.displayName = 'Flex';
+}

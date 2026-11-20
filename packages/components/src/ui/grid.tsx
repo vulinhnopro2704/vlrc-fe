@@ -1,10 +1,9 @@
 import {
-  forwardRef,
   type CSSProperties,
   type ElementType,
-  type ForwardRefExoticComponent,
   type HTMLAttributes,
-  type RefAttributes,
+  type ReactNode,
+  type Ref,
 } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
@@ -105,6 +104,7 @@ export interface GridProps extends HTMLAttributes<HTMLDivElement> {
    * Meta StyleX custom override styles.
    */
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLDivElement>;
 }
 
 export interface GridItemProps extends HTMLAttributes<HTMLDivElement> {
@@ -151,6 +151,7 @@ export interface GridItemProps extends HTMLAttributes<HTMLDivElement> {
    * Meta StyleX custom override styles.
    */
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLDivElement>;
 }
 
 // ============================================================================
@@ -241,25 +242,23 @@ const gapTierStyles: Record<ComponentSize, stylex.StyleXStyles> = {
 // Grid Item Component
 // ============================================================================
 
-export const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
-  {
-    colSpan,
-    rowSpan,
-    colStart,
-    colEnd,
-    rowStart,
-    rowEnd,
-    area,
-    asChild = false,
-    as = 'div',
-    className,
-    style,
-    sx,
-    children,
-    ...props
-  },
+export function GridItem({
+  colSpan,
+  rowSpan,
+  colStart,
+  colEnd,
+  rowStart,
+  rowEnd,
+  area,
+  asChild = false,
+  as = 'div',
+  className,
+  style,
+  sx,
   ref,
-) {
+  children,
+  ...props
+}: GridItemProps) {
   const sxProps = stylex.props(styles.itemBase, sx);
 
   const mergedClassName = className
@@ -294,17 +293,14 @@ export const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridI
       {children}
     </Comp>
   );
-});
-
-GridItem.displayName = 'GridItem';
+}
 
 // ============================================================================
 // Grid Component
 // ============================================================================
 
-interface GridComponent extends ForwardRefExoticComponent<
-  GridProps & RefAttributes<HTMLDivElement>
-> {
+interface GridComponent {
+  (props: GridProps): ReactNode;
   Row: typeof Row;
   Col: typeof Col;
   Column: typeof Column;
@@ -312,30 +308,28 @@ interface GridComponent extends ForwardRefExoticComponent<
   useBreakpoint: typeof useBreakpoint;
 }
 
-export const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
-  {
-    columns,
-    rows,
-    minChildWidth,
-    gap,
-    rowGap,
-    columnGap,
-    autoFlow,
-    autoRows,
-    autoColumns,
-    align,
-    justify,
-    inline = false,
-    asChild = false,
-    as = 'div',
-    className,
-    style,
-    sx,
-    children,
-    ...props
-  },
+export function GridRoot({
+  columns,
+  rows,
+  minChildWidth,
+  gap,
+  rowGap,
+  columnGap,
+  autoFlow,
+  autoRows,
+  autoColumns,
+  align,
+  justify,
+  inline = false,
+  asChild = false,
+  as = 'div',
+  className,
+  style,
+  sx,
   ref,
-) {
+  children,
+  ...props
+}: GridProps) {
   const screens = useBreakpoint();
 
   // Check static tier gap
@@ -417,9 +411,9 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
       {children}
     </Comp>
   );
-}) as GridComponent;
+}
 
-Grid.displayName = 'Grid';
+export const Grid = GridRoot as GridComponent;
 Grid.Row = Row;
 Grid.Col = Col;
 Grid.Column = Column;

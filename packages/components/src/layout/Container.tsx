@@ -1,15 +1,6 @@
-import {
-  forwardRef,
-  type CSSProperties,
-  type ComponentPropsWithRef,
-  type ElementType,
-  type ReactElement,
-  type ReactNode,
-  type Ref,
-} from 'react';
+import type { CSSProperties, ComponentPropsWithRef, ElementType, ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { spacing } from '../theme/tokens.stylex';
-import { cn } from '../utils';
 
 export type ContainerSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'fluid';
 
@@ -34,6 +25,23 @@ const styles = stylex.create({
   gutterLg: { paddingInline: spacing.lg },
 });
 
+const sizeStyles: Record<ContainerSize, stylex.StyleXStyles> = {
+  xs: styles.sizeXs,
+  sm: styles.sizeSm,
+  md: styles.sizeMd,
+  lg: styles.sizeLg,
+  xl: styles.sizeXl,
+  '2xl': styles.size2Xl,
+  fluid: styles.sizeFluid,
+};
+
+const gutterStyles: Record<'none' | 'sm' | 'md' | 'lg', stylex.StyleXStyles> = {
+  none: styles.gutterNone,
+  sm: styles.gutterSm,
+  md: styles.gutterMd,
+  lg: styles.gutterLg,
+};
+
 export interface ContainerProps<T extends ElementType = 'div'> {
   as?: T;
   size?: ContainerSize;
@@ -44,67 +52,36 @@ export interface ContainerProps<T extends ElementType = 'div'> {
   sx?: stylex.StyleXStyles;
 }
 
-export type PolymorphicContainerProps<T extends ElementType> = ContainerProps<T> &
+export type PolymorphicContainerProps<T extends ElementType = 'div'> = ContainerProps<T> &
   Omit<ComponentPropsWithRef<T>, keyof ContainerProps<T>>;
 
-export const Container = forwardRef(
-  <T extends ElementType = 'div'>(
-    {
-      as,
-      size = 'xl',
-      gutter = 'md',
-      children,
-      className,
-      style,
-      sx,
-      ...props
-    }: PolymorphicContainerProps<T>,
-    ref: Ref<any>,
-  ) => {
-    const Component = as || 'div';
+export function Container<T extends ElementType = 'div'>({
+  as,
+  size = 'xl',
+  gutter = 'md',
+  children,
+  className,
+  style,
+  sx,
+  ...props
+}: PolymorphicContainerProps<T>) {
+  const Component = as ?? 'div';
+  const sizeStyle = sizeStyles[size] ?? styles.sizeXl;
+  const gutterStyle = gutterStyles[gutter] ?? styles.gutterMd;
+  const resolvedProps = stylex.props(styles.base, sizeStyle, gutterStyle, sx);
 
-    const sizeStyle =
-      size === 'xs'
-        ? styles.sizeXs
-        : size === 'sm'
-          ? styles.sizeSm
-          : size === 'md'
-            ? styles.sizeMd
-            : size === 'lg'
-              ? styles.sizeLg
-              : size === 'xl'
-                ? styles.sizeXl
-                : size === '2xl'
-                  ? styles.size2Xl
-                  : styles.sizeFluid;
-
-    const gutterStyle =
-      gutter === 'none'
-        ? styles.gutterNone
-        : gutter === 'sm'
-          ? styles.gutterSm
-          : gutter === 'lg'
-            ? styles.gutterLg
-            : styles.gutterMd;
-
-    const resolvedProps = stylex.props(styles.base, sizeStyle, gutterStyle, sx);
-
-    return (
-      <Component
-        ref={ref}
-        data-slot="container"
-        data-size={size}
-        {...props}
-        {...resolvedProps}
-        style={{ ...resolvedProps.style, ...style }}
-        className={cn(resolvedProps.className, className)}
-      >
-        {children}
-      </Component>
-    );
-  },
-) as <T extends ElementType = 'div'>(
-  props: PolymorphicContainerProps<T> & { ref?: Ref<any> },
-) => ReactElement | null;
-
-(Container as any).displayName = 'Container';
+  return (
+    <Component
+      data-slot="container"
+      data-size={size}
+      {...props}
+      {...resolvedProps}
+      style={{ ...resolvedProps.style, ...style }}
+      className={
+        className ? `${resolvedProps.className || ''} ${className}`.trim() : resolvedProps.className
+      }
+    >
+      {children}
+    </Component>
+  );
+}

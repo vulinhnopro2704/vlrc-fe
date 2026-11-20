@@ -1,7 +1,6 @@
 import {
   Children,
   createContext,
-  forwardRef,
   isValidElement,
   useCallback,
   useContext,
@@ -9,6 +8,7 @@ import {
   useState,
   type HTMLAttributes,
   type ReactNode,
+  type Ref,
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Copy, Check, WrapText, ChevronDown, ChevronUp } from 'lucide-react';
@@ -374,403 +374,381 @@ export interface CodeBlockProps extends HTMLAttributes<HTMLDivElement> {
   disableHighlighting?: boolean;
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
-  (
-    {
-      code,
-      language = 'typescript',
-      highlightedLines,
-      highlightWords = [],
-      showLineNumbers = true,
-      startLine = 1,
-      wrap: controlledWrap,
-      defaultWrap = false,
-      onWrapChange,
-      maxLines,
-      diff = {},
-      disableHighlighting = false,
-      sx,
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const isWrapControlled = controlledWrap !== undefined;
-    const [uncontrolledWrap, setUncontrolledWrap] = useState(defaultWrap);
-    const wrap = isWrapControlled ? controlledWrap : uncontrolledWrap;
+export function CodeBlock({
+  code,
+  language = 'typescript',
+  highlightedLines,
+  highlightWords = [],
+  showLineNumbers = true,
+  startLine = 1,
+  wrap: controlledWrap,
+  defaultWrap = false,
+  onWrapChange,
+  maxLines,
+  diff = {},
+  disableHighlighting = false,
+  sx,
+  className,
+  ref,
+  children,
+  ...props
+}: CodeBlockProps) {
+  const isWrapControlled = controlledWrap !== undefined;
+  const [uncontrolledWrap, setUncontrolledWrap] = useState(defaultWrap);
+  const wrap = isWrapControlled ? controlledWrap : uncontrolledWrap;
 
-    const [isExpanded, setIsExpanded] = useState(false);
-    const [isCopied, setIsCopied] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
-    const toggleWrap = useCallback(() => {
-      const nextWrap = !wrap;
-      if (!isWrapControlled) {
-        setUncontrolledWrap(nextWrap);
-      }
-      onWrapChange?.(nextWrap);
-    }, [wrap, isWrapControlled, onWrapChange]);
+  const toggleWrap = useCallback(() => {
+    const nextWrap = !wrap;
+    if (!isWrapControlled) {
+      setUncontrolledWrap(nextWrap);
+    }
+    onWrapChange?.(nextWrap);
+  }, [wrap, isWrapControlled, onWrapChange]);
 
-    const toggleExpand = useCallback(() => {
-      setIsExpanded((prev) => !prev);
-    }, []);
+  const toggleExpand = useCallback(() => {
+    setIsExpanded((prev) => !prev);
+  }, []);
 
-    const copy = useCallback(async () => {
-      if (typeof navigator !== 'undefined' && navigator.clipboard) {
-        await navigator.clipboard.writeText(code);
-        setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
-      }
-    }, [code]);
+  const copy = useCallback(async () => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      await navigator.clipboard.writeText(code);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    }
+  }, [code]);
 
-    const lines = useMemo(() => code.split('\n'), [code]);
-    const lineCount = lines.length;
-    const isCollapsible = typeof maxLines === 'number' && lineCount > maxLines;
-    const highlightedLinesSet = useMemo(
-      () => parseHighlightedLines(highlightedLines),
-      [highlightedLines],
-    );
+  const lines = useMemo(() => code.split('\n'), [code]);
+  const lineCount = lines.length;
+  const isCollapsible = typeof maxLines === 'number' && lineCount > maxLines;
+  const highlightedLinesSet = useMemo(
+    () => parseHighlightedLines(highlightedLines),
+    [highlightedLines],
+  );
 
-    const contextValue: CodeBlockContextValue = {
-      code,
-      language,
-      wrap,
-      toggleWrap,
-      isExpanded,
-      toggleExpand,
-      isCopied,
-      copy,
-      lineCount,
-      highlightedLinesSet,
-      highlightWords,
-      showLineNumbers,
-      startLine,
-      diff,
-      maxLines,
-      isCollapsible,
-      disableHighlighting,
-    };
+  const contextValue: CodeBlockContextValue = {
+    code,
+    language,
+    wrap,
+    toggleWrap,
+    isExpanded,
+    toggleExpand,
+    isCopied,
+    copy,
+    lineCount,
+    highlightedLinesSet,
+    highlightWords,
+    showLineNumbers,
+    startLine,
+    diff,
+    maxLines,
+    isCollapsible,
+    disableHighlighting,
+  };
 
-    // Check if children already contains CodeBlockContent
-    let hasExplicitContent = false;
-    Children.forEach(children, (child) => {
-      if (isValidElement(child) && (child.type as any)?.displayName === 'CodeBlockContent') {
-        hasExplicitContent = true;
-      }
-    });
+  // Check if children already contains CodeBlockContent
+  let hasExplicitContent = false;
+  Children.forEach(children, (child) => {
+    if (isValidElement(child) && child.type === CodeBlockContent) {
+      hasExplicitContent = true;
+    }
+  });
 
-    const sxProps = stylex.props(styles.root, sx);
+  const sxProps = stylex.props(styles.root, sx);
 
-    return (
-      <CodeBlockContext.Provider value={contextValue}>
-        <Box
-          ref={ref}
-          data-slot="code-block"
-          data-language={language}
-          data-wrapped={wrap ? 'true' : 'false'}
-          data-collapsible={isCollapsible ? 'true' : 'false'}
-          data-expanded={isExpanded ? 'true' : 'false'}
-          className={cn(sxProps.className, className)}
-          style={sxProps.style}
-          {...props}
-        >
-          {children}
-          {!hasExplicitContent && <CodeBlockContent />}
-          {isCollapsible && <CodeBlockExpandButton />}
-        </Box>
-      </CodeBlockContext.Provider>
-    );
-  },
-);
-
-CodeBlock.displayName = 'CodeBlock';
-
-export interface CodeBlockHeaderProps extends HTMLAttributes<HTMLDivElement> {
-  sx?: stylex.StyleXStyles;
-  children?: ReactNode;
-}
-
-export const CodeBlockHeader = forwardRef<HTMLDivElement, CodeBlockHeaderProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const sxProps = stylex.props(styles.header, sx);
-
-    return (
+  return (
+    <CodeBlockContext.Provider value={contextValue}>
       <Box
         ref={ref}
-        data-slot="code-block-header"
+        data-slot="code-block"
+        data-language={language}
+        data-wrapped={wrap ? 'true' : 'false'}
+        data-collapsible={isCollapsible ? 'true' : 'false'}
+        data-expanded={isExpanded ? 'true' : 'false'}
         className={cn(sxProps.className, className)}
         style={sxProps.style}
         {...props}
       >
         {children}
+        {!hasExplicitContent && <CodeBlockContent />}
+        {isCollapsible && <CodeBlockExpandButton />}
       </Box>
-    );
-  },
-);
+    </CodeBlockContext.Provider>
+  );
+}
 
-CodeBlockHeader.displayName = 'CodeBlockHeader';
+export interface CodeBlockHeaderProps extends HTMLAttributes<HTMLDivElement> {
+  sx?: stylex.StyleXStyles;
+  children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
+}
+
+export function CodeBlockHeader({ sx, className, children, ref, ...props }: CodeBlockHeaderProps) {
+  const sxProps = stylex.props(styles.header, sx);
+
+  return (
+    <Box
+      ref={ref}
+      data-slot="code-block-header"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+}
 
 export interface CodeBlockTitleProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const CodeBlockTitle = forwardRef<HTMLDivElement, CodeBlockTitleProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const sxProps = stylex.props(styles.title, sx);
+export function CodeBlockTitle({ sx, className, children, ref, ...props }: CodeBlockTitleProps) {
+  const sxProps = stylex.props(styles.title, sx);
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="code-block-title"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        {typeof children === 'string' ? (
-          <Text size="sm" weight="medium">
-            {children}
-          </Text>
-        ) : (
-          children
-        )}
-      </Box>
-    );
-  },
-);
-
-CodeBlockTitle.displayName = 'CodeBlockTitle';
+  return (
+    <Box
+      ref={ref}
+      data-slot="code-block-title"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      {typeof children === 'string' ? (
+        <Text size="sm" weight="medium">
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
+    </Box>
+  );
+}
 
 export interface CodeBlockLanguageProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
   children?: ReactNode;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const CodeBlockLanguage = forwardRef<HTMLDivElement, CodeBlockLanguageProps>(
-  ({ sx, className, children, ...props }, ref) => {
-    const { language } = useCodeBlock();
-    const sxProps = stylex.props(styles.languageBadge, sx);
+export function CodeBlockLanguage({
+  sx,
+  className,
+  children,
+  ref,
+  ...props
+}: CodeBlockLanguageProps) {
+  const { language } = useCodeBlock();
+  const sxProps = stylex.props(styles.languageBadge, sx);
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="code-block-language"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        {children || language}
-      </Box>
-    );
-  },
-);
-
-CodeBlockLanguage.displayName = 'CodeBlockLanguage';
+  return (
+    <Box
+      ref={ref}
+      data-slot="code-block-language"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      {children || language}
+    </Box>
+  );
+}
 
 export interface CodeBlockCopyButtonProps extends Omit<ButtonProps, 'onClick'> {
   copyLabel?: string;
   copiedLabel?: string;
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLButtonElement>;
 }
 
-export const CodeBlockCopyButton = forwardRef<HTMLButtonElement, CodeBlockCopyButtonProps>(
-  (
-    {
-      variant = 'ghost',
-      size = 'icon-sm',
-      copyLabel = 'Copy code',
-      copiedLabel = 'Copied!',
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const { isCopied, copy } = useCodeBlock();
+export function CodeBlockCopyButton({
+  variant = 'ghost',
+  size = 'icon-sm',
+  copyLabel = 'Copy code',
+  copiedLabel = 'Copied!',
+  children,
+  ref,
+  ...props
+}: CodeBlockCopyButtonProps) {
+  const { isCopied, copy } = useCodeBlock();
 
-    return (
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        onClick={copy}
-        data-slot="code-block-copy"
-        data-copied={isCopied ? 'true' : 'false'}
-        aria-label={isCopied ? copiedLabel : copyLabel}
-        {...props}
-      >
-        {children ||
-          (isCopied ? (
-            <Check size={14} color="var(--color-success, #16a34a)" />
-          ) : (
-            <Copy size={14} />
-          ))}
-      </Button>
-    );
-  },
-);
-
-CodeBlockCopyButton.displayName = 'CodeBlockCopyButton';
+  return (
+    <Button
+      ref={ref}
+      variant={variant}
+      size={size}
+      onClick={copy}
+      data-slot="code-block-copy"
+      data-copied={isCopied ? 'true' : 'false'}
+      aria-label={isCopied ? copiedLabel : copyLabel}
+      {...props}
+    >
+      {children ||
+        (isCopied ? <Check size={14} color="var(--color-success, #16a34a)" /> : <Copy size={14} />)}
+    </Button>
+  );
+}
 
 export interface CodeBlockWrapButtonProps extends Omit<ButtonProps, 'onClick'> {
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLButtonElement>;
 }
 
-export const CodeBlockWrapButton = forwardRef<HTMLButtonElement, CodeBlockWrapButtonProps>(
-  ({ variant = 'ghost', size = 'icon-sm', children, ...props }, ref) => {
-    const { wrap, toggleWrap } = useCodeBlock();
+export function CodeBlockWrapButton({
+  variant = 'ghost',
+  size = 'icon-sm',
+  children,
+  ref,
+  ...props
+}: CodeBlockWrapButtonProps) {
+  const { wrap, toggleWrap } = useCodeBlock();
 
-    return (
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        onClick={toggleWrap}
-        data-slot="code-block-wrap-toggle"
-        data-wrapped={wrap ? 'true' : 'false'}
-        aria-label="Toggle line wrapping"
-        {...props}
-      >
-        {children || <WrapText size={14} />}
-      </Button>
-    );
-  },
-);
-
-CodeBlockWrapButton.displayName = 'CodeBlockWrapButton';
+  return (
+    <Button
+      ref={ref}
+      variant={variant}
+      size={size}
+      onClick={toggleWrap}
+      data-slot="code-block-wrap-toggle"
+      data-wrapped={wrap ? 'true' : 'false'}
+      aria-label="Toggle line wrapping"
+      {...props}
+    >
+      {children || <WrapText size={14} />}
+    </Button>
+  );
+}
 
 export interface CodeBlockExpandButtonProps extends Omit<ButtonProps, 'onClick'> {
   expandLabel?: string;
   collapseLabel?: string;
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLButtonElement>;
 }
 
-export const CodeBlockExpandButton = forwardRef<HTMLButtonElement, CodeBlockExpandButtonProps>(
-  (
-    {
-      variant = 'ghost',
-      size = 'sm',
-      expandLabel = 'Show more lines',
-      collapseLabel = 'Show less',
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const { isExpanded, toggleExpand } = useCodeBlock();
+export function CodeBlockExpandButton({
+  variant = 'ghost',
+  size = 'sm',
+  expandLabel = 'Show more lines',
+  collapseLabel = 'Show less',
+  children,
+  ref,
+  ...props
+}: CodeBlockExpandButtonProps) {
+  const { isExpanded, toggleExpand } = useCodeBlock();
 
-    return (
-      <Box sx={styles.expandBar}>
-        <Button
-          ref={ref}
-          variant={variant}
-          size={size}
-          onClick={toggleExpand}
-          data-slot="code-block-expand"
-          data-expanded={isExpanded ? 'true' : 'false'}
-          {...props}
-        >
-          {children || (
-            <HStack gap="xxs">
-              <Text size="xs">{isExpanded ? collapseLabel : expandLabel}</Text>
-              {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-            </HStack>
-          )}
-        </Button>
-      </Box>
-    );
-  },
-);
-
-CodeBlockExpandButton.displayName = 'CodeBlockExpandButton';
+  return (
+    <Box sx={styles.expandBar}>
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        onClick={toggleExpand}
+        data-slot="code-block-expand"
+        data-expanded={isExpanded ? 'true' : 'false'}
+        {...props}
+      >
+        {children || (
+          <HStack gap="xxs">
+            <Text size="xs">{isExpanded ? collapseLabel : expandLabel}</Text>
+            {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </HStack>
+        )}
+      </Button>
+    </Box>
+  );
+}
 
 export interface CodeBlockContentProps extends HTMLAttributes<HTMLDivElement> {
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const CodeBlockContent = forwardRef<HTMLDivElement, CodeBlockContentProps>(
-  ({ sx, className, ...props }, ref) => {
-    const {
-      code,
-      wrap,
-      isExpanded,
-      maxLines,
-      isCollapsible,
-      showLineNumbers,
-      startLine,
-      highlightedLinesSet,
-      highlightWords,
-      diff,
-      disableHighlighting,
-    } = useCodeBlock();
+export function CodeBlockContent({ sx, className, ref, ...props }: CodeBlockContentProps) {
+  const {
+    code,
+    wrap,
+    isExpanded,
+    maxLines,
+    isCollapsible,
+    showLineNumbers,
+    startLine,
+    highlightedLinesSet,
+    highlightWords,
+    diff,
+    disableHighlighting,
+  } = useCodeBlock();
 
-    const rawLines = useMemo(() => code.split('\n'), [code]);
-    const displayLines = isCollapsible && !isExpanded ? rawLines.slice(0, maxLines) : rawLines;
+  const rawLines = useMemo(() => code.split('\n'), [code]);
+  const displayLines = isCollapsible && !isExpanded ? rawLines.slice(0, maxLines) : rawLines;
 
-    const sxProps = stylex.props(styles.content, wrap && styles.contentWrapped, sx);
+  const sxProps = stylex.props(styles.content, wrap && styles.contentWrapped, sx);
 
-    return (
-      <Box
-        ref={ref}
-        data-slot="code-block-content"
-        className={cn(sxProps.className, className)}
-        style={sxProps.style}
-        {...props}
-      >
-        <Box as="pre" sx={styles.codeSurface}>
-          {displayLines.map((lineText, idx) => {
-            const lineNum = startLine + idx;
-            const isHighlighted = highlightedLinesSet.has(lineNum);
-            const lineDiff = diff[lineNum];
-            const isAdded = lineDiff?.added;
-            const isRemoved = lineDiff?.removed;
+  return (
+    <Box
+      ref={ref}
+      data-slot="code-block-content"
+      className={cn(sxProps.className, className)}
+      style={sxProps.style}
+      {...props}
+    >
+      <Box as="pre" sx={styles.codeSurface}>
+        {displayLines.map((lineText, idx) => {
+          const lineNum = startLine + idx;
+          const isHighlighted = highlightedLinesSet.has(lineNum);
+          const lineDiff = diff[lineNum];
+          const isAdded = lineDiff?.added;
+          const isRemoved = lineDiff?.removed;
 
-            return (
-              <Box
-                key={idx}
-                data-slot="code-block-line"
-                data-line-number={lineNum}
-                data-highlighted={isHighlighted ? 'true' : undefined}
-                data-diff={isAdded ? 'added' : isRemoved ? 'removed' : undefined}
-                sx={[
-                  styles.line,
-                  isHighlighted && styles.lineHighlighted,
-                  isAdded && styles.lineAdded,
-                  isRemoved && styles.lineRemoved,
-                ]}
-              >
-                {showLineNumbers && (
-                  <Box data-slot="code-block-gutter" sx={styles.gutter} aria-hidden="true">
-                    {lineNum}
-                  </Box>
-                )}
-
-                {/* Diff sign if diffs are present */}
-                {Object.keys(diff).length > 0 && (
-                  <Box
-                    data-slot="code-block-diff-sign"
-                    sx={[
-                      styles.gutterDiffSign,
-                      isAdded && styles.gutterDiffAdded,
-                      isRemoved && styles.gutterDiffRemoved,
-                    ]}
-                    aria-hidden="true"
-                  >
-                    {isAdded ? '+' : isRemoved ? '-' : ' '}
-                  </Box>
-                )}
-
-                <Box data-slot="code-block-line-content" sx={styles.lineContent}>
-                  {renderHighlightedTokens(lineText, highlightWords, disableHighlighting)}
+          return (
+            <Box
+              key={idx}
+              data-slot="code-block-line"
+              data-line-number={lineNum}
+              data-highlighted={isHighlighted ? 'true' : undefined}
+              data-diff={isAdded ? 'added' : isRemoved ? 'removed' : undefined}
+              sx={[
+                styles.line,
+                isHighlighted && styles.lineHighlighted,
+                isAdded && styles.lineAdded,
+                isRemoved && styles.lineRemoved,
+              ]}
+            >
+              {showLineNumbers && (
+                <Box data-slot="code-block-gutter" sx={styles.gutter} aria-hidden="true">
+                  {lineNum}
                 </Box>
-              </Box>
-            );
-          })}
-        </Box>
-      </Box>
-    );
-  },
-);
+              )}
 
-CodeBlockContent.displayName = 'CodeBlockContent';
+              {/* Diff sign if diffs are present */}
+              {Object.keys(diff).length > 0 && (
+                <Box
+                  data-slot="code-block-diff-sign"
+                  sx={[
+                    styles.gutterDiffSign,
+                    isAdded && styles.gutterDiffAdded,
+                    isRemoved && styles.gutterDiffRemoved,
+                  ]}
+                  aria-hidden="true"
+                >
+                  {isAdded ? '+' : isRemoved ? '-' : ' '}
+                </Box>
+              )}
+
+              <Box data-slot="code-block-line-content" sx={styles.lineContent}>
+                {renderHighlightedTokens(lineText, highlightWords, disableHighlighting)}
+              </Box>
+            </Box>
+          );
+        })}
+      </Box>
+    </Box>
+  );
+}

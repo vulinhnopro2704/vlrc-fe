@@ -76,6 +76,15 @@ export default defineConfig({
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',
+        assetFileNames: (assetInfo) => {
+          if (
+            assetInfo.name?.endsWith('.css') ||
+            (assetInfo as unknown as { names?: string[] }).names?.some((n) => n.endsWith('.css'))
+          ) {
+            return 'assets/stylex.css';
+          }
+          return 'assets/[name][extname]';
+        },
       },
     },
   },

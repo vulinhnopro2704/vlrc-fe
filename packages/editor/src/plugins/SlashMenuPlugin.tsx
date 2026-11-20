@@ -1,4 +1,5 @@
-import { useState, useMemo, useCallback, useEffect, type JSX, type ReactNode } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef, type JSX, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import {
   $getSelection,
@@ -16,6 +17,8 @@ import {
 } from '@lexical/list';
 import { $createCodeNode } from '@lexical/code';
 import { $setBlocksType } from '@lexical/selection';
+import { INSERT_TABLE_COMMAND } from '@lexical/table';
+import { INSERT_HORIZONTAL_RULE_COMMAND } from '@lexical/react/LexicalHorizontalRuleNode';
 import { create } from '@stylexjs/stylex';
 import {
   Heading1,
@@ -35,8 +38,6 @@ import {
   Video,
   Frame as FigmaIcon,
 } from 'lucide-react';
-import { INSERT_TABLE_COMMAND } from '@lexical/table';
-import { INSERT_HORIZONTAL_RULE_COMMAND } from '@lexical/react/LexicalHorizontalRuleNode';
 import { colors, radius, shadow, spacing } from '@vlrc-fe/components/theme/tokens.stylex';
 import { Box, VStack, Text } from '@vlrc-fe/components';
 import { $createCalloutNode } from '../nodes/CalloutNode';
@@ -48,13 +49,18 @@ import {
 import { $createImageNode } from '../nodes/ImageNode';
 import { $createYouTubeNode, $createFigmaNode } from '../nodes/EmbedNodes';
 import { InsertTableDialog } from './InsertTableDialog';
+import { InsertMediaDialog, type MediaType } from './InsertMediaDialog';
+
+const MENU_WIDTH = 280;
+const MENU_MAX_HEIGHT = 320;
+const VIEWPORT_PADDING = 12;
 
 const styles = create({
   menu: {
-    position: 'absolute',
-    zIndex: 50,
-    width: '260px',
-    maxHeight: '320px',
+    position: 'fixed',
+    zIndex: 9999,
+    width: `${MENU_WIDTH}px`,
+    maxHeight: `min(${MENU_MAX_HEIGHT}px, calc(100vh - 24px))`,
     overflowY: 'auto',
     borderRadius: radius.md,
     borderWidth: 1,
@@ -64,6 +70,13 @@ const styles = create({
     boxShadow: shadow.lg,
     padding: spacing['1'],
     boxSizing: 'border-box',
+    overscrollBehavior: 'contain',
+    scrollBehavior: 'smooth',
+  },
+  groupHeading: {
+    paddingInline: spacing.sm,
+    paddingBlock: spacing['1'],
+    userSelect: 'none',
   },
   item: {
     display: 'flex',
@@ -74,12 +87,17 @@ const styles = create({
     borderRadius: radius.sm,
     cursor: 'pointer',
     userSelect: 'none',
-    transitionProperty: 'background-color',
+    transitionProperty: 'background-color, color',
     transitionDuration: '100ms',
     borderWidth: 0,
     backgroundColor: 'transparent',
     width: '100%',
     textAlign: 'left',
+    outline: 'none',
+    boxSizing: 'border-box',
+    ':hover': {
+      backgroundColor: colors.surfaceSubtle,
+    },
   },
   itemSelected: {
     backgroundColor: colors.surfaceSubtle,
@@ -88,28 +106,36 @@ const styles = create({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '1.5rem',
-    height: '1.5rem',
+    width: '1.75rem',
+    height: '1.75rem',
     borderRadius: radius.sm,
     backgroundColor: colors.surfaceSubtle,
     color: colors.fgMuted,
     flexShrink: 0,
   },
+  empty: {
+    paddingInline: spacing.md,
+    paddingBlock: spacing.lg,
+    textAlign: 'center',
+  },
 });
 
-interface SlashOption {
+export interface SlashOption {
   title: string;
   description: string;
   icon: ReactNode;
-  actionId?: string;
+  category: 'basic' | 'media';
+  actionId?: 'table' | 'image' | 'youtube' | 'figma';
   onSelect: (editor: ReturnType<typeof useLexicalComposerContext>[0]) => void;
 }
 
 const SLASH_OPTIONS: SlashOption[] = [
+  // Basic blocks
   {
     title: 'Text',
-    description: 'Plain body text',
+    description: 'Plain body text paragraph',
     icon: <Type size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -123,6 +149,7 @@ const SLASH_OPTIONS: SlashOption[] = [
     title: 'Heading 1',
     description: 'Large section heading',
     icon: <Heading1 size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -136,6 +163,7 @@ const SLASH_OPTIONS: SlashOption[] = [
     title: 'Heading 2',
     description: 'Medium section heading',
     icon: <Heading2 size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -149,6 +177,7 @@ const SLASH_OPTIONS: SlashOption[] = [
     title: 'Heading 3',
     description: 'Small subsection heading',
     icon: <Heading3 size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -162,6 +191,7 @@ const SLASH_OPTIONS: SlashOption[] = [
     title: 'Bullet List',
     description: 'Simple unorganized list',
     icon: <List size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
     },
@@ -170,6 +200,7 @@ const SLASH_OPTIONS: SlashOption[] = [
     title: 'Numbered List',
     description: 'Ordered step-by-step list',
     icon: <ListOrdered size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
     },
@@ -178,6 +209,7 @@ const SLASH_OPTIONS: SlashOption[] = [
     title: 'To-do List',
     description: 'Interactive checklist with checkboxes',
     icon: <ListTodo size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, undefined);
     },
@@ -186,6 +218,7 @@ const SLASH_OPTIONS: SlashOption[] = [
     title: 'Quote',
     description: 'Indented block quote',
     icon: <Quote size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -197,8 +230,9 @@ const SLASH_OPTIONS: SlashOption[] = [
   },
   {
     title: 'Code Block',
-    description: 'Formatted syntax block',
+    description: 'Formatted syntax highlighting block',
     icon: <Code size={16} />,
+    category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -209,9 +243,21 @@ const SLASH_OPTIONS: SlashOption[] = [
     },
   },
   {
+    title: 'Divider',
+    description: 'Visual horizontal divider rule',
+    icon: <Minus size={16} />,
+    category: 'basic',
+    onSelect: (editor) => {
+      editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
+    },
+  },
+
+  // Media & embeds
+  {
     title: 'Callout',
-    description: 'Notion banner highlight block',
+    description: 'Notion highlight callout banner',
     icon: <Lightbulb size={16} />,
+    category: 'media',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -222,50 +268,26 @@ const SLASH_OPTIONS: SlashOption[] = [
     },
   },
   {
-    title: 'Divider',
-    description: 'Visual horizontal divider line',
-    icon: <Minus size={16} />,
-    onSelect: (editor) => {
-      editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
-    },
-  },
-  {
     title: 'Table',
-    description: 'Insert customizable table grid with rows and columns',
+    description: 'Insert customizable table with rows and columns',
     icon: <TableIcon size={16} />,
+    category: 'media',
     actionId: 'table',
     onSelect: () => {},
   },
   {
     title: 'Image',
-    description: 'Insert web image by URL',
+    description: 'Embed image from web URL with caption',
     icon: <ImageIcon size={16} />,
-    onSelect: (editor) => {
-      const url = window.prompt(
-        'Enter Image URL:',
-        'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80',
-      );
-      if (url) {
-        editor.update(() => {
-          const selection = $getSelection();
-          if ($isRangeSelection(selection)) {
-            selection.insertNodes([
-              $createImageNode({
-                src: url,
-                altText: 'Inserted Image',
-                showCaption: true,
-                caption: 'Visual graphic illustration',
-              }),
-            ]);
-          }
-        });
-      }
-    },
+    category: 'media',
+    actionId: 'image',
+    onSelect: () => {},
   },
   {
     title: 'Toggle / Collapsible',
-    description: 'Collapsible toggle container',
+    description: 'Collapsible accordion toggle container',
     icon: <FolderTree size={16} />,
+    category: 'media',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
@@ -283,38 +305,19 @@ const SLASH_OPTIONS: SlashOption[] = [
   },
   {
     title: 'YouTube Video',
-    description: 'Embed video player by YouTube ID',
+    description: 'Embed video player by YouTube ID or link',
     icon: <Video size={16} />,
-    onSelect: (editor) => {
-      const videoId = window.prompt('Enter YouTube Video ID (e.g. jNQXAC9IVRw):', 'jNQXAC9IVRw');
-      if (videoId) {
-        editor.update(() => {
-          const selection = $getSelection();
-          if ($isRangeSelection(selection)) {
-            selection.insertNodes([$createYouTubeNode(videoId)]);
-          }
-        });
-      }
-    },
+    category: 'media',
+    actionId: 'youtube',
+    onSelect: () => {},
   },
   {
     title: 'Figma Embed',
     description: 'Embed interactive Figma design preview',
     icon: <FigmaIcon size={16} />,
-    onSelect: (editor) => {
-      const figmaUrl = window.prompt(
-        'Enter Figma Document URL:',
-        'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File',
-      );
-      if (figmaUrl) {
-        editor.update(() => {
-          const selection = $getSelection();
-          if ($isRangeSelection(selection)) {
-            selection.insertNodes([$createFigmaNode(figmaUrl)]);
-          }
-        });
-      }
-    },
+    category: 'media',
+    actionId: 'figma',
+    onSelect: () => {},
   },
 ];
 
@@ -324,7 +327,14 @@ export function SlashMenuPlugin(): JSX.Element | null {
   const [position, setPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [query, setQuery] = useState('');
+
+  // Dialog states for rich embeds
   const [isTableDialogOpen, setIsTableDialogOpen] = useState(false);
+  const [mediaDialogType, setMediaDialogType] = useState<MediaType | null>(null);
+
+  // References for keyboard navigation and viewport anchoring
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const filteredOptions = useMemo(() => {
     if (!query) return SLASH_OPTIONS;
@@ -334,9 +344,21 @@ export function SlashMenuPlugin(): JSX.Element | null {
     );
   }, [query]);
 
+  // Scroll active item into view whenever selectedIndex changes
+  useEffect(() => {
+    if (!isOpen) return;
+    const activeItem = itemRefs.current[selectedIndex];
+    if (activeItem) {
+      activeItem.scrollIntoView({
+        block: 'nearest',
+        inline: 'nearest',
+      });
+    }
+  }, [selectedIndex, isOpen]);
+
   const selectOption = useCallback(
     (option: SlashOption) => {
-      // Remove slash and trigger option
+      // Remove the slash command trigger text from editor selection
       editor.update(() => {
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
@@ -350,17 +372,53 @@ export function SlashMenuPlugin(): JSX.Element | null {
           }
         }
       });
+
       if (option.actionId === 'table') {
         setIsTableDialogOpen(true);
+      } else if (
+        option.actionId === 'image' ||
+        option.actionId === 'youtube' ||
+        option.actionId === 'figma'
+      ) {
+        setMediaDialogType(option.actionId);
       } else {
         option.onSelect(editor);
       }
+
       setIsOpen(false);
       setQuery('');
     },
     [editor],
   );
 
+  // Calculate anchored viewport coordinates with auto-flip collision handling
+  const calculatePosition = useCallback(() => {
+    const domSelection = window.getSelection();
+    if (!domSelection || domSelection.rangeCount === 0) return null;
+
+    const range = domSelection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    if (rect.width === 0 && rect.height === 0 && rect.top === 0 && rect.left === 0) {
+      return null;
+    }
+
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const spaceAbove = rect.top;
+    const shouldFlip = spaceBelow < MENU_MAX_HEIGHT + VIEWPORT_PADDING && spaceAbove > spaceBelow;
+
+    const top = shouldFlip
+      ? Math.max(VIEWPORT_PADDING, rect.top - MENU_MAX_HEIGHT - 6)
+      : Math.min(window.innerHeight - MENU_MAX_HEIGHT - VIEWPORT_PADDING, rect.bottom + 6);
+
+    const left = Math.max(
+      VIEWPORT_PADDING,
+      Math.min(window.innerWidth - MENU_WIDTH - VIEWPORT_PADDING, rect.left),
+    );
+
+    return { top, left };
+  }, []);
+
+  // Listen for editor typing to detect "/" trigger and query
   useEffect(() => {
     return editor.registerUpdateListener(({ editorState }) => {
       editorState.read(() => {
@@ -382,14 +440,9 @@ export function SlashMenuPlugin(): JSX.Element | null {
           setQuery(rawQuery);
           setSelectedIndex(0);
 
-          const domSelection = window.getSelection();
-          if (domSelection && domSelection.rangeCount > 0) {
-            const range = domSelection.getRangeAt(0);
-            const rect = range.getBoundingClientRect();
-            setPosition({
-              top: rect.bottom + window.scrollY + 6,
-              left: Math.max(16, rect.left + window.scrollX),
-            });
+          const pos = calculatePosition();
+          if (pos) {
+            setPosition(pos);
             setIsOpen(true);
           }
         } else {
@@ -397,8 +450,39 @@ export function SlashMenuPlugin(): JSX.Element | null {
         }
       });
     });
-  }, [editor]);
+  }, [editor, calculatePosition]);
 
+  // Recalculate or dismiss on scroll/resize
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleWindowChange = () => {
+      const pos = calculatePosition();
+      if (pos) {
+        setPosition(pos);
+      } else {
+        setIsOpen(false);
+      }
+    };
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleWindowChange, { passive: true });
+    window.addEventListener('scroll', handleWindowChange, { passive: true, capture: true });
+    document.addEventListener('pointerdown', handlePointerDown);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowChange);
+      window.removeEventListener('scroll', handleWindowChange, { capture: true });
+      document.removeEventListener('pointerdown', handlePointerDown);
+    };
+  }, [isOpen, calculatePosition]);
+
+  // Keyboard navigation
   useEffect(() => {
     if (!isOpen) return;
 
@@ -413,6 +497,16 @@ export function SlashMenuPlugin(): JSX.Element | null {
         if (event.key === 'ArrowUp') {
           event.preventDefault();
           setSelectedIndex((prev) => (prev - 1 + filteredOptions.length) % filteredOptions.length);
+          return true;
+        }
+        if (event.key === 'Home') {
+          event.preventDefault();
+          setSelectedIndex(0);
+          return true;
+        }
+        if (event.key === 'End') {
+          event.preventDefault();
+          setSelectedIndex(filteredOptions.length - 1);
           return true;
         }
         if (event.key === 'Enter') {
@@ -434,47 +528,137 @@ export function SlashMenuPlugin(): JSX.Element | null {
     );
   }, [isOpen, filteredOptions, selectedIndex, selectOption, editor]);
 
+  // Group items by category for clean visual separation
+  const basicItems = useMemo(
+    () => filteredOptions.filter((opt) => opt.category === 'basic'),
+    [filteredOptions],
+  );
+  const mediaItems = useMemo(
+    () => filteredOptions.filter((opt) => opt.category === 'media'),
+    [filteredOptions],
+  );
+
   return (
     <>
-      {isOpen && filteredOptions.length > 0 && (
-        <Box
-          data-slot="slash-menu"
-          className="vlrc-slash-menu"
-          sx={styles.menu}
-          style={{ top: `${position.top}px`, left: `${position.left}px` }}
-        >
-          <VStack gap="xxs">
-            {filteredOptions.map((opt, idx) => {
-              const isSelected = idx === selectedIndex;
-              return (
-                <Box
-                  as="button"
-                  key={opt.title}
-                  type="button"
-                  data-slot="slash-menu-item"
-                  data-selected={isSelected ? 'true' : 'false'}
-                  className="vlrc-slash-menu-item"
-                  sx={[styles.item, isSelected && styles.itemSelected]}
-                  onClick={() => selectOption(opt)}
-                  onMouseEnter={() => setSelectedIndex(idx)}
-                >
-                  <Box className="vlrc-slash-menu-icon" sx={styles.iconBox} aria-hidden="true">
-                    {opt.icon}
-                  </Box>
-                  <VStack gap={0} style={{ flex: 1, minWidth: 0 }}>
-                    <Text size="sm" weight="medium">
-                      {opt.title}
-                    </Text>
-                    <Text size="xs" type="secondary">
-                      {opt.description}
-                    </Text>
-                  </VStack>
-                </Box>
-              );
-            })}
-          </VStack>
-        </Box>
-      )}
+      {isOpen &&
+        createPortal(
+          <Box
+            ref={menuRef}
+            data-slot="slash-menu"
+            className="vlrc-slash-menu"
+            sx={styles.menu}
+            style={{
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+              // Modern CSS Anchor Positioning (Baseline 2026)
+              positionArea: 'block-end span-inline-end',
+              positionTryFallbacks: 'flip-block, flip-inline',
+            }}
+          >
+            {filteredOptions.length === 0 ? (
+              <Box sx={styles.empty}>
+                <Text size="sm" type="secondary">
+                  No commands match &ldquo;{query}&rdquo;
+                </Text>
+              </Box>
+            ) : (
+              <VStack gap="xxs">
+                {basicItems.length > 0 && (
+                  <>
+                    <Box sx={styles.groupHeading}>
+                      <Text size="xs" weight="medium" type="secondary">
+                        Basic blocks
+                      </Text>
+                    </Box>
+                    {basicItems.map((opt) => {
+                      const overallIndex = filteredOptions.indexOf(opt);
+                      const isSelected = overallIndex === selectedIndex;
+                      return (
+                        <Box
+                          as="button"
+                          key={opt.title}
+                          ref={(el: HTMLButtonElement | null) => {
+                            itemRefs.current[overallIndex] = el;
+                          }}
+                          type="button"
+                          data-slot="slash-menu-item"
+                          data-selected={isSelected ? 'true' : 'false'}
+                          className="vlrc-slash-menu-item"
+                          sx={[styles.item, isSelected && styles.itemSelected]}
+                          onClick={() => selectOption(opt)}
+                          onMouseEnter={() => setSelectedIndex(overallIndex)}
+                        >
+                          <Box
+                            className="vlrc-slash-menu-icon"
+                            sx={styles.iconBox}
+                            aria-hidden="true"
+                          >
+                            {opt.icon}
+                          </Box>
+                          <VStack gap={0} style={{ flex: 1, minWidth: 0 }}>
+                            <Text size="sm" weight="medium">
+                              {opt.title}
+                            </Text>
+                            <Text size="xs" type="secondary">
+                              {opt.description}
+                            </Text>
+                          </VStack>
+                        </Box>
+                      );
+                    })}
+                  </>
+                )}
+
+                {mediaItems.length > 0 && (
+                  <>
+                    <Box sx={styles.groupHeading} style={{ marginTop: '0.25rem' }}>
+                      <Text size="xs" weight="medium" type="secondary">
+                        Media & embeds
+                      </Text>
+                    </Box>
+                    {mediaItems.map((opt) => {
+                      const overallIndex = filteredOptions.indexOf(opt);
+                      const isSelected = overallIndex === selectedIndex;
+                      return (
+                        <Box
+                          as="button"
+                          key={opt.title}
+                          ref={(el: HTMLButtonElement | null) => {
+                            itemRefs.current[overallIndex] = el;
+                          }}
+                          type="button"
+                          data-slot="slash-menu-item"
+                          data-selected={isSelected ? 'true' : 'false'}
+                          className="vlrc-slash-menu-item"
+                          sx={[styles.item, isSelected && styles.itemSelected]}
+                          onClick={() => selectOption(opt)}
+                          onMouseEnter={() => setSelectedIndex(overallIndex)}
+                        >
+                          <Box
+                            className="vlrc-slash-menu-icon"
+                            sx={styles.iconBox}
+                            aria-hidden="true"
+                          >
+                            {opt.icon}
+                          </Box>
+                          <VStack gap={0} style={{ flex: 1, minWidth: 0 }}>
+                            <Text size="sm" weight="medium">
+                              {opt.title}
+                            </Text>
+                            <Text size="xs" type="secondary">
+                              {opt.description}
+                            </Text>
+                          </VStack>
+                        </Box>
+                      );
+                    })}
+                  </>
+                )}
+              </VStack>
+            )}
+          </Box>,
+          document.body,
+        )}
 
       <InsertTableDialog
         open={isTableDialogOpen}
@@ -487,6 +671,40 @@ export function SlashMenuPlugin(): JSX.Element | null {
           });
         }}
       />
+
+      <InsertMediaDialog
+        open={mediaDialogType !== null}
+        type={mediaDialogType}
+        onOpenChange={(open) => {
+          if (!open) setMediaDialogType(null);
+        }}
+        onConfirm={({ type, url, caption }) => {
+          editor.update(() => {
+            const selection = $getSelection();
+            if ($isRangeSelection(selection)) {
+              if (type === 'image') {
+                selection.insertNodes([
+                  $createImageNode({
+                    src: url,
+                    altText: caption || 'Embedded Image',
+                    showCaption: Boolean(caption),
+                    caption: caption || '',
+                  }),
+                ]);
+              } else if (type === 'youtube') {
+                // Extract video id if full url is pasted
+                const ytMatch = url.match(/(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#&?]*)/);
+                const vid = ytMatch && ytMatch[1] ? ytMatch[1] : url;
+                selection.insertNodes([$createYouTubeNode(vid)]);
+              } else if (type === 'figma') {
+                selection.insertNodes([$createFigmaNode(url)]);
+              }
+            }
+          });
+        }}
+      />
     </>
   );
 }
+
+export default SlashMenuPlugin;

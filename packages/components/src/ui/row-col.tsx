@@ -1,11 +1,11 @@
 import {
   createContext,
-  forwardRef,
   useContext,
   useMemo,
   type CSSProperties,
   type ElementType,
   type HTMLAttributes,
+  type Ref,
 } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import * as stylex from '@stylexjs/stylex';
@@ -79,6 +79,7 @@ export interface RowProps extends HTMLAttributes<HTMLDivElement> {
    * Meta StyleX custom override styles.
    */
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLDivElement>;
 }
 
 export type ColSpanType = number | 'auto';
@@ -157,6 +158,7 @@ export interface ColProps extends HTMLAttributes<HTMLDivElement> {
    * Meta StyleX custom override styles.
    */
   sx?: stylex.StyleXStyles;
+  ref?: Ref<HTMLDivElement>;
 }
 
 // ============================================================================
@@ -382,22 +384,20 @@ function resolveRowGutter(
 // Row Component
 // ============================================================================
 
-export const Row = forwardRef<HTMLDivElement, RowProps>(function Row(
-  {
-    gutter = 0,
-    align = 'top',
-    justify = 'start',
-    wrap = true,
-    asChild = false,
-    as = 'div',
-    className,
-    style,
-    sx,
-    children,
-    ...props
-  },
+export function Row({
+  gutter = 0,
+  align = 'top',
+  justify = 'start',
+  wrap = true,
+  asChild = false,
+  as = 'div',
+  className,
+  style,
+  sx,
   ref,
-) {
+  children,
+  ...props
+}: RowProps) {
   const screens = useBreakpoint();
   const [gutterX, gutterY] = useMemo(() => resolveRowGutter(gutter, screens), [gutter, screens]);
 
@@ -443,38 +443,34 @@ export const Row = forwardRef<HTMLDivElement, RowProps>(function Row(
       </Comp>
     </RowContext.Provider>
   );
-});
-
-Row.displayName = 'Row';
+}
 
 // ============================================================================
 // Col Component
 // ============================================================================
 
-export const Col = forwardRef<HTMLDivElement, ColProps>(function Col(
-  {
-    span,
-    offset,
-    order,
-    pull,
-    push,
-    flex,
-    xs,
-    sm,
-    md,
-    lg,
-    xl,
-    xxl,
-    asChild = false,
-    as = 'div',
-    className,
-    style,
-    sx,
-    children,
-    ...props
-  },
+export function Col({
+  span,
+  offset,
+  order,
+  pull,
+  push,
+  flex,
+  xs,
+  sm,
+  md,
+  lg,
+  xl,
+  xxl,
+  asChild = false,
+  as = 'div',
+  className,
+  style,
+  sx,
   ref,
-) {
+  children,
+  ...props
+}: ColProps) {
   const screens = useBreakpoint();
 
   // Resolve responsive configuration based on active breakpoint
@@ -560,9 +556,7 @@ export const Col = forwardRef<HTMLDivElement, ColProps>(function Col(
       {children}
     </Comp>
   );
-});
-
-Col.displayName = 'Col';
+}
 
 /** Alias for Col */
 export const Column = Col;

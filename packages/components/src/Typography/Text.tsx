@@ -1,4 +1,4 @@
-import { forwardRef, useState, type ElementType } from 'react';
+import { useState, type ElementType } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
@@ -161,54 +161,52 @@ const typeStyles: Record<TextType, stylex.StyleXStyles> = {
   inherit: styles.typeInherit,
 };
 
-export const Text = forwardRef<HTMLElement, TextProps>(function Text(
-  {
-    type,
-    size = 'md',
-    weight = 'regular',
-    required,
-    strong,
-    italic,
-    underline,
-    delete: isDelete,
-    keyboard,
-    customSize,
-    lines,
-    rows,
-    lineHeight,
-    ellipsis,
-    tooltip,
-    textDecoration,
-    textDecorationLine,
-    textDecorationStyle,
-    textDecorationColor,
-    textDecorationThickness,
-    textUnderlineOffset,
-    color,
-    margin,
-    m,
-    marginTop,
-    mt,
-    marginBottom,
-    mb,
-    marginLeft,
-    ml,
-    marginRight,
-    mr,
-    marginInline,
-    mx,
-    marginBlock,
-    my,
-    letterSpacing,
-    copyable,
-    as,
-    className,
-    children,
-    sx,
-    ...props
-  }: TextProps,
+export function Text({
+  type,
+  size = 'md',
+  weight = 'regular',
+  required,
+  strong,
+  italic,
+  underline,
+  delete: isDelete,
+  keyboard,
+  customSize,
+  lines,
+  rows,
+  lineHeight,
+  ellipsis,
+  tooltip,
+  textDecoration,
+  textDecorationLine,
+  textDecorationStyle,
+  textDecorationColor,
+  textDecorationThickness,
+  textUnderlineOffset,
+  color,
+  margin,
+  m,
+  marginTop,
+  mt,
+  marginBottom,
+  mb,
+  marginLeft,
+  ml,
+  marginRight,
+  mr,
+  marginInline,
+  mx,
+  marginBlock,
+  my,
+  letterSpacing,
+  copyable,
+  as,
+  className,
+  children,
+  sx,
   ref,
-) {
+  ...props
+}: TextProps) {
   const [copied, setCopied] = useState(false);
 
   let defaultComponent = 'span';
@@ -320,6 +318,4 @@ export const Text = forwardRef<HTMLElement, TextProps>(function Text(
   );
 
   return renderWithTooltip(element, tooltipContent);
-});
-
-Text.displayName = 'Typography.Text';
+}

@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentProps, type MouseEvent as ReactMouseEvent } from 'react';
+import { type ComponentProps, type MouseEvent as ReactMouseEvent } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { Button, type ButtonProps } from './button';
@@ -271,41 +271,33 @@ export interface InputGroupInputProps extends ComponentProps<'input'> {
   sx?: stylex.StyleXStyles;
 }
 
-const InputGroupInput = forwardRef<HTMLInputElement, InputGroupInputProps>(
-  ({ className, sx, ...props }, ref) => {
-    const sxProps = stylex.props(styles.innerInput, sx);
-    return (
-      <input
-        ref={ref}
-        data-slot="input-group-control"
-        {...sxProps}
-        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-        {...props}
-      />
-    );
-  },
-);
-InputGroupInput.displayName = 'InputGroupInput';
+function InputGroupInput({ className, sx, ...props }: InputGroupInputProps) {
+  const sxProps = stylex.props(styles.innerInput, sx);
+  return (
+    <input
+      data-slot="input-group-control"
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+      {...props}
+    />
+  );
+}
 
 export interface InputGroupTextareaProps extends ComponentProps<'textarea'> {
   sx?: stylex.StyleXStyles;
 }
 
-const InputGroupTextarea = forwardRef<HTMLTextAreaElement, InputGroupTextareaProps>(
-  ({ className, sx, ...props }, ref) => {
-    const sxProps = stylex.props(styles.innerTextarea, sx);
-    return (
-      <textarea
-        ref={ref}
-        data-slot="input-group-control"
-        {...sxProps}
-        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-        {...props}
-      />
-    );
-  },
-);
-InputGroupTextarea.displayName = 'InputGroupTextarea';
+function InputGroupTextarea({ className, sx, ...props }: InputGroupTextareaProps) {
+  const sxProps = stylex.props(styles.innerTextarea, sx);
+  return (
+    <textarea
+      data-slot="input-group-control"
+      {...sxProps}
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+      {...props}
+    />
+  );
+}
 
 export {
   InputGroup,

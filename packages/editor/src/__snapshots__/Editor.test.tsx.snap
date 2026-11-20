@@ -6,12 +6,12 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
     class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
     data-readonly="false"
     data-slot="notion-editor"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base xeuugli ToolbarPlugin__styles.toolbar x78zum5 x6s0dn4 x1a02dak x1pe288y xbgekeq x39wta3 xso031l x1q0q8m5 xwvem2w xtrtlso x1ewf0uv xjfy4b8 x9f619 xnl6qn8 vlrc-editor-toolbar"
       data-slot="editor-toolbar"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:124"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:124"
     >
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -85,7 +85,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -130,7 +130,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -174,7 +174,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
       <div
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.fontSizeBox x78zum5 x6s0dn4 x195vfkc"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
       >
         <button
           aria-label="Decrease font size"
@@ -248,7 +248,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -427,7 +427,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -550,7 +550,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -615,7 +615,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -831,7 +831,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
     <div
       class="Box__styles.base x9f619 xeuugli"
       data-slot="box"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       style="position: relative; width: 100%; flex: 1 1 0%;"
     >
       <div
@@ -860,7 +860,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
           aria-hidden="true"
           class="Box__styles.base x9f619 xeuugli editorTheme__editorStyles.placeholder x10l6tqk xrn8dig xp3tpw0 x47corl xf3olrv x6u19be x11m8ghp x87ps6o vlrc-editor-placeholder"
           data-slot="box"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
         >
           Write your thoughts here...
         </div>
@@ -876,12 +876,12 @@ exports[`NotionEditor > UI > should match snapshot when readOnly 1`] = `
     class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
     data-readonly="true"
     data-slot="notion-editor"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base x9f619 xeuugli"
       data-slot="box"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       style="position: relative; width: 100%; flex: 1 1 0%;"
     >
       <div
@@ -913,7 +913,7 @@ exports[`NotionEditor > UI > should match snapshot when readOnly 1`] = `
           aria-hidden="true"
           class="Box__styles.base x9f619 xeuugli editorTheme__editorStyles.placeholder x10l6tqk xrn8dig xp3tpw0 x47corl xf3olrv x6u19be x11m8ghp x87ps6o vlrc-editor-placeholder"
           data-slot="box"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
         >
           Write your thoughts here...
         </div>
@@ -929,12 +929,12 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
     class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
     data-readonly="false"
     data-slot="notion-editor"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base xeuugli ToolbarPlugin__styles.toolbar x78zum5 x6s0dn4 x1a02dak x1pe288y xbgekeq x39wta3 xso031l x1q0q8m5 xwvem2w xtrtlso x1ewf0uv xjfy4b8 x9f619 xnl6qn8 vlrc-editor-toolbar"
       data-slot="editor-toolbar"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:124"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:124"
     >
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -1008,7 +1008,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -1053,7 +1053,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -1097,7 +1097,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
       <div
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.fontSizeBox x78zum5 x6s0dn4 x195vfkc"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
       >
         <button
           aria-label="Decrease font size"
@@ -1171,7 +1171,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -1350,7 +1350,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -1473,7 +1473,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <button
         aria-expanded="false"
@@ -1538,7 +1538,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -1754,7 +1754,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
     <div
       class="Box__styles.base x9f619 xeuugli"
       data-slot="box"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       style="position: relative; width: 100%; flex: 1 1 0%;"
     >
       <div
@@ -1799,12 +1799,12 @@ exports[`NotionEditor > UI > should match snapshot without toolbar 1`] = `
     class="Box__styles.base x9f619 xeuugli vlrc-editor-root editorTheme__editorStyles.root x1n2onr6 xh8yej3 x1ficeh5 x9f619 xea9gix xmkeg23 x1y0btm7 xkt7q0p x1qkgl7v x1l3s8jj x78zum5 xdt5ytf"
     data-readonly="false"
     data-slot="notion-editor"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base x9f619 xeuugli"
       data-slot="box"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       style="position: relative; width: 100%; flex: 1 1 0%;"
     >
       <div
@@ -1833,7 +1833,7 @@ exports[`NotionEditor > UI > should match snapshot without toolbar 1`] = `
           aria-hidden="true"
           class="Box__styles.base x9f619 xeuugli editorTheme__editorStyles.placeholder x10l6tqk xrn8dig xp3tpw0 x47corl xf3olrv x6u19be x11m8ghp x87ps6o vlrc-editor-placeholder"
           data-slot="box"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/theme/editorTheme.ts:29"
         >
           Write your thoughts here...
         </div>

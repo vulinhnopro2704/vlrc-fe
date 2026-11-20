@@ -6,12 +6,12 @@ exports[`SignaturePad > UI > should match snapshot in default empty state 1`] = 
     class="Box__styles.base x9f619 xeuugli signature-pad__styles.root x78zum5 xdt5ytf x1n2onr6 xh8yej3 x9f619 x1m5ztt4"
     data-empty="true"
     data-slot="signature-pad"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
       data-slot="signature-pad-area"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       tabindex="0"
     >
       <canvas
@@ -25,12 +25,12 @@ exports[`SignaturePad > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli signature-pad__styles.guide x10l6tqk x1xbu8f8 xcejyfz xss27dn xjm9jq1 xso031l xpvcztv xqhcqz8 x47corl x78zum5 x6s0dn4"
         data-slot="signature-pad-guide"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <div
           class="Box__styles.base x9f619 xeuugli signature-pad__styles.guideSign x10l6tqk xu96u03 xa17w4h x47corl"
           data-slot="signature-pad-guide-sign"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/signature-pad.tsx:145"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/signature-pad.tsx:145"
         >
           <span
             class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
@@ -47,7 +47,7 @@ exports[`SignaturePad > UI > should match snapshot in default empty state 1`] = 
       <div
         class="Box__styles.base x9f619 xeuugli signature-pad__styles.placeholder x10l6tqk xwa60dl x1nrll8i x11lhmoz x47corl x87ps6o"
         data-slot="signature-pad-placeholder"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <span
           class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
@@ -186,12 +186,12 @@ exports[`SignaturePad > UI > should match snapshot when disabled 1`] = `
     data-disabled="true"
     data-empty="true"
     data-slot="signature-pad"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
       data-slot="signature-pad-area"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       tabindex="-1"
     >
       <canvas
@@ -213,12 +213,12 @@ exports[`SignaturePad > UI > should match snapshot when readOnly 1`] = `
     data-empty="false"
     data-readonly="true"
     data-slot="signature-pad"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
       data-slot="signature-pad-area"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       tabindex="0"
     >
       <canvas
@@ -239,12 +239,12 @@ exports[`SignaturePad > UI > should match snapshot with defaultValue strokes pre
     class="Box__styles.base x9f619 xeuugli signature-pad__styles.root x78zum5 xdt5ytf x1n2onr6 xh8yej3 x9f619 x1m5ztt4"
     data-empty="false"
     data-slot="signature-pad"
-    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+    data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
   >
     <div
       class="Box__styles.base x9f619 xeuugli signature-pad__styles.areaWrapper x1n2onr6 xh8yej3 x1db3i3o x1m3v4wt xrijj7p xmkeg23 x1y0btm7 x1f1eyqo xqlt9m5 xb3r6kr x5ve5x3 x87ps6o x9f619"
       data-slot="signature-pad-area"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       tabindex="0"
     >
       <canvas
@@ -258,12 +258,12 @@ exports[`SignaturePad > UI > should match snapshot with defaultValue strokes pre
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli signature-pad__styles.guide x10l6tqk x1xbu8f8 xcejyfz xss27dn xjm9jq1 xso031l xpvcztv xqhcqz8 x47corl x78zum5 x6s0dn4"
         data-slot="signature-pad-guide"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6"
       >
         <div
           class="Box__styles.base x9f619 xeuugli signature-pad__styles.guideSign x10l6tqk xu96u03 xa17w4h x47corl"
           data-slot="signature-pad-guide-sign"
-          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:15; @vlrc-fe/components:src/ui/signature-pad.tsx:145"
+          data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/signature-pad.tsx:145"
         >
           <span
             class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"

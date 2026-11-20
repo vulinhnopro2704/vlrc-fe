@@ -7,7 +7,7 @@ exports[`Segmented > UI > should match snapshot in block mode 1`] = `
     class="flex__styles.base flex__styles.dirRow x1q0g3np flex__styles.alignCenter segmented__styles.root x6s0dn4 x78pyy4 x1ez7q3a x1qry0bl xw3nh4a x87ps6o x9f619 x1enigpx segmented__styles.block x78zum5 xh8yej3"
     data-direction="row"
     data-slot="segmented"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/segmented.tsx:15; @vlrc-fe/components:src/ui/segmented.tsx:26"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/segmented.tsx:15; @vlrc-fe/components:src/ui/segmented.tsx:26"
     role="radiogroup"
     tabindex="0"
   >
@@ -104,7 +104,7 @@ exports[`Segmented > UI > should match snapshot in default state 1`] = `
     data-direction="row"
     data-inline="true"
     data-slot="segmented"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/segmented.tsx:15"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:124; @vlrc-fe/components:src/ui/flex.tsx:128; @vlrc-fe/components:src/ui/flex.tsx:133; @vlrc-fe/components:src/ui/flex.tsx:140; @vlrc-fe/components:src/ui/segmented.tsx:15"
     role="radiogroup"
     tabindex="0"
   >

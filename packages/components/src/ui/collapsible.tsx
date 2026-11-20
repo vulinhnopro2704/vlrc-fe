@@ -1,5 +1,3 @@
-'use client';
-
 import {
   CollapsibleContent as CollapsiblePrimitiveCollapsibleContent,
   CollapsibleTrigger as CollapsiblePrimitiveCollapsibleTrigger,

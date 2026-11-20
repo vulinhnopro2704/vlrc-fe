@@ -33,6 +33,7 @@ const styles = stylex.create({
     animationName: fadeIn,
     animationDuration: '200ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    overscrollBehavior: 'contain',
   },
   content: {
     position: 'fixed',
@@ -55,6 +56,7 @@ const styles = stylex.create({
     animationName: scaleIn,
     animationDuration: '200ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    overscrollBehavior: 'contain',
   },
   closeButton: {
     position: 'absolute',
