@@ -148,6 +148,17 @@ const styles = stylex.create({
     justifyContent: 'center',
     color: colors.mutedForeground,
   },
+  srOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
 });
 
 const linkSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
@@ -329,14 +340,13 @@ function PaginationEllipsis({
 
   return (
     <span
-      aria-hidden="true"
       data-slot="pagination-ellipsis"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <MoreHorizontalIcon {...stylex.props(iconSize)} />
-      <Text as="span" className="sr-only">
+      <MoreHorizontalIcon aria-hidden="true" {...stylex.props(iconSize)} />
+      <Text as="span" sx={styles.srOnly}>
         More pages
       </Text>
     </span>

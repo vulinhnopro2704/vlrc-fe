@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius } from '../../theme/tokens.stylex';
+import { colors, radius, shadow } from '../../theme/tokens.stylex';
 import { ScrollArea } from '../../ui/scroll-area';
 import { Text } from '../../Typography';
 import type { DisabledTime, TimeConfig } from './types';
@@ -44,6 +44,9 @@ const styles = stylex.create({
     ':hover': {
       backgroundColor: colors.accent,
       color: colors.accentForeground,
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
     },
   },
   itemActive: {

@@ -3,7 +3,7 @@ import type { Locale } from 'date-fns';
 import * as stylex from '@stylexjs/stylex';
 
 import Icons from '../../Icons';
-import { colors } from '../../theme/tokens.stylex';
+import { colors, radius, shadow } from '../../theme/tokens.stylex';
 import { Button } from '../../ui/button';
 import { Text } from '../../Typography';
 import { resolveWidth, type ComponentWidth } from '../../theme/width';
@@ -44,9 +44,23 @@ const styles = stylex.create({
     gap: '0.25rem',
   },
   clearButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    padding: 0,
+    margin: 0,
     cursor: 'pointer',
+    color: colors.mutedForeground,
+    lineHeight: 1,
+    outline: 'none',
+    borderRadius: radius.sm,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     ':hover': {
       color: colors.destructive,
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
     },
   },
   icon: {
@@ -74,6 +88,9 @@ const styles = stylex.create({
 });
 
 export interface StandaloneDatePickerProps {
+  id?: string;
+  'aria-describedby'?: string;
+  'aria-invalid'?: boolean | 'true' | 'false';
   value?: Date;
   onChange?: (date: Date | undefined) => void;
   placeholder?: string;
@@ -98,6 +115,9 @@ export interface StandaloneDatePickerProps {
 }
 
 export function SingleDatePicker({
+  id,
+  'aria-describedby': ariaDescribedby,
+  'aria-invalid': ariaInvalid,
   value,
   onChange,
   placeholder = 'Select Date',
@@ -153,7 +173,7 @@ export function SingleDatePicker({
     onChange?.(newDate);
   };
 
-  const handleClear = (e: React.MouseEvent) => {
+  const handleClear = (e: React.SyntheticEvent) => {
     e.stopPropagation();
     onChange?.(undefined);
   };
@@ -263,6 +283,9 @@ export function SingleDatePicker({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          id={id}
+          aria-describedby={ariaDescribedby}
+          aria-invalid={ariaInvalid}
           variant="outline"
           size={resolvedSize}
           disabled={disabled}
@@ -287,9 +310,22 @@ export function SingleDatePicker({
           )}
           <div {...stylex.props(styles.rightControls)}>
             {allowClear && value && (
-              <Text as="span" onClick={handleClear} sx={styles.clearButton}>
+              <span
+                role="button"
+                tabIndex={0}
+                aria-label="Clear date"
+                onClick={handleClear}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleClear(e);
+                  }
+                }}
+                {...stylex.props(styles.clearButton)}
+              >
                 ×
-              </Text>
+              </span>
             )}
             {renderIcon()}
           </div>

@@ -152,16 +152,40 @@ function Carousel({
     api?.scrollNext();
   }, [api]);
 
+  const resolvedOrientation = orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal');
+
   const handleKeyDown = useCallback(
     (event: ReactKeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        scrollPrev();
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
+      const target = event.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (resolvedOrientation === 'vertical') {
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          scrollPrev();
+        } else if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          scrollNext();
+        }
+      } else {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          scrollPrev();
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          scrollNext();
+        }
       }
     },
-    [scrollPrev],
+    [scrollPrev, scrollNext, resolvedOrientation],
   );
 
   useEffect(() => {
@@ -188,7 +212,7 @@ function Carousel({
         carouselRef,
         api: api,
         opts,
-        orientation: orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
+        orientation: resolvedOrientation,
         scrollPrev,
         scrollNext,
         canScrollPrev,

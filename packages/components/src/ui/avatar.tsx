@@ -15,7 +15,7 @@ import {
   Root as AvatarPrimitiveRoot,
 } from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
@@ -112,6 +112,15 @@ const styles = stylex.create({
   overflowTrigger: {
     display: 'inline-flex',
     cursor: 'pointer',
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    padding: 0,
+    margin: 0,
+    borderRadius: radius.full,
+    outline: 'none',
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+    },
   },
   overflowPopoverContent: {
     width: 'auto',
@@ -249,7 +258,9 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
         {overflowCount > 0 && (
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
-              <div
+              <button
+                type="button"
+                aria-label={`+${overflowCount} more members`}
                 {...stylex.props(styles.overflowTrigger)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -257,7 +268,7 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
                 <Avatar size={size} data-slot="avatar-group-overflow">
                   <AvatarFallback sx={styles.overflowFallback}>+{overflowCount}</AvatarFallback>
                 </Avatar>
-              </div>
+              </button>
             </PopoverTrigger>
             <PopoverContent
               side="top"

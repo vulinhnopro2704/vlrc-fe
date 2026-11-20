@@ -1,6 +1,6 @@
 import { type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { spacing } from '../theme/tokens.stylex';
+import { spacing, radius, shadow } from '../theme/tokens.stylex';
 import { Badge } from './badge';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
@@ -10,6 +10,19 @@ const styles = stylex.create({
     alignItems: 'center',
     flexWrap: 'wrap',
     gap: spacing.xs,
+  },
+  overflowTriggerButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    padding: 0,
+    margin: 0,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    outline: 'none',
+    borderRadius: radius.full,
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+    },
   },
   overflowBadge: {
     cursor: 'pointer',
@@ -79,9 +92,16 @@ function BadgeOverflow<T = string>({
         ) : showPopover ? (
           <Popover>
             <PopoverTrigger asChild>
-              <Badge variant="outline" data-slot="badge-overflow-trigger" sx={styles.overflowBadge}>
-                +{hiddenCount}
-              </Badge>
+              <button
+                type="button"
+                data-slot="badge-overflow-trigger"
+                aria-label={`+${hiddenCount} more items`}
+                {...stylex.props(styles.overflowTriggerButton)}
+              >
+                <Badge variant="outline" sx={styles.overflowBadge}>
+                  +{hiddenCount}
+                </Badge>
+              </button>
             </PopoverTrigger>
             <PopoverContent align="start" sideOffset={4}>
               <div

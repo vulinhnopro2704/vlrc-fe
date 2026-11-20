@@ -351,7 +351,7 @@ export type FileUploadStore = {
   subscribe: (listener: () => void) => () => void;
 };
 
-function createStore(
+export function createStore(
   listeners: Set<() => void>,
   files: Map<File, FileState>,
   urlCache: WeakMap<File, string>,
@@ -367,70 +367,67 @@ function createStore(
   function reducer(state: StoreState, action: StoreAction): StoreState {
     switch (action.type) {
       case 'ADD_FILES': {
+        const nextFiles = new Map(state.files);
         for (const file of action.files) {
-          files.set(file, {
+          nextFiles.set(file, {
             file,
             progress: 0,
             status: 'idle',
           });
         }
         if (onValueChange) {
-          const fileList = Array.from(files.values()).map((fileState) => fileState.file);
+          const fileList = Array.from(nextFiles.values()).map((fileState) => fileState.file);
           onValueChange(fileList);
         }
-        return { ...state, files };
+        return { ...state, files: nextFiles };
       }
       case 'SET_FILES': {
-        const newFileSet = new Set(action.files);
-        for (const existingFile of files.keys()) {
-          if (!newFileSet.has(existingFile)) {
-            files.delete(existingFile);
-          }
-        }
+        const nextFiles = new Map();
         for (const file of action.files) {
-          const existingState = files.get(file);
-          if (!existingState) {
-            files.set(file, {
+          const existingState = state.files.get(file);
+          nextFiles.set(
+            file,
+            existingState ?? {
               file,
               progress: 0,
               status: 'idle',
-            });
-          }
+            },
+          );
         }
-        return { ...state, files };
+        return { ...state, files: nextFiles };
       }
       case 'SET_PROGRESS': {
-        const fileState = files.get(action.file);
-        if (fileState) {
-          files.set(action.file, {
-            ...fileState,
-            progress: action.progress,
-            status: 'uploading',
-          });
-        }
-        return { ...state, files };
+        const fileState = state.files.get(action.file);
+        if (!fileState) return state;
+        const nextFiles = new Map(state.files);
+        nextFiles.set(action.file, {
+          ...fileState,
+          progress: action.progress,
+          status: 'uploading',
+        });
+        return { ...state, files: nextFiles };
       }
       case 'SET_SUCCESS': {
-        const fileState = files.get(action.file);
-        if (fileState) {
-          files.set(action.file, {
-            ...fileState,
-            progress: 100,
-            status: 'success',
-          });
-        }
-        return { ...state, files };
+        const fileState = state.files.get(action.file);
+        if (!fileState) return state;
+        const nextFiles = new Map(state.files);
+        nextFiles.set(action.file, {
+          ...fileState,
+          progress: 100,
+          status: 'success',
+        });
+        return { ...state, files: nextFiles };
       }
       case 'SET_ERROR': {
-        const fileState = files.get(action.file);
-        if (fileState) {
-          files.set(action.file, {
-            ...fileState,
-            error: action.error,
-            status: 'error',
-          });
-        }
-        return { ...state, files };
+        const fileState = state.files.get(action.file);
+        if (!fileState) return state;
+        const nextFiles = new Map(state.files);
+        nextFiles.set(action.file, {
+          ...fileState,
+          error: action.error,
+          status: 'error',
+        });
+        return { ...state, files: nextFiles };
       }
       case 'REMOVE_FILE': {
         if (urlCache) {
@@ -440,12 +437,13 @@ function createStore(
             urlCache.delete(action.file);
           }
         }
-        files.delete(action.file);
+        const nextFiles = new Map(state.files);
+        nextFiles.delete(action.file);
         if (onValueChange) {
-          const fileList = Array.from(files.values()).map((fileState) => fileState.file);
+          const fileList = Array.from(nextFiles.values()).map((fileState) => fileState.file);
           onValueChange(fileList);
         }
-        return { ...state, files };
+        return { ...state, files: nextFiles };
       }
       case 'SET_DRAG_OVER': {
         return { ...state, dragOver: action.dragOver };
@@ -454,8 +452,8 @@ function createStore(
         return { ...state, invalid: action.invalid };
       }
       case 'CLEAR': {
-        for (const file of files.keys()) {
-          if (urlCache) {
+        if (urlCache) {
+          for (const file of state.files.keys()) {
             const cachedUrl = urlCache.get(file);
             if (cachedUrl) {
               URL.revokeObjectURL(cachedUrl);
@@ -463,11 +461,10 @@ function createStore(
             }
           }
         }
-        files.clear();
         if (onValueChange) {
           onValueChange([]);
         }
-        return { ...state, files };
+        return { ...state, files: new Map() };
       }
       default:
         return state;

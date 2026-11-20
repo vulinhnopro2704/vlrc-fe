@@ -431,7 +431,10 @@ function StepperTrigger({
 
     if (targetIndex !== null && stepKeys[targetIndex]) {
       e.preventDefault();
-      await setValue(stepKeys[targetIndex]);
+      const nextKey = stepKeys[targetIndex];
+      await setValue(nextKey);
+      const nextButton = document.getElementById(`stepper-tab-${nextKey}`);
+      nextButton?.focus();
     }
   };
 
@@ -441,7 +444,10 @@ function StepperTrigger({
     <button
       type="button"
       role="tab"
+      id={props.id ?? `stepper-tab-${value}`}
+      aria-controls={`stepper-panel-${value}`}
       aria-selected={status === 'active'}
+      tabIndex={status === 'active' ? 0 : -1}
       data-slot="stepper-trigger"
       data-status={status}
       disabled={disabled}
@@ -600,8 +606,9 @@ function StepperContent({
   ...props
 }: StepperContentProps) {
   const { value } = useStepperContext('StepperContent');
+  const isHidden = value !== contentValue;
 
-  if (value !== contentValue && !forceMount) {
+  if (isHidden && !forceMount) {
     return null;
   }
 
@@ -610,6 +617,9 @@ function StepperContent({
   return (
     <div
       role="tabpanel"
+      id={props.id ?? `stepper-panel-${contentValue}`}
+      aria-labelledby={`stepper-tab-${contentValue}`}
+      hidden={isHidden}
       data-slot="stepper-content"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}

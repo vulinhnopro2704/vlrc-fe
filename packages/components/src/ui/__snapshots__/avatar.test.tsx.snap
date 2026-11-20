@@ -51,10 +51,11 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
         EF
       </span>
     </span>
-    <div
+    <button
       aria-expanded="false"
       aria-haspopup="dialog"
-      class="avatar__styles.overflowTrigger x3nfvp2 x1ypdohk"
+      aria-label="+2 more members"
+      class="avatar__styles.overflowTrigger x3nfvp2 x1ypdohk xjbqb8w xc342km x1717udv x1ghz6dp x9psvww x1a2a7pz x13nj1q9"
       data-slot="popover-trigger"
       data-state="closed"
       data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:112"
@@ -74,7 +75,7 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
           +2
         </span>
       </span>
-    </div>
+    </button>
   </div>
 </DocumentFragment>
 `;
