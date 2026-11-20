@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.6] - 2026-11-20
+
+### Patch Changes
+
+- **ConfirmModal & Modal Prop Compatibility**:
+  - Restored backward-compatible prop aliases (`onClose`, `isOpen`, `onOk`, `variant`, `loading`, `message`) on `Modal` and `ConfirmModal` to ensure zero breaking changes across enterprise consumer applications.
+
 ## [3.0.5] - 2026-11-20
 
 ### Patch Changes

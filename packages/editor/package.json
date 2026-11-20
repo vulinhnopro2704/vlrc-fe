@@ -79,7 +79,7 @@
   },
   "peerDependencies": {
     "@stylexjs/stylex": ">=0.19.0",
-    "@vlrc-fe/components": ">=3.0.5",
+    "@vlrc-fe/components": ">=3.0.6",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
   }
