@@ -8,13 +8,13 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
     aria-label="Bulk actions toolbar"
     class="action-bar__styles.root xixxii4 x1vuu14i x1nrll8i xuuh30 xa9119d x78zum5 x6s0dn4 xdkmor2 x1mlyrtw x84br7x x9psvww xmkeg23 x1y0btm7 xb30jbz xco5wwd x1yroua3 xvqvx5d xwcsmn1 x13dflua"
     data-slot="action-bar"
-    data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:25"
+    data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:31"
     role="toolbar"
   >
     <div
       class="action-bar__styles.selection x78zum5 x6s0dn4 x1m5ztt4 xawhkjc"
       data-slot="action-bar-selection"
-      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:46"
+      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:52"
     >
       3 items selected
     </div>
@@ -22,13 +22,13 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
       aria-orientation="vertical"
       class="action-bar__styles.separator x1i1rx1s xmll18r xwefxjc xiiczor"
       data-slot="action-bar-separator"
-      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:57"
+      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:63"
       role="separator"
     />
     <div
       class="action-bar__styles.group x78zum5 x6s0dn4 xvh977a"
       data-slot="action-bar-group"
-      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:52"
+      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:58"
     >
       <button
         class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGhost xjbqb8w x1heor9g x9p52ec x10ubyu6 button__styles.sizeSm xettwda xrijj7p xpj7pl4 x1ryrjj2 x1dcheo9"
@@ -55,7 +55,7 @@ exports[`ActionBar > UI > should match snapshot when open 1`] = `
       aria-orientation="vertical"
       class="action-bar__styles.separator x1i1rx1s xmll18r xwefxjc xiiczor"
       data-slot="action-bar-separator"
-      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:57"
+      data-style-src="@vlrc-fe/components:src/ui/action-bar.tsx:63"
       role="separator"
     />
     <button

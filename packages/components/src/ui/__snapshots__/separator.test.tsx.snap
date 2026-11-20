@@ -6,7 +6,7 @@ exports[`Separator > UI > should match snapshot for horizontal orientation 1`] =
     class="separator__styles.base xwefxjc x2lah0s xc342km separator__styles.horizontal xjm9jq1 xh8yej3"
     data-orientation="horizontal"
     data-slot="separator"
-    data-style-src="@vlrc-fe/components:src/ui/separator.tsx:9; @vlrc-fe/components:src/ui/separator.tsx:14"
+    data-style-src="@vlrc-fe/components:src/ui/separator.tsx:7; @vlrc-fe/components:src/ui/separator.tsx:12"
     role="none"
   />
 </DocumentFragment>
@@ -18,7 +18,7 @@ exports[`Separator > UI > should match snapshot for vertical orientation 1`] = `
     class="separator__styles.base xwefxjc x2lah0s xc342km separator__styles.vertical x5yr21d x1i1rx1s"
     data-orientation="vertical"
     data-slot="separator"
-    data-style-src="@vlrc-fe/components:src/ui/separator.tsx:9; @vlrc-fe/components:src/ui/separator.tsx:18"
+    data-style-src="@vlrc-fe/components:src/ui/separator.tsx:7; @vlrc-fe/components:src/ui/separator.tsx:16"
     role="none"
   />
 </DocumentFragment>
@@ -30,7 +30,7 @@ exports[`Separator > UI > should match snapshot in default state 1`] = `
     class="separator__styles.base xwefxjc x2lah0s xc342km separator__styles.horizontal xjm9jq1 xh8yej3"
     data-orientation="horizontal"
     data-slot="separator"
-    data-style-src="@vlrc-fe/components:src/ui/separator.tsx:9; @vlrc-fe/components:src/ui/separator.tsx:14"
+    data-style-src="@vlrc-fe/components:src/ui/separator.tsx:7; @vlrc-fe/components:src/ui/separator.tsx:12"
     role="none"
   />
 </DocumentFragment>

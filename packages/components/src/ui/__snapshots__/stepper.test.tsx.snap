@@ -6,27 +6,27 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
     class="stepper__styles.root x78zum5 xh8yej3 stepper__styles.rootHorizontal xdt5ytf x1oqwmkw"
     data-orientation="horizontal"
     data-slot="stepper"
-    data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:48; @vlrc-fe/components:src/ui/stepper.tsx:56"
+    data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:59; @vlrc-fe/components:src/ui/stepper.tsx:67"
   >
     <div
       aria-orientation="horizontal"
       class="stepper__styles.list x78zum5 xh8yej3 x6s0dn4 stepper__styles.listHorizontal x1q0g3np"
       data-slot="stepper-list"
-      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:62; @vlrc-fe/components:src/ui/stepper.tsx:67"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:73; @vlrc-fe/components:src/ui/stepper.tsx:78"
       role="tablist"
     >
       <div
         class="stepper__styles.item x78zum5 x6s0dn4 x1n2onr6 stepper__styles.itemHorizontal x98rzlu x1q0g3np"
         data-slot="stepper-item"
         data-status="active"
-        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:88; @vlrc-fe/components:src/ui/stepper.tsx:93"
       >
         <button
           aria-selected="true"
           class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9"
           data-slot="stepper-trigger"
           data-status="active"
-          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:104"
           role="tab"
           type="button"
         >
@@ -35,7 +35,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk xf0oo4t"
             data-slot="stepper-indicator"
             data-status="active"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:136"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:127; @vlrc-fe/components:src/ui/stepper.tsx:147"
           >
             1
           </div>
@@ -43,7 +43,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb x84br7x"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:195"
             data-weight="regular"
           >
             Account
@@ -53,21 +53,21 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
           aria-hidden="true"
           class="stepper__styles.separator xwefxjc x15406qy xx6bhzk stepper__styles.separatorHorizontal x98rzlu x36qwtl xaex8be xgomdpo"
           data-slot="stepper-separator"
-          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:149; @vlrc-fe/components:src/ui/stepper.tsx:157"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:160; @vlrc-fe/components:src/ui/stepper.tsx:168"
         />
       </div>
       <div
         class="stepper__styles.item x78zum5 x6s0dn4 x1n2onr6 stepper__styles.itemHorizontal x98rzlu x1q0g3np"
         data-slot="stepper-item"
         data-status="inactive"
-        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:88; @vlrc-fe/components:src/ui/stepper.tsx:93"
       >
         <button
           aria-selected="false"
           class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9"
           data-slot="stepper-trigger"
           data-status="inactive"
-          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:104"
           role="tab"
           type="button"
         >
@@ -76,7 +76,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
             data-slot="stepper-indicator"
             data-status="inactive"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:131"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:127; @vlrc-fe/components:src/ui/stepper.tsx:142"
           >
             2
           </div>
@@ -84,7 +84,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184; @vlrc-fe/components:src/ui/stepper.tsx:191"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:195; @vlrc-fe/components:src/ui/stepper.tsx:202"
             data-weight="regular"
           >
             Profile
@@ -94,7 +94,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
           aria-hidden="true"
           class="stepper__styles.separator xwefxjc x15406qy xx6bhzk stepper__styles.separatorHorizontal x98rzlu x36qwtl xaex8be xgomdpo"
           data-slot="stepper-separator"
-          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:149; @vlrc-fe/components:src/ui/stepper.tsx:157"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:160; @vlrc-fe/components:src/ui/stepper.tsx:168"
         />
       </div>
       <div
@@ -102,14 +102,14 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
         data-disabled=""
         data-slot="stepper-item"
         data-status="inactive"
-        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:88; @vlrc-fe/components:src/ui/stepper.tsx:93"
       >
         <button
           aria-selected="false"
           class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9 stepper__styles.triggerDisabled x1h6gzvc xbyyjgo"
           data-slot="stepper-trigger"
           data-status="inactive"
-          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93; @vlrc-fe/components:src/ui/stepper.tsx:110"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:104; @vlrc-fe/components:src/ui/stepper.tsx:121"
           disabled=""
           role="tab"
           type="button"
@@ -119,7 +119,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorInactive x1mlyrtw xb30jbz xw3nh4a"
             data-slot="stepper-indicator"
             data-status="inactive"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:131"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:127; @vlrc-fe/components:src/ui/stepper.tsx:142"
           >
             3
           </div>
@@ -127,7 +127,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
             class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb stepper__styles.titleInactive xw3nh4a"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184; @vlrc-fe/components:src/ui/stepper.tsx:191"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:195; @vlrc-fe/components:src/ui/stepper.tsx:202"
             data-weight="regular"
           >
             Review
@@ -138,7 +138,7 @@ exports[`Stepper > UI > should match snapshot in default horizontal state 1`] = 
     <div
       class="stepper__styles.content xh8yej3 xuv7m44"
       data-slot="stepper-content"
-      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:172"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:183"
       role="tabpanel"
     >
       Account Details Form
@@ -153,27 +153,27 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
     class="stepper__styles.root x78zum5 xh8yej3 stepper__styles.rootVertical xdt5ytf x1b1hbqf"
     data-orientation="vertical"
     data-slot="stepper"
-    data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:48; @vlrc-fe/components:src/ui/stepper.tsx:52"
+    data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:59; @vlrc-fe/components:src/ui/stepper.tsx:63"
   >
     <div
       aria-orientation="vertical"
       class="stepper__styles.list x78zum5 xh8yej3 stepper__styles.listVertical xdt5ytf x1qjc9v5 xxhr3t"
       data-slot="stepper-list"
-      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:62; @vlrc-fe/components:src/ui/stepper.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:73; @vlrc-fe/components:src/ui/stepper.tsx:81"
       role="tablist"
     >
       <div
         class="stepper__styles.item x78zum5 x1n2onr6 stepper__styles.itemVertical xh8yej3 xdt5ytf x1cy8zhl"
         data-slot="stepper-item"
         data-status="active"
-        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:77; @vlrc-fe/components:src/ui/stepper.tsx:86"
+        data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:88; @vlrc-fe/components:src/ui/stepper.tsx:97"
       >
         <button
           aria-selected="true"
           class="stepper__styles.trigger x78zum5 x6s0dn4 xdkmor2 xjbqb8w xc342km x148pnnd xrijj7p x1ypdohk x1a2a7pz xdpxx8g xnpjden xx6bhzk x13nj1q9"
           data-slot="stepper-trigger"
           data-status="active"
-          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:93"
+          data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:104"
           role="tab"
           type="button"
         >
@@ -182,7 +182,7 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
             class="stepper__styles.indicator x78zum5 x6s0dn4 xl56j7k xs5h3dt xettwda x9psvww xkpwil5 x1s688f x2lah0s xdh2fpr x1y0btm7 x1eaenvl xx6bhzk stepper__styles.indicatorActive x1mlyrtw x1khvrlk x6gpbkk xf0oo4t"
             data-slot="stepper-indicator"
             data-status="active"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:116; @vlrc-fe/components:src/ui/stepper.tsx:136"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:127; @vlrc-fe/components:src/ui/stepper.tsx:147"
           >
             1
           </div>
@@ -190,7 +190,7 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
             class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular Text__styles.strong x1xlr1w8 stepper__styles.title x1lliihq xkpwil5 x1s688f x132q4wb x84br7x"
             data-size="md"
             data-slot="stepper-title"
-            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:184"
+            data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:195"
             data-weight="regular"
           >
             Account
@@ -201,7 +201,7 @@ exports[`Stepper > UI > should match snapshot in vertical orientation 1`] = `
     <div
       class="stepper__styles.content xh8yej3 xuv7m44"
       data-slot="stepper-content"
-      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:172"
+      data-style-src="@vlrc-fe/components:src/ui/stepper.tsx:183"
       role="tabpanel"
     >
       Account Details Form

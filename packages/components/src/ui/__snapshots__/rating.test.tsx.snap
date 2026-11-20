@@ -11,7 +11,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
     data-direction="row"
     data-inline="true"
     data-slot="rating"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:8"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:14"
     role="slider"
     tabindex="0"
   >
@@ -19,13 +19,13 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1ypdohk x12pfavo xx6bhzk xz4gly6 x1lcra6a rating__styles.iconMd xwqq7k2 xmll18r"
       data-score="1"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -43,14 +43,14 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -69,7 +69,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.hitAreaFull x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1vjfegm x1ypdohk"
         data-slot="rating-hit-full"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:90"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:96"
         data-testid="rating-hit-1"
       />
     </span>
@@ -77,13 +77,13 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1ypdohk x12pfavo xx6bhzk xz4gly6 x1lcra6a rating__styles.iconMd xwqq7k2 xmll18r"
       data-score="2"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -101,14 +101,14 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -127,7 +127,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.hitAreaFull x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1vjfegm x1ypdohk"
         data-slot="rating-hit-full"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:90"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:96"
         data-testid="rating-hit-2"
       />
     </span>
@@ -135,13 +135,13 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1ypdohk x12pfavo xx6bhzk xz4gly6 x1lcra6a rating__styles.iconMd xwqq7k2 xmll18r"
       data-score="3"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -159,14 +159,14 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -185,7 +185,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.hitAreaFull x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1vjfegm x1ypdohk"
         data-slot="rating-hit-full"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:90"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:96"
         data-testid="rating-hit-3"
       />
     </span>
@@ -193,13 +193,13 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1ypdohk x12pfavo xx6bhzk xz4gly6 x1lcra6a rating__styles.iconMd xwqq7k2 xmll18r"
       data-score="4"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -217,14 +217,14 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 0%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -243,7 +243,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.hitAreaFull x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1vjfegm x1ypdohk"
         data-slot="rating-hit-full"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:90"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:96"
         data-testid="rating-hit-4"
       />
     </span>
@@ -251,13 +251,13 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x1ypdohk x12pfavo xx6bhzk xz4gly6 x1lcra6a rating__styles.iconMd xwqq7k2 xmll18r"
       data-score="5"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -275,14 +275,14 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 0%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -301,7 +301,7 @@ exports[`Rating > UI > should match snapshot in default state 1`] = `
       <span
         class="rating__styles.hitAreaFull x10l6tqk x13vifvy xu96u03 xh8yej3 x5yr21d x1vjfegm x1ypdohk"
         data-slot="rating-hit-full"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:90"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:96"
         data-testid="rating-hit-5"
       />
     </span>
@@ -321,7 +321,7 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
     data-direction="row"
     data-inline="true"
     data-slot="rating"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:8; @vlrc-fe/components:src/ui/rating.tsx:15"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:14; @vlrc-fe/components:src/ui/rating.tsx:21"
     role="slider"
     tabindex="-1"
   >
@@ -329,13 +329,13 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemDisabled x1h6gzvc x1t7rm6y"
       data-score="1"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:39"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:45"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -353,14 +353,14 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -381,13 +381,13 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemDisabled x1h6gzvc x1t7rm6y"
       data-score="2"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:39"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:45"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -405,14 +405,14 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -433,13 +433,13 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemDisabled x1h6gzvc x1t7rm6y"
       data-score="3"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:39"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:45"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -457,14 +457,14 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -485,13 +485,13 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemDisabled x1h6gzvc x1t7rm6y"
       data-score="4"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:39"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:45"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -509,14 +509,14 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -537,13 +537,13 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemDisabled x1h6gzvc x1t7rm6y"
       data-score="5"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:39"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:45"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -561,14 +561,14 @@ exports[`Rating > UI > should match snapshot when disabled 1`] = `
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 0%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -601,7 +601,7 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
     data-direction="row"
     data-inline="true"
     data-slot="rating"
-    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:8"
+    data-style-src="@vlrc-fe/components:src/ui/flex.tsx:123; @vlrc-fe/components:src/ui/flex.tsx:127; @vlrc-fe/components:src/ui/flex.tsx:132; @vlrc-fe/components:src/ui/flex.tsx:139; @vlrc-fe/components:src/ui/flex.tsx:159; @vlrc-fe/components:src/ui/rating.tsx:14"
     role="slider"
     tabindex="-1"
   >
@@ -609,13 +609,13 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemReadOnly xt0e3qv x1t7rm6y"
       data-score="1"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:33"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:39"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -633,14 +633,14 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -661,13 +661,13 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemReadOnly xt0e3qv x1t7rm6y"
       data-score="2"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:33"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:39"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -685,14 +685,14 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -713,13 +713,13 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemReadOnly xt0e3qv x1t7rm6y"
       data-score="3"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:33"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:39"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -737,14 +737,14 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 100%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -765,13 +765,13 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemReadOnly xt0e3qv x1t7rm6y"
       data-score="4"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:33"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:39"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -789,14 +789,14 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 50%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -817,13 +817,13 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       class="rating__styles.item x1n2onr6 x3nfvp2 x6s0dn4 xl56j7k x12pfavo xx6bhzk xz4gly6 rating__styles.iconMd xwqq7k2 xmll18r rating__styles.itemReadOnly xt0e3qv x1t7rm6y"
       data-score="5"
       data-slot="rating-item"
-      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:20; @vlrc-fe/components:src/ui/rating.tsx:49; @vlrc-fe/components:src/ui/rating.tsx:33"
+      data-style-src="@vlrc-fe/components:src/ui/rating.tsx:26; @vlrc-fe/components:src/ui/rating.tsx:55; @vlrc-fe/components:src/ui/rating.tsx:39"
     >
       <svg
         aria-hidden="true"
         class="lucide lucide-star rating__styles.emptyStar xw3nh4a xti2d7y rating__styles.iconMd xwqq7k2 xmll18r"
         data-slot="rating-empty-star"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:57; @vlrc-fe/components:src/ui/rating.tsx:49"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:63; @vlrc-fe/components:src/ui/rating.tsx:55"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -841,14 +841,14 @@ exports[`Rating > UI > should match snapshot when readOnly with half score 1`] =
       <span
         class="rating__styles.filledStarWrapper x10l6tqk x13vifvy xu96u03 x1ey2m1c xb3r6kr x47corl"
         data-slot="rating-filled-wrapper"
-        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:61"
+        data-style-src="@vlrc-fe/components:src/ui/rating.tsx:67"
         style="width: 0%;"
       >
         <svg
           aria-hidden="true"
           class="lucide lucide-star rating__styles.filledStar x7evrrw rating__styles.iconMd xwqq7k2 xmll18r"
           data-slot="rating-filled-star"
-          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:69; @vlrc-fe/components:src/ui/rating.tsx:49"
+          data-style-src="@vlrc-fe/components:src/ui/rating.tsx:75; @vlrc-fe/components:src/ui/rating.tsx:55"
           fill="currentColor"
           height="24"
           stroke="currentColor"

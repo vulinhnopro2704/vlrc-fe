@@ -6,20 +6,20 @@ exports[`TagsInput > UI > should match snapshot for size lg 1`] = `
     class="tags-input__styles.root x78zum5 xh8yej3 xeuugli x1a02dak x6s0dn4 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1mlyrtw xfk7h2l x1bh2a3r xx6bhzk x1ed109x x1eqqpix xsptyw tags-input__styles.sizeLg xgbkey0 x7ai2fz x1yroua3 x1m5ztt4 x1jchvi3"
     data-size="lg"
     data-slot="tags-input"
-    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:31; @vlrc-fe/components:src/ui/tags-input.tsx:65"
+    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:43; @vlrc-fe/components:src/ui/tags-input.tsx:77"
     role="group"
   >
     <span
       class="tags-input__styles.item x3nfvp2 x6s0dn4 xvh977a xqfady0 x1qry0bl x84br7x xmkeg23 x1y0btm7 xb30jbz xvg6gpc x1iv7sc9 x132q4wb x87ps6o xuxw1ft x2lah0s"
       data-slot="tags-input-item"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:86"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:98"
       data-value="React"
     >
       <span
         class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:115"
         data-weight="regular"
       >
         React
@@ -28,7 +28,7 @@ exports[`TagsInput > UI > should match snapshot for size lg 1`] = `
     <input
       class="tags-input__styles.input x98rzlu xz6sds4 xc342km xjbqb8w x84br7x x1717udv x1qlqyl8 x15bjb6t x1a2a7pz x4qz2uc x1guo4m0 x1s07b3s"
       data-slot="tags-input-input"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:126"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:138"
       type="text"
       value=""
     />
@@ -42,20 +42,20 @@ exports[`TagsInput > UI > should match snapshot for size md 1`] = `
     class="tags-input__styles.root x78zum5 xh8yej3 xeuugli x1a02dak x6s0dn4 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1mlyrtw xfk7h2l x1bh2a3r xx6bhzk x1ed109x x1eqqpix xsptyw tags-input__styles.sizeMd xsejkeq x7ai2fz x1yroua3 x1m5ztt4 xkpwil5"
     data-size="md"
     data-slot="tags-input"
-    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:31; @vlrc-fe/components:src/ui/tags-input.tsx:58"
+    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:43; @vlrc-fe/components:src/ui/tags-input.tsx:70"
     role="group"
   >
     <span
       class="tags-input__styles.item x3nfvp2 x6s0dn4 xvh977a xqfady0 x1qry0bl x84br7x xmkeg23 x1y0btm7 xb30jbz xvg6gpc x1iv7sc9 x132q4wb x87ps6o xuxw1ft x2lah0s"
       data-slot="tags-input-item"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:86"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:98"
       data-value="React"
     >
       <span
         class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:115"
         data-weight="regular"
       >
         React
@@ -64,7 +64,7 @@ exports[`TagsInput > UI > should match snapshot for size md 1`] = `
     <input
       class="tags-input__styles.input x98rzlu xz6sds4 xc342km xjbqb8w x84br7x x1717udv x1qlqyl8 x15bjb6t x1a2a7pz x4qz2uc x1guo4m0 x1s07b3s"
       data-slot="tags-input-input"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:126"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:138"
       type="text"
       value=""
     />
@@ -78,20 +78,20 @@ exports[`TagsInput > UI > should match snapshot for size sm 1`] = `
     class="tags-input__styles.root x78zum5 xh8yej3 xeuugli x1a02dak x6s0dn4 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1mlyrtw xfk7h2l x1bh2a3r xx6bhzk x1ed109x x1eqqpix xsptyw tags-input__styles.sizeSm x1in32aq xvg6gpc x1dus959 x118fsrc xboafo0"
     data-size="sm"
     data-slot="tags-input"
-    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:31; @vlrc-fe/components:src/ui/tags-input.tsx:51"
+    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:43; @vlrc-fe/components:src/ui/tags-input.tsx:63"
     role="group"
   >
     <span
       class="tags-input__styles.item x3nfvp2 x6s0dn4 xvh977a xqfady0 x1qry0bl x84br7x xmkeg23 x1y0btm7 xb30jbz xvg6gpc x1iv7sc9 x132q4wb x87ps6o xuxw1ft x2lah0s"
       data-slot="tags-input-item"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:86"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:98"
       data-value="React"
     >
       <span
         class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:115"
         data-weight="regular"
       >
         React
@@ -100,7 +100,7 @@ exports[`TagsInput > UI > should match snapshot for size sm 1`] = `
     <input
       class="tags-input__styles.input x98rzlu xz6sds4 xc342km xjbqb8w x84br7x x1717udv x1qlqyl8 x15bjb6t x1a2a7pz x4qz2uc x1guo4m0 x1s07b3s"
       data-slot="tags-input-input"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:126"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:138"
       type="text"
       value=""
     />
@@ -114,20 +114,20 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
     class="tags-input__styles.root x78zum5 xh8yej3 xeuugli x1a02dak x6s0dn4 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1mlyrtw xfk7h2l x1bh2a3r xx6bhzk x1ed109x x1eqqpix xsptyw tags-input__styles.sizeMd xsejkeq x7ai2fz x1yroua3 x1m5ztt4 xkpwil5"
     data-size="md"
     data-slot="tags-input"
-    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:31; @vlrc-fe/components:src/ui/tags-input.tsx:58"
+    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:43; @vlrc-fe/components:src/ui/tags-input.tsx:70"
     role="group"
   >
     <span
       class="tags-input__styles.item x3nfvp2 x6s0dn4 xvh977a xqfady0 x1qry0bl x84br7x xmkeg23 x1y0btm7 xb30jbz xvg6gpc x1iv7sc9 x132q4wb x87ps6o xuxw1ft x2lah0s"
       data-slot="tags-input-item"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:86"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:98"
       data-value="React"
     >
       <span
         class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:115"
         data-weight="regular"
       >
         React
@@ -136,7 +136,7 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
         aria-label="Remove tag"
         class="tags-input__styles.itemDelete x3nfvp2 x6s0dn4 xl56j7k x1717udv xc342km xjbqb8w xw3nh4a x1ypdohk x9psvww xo5v014 xt3l3uh xx6bhzk x8aud5w"
         data-slot="tags-input-item-delete"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:107"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:119"
         type="button"
       >
         <svg
@@ -168,14 +168,14 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
     <span
       class="tags-input__styles.item x3nfvp2 x6s0dn4 xvh977a xqfady0 x1qry0bl x84br7x xmkeg23 x1y0btm7 xb30jbz xvg6gpc x1iv7sc9 x132q4wb x87ps6o xuxw1ft x2lah0s"
       data-slot="tags-input-item"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:86"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:98"
       data-value="Vite"
     >
       <span
         class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:115"
         data-weight="regular"
       >
         Vite
@@ -184,7 +184,7 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
         aria-label="Remove tag"
         class="tags-input__styles.itemDelete x3nfvp2 x6s0dn4 xl56j7k x1717udv xc342km xjbqb8w xw3nh4a x1ypdohk x9psvww xo5v014 xt3l3uh xx6bhzk x8aud5w"
         data-slot="tags-input-item-delete"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:107"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:119"
         type="button"
       >
         <svg
@@ -216,7 +216,7 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
     <input
       class="tags-input__styles.input x98rzlu xz6sds4 xc342km xjbqb8w x84br7x x1717udv x1qlqyl8 x15bjb6t x1a2a7pz x4qz2uc x1guo4m0 x1s07b3s"
       data-slot="tags-input-input"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:126"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:138"
       placeholder="Add tag..."
       type="text"
       value=""
@@ -225,7 +225,7 @@ exports[`TagsInput > UI > should match snapshot in default state 1`] = `
       aria-label="Clear all tags"
       class="tags-input__styles.clear x3nfvp2 x6s0dn4 xl56j7k x1717udv xc342km xjbqb8w xw3nh4a x1ypdohk x9psvww xt3l3uh xx6bhzk x8aud5w"
       data-slot="tags-input-clear"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:146"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:158"
       type="button"
     >
       <svg
@@ -264,21 +264,21 @@ exports[`TagsInput > UI > should match snapshot when disabled or invalid 1`] = `
     data-disabled=""
     data-size="md"
     data-slot="tags-input"
-    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:31; @vlrc-fe/components:src/ui/tags-input.tsx:58; @vlrc-fe/components:src/ui/tags-input.tsx:72"
+    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:43; @vlrc-fe/components:src/ui/tags-input.tsx:70; @vlrc-fe/components:src/ui/tags-input.tsx:84"
     role="group"
   >
     <span
       class="tags-input__styles.item x3nfvp2 x6s0dn4 xvh977a xqfady0 x1qry0bl x84br7x xmkeg23 x1y0btm7 xb30jbz xvg6gpc x1iv7sc9 x132q4wb x87ps6o xuxw1ft x2lah0s"
       data-disabled=""
       data-slot="tags-input-item"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:86"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:98"
       data-value="React"
     >
       <span
         class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:115"
         data-weight="regular"
       >
         React
@@ -287,7 +287,7 @@ exports[`TagsInput > UI > should match snapshot when disabled or invalid 1`] = `
     <input
       class="tags-input__styles.input x98rzlu xz6sds4 xc342km xjbqb8w x84br7x x1717udv x1qlqyl8 x15bjb6t x1a2a7pz x4qz2uc x1guo4m0 x1s07b3s"
       data-slot="tags-input-input"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:126"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:138"
       disabled=""
       type="text"
       value=""
@@ -303,20 +303,20 @@ exports[`TagsInput > UI > should match snapshot when disabled or invalid 2`] = `
     data-invalid=""
     data-size="md"
     data-slot="tags-input"
-    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:31; @vlrc-fe/components:src/ui/tags-input.tsx:58; @vlrc-fe/components:src/ui/tags-input.tsx:77"
+    data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:43; @vlrc-fe/components:src/ui/tags-input.tsx:70; @vlrc-fe/components:src/ui/tags-input.tsx:89"
     role="group"
   >
     <span
       class="tags-input__styles.item x3nfvp2 x6s0dn4 xvh977a xqfady0 x1qry0bl x84br7x xmkeg23 x1y0btm7 xb30jbz xvg6gpc x1iv7sc9 x132q4wb x87ps6o xuxw1ft x2lah0s"
       data-slot="tags-input-item"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:86"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:98"
       data-value="React"
     >
       <span
         class="Text__styles.base x1heor9g Text__styles.sizeSm xboafo0 xfrs9s4 weightStyles__styles.regular xo1l8bm tags-input__styles.itemText x1qlqyl8 x15bjb6t"
         data-size="sm"
         data-slot="tags-input-item-text"
-        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:103"
+        data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:115"
         data-weight="regular"
       >
         React
@@ -325,7 +325,7 @@ exports[`TagsInput > UI > should match snapshot when disabled or invalid 2`] = `
     <input
       class="tags-input__styles.input x98rzlu xz6sds4 xc342km xjbqb8w x84br7x x1717udv x1qlqyl8 x15bjb6t x1a2a7pz x4qz2uc x1guo4m0 x1s07b3s"
       data-slot="tags-input-input"
-      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:126"
+      data-style-src="@vlrc-fe/components:src/ui/tags-input.tsx:138"
       type="text"
       value=""
     />
