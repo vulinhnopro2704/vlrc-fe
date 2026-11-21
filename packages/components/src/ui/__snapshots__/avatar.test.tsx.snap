@@ -56,11 +56,11 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="+2 more members"
-      class="button__styles.base x6s0dn4 xl56j7k xuxw1ft xk50ysn xfagghw xx6bhzk xwwtwea x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s button__styles.variantGhost x1heor9g x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le x13z6uf9 xnxx81d xkpwil5 avatar__styles.overflowTrigger x3nfvp2 x1ypdohk xjbqb8w xc342km x1717udv x1ghz6dp x9psvww x1a2a7pz x13nj1q9"
+      class="button__styles.base xuxw1ft xk50ysn xfagghw xx6bhzk xwwtwea x1y0btm7 xaqnwrm xijokvz x1s07b3s button__styles.variantGhost x1heor9g x10ubyu6 button__styles.sizeMd x13z6uf9 xkpwil5 avatar__styles.overflowTrigger x3nfvp2 x6s0dn4 xl56j7k x1ypdohk xjbqb8w xc342km xnjsko4 xt970qd xxyw1jk x4o9dxs xt7dq6l x2lwn1j x14atkfc xeuugli x9psvww x1a2a7pz x1gnnqk1 xo5v014 x2lah0s x1n5bzlp xyftt0y xyc4ar7 x13nj1q9"
       data-size="md"
       data-slot="popover-trigger"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/ui/avatar.tsx:114"
+      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/ui/avatar.tsx:119"
       data-variant="ghost"
       type="button"
     >
@@ -71,7 +71,7 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
         data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:55; @vlrc-fe/components:src/ui/avatar.tsx:99"
       >
         <span
-          class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww avatar__styles.overflowFallback x1qry0bl x84br7x x1s688f x1ypdohk"
+          class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww avatar__styles.overflowFallback x1qry0bl x84br7x x1s688f x1ypdohk x1e8aii2 xx6bhzk x9p52ec"
           data-slot="avatar-fallback"
           data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81; @vlrc-fe/components:src/ui/avatar.tsx:108"
         >

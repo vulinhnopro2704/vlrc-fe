@@ -1,6 +1,6 @@
 import { type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { spacing, radius, shadow } from '../theme/tokens.stylex';
+import { colors, spacing, radius, shadow } from '../theme/tokens.stylex';
 import { Badge } from './badge';
 import { Button } from './button';
 import { Flex } from '../layout';
@@ -16,12 +16,29 @@ const styles = stylex.create({
   overflowTriggerButton: {
     backgroundColor: 'transparent',
     borderWidth: 0,
-    padding: 0,
-    margin: 0,
+    paddingInline: 0,
+    paddingBlock: 0,
+    height: 'auto',
+    minHeight: 0,
+    width: 'auto',
+    minWidth: 0,
+    lineHeight: 1,
     cursor: 'pointer',
     display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     outline: 'none',
     borderRadius: radius.full,
+    boxShadow: 'none',
+    ':hover': {
+      backgroundColor: 'transparent',
+    },
+    ':active': {
+      backgroundColor: 'transparent',
+    },
+    ':focus': {
+      backgroundColor: 'transparent',
+    },
     ':focus-visible': {
       boxShadow: shadow.ringFocus,
     },
@@ -29,10 +46,11 @@ const styles = stylex.create({
   overflowBadge: {
     cursor: 'pointer',
     userSelect: 'none',
-    transitionProperty: 'opacity',
+    transitionProperty: 'opacity, background-color, border-color',
     transitionDuration: '150ms',
     ':hover': {
       opacity: 0.8,
+      backgroundColor: colors.accent,
     },
   },
   popoverContainer: {

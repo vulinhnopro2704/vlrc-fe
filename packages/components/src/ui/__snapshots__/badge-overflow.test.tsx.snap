@@ -69,7 +69,7 @@ exports[`BadgeOverflow > UI > should match snapshot with default max of 3 items 
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="+2 more items"
-      class="button__styles.base x6s0dn4 xl56j7k xuxw1ft xk50ysn xfagghw xx6bhzk xwwtwea x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s button__styles.variantGhost x1heor9g x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le x13z6uf9 xnxx81d xkpwil5 badge-overflow__styles.overflowTriggerButton xjbqb8w xc342km x1717udv x1ghz6dp x1ypdohk x3nfvp2 x1a2a7pz x9psvww x13nj1q9"
+      class="button__styles.base xuxw1ft xk50ysn xfagghw xx6bhzk xwwtwea x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s button__styles.variantGhost x1heor9g x10ubyu6 button__styles.sizeMd x13z6uf9 xkpwil5 badge-overflow__styles.overflowTriggerButton xjbqb8w xc342km xnjsko4 xt970qd xt7dq6l x2lwn1j x14atkfc xeuugli xo5v014 x1ypdohk x3nfvp2 x6s0dn4 xl56j7k x1a2a7pz x9psvww x1gnnqk1 x1n5bzlp xyftt0y xyc4ar7 x13nj1q9"
       data-size="md"
       data-slot="badge-overflow-trigger"
       data-state="closed"
@@ -78,10 +78,10 @@ exports[`BadgeOverflow > UI > should match snapshot with default max of 3 items 
       type="button"
     >
       <span
-        class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantOutline xb30jbz xjbqb8w x84br7x x9p52ec x10ubyu6 badge-overflow__styles.overflowBadge x1ypdohk x87ps6o x19991ni xx6bhzk x5z6fxw"
+        class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantOutline xb30jbz xjbqb8w x84br7x x10ubyu6 badge-overflow__styles.overflowBadge x1ypdohk x87ps6o x1xg1qq0 xx6bhzk x5z6fxw x9p52ec"
         data-size="md"
         data-slot="badge"
-        data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:113; @vlrc-fe/components:src/ui/badge-overflow.tsx:29"
+        data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:113; @vlrc-fe/components:src/ui/badge-overflow.tsx:46"
         data-variant="outline"
       >
         +2
