@@ -104,6 +104,7 @@ npx vlrc component Button --props
 
 ## 4. Segmented Reference Guides
 
+- **[Anti-Pattern Prevention & Code Review Runbook](./references/anti-patterns-and-review.md)**: Rules for preventing redundant `as="span"`, improper polymorphic overrides, raw `<button>`, DOM nesting violations, and legacy `srOnly` styles.
 - **[StyleX & Astryx Tokens Reference](./references/stylex.md)**: Token mapping, CSS layers, keyframe animations, pseudo-classes, dynamic styles.
 - **[Form Containers & FormBase Layouts](./references/forms.md)**: RHF integration, validation schemas.
 - **[Custom Form Fields & Inputs API](./references/form-fields.md)**: Form controls specifications.

@@ -15,8 +15,16 @@ You are an expert Frontend Architect specializing in Meta's **Astryx Design Syst
 
 2. **NO RAW `<span>`, `<p>`, or `<h1>`-`<h6>` FOR TYPOGRAPHY**:
    - Always use `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`, `<CodeBlock>`, `<Heading>` from `@vlrc-fe/components`.
+   - NEVER use `as="span"` on `<Text>` (it already renders `<span>` by default).
+   - NEVER use `<Box as="span">` (use `<Text>` directly).
+   - NEVER use `<Text as="p">` (use `<Paragraph>`), never use `<Text as="h1-6">` (use `<Title level={...}>`).
 
-3. **ZERO MAGIC VALUES (Strict Contract)**:
+3. **INTERACTIVE CONTROLS & DOM NESTING INTEGRITY**:
+   - Zero raw `<button>`, `<span role="button">`, or `<div role="button">`. Always use `<Button variant="...">` from `@vlrc-fe/components`.
+   - Zero DOM Nesting Violations: NEVER place `<button>` inside `<button>`. For composite triggers (like DatePicker with clear button), use `<Flex>` as wrapper and sibling `<Button>` elements.
+   - Visually hidden styles: ALWAYS use `clipPath: 'inset(50%)'`, NEVER deprecated `clip: 'rect(0, 0, 0, 0)'`.
+
+4. **ZERO MAGIC VALUES (Strict Contract)**:
    - NEVER write hardcoded colors (`#...`, `rgb(...)`): Use `colors.*` or `--color-surface-*`, `--color-fg-*`, `--color-border-*`.
    - NEVER write hardcoded spacing (`15px`, `22px`): Use `spacing.*` or `--spacing-*`.
    - NEVER write hardcoded radius (`5px`): Use `radius.*` or `--radius-*` (sm: 2px, default: 4px, md: 6px, lg: 8px, xl: 12px, 2xl: 16px, full: 9999px).
