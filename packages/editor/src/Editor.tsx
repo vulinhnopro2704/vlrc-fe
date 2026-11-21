@@ -26,8 +26,20 @@ import {
   TRANSFORMERS,
   CHECK_LIST,
   type ElementTransformer,
+  type MultilineElementTransformer,
 } from '@lexical/markdown';
-import type { LexicalNode } from 'lexical';
+import { $createParagraphNode, $createTextNode, type LexicalNode } from 'lexical';
+import {
+  TableNode,
+  TableRowNode,
+  TableCellNode,
+  TableCellHeaderStates,
+  $createTableNode,
+  $createTableRowNode,
+  $createTableCellNode,
+  $isTableNode,
+  $isTableRowNode,
+} from '@lexical/table';
 import { props as stylexProps } from '@stylexjs/stylex';
 import { Box } from '@vlrc-fe/components';
 import { EDITOR_NODES } from './nodes';
@@ -64,7 +76,59 @@ export const HR: ElementTransformer = {
   type: 'element',
 };
 
-export const EDITOR_TRANSFORMERS = [CHECK_LIST, HR, ...TRANSFORMERS];
+export const TABLE: MultilineElementTransformer = {
+  dependencies: [TableNode, TableRowNode, TableCellNode],
+  export: (node: LexicalNode) => {
+    if (!$isTableNode(node)) return null;
+    const rows = node.getChildren();
+    const output: string[] = [];
+    rows.forEach((row, rowIndex) => {
+      if (!$isTableRowNode(row)) return;
+      const cells = row.getChildren();
+      const cellTexts = cells.map((cell) => cell.getTextContent().trim());
+      output.push(`| ${cellTexts.join(' | ')} |`);
+      if (rowIndex === 0) {
+        output.push(`| ${cells.map(() => '---').join(' | ')} |`);
+      }
+    });
+    return output.join('\n');
+  },
+  regExpStart: /^(?:\|)(.+)(?:\|)\s?$/,
+  replace: () => false,
+  type: 'multiline-element',
+  handleImportAfterStartMatch: ({ lines, rootNode, startLineIndex }) => {
+    const dividerLine = lines[startLineIndex + 1];
+    if (!dividerLine || !/^\|(\s*:?-+:?\s*\|)+\s*$/.test(dividerLine.trim())) {
+      return null;
+    }
+    let endLineIndex = startLineIndex;
+    const tableLines: string[] = [];
+    while (endLineIndex < lines.length && /^\|(.+)\|\s*$/.test(lines[endLineIndex].trim())) {
+      tableLines.push(lines[endLineIndex].trim());
+      endLineIndex++;
+    }
+    const tableNode = $createTableNode();
+    tableLines.forEach((line, rIndex) => {
+      if (rIndex === 1) return;
+      const row = $createTableRowNode();
+      const cells = line.split('|').slice(1, -1);
+      cells.forEach((cellText) => {
+        const cell = $createTableCellNode(
+          rIndex === 0 ? TableCellHeaderStates.ROW : TableCellHeaderStates.NO_STATUS,
+        );
+        const p = $createParagraphNode();
+        p.append($createTextNode(cellText.trim()));
+        cell.append(p);
+        row.append(cell);
+      });
+      tableNode.append(row);
+    });
+    rootNode.append(tableNode);
+    return [true, endLineIndex - 1];
+  },
+};
+
+export const EDITOR_TRANSFORMERS = [CHECK_LIST, HR, TABLE, ...TRANSFORMERS];
 
 const URL_MATCHER =
   /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;

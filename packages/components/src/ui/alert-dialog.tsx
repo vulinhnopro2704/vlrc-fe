@@ -50,7 +50,7 @@ const styles = stylex.create({
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.background,
-    padding: '1.5rem',
+    padding: '1rem',
     boxShadow: shadow['2xl'],
     outline: 'none',
     animationName: scaleIn,

@@ -59,6 +59,11 @@ const styles = stylex.create({
     gap: spacing.xs,
     maxWidth: '16rem',
   },
+  overflowPopoverContent: {
+    width: 'auto',
+    maxWidth: '18rem',
+    padding: '0.375rem 0.5rem',
+  },
 });
 
 export interface BadgeOverflowProps<T = string> extends ComponentProps<'div'> {
@@ -123,7 +128,7 @@ function BadgeOverflow<T = string>({
                 </Badge>
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="start" sideOffset={4}>
+            <PopoverContent align="start" sideOffset={4} sx={styles.overflowPopoverContent}>
               <Flex
                 data-slot="badge-overflow-popover-content"
                 wrap="wrap"

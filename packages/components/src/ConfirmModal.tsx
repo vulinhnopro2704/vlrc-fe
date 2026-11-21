@@ -18,7 +18,7 @@ const styles = stylex.create({
     borderRadius: radius.lg,
     backgroundColor: colors.background,
     color: colors.foreground,
-    padding: '1.5rem',
+    padding: '1rem',
     boxShadow: shadow.xl,
     borderWidth: 1,
     borderStyle: 'solid',
@@ -37,8 +37,8 @@ const styles = stylex.create({
   sizeXxl: { maxWidth: 960 },
   closeBtn: {
     position: 'absolute',
-    right: '1rem',
-    top: '1rem',
+    right: '0.75rem',
+    top: '0.75rem',
     borderRadius: radius.full,
     padding: '0.25rem',
     color: colors.mutedForeground,
@@ -67,7 +67,7 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'flex-start',
     gap: '0.875rem',
-    paddingRight: '1.5rem',
+    paddingRight: '1rem',
   },
   iconWrap: {
     display: 'flex',

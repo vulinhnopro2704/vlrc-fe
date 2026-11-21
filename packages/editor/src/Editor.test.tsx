@@ -80,5 +80,17 @@ describe('NotionEditor', () => {
       const editorContent = screen.getByRole('textbox');
       expect(editorContent).toBeInTheDocument();
     });
+
+    it('should convert markdown table syntax into interactive table elements', () => {
+      const TABLE_MD = '| Feature | Status |\n| --- | --- |\n| Resizer | OK |';
+      render(<NotionEditor defaultValue={TABLE_MD} showToolbar={false} />);
+
+      const tableElement = document.querySelector('table');
+      expect(tableElement).toBeInTheDocument();
+      expect(screen.getByText('Feature')).toBeInTheDocument();
+      expect(screen.getByText('Status')).toBeInTheDocument();
+      expect(screen.getByText('Resizer')).toBeInTheDocument();
+      expect(screen.getByText('OK')).toBeInTheDocument();
+    });
   });
 });

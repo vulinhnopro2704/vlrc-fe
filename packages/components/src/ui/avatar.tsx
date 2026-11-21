@@ -15,7 +15,7 @@ import {
   Root as AvatarPrimitiveRoot,
 } from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius, shadow } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Button } from './button';
 import { Flex } from '../layout';
@@ -154,12 +154,12 @@ const styles = stylex.create({
   overflowPopoverContent: {
     width: 'auto',
     maxWidth: '20rem',
-    padding: '0.75rem',
+    padding: '0.375rem 0.5rem',
   },
   overflowList: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '0.5rem',
+    gap: spacing.xs,
     alignItems: 'center',
   },
 });

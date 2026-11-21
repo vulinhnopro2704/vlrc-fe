@@ -96,6 +96,9 @@ const styles = stylex.create({
     flex: 1,
     flexDirection: 'row',
   },
+  itemHorizontalLast: {
+    flex: 'none',
+  },
   itemVertical: {
     width: '100%',
     flexDirection: 'column',
@@ -180,7 +183,7 @@ const styles = stylex.create({
     minHeight: '2rem',
     height: '100%',
     marginLeft: 19,
-    marginVertical: 0,
+    marginBlock: spacing.xs,
   },
 
   // Content
@@ -293,7 +296,7 @@ function Stepper({
 
   return (
     <StepperContext.Provider value={contextValue}>
-      <Flex
+      <Box
         data-slot="stepper"
         data-orientation={orientation}
         {...sxProps}
@@ -301,7 +304,7 @@ function Stepper({
         {...props}
       >
         {children}
-      </Flex>
+      </Box>
     </StepperContext.Provider>
   );
 }
@@ -316,7 +319,7 @@ function StepperList({ className, sx, children, ...props }: StepperListProps) {
   const sxProps = stylex.props(styles.list, orientationStyle, sx);
 
   return (
-    <Flex
+    <Box
       role="tablist"
       aria-orientation={orientation}
       data-slot="stepper-list"
@@ -325,7 +328,7 @@ function StepperList({ className, sx, children, ...props }: StepperListProps) {
       {...props}
     >
       {children}
-    </Flex>
+    </Box>
   );
 }
 
@@ -375,13 +378,21 @@ function StepperItem({
     [itemValue, stepIndex, status, disabled],
   );
 
+  const isLast = stepIndex >= stepKeys.length - 1 && stepKeys.length > 0;
+  const isHorizontalLast = orientation === 'horizontal' && isLast;
+
   const itemOrientationStyle =
     orientation === 'vertical' ? styles.itemVertical : styles.itemHorizontal;
-  const sxProps = stylex.props(styles.item, itemOrientationStyle, sx);
+  const sxProps = stylex.props(
+    styles.item,
+    itemOrientationStyle,
+    isHorizontalLast && styles.itemHorizontalLast,
+    sx,
+  );
 
   return (
     <StepperItemContext.Provider value={itemContextValue}>
-      <Flex
+      <Box
         data-slot="stepper-item"
         data-status={status}
         data-disabled={disabled ? '' : undefined}
@@ -390,7 +401,7 @@ function StepperItem({
         {...props}
       >
         {children}
-      </Flex>
+      </Box>
     </StepperItemContext.Provider>
   );
 }
