@@ -148,7 +148,7 @@ export class CollapsibleTitleNode extends ElementNode {
     this.__level = level;
   }
 
-  createDOM(_config: EditorConfig): HTMLElement {
+  createDOM(_config: EditorConfig, editor: LexicalEditor): HTMLElement {
     const dom = document.createElement('summary');
     dom.classList.add('lexical-collapsible-title');
     dom.dataset.level = this.__level;
@@ -160,6 +160,39 @@ export class CollapsibleTitleNode extends ElementNode {
       const isChevronClick = e.clientX - rect.left < chevronWidth;
       if (!isChevronClick) {
         e.preventDefault();
+        editor.update(() => {
+          const titleNode = this.getLatest();
+          if ($isCollapsibleTitleNode(titleNode)) {
+            const firstChild = titleNode.getFirstChild();
+            if (
+              firstChild &&
+              'select' in firstChild &&
+              typeof (firstChild as ElementNode).select === 'function'
+            ) {
+              (firstChild as ElementNode).select();
+            } else {
+              titleNode.select();
+            }
+          }
+        });
+        editor.focus();
+      } else {
+        editor.update(() => {
+          const titleNode = this.getLatest();
+          if ($isCollapsibleTitleNode(titleNode)) {
+            const firstChild = titleNode.getFirstChild();
+            if (
+              firstChild &&
+              'select' in firstChild &&
+              typeof (firstChild as ElementNode).select === 'function'
+            ) {
+              (firstChild as ElementNode).select(0, 0);
+            } else {
+              titleNode.select(0, 0);
+            }
+          }
+        });
+        editor.focus();
       }
     });
     return dom;
@@ -312,10 +345,13 @@ export function $insertCollapsible(
   }
   const container = $createCollapsibleContainerNode(true, level);
   const title = $createCollapsibleTitleNode(level);
-  title.append($createParagraphNode());
+  const titleParagraph = $createParagraphNode();
+  title.append(titleParagraph);
   const content = $createCollapsibleContentNode();
-  content.append($createParagraphNode());
+  const contentParagraph = $createParagraphNode();
+  content.append(contentParagraph);
   container.append(title, content);
   selection.insertNodes([container]);
+  titleParagraph.select();
   return container;
 }

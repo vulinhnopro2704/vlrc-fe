@@ -726,6 +726,7 @@ export function ToolbarPlugin(): JSX.Element {
                 editor.update(() => {
                   $insertCollapsible(level);
                 });
+                editor.focus();
               }}
             >
               <Icon size={14} style={{ marginRight: 8 }} />
