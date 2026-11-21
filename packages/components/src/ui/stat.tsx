@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Minus, TrendingDown, TrendingUp } from 'lucide-react';
 import { colors, radius } from '../theme/tokens.stylex';
-import { Text } from '../Typography';
+import { Paragraph, Text } from '../Typography';
 import { Flex } from './flex';
 
 const styles = stylex.create({
@@ -104,7 +104,6 @@ export interface StatLabelProps extends HTMLAttributes<HTMLSpanElement> {
 export function StatLabel({ sx, className, children, ...props }: StatLabelProps) {
   return (
     <Text
-      as="span"
       type="secondary"
       size="sm"
       weight="medium"
@@ -189,8 +188,7 @@ export interface StatDescriptionProps extends HTMLAttributes<HTMLParagraphElemen
 
 export function StatDescription({ sx, className, children, ...props }: StatDescriptionProps) {
   return (
-    <Text
-      as="p"
+    <Paragraph
       type="secondary"
       size="xs"
       data-slot="stat-description"
@@ -199,7 +197,7 @@ export function StatDescription({ sx, className, children, ...props }: StatDescr
       {...props}
     >
       {children}
-    </Text>
+    </Paragraph>
   );
 }
 

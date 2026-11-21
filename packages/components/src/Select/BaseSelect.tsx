@@ -412,10 +412,10 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
         )}
         {isMulti && showSelectAll && !disabled && filteredOptions.length > 0 && (
           <div {...stylex.props(styles.selectAllRow)} onClick={handleSelectAll}>
-            <Text as="span" size="sm" sx={styles.selectAllText}>
+            <Text size="sm" sx={styles.selectAllText}>
               {selectedValues.length === filteredOptions.length ? 'Deselect all' : 'Select all'}
             </Text>
-            <Text as="span" size="sm" type="secondary" sx={styles.placeholder}>
+            <Text size="sm" type="secondary" sx={styles.placeholder}>
               ({selectedValues.length}/{filteredOptions.length})
             </Text>
           </div>

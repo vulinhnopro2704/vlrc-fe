@@ -128,11 +128,7 @@ export function MultiSelectTags<T extends SelectValue = SelectValue>({
 
         return (
           <Badge key={String(opt.value)} variant="secondary" className="select-tag" sx={styles.tag}>
-            {opt.icon && (
-              <Text as="span" type="inherit">
-                {opt.icon}
-              </Text>
-            )}
+            {opt.icon && <Text type="inherit">{opt.icon}</Text>}
             <Text ellipsis tooltip sx={styles.tagLabel}>
               {opt.label}
             </Text>

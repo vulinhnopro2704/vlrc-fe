@@ -237,7 +237,6 @@ export function Segmented({
           >
             {option.icon && <span {...stylex.props(styles.icon)}>{option.icon}</span>}
             <Text
-              as="span"
               size={size === 'sm' ? 'xs' : size === 'lg' ? 'md' : 'sm'}
               weight={isSelected ? 'semibold' : 'medium'}
             >

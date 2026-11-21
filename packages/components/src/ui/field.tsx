@@ -250,7 +250,6 @@ function FieldDescription({
   const sxProps = stylex.props(styles.description, sx);
   return (
     <Paragraph
-      as="p"
       data-slot="field-description"
       size="xs"
       type="secondary"
@@ -282,7 +281,6 @@ function FieldSeparator({
       <Separator sx={styles.separatorLine} />
       {children && (
         <Text
-          as="span"
           size="xs"
           type="secondary"
           {...stylex.props(styles.separatorContent)}

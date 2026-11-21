@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 import { Inbox } from 'lucide-react';
 import { colors, spacing } from '../theme/tokens.stylex';
 import { Flex } from './flex';
-import { Text } from '../Typography/Text';
+import { Title, Paragraph } from '../Typography';
 
 const styles = stylex.create({
   root: {
@@ -102,8 +102,8 @@ export interface EmptyTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 
 export function EmptyTitle({ sx, className, children, ...props }: EmptyTitleProps) {
   return (
-    <Text
-      as="h4"
+    <Title
+      level={4}
       weight="semibold"
       size="md"
       data-slot="empty-title"
@@ -112,7 +112,7 @@ export function EmptyTitle({ sx, className, children, ...props }: EmptyTitleProp
       {...props}
     >
       {children}
-    </Text>
+    </Title>
   );
 }
 
@@ -122,8 +122,7 @@ export interface EmptyDescriptionProps extends HTMLAttributes<HTMLParagraphEleme
 
 export function EmptyDescription({ sx, className, children, ...props }: EmptyDescriptionProps) {
   return (
-    <Text
-      as="p"
+    <Paragraph
       type="secondary"
       size="sm"
       data-slot="empty-description"
@@ -132,7 +131,7 @@ export function EmptyDescription({ sx, className, children, ...props }: EmptyDes
       {...props}
     >
       {children}
-    </Text>
+    </Paragraph>
   );
 }
 

@@ -228,11 +228,11 @@ export function DataTableFacetedFilter<TData, TValue = unknown>({
                         <OptionIcon />
                       </span>
                     )}
-                    <Text as="span" size="sm" sx={styles.optionLabel}>
+                    <Text size="sm" sx={styles.optionLabel}>
                       {option.label}
                     </Text>
                     {option.count !== undefined && (
-                      <Text as="span" size="xs" type="secondary" sx={styles.count}>
+                      <Text size="xs" type="secondary" sx={styles.count}>
                         {option.count}
                       </Text>
                     )}

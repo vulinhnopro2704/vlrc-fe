@@ -160,7 +160,7 @@ export function Code({
         </Component>
 
         {language && (
-          <Text as="span" size="xxs" type="secondary" sx={styles.badge}>
+          <Text size="xxs" type="secondary" sx={styles.badge}>
             {language}
           </Text>
         )}

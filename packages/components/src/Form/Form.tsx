@@ -180,7 +180,7 @@ export function FormBase<
           <>
             {label && (
               <FieldLabel htmlFor={field.name}>
-                <Text as="span" weight="medium" size="sm" required={Boolean(rules?.required)}>
+                <Text weight="medium" size="sm" required={Boolean(rules?.required)}>
                   {label}
                 </Text>
               </FieldLabel>

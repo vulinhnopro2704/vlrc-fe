@@ -3,7 +3,6 @@ import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-re
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
-import { Box } from '../layout';
 import { Text, type TextType } from '../Typography';
 
 const styles = stylex.create({
@@ -340,8 +339,7 @@ function PaginationEllipsis({
   const sxProps = stylex.props(styles.ellipsis, sizeStyle, sx);
 
   return (
-    <Box
-      as="span"
+    <Text
       data-slot="pagination-ellipsis"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -349,7 +347,7 @@ function PaginationEllipsis({
     >
       <MoreHorizontalIcon aria-hidden="true" {...stylex.props(iconSize)} />
       <Text sx={styles.srOnly}>More pages</Text>
-    </Box>
+    </Text>
   );
 }
 

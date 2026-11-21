@@ -301,7 +301,6 @@ function CommandShortcut({ className, sx, ...props }: CommandShortcutProps) {
   const sxProps = stylex.props(styles.shortcut, sx);
   return (
     <Text
-      as="span"
       data-slot="command-shortcut"
       size="xs"
       type="secondary"
