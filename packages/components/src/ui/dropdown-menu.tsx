@@ -334,7 +334,6 @@ function DropdownMenuShortcut({ className, sx, ...props }: DropdownMenuShortcutP
   const sxProps = stylex.props(styles.shortcut, sx);
   return (
     <Text
-      as="span"
       data-slot="dropdown-menu-shortcut"
       size="xs"
       type="secondary"

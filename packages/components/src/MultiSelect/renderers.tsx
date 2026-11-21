@@ -38,7 +38,7 @@ const styles = stylex.create({
     padding: 0,
     margin: -1,
     overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     borderWidth: 0,
   },
@@ -407,7 +407,7 @@ export const SelectedValuesContent = ({
 
 export const PlaceholderContent = ({ placeholder }: { placeholder: string }) => (
   <div {...stylex.props(styles.placeholderContainer)}>
-    <Text as="span" type="secondary" sx={styles.placeholderText}>
+    <Text type="secondary" sx={styles.placeholderText}>
       {placeholder}
     </Text>
     <ChevronDown {...stylex.props(styles.placeholderChevron)} />
@@ -488,7 +488,7 @@ export const OptionsContent = ({
             >
               <CheckIcon {...stylex.props(styles.checkIcon)} />
             </div>
-            <Text as="span" type="inherit">
+            <Text type="inherit">
               (Select All
               {getAllOptions().length > 20 ? ` - ${getAllOptions().length} options` : ''})
             </Text>

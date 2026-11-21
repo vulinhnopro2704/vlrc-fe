@@ -200,3 +200,30 @@ export const TableFeatures: Story = {
     </Box>
   ),
 };
+
+const NOTION_TOGGLES_DOC = `# Notion-style Toggles & Collapsibles
+
+Click the chevron arrow to expand/collapse. Click the text to edit without toggling!
+
+<details data-level="h1" open><summary data-level="h1">Toggle Heading 1 (Large Section)</summary><div class="lexical-collapsible-content">Content inside Toggle Heading 1. Supports full rich text formatting and nested blocks.</div></details>
+
+<details data-level="h2" open><summary data-level="h2">Toggle Heading 2 (Medium Section)</summary><div class="lexical-collapsible-content">Content inside Toggle Heading 2. Ideal for sub-topics and secondary sections.</div></details>
+
+<details data-level="h3" open><summary data-level="h3">Toggle Heading 3 (Small Section)</summary><div class="lexical-collapsible-content">Content inside Toggle Heading 3. Compact section headers with collapsible content.</div></details>
+
+<details data-level="default" open><summary data-level="default">Toggle List (Default Paragraph)</summary><div class="lexical-collapsible-content">Standard bullet-style toggle list for notes, FAQs, and expandable details.</div></details>
+`;
+
+export const NotionToggles: Story = {
+  render: () => (
+    <Box style={{ width: 780, maxWidth: '100%' }}>
+      <NotionEditor
+        defaultValue={NOTION_TOGGLES_DOC}
+        showToolbar={true}
+        showFloatingToolbar={true}
+        showSlashMenu={true}
+        showDraggableBlocks={true}
+      />
+    </Box>
+  ),
+};

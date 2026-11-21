@@ -128,7 +128,7 @@ const styles = stylex.create({
     padding: 0,
     margin: -1,
     overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     borderWidth: 0,
   },
@@ -301,7 +301,6 @@ function CommandShortcut({ className, sx, ...props }: CommandShortcutProps) {
   const sxProps = stylex.props(styles.shortcut, sx);
   return (
     <Text
-      as="span"
       data-slot="command-shortcut"
       size="xs"
       type="secondary"

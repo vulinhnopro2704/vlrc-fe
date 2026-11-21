@@ -25,6 +25,7 @@ const styles = stylex.create({
     color: colors.mutedForeground,
     boxSizing: 'border-box',
     width: 'fit-content',
+    gap: '2px',
   },
 
   // 7-tier List Sizing
@@ -77,6 +78,7 @@ const styles = stylex.create({
     cursor: 'pointer',
     userSelect: 'none',
     fontWeight: 500,
+    lineHeight: 1,
     height: '100%',
     transitionProperty: 'background-color, color, box-shadow',
     transitionDuration: '150ms',
@@ -98,7 +100,7 @@ const styles = stylex.create({
   triggerXxs: {
     paddingInline: '0.5rem',
     fontSize: '0.6875rem',
-    borderRadius: radius.none,
+    borderRadius: radius.sm,
     gap: '0.25rem',
   },
   triggerXs: {

@@ -11,7 +11,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
     <div
       class="Box__styles.base xeuugli ToolbarPlugin__styles.toolbar x78zum5 x6s0dn4 x1a02dak x1pe288y xbgekeq x39wta3 xso031l x1q0q8m5 xwvem2w xtrtlso x1ewf0uv xjfy4b8 x9f619 xnl6qn8 vlrc-editor-toolbar"
       data-slot="editor-toolbar"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:124"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:131"
     >
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -85,7 +85,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -94,7 +94,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_0_"
         type="button"
@@ -130,7 +130,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -139,7 +139,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_2_"
         type="button"
@@ -174,7 +174,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
       <div
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.fontSizeBox x78zum5 x6s0dn4 x195vfkc"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:164"
       >
         <button
           aria-label="Decrease font size"
@@ -248,7 +248,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -427,7 +427,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -514,7 +514,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_8_"
         type="button"
@@ -550,7 +550,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -559,7 +559,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_a_"
         type="button"
@@ -615,7 +615,7 @@ exports[`NotionEditor > UI > should match snapshot in default empty state 1`] = 
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -934,7 +934,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
     <div
       class="Box__styles.base xeuugli ToolbarPlugin__styles.toolbar x78zum5 x6s0dn4 x1a02dak x1pe288y xbgekeq x39wta3 xso031l x1q0q8m5 xwvem2w xtrtlso x1ewf0uv xjfy4b8 x9f619 xnl6qn8 vlrc-editor-toolbar"
       data-slot="editor-toolbar"
-      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:124"
+      data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:131"
     >
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -1008,7 +1008,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -1017,7 +1017,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_f_"
         type="button"
@@ -1053,7 +1053,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -1062,7 +1062,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_h_"
         type="button"
@@ -1097,7 +1097,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
       <div
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.fontSizeBox x78zum5 x6s0dn4 x195vfkc"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:164"
       >
         <button
           aria-label="Decrease font size"
@@ -1171,7 +1171,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"
@@ -1350,7 +1350,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -1437,7 +1437,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_n_"
         type="button"
@@ -1473,7 +1473,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <button
         aria-expanded="false"
@@ -1482,7 +1482,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         data-size="sm"
         data-slot="dropdown-menu-trigger"
         data-state="closed"
-        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:150"
+        data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:168; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:157"
         data-variant="ghost"
         id="radix-_r_p_"
         type="button"
@@ -1538,7 +1538,7 @@ exports[`NotionEditor > UI > should match snapshot with initial markdown content
         aria-hidden="true"
         class="Box__styles.base x9f619 xeuugli ToolbarPlugin__styles.divider x1i1rx1s xmll18r x1j83s22 xc2w5un vlrc-editor-toolbar-divider"
         data-slot="box"
-        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:140"
+        data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/editor:src/plugins/ToolbarPlugin.tsx:147"
       />
       <div
         class="astryx-stack x78zum5 x1q0g3np x1lfs0n9 x1ngg2t4"

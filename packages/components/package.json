@@ -107,7 +107,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vite build && node scripts/check-stylex-shadowing.mjs && tsc -p tsconfig.json && cat src/theme/theme.css dist/assets/stylex.css > dist/theme.css && cp src/theme/vlrc-theme.css dist/vlrc-theme.css",
+    "build": "vite build && node scripts/check-stylex-shadowing.mjs && tsc -p tsconfig.json && cat src/theme/theme.css dist/assets/stylex.css > dist/theme.css && cp src/theme/vlrc-theme.css dist/vlrc-theme.css && node -e \"const cp = require('child_process'); cp.execSync('! grep -rn \\\"node_modules/.pnpm\\\" dist', { stdio: 'inherit' });\"",
     "test": "vitest run",
     "lint": "oxlint .",
     "format": "oxfmt .",

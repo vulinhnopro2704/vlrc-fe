@@ -129,7 +129,7 @@ export function CopyButton({
       </span>
 
       {showLabel && (
-        <Text as="span" size="sm" sx={[styles.label]}>
+        <Text size="sm" sx={[styles.label]}>
           {copied ? copiedLabel : copyLabel}
         </Text>
       )}

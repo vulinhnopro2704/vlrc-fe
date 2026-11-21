@@ -1,7 +1,10 @@
 import { type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { spacing } from '../theme/tokens.stylex';
+import { colors, spacing } from '../theme/tokens.stylex';
+import { unstyledButtonStyles } from '../utils';
 import { Badge } from './badge';
+import { Button } from './button';
+import { Flex } from '../layout';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 const styles = stylex.create({
@@ -14,10 +17,11 @@ const styles = stylex.create({
   overflowBadge: {
     cursor: 'pointer',
     userSelect: 'none',
-    transitionProperty: 'opacity',
+    transitionProperty: 'opacity, background-color, border-color',
     transitionDuration: '150ms',
     ':hover': {
       opacity: 0.8,
+      backgroundColor: colors.accent,
     },
   },
   popoverContainer: {
@@ -25,6 +29,11 @@ const styles = stylex.create({
     flexWrap: 'wrap',
     gap: spacing.xs,
     maxWidth: '16rem',
+  },
+  overflowPopoverContent: {
+    width: 'auto',
+    maxWidth: '18rem',
+    padding: '0.375rem 0.5rem',
   },
 });
 
@@ -65,7 +74,7 @@ function BadgeOverflow<T = string>({
   const sxProps = stylex.props(styles.root, sx);
 
   return (
-    <div
+    <Flex
       data-slot="badge-overflow"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -79,17 +88,26 @@ function BadgeOverflow<T = string>({
         ) : showPopover ? (
           <Popover>
             <PopoverTrigger asChild>
-              <Badge variant="outline" data-slot="badge-overflow-trigger" sx={styles.overflowBadge}>
-                +{hiddenCount}
-              </Badge>
+              <Button
+                variant="ghost"
+                data-slot="badge-overflow-trigger"
+                aria-label={`+${hiddenCount} more items`}
+                sx={unstyledButtonStyles.reset}
+              >
+                <Badge variant="outline" sx={styles.overflowBadge}>
+                  +{hiddenCount}
+                </Badge>
+              </Button>
             </PopoverTrigger>
-            <PopoverContent align="start" sideOffset={4}>
-              <div
+            <PopoverContent align="start" sideOffset={4} sx={styles.overflowPopoverContent}>
+              <Flex
                 data-slot="badge-overflow-popover-content"
-                {...stylex.props(styles.popoverContainer)}
+                wrap="wrap"
+                gap="xs"
+                sx={styles.popoverContainer}
               >
                 {hiddenItems.map((item, index) => badgeRenderer(item, max + index))}
-              </div>
+              </Flex>
             </PopoverContent>
           </Popover>
         ) : (
@@ -97,7 +115,7 @@ function BadgeOverflow<T = string>({
             +{hiddenCount}
           </Badge>
         ))}
-    </div>
+    </Flex>
   );
 }
 

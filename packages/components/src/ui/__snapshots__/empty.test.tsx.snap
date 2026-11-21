@@ -20,21 +20,24 @@ exports[`Empty > UI > should match snapshot with compound subcomponents 1`] = `
       </span>
     </div>
     <h4
-      class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.semibold x1s688f"
+      class="Title__styles.base x1ghz6dp x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh weightStyles__styles.semibold x1s688f"
+      data-level="4"
       data-size="md"
       data-slot="empty-title"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+      data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:35; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+      data-variant="default"
       data-weight="semibold"
     >
-      No data available
+      <span>
+        No data available
+      </span>
     </h4>
     <p
-      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm empty__styles.description xowlazn"
+      class="Paragraph__styles.base x1ghz6dp Paragraph__styles.sizeSm xboafo0 x1evy7pa Paragraph__styles.defaultVariant Paragraph__styles.typeSecondary xw3nh4a Paragraph__styles.spacingNone xat24cr Paragraph__styles.alignLeft xdpxx8g empty__styles.description xowlazn"
       data-size="sm"
       data-slot="empty-description"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/empty.tsx:28"
-      data-type="secondary"
-      data-weight="regular"
+      data-style-src="@vlrc-fe/components:src/Typography/Paragraph.tsx:16; @vlrc-fe/components:src/Typography/Paragraph.tsx:31; @vlrc-fe/components:src/Typography/Paragraph.tsx:53; @vlrc-fe/components:src/Typography/Paragraph.tsx:65; @vlrc-fe/components:src/Typography/Paragraph.tsx:88; @vlrc-fe/components:src/Typography/Paragraph.tsx:102; @vlrc-fe/components:src/ui/empty.tsx:28"
+      data-variant="default"
     >
       Create your first project to get started.
     </p>
@@ -95,21 +98,24 @@ exports[`Empty > UI > should match snapshot with default shorthand props 1`] = `
       </svg>
     </div>
     <h4
-      class="Text__styles.base x1heor9g Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.semibold x1s688f"
+      class="Title__styles.base x1ghz6dp x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeMd x1jchvi3 x1xfvgam Title__styles.defaultVariant Title__styles.normal x1i21sxh weightStyles__styles.semibold x1s688f"
+      data-level="4"
       data-size="md"
       data-slot="empty-title"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+      data-style-src="@vlrc-fe/components:src/Typography/Title.tsx:12; @vlrc-fe/components:src/Typography/Title.tsx:35; @vlrc-fe/components:src/Typography/Title.tsx:54; @vlrc-fe/components:src/Typography/Title.tsx:70; @vlrc-fe/components:src/Typography/weightStyles.ts:20"
+      data-variant="default"
       data-weight="semibold"
     >
-      No data available
+      <span>
+        No data available
+      </span>
     </h4>
     <p
-      class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm empty__styles.description xowlazn"
+      class="Paragraph__styles.base x1ghz6dp Paragraph__styles.sizeSm xboafo0 x1evy7pa Paragraph__styles.defaultVariant Paragraph__styles.typeSecondary xw3nh4a Paragraph__styles.spacingNone xat24cr Paragraph__styles.alignLeft xdpxx8g empty__styles.description xowlazn"
       data-size="sm"
       data-slot="empty-description"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/empty.tsx:28"
-      data-type="secondary"
-      data-weight="regular"
+      data-style-src="@vlrc-fe/components:src/Typography/Paragraph.tsx:16; @vlrc-fe/components:src/Typography/Paragraph.tsx:31; @vlrc-fe/components:src/Typography/Paragraph.tsx:53; @vlrc-fe/components:src/Typography/Paragraph.tsx:65; @vlrc-fe/components:src/Typography/Paragraph.tsx:88; @vlrc-fe/components:src/Typography/Paragraph.tsx:102; @vlrc-fe/components:src/ui/empty.tsx:28"
+      data-variant="default"
     >
       Create your first project to get started.
     </p>

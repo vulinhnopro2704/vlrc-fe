@@ -60,14 +60,22 @@ Before generating component markup or props, query the Astryx schema to prevent 
 - **Centered Layout**: `<Container>` or `<Center>`
 - **Flex Layout**: `<Flex>`
 
-### 4. Typography Rules (STRICT: Never use raw `<span>`, `<p>`, `<h1>`-`<h6>`)
+### 4. Typography & Polymorphic Rules (STRICT: Never use raw `<span>`, `<p>`, `<h1>`-`<h6>`)
 
-- Text: `<Text size="md" type="secondary">`
-- Title: `<Title level={2}>`
-- Paragraph: `<Paragraph>`
+- Text: `<Text size="md" type="secondary">` (renders `<span>` by default; **NEVER** pass `as="span"`)
+- Title: `<Title level={2}>` (renders `<h2>` by default; **NEVER** use `<Text as="h2">`)
+- Paragraph: `<Paragraph>` (renders `<p>` by default; **NEVER** use `<Text as="p">`)
 - Inline Code: `<Code>`
 - Block Code: `<CodeBlock language="typescript">`
 - Heading: `<Heading level={1}>`
+- **Zero `<Box as="span">`**: Never use layout `<Box>` for inline text or badges; always use `<Text>`.
+
+### 4.1 Interactive Controls & DOM Nesting Integrity
+
+- Zero raw `<button>`, `<span role="button">`, or `<div role="button">`. Always use `<Button variant="...">` from `@vlrc-fe/components`.
+- Zero DOM Nesting Violations: NEVER place `<button>` inside `<button>`. For composite triggers (like DatePicker with clear button), use `<Flex>` as wrapper and sibling `<Button>` elements.
+- Visually hidden styles: ALWAYS use `clipPath: 'inset(50%)'`, NEVER deprecated `clip: 'rect(0, 0, 0, 0)'`.
+- Roving Keyboard Navigation: Use `getNextRovingIndex(current, total, direction, loop)` from `packages/components/src/utils.ts`.
 
 ### 5. Zero Magic Values Contract
 

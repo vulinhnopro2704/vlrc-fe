@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["typescript", "react"],
+  "plugins": ["typescript", "react", "jsx-a11y"],
   "env": {
     "builtin": true,
     "browser": true,
@@ -13,6 +13,10 @@
     "typescript/no-explicit-any": "warn",
     "react/rules-of-hooks": "error",
     "react/exhaustive-deps": "warn",
+    "react/jsx-key": "error",
+    "react/no-children-prop": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/void-dom-elements-no-children": "error",
     "react/set-state-in-effect": "off",
     "react/immutability": "off",
     "react/purity": "off",
@@ -21,6 +25,10 @@
       {
         "allowConstantExport": true
       }
-    ]
+    ],
+    "jsx-a11y/aria-role": "error",
+    "jsx-a11y/aria-props": "error",
+    "jsx-a11y/aria-proptypes": "error",
+    "jsx-a11y/no-aria-hidden-on-focusable": "warn"
   }
 }

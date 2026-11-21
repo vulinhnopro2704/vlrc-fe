@@ -120,6 +120,17 @@ const styles = stylex.create({
     width: '1.5rem',
     height: '1.5rem',
   },
+  srOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
 });
 
 const listSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
@@ -223,10 +234,7 @@ function BreadcrumbPage({ className, sx, ...props }: BreadcrumbPageProps) {
   const sxProps = stylex.props(styles.page, sx);
   return (
     <Text
-      as="span"
       data-slot="breadcrumb-page"
-      role="link"
-      aria-disabled="true"
       aria-current="page"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -278,19 +286,16 @@ function BreadcrumbEllipsis({ size: propSize, className, sx, ...props }: Breadcr
   const sxProps = stylex.props(styles.ellipsis, sx);
 
   return (
-    <span
+    <Text
       data-slot="breadcrumb-ellipsis"
       role="presentation"
-      aria-hidden="true"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <MoreHorizontal {...stylex.props(iconSize)} />
-      <Text as="span" className="sr-only">
-        More
-      </Text>
-    </span>
+      <MoreHorizontal aria-hidden="true" {...stylex.props(iconSize)} />
+      <Text sx={styles.srOnly}>More</Text>
+    </Text>
   );
 }
 

@@ -12,6 +12,8 @@ import {
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
+import { getNextRovingIndex } from '../utils';
+import { Box, Flex } from '../layout';
 import { Button, type ButtonProps } from './button';
 import { Text } from '../Typography';
 
@@ -94,6 +96,9 @@ const styles = stylex.create({
     flex: 1,
     flexDirection: 'row',
   },
+  itemHorizontalLast: {
+    flex: 'none',
+  },
   itemVertical: {
     width: '100%',
     flexDirection: 'column',
@@ -107,7 +112,9 @@ const styles = stylex.create({
     gap: spacing.sm,
     backgroundColor: 'transparent',
     borderWidth: 0,
-    padding: spacing.xs,
+    height: 'auto',
+    paddingInline: spacing.xs,
+    paddingBlock: spacing.xs,
     borderRadius: radius.md,
     cursor: 'pointer',
     outline: 'none',
@@ -176,7 +183,7 @@ const styles = stylex.create({
     minHeight: '2rem',
     height: '100%',
     marginLeft: 19,
-    marginVertical: 0,
+    marginBlock: spacing.xs,
   },
 
   // Content
@@ -289,7 +296,7 @@ function Stepper({
 
   return (
     <StepperContext.Provider value={contextValue}>
-      <div
+      <Box
         data-slot="stepper"
         data-orientation={orientation}
         {...sxProps}
@@ -297,7 +304,7 @@ function Stepper({
         {...props}
       >
         {children}
-      </div>
+      </Box>
     </StepperContext.Provider>
   );
 }
@@ -312,7 +319,7 @@ function StepperList({ className, sx, children, ...props }: StepperListProps) {
   const sxProps = stylex.props(styles.list, orientationStyle, sx);
 
   return (
-    <div
+    <Box
       role="tablist"
       aria-orientation={orientation}
       data-slot="stepper-list"
@@ -321,7 +328,7 @@ function StepperList({ className, sx, children, ...props }: StepperListProps) {
       {...props}
     >
       {children}
-    </div>
+    </Box>
   );
 }
 
@@ -371,13 +378,21 @@ function StepperItem({
     [itemValue, stepIndex, status, disabled],
   );
 
+  const isLast = stepIndex >= stepKeys.length - 1 && stepKeys.length > 0;
+  const isHorizontalLast = orientation === 'horizontal' && isLast;
+
   const itemOrientationStyle =
     orientation === 'vertical' ? styles.itemVertical : styles.itemHorizontal;
-  const sxProps = stylex.props(styles.item, itemOrientationStyle, sx);
+  const sxProps = stylex.props(
+    styles.item,
+    itemOrientationStyle,
+    isHorizontalLast && styles.itemHorizontalLast,
+    sx,
+  );
 
   return (
     <StepperItemContext.Provider value={itemContextValue}>
-      <div
+      <Box
         data-slot="stepper-item"
         data-status={status}
         data-disabled={disabled ? '' : undefined}
@@ -386,12 +401,12 @@ function StepperItem({
         {...props}
       >
         {children}
-      </div>
+      </Box>
     </StepperItemContext.Provider>
   );
 }
 
-export interface StepperTriggerProps extends ComponentProps<'button'> {
+export interface StepperTriggerProps extends ComponentProps<typeof Button> {
   sx?: stylex.StyleXStyles;
 }
 
@@ -416,32 +431,31 @@ function StepperTrigger({
     onKeyDown?.(e);
     if (e.defaultPrevented) return;
 
-    let targetIndex: number | null = null;
-    const isHorizontal = orientation === 'horizontal';
-
-    if ((isHorizontal && e.key === 'ArrowRight') || (!isHorizontal && e.key === 'ArrowDown')) {
-      targetIndex = Math.min(stepIndex + 1, stepKeys.length - 1);
-    } else if ((isHorizontal && e.key === 'ArrowLeft') || (!isHorizontal && e.key === 'ArrowUp')) {
-      targetIndex = Math.max(stepIndex - 1, 0);
-    } else if (e.key === 'Home') {
-      targetIndex = 0;
-    } else if (e.key === 'End') {
-      targetIndex = stepKeys.length - 1;
-    }
+    const targetIndex = getNextRovingIndex(e.key, stepIndex, stepKeys.length, {
+      orientation,
+      loop: false,
+    });
 
     if (targetIndex !== null && stepKeys[targetIndex]) {
       e.preventDefault();
-      await setValue(stepKeys[targetIndex]);
+      const nextKey = stepKeys[targetIndex];
+      await setValue(nextKey);
+      const nextButton = document.getElementById(`stepper-tab-${nextKey}`);
+      nextButton?.focus();
     }
   };
 
   const sxProps = stylex.props(styles.trigger, disabled && styles.triggerDisabled, sx);
 
   return (
-    <button
+    <Button
+      variant="ghost"
       type="button"
       role="tab"
+      id={props.id ?? `stepper-tab-${value}`}
+      aria-controls={`stepper-panel-${value}`}
       aria-selected={status === 'active'}
+      tabIndex={status === 'active' ? 0 : -1}
       data-slot="stepper-trigger"
       data-status={status}
       disabled={disabled}
@@ -452,7 +466,7 @@ function StepperTrigger({
       {...props}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 
@@ -496,7 +510,9 @@ function StepperIndicator({ className, sx, children, ...props }: StepperIndicato
   };
 
   return (
-    <div
+    <Flex
+      align="center"
+      justify="center"
       aria-hidden="true"
       data-slot="stepper-indicator"
       data-status={status}
@@ -505,7 +521,7 @@ function StepperIndicator({ className, sx, children, ...props }: StepperIndicato
       {...props}
     >
       {defaultContent()}
-    </div>
+    </Flex>
   );
 }
 
@@ -533,7 +549,7 @@ function StepperSeparator({ className, forceMount = false, sx, ...props }: Stepp
   );
 
   return (
-    <div
+    <Box
       aria-hidden="true"
       data-slot="stepper-separator"
       data-completed={isCompleted ? '' : undefined}
@@ -600,23 +616,27 @@ function StepperContent({
   ...props
 }: StepperContentProps) {
   const { value } = useStepperContext('StepperContent');
+  const isHidden = value !== contentValue;
 
-  if (value !== contentValue && !forceMount) {
+  if (isHidden && !forceMount) {
     return null;
   }
 
   const sxProps = stylex.props(styles.content, sx);
 
   return (
-    <div
+    <Box
       role="tabpanel"
+      id={props.id ?? `stepper-panel-${contentValue}`}
+      aria-labelledby={`stepper-tab-${contentValue}`}
+      hidden={isHidden}
       data-slot="stepper-content"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       {children}
-    </div>
+    </Box>
   );
 }
 
@@ -702,14 +722,14 @@ export interface StepperTextProps extends ComponentProps<'div'> {
 function StepperText({ className, sx, children, ...props }: StepperTextProps) {
   const sxProps = stylex.props(styles.textWrapper, sx);
   return (
-    <div
+    <Box
       data-slot="stepper-text"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       {children}
-    </div>
+    </Box>
   );
 }
 

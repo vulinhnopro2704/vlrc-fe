@@ -55,15 +55,25 @@
      - **Flex Layout**: `<Flex>`
    - Pass custom StyleX rules through the `sx` prop: `<VStack sx={[styles.root, sx]}>`.
 
-2. **Typography Primitives**:
+2. **Typography Primitives & Polymorphic Invariants**:
    - NEVER use raw `<span>`, `<p>`, or `<h1>`-`<h6>` tags.
    - ALWAYS use `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, and `<Code>` from `@vlrc-fe/components/Typography`.
+   - **Zero Redundant `as="span"`**: `<Text>` renders `<span>` by default. NEVER pass `as="span"` to `<Text>`.
+   - **Zero `<Box as="span">`**: `<Box>` is for layout containers. NEVER use `<Box as="span">` for inline text, badges, or tokens; use `<Text>` directly.
+   - **Zero `<Text as="p">`**: NEVER coerce `<Text>` into a paragraph; use `<Paragraph>` directly.
+   - **Zero `<Text as="h1-6">`**: NEVER coerce `<Text>` into a heading; use `<Title level={1-6}>` directly.
    - Leverage built-in wrapper features:
      - `copyable`: Automatic one-click copy with tooltip feedback.
      - `editable`: Inline click-to-edit with validation.
      - `ellipsis`: Automatic text truncation with tooltip on overflow.
      - `lines` / `rows`: Multi-line clamp using tokens.
      - Margin shorthands: `m`, `mt`, `mb`, `ml`, `mr`, `mx`, `my`.
+
+3. **Interactive Controls & DOM Nesting Integrity**:
+   - NEVER use raw `<button>`, `<span role="button">`, or `<div role="button">`. ALWAYS use `<Button variant="...">` from `@vlrc-fe/components`.
+   - **Zero DOM Nesting Violations**: NEVER nest `<button>` inside `<button>`. For complex composite triggers (such as DatePicker or Select with a clear button), use `<Flex>` as the trigger wrapper and render the trigger `<Button>` and clear `<Button>` as siblings.
+   - **Modern `srOnly` / Visually Hidden**: Always use `clipPath: 'inset(50%)'`. NEVER use deprecated `clip: 'rect(0, 0, 0, 0)'`.
+   - **Roving Keyboard Navigation**: Always use `getNextRovingIndex(current, total, direction, loop)` from `packages/components/src/utils.ts` for tabs, segmented controls, and steppers.
 
 ---
 

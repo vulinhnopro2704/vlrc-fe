@@ -52,18 +52,15 @@ export const DataTableTable = <TData,>({
       {map(table.getHeaderGroups(), (headerGroup) => (
         <TableRow key={headerGroup.id}>
           {map(headerGroup.headers, (header) => {
-            if (
-              header.isPlaceholder ||
-              columnVisibility[header.column.id] === false ||
-              header.column.columnDef.header === undefined
-            ) {
+            if (header.isPlaceholder || columnVisibility[header.column.id] === false) {
               return null;
             }
-            return (
-              <TableHead key={header.id}>
-                {flexRender(header.column.columnDef.header, header.getContext())}
-              </TableHead>
-            );
+            const headerContent =
+              header.column.columnDef.header !== undefined
+                ? flexRender(header.column.columnDef.header, header.getContext())
+                : header.column.id;
+
+            return <TableHead key={header.id}>{headerContent}</TableHead>;
           })}
         </TableRow>
       ))}

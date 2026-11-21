@@ -30,6 +30,8 @@ export {
   $isCollapsibleTitleNode,
   $createCollapsibleContentNode,
   $isCollapsibleContentNode,
+  $insertCollapsible,
+  type CollapsibleLevel,
 } from './CollapsibleNodes';
 export { ImageNode, $createImageNode, $isImageNode } from './ImageNode';
 export {

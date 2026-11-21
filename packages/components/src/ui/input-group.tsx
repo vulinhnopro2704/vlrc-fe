@@ -228,7 +228,6 @@ function InputGroupText({ className, sx, children, ...props }: InputGroupTextPro
   const sxProps = stylex.props(styles.text, sx);
   return (
     <Text
-      as="span"
       size="sm"
       type="secondary"
       data-slot="input-group-text"

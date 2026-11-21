@@ -307,9 +307,9 @@ function renderHighlightedTokens(
 
     if (token.startsWith('//') || token.startsWith('#')) {
       parts.push(
-        <Box as="span" key={matchStart} sx={styles.tokenComment}>
+        <Text key={matchStart} sx={styles.tokenComment}>
           {token}
-        </Box>,
+        </Text>,
       );
     } else if (
       (token.startsWith('"') && token.endsWith('"')) ||
@@ -317,33 +317,33 @@ function renderHighlightedTokens(
       (token.startsWith('`') && token.endsWith('`'))
     ) {
       parts.push(
-        <Box as="span" key={matchStart} sx={styles.tokenString}>
+        <Text key={matchStart} sx={styles.tokenString}>
           {token}
-        </Box>,
+        </Text>,
       );
     } else if (BOOLEANS.has(token)) {
       parts.push(
-        <Box as="span" key={matchStart} sx={styles.tokenBoolean}>
+        <Text key={matchStart} sx={styles.tokenBoolean}>
           {token}
-        </Box>,
+        </Text>,
       );
     } else if (KEYWORDS.has(token)) {
       parts.push(
-        <Box as="span" key={matchStart} sx={styles.tokenKeyword}>
+        <Text key={matchStart} sx={styles.tokenKeyword}>
           {token}
-        </Box>,
+        </Text>,
       );
     } else if (/^\d+$/.test(token)) {
       parts.push(
-        <Box as="span" key={matchStart} sx={styles.tokenNumber}>
+        <Text key={matchStart} sx={styles.tokenNumber}>
           {token}
-        </Box>,
+        </Text>,
       );
     } else if (isWordHighlighted) {
       parts.push(
-        <Box as="span" key={matchStart} sx={styles.wordHighlight}>
+        <Text key={matchStart} sx={styles.wordHighlight}>
           {token}
-        </Box>,
+        </Text>,
       );
     } else {
       parts.push(token);

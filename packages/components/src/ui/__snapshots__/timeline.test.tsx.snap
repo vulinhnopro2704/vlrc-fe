@@ -291,12 +291,11 @@ exports[`Timeline > UI > should match snapshot in default vertical state 1`] = `
           </time>
         </div>
         <p
-          class="Text__styles.base Text__styles.sizeSm xboafo0 xfrs9s4 Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+          class="Paragraph__styles.base x1ghz6dp Paragraph__styles.sizeSm xboafo0 x1evy7pa Paragraph__styles.defaultVariant Paragraph__styles.typeSecondary xw3nh4a Paragraph__styles.spacingNone xat24cr Paragraph__styles.alignLeft xdpxx8g"
           data-size="sm"
           data-slot="timeline-description"
-          data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:26; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
-          data-type="secondary"
-          data-weight="regular"
+          data-style-src="@vlrc-fe/components:src/Typography/Paragraph.tsx:16; @vlrc-fe/components:src/Typography/Paragraph.tsx:31; @vlrc-fe/components:src/Typography/Paragraph.tsx:53; @vlrc-fe/components:src/Typography/Paragraph.tsx:65; @vlrc-fe/components:src/Typography/Paragraph.tsx:88; @vlrc-fe/components:src/Typography/Paragraph.tsx:102"
+          data-variant="default"
         >
           Details regarding this event status.
         </p>

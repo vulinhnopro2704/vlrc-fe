@@ -114,11 +114,16 @@ const styles = stylex.create({
     touchAction: 'none',
     userSelect: 'none',
     boxSizing: 'border-box',
+    outline: 'none',
+    ':focus-visible': {
+      borderColor: colors.focusRing,
+      boxShadow: shadow.ringFocus,
+    },
   },
   areaFocused: {
     outline: 'none',
     borderColor: colors.focusRing,
-    boxShadow: shadow.ring,
+    boxShadow: shadow.ringFocus,
   },
   canvas: {
     position: 'absolute',

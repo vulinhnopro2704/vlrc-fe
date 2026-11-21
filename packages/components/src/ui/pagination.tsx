@@ -148,6 +148,17 @@ const styles = stylex.create({
     justifyContent: 'center',
     color: colors.mutedForeground,
   },
+  srOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
 });
 
 const linkSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
@@ -281,7 +292,7 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeftIcon {...stylex.props(iconSize)} />
-      <Text as="span" size={resolvedSize} type="inherit">
+      <Text size={resolvedSize} type="inherit">
         {children ?? 'Previous'}
       </Text>
     </PaginationLink>
@@ -307,7 +318,7 @@ function PaginationNext({
       sx={sx}
       {...props}
     >
-      <Text as="span" size={resolvedSize} type="inherit">
+      <Text size={resolvedSize} type="inherit">
         {children ?? 'Next'}
       </Text>
       <ChevronRightIcon {...stylex.props(iconSize)} />
@@ -328,18 +339,15 @@ function PaginationEllipsis({
   const sxProps = stylex.props(styles.ellipsis, sizeStyle, sx);
 
   return (
-    <span
-      aria-hidden="true"
+    <Text
       data-slot="pagination-ellipsis"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <MoreHorizontalIcon {...stylex.props(iconSize)} />
-      <Text as="span" className="sr-only">
-        More pages
-      </Text>
-    </span>
+      <MoreHorizontalIcon aria-hidden="true" {...stylex.props(iconSize)} />
+      <Text sx={styles.srOnly}>More pages</Text>
+    </Text>
   );
 }
 

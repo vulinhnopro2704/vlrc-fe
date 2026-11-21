@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { isNil } from 'lodash-es';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -36,6 +36,10 @@ const styles = stylex.create({
     boxShadow: shadow.xs,
     transitionProperty: 'box-shadow, border-color',
     transitionDuration: '150ms',
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: shadow.ring,
+    },
   },
   triggerOpen: {
     borderColor: colors.ring,
@@ -141,8 +145,13 @@ const styles = stylex.create({
     color: colors.foreground,
     minWidth: 0,
     maxWidth: '100%',
+    outline: 'none',
     ':hover': {
       backgroundColor: colors.accent,
+    },
+    ':focus-visible': {
+      backgroundColor: colors.accent,
+      boxShadow: shadow.ringFocus,
     },
   },
   optionSelected: {
@@ -235,6 +244,13 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!open) {
+      setSearch('');
+      onSearchTextChange?.('');
+    }
+  }, [open, onSearchTextChange]);
 
   const allOptions = useMemo(() => {
     const map = new Map<T, BaseSelectOption<T>>();
@@ -396,15 +412,20 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
         )}
         {isMulti && showSelectAll && !disabled && filteredOptions.length > 0 && (
           <div {...stylex.props(styles.selectAllRow)} onClick={handleSelectAll}>
-            <Text as="span" size="sm" sx={styles.selectAllText}>
+            <Text size="sm" sx={styles.selectAllText}>
               {selectedValues.length === filteredOptions.length ? 'Deselect all' : 'Select all'}
             </Text>
-            <Text as="span" size="sm" type="secondary" sx={styles.placeholder}>
+            <Text size="sm" type="secondary" sx={styles.placeholder}>
               ({selectedValues.length}/{filteredOptions.length})
             </Text>
           </div>
         )}
-        <div {...stylex.props(styles.optionsList)} onScroll={handleScroll}>
+        <div
+          role="listbox"
+          aria-multiselectable={isMulti}
+          {...stylex.props(styles.optionsList)}
+          onScroll={handleScroll}
+        >
           {isLoading && allOptions.length === 0 ? (
             <div {...stylex.props(styles.emptyNotice)}>Loading...</div>
           ) : filteredOptions.length === 0 ? (
@@ -416,12 +437,21 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
                 return (
                   <div
                     key={String(opt.value)}
+                    role="option"
+                    aria-selected={isSelected}
+                    tabIndex={disabled ? -1 : 0}
                     {...stylex.props(
                       styles.optionRow,
                       isSelected && styles.optionSelected,
                       disabled && styles.optionDisabled,
                     )}
                     onClick={() => handleSelect(opt.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleSelect(opt.value);
+                      }
+                    }}
                   >
                     {opt.icon && <span {...stylex.props(styles.optionIcon)}>{opt.icon}</span>}
                     <Text ellipsis tooltip sx={styles.optionLabel}>

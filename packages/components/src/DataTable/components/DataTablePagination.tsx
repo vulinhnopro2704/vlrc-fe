@@ -92,7 +92,7 @@ export const DataTablePagination = <TData,>({
           Previous
         </Button>
 
-        <Text as="span" size="sm" sx={styles.pageNumber}>
+        <Text size="sm" sx={styles.pageNumber}>
           {pageIndex + 1} / {Math.max(1, pageCount)}
         </Text>
 

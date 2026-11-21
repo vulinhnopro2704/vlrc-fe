@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius } from '../../theme/tokens.stylex';
+import { colors, radius, shadow } from '../../theme/tokens.stylex';
 import { ScrollArea } from '../../ui/scroll-area';
+import { Flex } from '../../layout';
 import { Text } from '../../Typography';
 import type { DisabledTime, TimeConfig } from './types';
 
@@ -44,6 +45,9 @@ const styles = stylex.create({
     ':hover': {
       backgroundColor: colors.accent,
       color: colors.accentForeground,
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
     },
   },
   itemActive: {
@@ -130,7 +134,7 @@ export function TimePicker({
 
     return (
       <ScrollArea sx={styles.scrollArea}>
-        <div {...stylex.props(styles.column)}>
+        <Flex direction="column" sx={styles.column}>
           {values.map((val) => {
             const isDisabled = disabledValues.includes(val);
             const isActive = current === val;
@@ -150,38 +154,38 @@ export function TimePicker({
               </button>
             );
           })}
-        </div>
+        </Flex>
       </ScrollArea>
     );
   };
 
   return (
-    <div {...stylex.props(styles.picker)}>
+    <Flex sx={styles.picker}>
       {showHour && (
-        <div {...stylex.props(styles.headerGroup)}>
-          <Text as="span" size="xs" weight="medium" sx={styles.headerLabel}>
+        <Flex direction="column" align="center" sx={styles.headerGroup}>
+          <Text size="xs" weight="medium" sx={styles.headerLabel}>
             Hour
           </Text>
           {renderTimeColumn('hour', 24, hourStep, hours, disabledHours)}
-        </div>
+        </Flex>
       )}
       {showMinute && (
-        <div {...stylex.props(styles.headerGroup)}>
-          <Text as="span" size="xs" weight="medium" sx={styles.headerLabel}>
+        <Flex direction="column" align="center" sx={styles.headerGroup}>
+          <Text size="xs" weight="medium" sx={styles.headerLabel}>
             Minute
           </Text>
           {renderTimeColumn('minute', 60, minuteStep, minutes, disabledMinutes)}
-        </div>
+        </Flex>
       )}
       {showSecond && (
-        <div {...stylex.props(styles.headerGroup)}>
-          <Text as="span" size="xs" weight="medium" sx={styles.headerLabel}>
+        <Flex direction="column" align="center" sx={styles.headerGroup}>
+          <Text size="xs" weight="medium" sx={styles.headerLabel}>
             Second
           </Text>
           {renderTimeColumn('second', 60, secondStep, seconds, disabledSeconds)}
-        </div>
+        </Flex>
       )}
-    </div>
+    </Flex>
   );
 }
 

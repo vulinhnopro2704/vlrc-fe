@@ -15,8 +15,11 @@ import {
   Root as AvatarPrimitiveRoot,
 } from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius } from '../theme/tokens.stylex';
+import { colors, radius, spacing } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { unstyledButtonStyles } from '../utils';
+import { Button } from './button';
+import { Flex } from '../layout';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 interface AvatarGroupContextValue {
@@ -108,20 +111,28 @@ const styles = stylex.create({
     color: colors.foreground,
     fontWeight: 600,
     cursor: 'pointer',
+    transitionProperty: 'background-color, opacity',
+    transitionDuration: '150ms',
+    ':hover': {
+      backgroundColor: colors.accent,
+    },
   },
   overflowTrigger: {
-    display: 'inline-flex',
-    cursor: 'pointer',
+    marginLeft: '-0.5rem',
+    ':first-child': {
+      marginLeft: 0,
+    },
+    flexShrink: 0,
   },
   overflowPopoverContent: {
     width: 'auto',
     maxWidth: '20rem',
-    padding: '0.75rem',
+    padding: '0.375rem 0.5rem',
   },
   overflowList: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '0.5rem',
+    gap: spacing.xs,
     alignItems: 'center',
   },
 });
@@ -237,7 +248,7 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
 
   return (
     <AvatarGroupContext.Provider value={contextValue}>
-      <div
+      <Flex
         role="group"
         data-slot="avatar-group"
         data-size={size}
@@ -249,15 +260,17 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
         {overflowCount > 0 && (
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
-              <div
-                {...stylex.props(styles.overflowTrigger)}
+              <Button
+                variant="ghost"
+                aria-label={`+${overflowCount} more members`}
+                sx={[unstyledButtonStyles.reset, styles.overflowTrigger]}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <Avatar size={size} data-slot="avatar-group-overflow">
                   <AvatarFallback sx={styles.overflowFallback}>+{overflowCount}</AvatarFallback>
                 </Avatar>
-              </div>
+              </Button>
             </PopoverTrigger>
             <PopoverContent
               side="top"
@@ -267,12 +280,14 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
               onMouseLeave={handleMouseLeave}
             >
               <AvatarGroupContext.Provider value={{ size, inGroup: false }}>
-                <div {...stylex.props(styles.overflowList)}>{hiddenChildren}</div>
+                <Flex wrap="wrap" align="center" gap="xs" sx={styles.overflowList}>
+                  {hiddenChildren}
+                </Flex>
               </AvatarGroupContext.Provider>
             </PopoverContent>
           </Popover>
         )}
-      </div>
+      </Flex>
     </AvatarGroupContext.Provider>
   );
 }

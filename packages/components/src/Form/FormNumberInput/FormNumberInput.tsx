@@ -30,6 +30,10 @@ const styles = stylex.create({
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     outline: 'none',
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: shadow.ring,
+    },
     height: '2.25rem',
     paddingInline: '0.75rem',
     paddingBlock: '0.5rem',

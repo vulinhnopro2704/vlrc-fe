@@ -4,11 +4,10 @@ import * as stylex from '@stylexjs/stylex';
 
 import Icons from '../../Icons';
 import { colors } from '../../theme/tokens.stylex';
-import { Button } from '../../ui/button';
-import { Text } from '../../Typography';
-import { resolveWidth, type ComponentWidth } from '../../theme/width';
+import { Box, Flex } from '../../layout';
+import type { ComponentWidth } from '../../theme/width';
 import { Calendar } from '../../ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
+import { Popover, PopoverContent } from '../../ui/popover';
 import {
   resolveDatePickerSize,
   type DatePickerSize,
@@ -17,6 +16,7 @@ import {
   type PickerType,
   type TimeConfig,
 } from './types';
+import { DatePickerTriggerInput, datePickerStyles } from './DatePickerTrigger';
 import { formatDateValue, getDefaultFormat } from './useFormDatePicker';
 import TimeInput from './TimeInput';
 import TimePicker from './TimePicker';
@@ -24,31 +24,6 @@ import MonthPickerPanel from './MonthPickerPanel';
 import YearPickerPanel from './YearPickerPanel';
 
 const styles = stylex.create({
-  triggerButton: {
-    justifyContent: 'space-between',
-    fontWeight: 400,
-  },
-  statusError: {
-    borderColor: colors.destructive,
-  },
-  statusWarning: {
-    borderColor: colors.warning,
-  },
-  fullWidth: {
-    width: '100%',
-  },
-  rightControls: {
-    marginLeft: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.25rem',
-  },
-  clearButton: {
-    cursor: 'pointer',
-    ':hover': {
-      color: colors.destructive,
-    },
-  },
   icon: {
     width: '1rem',
     height: '1rem',
@@ -74,6 +49,9 @@ const styles = stylex.create({
 });
 
 export interface StandaloneDatePickerProps {
+  id?: string;
+  'aria-describedby'?: string;
+  'aria-invalid'?: boolean | 'true' | 'false';
   value?: Date;
   onChange?: (date: Date | undefined) => void;
   placeholder?: string;
@@ -98,6 +76,9 @@ export interface StandaloneDatePickerProps {
 }
 
 export function SingleDatePicker({
+  id,
+  'aria-describedby': ariaDescribedby,
+  'aria-invalid': ariaInvalid,
   value,
   onChange,
   placeholder = 'Select Date',
@@ -153,7 +134,7 @@ export function SingleDatePicker({
     onChange?.(newDate);
   };
 
-  const handleClear = (e: React.MouseEvent) => {
+  const handleClear = (e: React.SyntheticEvent) => {
     e.stopPropagation();
     onChange?.(undefined);
   };
@@ -167,17 +148,17 @@ export function SingleDatePicker({
   const renderContent = () => {
     if (pickerType === 'time') {
       return (
-        <div {...stylex.props(styles.timeWrapper)}>
+        <Box sx={styles.timeWrapper}>
           <TimePicker
             value={value}
             onChange={handleTimeChange}
             timeConfig={timeConfig}
             disabledTime={buildDisabledTime(value, disabledTime)}
           />
-          <div {...stylex.props(styles.timeInputWrapper)}>
+          <Box sx={styles.timeInputWrapper}>
             <TimeInput value={value} onChange={handleTimeChange} timeConfig={timeConfig} />
-          </div>
-        </div>
+          </Box>
+        </Box>
       );
     }
 
@@ -199,7 +180,7 @@ export function SingleDatePicker({
     }
 
     return (
-      <div {...stylex.props(styles.calendarWrapper)}>
+      <Flex sx={styles.calendarWrapper}>
         <Calendar
           mode="single"
           size={resolvedSize}
@@ -214,16 +195,16 @@ export function SingleDatePicker({
           onMonthChange={setCurrentMonth}
         />
         {showTime && (
-          <div {...stylex.props(styles.timeWrapper)}>
+          <Box sx={styles.timeWrapper}>
             <TimePicker
               value={value}
               onChange={handleTimeChange}
               timeConfig={timeConfig}
               disabledTime={buildDisabledTime(value, disabledTime)}
             />
-          </div>
+          </Box>
         )}
-      </div>
+      </Flex>
     );
   };
 
@@ -247,9 +228,9 @@ export function SingleDatePicker({
 
   const statusStyle =
     status === 'error'
-      ? styles.statusError
+      ? datePickerStyles.statusError
       : status === 'warning'
-        ? styles.statusWarning
+        ? datePickerStyles.statusWarning
         : undefined;
 
   const typographySize =
@@ -261,40 +242,24 @@ export function SingleDatePicker({
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          size={resolvedSize}
-          disabled={disabled}
-          width={width}
-          sx={[
-            styles.triggerButton,
-            statusStyle,
-            width === 'auto' ? styles.fullWidth : undefined,
-            sx,
-          ]}
-          className={className}
-          style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
-        >
-          {!hideValue && displayValue ? (
-            <Text size={typographySize} weight="normal">
-              {displayValue}
-            </Text>
-          ) : (
-            <Text size={typographySize} type="muted">
-              {placeholder}
-            </Text>
-          )}
-          <div {...stylex.props(styles.rightControls)}>
-            {allowClear && value && (
-              <Text as="span" onClick={handleClear} sx={styles.clearButton}>
-                ×
-              </Text>
-            )}
-            {renderIcon()}
-          </div>
-        </Button>
-      </PopoverTrigger>
+      <DatePickerTriggerInput
+        id={id}
+        aria-describedby={ariaDescribedby}
+        aria-invalid={ariaInvalid}
+        disabled={disabled}
+        resolvedSize={resolvedSize}
+        typographySize={typographySize}
+        statusStyle={statusStyle}
+        width={width}
+        hasValue={Boolean(!hideValue && value)}
+        displayValue={displayValue}
+        placeholder={placeholder}
+        allowClear={allowClear}
+        onClear={handleClear}
+        renderIcon={renderIcon}
+        className={className}
+        sx={sx}
+      />
       <PopoverContent sx={styles.popoverContent} align="start">
         {renderContent()}
       </PopoverContent>
