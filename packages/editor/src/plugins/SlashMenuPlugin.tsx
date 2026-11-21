@@ -41,11 +41,7 @@ import {
 import { colors, radius, shadow, spacing } from '@vlrc-fe/components/theme/tokens.stylex';
 import { Box, VStack, Text } from '@vlrc-fe/components';
 import { $createCalloutNode } from '../nodes/CalloutNode';
-import {
-  $createCollapsibleContainerNode,
-  $createCollapsibleTitleNode,
-  $createCollapsibleContentNode,
-} from '../nodes/CollapsibleNodes';
+import { $insertCollapsible } from '../nodes/CollapsibleNodes';
 import { $createImageNode } from '../nodes/ImageNode';
 import { $createYouTubeNode, $createFigmaNode } from '../nodes/EmbedNodes';
 import { InsertTableDialog } from './InsertTableDialog';
@@ -283,86 +279,44 @@ const SLASH_OPTIONS: SlashOption[] = [
     actionId: 'image',
     onSelect: () => {},
   },
-  {
-    title: 'Toggle List',
-    description: 'Toggles can show and hide content inside',
-    icon: <FolderTree size={16} />,
+  ...(
+    [
+      {
+        title: 'Toggle List',
+        description: 'Toggles can show and hide content inside',
+        icon: <FolderTree size={16} />,
+        level: 'default',
+      },
+      {
+        title: 'Toggle Heading 1',
+        description: 'Large section heading that can hide content',
+        icon: <Heading1 size={16} />,
+        level: 'h1',
+      },
+      {
+        title: 'Toggle Heading 2',
+        description: 'Medium section heading that can hide content',
+        icon: <Heading2 size={16} />,
+        level: 'h2',
+      },
+      {
+        title: 'Toggle Heading 3',
+        description: 'Small section heading that can hide content',
+        icon: <Heading3 size={16} />,
+        level: 'h3',
+      },
+    ] as const
+  ).map(({ title, description, icon, level }): SlashOption => ({
+    title,
+    description,
+    icon,
     category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          const container = $createCollapsibleContainerNode(true, 'default');
-          const title = $createCollapsibleTitleNode('default');
-          title.append($createParagraphNode());
-          const content = $createCollapsibleContentNode();
-          content.append($createParagraphNode());
-          container.append(title, content);
-          selection.insertNodes([container]);
-        }
+        $insertCollapsible(level);
       });
     },
-  },
-  {
-    title: 'Toggle Heading 1',
-    description: 'Large section heading that can hide content',
-    icon: <Heading1 size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          const container = $createCollapsibleContainerNode(true, 'h1');
-          const title = $createCollapsibleTitleNode('h1');
-          title.append($createParagraphNode());
-          const content = $createCollapsibleContentNode();
-          content.append($createParagraphNode());
-          container.append(title, content);
-          selection.insertNodes([container]);
-        }
-      });
-    },
-  },
-  {
-    title: 'Toggle Heading 2',
-    description: 'Medium section heading that can hide content',
-    icon: <Heading2 size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          const container = $createCollapsibleContainerNode(true, 'h2');
-          const title = $createCollapsibleTitleNode('h2');
-          title.append($createParagraphNode());
-          const content = $createCollapsibleContentNode();
-          content.append($createParagraphNode());
-          container.append(title, content);
-          selection.insertNodes([container]);
-        }
-      });
-    },
-  },
-  {
-    title: 'Toggle Heading 3',
-    description: 'Small section heading that can hide content',
-    icon: <Heading3 size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          const container = $createCollapsibleContainerNode(true, 'h3');
-          const title = $createCollapsibleTitleNode('h3');
-          title.append($createParagraphNode());
-          const content = $createCollapsibleContentNode();
-          content.append($createParagraphNode());
-          container.append(title, content);
-          selection.insertNodes([container]);
-        }
-      });
-    },
-  },
+  })),
   {
     title: 'YouTube Video',
     description: 'Embed video player by YouTube ID or link',

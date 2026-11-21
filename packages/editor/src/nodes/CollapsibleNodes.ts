@@ -9,6 +9,9 @@ import {
   type SerializedElementNode,
   type Spread,
   $applyNodeReplacement,
+  $createParagraphNode,
+  $getSelection,
+  $isRangeSelection,
 } from 'lexical';
 
 export type CollapsibleLevel = 'default' | 'h1' | 'h2' | 'h3';
@@ -294,4 +297,25 @@ export function $isCollapsibleContentNode(
   node: LexicalNode | null | undefined,
 ): node is CollapsibleContentNode {
   return node instanceof CollapsibleContentNode;
+}
+
+/**
+ * Inserts a collapsible container with title and content at the current selection.
+ * Shared between SlashMenuPlugin, ToolbarPlugin, and external commands to prevent duplicate insertion logic.
+ */
+export function $insertCollapsible(
+  level: CollapsibleLevel = 'default',
+): CollapsibleContainerNode | null {
+  const selection = $getSelection();
+  if (!$isRangeSelection(selection)) {
+    return null;
+  }
+  const container = $createCollapsibleContainerNode(true, level);
+  const title = $createCollapsibleTitleNode(level);
+  title.append($createParagraphNode());
+  const content = $createCollapsibleContentNode();
+  content.append($createParagraphNode());
+  container.append(title, content);
+  selection.insertNodes([container]);
+  return container;
 }

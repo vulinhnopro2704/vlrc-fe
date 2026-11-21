@@ -7,19 +7,19 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
     data-direction="row"
     data-size="md"
     data-slot="avatar-group"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:94"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:95"
     role="group"
   >
     <span
       class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
       data-size="md"
       data-slot="avatar"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:55; @vlrc-fe/components:src/ui/avatar.tsx:99"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:56; @vlrc-fe/components:src/ui/avatar.tsx:100"
     >
       <span
         class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
         data-slot="avatar-fallback"
-        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
       >
         AB
       </span>
@@ -28,12 +28,12 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
       data-size="md"
       data-slot="avatar"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:55; @vlrc-fe/components:src/ui/avatar.tsx:99"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:56; @vlrc-fe/components:src/ui/avatar.tsx:100"
     >
       <span
         class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
         data-slot="avatar-fallback"
-        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
       >
         CD
       </span>
@@ -42,12 +42,12 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
       data-size="md"
       data-slot="avatar"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:55; @vlrc-fe/components:src/ui/avatar.tsx:99"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:56; @vlrc-fe/components:src/ui/avatar.tsx:100"
     >
       <span
         class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
         data-slot="avatar-fallback"
-        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
       >
         EF
       </span>
@@ -56,11 +56,11 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="+2 more members"
-      class="button__styles.base xuxw1ft xk50ysn xfagghw xx6bhzk xwwtwea x1y0btm7 xaqnwrm xijokvz x1s07b3s button__styles.variantGhost x1heor9g x10ubyu6 button__styles.sizeMd x13z6uf9 xkpwil5 avatar__styles.overflowTrigger x3nfvp2 x6s0dn4 xl56j7k x1ypdohk xjbqb8w xc342km xnjsko4 xt970qd xxyw1jk x4o9dxs xt7dq6l x2lwn1j x14atkfc xeuugli x9psvww x1a2a7pz x1gnnqk1 xo5v014 x2lah0s x1n5bzlp xyftt0y xyc4ar7 x13nj1q9"
+      class="button__styles.base xuxw1ft xk50ysn xfagghw xx6bhzk xwwtwea x1y0btm7 xaqnwrm xijokvz x1s07b3s button__styles.variantGhost x1heor9g x10ubyu6 button__styles.sizeMd x13z6uf9 xkpwil5 utils__unstyledButtonStyles.reset xjbqb8w xc342km xnjsko4 xt970qd xt7dq6l x2lwn1j x14atkfc xeuugli xo5v014 x1ypdohk x3nfvp2 x6s0dn4 xl56j7k x1a2a7pz x9psvww x1gnnqk1 x1n5bzlp xyftt0y xyc4ar7 x13nj1q9 avatar__styles.overflowTrigger xxyw1jk x4o9dxs x2lah0s"
       data-size="md"
       data-slot="popover-trigger"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/ui/avatar.tsx:119"
+      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/utils.ts:14; @vlrc-fe/components:src/ui/avatar.tsx:120"
       data-variant="ghost"
       type="button"
     >
@@ -68,12 +68,12 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
         class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5 avatar__styles.groupItem xxyw1jk xdh2fpr x1y0btm7 x1ft9520 x4o9dxs"
         data-size="md"
         data-slot="avatar-group-overflow"
-        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:55; @vlrc-fe/components:src/ui/avatar.tsx:99"
+        data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:56; @vlrc-fe/components:src/ui/avatar.tsx:100"
       >
         <span
           class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww avatar__styles.overflowFallback x1qry0bl x84br7x x1s688f x1ypdohk x1e8aii2 xx6bhzk x9p52ec"
           data-slot="avatar-fallback"
-          data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81; @vlrc-fe/components:src/ui/avatar.tsx:108"
+          data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82; @vlrc-fe/components:src/ui/avatar.tsx:109"
         >
           +2
         </span>
@@ -89,12 +89,12 @@ exports[`Avatar > UI > should match snapshot for size lg 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeLg xvm51jw xwaiz5r x1jchvi3"
     data-size="lg"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:60"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:61"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>
@@ -108,12 +108,12 @@ exports[`Avatar > UI > should match snapshot for size md 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5"
     data-size="md"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:55"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:56"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>
@@ -127,12 +127,12 @@ exports[`Avatar > UI > should match snapshot for size sm 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeSm xh29eag xb8l8e1 xboafo0"
     data-size="sm"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:50"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:51"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>
@@ -146,12 +146,12 @@ exports[`Avatar > UI > should match snapshot for size xl 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXl x188tqju x1pizb70 x1603h9y"
     data-size="xl"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:65"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:66"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>
@@ -165,12 +165,12 @@ exports[`Avatar > UI > should match snapshot for size xs 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXs xp8d6y2 xam5rvr x12lo8hy"
     data-size="xs"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:45"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:46"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>
@@ -184,12 +184,12 @@ exports[`Avatar > UI > should match snapshot for size xxl 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXxl xekueh x1sh0tsm xngnso2"
     data-size="xxl"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:70"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:71"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>
@@ -203,12 +203,12 @@ exports[`Avatar > UI > should match snapshot for size xxs 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeXxs xwqq7k2 xmll18r x2ohwh0"
     data-size="xxs"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:40"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:41"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>
@@ -222,12 +222,12 @@ exports[`Avatar > UI > should match snapshot in default state 1`] = `
     class="avatar__styles.root x1n2onr6 x78zum5 x2lah0s xb3r6kr x9psvww avatar__styles.sizeMd xs5h3dt xettwda xkpwil5"
     data-size="md"
     data-slot="avatar"
-    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:32; @vlrc-fe/components:src/ui/avatar.tsx:55"
+    data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:33; @vlrc-fe/components:src/ui/avatar.tsx:56"
   >
     <span
       class="avatar__styles.fallback x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x9psvww x1qry0bl xw3nh4a xk50ysn"
       data-slot="avatar-fallback"
-      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:81"
+      data-style-src="@vlrc-fe/components:src/ui/avatar.tsx:82"
     >
       AB
     </span>

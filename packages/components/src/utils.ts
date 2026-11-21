@@ -1,9 +1,47 @@
 import { clsx, type ClassValue } from 'clsx';
-import type * as stylex from '@stylexjs/stylex';
+import * as stylex from '@stylexjs/stylex';
+import { radius, shadow } from './theme/tokens.stylex';
 
 export type StyleXStyles = stylex.StyleXStyles;
 
 export const cn = (...inputs: ClassValue[]) => clsx(inputs);
+
+/**
+ * Reusable reset button styles for interactive wrappers (e.g. Popover/Dropdown trigger buttons)
+ * that eliminates browser button chrome and default button padding/height.
+ */
+export const unstyledButtonStyles = stylex.create({
+  reset: {
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    paddingInline: 0,
+    paddingBlock: 0,
+    height: 'auto',
+    minHeight: 0,
+    width: 'auto',
+    minWidth: 0,
+    lineHeight: 1,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    outline: 'none',
+    borderRadius: radius.full,
+    boxShadow: 'none',
+    ':hover': {
+      backgroundColor: 'transparent',
+    },
+    ':active': {
+      backgroundColor: 'transparent',
+    },
+    ':focus': {
+      backgroundColor: 'transparent',
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+    },
+  },
+});
 
 export interface RovingNavigationOptions {
   orientation?: 'horizontal' | 'vertical' | 'both';

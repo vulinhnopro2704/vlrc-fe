@@ -1,6 +1,7 @@
 import { type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { colors, spacing, radius, shadow } from '../theme/tokens.stylex';
+import { colors, spacing } from '../theme/tokens.stylex';
+import { unstyledButtonStyles } from '../utils';
 import { Badge } from './badge';
 import { Button } from './button';
 import { Flex } from '../layout';
@@ -12,36 +13,6 @@ const styles = stylex.create({
     alignItems: 'center',
     flexWrap: 'wrap',
     gap: spacing.xs,
-  },
-  overflowTriggerButton: {
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    paddingInline: 0,
-    paddingBlock: 0,
-    height: 'auto',
-    minHeight: 0,
-    width: 'auto',
-    minWidth: 0,
-    lineHeight: 1,
-    cursor: 'pointer',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    outline: 'none',
-    borderRadius: radius.full,
-    boxShadow: 'none',
-    ':hover': {
-      backgroundColor: 'transparent',
-    },
-    ':active': {
-      backgroundColor: 'transparent',
-    },
-    ':focus': {
-      backgroundColor: 'transparent',
-    },
-    ':focus-visible': {
-      boxShadow: shadow.ringFocus,
-    },
   },
   overflowBadge: {
     cursor: 'pointer',
@@ -121,7 +92,7 @@ function BadgeOverflow<T = string>({
                 variant="ghost"
                 data-slot="badge-overflow-trigger"
                 aria-label={`+${hiddenCount} more items`}
-                sx={styles.overflowTriggerButton}
+                sx={unstyledButtonStyles.reset}
               >
                 <Badge variant="outline" sx={styles.overflowBadge}>
                   +{hiddenCount}

@@ -2,104 +2,19 @@ import React, { type ReactNode } from 'react';
 import type { Locale } from 'date-fns';
 import * as stylex from '@stylexjs/stylex';
 import Icons from '../../Icons';
-
-import { colors, radius, shadow } from '../../theme/tokens.stylex';
-import type { ComponentSize } from '../../theme/types';
-import { Box, Flex } from '../../layout';
-import { Button } from '../../ui/button';
-import { Text } from '../../Typography';
-import { resolveWidth, type ComponentWidth } from '../../theme/width';
+import type { ComponentWidth } from '../../theme/width';
 import { Calendar } from '../../ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
+import { Popover, PopoverContent } from '../../ui/popover';
 import {
   resolveDatePickerSize,
   type DatePickerSize,
   type DatePickerStatus,
   type TimeConfig,
 } from './types';
+import { DatePickerTriggerInput, datePickerStyles } from './DatePickerTrigger';
 import { buildRangeDisplayValue, getDefaultFormat } from './useFormDatePicker';
 
 const styles = stylex.create({
-  wrapper: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderRadius: radius.md,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: colors.border,
-    backgroundColor: colors.background,
-    cursor: 'pointer',
-    outline: 'none',
-    boxSizing: 'border-box',
-    ':focus-within': {
-      boxShadow: shadow.ringFocus,
-      borderColor: colors.ring,
-    },
-  },
-  wrapperDisabled: {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-    pointerEvents: 'none',
-  },
-  sizeXxs: { minHeight: '1.5rem', paddingInline: '0.5rem' },
-  sizeXs: { minHeight: '1.75rem', paddingInline: '0.625rem' },
-  sizeSm: { minHeight: '2rem', paddingInline: '0.75rem' },
-  sizeMd: { minHeight: '2.25rem', paddingInline: '0.75rem' },
-  sizeLg: { minHeight: '2.5rem', paddingInline: '1rem' },
-  sizeXl: { minHeight: '2.75rem', paddingInline: '1.25rem' },
-  sizeXxl: { minHeight: '3rem', paddingInline: '1.5rem' },
-  triggerInnerButton: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    padding: 0,
-    outline: 'none',
-    textAlign: 'left',
-    height: '100%',
-  },
-  triggerButton: {
-    justifyContent: 'space-between',
-    fontWeight: 400,
-  },
-  statusError: {
-    borderColor: colors.destructive,
-  },
-  statusWarning: {
-    borderColor: colors.warning,
-  },
-  fullWidth: {
-    width: '100%',
-  },
-  rightControls: {
-    marginLeft: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.25rem',
-  },
-  clearButton: {
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    padding: 0,
-    margin: 0,
-    cursor: 'pointer',
-    color: colors.mutedForeground,
-    lineHeight: 1,
-    outline: 'none',
-    borderRadius: radius.sm,
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ':hover': {
-      color: colors.destructive,
-    },
-    ':focus-visible': {
-      boxShadow: shadow.ringFocus,
-    },
-  },
   icon: {
     width: '1rem',
     height: '1rem',
@@ -110,16 +25,6 @@ const styles = stylex.create({
     padding: 0,
   },
 });
-
-const sizeWrapperStyles: Record<ComponentSize, stylex.StyleXStyles> = {
-  xxs: styles.sizeXxs,
-  xs: styles.sizeXs,
-  sm: styles.sizeSm,
-  md: styles.sizeMd,
-  lg: styles.sizeLg,
-  xl: styles.sizeXl,
-  xxl: styles.sizeXxl,
-};
 
 export interface StandaloneRangeDatePickerProps {
   id?: string;
@@ -220,9 +125,9 @@ export function RangeDatePicker({
 
   const statusStyle =
     status === 'error'
-      ? styles.statusError
+      ? datePickerStyles.statusError
       : status === 'warning'
-        ? styles.statusWarning
+        ? datePickerStyles.statusWarning
         : undefined;
 
   const typographySize =
@@ -234,62 +139,24 @@ export function RangeDatePicker({
 
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
-      <Flex
-        align="center"
-        justify="between"
-        sx={[
-          styles.wrapper,
-          sizeWrapperStyles[resolvedSize],
-          statusStyle,
-          disabled && styles.wrapperDisabled,
-          width === 'auto' ? styles.fullWidth : undefined,
-          sx,
-        ]}
+      <DatePickerTriggerInput
+        id={id}
+        aria-describedby={ariaDescribedby}
+        aria-invalid={ariaInvalid}
+        disabled={disabled}
+        resolvedSize={resolvedSize}
+        typographySize={typographySize}
+        statusStyle={statusStyle}
+        width={width}
+        hasValue={Boolean(!hideValue && (startDate || endDate))}
+        displayValue={displayValue}
+        placeholder={placeholder}
+        allowClear={allowClear}
+        onClear={handleClear}
+        renderIcon={() => suffixIcon || <Icons.CalendarIcon {...stylex.props(styles.icon)} />}
         className={className}
-        style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
-      >
-        <PopoverTrigger asChild>
-          <Button
-            id={id}
-            aria-describedby={ariaDescribedby}
-            aria-invalid={ariaInvalid}
-            variant="ghost"
-            size={resolvedSize}
-            disabled={disabled}
-            sx={styles.triggerInnerButton}
-          >
-            {!hideValue && displayValue ? (
-              <Text size={typographySize} weight="normal">
-                {displayValue}
-              </Text>
-            ) : (
-              <Text size={typographySize} type="muted">
-                {placeholder}
-              </Text>
-            )}
-          </Button>
-        </PopoverTrigger>
-        <Flex align="center" gap="xxs" sx={styles.rightControls}>
-          {allowClear && (startDate || endDate) && (
-            <Button
-              type="button"
-              data-slot="clear-button"
-              variant="ghost"
-              size="icon-xs"
-              tabIndex={0}
-              aria-label="Clear date range"
-              disabled={disabled}
-              onClick={handleClear}
-              sx={styles.clearButton}
-            >
-              <Text size={typographySize}>×</Text>
-            </Button>
-          )}
-          <Box aria-hidden="true">
-            {suffixIcon || <Icons.CalendarIcon {...stylex.props(styles.icon)} />}
-          </Box>
-        </Flex>
-      </Flex>
+        sx={sx}
+      />
       <PopoverContent sx={styles.popoverContent} align="start">
         <Calendar
           mode="range"

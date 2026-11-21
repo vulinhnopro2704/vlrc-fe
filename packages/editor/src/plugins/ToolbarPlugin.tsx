@@ -83,14 +83,21 @@ import {
   DropdownMenuGroup,
 } from '@vlrc-fe/components';
 import { $createCalloutNode } from '../nodes/CalloutNode';
-import {
-  $createCollapsibleContainerNode,
-  $createCollapsibleTitleNode,
-  $createCollapsibleContentNode,
-} from '../nodes/CollapsibleNodes';
+import { $insertCollapsible, type CollapsibleLevel } from '../nodes/CollapsibleNodes';
 import { $createImageNode } from '../nodes/ImageNode';
 import { $createYouTubeNode, $createFigmaNode } from '../nodes/EmbedNodes';
 import { InsertTableDialog } from './InsertTableDialog';
+
+const TOGGLE_TOOLBAR_ITEMS: Array<{
+  title: string;
+  icon: typeof FolderTree;
+  level: CollapsibleLevel;
+}> = [
+  { title: 'Toggle List', icon: FolderTree, level: 'default' },
+  { title: 'Toggle Heading 1', icon: Heading1, level: 'h1' },
+  { title: 'Toggle Heading 2', icon: Heading2, level: 'h2' },
+  { title: 'Toggle Heading 3', icon: Heading3, level: 'h3' },
+];
 
 const FONT_FAMILIES = [
   'Arial',
@@ -712,82 +719,19 @@ export function ToolbarPlugin(): JSX.Element {
             <ImageIcon size={14} style={{ marginRight: 8 }} />
             Image
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              editor.update(() => {
-                const selection = $getSelection();
-                if ($isRangeSelection(selection)) {
-                  const container = $createCollapsibleContainerNode(true, 'default');
-                  const title = $createCollapsibleTitleNode('default');
-                  title.append($createParagraphNode());
-                  const content = $createCollapsibleContentNode();
-                  content.append($createParagraphNode());
-                  container.append(title, content);
-                  selection.insertNodes([container]);
-                }
-              });
-            }}
-          >
-            <FolderTree size={14} style={{ marginRight: 8 }} />
-            Toggle List
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              editor.update(() => {
-                const selection = $getSelection();
-                if ($isRangeSelection(selection)) {
-                  const container = $createCollapsibleContainerNode(true, 'h1');
-                  const title = $createCollapsibleTitleNode('h1');
-                  title.append($createParagraphNode());
-                  const content = $createCollapsibleContentNode();
-                  content.append($createParagraphNode());
-                  container.append(title, content);
-                  selection.insertNodes([container]);
-                }
-              });
-            }}
-          >
-            <Heading1 size={14} style={{ marginRight: 8 }} />
-            Toggle Heading 1
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              editor.update(() => {
-                const selection = $getSelection();
-                if ($isRangeSelection(selection)) {
-                  const container = $createCollapsibleContainerNode(true, 'h2');
-                  const title = $createCollapsibleTitleNode('h2');
-                  title.append($createParagraphNode());
-                  const content = $createCollapsibleContentNode();
-                  content.append($createParagraphNode());
-                  container.append(title, content);
-                  selection.insertNodes([container]);
-                }
-              });
-            }}
-          >
-            <Heading2 size={14} style={{ marginRight: 8 }} />
-            Toggle Heading 2
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              editor.update(() => {
-                const selection = $getSelection();
-                if ($isRangeSelection(selection)) {
-                  const container = $createCollapsibleContainerNode(true, 'h3');
-                  const title = $createCollapsibleTitleNode('h3');
-                  title.append($createParagraphNode());
-                  const content = $createCollapsibleContentNode();
-                  content.append($createParagraphNode());
-                  container.append(title, content);
-                  selection.insertNodes([container]);
-                }
-              });
-            }}
-          >
-            <Heading3 size={14} style={{ marginRight: 8 }} />
-            Toggle Heading 3
-          </DropdownMenuItem>
+          {TOGGLE_TOOLBAR_ITEMS.map(({ title, icon: Icon, level }) => (
+            <DropdownMenuItem
+              key={level}
+              onClick={() => {
+                editor.update(() => {
+                  $insertCollapsible(level);
+                });
+              }}
+            >
+              <Icon size={14} style={{ marginRight: 8 }} />
+              {title}
+            </DropdownMenuItem>
+          ))}
           <DropdownMenuItem
             onClick={() => {
               const videoId = window.prompt(

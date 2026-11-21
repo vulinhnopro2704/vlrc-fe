@@ -15,8 +15,9 @@ import {
   Root as AvatarPrimitiveRoot,
 } from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
+import { colors, radius, spacing } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { unstyledButtonStyles } from '../utils';
 import { Button } from './button';
 import { Flex } from '../layout';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
@@ -117,39 +118,11 @@ const styles = stylex.create({
     },
   },
   overflowTrigger: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    paddingInline: 0,
-    paddingBlock: 0,
     marginLeft: '-0.5rem',
     ':first-child': {
       marginLeft: 0,
     },
-    height: 'auto',
-    minHeight: 0,
-    width: 'auto',
-    minWidth: 0,
-    borderRadius: radius.full,
-    outline: 'none',
-    boxShadow: 'none',
-    lineHeight: 1,
     flexShrink: 0,
-    ':hover': {
-      backgroundColor: 'transparent',
-    },
-    ':active': {
-      backgroundColor: 'transparent',
-    },
-    ':focus': {
-      backgroundColor: 'transparent',
-    },
-    ':focus-visible': {
-      boxShadow: shadow.ringFocus,
-    },
   },
   overflowPopoverContent: {
     width: 'auto',
@@ -290,7 +263,7 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
               <Button
                 variant="ghost"
                 aria-label={`+${overflowCount} more members`}
-                sx={styles.overflowTrigger}
+                sx={[unstyledButtonStyles.reset, styles.overflowTrigger]}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
