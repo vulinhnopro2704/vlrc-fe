@@ -92,5 +92,21 @@ describe('NotionEditor', () => {
       expect(screen.getByText('Resizer')).toBeInTheDocument();
       expect(screen.getByText('OK')).toBeInTheDocument();
     });
+
+    it('should render collapsible toggle sections with heading level attributes', () => {
+      const TOGGLE_HTML =
+        '<details data-level="h1" open><summary data-level="h1">Toggle Heading 1</summary><div class="lexical-collapsible-content">Section content</div></details>';
+      render(<NotionEditor defaultValue={TOGGLE_HTML} showToolbar={false} />);
+
+      const detailsElement = document.querySelector('details');
+      expect(detailsElement).toBeInTheDocument();
+      expect(detailsElement).toHaveAttribute('data-level', 'h1');
+      expect(detailsElement).toHaveAttribute('open');
+
+      const summaryElement = document.querySelector('summary');
+      expect(summaryElement).toBeInTheDocument();
+      expect(summaryElement).toHaveAttribute('data-level', 'h1');
+      expect(screen.getByText('Toggle Heading 1')).toBeInTheDocument();
+    });
   });
 });

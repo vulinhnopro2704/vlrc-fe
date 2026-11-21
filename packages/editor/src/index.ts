@@ -1,4 +1,12 @@
-export { NotionEditor, Editor, EDITOR_TRANSFORMERS, HR, TABLE, default } from './Editor';
+export {
+  NotionEditor,
+  Editor,
+  EDITOR_TRANSFORMERS,
+  HR,
+  TABLE,
+  COLLAPSIBLE,
+  default,
+} from './Editor';
 export type { NotionEditorProps } from './types';
 export * from './nodes';
 export * from './theme/editorTheme';

@@ -284,16 +284,76 @@ const SLASH_OPTIONS: SlashOption[] = [
     onSelect: () => {},
   },
   {
-    title: 'Toggle / Collapsible',
-    description: 'Collapsible accordion toggle container',
+    title: 'Toggle List',
+    description: 'Toggles can show and hide content inside',
     icon: <FolderTree size={16} />,
-    category: 'media',
+    category: 'basic',
     onSelect: (editor) => {
       editor.update(() => {
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
-          const container = $createCollapsibleContainerNode(true);
-          const title = $createCollapsibleTitleNode();
+          const container = $createCollapsibleContainerNode(true, 'default');
+          const title = $createCollapsibleTitleNode('default');
+          title.append($createParagraphNode());
+          const content = $createCollapsibleContentNode();
+          content.append($createParagraphNode());
+          container.append(title, content);
+          selection.insertNodes([container]);
+        }
+      });
+    },
+  },
+  {
+    title: 'Toggle Heading 1',
+    description: 'Large section heading that can hide content',
+    icon: <Heading1 size={16} />,
+    category: 'basic',
+    onSelect: (editor) => {
+      editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          const container = $createCollapsibleContainerNode(true, 'h1');
+          const title = $createCollapsibleTitleNode('h1');
+          title.append($createParagraphNode());
+          const content = $createCollapsibleContentNode();
+          content.append($createParagraphNode());
+          container.append(title, content);
+          selection.insertNodes([container]);
+        }
+      });
+    },
+  },
+  {
+    title: 'Toggle Heading 2',
+    description: 'Medium section heading that can hide content',
+    icon: <Heading2 size={16} />,
+    category: 'basic',
+    onSelect: (editor) => {
+      editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          const container = $createCollapsibleContainerNode(true, 'h2');
+          const title = $createCollapsibleTitleNode('h2');
+          title.append($createParagraphNode());
+          const content = $createCollapsibleContentNode();
+          content.append($createParagraphNode());
+          container.append(title, content);
+          selection.insertNodes([container]);
+        }
+      });
+    },
+  },
+  {
+    title: 'Toggle Heading 3',
+    description: 'Small section heading that can hide content',
+    icon: <Heading3 size={16} />,
+    category: 'basic',
+    onSelect: (editor) => {
+      editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          const container = $createCollapsibleContainerNode(true, 'h3');
+          const title = $createCollapsibleTitleNode('h3');
           title.append($createParagraphNode());
           const content = $createCollapsibleContentNode();
           content.append($createParagraphNode());

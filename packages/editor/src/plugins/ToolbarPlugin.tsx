@@ -717,8 +717,8 @@ export function ToolbarPlugin(): JSX.Element {
               editor.update(() => {
                 const selection = $getSelection();
                 if ($isRangeSelection(selection)) {
-                  const container = $createCollapsibleContainerNode(true);
-                  const title = $createCollapsibleTitleNode();
+                  const container = $createCollapsibleContainerNode(true, 'default');
+                  const title = $createCollapsibleTitleNode('default');
                   title.append($createParagraphNode());
                   const content = $createCollapsibleContentNode();
                   content.append($createParagraphNode());
@@ -729,7 +729,64 @@ export function ToolbarPlugin(): JSX.Element {
             }}
           >
             <FolderTree size={14} style={{ marginRight: 8 }} />
-            Collapsible Section
+            Toggle List
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              editor.update(() => {
+                const selection = $getSelection();
+                if ($isRangeSelection(selection)) {
+                  const container = $createCollapsibleContainerNode(true, 'h1');
+                  const title = $createCollapsibleTitleNode('h1');
+                  title.append($createParagraphNode());
+                  const content = $createCollapsibleContentNode();
+                  content.append($createParagraphNode());
+                  container.append(title, content);
+                  selection.insertNodes([container]);
+                }
+              });
+            }}
+          >
+            <Heading1 size={14} style={{ marginRight: 8 }} />
+            Toggle Heading 1
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              editor.update(() => {
+                const selection = $getSelection();
+                if ($isRangeSelection(selection)) {
+                  const container = $createCollapsibleContainerNode(true, 'h2');
+                  const title = $createCollapsibleTitleNode('h2');
+                  title.append($createParagraphNode());
+                  const content = $createCollapsibleContentNode();
+                  content.append($createParagraphNode());
+                  container.append(title, content);
+                  selection.insertNodes([container]);
+                }
+              });
+            }}
+          >
+            <Heading2 size={14} style={{ marginRight: 8 }} />
+            Toggle Heading 2
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              editor.update(() => {
+                const selection = $getSelection();
+                if ($isRangeSelection(selection)) {
+                  const container = $createCollapsibleContainerNode(true, 'h3');
+                  const title = $createCollapsibleTitleNode('h3');
+                  title.append($createParagraphNode());
+                  const content = $createCollapsibleContentNode();
+                  content.append($createParagraphNode());
+                  container.append(title, content);
+                  selection.insertNodes([container]);
+                }
+              });
+            }}
+          >
+            <Heading3 size={14} style={{ marginRight: 8 }} />
+            Toggle Heading 3
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
