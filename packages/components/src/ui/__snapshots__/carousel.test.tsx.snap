@@ -67,7 +67,7 @@ exports[`Carousel > UI > should match snapshot in default horizontal orientation
         />
       </svg>
       <span
-        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr xzpqnlu xuxw1ft xc342km"
+        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr x1hyvwdk xuxw1ft xc342km"
         data-style-src="@vlrc-fe/components:src/ui/carousel.tsx:74"
       >
         Previous slide
@@ -102,7 +102,7 @@ exports[`Carousel > UI > should match snapshot in default horizontal orientation
         />
       </svg>
       <span
-        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr xzpqnlu xuxw1ft xc342km"
+        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr x1hyvwdk xuxw1ft xc342km"
         data-style-src="@vlrc-fe/components:src/ui/carousel.tsx:74"
       >
         Next slide
@@ -179,7 +179,7 @@ exports[`Carousel > UI > should match snapshot in vertical orientation 1`] = `
         />
       </svg>
       <span
-        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr xzpqnlu xuxw1ft xc342km"
+        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr x1hyvwdk xuxw1ft xc342km"
         data-style-src="@vlrc-fe/components:src/ui/carousel.tsx:74"
       >
         Previous slide
@@ -214,7 +214,7 @@ exports[`Carousel > UI > should match snapshot in vertical orientation 1`] = `
         />
       </svg>
       <span
-        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr xzpqnlu xuxw1ft xc342km"
+        class="carousel__styles.srOnly x10l6tqk x1i1rx1s xjm9jq1 x1717udv xkdpibf xb3r6kr x1hyvwdk xuxw1ft xc342km"
         data-style-src="@vlrc-fe/components:src/ui/carousel.tsx:74"
       >
         Next slide

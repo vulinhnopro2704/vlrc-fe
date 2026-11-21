@@ -315,7 +315,7 @@ const styles = stylex.create({
     padding: 0,
     margin: '-1px',
     overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     borderWidth: 0,
   },
@@ -351,6 +351,32 @@ export type FileUploadStore = {
   subscribe: (listener: () => void) => () => void;
 };
 
+function revokeCachedUrl(file: File, cache?: WeakMap<File, string>) {
+  if (!cache) return;
+  const cachedUrl = cache.get(file);
+  if (cachedUrl) {
+    URL.revokeObjectURL(cachedUrl);
+    cache.delete(file);
+  }
+}
+
+function updateFileState(
+  state: StoreState,
+  file: File,
+  updater: (prev: FileState) => Partial<FileState>,
+): StoreState {
+  const current = state.files.get(file);
+  if (!current) return state;
+  const nextFiles = new Map(state.files);
+  nextFiles.set(file, { ...current, ...updater(current) });
+  return { ...state, files: nextFiles };
+}
+
+function notifyFilesChange(filesMap: Map<File, FileState>, callback?: (files: File[]) => void) {
+  if (!callback) return;
+  callback(Array.from(filesMap.values()).map((fs) => fs.file));
+}
+
 export function createStore(
   listeners: Set<() => void>,
   files: Map<File, FileState>,
@@ -375,14 +401,11 @@ export function createStore(
             status: 'idle',
           });
         }
-        if (onValueChange) {
-          const fileList = Array.from(nextFiles.values()).map((fileState) => fileState.file);
-          onValueChange(fileList);
-        }
+        notifyFilesChange(nextFiles, onValueChange);
         return { ...state, files: nextFiles };
       }
       case 'SET_FILES': {
-        const nextFiles = new Map();
+        const nextFiles = new Map<File, FileState>();
         for (const file of action.files) {
           const existingState = state.files.get(file);
           nextFiles.set(
@@ -397,52 +420,28 @@ export function createStore(
         return { ...state, files: nextFiles };
       }
       case 'SET_PROGRESS': {
-        const fileState = state.files.get(action.file);
-        if (!fileState) return state;
-        const nextFiles = new Map(state.files);
-        nextFiles.set(action.file, {
-          ...fileState,
+        return updateFileState(state, action.file, () => ({
           progress: action.progress,
           status: 'uploading',
-        });
-        return { ...state, files: nextFiles };
+        }));
       }
       case 'SET_SUCCESS': {
-        const fileState = state.files.get(action.file);
-        if (!fileState) return state;
-        const nextFiles = new Map(state.files);
-        nextFiles.set(action.file, {
-          ...fileState,
+        return updateFileState(state, action.file, () => ({
           progress: 100,
           status: 'success',
-        });
-        return { ...state, files: nextFiles };
+        }));
       }
       case 'SET_ERROR': {
-        const fileState = state.files.get(action.file);
-        if (!fileState) return state;
-        const nextFiles = new Map(state.files);
-        nextFiles.set(action.file, {
-          ...fileState,
+        return updateFileState(state, action.file, () => ({
           error: action.error,
           status: 'error',
-        });
-        return { ...state, files: nextFiles };
+        }));
       }
       case 'REMOVE_FILE': {
-        if (urlCache) {
-          const cachedUrl = urlCache.get(action.file);
-          if (cachedUrl) {
-            URL.revokeObjectURL(cachedUrl);
-            urlCache.delete(action.file);
-          }
-        }
+        revokeCachedUrl(action.file, urlCache);
         const nextFiles = new Map(state.files);
         nextFiles.delete(action.file);
-        if (onValueChange) {
-          const fileList = Array.from(nextFiles.values()).map((fileState) => fileState.file);
-          onValueChange(fileList);
-        }
+        notifyFilesChange(nextFiles, onValueChange);
         return { ...state, files: nextFiles };
       }
       case 'SET_DRAG_OVER': {
@@ -454,16 +453,10 @@ export function createStore(
       case 'CLEAR': {
         if (urlCache) {
           for (const file of state.files.keys()) {
-            const cachedUrl = urlCache.get(file);
-            if (cachedUrl) {
-              URL.revokeObjectURL(cachedUrl);
-              urlCache.delete(file);
-            }
+            revokeCachedUrl(file, urlCache);
           }
         }
-        if (onValueChange) {
-          onValueChange([]);
-        }
+        onValueChange?.([]);
         return { ...state, files: new Map() };
       }
       default:

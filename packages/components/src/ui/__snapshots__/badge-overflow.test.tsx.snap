@@ -3,9 +3,10 @@
 exports[`BadgeOverflow > UI > should match snapshot when items do not exceed max 1`] = `
 <DocumentFragment>
   <div
-    class="badge-overflow__styles.root x3nfvp2 x6s0dn4 x1a02dak x1m5ztt4"
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np badge-overflow__styles.root x3nfvp2 x6s0dn4 x1a02dak x1m5ztt4"
+    data-direction="row"
     data-slot="badge-overflow"
-    data-style-src="@vlrc-fe/components:src/ui/badge-overflow.tsx:8"
+    data-style-src="@vlrc-fe/components:src/ui/badge-overflow.tsx:10"
   >
     <span
       class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6"
@@ -32,9 +33,10 @@ exports[`BadgeOverflow > UI > should match snapshot when items do not exceed max
 exports[`BadgeOverflow > UI > should match snapshot with default max of 3 items 1`] = `
 <DocumentFragment>
   <div
-    class="badge-overflow__styles.root x3nfvp2 x6s0dn4 x1a02dak x1m5ztt4"
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np badge-overflow__styles.root x3nfvp2 x6s0dn4 x1a02dak x1m5ztt4"
+    data-direction="row"
     data-slot="badge-overflow"
-    data-style-src="@vlrc-fe/components:src/ui/badge-overflow.tsx:8"
+    data-style-src="@vlrc-fe/components:src/ui/badge-overflow.tsx:10"
   >
     <span
       class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6"
@@ -67,17 +69,19 @@ exports[`BadgeOverflow > UI > should match snapshot with default max of 3 items 
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="+2 more items"
-      class="badge-overflow__styles.overflowTriggerButton xjbqb8w xc342km x1717udv x1ghz6dp x1ypdohk x3nfvp2 x1a2a7pz x9psvww x13nj1q9"
+      class="button__styles.base x6s0dn4 xl56j7k xuxw1ft xk50ysn xfagghw xx6bhzk xwwtwea x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s button__styles.variantGhost x1heor9g x9p52ec x10ubyu6 button__styles.sizeMd xk8t5le x13z6uf9 xnxx81d xkpwil5 badge-overflow__styles.overflowTriggerButton xjbqb8w xc342km x1717udv x1ghz6dp x1ypdohk x3nfvp2 x1a2a7pz x9psvww x13nj1q9"
+      data-size="md"
       data-slot="badge-overflow-trigger"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/ui/badge-overflow.tsx:14"
+      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/ui/badge-overflow.tsx:16"
+      data-variant="ghost"
       type="button"
     >
       <span
         class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantOutline xb30jbz xjbqb8w x84br7x x9p52ec x10ubyu6 badge-overflow__styles.overflowBadge x1ypdohk x87ps6o x19991ni xx6bhzk x5z6fxw"
         data-size="md"
         data-slot="badge"
-        data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:113; @vlrc-fe/components:src/ui/badge-overflow.tsx:27"
+        data-style-src="@vlrc-fe/components:src/ui/badge.tsx:10; @vlrc-fe/components:src/ui/badge.tsx:113; @vlrc-fe/components:src/ui/badge-overflow.tsx:29"
         data-variant="outline"
       >
         +2
@@ -90,9 +94,10 @@ exports[`BadgeOverflow > UI > should match snapshot with default max of 3 items 
 exports[`BadgeOverflow > UI > should match snapshot with showPopover disabled 1`] = `
 <DocumentFragment>
   <div
-    class="badge-overflow__styles.root x3nfvp2 x6s0dn4 x1a02dak x1m5ztt4"
+    class="flex__styles.base x78zum5 x9f619 flex__styles.dirRow x1q0g3np badge-overflow__styles.root x3nfvp2 x6s0dn4 x1a02dak x1m5ztt4"
+    data-direction="row"
     data-slot="badge-overflow"
-    data-style-src="@vlrc-fe/components:src/ui/badge-overflow.tsx:8"
+    data-style-src="@vlrc-fe/components:src/ui/badge-overflow.tsx:10"
   >
     <span
       class="badge__styles.base x3nfvp2 x6s0dn4 xl56j7k x9psvww xmkeg23 x1y0btm7 x97vtpp x1dus959 xboafo0 xk50ysn xeq5yr9 xuxw1ft x2lah0s xvh977a x18o7qk9 xx6bhzk xb3r6kr x1a2a7pz x156qtes xik21o4 badge__styles.variantSecondary x9r1u3d xr2cb9l x2mg7mp x18uuni6"

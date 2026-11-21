@@ -4,6 +4,7 @@ import { ChevronRight, MoreHorizontal } from 'lucide-react';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { Box } from '../layout';
 import { Text } from '../Typography';
 
 const styles = stylex.create({
@@ -127,7 +128,7 @@ const styles = stylex.create({
     padding: 0,
     margin: '-1px',
     overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     borderWidth: 0,
   },
@@ -287,7 +288,8 @@ function BreadcrumbEllipsis({ size: propSize, className, sx, ...props }: Breadcr
   const sxProps = stylex.props(styles.ellipsis, sx);
 
   return (
-    <span
+    <Box
+      as="span"
       data-slot="breadcrumb-ellipsis"
       role="presentation"
       {...sxProps}
@@ -295,10 +297,8 @@ function BreadcrumbEllipsis({ size: propSize, className, sx, ...props }: Breadcr
       {...props}
     >
       <MoreHorizontal aria-hidden="true" {...stylex.props(iconSize)} />
-      <Text as="span" sx={styles.srOnly}>
-        More
-      </Text>
-    </span>
+      <Text sx={styles.srOnly}>More</Text>
+    </Box>
   );
 }
 

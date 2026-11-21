@@ -2,6 +2,8 @@ import { type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { spacing, radius, shadow } from '../theme/tokens.stylex';
 import { Badge } from './badge';
+import { Button } from './button';
+import { Flex } from '../layout';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 const styles = stylex.create({
@@ -78,7 +80,7 @@ function BadgeOverflow<T = string>({
   const sxProps = stylex.props(styles.root, sx);
 
   return (
-    <div
+    <Flex
       data-slot="badge-overflow"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
@@ -92,24 +94,26 @@ function BadgeOverflow<T = string>({
         ) : showPopover ? (
           <Popover>
             <PopoverTrigger asChild>
-              <button
-                type="button"
+              <Button
+                variant="ghost"
                 data-slot="badge-overflow-trigger"
                 aria-label={`+${hiddenCount} more items`}
-                {...stylex.props(styles.overflowTriggerButton)}
+                sx={styles.overflowTriggerButton}
               >
                 <Badge variant="outline" sx={styles.overflowBadge}>
                   +{hiddenCount}
                 </Badge>
-              </button>
+              </Button>
             </PopoverTrigger>
             <PopoverContent align="start" sideOffset={4}>
-              <div
+              <Flex
                 data-slot="badge-overflow-popover-content"
-                {...stylex.props(styles.popoverContainer)}
+                wrap="wrap"
+                gap="xs"
+                sx={styles.popoverContainer}
               >
                 {hiddenItems.map((item, index) => badgeRenderer(item, max + index))}
-              </div>
+              </Flex>
             </PopoverContent>
           </Popover>
         ) : (
@@ -117,7 +121,7 @@ function BadgeOverflow<T = string>({
             +{hiddenCount}
           </Badge>
         ))}
-    </div>
+    </Flex>
   );
 }
 

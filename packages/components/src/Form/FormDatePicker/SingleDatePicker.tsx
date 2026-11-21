@@ -4,6 +4,8 @@ import * as stylex from '@stylexjs/stylex';
 
 import Icons from '../../Icons';
 import { colors, radius, shadow } from '../../theme/tokens.stylex';
+import type { ComponentSize } from '../../theme/types';
+import { Box, Flex } from '../../layout';
 import { Button } from '../../ui/button';
 import { Text } from '../../Typography';
 import { resolveWidth, type ComponentWidth } from '../../theme/width';
@@ -24,6 +26,47 @@ import MonthPickerPanel from './MonthPickerPanel';
 import YearPickerPanel from './YearPickerPanel';
 
 const styles = stylex.create({
+  wrapper: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.background,
+    cursor: 'pointer',
+    outline: 'none',
+    boxSizing: 'border-box',
+    ':focus-within': {
+      boxShadow: shadow.ringFocus,
+      borderColor: colors.ring,
+    },
+  },
+  wrapperDisabled: {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+    pointerEvents: 'none',
+  },
+  sizeXxs: { minHeight: '1.5rem', paddingInline: '0.5rem' },
+  sizeXs: { minHeight: '1.75rem', paddingInline: '0.625rem' },
+  sizeSm: { minHeight: '2rem', paddingInline: '0.75rem' },
+  sizeMd: { minHeight: '2.25rem', paddingInline: '0.75rem' },
+  sizeLg: { minHeight: '2.5rem', paddingInline: '1rem' },
+  sizeXl: { minHeight: '2.75rem', paddingInline: '1.25rem' },
+  sizeXxl: { minHeight: '3rem', paddingInline: '1.5rem' },
+  triggerInnerButton: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    padding: 0,
+    outline: 'none',
+    textAlign: 'left',
+    height: '100%',
+  },
   triggerButton: {
     justifyContent: 'space-between',
     fontWeight: 400,
@@ -86,6 +129,16 @@ const styles = stylex.create({
     display: 'flex',
   },
 });
+
+const sizeWrapperStyles: Record<ComponentSize, stylex.StyleXStyles> = {
+  xxs: styles.sizeXxs,
+  xs: styles.sizeXs,
+  sm: styles.sizeSm,
+  md: styles.sizeMd,
+  lg: styles.sizeLg,
+  xl: styles.sizeXl,
+  xxl: styles.sizeXxl,
+};
 
 export interface StandaloneDatePickerProps {
   id?: string;
@@ -187,17 +240,17 @@ export function SingleDatePicker({
   const renderContent = () => {
     if (pickerType === 'time') {
       return (
-        <div {...stylex.props(styles.timeWrapper)}>
+        <Box sx={styles.timeWrapper}>
           <TimePicker
             value={value}
             onChange={handleTimeChange}
             timeConfig={timeConfig}
             disabledTime={buildDisabledTime(value, disabledTime)}
           />
-          <div {...stylex.props(styles.timeInputWrapper)}>
+          <Box sx={styles.timeInputWrapper}>
             <TimeInput value={value} onChange={handleTimeChange} timeConfig={timeConfig} />
-          </div>
-        </div>
+          </Box>
+        </Box>
       );
     }
 
@@ -219,7 +272,7 @@ export function SingleDatePicker({
     }
 
     return (
-      <div {...stylex.props(styles.calendarWrapper)}>
+      <Flex sx={styles.calendarWrapper}>
         <Calendar
           mode="single"
           size={resolvedSize}
@@ -234,16 +287,16 @@ export function SingleDatePicker({
           onMonthChange={setCurrentMonth}
         />
         {showTime && (
-          <div {...stylex.props(styles.timeWrapper)}>
+          <Box sx={styles.timeWrapper}>
             <TimePicker
               value={value}
               onChange={handleTimeChange}
               timeConfig={timeConfig}
               disabledTime={buildDisabledTime(value, disabledTime)}
             />
-          </div>
+          </Box>
         )}
-      </div>
+      </Flex>
     );
   };
 
@@ -281,56 +334,60 @@ export function SingleDatePicker({
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          id={id}
-          aria-describedby={ariaDescribedby}
-          aria-invalid={ariaInvalid}
-          variant="outline"
-          size={resolvedSize}
-          disabled={disabled}
-          width={width}
-          sx={[
-            styles.triggerButton,
-            statusStyle,
-            width === 'auto' ? styles.fullWidth : undefined,
-            sx,
-          ]}
-          className={className}
-          style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
-        >
-          {!hideValue && displayValue ? (
-            <Text size={typographySize} weight="normal">
-              {displayValue}
-            </Text>
-          ) : (
-            <Text size={typographySize} type="muted">
-              {placeholder}
-            </Text>
-          )}
-          <div {...stylex.props(styles.rightControls)}>
-            {allowClear && value && (
-              <span
-                role="button"
-                tabIndex={0}
-                aria-label="Clear date"
-                onClick={handleClear}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    handleClear(e);
-                  }
-                }}
-                {...stylex.props(styles.clearButton)}
-              >
-                ×
-              </span>
+      <Flex
+        align="center"
+        justify="between"
+        sx={[
+          styles.wrapper,
+          sizeWrapperStyles[resolvedSize],
+          statusStyle,
+          disabled && styles.wrapperDisabled,
+          width === 'auto' ? styles.fullWidth : undefined,
+          sx,
+        ]}
+        className={className}
+        style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
+      >
+        <PopoverTrigger asChild>
+          <Button
+            id={id}
+            aria-describedby={ariaDescribedby}
+            aria-invalid={ariaInvalid}
+            variant="ghost"
+            size={resolvedSize}
+            disabled={disabled}
+            sx={styles.triggerInnerButton}
+          >
+            {!hideValue && displayValue ? (
+              <Text size={typographySize} weight="normal">
+                {displayValue}
+              </Text>
+            ) : (
+              <Text size={typographySize} type="muted">
+                {placeholder}
+              </Text>
             )}
-            {renderIcon()}
-          </div>
-        </Button>
-      </PopoverTrigger>
+          </Button>
+        </PopoverTrigger>
+        <Flex align="center" gap="xxs" sx={styles.rightControls}>
+          {allowClear && value && (
+            <Button
+              type="button"
+              data-slot="clear-button"
+              variant="ghost"
+              size="icon-xs"
+              tabIndex={0}
+              aria-label="Clear date"
+              disabled={disabled}
+              onClick={handleClear}
+              sx={styles.clearButton}
+            >
+              <Text size={typographySize}>×</Text>
+            </Button>
+          )}
+          <Box aria-hidden="true">{renderIcon()}</Box>
+        </Flex>
+      </Flex>
       <PopoverContent sx={styles.popoverContent} align="start">
         {renderContent()}
       </PopoverContent>

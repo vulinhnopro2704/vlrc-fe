@@ -10,6 +10,7 @@ import {
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
+import { getNextRovingIndex } from '../utils';
 import { Flex } from './flex';
 import { Text } from '../Typography/Text';
 
@@ -168,29 +169,21 @@ export function Segmented({
     if (enabledOptions.length === 0) return;
     const currentIndex = enabledOptions.findIndex((opt) => opt.value === activeValue);
 
-    let targetOption: SegmentedOptionObject | undefined;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      const nextIndex = (currentIndex + 1) % enabledOptions.length;
-      targetOption = enabledOptions[nextIndex];
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      const prevIndex = (currentIndex - 1 + enabledOptions.length) % enabledOptions.length;
-      targetOption = enabledOptions[prevIndex];
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      targetOption = enabledOptions[0];
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      targetOption = enabledOptions[enabledOptions.length - 1];
-    }
+    const nextIndex = getNextRovingIndex(e.key, currentIndex, enabledOptions.length, {
+      orientation: 'both',
+      loop: true,
+    });
 
-    if (targetOption) {
-      handleSelect(targetOption.value);
-      const btn = containerRef.current?.querySelector<HTMLButtonElement>(
-        `button[data-value="${CSS.escape(String(targetOption.value))}"]`,
-      );
-      btn?.focus();
+    if (nextIndex !== null) {
+      e.preventDefault();
+      const targetOption = enabledOptions[nextIndex];
+      if (targetOption) {
+        handleSelect(targetOption.value);
+        const btn = containerRef.current?.querySelector<HTMLButtonElement>(
+          `button[data-value="${CSS.escape(String(targetOption.value))}"]`,
+        );
+        btn?.focus();
+      }
     }
   };
 

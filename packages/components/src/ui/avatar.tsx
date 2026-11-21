@@ -17,6 +17,8 @@ import {
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { Button } from './button';
+import { Flex } from '../layout';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 interface AvatarGroupContextValue {
@@ -246,7 +248,7 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
 
   return (
     <AvatarGroupContext.Provider value={contextValue}>
-      <div
+      <Flex
         role="group"
         data-slot="avatar-group"
         data-size={size}
@@ -258,17 +260,17 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
         {overflowCount > 0 && (
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
-              <button
-                type="button"
+              <Button
+                variant="ghost"
                 aria-label={`+${overflowCount} more members`}
-                {...stylex.props(styles.overflowTrigger)}
+                sx={styles.overflowTrigger}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <Avatar size={size} data-slot="avatar-group-overflow">
                   <AvatarFallback sx={styles.overflowFallback}>+{overflowCount}</AvatarFallback>
                 </Avatar>
-              </button>
+              </Button>
             </PopoverTrigger>
             <PopoverContent
               side="top"
@@ -278,12 +280,14 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
               onMouseLeave={handleMouseLeave}
             >
               <AvatarGroupContext.Provider value={{ size, inGroup: false }}>
-                <div {...stylex.props(styles.overflowList)}>{hiddenChildren}</div>
+                <Flex wrap="wrap" align="center" gap="xs" sx={styles.overflowList}>
+                  {hiddenChildren}
+                </Flex>
               </AvatarGroupContext.Provider>
             </PopoverContent>
           </Popover>
         )}
-      </div>
+      </Flex>
     </AvatarGroupContext.Provider>
   );
 }

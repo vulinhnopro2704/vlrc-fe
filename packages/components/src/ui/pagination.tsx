@@ -3,6 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-re
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { Box } from '../layout';
 import { Text, type TextType } from '../Typography';
 
 const styles = stylex.create({
@@ -155,7 +156,7 @@ const styles = stylex.create({
     padding: 0,
     margin: '-1px',
     overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     borderWidth: 0,
   },
@@ -292,7 +293,7 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeftIcon {...stylex.props(iconSize)} />
-      <Text as="span" size={resolvedSize} type="inherit">
+      <Text size={resolvedSize} type="inherit">
         {children ?? 'Previous'}
       </Text>
     </PaginationLink>
@@ -318,7 +319,7 @@ function PaginationNext({
       sx={sx}
       {...props}
     >
-      <Text as="span" size={resolvedSize} type="inherit">
+      <Text size={resolvedSize} type="inherit">
         {children ?? 'Next'}
       </Text>
       <ChevronRightIcon {...stylex.props(iconSize)} />
@@ -339,17 +340,16 @@ function PaginationEllipsis({
   const sxProps = stylex.props(styles.ellipsis, sizeStyle, sx);
 
   return (
-    <span
+    <Box
+      as="span"
       data-slot="pagination-ellipsis"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
       <MoreHorizontalIcon aria-hidden="true" {...stylex.props(iconSize)} />
-      <Text as="span" sx={styles.srOnly}>
-        More pages
-      </Text>
-    </span>
+      <Text sx={styles.srOnly}>More pages</Text>
+    </Box>
   );
 }
 
