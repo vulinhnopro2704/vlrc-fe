@@ -5,25 +5,33 @@ exports[`Card > UI > should match snapshot for auth variant 1`] = `
   <div
     class="card__styles.base xk0jn7w x78zum5 xdt5ytf xmkeg23 x1y0btm7 xru8eyw x1yb22fu card__styles.variantAuth xh8yej3 x1983rqf xvueqy4 xuqd5rh x1na3us3 xzu61vc x20zu57 x9sgfzt"
     data-slot="card"
-    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:59"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:17; @vlrc-fe/components:src/ui/card.tsx:62"
     data-variant="auth"
   >
     <div
       class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
       data-slot="card-header"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:73"
     >
       <div
-        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeXxl x579bpy x1u7k74 Title__styles.defaultVariant Title__styles.normal x1i21sxh card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-level="1"
+        data-size="xxl"
         data-slot="card-title"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:79"
+        data-variant="default"
       >
-        Card Title
+        <span>
+          Card Title
+        </span>
       </div>
       <div
-        class="card__styles.description xw3nh4a xkpwil5"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm card__styles.description xw3nh4a xkpwil5"
+        data-size="md"
         data-slot="card-description"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:85"
+        data-type="secondary"
+        data-weight="regular"
       >
         Card Description
       </div>
@@ -31,14 +39,14 @@ exports[`Card > UI > should match snapshot for auth variant 1`] = `
     <div
       class="card__styles.content xzsmjar"
       data-slot="card-content"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
     >
       Card Content Body
     </div>
     <div
       class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
       data-slot="card-footer"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:98"
     >
       Footer
     </div>
@@ -51,25 +59,33 @@ exports[`Card > UI > should match snapshot for default variant 1`] = `
   <div
     class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantDefault"
     data-slot="card"
-    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:28"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:17; @vlrc-fe/components:src/ui/card.tsx:31"
     data-variant="default"
   >
     <div
       class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
       data-slot="card-header"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:73"
     >
       <div
-        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeXxl x579bpy x1u7k74 Title__styles.defaultVariant Title__styles.normal x1i21sxh card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-level="1"
+        data-size="xxl"
         data-slot="card-title"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:79"
+        data-variant="default"
       >
-        Card Title
+        <span>
+          Card Title
+        </span>
       </div>
       <div
-        class="card__styles.description xw3nh4a xkpwil5"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm card__styles.description xw3nh4a xkpwil5"
+        data-size="md"
         data-slot="card-description"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:85"
+        data-type="secondary"
+        data-weight="regular"
       >
         Card Description
       </div>
@@ -77,14 +93,14 @@ exports[`Card > UI > should match snapshot for default variant 1`] = `
     <div
       class="card__styles.content xzsmjar"
       data-slot="card-content"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
     >
       Card Content Body
     </div>
     <div
       class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
       data-slot="card-footer"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:98"
     >
       Footer
     </div>
@@ -97,25 +113,33 @@ exports[`Card > UI > should match snapshot for elevated variant 1`] = `
   <div
     class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x16ntqz8 x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevated xc342km xop26oq x16n73rl x13dflua x1n3u82n x1vvtbqd"
     data-slot="card"
-    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:37"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:17; @vlrc-fe/components:src/ui/card.tsx:40"
     data-variant="elevated"
   >
     <div
       class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
       data-slot="card-header"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:73"
     >
       <div
-        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeXxl x579bpy x1u7k74 Title__styles.defaultVariant Title__styles.normal x1i21sxh card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-level="1"
+        data-size="xxl"
         data-slot="card-title"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:79"
+        data-variant="default"
       >
-        Card Title
+        <span>
+          Card Title
+        </span>
       </div>
       <div
-        class="card__styles.description xw3nh4a xkpwil5"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm card__styles.description xw3nh4a xkpwil5"
+        data-size="md"
         data-slot="card-description"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:85"
+        data-type="secondary"
+        data-weight="regular"
       >
         Card Description
       </div>
@@ -123,14 +147,14 @@ exports[`Card > UI > should match snapshot for elevated variant 1`] = `
     <div
       class="card__styles.content xzsmjar"
       data-slot="card-content"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
     >
       Card Content Body
     </div>
     <div
       class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
       data-slot="card-footer"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:98"
     >
       Footer
     </div>
@@ -143,25 +167,33 @@ exports[`Card > UI > should match snapshot for elevated-glass variant 1`] = `
   <div
     class="card__styles.base xk0jn7w x78zum5 xdt5ytf x16ntqz8 x1y0btm7 xb30jbz xru8eyw x1yb22fu card__styles.variantElevatedGlass xc342km x1so2dtn xvn2z4z xop26oq x16n73rl x13dflua x1a3imcw x1vvtbqd"
     data-slot="card"
-    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:47"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:17; @vlrc-fe/components:src/ui/card.tsx:50"
     data-variant="elevated-glass"
   >
     <div
       class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
       data-slot="card-header"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:73"
     >
       <div
-        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeXxl x579bpy x1u7k74 Title__styles.defaultVariant Title__styles.normal x1i21sxh card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-level="1"
+        data-size="xxl"
         data-slot="card-title"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:79"
+        data-variant="default"
       >
-        Card Title
+        <span>
+          Card Title
+        </span>
       </div>
       <div
-        class="card__styles.description xw3nh4a xkpwil5"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm card__styles.description xw3nh4a xkpwil5"
+        data-size="md"
         data-slot="card-description"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:85"
+        data-type="secondary"
+        data-weight="regular"
       >
         Card Description
       </div>
@@ -169,14 +201,14 @@ exports[`Card > UI > should match snapshot for elevated-glass variant 1`] = `
     <div
       class="card__styles.content xzsmjar"
       data-slot="card-content"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
     >
       Card Content Body
     </div>
     <div
       class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
       data-slot="card-footer"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:98"
     >
       Footer
     </div>
@@ -189,25 +221,33 @@ exports[`Card > UI > should match snapshot for glass variant 1`] = `
   <div
     class="card__styles.base xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantGlass xuqd5rh x1dmgsgi"
     data-slot="card"
-    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:29"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:17; @vlrc-fe/components:src/ui/card.tsx:32"
     data-variant="glass"
   >
     <div
       class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
       data-slot="card-header"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:73"
     >
       <div
-        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeXxl x579bpy x1u7k74 Title__styles.defaultVariant Title__styles.normal x1i21sxh card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-level="1"
+        data-size="xxl"
         data-slot="card-title"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:79"
+        data-variant="default"
       >
-        Card Title
+        <span>
+          Card Title
+        </span>
       </div>
       <div
-        class="card__styles.description xw3nh4a xkpwil5"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm card__styles.description xw3nh4a xkpwil5"
+        data-size="md"
         data-slot="card-description"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:85"
+        data-type="secondary"
+        data-weight="regular"
       >
         Card Description
       </div>
@@ -215,14 +255,14 @@ exports[`Card > UI > should match snapshot for glass variant 1`] = `
     <div
       class="card__styles.content xzsmjar"
       data-slot="card-content"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
     >
       Card Content Body
     </div>
     <div
       class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
       data-slot="card-footer"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:98"
     >
       Footer
     </div>
@@ -235,25 +275,33 @@ exports[`Card > UI > should match snapshot for glass-strong variant 1`] = `
   <div
     class="card__styles.base xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantGlassStrong x1so2dtn xvn2z4z"
     data-slot="card"
-    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:33"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:17; @vlrc-fe/components:src/ui/card.tsx:36"
     data-variant="glass-strong"
   >
     <div
       class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
       data-slot="card-header"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:73"
     >
       <div
-        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeXxl x579bpy x1u7k74 Title__styles.defaultVariant Title__styles.normal x1i21sxh card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-level="1"
+        data-size="xxl"
         data-slot="card-title"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:79"
+        data-variant="default"
       >
-        Card Title
+        <span>
+          Card Title
+        </span>
       </div>
       <div
-        class="card__styles.description xw3nh4a xkpwil5"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm card__styles.description xw3nh4a xkpwil5"
+        data-size="md"
         data-slot="card-description"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:85"
+        data-type="secondary"
+        data-weight="regular"
       >
         Card Description
       </div>
@@ -261,14 +309,14 @@ exports[`Card > UI > should match snapshot for glass-strong variant 1`] = `
     <div
       class="card__styles.content xzsmjar"
       data-slot="card-content"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
     >
       Card Content Body
     </div>
     <div
       class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
       data-slot="card-footer"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:98"
     >
       Footer
     </div>
@@ -281,25 +329,33 @@ exports[`Card > UI > should match snapshot in default state 1`] = `
   <div
     class="card__styles.base x1rexohn xk0jn7w x78zum5 xdt5ytf x16ntqz8 xmkeg23 x1y0btm7 xb30jbz xfk7h2l xru8eyw x1yb22fu card__styles.variantDefault"
     data-slot="card"
-    data-style-src="@vlrc-fe/components:src/ui/card.tsx:14; @vlrc-fe/components:src/ui/card.tsx:28"
+    data-style-src="@vlrc-fe/components:src/ui/card.tsx:17; @vlrc-fe/components:src/ui/card.tsx:31"
     data-variant="default"
   >
     <div
       class="card__styles.header xrvj5dj x7a106z x13z6uf9 xzsmjar"
       data-slot="card-header"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:70"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:73"
     >
       <div
-        class="card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        class="Title__styles.base x1ghz6dp x1xlr1w8 x1heor9g x78zum5 x6s0dn4 x13z6uf9 Title__styles.sizeXxl x579bpy x1u7k74 Title__styles.defaultVariant Title__styles.normal x1i21sxh card__styles.title xo5v014 x1s688f x1603h9y x1w69ole"
+        data-level="1"
+        data-size="xxl"
         data-slot="card-title"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:76"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:79"
+        data-variant="default"
       >
-        Card Title
+        <span>
+          Card Title
+        </span>
       </div>
       <div
-        class="card__styles.description xw3nh4a xkpwil5"
+        class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm card__styles.description xw3nh4a xkpwil5"
+        data-size="md"
         data-slot="card-description"
-        data-style-src="@vlrc-fe/components:src/ui/card.tsx:82"
+        data-style-src="@vlrc-fe/components:src/ui/card.tsx:85"
+        data-type="secondary"
+        data-weight="regular"
       >
         Card Description
       </div>
@@ -307,14 +363,14 @@ exports[`Card > UI > should match snapshot in default state 1`] = `
     <div
       class="card__styles.content xzsmjar"
       data-slot="card-content"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:92"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
     >
       Card Content Body
     </div>
     <div
       class="card__styles.footer x78zum5 x6s0dn4 xzsmjar"
       data-slot="card-footer"
-      data-style-src="@vlrc-fe/components:src/ui/card.tsx:95"
+      data-style-src="@vlrc-fe/components:src/ui/card.tsx:98"
     >
       Footer
     </div>
