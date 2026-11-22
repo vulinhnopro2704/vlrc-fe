@@ -4,6 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Text, type TextType } from '../Typography';
+import { srOnlyStyles } from '../utils';
 
 const styles = stylex.create({
   nav: {
@@ -281,7 +282,7 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeftIcon {...stylex.props(iconSize)} />
-      <Text as="span" size={resolvedSize} type="inherit">
+      <Text size={resolvedSize} type="inherit">
         {children ?? 'Previous'}
       </Text>
     </PaginationLink>
@@ -307,7 +308,7 @@ function PaginationNext({
       sx={sx}
       {...props}
     >
-      <Text as="span" size={resolvedSize} type="inherit">
+      <Text size={resolvedSize} type="inherit">
         {children ?? 'Next'}
       </Text>
       <ChevronRightIcon {...stylex.props(iconSize)} />
@@ -328,18 +329,15 @@ function PaginationEllipsis({
   const sxProps = stylex.props(styles.ellipsis, sizeStyle, sx);
 
   return (
-    <span
-      aria-hidden="true"
+    <Text
       data-slot="pagination-ellipsis"
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <MoreHorizontalIcon {...stylex.props(iconSize)} />
-      <Text as="span" className="sr-only">
-        More pages
-      </Text>
-    </span>
+      <MoreHorizontalIcon aria-hidden="true" {...stylex.props(iconSize)} />
+      <Text sx={srOnlyStyles.srOnly}>More pages</Text>
+    </Text>
   );
 }
 

@@ -398,7 +398,6 @@ function MenubarShortcut({ className, sx, ...props }: MenubarShortcutProps) {
   const styleProps = stylex.props(styles.shortcut, sx);
   return (
     <Text
-      as="span"
       data-slot="menubar-shortcut"
       size="xs"
       type="secondary"

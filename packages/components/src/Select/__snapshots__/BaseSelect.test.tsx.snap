@@ -5,17 +5,17 @@ exports[`BaseSelect > UI > should match snapshot in default unselected state 1`]
   <button
     aria-expanded="false"
     aria-haspopup="dialog"
-    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk x156qtes xik21o4"
     data-slot="select"
     data-state="closed"
-    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20"
+    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:21"
     type="button"
   >
     <span
       class="Text__styles.base Text__styles.sizeMd x1evy7pa weightStyles__styles.regular xo1l8bm BaseSelect__styles.labelArea x845mor xeuugli xb3r6kr xlyipyv xuxw1ft xdpxx8g xboafo0 BaseSelect__styles.placeholder xw3nh4a"
       data-size="md"
       data-slot="typography-text"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Select/BaseSelect.tsx:49; @vlrc-fe/components:src/Select/BaseSelect.tsx:58"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Select/BaseSelect.tsx:54; @vlrc-fe/components:src/Select/BaseSelect.tsx:63"
       data-weight="regular"
     >
       Select an option...
@@ -23,7 +23,7 @@ exports[`BaseSelect > UI > should match snapshot in default unselected state 1`]
     <svg
       aria-hidden="true"
       class="lucide lucide-chevron-down BaseSelect__styles.chevronIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s"
-      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:72"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:77"
       fill="none"
       height="24"
       stroke="currentColor"
@@ -47,10 +47,10 @@ exports[`BaseSelect > UI > should match snapshot when disabled 1`] = `
   <button
     aria-expanded="false"
     aria-haspopup="dialog"
-    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x84br7x x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk BaseSelect__styles.triggerDisabled x1qry0bl x1h6gzvc x197sbye"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x84br7x x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk x156qtes xik21o4 BaseSelect__styles.triggerDisabled x1qry0bl x1h6gzvc x197sbye"
     data-slot="select"
     data-state="closed"
-    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20; @vlrc-fe/components:src/Select/BaseSelect.tsx:44"
+    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:21; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
     disabled=""
     type="button"
   >
@@ -59,7 +59,7 @@ exports[`BaseSelect > UI > should match snapshot when disabled 1`] = `
       data-size="md"
       data-slot="typography-text"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:54"
       data-weight="regular"
     >
       Short Option
@@ -67,7 +67,7 @@ exports[`BaseSelect > UI > should match snapshot when disabled 1`] = `
     <svg
       aria-hidden="true"
       class="lucide lucide-chevron-down BaseSelect__styles.chevronIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s"
-      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:72"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:77"
       fill="none"
       height="24"
       stroke="currentColor"
@@ -91,10 +91,10 @@ exports[`BaseSelect > UI > should match snapshot with long text selected in trig
   <button
     aria-expanded="false"
     aria-haspopup="dialog"
-    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk"
+    class="BaseSelect__styles.trigger x78zum5 x6s0dn4 xh8yej3 x1nedpf2 xrijj7p xmkeg23 x1y0btm7 xsyin8q x1ryrjj2 x1bilvtl xboafo0 x1mlyrtw x84br7x x1ypdohk x1a2a7pz xfk7h2l x16mfhj0 xx6bhzk x156qtes xik21o4"
     data-slot="select"
     data-state="closed"
-    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:20"
+    data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:21"
     type="button"
   >
     <span
@@ -102,7 +102,7 @@ exports[`BaseSelect > UI > should match snapshot with long text selected in trig
       data-size="md"
       data-slot="typography-text"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:49"
+      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/Typography/Text.tsx:98; @vlrc-fe/components:src/Select/BaseSelect.tsx:54"
       data-weight="regular"
     >
       Super exceptionally long option text that exceeds typical container boundaries and requires ellipsis truncation with tooltip on hover
@@ -110,7 +110,7 @@ exports[`BaseSelect > UI > should match snapshot with long text selected in trig
     <svg
       aria-hidden="true"
       class="lucide lucide-x BaseSelect__styles.clearIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s x1ypdohk x1mqvv6a"
-      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:61"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:66"
       fill="none"
       height="24"
       stroke="currentColor"
@@ -131,7 +131,7 @@ exports[`BaseSelect > UI > should match snapshot with long text selected in trig
     <svg
       aria-hidden="true"
       class="lucide lucide-chevron-down BaseSelect__styles.chevronIcon x1xvt488 xf08kfj x13zjp5t xw3nh4a x2lah0s"
-      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:72"
+      data-style-src="@vlrc-fe/components:src/Select/BaseSelect.tsx:77"
       fill="none"
       height="24"
       stroke="currentColor"

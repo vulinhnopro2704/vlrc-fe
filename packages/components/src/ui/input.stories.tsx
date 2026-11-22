@@ -174,3 +174,12 @@ export const DisabledState: Story = {
     </div>
   ),
 };
+
+export const AllowClear: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: 340 }}>
+      <Input allowClear defaultValue="Clearable input" placeholder="Type something..." />
+      <Input allowClear placeholder="Type to see clear button..." />
+    </div>
+  ),
+};

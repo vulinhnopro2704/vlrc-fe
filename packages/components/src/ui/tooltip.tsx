@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { isValidElement, type ComponentProps, type ReactElement, type ReactNode } from 'react';
 import {
   Arrow as TooltipPrimitiveArrow,
   Content as TooltipPrimitiveContent,
@@ -10,6 +10,7 @@ import {
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex } from '../theme/zIndex';
+import { Text } from '../Typography';
 
 const fadeIn = stylex.keyframes({
   from: { opacity: 0, transform: 'scale(0.95)' },
@@ -49,10 +50,37 @@ function TooltipProvider({
   );
 }
 
-function Tooltip(props: ComponentProps<typeof TooltipPrimitiveRoot>) {
+export interface TooltipProps extends ComponentProps<typeof TooltipPrimitiveRoot> {
+  /**
+   * Shorthand self-contained tooltip. When provided, the single child becomes
+   * the trigger and `content` is rendered as the tooltip body, without having
+   * to compose TooltipTrigger / TooltipContent manually.
+   */
+  content?: ReactNode;
+}
+
+function Tooltip({ content, children, ...props }: TooltipProps) {
+  if (content != null) {
+    return (
+      <TooltipProvider>
+        <TooltipPrimitiveRoot data-slot="tooltip" {...props}>
+          {isValidElement(children) ? (
+            <TooltipPrimitiveTrigger asChild>{children as ReactElement}</TooltipPrimitiveTrigger>
+          ) : (
+            <TooltipPrimitiveTrigger asChild>
+              <Text>{children}</Text>
+            </TooltipPrimitiveTrigger>
+          )}
+          <TooltipContent>{content}</TooltipContent>
+        </TooltipPrimitiveRoot>
+      </TooltipProvider>
+    );
+  }
   return (
     <TooltipProvider>
-      <TooltipPrimitiveRoot data-slot="tooltip" {...props} />
+      <TooltipPrimitiveRoot data-slot="tooltip" {...props}>
+        {children}
+      </TooltipPrimitiveRoot>
     </TooltipProvider>
   );
 }

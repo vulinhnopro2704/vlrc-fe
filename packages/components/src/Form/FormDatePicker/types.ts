@@ -48,6 +48,11 @@ export interface DatePickerBaseProps<TFieldValues extends FieldValues> {
   name: FieldPath<TFieldValues>;
   control: Control<TFieldValues>;
   label?: ReactNode;
+  description?: ReactNode;
+  controlFirst?: boolean;
+  horizontal?: boolean;
+  /** Marks the field as required (equivalent to `rules={{ required: true }}`). */
+  required?: boolean;
   placeholder?: string;
   status?: DatePickerStatus;
   size?: DatePickerSize;

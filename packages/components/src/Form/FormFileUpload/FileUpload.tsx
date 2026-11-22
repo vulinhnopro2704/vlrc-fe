@@ -537,10 +537,10 @@ function FileUploadClearRow({
   return (
     <div {...stylex.props(clearBtnRowSx)}>
       <FileUploadClear asChild>
-        <button type="button" {...stylex.props(clearBtnSx)}>
+        <Button variant="ghost" size="xs" sx={clearBtnSx}>
           <Icons.Trash2 size={13} />
           Clear all
-        </button>
+        </Button>
       </FileUploadClear>
     </div>
   );

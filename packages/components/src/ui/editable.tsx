@@ -298,7 +298,6 @@ function EditablePreview({
 
   return (
     <Text
-      as="span"
       data-slot="editable-preview"
       type="inherit"
       onClick={handleClick}

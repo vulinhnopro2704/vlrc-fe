@@ -1,8 +1,11 @@
-import { type ComponentProps } from 'react';
+import { useRef, useState, type ChangeEvent, type ComponentProps } from 'react';
 import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
+import { Button } from './button';
+import { unstyledButtonStyles } from '../utils';
+import Icons from '../Icons';
 
 const styles = stylex.create({
   base: {
@@ -249,6 +252,30 @@ const styles = stylex.create({
     paddingInline: '1.25rem',
     gap: '0.75rem',
   },
+
+  clearButton: {
+    appearance: 'none',
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    color: colors.mutedForeground,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 0,
+    flexShrink: 0,
+    borderRadius: radius.sm,
+    transitionProperty: 'color',
+    transitionDuration: '150ms',
+    ':hover': {
+      color: colors.foreground,
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+      outline: 'none',
+      color: colors.foreground,
+    },
+  },
 });
 
 const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
@@ -338,6 +365,8 @@ export interface InputProps extends Omit<ComponentProps<'input'>, 'prefix' | 'si
   htmlSize?: number;
   /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
   width?: ComponentWidth;
+  /** Show a clear (x) button in the suffix area while the input has a value. Clicking it resets the value and fires onChange with an empty string. */
+  allowClear?: boolean;
 }
 
 function Input({
@@ -360,6 +389,7 @@ function Input({
   sx,
   htmlType,
   htmlSize,
+  allowClear,
   ...props
 }: InputProps) {
   const isInvalid = props['aria-invalid'] === true || props['aria-invalid'] === 'true';
@@ -369,11 +399,43 @@ function Input({
 
   const resolvedType = htmlType ?? type;
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [uncontrolledHasValue, setUncontrolledHasValue] = useState(
+    () => typeof props.defaultValue === 'string' && props.defaultValue !== '',
+  );
+  const isControlled = 'value' in props && props.value !== undefined && props.value !== null;
+  const hasValue = isControlled ? String(props.value) !== '' : uncontrolledHasValue;
+  const showClear = Boolean(allowClear) && !disabled && hasValue;
+  const clearEnabled = Boolean(allowClear) && !disabled;
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!isControlled) setUncontrolledHasValue(event.target.value !== '');
+    props.onChange?.(event);
+  };
+
+  const handleClear = () => {
+    if (inputRef.current) {
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+        window.HTMLInputElement.prototype,
+        'value',
+      )?.set;
+      if (nativeInputValueSetter) {
+        nativeInputValueSetter.call(inputRef.current, '');
+      } else {
+        inputRef.current.value = '';
+      }
+      inputRef.current.dispatchEvent(new Event('input', { bubbles: true }));
+      inputRef.current.dispatchEvent(new Event('change', { bubbles: true }));
+      inputRef.current.focus();
+    }
+    setUncontrolledHasValue(false);
+  };
+
   const resolvedPrefixIcon = prefixIcon ?? prefix;
   const resolvedSuffixIcon = suffixIcon ?? suffix;
 
   const hasAddon = Boolean(
-    prefixButton || resolvedPrefixIcon || suffixButton || resolvedSuffixIcon,
+    prefixButton || resolvedPrefixIcon || suffixButton || resolvedSuffixIcon || clearEnabled,
   );
 
   const defaultIconTier = defaultIconSizeForInput[resolvedSize] ?? 'sm';
@@ -386,16 +448,18 @@ function Input({
 
     return (
       <input
+        ref={inputRef}
         type={resolvedType}
         data-slot="input"
         data-size={resolvedSize}
         data-width={width}
         disabled={disabled}
         size={htmlSize}
+        {...props}
+        onChange={handleInputChange}
         {...sxProps}
         style={{ ...sxProps.style, ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-        {...props}
       />
     );
   }
@@ -445,15 +509,17 @@ function Input({
       ) : null}
 
       <input
+        ref={inputRef}
         type={resolvedType}
         data-slot="input"
         data-size={resolvedSize}
         disabled={disabled}
         size={htmlSize}
+        {...props}
+        onChange={handleInputChange}
         {...inputSxProps}
         style={{ ...inputSxProps.style, ...style }}
         className={mergedInputClass}
-        {...props}
       />
 
       {suffixButton ? (
@@ -463,6 +529,23 @@ function Input({
         >
           {suffixButton}
         </div>
+      ) : showClear ? (
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon-xs"
+          data-slot="input-clear"
+          aria-label="Clear input"
+          onClick={handleClear}
+          sx={[
+            unstyledButtonStyles.reset,
+            styles.addonContainer,
+            styles.clearButton,
+            iconGlyphStyles[resolvedIconSize],
+          ]}
+        >
+          <Icons.Close />
+        </Button>
       ) : resolvedSuffixIcon ? (
         <span
           data-slot="input-suffix-icon"

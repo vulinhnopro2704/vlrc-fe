@@ -1,55 +1,23 @@
-import { useState, useMemo, useCallback, useEffect, useRef, type JSX, type ReactNode } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef, type JSX } from 'react';
 import { createPortal } from 'react-dom';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import {
   $getSelection,
   $isRangeSelection,
   $isTextNode,
-  $createParagraphNode,
   COMMAND_PRIORITY_LOW,
   KEY_DOWN_COMMAND,
 } from 'lexical';
-import { $createHeadingNode, $createQuoteNode } from '@lexical/rich-text';
-import {
-  INSERT_ORDERED_LIST_COMMAND,
-  INSERT_UNORDERED_LIST_COMMAND,
-  INSERT_CHECK_LIST_COMMAND,
-} from '@lexical/list';
-import { $createCodeNode } from '@lexical/code';
-import { $setBlocksType } from '@lexical/selection';
 import { INSERT_TABLE_COMMAND } from '@lexical/table';
-import { INSERT_HORIZONTAL_RULE_COMMAND } from '@lexical/react/LexicalHorizontalRuleNode';
 import { create } from '@stylexjs/stylex';
-import {
-  Heading1,
-  Heading2,
-  Heading3,
-  List,
-  ListOrdered,
-  ListTodo,
-  Quote,
-  Code,
-  Lightbulb,
-  Type,
-  Minus,
-  Table as TableIcon,
-  Image as ImageIcon,
-  FolderTree,
-  Video,
-  Frame as FigmaIcon,
-} from 'lucide-react';
 import { colors, radius, shadow, spacing } from '@vlrc-fe/components/theme/tokens.stylex';
 import { Box, VStack, Text } from '@vlrc-fe/components';
-import { $createCalloutNode } from '../nodes/CalloutNode';
-import {
-  $createCollapsibleContainerNode,
-  $createCollapsibleTitleNode,
-  $createCollapsibleContentNode,
-} from '../nodes/CollapsibleNodes';
-import { $createImageNode } from '../nodes/ImageNode';
-import { $createYouTubeNode, $createFigmaNode } from '../nodes/EmbedNodes';
+import { getNextRovingIndex } from '@vlrc-fe/components/utils';
 import { InsertTableDialog } from './InsertTableDialog';
 import { InsertMediaDialog, type MediaType } from './InsertMediaDialog';
+import { SLASH_OPTIONS, type SlashOption } from './slashMenuOptions';
+import { $createImageNode } from '../nodes/ImageNode';
+import { $createYouTubeNode, $createFigmaNode } from '../nodes/EmbedNodes';
 
 const MENU_WIDTH = 280;
 const MENU_MAX_HEIGHT = 320;
@@ -101,6 +69,7 @@ const styles = create({
   },
   itemSelected: {
     backgroundColor: colors.surfaceSubtle,
+    boxShadow: shadow.ringFocus,
   },
   iconBox: {
     display: 'inline-flex',
@@ -119,207 +88,6 @@ const styles = create({
     textAlign: 'center',
   },
 });
-
-export interface SlashOption {
-  title: string;
-  description: string;
-  icon: ReactNode;
-  category: 'basic' | 'media';
-  actionId?: 'table' | 'image' | 'youtube' | 'figma';
-  onSelect: (editor: ReturnType<typeof useLexicalComposerContext>[0]) => void;
-}
-
-const SLASH_OPTIONS: SlashOption[] = [
-  // Basic blocks
-  {
-    title: 'Text',
-    description: 'Plain body text paragraph',
-    icon: <Type size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createParagraphNode());
-        }
-      });
-    },
-  },
-  {
-    title: 'Heading 1',
-    description: 'Large section heading',
-    icon: <Heading1 size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createHeadingNode('h1'));
-        }
-      });
-    },
-  },
-  {
-    title: 'Heading 2',
-    description: 'Medium section heading',
-    icon: <Heading2 size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createHeadingNode('h2'));
-        }
-      });
-    },
-  },
-  {
-    title: 'Heading 3',
-    description: 'Small subsection heading',
-    icon: <Heading3 size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createHeadingNode('h3'));
-        }
-      });
-    },
-  },
-  {
-    title: 'Bullet List',
-    description: 'Simple unorganized list',
-    icon: <List size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
-    },
-  },
-  {
-    title: 'Numbered List',
-    description: 'Ordered step-by-step list',
-    icon: <ListOrdered size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
-    },
-  },
-  {
-    title: 'To-do List',
-    description: 'Interactive checklist with checkboxes',
-    icon: <ListTodo size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, undefined);
-    },
-  },
-  {
-    title: 'Quote',
-    description: 'Indented block quote',
-    icon: <Quote size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createQuoteNode());
-        }
-      });
-    },
-  },
-  {
-    title: 'Code Block',
-    description: 'Formatted syntax highlighting block',
-    icon: <Code size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createCodeNode());
-        }
-      });
-    },
-  },
-  {
-    title: 'Divider',
-    description: 'Visual horizontal divider rule',
-    icon: <Minus size={16} />,
-    category: 'basic',
-    onSelect: (editor) => {
-      editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
-    },
-  },
-
-  // Media & embeds
-  {
-    title: 'Callout',
-    description: 'Notion highlight callout banner',
-    icon: <Lightbulb size={16} />,
-    category: 'media',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createCalloutNode('💡'));
-        }
-      });
-    },
-  },
-  {
-    title: 'Table',
-    description: 'Insert customizable table with rows and columns',
-    icon: <TableIcon size={16} />,
-    category: 'media',
-    actionId: 'table',
-    onSelect: () => {},
-  },
-  {
-    title: 'Image',
-    description: 'Embed image from web URL with caption',
-    icon: <ImageIcon size={16} />,
-    category: 'media',
-    actionId: 'image',
-    onSelect: () => {},
-  },
-  {
-    title: 'Toggle / Collapsible',
-    description: 'Collapsible accordion toggle container',
-    icon: <FolderTree size={16} />,
-    category: 'media',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          const container = $createCollapsibleContainerNode(true);
-          const title = $createCollapsibleTitleNode();
-          title.append($createParagraphNode());
-          const content = $createCollapsibleContentNode();
-          content.append($createParagraphNode());
-          container.append(title, content);
-          selection.insertNodes([container]);
-        }
-      });
-    },
-  },
-  {
-    title: 'YouTube Video',
-    description: 'Embed video player by YouTube ID or link',
-    icon: <Video size={16} />,
-    category: 'media',
-    actionId: 'youtube',
-    onSelect: () => {},
-  },
-  {
-    title: 'Figma Embed',
-    description: 'Embed interactive Figma design preview',
-    icon: <FigmaIcon size={16} />,
-    category: 'media',
-    actionId: 'figma',
-    onSelect: () => {},
-  },
-];
 
 export function SlashMenuPlugin(): JSX.Element | null {
   const [editor] = useLexicalComposerContext();
@@ -383,6 +151,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
         setMediaDialogType(option.actionId);
       } else {
         option.onSelect(editor);
+        editor.focus();
       }
 
       setIsOpen(false);
@@ -418,6 +187,13 @@ export function SlashMenuPlugin(): JSX.Element | null {
     return { top, left };
   }, []);
 
+  const updatePosition = useCallback((newPos: { top: number; left: number }) => {
+    setPosition((prev) => {
+      if (prev.top === newPos.top && prev.left === newPos.left) return prev;
+      return newPos;
+    });
+  }, []);
+
   // Listen for editor typing to detect "/" trigger and query
   useEffect(() => {
     return editor.registerUpdateListener(({ editorState }) => {
@@ -442,7 +218,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
 
           const pos = calculatePosition();
           if (pos) {
-            setPosition(pos);
+            updatePosition(pos);
             setIsOpen(true);
           }
         } else {
@@ -450,7 +226,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
         }
       });
     });
-  }, [editor, calculatePosition]);
+  }, [editor, calculatePosition, updatePosition]);
 
   // Recalculate or dismiss on scroll/resize
   useEffect(() => {
@@ -459,7 +235,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
     const handleWindowChange = () => {
       const pos = calculatePosition();
       if (pos) {
-        setPosition(pos);
+        updatePosition(pos);
       } else {
         setIsOpen(false);
       }
@@ -480,63 +256,72 @@ export function SlashMenuPlugin(): JSX.Element | null {
       window.removeEventListener('scroll', handleWindowChange, { capture: true });
       document.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [isOpen, calculatePosition]);
+  }, [isOpen, calculatePosition, updatePosition]);
 
-  // Keyboard navigation
+  // Group items by category for clean visual separation in a single O(N) pass
+  const { basicItems, mediaItems } = useMemo(() => {
+    const basic: SlashOption[] = [];
+    const media: SlashOption[] = [];
+    for (const opt of filteredOptions) {
+      if (opt.category === 'basic') {
+        basic.push(opt);
+      } else if (opt.category === 'media') {
+        media.push(opt);
+      }
+    }
+    return { basicItems: basic, mediaItems: media };
+  }, [filteredOptions]);
+  const displayedOptions = filteredOptions;
+
+  // Refs for keyboard handler to avoid re-subscribing on every selection move
+  const selectedIndexRef = useRef(selectedIndex);
+  selectedIndexRef.current = selectedIndex;
+  const displayedOptionsRef = useRef(displayedOptions);
+  displayedOptionsRef.current = displayedOptions;
+  const selectOptionRef = useRef(selectOption);
+  selectOptionRef.current = selectOption;
+
+  // Keyboard navigation using unified roving index helper
   useEffect(() => {
     if (!isOpen) return;
 
     return editor.registerCommand(
       KEY_DOWN_COMMAND,
       (event: KeyboardEvent) => {
-        if (event.key === 'ArrowDown') {
+        const options = displayedOptionsRef.current;
+        const currentIdx = selectedIndexRef.current;
+
+        const nextIndex = getNextRovingIndex(event.key, currentIdx, options.length, {
+          orientation: 'vertical',
+          loop: true,
+        });
+
+        if (nextIndex !== null) {
           event.preventDefault();
-          setSelectedIndex((prev) => (prev + 1) % filteredOptions.length);
+          setSelectedIndex(nextIndex);
           return true;
         }
-        if (event.key === 'ArrowUp') {
-          event.preventDefault();
-          setSelectedIndex((prev) => (prev - 1 + filteredOptions.length) % filteredOptions.length);
-          return true;
-        }
-        if (event.key === 'Home') {
-          event.preventDefault();
-          setSelectedIndex(0);
-          return true;
-        }
-        if (event.key === 'End') {
-          event.preventDefault();
-          setSelectedIndex(filteredOptions.length - 1);
-          return true;
-        }
+
         if (event.key === 'Enter') {
           event.preventDefault();
-          const opt = filteredOptions[selectedIndex];
+          const opt = options[currentIdx];
           if (opt) {
-            selectOption(opt);
+            selectOptionRef.current(opt);
           }
           return true;
         }
+
         if (event.key === 'Escape') {
           event.preventDefault();
           setIsOpen(false);
           return true;
         }
+
         return false;
       },
       COMMAND_PRIORITY_LOW,
     );
-  }, [isOpen, filteredOptions, selectedIndex, selectOption, editor]);
-
-  // Group items by category for clean visual separation
-  const basicItems = useMemo(
-    () => filteredOptions.filter((opt) => opt.category === 'basic'),
-    [filteredOptions],
-  );
-  const mediaItems = useMemo(
-    () => filteredOptions.filter((opt) => opt.category === 'media'),
-    [filteredOptions],
-  );
+  }, [isOpen, editor]);
 
   return (
     <>
@@ -555,7 +340,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
               positionTryFallbacks: 'flip-block, flip-inline',
             }}
           >
-            {filteredOptions.length === 0 ? (
+            {displayedOptions.length === 0 ? (
               <Box sx={styles.empty}>
                 <Text size="sm" type="secondary">
                   No commands match &ldquo;{query}&rdquo;
@@ -570,15 +355,14 @@ export function SlashMenuPlugin(): JSX.Element | null {
                         Basic blocks
                       </Text>
                     </Box>
-                    {basicItems.map((opt) => {
-                      const overallIndex = filteredOptions.indexOf(opt);
-                      const isSelected = overallIndex === selectedIndex;
+                    {basicItems.map((opt, idx) => {
+                      const isSelected = idx === selectedIndex;
                       return (
                         <Box
                           as="button"
                           key={opt.title}
                           ref={(el: HTMLButtonElement | null) => {
-                            itemRefs.current[overallIndex] = el;
+                            itemRefs.current[idx] = el;
                           }}
                           type="button"
                           data-slot="slash-menu-item"
@@ -586,7 +370,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
                           className="vlrc-slash-menu-item"
                           sx={[styles.item, isSelected && styles.itemSelected]}
                           onClick={() => selectOption(opt)}
-                          onMouseEnter={() => setSelectedIndex(overallIndex)}
+                          onMouseEnter={() => setSelectedIndex(idx)}
                         >
                           <Box
                             className="vlrc-slash-menu-icon"
@@ -616,8 +400,8 @@ export function SlashMenuPlugin(): JSX.Element | null {
                         Media & embeds
                       </Text>
                     </Box>
-                    {mediaItems.map((opt) => {
-                      const overallIndex = filteredOptions.indexOf(opt);
+                    {mediaItems.map((opt, idx) => {
+                      const overallIndex = basicItems.length + idx;
                       const isSelected = overallIndex === selectedIndex;
                       return (
                         <Box

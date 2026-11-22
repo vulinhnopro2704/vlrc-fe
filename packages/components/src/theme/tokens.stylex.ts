@@ -17,7 +17,7 @@ export const colors = stylex.defineVars({
   primaryForeground: 'var(--primary-foreground, #ffffff)',
   secondary: 'var(--secondary, #f1f5f9)',
   secondaryForeground: 'var(--secondary-foreground, #0f172a)',
-  muted: 'var(--muted, #f8fafc)',
+  muted: 'var(--muted, #f1f5f9)',
   mutedForeground: 'var(--muted-foreground, #64748b)',
   accent: 'var(--accent, #f1f5f9)',
   accentForeground: 'var(--accent-foreground, #0f172a)',
@@ -32,7 +32,7 @@ export const colors = stylex.defineVars({
   surfaceRaised: 'var(--color-surface-raised, var(--card, #ffffff))',
   surfaceOverlay: 'var(--color-surface-overlay, var(--popover, #ffffff))',
   surfaceSubtle: 'var(--color-surface-subtle, var(--secondary, #f1f5f9))',
-  surfaceMuted: 'var(--color-surface-muted, var(--muted, #f8fafc))',
+  surfaceMuted: 'var(--color-surface-muted, var(--muted, #f1f5f9))',
   surfaceAccent: 'var(--color-surface-accent, var(--primary, #3b82f6))',
   surfaceAccentSubtle: 'var(--color-surface-accent-subtle, var(--accent, #f1f5f9))',
   surfaceDanger: 'var(--color-surface-danger, var(--destructive, #ef4444))',
@@ -216,3 +216,35 @@ export const typography = stylex.defineVars({
   headline: 'var(--font-size-headline, 3rem)',
   display: 'var(--font-size-display, 3.75rem)',
 });
+
+/**
+ * Unified enterprise token aliases mapped directly from canonical token maps.
+ * Ensures a single source of truth for design tokens.
+ */
+export const tokens = {
+  colorBorder: colors.border,
+  colorSurface: colors.card,
+  colorSurfaceSecondary: colors.secondary,
+  colorText: colors.foreground,
+  colorTextSecondary: colors.mutedForeground,
+  colorPrimary: colors.primary,
+  colorError: colors.destructive,
+  colorBgLayout: colors.muted,
+  colorBgSubtle: colors.secondary,
+
+  spacingXS: spacing.xs,
+  spacingSM: spacing.sm,
+  spacingMD: spacing.md,
+  spacingLG: spacing.lg,
+  spacingXL: spacing.xl,
+
+  radiusSM: radius.sm,
+  radiusMD: radius.md,
+  radiusLG: radius.lg,
+  radiusFull: radius.full,
+};
+
+/**
+ * Backward compatibility alias for theme tokens.
+ */
+export const theme = tokens;

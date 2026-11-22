@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, type ComponentProps, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
-import { Title, Text } from '../Typography';
+import { Title, Paragraph } from '../Typography';
 
 export type TimelineOrientation = 'vertical' | 'horizontal';
 export type TimelineStatus = 'completed' | 'active' | 'pending';
@@ -478,8 +478,7 @@ export interface TimelineDescriptionProps extends ComponentProps<'div'> {
 
 function TimelineDescription({ className, children, ...props }: TimelineDescriptionProps) {
   return (
-    <Text
-      as="p"
+    <Paragraph
       type="secondary"
       size="sm"
       data-slot="timeline-description"
@@ -487,7 +486,7 @@ function TimelineDescription({ className, children, ...props }: TimelineDescript
       {...props}
     >
       {children}
-    </Text>
+    </Paragraph>
   );
 }
 

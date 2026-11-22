@@ -36,6 +36,10 @@ export default defineConfig({
         import.meta.dirname,
         './packages/components/src/Icons/index.ts',
       ),
+      '@vlrc-fe/components/utils': resolve(
+        import.meta.dirname,
+        './packages/components/src/utils.ts',
+      ),
       '@vlrc-fe/components': resolve(import.meta.dirname, './packages/components/src/index.ts'),
       '@vlrc-fe/hooks': resolve(import.meta.dirname, './packages/hooks/src/index.ts'),
       '@vlrc-fe/editor': resolve(import.meta.dirname, './packages/editor/src/index.ts'),

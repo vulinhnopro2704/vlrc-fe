@@ -10,7 +10,7 @@ export default defineConfig({
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
-      external: ['react'],
+      external: ['react', 'react/jsx-runtime', 'ahooks', /^ahooks\/.*/],
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',

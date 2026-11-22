@@ -54,6 +54,7 @@ export function Blockquote({
   rows,
   lineHeight,
   ellipsis,
+  truncate,
   textDecoration,
   textDecorationLine,
   textDecorationStyle,
@@ -66,6 +67,8 @@ export function Blockquote({
   sx,
   ...props
 }: BlockquoteProps) {
+  if (ellipsis === undefined && truncate) ellipsis = true;
+
   const customStyle = resolveCustomTypographyStyle({
     customSize,
     lines,

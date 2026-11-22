@@ -212,11 +212,11 @@ export function Dropdown({
           sx={[itemSizeStyle, item.sx]}
         >
           {item.icon && (
-            <Text as="span" type="inherit" {...stylex.props(styles.iconWrapper)}>
+            <Text type="inherit" sx={styles.iconWrapper}>
               {item.icon}
             </Text>
           )}
-          <Text as="span" type="inherit" {...stylex.props(styles.labelFlex)}>
+          <Text type="inherit" sx={styles.labelFlex}>
             {typeof item.label === 'string' ? (
               <Text size={textSize} weight="normal">
                 {item.label}
@@ -235,11 +235,11 @@ export function Dropdown({
         <DropdownMenuSub key={key}>
           <DropdownMenuSubTrigger disabled={item.disabled} sx={[itemSizeStyle, item.sx]}>
             {item.icon && (
-              <Text as="span" type="inherit" {...stylex.props(styles.iconWrapper)}>
+              <Text type="inherit" sx={styles.iconWrapper}>
                 {item.icon}
               </Text>
             )}
-            <Text as="span" type="inherit" {...stylex.props(styles.labelFlex)}>
+            <Text type="inherit" sx={styles.labelFlex}>
               {typeof item.label === 'string' ? (
                 <Text size={textSize} weight="normal">
                   {item.label}
@@ -270,11 +270,11 @@ export function Dropdown({
       >
         <Flex align="center" gap={size === 'sm' ? 'xs' : 'sm'} sx={styles.labelFlex}>
           {item.icon && (
-            <Text as="span" type="inherit" {...stylex.props(styles.iconWrapper)}>
+            <Text type="inherit" sx={styles.iconWrapper}>
               {item.icon}
             </Text>
           )}
-          <Text as="span" type="inherit" {...stylex.props(styles.labelFlex)}>
+          <Text type="inherit" sx={styles.labelFlex}>
             {typeof item.label === 'string' ? (
               <Text size={textSize} weight="normal" type={item.danger ? 'danger' : 'default'}>
                 {item.label}

@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { isNil } from 'lodash-es';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
@@ -7,6 +7,7 @@ import Icons from '../Icons';
 import { Text } from '../Typography';
 
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { getNextRovingIndex } from '../utils';
 import { MultiSelectTags } from './MultiSelectTags';
 import type {
   BaseMultiSelectProps,
@@ -36,6 +37,10 @@ const styles = stylex.create({
     boxShadow: shadow.xs,
     transitionProperty: 'box-shadow, border-color',
     transitionDuration: '150ms',
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: shadow.ring,
+    },
   },
   triggerOpen: {
     borderColor: colors.ring,
@@ -141,8 +146,13 @@ const styles = stylex.create({
     color: colors.foreground,
     minWidth: 0,
     maxWidth: '100%',
+    outline: 'none',
     ':hover': {
       backgroundColor: colors.accent,
+    },
+    ':focus-visible': {
+      backgroundColor: colors.accent,
+      boxShadow: shadow.ringFocus,
     },
   },
   optionSelected: {
@@ -194,6 +204,8 @@ const styles = stylex.create({
   },
 });
 
+const EMPTY_INJECT_OPTIONS: never[] = [];
+
 function isMultiProps<T extends SelectValue>(
   props: BaseSelectProps<T>,
 ): props is BaseMultiSelectProps<T> {
@@ -211,7 +223,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
 ): React.ReactElement {
   const {
     options,
-    injectOptions = [],
+    injectOptions = EMPTY_INJECT_OPTIONS,
     placeholder = 'Select...',
     isClearable = true,
     isSearchable = true,
@@ -234,7 +246,16 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
+  const [focusedIndex, setFocusedIndex] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const optionsListRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) {
+      setSearch('');
+      onSearchTextChange?.('');
+    }
+  }, [open, onSearchTextChange]);
 
   const allOptions = useMemo(() => {
     const map = new Map<T, BaseSelectOption<T>>();
@@ -260,6 +281,13 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
     }
     return [value as T];
   }, [value, isMulti]);
+
+  useEffect(() => {
+    if (open) {
+      const selectedIdx = filteredOptions.findIndex((opt) => selectedValues.includes(opt.value));
+      setFocusedIndex(selectedIdx >= 0 ? selectedIdx : 0);
+    }
+  }, [open, search]);
 
   const selectedOptions = useMemo(() => {
     return allOptions.filter((opt) => selectedValues.includes(opt.value));
@@ -333,6 +361,41 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
     }
   };
 
+  const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const targetIdx =
+        focusedIndex >= 0 && focusedIndex < filteredOptions.length ? focusedIndex : 0;
+      setFocusedIndex(targetIdx);
+      const optionElements =
+        optionsListRef.current?.querySelectorAll<HTMLElement>('[role="option"]');
+      optionElements?.[targetIdx]?.focus();
+    }
+  };
+
+  const handleOptionKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    index: number,
+    optValue: T,
+  ) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleSelect(optValue);
+      return;
+    }
+    const nextIdx = getNextRovingIndex(e.key, index, filteredOptions.length, {
+      orientation: 'vertical',
+      loop: true,
+    });
+    if (nextIdx !== null) {
+      e.preventDefault();
+      setFocusedIndex(nextIdx);
+      const optionElements =
+        optionsListRef.current?.querySelectorAll<HTMLElement>('[role="option"]');
+      optionElements?.[nextIdx]?.focus();
+    }
+  };
+
   const triggerProps = stylex.props(
     styles.trigger,
     open && styles.triggerOpen,
@@ -389,6 +452,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
               placeholder="Search..."
               value={search}
               onChange={handleSearchChange}
+              onKeyDown={handleSearchKeyDown}
               autoFocus
               disabled={disabled}
             />
@@ -396,32 +460,45 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
         )}
         {isMulti && showSelectAll && !disabled && filteredOptions.length > 0 && (
           <div {...stylex.props(styles.selectAllRow)} onClick={handleSelectAll}>
-            <Text as="span" size="sm" sx={styles.selectAllText}>
+            <Text size="sm" sx={styles.selectAllText}>
               {selectedValues.length === filteredOptions.length ? 'Deselect all' : 'Select all'}
             </Text>
-            <Text as="span" size="sm" type="secondary" sx={styles.placeholder}>
+            <Text size="sm" type="secondary" sx={styles.placeholder}>
               ({selectedValues.length}/{filteredOptions.length})
             </Text>
           </div>
         )}
-        <div {...stylex.props(styles.optionsList)} onScroll={handleScroll}>
+        <div
+          ref={optionsListRef}
+          role="listbox"
+          aria-multiselectable={isMulti}
+          {...stylex.props(styles.optionsList)}
+          onScroll={handleScroll}
+        >
           {isLoading && allOptions.length === 0 ? (
             <div {...stylex.props(styles.emptyNotice)}>Loading...</div>
           ) : filteredOptions.length === 0 ? (
             <div {...stylex.props(styles.emptyNotice)}>No data</div>
           ) : (
             <>
-              {filteredOptions.map((opt) => {
+              {filteredOptions.map((opt, index) => {
                 const isSelected = selectedValues.includes(opt.value);
+                const isFocused =
+                  !disabled && (index === focusedIndex || (focusedIndex < 0 && index === 0));
                 return (
                   <div
                     key={String(opt.value)}
+                    role="option"
+                    aria-selected={isSelected}
+                    tabIndex={isFocused ? 0 : -1}
                     {...stylex.props(
                       styles.optionRow,
                       isSelected && styles.optionSelected,
                       disabled && styles.optionDisabled,
                     )}
                     onClick={() => handleSelect(opt.value)}
+                    onFocus={() => setFocusedIndex(index)}
+                    onKeyDown={(e) => handleOptionKeyDown(e, index, opt.value)}
                   >
                     {opt.icon && <span {...stylex.props(styles.optionIcon)}>{opt.icon}</span>}
                     <Text ellipsis tooltip sx={styles.optionLabel}>

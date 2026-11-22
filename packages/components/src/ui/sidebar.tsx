@@ -195,6 +195,9 @@ const styles = stylex.create({
       backgroundColor: colors.sidebarAccent,
       color: colors.sidebarAccentForeground,
     },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+    },
   },
   groupContent: {
     width: '100%',
@@ -225,8 +228,11 @@ const styles = stylex.create({
     backgroundColor: 'transparent',
     color: colors.sidebarForeground,
     cursor: 'pointer',
-    transitionProperty: 'background-color, color',
+    transitionProperty: 'background-color, color, box-shadow',
     transitionDuration: '100ms',
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+    },
     ':hover': {
       backgroundColor: colors.sidebarAccent,
       color: colors.sidebarAccentForeground,
@@ -279,11 +285,14 @@ const styles = stylex.create({
     borderWidth: 0,
     backgroundColor: 'transparent',
     cursor: 'pointer',
-    transitionProperty: 'background-color, color, transform',
+    transitionProperty: 'background-color, color, transform, box-shadow',
     transitionDuration: '100ms',
     ':hover': {
       backgroundColor: colors.sidebarAccent,
       color: colors.sidebarAccentForeground,
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
     },
   },
   menuBadge: {
@@ -347,8 +356,11 @@ const styles = stylex.create({
     outline: 'none',
     textDecoration: 'none',
     cursor: 'pointer',
-    transitionProperty: 'background-color, color',
+    transitionProperty: 'background-color, color, box-shadow',
     transitionDuration: '100ms',
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+    },
     ':hover': {
       backgroundColor: colors.sidebarAccent,
       color: colors.sidebarAccentForeground,
@@ -375,7 +387,7 @@ const styles = stylex.create({
     padding: 0,
     margin: -1,
     overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     borderWidth: 0,
   },

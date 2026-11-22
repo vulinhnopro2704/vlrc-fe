@@ -1,0 +1,21 @@
+{
+  "name": "@vlrc-fe/types",
+  "version": "1.0.0",
+  "description": "Common TypeScript definitions and base entities for VLRC Frontend",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

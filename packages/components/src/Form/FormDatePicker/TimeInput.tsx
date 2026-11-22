@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Input } from '../../ui/input';
-import { cn } from '../../utils';
+import { Flex } from '../../layout';
 import { Text } from '../../Typography';
 import type { TimeConfig } from './types';
 
@@ -54,10 +54,8 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
     onChange?.(newDate);
   };
 
-  const containerStyleProps = stylex.props(styles.container);
-
   return (
-    <div {...containerStyleProps} className={cn(containerStyleProps.className, className)}>
+    <Flex align="center" gap="xxs" className={className}>
       {showHour && (
         <>
           <Input
@@ -69,11 +67,7 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
             onBlur={(e) => handleInputChange('hour', e.target.value)}
             sx={styles.timeField}
           />
-          {(showMinute || showSecond) && (
-            <Text as="span" type="secondary">
-              :
-            </Text>
-          )}
+          {(showMinute || showSecond) && <Text type="secondary">:</Text>}
         </>
       )}
       {showMinute && (
@@ -87,11 +81,7 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
             onBlur={(e) => handleInputChange('minute', e.target.value)}
             sx={styles.timeField}
           />
-          {showSecond && (
-            <Text as="span" type="secondary">
-              :
-            </Text>
-          )}
+          {showSecond && <Text type="secondary">:</Text>}
         </>
       )}
       {showSecond && (
@@ -105,7 +95,7 @@ export function TimeInput({ value, onChange, timeConfig, className }: TimeInputP
           sx={styles.timeField}
         />
       )}
-    </div>
+    </Flex>
   );
 }
 

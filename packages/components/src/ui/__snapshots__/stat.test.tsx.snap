@@ -66,12 +66,11 @@ exports[`Stat > UI > should match snapshot in positive trend state 1`] = `
       +20.1% from last month
     </div>
     <p
-      class="Text__styles.base Text__styles.sizeXs x2ohwh0 x37zpob Text__styles.typeSecondary xw3nh4a weightStyles__styles.regular xo1l8bm"
+      class="Paragraph__styles.base x1ghz6dp Paragraph__styles.sizeXs x2ohwh0 xfrs9s4 Paragraph__styles.defaultVariant Paragraph__styles.typeSecondary xw3nh4a Paragraph__styles.spacingNone xat24cr Paragraph__styles.alignLeft xdpxx8g"
       data-size="xs"
       data-slot="stat-description"
-      data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:22; @vlrc-fe/components:src/Typography/Text.tsx:51; @vlrc-fe/components:src/Typography/weightStyles.ts:14"
-      data-type="secondary"
-      data-weight="regular"
+      data-style-src="@vlrc-fe/components:src/Typography/Paragraph.tsx:16; @vlrc-fe/components:src/Typography/Paragraph.tsx:27; @vlrc-fe/components:src/Typography/Paragraph.tsx:53; @vlrc-fe/components:src/Typography/Paragraph.tsx:65; @vlrc-fe/components:src/Typography/Paragraph.tsx:88; @vlrc-fe/components:src/Typography/Paragraph.tsx:102"
+      data-variant="default"
     >
       Calculated from 1,234 paid invoices
     </p>

@@ -17,8 +17,14 @@ export type {
   DataTableFacetedFilterOption,
   DataTableColumnHeaderProps,
 } from './DataTable';
-export { default as Icons } from './Icons';
-export type { IconNames } from './Icons';
+export { Icons, IssueIcon, PriorityIcon } from './Icons';
+export type {
+  IconNames,
+  IssueIconProps,
+  PriorityIconProps,
+  JiraWorkType,
+  JiraPriority,
+} from './Icons';
 export * from './ui';
 export * from './layout';
 export * from './Form';
@@ -30,6 +36,9 @@ export { default as MultiSelect } from './MultiSelect';
 export type { MultiSelectProps } from './MultiSelect/type';
 export * from './Typography';
 export * from './Dropdown';
+export * from './Tag';
+export { getNextRovingIndex, unstyledButtonStyles, srOnlyStyles, cn } from './utils';
+export type { RovingNavigationOptions } from './utils';
 
 // Internationalization & Accessibility from Astryx
 export {

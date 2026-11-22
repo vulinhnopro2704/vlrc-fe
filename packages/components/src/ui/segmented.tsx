@@ -1,5 +1,7 @@
 import {
+  useImperativeHandle,
   useMemo,
+  useRef,
   useState,
   type HTMLAttributes,
   type KeyboardEvent as ReactKeyboardEvent,
@@ -8,6 +10,7 @@ import {
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
+import { getNextRovingIndex } from '../utils';
 import { Flex } from './flex';
 import { Text } from '../Typography/Text';
 
@@ -141,6 +144,9 @@ export function Segmented({
   ref,
   ...props
 }: SegmentedProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
+
   const normalizedOptions = useMemo(() => options.map(normalizeOption), [options]);
 
   const initialValue = defaultValue ?? normalizedOptions[0]?.value ?? '';
@@ -160,31 +166,38 @@ export function Segmented({
   const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
     if (disabled) return;
     const enabledOptions = normalizedOptions.filter((opt) => !opt.disabled);
+    if (enabledOptions.length === 0) return;
     const currentIndex = enabledOptions.findIndex((opt) => opt.value === activeValue);
 
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    const nextIndex = getNextRovingIndex(e.key, currentIndex, enabledOptions.length, {
+      orientation: 'both',
+      loop: true,
+    });
+
+    if (nextIndex !== null) {
       e.preventDefault();
-      const nextIndex = (currentIndex + 1) % enabledOptions.length;
-      const nextOption = enabledOptions[nextIndex];
-      if (nextOption) handleSelect(nextOption.value);
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      const prevIndex = (currentIndex - 1 + enabledOptions.length) % enabledOptions.length;
-      const prevOption = enabledOptions[prevIndex];
-      if (prevOption) handleSelect(prevOption.value);
+      const targetOption = enabledOptions[nextIndex];
+      if (targetOption) {
+        handleSelect(targetOption.value);
+        const btn = containerRef.current?.querySelector<HTMLButtonElement>(
+          `button[data-value="${CSS.escape(String(targetOption.value))}"]`,
+        );
+        btn?.focus();
+      }
     }
   };
 
   const sizeStyle = size === 'sm' ? styles.sizeSm : size === 'lg' ? styles.sizeLg : styles.sizeMd;
+  const enabledOptions = normalizedOptions.filter((opt) => !opt.disabled);
 
   return (
     <Flex
-      ref={ref}
+      ref={containerRef}
       inline={!block}
       align="center"
       role="radiogroup"
       aria-label={ariaLabel}
-      tabIndex={disabled ? -1 : 0}
+      tabIndex={-1}
       onKeyDown={handleKeyDown}
       data-slot="segmented"
       sx={[styles.root, block && styles.block, disabled && styles.disabled, sx]}
@@ -194,6 +207,11 @@ export function Segmented({
       {normalizedOptions.map((option) => {
         const isSelected = activeValue === option.value;
         const isItemDisabled = disabled || Boolean(option.disabled);
+        const isTabbable =
+          !isItemDisabled &&
+          (isSelected ||
+            (!enabledOptions.some((o) => o.value === activeValue) &&
+              option.value === enabledOptions[0]?.value));
 
         const itemSx = stylex.props(
           styles.item,
@@ -209,6 +227,7 @@ export function Segmented({
             type="button"
             role="radio"
             aria-checked={isSelected}
+            tabIndex={isTabbable ? 0 : -1}
             disabled={isItemDisabled}
             data-slot="segmented-item"
             data-value={String(option.value)}
@@ -218,7 +237,6 @@ export function Segmented({
           >
             {option.icon && <span {...stylex.props(styles.icon)}>{option.icon}</span>}
             <Text
-              as="span"
               size={size === 'sm' ? 'xs' : size === 'lg' ? 'md' : 'sm'}
               weight={isSelected ? 'semibold' : 'medium'}
             >

@@ -165,7 +165,6 @@ function FormDescription({ className, sx, ...props }: FormDescriptionProps) {
 
   return (
     <Paragraph
-      as="p"
       data-slot="form-description"
       id={formDescriptionId}
       size="sm"
@@ -192,7 +191,6 @@ function FormMessage({ className, sx, ...props }: FormMessageProps) {
 
   return (
     <Paragraph
-      as="p"
       data-slot="form-message"
       id={formMessageId}
       size="sm"

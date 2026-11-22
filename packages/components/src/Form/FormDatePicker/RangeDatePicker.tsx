@@ -2,47 +2,19 @@ import React, { type ReactNode } from 'react';
 import type { Locale } from 'date-fns';
 import * as stylex from '@stylexjs/stylex';
 import Icons from '../../Icons';
-
-import { colors } from '../../theme/tokens.stylex';
-import { Button } from '../../ui/button';
-import { Text } from '../../Typography';
-import { resolveWidth, type ComponentWidth } from '../../theme/width';
+import type { ComponentWidth } from '../../theme/width';
 import { Calendar } from '../../ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
+import { Popover, PopoverContent } from '../../ui/popover';
 import {
   resolveDatePickerSize,
   type DatePickerSize,
   type DatePickerStatus,
   type TimeConfig,
 } from './types';
+import { DatePickerTriggerInput, datePickerStyles } from './DatePickerTrigger';
 import { buildRangeDisplayValue, getDefaultFormat } from './useFormDatePicker';
 
 const styles = stylex.create({
-  triggerButton: {
-    justifyContent: 'space-between',
-    fontWeight: 400,
-  },
-  statusError: {
-    borderColor: colors.destructive,
-  },
-  statusWarning: {
-    borderColor: colors.warning,
-  },
-  fullWidth: {
-    width: '100%',
-  },
-  rightControls: {
-    marginLeft: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.25rem',
-  },
-  clearButton: {
-    cursor: 'pointer',
-    ':hover': {
-      color: colors.destructive,
-    },
-  },
   icon: {
     width: '1rem',
     height: '1rem',
@@ -55,6 +27,9 @@ const styles = stylex.create({
 });
 
 export interface StandaloneRangeDatePickerProps {
+  id?: string;
+  'aria-describedby'?: string;
+  'aria-invalid'?: boolean | 'true' | 'false';
   value?: [Date | undefined, Date | undefined];
   onChange?: (dates: [Date | undefined, Date | undefined]) => void;
   placeholder?: string;
@@ -78,6 +53,9 @@ export interface StandaloneRangeDatePickerProps {
 }
 
 export function RangeDatePicker({
+  id,
+  'aria-describedby': ariaDescribedby,
+  'aria-invalid': ariaInvalid,
   value = [undefined, undefined],
   onChange,
   placeholder = 'Select Date Range',
@@ -119,7 +97,7 @@ export function RangeDatePicker({
     setSelectedRange({ from: startDate, to: endDate });
   }, [startDate, endDate]);
 
-  const handleClear = (e: React.MouseEvent) => {
+  const handleClear = (e: React.SyntheticEvent) => {
     e.stopPropagation();
     setSelectedRange({ from: undefined, to: undefined });
     onChange?.([undefined, undefined]);
@@ -147,9 +125,9 @@ export function RangeDatePicker({
 
   const statusStyle =
     status === 'error'
-      ? styles.statusError
+      ? datePickerStyles.statusError
       : status === 'warning'
-        ? styles.statusWarning
+        ? datePickerStyles.statusWarning
         : undefined;
 
   const typographySize =
@@ -161,40 +139,24 @@ export function RangeDatePicker({
 
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          size={resolvedSize}
-          disabled={disabled}
-          width={width}
-          sx={[
-            styles.triggerButton,
-            statusStyle,
-            width === 'auto' ? styles.fullWidth : undefined,
-            sx,
-          ]}
-          className={className}
-          style={width !== 'auto' ? { width: resolveWidth(width) } : undefined}
-        >
-          {!hideValue && displayValue ? (
-            <Text size={typographySize} weight="normal">
-              {displayValue}
-            </Text>
-          ) : (
-            <Text size={typographySize} type="muted">
-              {placeholder}
-            </Text>
-          )}
-          <div {...stylex.props(styles.rightControls)}>
-            {allowClear && (startDate || endDate) && (
-              <Text as="span" onClick={handleClear} sx={styles.clearButton}>
-                ×
-              </Text>
-            )}
-            {suffixIcon || <Icons.CalendarIcon {...stylex.props(styles.icon)} />}
-          </div>
-        </Button>
-      </PopoverTrigger>
+      <DatePickerTriggerInput
+        id={id}
+        aria-describedby={ariaDescribedby}
+        aria-invalid={ariaInvalid}
+        disabled={disabled}
+        resolvedSize={resolvedSize}
+        typographySize={typographySize}
+        statusStyle={statusStyle}
+        width={width}
+        hasValue={Boolean(!hideValue && (startDate || endDate))}
+        displayValue={displayValue}
+        placeholder={placeholder}
+        allowClear={allowClear}
+        onClear={handleClear}
+        renderIcon={() => suffixIcon || <Icons.CalendarIcon {...stylex.props(styles.icon)} />}
+        className={className}
+        sx={sx}
+      />
       <PopoverContent sx={styles.popoverContent} align="start">
         <Calendar
           mode="range"

@@ -196,5 +196,59 @@ describe('Stepper', () => {
         expect(onValueChange).toHaveBeenCalledWith(STEP_2);
       });
     });
+
+    it('should not cross-focus when multiple Steppers exist on the same page with identical step keys', async () => {
+      render(
+        <div>
+          <Stepper defaultValue="step-1" linear={false}>
+            <StepperList data-testid="stepper-1-list">
+              <StepperItem value="step-1">
+                <StepperTrigger data-testid="s1-trigger-1">
+                  <StepperTitle>S1 Step 1</StepperTitle>
+                </StepperTrigger>
+              </StepperItem>
+              <StepperItem value="step-2">
+                <StepperTrigger data-testid="s1-trigger-2">
+                  <StepperTitle>S1 Step 2</StepperTitle>
+                </StepperTrigger>
+              </StepperItem>
+            </StepperList>
+            <StepperContent value="step-1">S1 Content 1</StepperContent>
+            <StepperContent value="step-2">S1 Content 2</StepperContent>
+          </Stepper>
+
+          <Stepper defaultValue="step-1" linear={false}>
+            <StepperList data-testid="stepper-2-list">
+              <StepperItem value="step-1">
+                <StepperTrigger data-testid="s2-trigger-1">
+                  <StepperTitle>S2 Step 1</StepperTitle>
+                </StepperTrigger>
+              </StepperItem>
+              <StepperItem value="step-2">
+                <StepperTrigger data-testid="s2-trigger-2">
+                  <StepperTitle>S2 Step 2</StepperTitle>
+                </StepperTrigger>
+              </StepperItem>
+            </StepperList>
+            <StepperContent value="step-1">S2 Content 1</StepperContent>
+            <StepperContent value="step-2">S2 Content 2</StepperContent>
+          </Stepper>
+        </div>,
+      );
+
+      const s2Trigger1 = screen.getByTestId('s2-trigger-1');
+      const s2Trigger2 = screen.getByTestId('s2-trigger-2');
+      const s1Trigger2 = screen.getByTestId('s1-trigger-2');
+
+      s2Trigger1.focus();
+      expect(document.activeElement).toBe(s2Trigger1);
+
+      fireEvent.keyDown(s2Trigger1, { key: 'ArrowRight' });
+
+      await waitFor(() => {
+        expect(document.activeElement).toBe(s2Trigger2);
+        expect(document.activeElement).not.toBe(s1Trigger2);
+      });
+    });
   });
 });

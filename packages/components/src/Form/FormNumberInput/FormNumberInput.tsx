@@ -30,6 +30,10 @@ const styles = stylex.create({
     transitionProperty: 'color, box-shadow, border-color',
     transitionDuration: '150ms',
     outline: 'none',
+    ':focus-visible': {
+      borderColor: colors.ring,
+      boxShadow: shadow.ring,
+    },
     height: '2.25rem',
     paddingInline: '0.75rem',
     paddingBlock: '0.5rem',
@@ -47,10 +51,10 @@ export function FormNumberInput<
   name,
   label,
   stepper = 1,
-  min = '0',
-  max = '100',
-  minValue = Number.NEGATIVE_INFINITY,
-  maxValue = Number.POSITIVE_INFINITY,
+  min,
+  max,
+  minValue,
+  maxValue,
   thousandSeparator,
   placeholder,
   fixedDecimalScale = false,
@@ -66,9 +70,21 @@ export function FormNumberInput<
   width,
   ...props
 }: FormNumberInputProps<TFieldValues, TName, TTransformedValues>) {
+  const resolvedMin = (() => {
+    if (minValue !== undefined) return minValue;
+    if (min !== undefined && min !== '') return Number(min);
+    return Number.NEGATIVE_INFINITY;
+  })();
+
+  const resolvedMax = (() => {
+    if (maxValue !== undefined) return maxValue;
+    if (max !== undefined && max !== '') return Number(max);
+    return Number.POSITIVE_INFINITY;
+  })();
+
   const { enhancedRules, numericClass, getHandlers } = useFormNumberInput<TFieldValues, TName>({
-    min: minValue,
-    max: maxValue,
+    min: resolvedMin,
+    max: resolvedMax,
     rules,
     inputClassName,
     stepper,
@@ -102,15 +118,15 @@ export function FormNumberInput<
         return (
           <div {...stylex.props(styles.wrapper)}>
             <NumericFormat
-              min={min}
-              max={max}
+              min={resolvedMin !== Number.NEGATIVE_INFINITY ? resolvedMin : undefined}
+              max={resolvedMax !== Number.POSITIVE_INFINITY ? resolvedMax : undefined}
               aria-invalid={ariaInvalid}
               value={currentValue ?? ''}
               onValueChange={numericOnValueChange}
               thousandSeparator={thousandSeparator}
               decimalScale={decimalScale}
               fixedDecimalScale={fixedDecimalScale}
-              allowNegative={minValue < 0}
+              allowNegative={resolvedMin < 0}
               valueIsNumericString={false}
               onBlur={handleBlur}
               suffix={suffix}
@@ -127,8 +143,8 @@ export function FormNumberInput<
             <StepperControls
               onIncrement={handleIncrement}
               onDecrement={handleDecrement}
-              disableIncrement={currentValue !== undefined && currentValue >= maxValue}
-              disableDecrement={currentValue !== undefined && currentValue <= minValue}
+              disableIncrement={currentValue !== undefined && currentValue >= resolvedMax}
+              disableDecrement={currentValue !== undefined && currentValue <= resolvedMin}
             />
           </div>
         );

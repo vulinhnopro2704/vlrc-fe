@@ -385,7 +385,6 @@ function ContextMenuShortcut({ className, sx, ...props }: ContextMenuShortcutPro
 
   return (
     <Text
-      as="span"
       data-slot="context-menu-shortcut"
       size="xs"
       type="secondary"

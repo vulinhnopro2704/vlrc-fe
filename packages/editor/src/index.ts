@@ -1,4 +1,12 @@
-export { NotionEditor, Editor, EDITOR_TRANSFORMERS, HR, default } from './Editor';
+export {
+  NotionEditor,
+  Editor,
+  EDITOR_TRANSFORMERS,
+  HR,
+  TABLE,
+  COLLAPSIBLE,
+  default,
+} from './Editor';
 export type { NotionEditorProps } from './types';
 export * from './nodes';
 export * from './theme/editorTheme';
@@ -16,3 +24,4 @@ export { InsertLinkDialog } from './plugins/InsertLinkDialog';
 export { TableActionMenuPlugin } from './plugins/TableActionMenuPlugin';
 export { TableCellResizerPlugin } from './plugins/TableCellResizerPlugin';
 export { TableHoverActionsPlugin } from './plugins/TableHoverActionsPlugin';
+export { CollapsiblePlugin } from './plugins/CollapsiblePlugin';

@@ -60,8 +60,8 @@ export interface SliderProps extends ComponentProps<typeof SliderPrimitiveRoot> 
 
 function Slider({ className, defaultValue, value, min = 0, max = 100, sx, ...props }: SliderProps) {
   const _values = useMemo(
-    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
-    [value, defaultValue, min, max],
+    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min]),
+    [value, defaultValue, min],
   );
 
   const sxProps = stylex.props(styles.root, sx);

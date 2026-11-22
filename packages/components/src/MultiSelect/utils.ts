@@ -29,7 +29,7 @@ export const arraysEqual = (a: string[], b: string[]): boolean => {
   if (a.length !== b.length) return false;
   const sortedA = a.toSorted();
   const sortedB = b.toSorted();
-  return sortedA.every((val, index) => val === sortedB[index]);
+  return sortedA.every((val: string, index: number) => val === sortedB[index]);
 };
 
 export const buildAllOptions = (

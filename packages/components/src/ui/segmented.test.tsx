@@ -53,5 +53,14 @@ describe('Segmented', () => {
       fireEvent.keyDown(radiogroup, { key: 'ArrowRight' });
       expect(onValueChange).toHaveBeenCalledWith('weekly');
     });
+
+    it('should assign roving tabindex to selected and unselected options', () => {
+      render(<Segmented options={OPTIONS} defaultValue="daily" />);
+      const dailyButton = screen.getByRole('radio', { name: 'Daily' });
+      const weeklyButton = screen.getByRole('radio', { name: 'Weekly' });
+
+      expect(dailyButton).toHaveAttribute('tabindex', '0');
+      expect(weeklyButton).toHaveAttribute('tabindex', '-1');
+    });
   });
 });

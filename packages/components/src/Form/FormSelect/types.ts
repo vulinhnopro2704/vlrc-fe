@@ -13,6 +13,8 @@ export interface FormSelectCommonProps<
   label?: string;
   description?: string;
   rules?: RegisterOptions<TFieldValues, FieldPath<TFieldValues>>;
+  /** Marks the field as required (equivalent to `rules={{ required: true }}`). */
+  required?: boolean;
 }
 
 /**

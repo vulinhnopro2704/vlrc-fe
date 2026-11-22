@@ -26,10 +26,35 @@ import {
   TRANSFORMERS,
   CHECK_LIST,
   type ElementTransformer,
+  type MultilineElementTransformer,
 } from '@lexical/markdown';
-import type { LexicalNode } from 'lexical';
+import { $createParagraphNode, $createTextNode, type ElementNode, type LexicalNode } from 'lexical';
+import {
+  TableNode,
+  TableRowNode,
+  TableCellNode,
+  TableCellHeaderStates,
+  $createTableNode,
+  $createTableRowNode,
+  $createTableCellNode,
+  $isTableNode,
+  $isTableRowNode,
+} from '@lexical/table';
 import { props as stylexProps } from '@stylexjs/stylex';
 import { Box } from '@vlrc-fe/components';
+import {
+  CollapsibleContainerNode,
+  CollapsibleTitleNode,
+  CollapsibleContentNode,
+  $createCollapsibleContainerNode,
+  $createCollapsibleTitleNode,
+  $createCollapsibleContentNode,
+  $isCollapsibleContainerNode,
+  $isCollapsibleTitleNode,
+  $isCollapsibleContentNode,
+  type CollapsibleLevel,
+  sanitizeCollapsibleLevel,
+} from './nodes/CollapsibleNodes';
 import { EDITOR_NODES } from './nodes';
 import { editorStyles, editorTheme } from './theme/editorTheme';
 import { SlashMenuPlugin } from './plugins/SlashMenuPlugin';
@@ -43,6 +68,7 @@ import { EmojisPlugin } from './plugins/EmojisPlugin';
 import { TableActionMenuPlugin } from './plugins/TableActionMenuPlugin';
 import { TableCellResizerPlugin } from './plugins/TableCellResizerPlugin';
 import { TableHoverActionsPlugin } from './plugins/TableHoverActionsPlugin';
+import { CollapsiblePlugin } from './plugins/CollapsiblePlugin';
 import type { NotionEditorProps } from './types';
 import './theme/editor.css';
 
@@ -64,7 +90,123 @@ export const HR: ElementTransformer = {
   type: 'element',
 };
 
-export const EDITOR_TRANSFORMERS = [CHECK_LIST, HR, ...TRANSFORMERS];
+export const TABLE: MultilineElementTransformer = {
+  dependencies: [TableNode, TableRowNode, TableCellNode],
+  export: (node: LexicalNode) => {
+    if (!$isTableNode(node)) return null;
+    const rows = node.getChildren();
+    const output: string[] = [];
+    rows.forEach((row, rowIndex) => {
+      if (!$isTableRowNode(row)) return;
+      const cells = row.getChildren();
+      const cellTexts = cells.map((cell) => cell.getTextContent().trim());
+      output.push(`| ${cellTexts.join(' | ')} |`);
+      if (rowIndex === 0) {
+        output.push(`| ${cells.map(() => '---').join(' | ')} |`);
+      }
+    });
+    return output.join('\n');
+  },
+  regExpStart: /^(?:\|)(.+)(?:\|)\s?$/,
+  replace: () => false,
+  type: 'multiline-element',
+  handleImportAfterStartMatch: ({ lines, rootNode, startLineIndex }) => {
+    const dividerLine = lines[startLineIndex + 1];
+    if (!dividerLine || !/^\|(\s*:?-+:?\s*\|)+\s*$/.test(dividerLine.trim())) {
+      return null;
+    }
+    let endLineIndex = startLineIndex;
+    const tableLines: string[] = [];
+    while (endLineIndex < lines.length && /^\|(.+)\|\s*$/.test(lines[endLineIndex].trim())) {
+      tableLines.push(lines[endLineIndex].trim());
+      endLineIndex++;
+    }
+    const tableNode = $createTableNode();
+    tableLines.forEach((line, rIndex) => {
+      if (rIndex === 1) return;
+      const row = $createTableRowNode();
+      const cells = line.split('|').slice(1, -1);
+      cells.forEach((cellText) => {
+        const cell = $createTableCellNode(
+          rIndex === 0 ? TableCellHeaderStates.ROW : TableCellHeaderStates.NO_STATUS,
+        );
+        const p = $createParagraphNode();
+        p.append($createTextNode(cellText.trim()));
+        cell.append(p);
+        row.append(cell);
+      });
+      tableNode.append(row);
+    });
+    rootNode.append(tableNode);
+    return [true, endLineIndex - 1];
+  },
+};
+
+export const COLLAPSIBLE: MultilineElementTransformer = {
+  dependencies: [CollapsibleContainerNode, CollapsibleTitleNode, CollapsibleContentNode],
+  export: (node: LexicalNode, traverseChildren: (node: ElementNode) => string) => {
+    if (!$isCollapsibleContainerNode(node)) return null;
+    const level = node.getLevel();
+    const open = node.getOpen();
+    const children = node.getChildren();
+    let titleText = '';
+    let contentText = '';
+    children.forEach((child) => {
+      if ($isCollapsibleTitleNode(child)) {
+        titleText = traverseChildren ? traverseChildren(child) : child.getTextContent();
+      } else if ($isCollapsibleContentNode(child)) {
+        contentText = traverseChildren ? traverseChildren(child) : child.getTextContent();
+      }
+    });
+    return `<details data-level="${level}"${open ? ' open' : ''}>\n<summary data-level="${level}">${titleText}</summary>\n<div class="lexical-collapsible-content">\n${contentText}\n</div>\n</details>`;
+  },
+  regExpStart: /^<details(?:\s+[^>]*)?>/i,
+  replace: () => false,
+  type: 'multiline-element',
+  handleImportAfterStartMatch: ({ lines, rootNode, startLineIndex }) => {
+    const startLine = lines[startLineIndex];
+    const levelMatch = /data-level="([^"]+)"/i.exec(startLine);
+    const level: CollapsibleLevel = sanitizeCollapsibleLevel(levelMatch?.[1]);
+    const isOpen = /\bopen\b/i.test(startLine);
+
+    let endLineIndex = startLineIndex;
+    const blockLines: string[] = [];
+    while (endLineIndex < lines.length) {
+      const line = lines[endLineIndex];
+      blockLines.push(line);
+      if (/<\/details>/i.test(line)) {
+        break;
+      }
+      endLineIndex++;
+    }
+
+    const fullText = blockLines.join('\n');
+    const summaryMatch = /<summary(?:\s+[^>]*)?>([\s\S]*?)<\/summary>/i.exec(fullText);
+    const titleText = summaryMatch ? summaryMatch[1].replace(/<[^>]+>/g, '').trim() : '';
+
+    const contentMatch = /<\/summary>([\s\S]*?)<\/details>/i.exec(fullText);
+    let contentText = contentMatch ? contentMatch[1].trim() : '';
+    contentText = contentText.replace(/^<div[^>]*>([\s\S]*?)<\/div>$/i, '$1').trim();
+
+    const container = $createCollapsibleContainerNode(isOpen, level);
+    const title = $createCollapsibleTitleNode(level);
+    const pTitle = $createParagraphNode();
+    pTitle.append($createTextNode(titleText));
+    title.append(pTitle);
+
+    const content = $createCollapsibleContentNode();
+    const pContent = $createParagraphNode();
+    pContent.append($createTextNode(contentText));
+    content.append(pContent);
+
+    container.append(title, content);
+    rootNode.append(container);
+
+    return [true, endLineIndex];
+  },
+};
+
+export const EDITOR_TRANSFORMERS = [CHECK_LIST, HR, TABLE, COLLAPSIBLE, ...TRANSFORMERS];
 
 const URL_MATCHER =
   /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
@@ -199,6 +341,7 @@ export const NotionEditor = forwardRef<HTMLDivElement, NotionEditorProps>(
             <AutoLinkPlugin matchers={AUTO_LINK_MATCHERS} />
             <TablePlugin />
             <HorizontalRulePlugin />
+            <CollapsiblePlugin />
             {enableTabIndentation && <TabIndentationPlugin />}
             {enableCodeHighlighting && <CodeHighlightPlugin />}
             {enableHashtags && <HashtagPlugin />}

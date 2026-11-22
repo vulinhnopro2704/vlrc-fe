@@ -1,0 +1,115 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Slider > UI > should match snapshot with default bare slider 1`] = `
+<DocumentFragment>
+  <span
+    aria-disabled="false"
+    class="slider__styles.root x1n2onr6 x78zum5 xh8yej3 x5ve5x3 x87ps6o x6s0dn4"
+    data-orientation="horizontal"
+    data-slot="slider"
+    data-style-src="@vlrc-fe/components:src/ui/slider.tsx:12"
+    dir="ltr"
+    style="--radix-slider-thumb-transform: translateX(-50%);"
+  >
+    <span
+      class="slider__styles.track xr2cb9l x1n2onr6 x1iyjqo2 xb3r6kr x9psvww x4j2xbe"
+      data-orientation="horizontal"
+      data-slot="slider-track"
+      data-style-src="@vlrc-fe/components:src/ui/slider.tsx:20"
+    >
+      <span
+        class="slider__styles.range x10l6tqk x1j7ufkg x5yr21d"
+        data-orientation="horizontal"
+        data-slot="slider-range"
+        data-style-src="@vlrc-fe/components:src/ui/slider.tsx:28"
+        style="left: 0%; right: 100%;"
+      />
+    </span>
+    <span
+      style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"
+    >
+      <span
+        aria-orientation="horizontal"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        class="slider__styles.thumb x1lliihq x1l36t39 xcdlrvm x9psvww xmkeg23 x1y0btm7 x1khvrlk x1mlyrtw xfk7h2l xkdsq27 xx6bhzk x1a2a7pz x1ypdohk xik21o4 xaqnwrm xijokvz"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-slot="slider-thumb"
+        data-style-src="@vlrc-fe/components:src/ui/slider.tsx:33"
+        role="slider"
+        style=""
+        tabindex="0"
+      />
+    </span>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Slider > UI > should match snapshot with range slider 1`] = `
+<DocumentFragment>
+  <span
+    aria-disabled="false"
+    class="slider__styles.root x1n2onr6 x78zum5 xh8yej3 x5ve5x3 x87ps6o x6s0dn4"
+    data-orientation="horizontal"
+    data-slot="slider"
+    data-style-src="@vlrc-fe/components:src/ui/slider.tsx:12"
+    dir="ltr"
+    style="--radix-slider-thumb-transform: translateX(-50%);"
+  >
+    <span
+      class="slider__styles.track xr2cb9l x1n2onr6 x1iyjqo2 xb3r6kr x9psvww x4j2xbe"
+      data-orientation="horizontal"
+      data-slot="slider-track"
+      data-style-src="@vlrc-fe/components:src/ui/slider.tsx:20"
+    >
+      <span
+        class="slider__styles.range x10l6tqk x1j7ufkg x5yr21d"
+        data-orientation="horizontal"
+        data-slot="slider-range"
+        data-style-src="@vlrc-fe/components:src/ui/slider.tsx:28"
+        style="left: 20%; right: 20%;"
+      />
+    </span>
+    <span
+      style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(20% + 0px);"
+    >
+      <span
+        aria-label="Minimum"
+        aria-orientation="horizontal"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="20"
+        class="slider__styles.thumb x1lliihq x1l36t39 xcdlrvm x9psvww xmkeg23 x1y0btm7 x1khvrlk x1mlyrtw xfk7h2l xkdsq27 xx6bhzk x1a2a7pz x1ypdohk xik21o4 xaqnwrm xijokvz"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-slot="slider-thumb"
+        data-style-src="@vlrc-fe/components:src/ui/slider.tsx:33"
+        role="slider"
+        style=""
+        tabindex="0"
+      />
+    </span>
+    <span
+      style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(80% + 0px);"
+    >
+      <span
+        aria-label="Maximum"
+        aria-orientation="horizontal"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="80"
+        class="slider__styles.thumb x1lliihq x1l36t39 xcdlrvm x9psvww xmkeg23 x1y0btm7 x1khvrlk x1mlyrtw xfk7h2l xkdsq27 xx6bhzk x1a2a7pz x1ypdohk xik21o4 xaqnwrm xijokvz"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-slot="slider-thumb"
+        data-style-src="@vlrc-fe/components:src/ui/slider.tsx:33"
+        role="slider"
+        style=""
+        tabindex="0"
+      />
+    </span>
+  </span>
+</DocumentFragment>
+`;

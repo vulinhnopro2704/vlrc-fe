@@ -105,9 +105,11 @@ exports[`CodeBlock > UI > should match snapshot in default state 1`] = `
             data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:172"
           >
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              data-weight="regular"
             >
               function
             </span>
@@ -135,17 +137,21 @@ exports[`CodeBlock > UI > should match snapshot in default state 1`] = `
           >
               
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              data-weight="regular"
             >
               return
             </span>
              
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenString x1spsc8"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:180"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular xo1l8bm code-block__styles.tokenString x1spsc8"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:180"
+              data-weight="regular"
             >
               \`Hello, \${name}!\`
             </span>
@@ -213,9 +219,11 @@ exports[`CodeBlock > UI > should match snapshot when line numbers are hidden 1`]
             data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:172"
           >
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              data-weight="regular"
             >
               function
             </span>
@@ -235,17 +243,21 @@ exports[`CodeBlock > UI > should match snapshot when line numbers are hidden 1`]
           >
               
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              data-weight="regular"
             >
               return
             </span>
              
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenString x1spsc8"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:180"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular xo1l8bm code-block__styles.tokenString x1spsc8"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:180"
+              data-weight="regular"
             >
               \`Hello, \${name}!\`
             </span>
@@ -313,9 +325,11 @@ exports[`CodeBlock > UI > should match snapshot when maxLines is set 1`] = `
             data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:172"
           >
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              data-weight="regular"
             >
               function
             </span>
@@ -447,9 +461,11 @@ exports[`CodeBlock > UI > should match snapshot with highlighted lines and diff 
             data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:172"
           >
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              data-weight="regular"
             >
               function
             </span>
@@ -486,17 +502,21 @@ exports[`CodeBlock > UI > should match snapshot with highlighted lines and diff 
           >
               
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenKeyword x6gpbkk x1s688f"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular code-block__styles.tokenKeyword x6gpbkk x1s688f"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:176"
+              data-weight="regular"
             >
               return
             </span>
              
             <span
-              class="Box__styles.base x9f619 xeuugli code-block__styles.tokenString x1spsc8"
-              data-slot="box"
-              data-style-src="@vlrc-fe/components:src/layout/Box.tsx:6; @vlrc-fe/components:src/ui/code-block.tsx:180"
+              class="Text__styles.base Text__styles.sizeMd xkpwil5 x1evy7pa weightStyles__styles.regular xo1l8bm code-block__styles.tokenString x1spsc8"
+              data-size="md"
+              data-slot="typography-text"
+              data-style-src="@vlrc-fe/components:src/Typography/Text.tsx:12; @vlrc-fe/components:src/Typography/Text.tsx:30; @vlrc-fe/components:src/Typography/weightStyles.ts:14; @vlrc-fe/components:src/ui/code-block.tsx:180"
+              data-weight="regular"
             >
               \`Hello, \${name}!\`
             </span>

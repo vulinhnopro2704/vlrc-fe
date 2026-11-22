@@ -1,10 +1,10 @@
 import { type FunctionComponent } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import Icons from '../Icons';
-import { colors, radius } from '../theme/tokens.stylex';
+import { colors, radius, shadow } from '../theme/tokens.stylex';
 
 import { cn } from '../utils';
-import { Button } from '../ui/button';
+import { Flex } from '../layout';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { LiveRegion, OptionsContent, PlaceholderContent, SelectedValuesContent } from './renderers';
 import { useMultiSelect } from './useMultiSelect';
@@ -23,8 +23,15 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'inherit',
+    cursor: 'pointer',
+    outline: 'none',
+    boxSizing: 'border-box',
     ':hover': {
       backgroundColor: 'inherit',
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+      borderColor: colors.ring,
     },
   },
   triggerAutoSize: {
@@ -79,7 +86,7 @@ const styles = stylex.create({
     padding: 0,
     margin: -1,
     overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     borderWidth: 0,
   },
@@ -164,6 +171,7 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({
   };
 
   const ariaLabel = `Multi-select: ${selectedValues.length} of ${getAllOptions().length} options selected. ${placeholder}`;
+  const { type: _btnType, ...restButtonProps } = buttonProps;
 
   return (
     <>
@@ -185,19 +193,24 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({
         </div>
 
         <PopoverTrigger asChild>
-          <Button
-            ref={buttonRef}
-            variant="outline"
-            width={width}
-            {...buttonProps}
+          <Flex
+            ref={buttonRef as any}
+            {...restButtonProps}
             onClick={handleTogglePopover}
-            disabled={disabled}
             role="combobox"
             aria-expanded={isPopoverOpen}
             aria-haspopup="listbox"
             aria-controls={isPopoverOpen ? ids.listboxId : undefined}
             aria-describedby={`${ids.triggerDescriptionId} ${ids.selectedCountId}`}
             aria-label={ariaLabel}
+            tabIndex={disabled ? -1 : 0}
+            onKeyDown={(event) => {
+              if (disabled) return;
+              if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+                event.preventDefault();
+                setIsPopoverOpen(true);
+              }
+            }}
             sx={[
               styles.triggerButton,
               autoSize ? styles.triggerAutoSize : styles.triggerFullWidth,
@@ -229,7 +242,7 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({
             ) : (
               <PlaceholderContent placeholder={placeholder} />
             )}
-          </Button>
+          </Flex>
         </PopoverTrigger>
         <PopoverContent
           id={ids.listboxId}

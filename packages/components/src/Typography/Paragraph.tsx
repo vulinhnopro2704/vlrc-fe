@@ -183,6 +183,7 @@ export function Paragraph({
   rows,
   lineHeight,
   ellipsis,
+  truncate,
   tooltip,
   textDecoration,
   textDecorationLine,
@@ -213,6 +214,8 @@ export function Paragraph({
   ref,
   ...props
 }: ParagraphProps) {
+  if (ellipsis === undefined && truncate) ellipsis = true;
+
   const resolvedRows = lines ?? rows ?? (typeof ellipsis === 'object' ? ellipsis?.rows : undefined);
   const isSingleEllipsis =
     (ellipsis === true || (typeof ellipsis === 'object' && ellipsis !== null && !ellipsis.rows)) &&

@@ -116,6 +116,7 @@ export function Link({
   rows,
   lineHeight,
   ellipsis,
+  truncate,
   tooltip,
   textDecoration,
   textDecorationLine,
@@ -130,6 +131,8 @@ export function Link({
   ref,
   ...props
 }: LinkProps) {
+  if (ellipsis === undefined && truncate) ellipsis = true;
+
   const resolvedTarget = external ? (target ?? '_blank') : target;
   const resolvedRel = external ? (rel ?? 'noopener noreferrer') : rel;
 

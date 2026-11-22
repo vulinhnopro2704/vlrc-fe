@@ -15,8 +15,11 @@ import {
   Root as AvatarPrimitiveRoot,
 } from '@radix-ui/react-avatar';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius } from '../theme/tokens.stylex';
+import { colors, radius, spacing } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+import { unstyledButtonStyles } from '../utils';
+import { Button } from './button';
+import { Flex } from '../layout';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 interface AvatarGroupContextValue {
@@ -33,6 +36,9 @@ const styles = stylex.create({
     flexShrink: 0,
     overflow: 'hidden',
     borderRadius: radius.full,
+  },
+  rootSquare: {
+    borderRadius: radius.sm,
   },
   // 7-tier Avatar Sizes
   sizeXxs: {
@@ -108,20 +114,28 @@ const styles = stylex.create({
     color: colors.foreground,
     fontWeight: 600,
     cursor: 'pointer',
+    transitionProperty: 'background-color, opacity',
+    transitionDuration: '150ms',
+    ':hover': {
+      backgroundColor: colors.accent,
+    },
   },
   overflowTrigger: {
-    display: 'inline-flex',
-    cursor: 'pointer',
+    marginLeft: '-0.5rem',
+    ':first-child': {
+      marginLeft: 0,
+    },
+    flexShrink: 0,
   },
   overflowPopoverContent: {
     width: 'auto',
     maxWidth: '20rem',
-    padding: '0.75rem',
+    padding: '0.375rem 0.5rem',
   },
   overflowList: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '0.5rem',
+    gap: spacing.xs,
     alignItems: 'center',
   },
 });
@@ -139,16 +153,32 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
 export interface AvatarProps extends ComponentProps<typeof AvatarPrimitiveRoot> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
+  /** Shape of the avatar. Defaults to 'circle'. */
+  shape?: 'circle' | 'square';
+  /** Image source URL. When provided, the AvatarImage slot is rendered automatically. */
+  src?: string;
+  /** User name used for the image alt text and the initials fallback. */
+  name?: string;
   sx?: stylex.StyleXStyles;
 }
 
-function Avatar({ className, size, sx, ...props }: AvatarProps) {
+/** Derives up to two initials from a full name ("Jane Doe" -> "JD"). */
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '';
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function Avatar({ className, size, shape, src, name, sx, children, ...props }: AvatarProps) {
   const groupContext = useContext(AvatarGroupContext);
   const resolvedSize: ComponentSize = size ?? groupContext?.size ?? 'md';
   const inGroup = Boolean(groupContext?.inGroup);
+  const isSquare = shape === 'square';
 
   const sxProps = stylex.props(
     styles.root,
+    isSquare && styles.rootSquare,
     sizeStyles[resolvedSize] ?? styles.sizeMd,
     inGroup && styles.groupItem,
     sx,
@@ -161,7 +191,10 @@ function Avatar({ className, size, sx, ...props }: AvatarProps) {
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
-    />
+    >
+      {src != null ? <AvatarImage src={src} alt={name ?? ''} /> : null}
+      {children ?? (name != null ? <AvatarFallback>{getInitials(name)}</AvatarFallback> : null)}
+    </AvatarPrimitiveRoot>
   );
 }
 
@@ -237,7 +270,7 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
 
   return (
     <AvatarGroupContext.Provider value={contextValue}>
-      <div
+      <Flex
         role="group"
         data-slot="avatar-group"
         data-size={size}
@@ -249,15 +282,17 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
         {overflowCount > 0 && (
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
-              <div
-                {...stylex.props(styles.overflowTrigger)}
+              <Button
+                variant="ghost"
+                aria-label={`+${overflowCount} more members`}
+                sx={[unstyledButtonStyles.reset, styles.overflowTrigger]}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <Avatar size={size} data-slot="avatar-group-overflow">
                   <AvatarFallback sx={styles.overflowFallback}>+{overflowCount}</AvatarFallback>
                 </Avatar>
-              </div>
+              </Button>
             </PopoverTrigger>
             <PopoverContent
               side="top"
@@ -267,12 +302,14 @@ function AvatarGroup({ className, max, size = 'md', sx, children, ...props }: Av
               onMouseLeave={handleMouseLeave}
             >
               <AvatarGroupContext.Provider value={{ size, inGroup: false }}>
-                <div {...stylex.props(styles.overflowList)}>{hiddenChildren}</div>
+                <Flex wrap="wrap" align="center" gap="xs" sx={styles.overflowList}>
+                  {hiddenChildren}
+                </Flex>
               </AvatarGroupContext.Provider>
             </PopoverContent>
           </Popover>
         )}
-      </div>
+      </Flex>
     </AvatarGroupContext.Provider>
   );
 }

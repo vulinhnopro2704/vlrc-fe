@@ -273,9 +273,7 @@ function AccordionTrigger({
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >
-        <Text as="span" type="inherit">
-          {children}
-        </Text>
+        <Text type="inherit">{children}</Text>
         <ChevronDownIcon {...stylex.props(styles.chevron, chevronSize)} />
       </AccordionPrimitiveTrigger>
     </AccordionPrimitiveHeader>

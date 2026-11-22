@@ -180,7 +180,7 @@ export function FormBase<
           <>
             {label && (
               <FieldLabel htmlFor={field.name}>
-                <Text as="span" weight="medium" size="sm" required={Boolean(rules?.required)}>
+                <Text weight="medium" size="sm" required={Boolean(rules?.required)}>
                   {label}
                 </Text>
               </FieldLabel>
@@ -261,7 +261,7 @@ export const FormInput: FormControlFunc<FormInputExtraProps> = ({
       variant="ghost"
       size={buttonSize ? (`icon-${buttonSize}` as ButtonProps['size']) : 'icon-sm'}
       onClick={() => setShowPassword(!showPassword)}
-      tabIndex={-1}
+      aria-label={showPassword ? 'Hide password' : 'Show password'}
     >
       {showPassword ? (
         <Icons.EyeOff {...stylex.props(styles.iconSize)} />

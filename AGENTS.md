@@ -70,6 +70,24 @@ This automatically establishes native CSS cascade layers in the correct order:
   - Flex layout: `<Flex>` (wrapping Astryx Flex with 7-tier gap resolution).
 - **NEVER use raw `<span>`, `<p>`, or `<h1>`-`<h6>` for typography**:
   - Always use `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`, `<CodeBlock>`, and `<Heading>` from `@vlrc-fe/components`.
+- **Typography & Polymorphic Override Invariants**:
+  - **`<Text>` renders `<span>` by default**: NEVER pass `as="span"` to `<Text>` (it is 100% redundant).
+  - **`<Box>` is for layout containers**: NEVER use `<Box as="span">` for inline text, badges, tokens, or shortcuts (always use `<Text>`).
+  - **`<Paragraph>` renders `<p>` by default**: NEVER use `<Text as="p">`; always use `<Paragraph>`.
+  - **`<Title level={1-6}>` renders `<h1>`-`<h6>` by default**: NEVER use `<Text as="h1">-<h6">`; always use `<Title level={...}>`.
+
+### 3.1 Interactive Controls & DOM Nesting Integrity (Strict)
+
+- **Zero raw `<button>` or `<span role="button">`**:
+  - ALWAYS use `<Button variant="...">` from `@vlrc-fe/components` for interactive actions, triggers, and icon buttons.
+  - Never fake button interactions using `<span role="button">` or `<div role="button">`.
+- **Zero DOM Nesting Violations (`<button>` inside `<button>`)**:
+  - Placing `<button>` inside another `<button>` (e.g. Radix Popover/Dropdown trigger button containing an inner clear `<button>`) is invalid HTML and causes React hydration / click event bubbling crashes.
+  - When a visual trigger contains secondary interactive buttons (e.g. DatePicker with clear button), structure the outer wrapper as `<Flex>` and place the trigger button and secondary buttons as siblings.
+- **Modern `srOnly` / Visually Hidden Standard**:
+  - ALWAYS use `clipPath: 'inset(50%)'` for `srOnly` styles. NEVER use deprecated `clip: 'rect(0, 0, 0, 0)'`.
+- **Roving Keyboard Navigation Standard**:
+  - Composite keyboard navigation (tabs, segmented controls, steppers) MUST use the reusable roving index helper `getNextRovingIndex(key, current, total, options)` from `packages/components/src/utils.ts`.
 
 ### 4. Zero Magic Values Contract (Zero Hardcoded CSS / Numbers / Colors)
 
@@ -104,8 +122,12 @@ Before completing any task:
 
 1. Re-read generated files.
 2. Replace any raw `<div>`, `<span>`, `<p>`, `<h1>`-`<h6>` with layout and typography primitives.
-3. Replace any raw `#hex`, `rgb(...)`, unparsed `px`, or raw `boxShadow: '...'` with design tokens from `../theme/tokens.stylex`.
-4. Ensure all StyleX styles use `@stylexjs/stylex` with statically evaluable `stylex.create(...)`.
+3. Remove redundant `as="span"` from `<Text>` and replace `<Box as="span">` with `<Text>`.
+4. Ensure `<Paragraph>` is used instead of `<Text as="p">`, and `<Title level={...}>` instead of `<Text as="h1-6">`.
+5. Check for DOM nesting violations: ensure no `<button>` is nested inside another `<button>`.
+6. Ensure any `srOnly` styles use `clipPath: 'inset(50%)'` instead of deprecated `clip: 'rect(0, 0, 0, 0)'`.
+7. Replace any raw `#hex`, `rgb(...)`, unparsed `px`, or raw `boxShadow: '...'` with design tokens from `../theme/tokens.stylex`.
+8. Ensure all StyleX styles use `@stylexjs/stylex` with statically evaluable `stylex.create(...)`.
 
 <!-- ASTRYX-VLRC:END -->
 
