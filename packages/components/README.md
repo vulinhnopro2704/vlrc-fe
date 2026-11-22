@@ -27,8 +27,11 @@ Accessible, enterprise-grade React UI component library built natively on Meta's
 - **Enterprise Wrapper Extensions**:
   - **Typography**: `<Text>` and `<Title>` provide `copyable` (with clipboard tooltip), `editable` (inline editing), `ellipsis` (with automatic tooltip on text overflow), `lines`/`rows` multi-line clamp, and margin shorthand props (`m`, `mt`, `mb`, etc.).
   - **Layout Primitives**: `<Box>`, `<Stack>`, `<HStack>`, `<VStack>`, `<Grid>`, `<Row>`, `<Col>`, `<Container>`, `<Center>`, and `<Flex>`. Never use raw `<div>` for layout!
-  - **Form Controls**: Full suite of accessible form controls integrated with `react-hook-form` and `FormBase`.
-  - **Unified Icons**: `<Icons.<Name> />` backed by Lucide and Astryx `IconProvider`.
+  - **Form Controls**: Full suite of accessible form controls integrated with `react-hook-form` and `FormBase`, featuring `allowClear` on `<Input>` and `<Select>`.
+  - **Tag Primitive**: `<Tag>` with color tokens, closable actions, custom prefixes, and interactive states.
+  - **Unified Icons & Jira Suite**: `<Icons.<Name> />`, plus Jira work types (`<IssueIcon>`) and priority levels (`<PriorityIcon>`).
+  - **Tabs `items` API**: Modern Ant Design compatible `items` configuration array (`{ key, label, children, icon, disabled, closable }[]`).
+  - **Empty / EmptyState**: Flexible compound and shorthand empty state containers (`<Empty>`, `<EmptyState>`).
 - **Zero Magic Values Contract** — all colors, spaces, radii, shadows, and transitions strictly come from design tokens (`colors.*`, `spacing.*`, `radius.*`, `shadow.*`).
 - **Native i18n & Multi-Calendar** — `<InternationalizationProvider>` with automatic string localization, RTL layout tracking, and multiple calendars (Gregorian, Persian, Hebrew, Buddhist, Japanese, Chinese), coexisting with `react-i18next`.
 
@@ -58,6 +61,7 @@ pnpm add -D @astryxdesign/build
 | `@vlrc-fe/components/Dropdown`   | Accessible dropdown and action menus                                               |
 | `@vlrc-fe/components/Icons`      | Central Lucide icon registry                                                       |
 | `@vlrc-fe/components/Typography` | Extended `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`                    |
+| `@vlrc-fe/components/Tag`        | Compact tag primitive with color tokens, closable actions, and prefix icons        |
 | `@vlrc-fe/components/richtext`   | Lexical-based rich text editor & headless Markdown serializers                     |
 | `@vlrc-fe/components/theme.css`  | Unified CSS layer declarations (`reset`, `astryx-base`, `astryx-theme`, `product`) |
 

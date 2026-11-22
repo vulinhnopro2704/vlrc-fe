@@ -1,7 +1,30 @@
 {
   "name": "@vlrc-fe/http",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Standardized HTTP client powered by ky",
+  "keywords": [
+    "api",
+    "client",
+    "fetch",
+    "http",
+    "ky",
+    "request"
+  ],
+  "homepage": "https://github.com/vulinhnopro2704/vlrc-fe/tree/main/packages/http#readme",
+  "bugs": {
+    "url": "https://github.com/vulinhnopro2704/vlrc-fe/issues"
+  },
+  "license": "MIT",
+  "author": "VLRC Platform Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vulinhnopro2704/vlrc-fe.git",
+    "directory": "packages/http"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,6 +33,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

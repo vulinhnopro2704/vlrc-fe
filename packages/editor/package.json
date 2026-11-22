@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/editor",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Enterprise Notion-like Markdown and Rich-Text Editor built on Meta Lexical, Meta StyleX, and Astryx tokens.",
   "keywords": [
     "astryx",
@@ -79,7 +79,7 @@
   },
   "peerDependencies": {
     "@stylexjs/stylex": ">=0.19.0",
-    "@vlrc-fe/components": ">=3.0.6",
+    "@vlrc-fe/components": ">=3.1.0",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
   }

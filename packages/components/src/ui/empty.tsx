@@ -154,3 +154,6 @@ export function EmptyActions({ sx, className, children, ...props }: EmptyActions
     </Flex>
   );
 }
+
+export { Empty as EmptyState };
+export type EmptyStateProps = EmptyProps;

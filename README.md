@@ -19,7 +19,12 @@ Production-ready React UI components and hooks for building modern enterprise we
 | Package                                        |                                                               Version                                                               | Description                                                                    |
 | :--------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------- |
 | [`@vlrc-fe/components`](./packages/components) | [![npm](https://img.shields.io/npm/v/@vlrc-fe/components.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/components) | Astryx-powered UI component library with Meta StyleX, unified tokens, and i18n |
-| [`@vlrc-fe/hooks`](./packages/hooks)           |      [![npm](https://img.shields.io/npm/v/@vlrc-fe/hooks.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/hooks)      | Reusable React hooks for modal state, animations, and UI coordination          |
+| [`@vlrc-fe/editor`](./packages/editor)         |     [![npm](https://img.shields.io/npm/v/@vlrc-fe/editor.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/editor)     | Notion-like Markdown and Rich-Text Editor built on Meta Lexical & Meta StyleX  |
+| [`@vlrc-fe/hooks`](./packages/hooks)           |      [![npm](https://img.shields.io/npm/v/@vlrc-fe/hooks.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/hooks)      | Reusable React hooks for modal state, ahooks utilities, and UI coordination    |
+| [`@vlrc-fe/http`](./packages/http)             |       [![npm](https://img.shields.io/npm/v/@vlrc-fe/http.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/http)       | Standardized HTTP client powered by ky with retry and token interceptors       |
+| [`@vlrc-fe/i18n`](./packages/i18n)             |       [![npm](https://img.shields.io/npm/v/@vlrc-fe/i18n.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/i18n)       | Standardized i18next instance factory and react-i18next re-exports             |
+| [`@vlrc-fe/store`](./packages/store)           |      [![npm](https://img.shields.io/npm/v/@vlrc-fe/store.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/store)      | Zustand v5 store wrapper with automated selectors and partial persistence      |
+| [`@vlrc-fe/types`](./packages/types)           |      [![npm](https://img.shields.io/npm/v/@vlrc-fe/types.svg?style=flat-square)](https://www.npmjs.com/package/@vlrc-fe/types)      | Common TypeScript definitions, models, pagination contracts, and enums         |
 
 ---
 
@@ -113,8 +118,13 @@ pnpm test
 - [Live Storybook](https://vulinhnopro2704.github.io/vlrc-fe/)
 - [Components README](./packages/components/README.md)
 - [Components Migration Guide](./packages/components/MIGRATION_GUIDE.md)
-- [Astryx Migration Plan & Architecture](./docs/ASTRYX_MIGRATION_PLAN.md)
+- [Editor README](./packages/editor/README.md)
 - [Hooks README](./packages/hooks/README.md)
+- [HTTP Client README](./packages/http/README.md)
+- [I18n README](./packages/i18n/README.md)
+- [Store README](./packages/store/README.md)
+- [Types README](./packages/types/README.md)
+- [Astryx Migration Plan & Architecture](./docs/ASTRYX_MIGRATION_PLAN.md)
 - [Agent Operating Guidelines](./AGENTS.md)
 - [Official Astryx Documentation](https://astryx.atmeta.com)
 

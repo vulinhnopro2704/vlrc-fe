@@ -1,7 +1,31 @@
 {
   "name": "@vlrc-fe/store",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Zustand v5 store wrapper with auto-selectors and persist middleware",
+  "keywords": [
+    "devtools",
+    "persist",
+    "react",
+    "selectors",
+    "state-management",
+    "store",
+    "zustand"
+  ],
+  "homepage": "https://github.com/vulinhnopro2704/vlrc-fe/tree/main/packages/store#readme",
+  "bugs": {
+    "url": "https://github.com/vulinhnopro2704/vlrc-fe/issues"
+  },
+  "license": "MIT",
+  "author": "VLRC Platform Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vulinhnopro2704/vlrc-fe.git",
+    "directory": "packages/store"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,6 +34,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

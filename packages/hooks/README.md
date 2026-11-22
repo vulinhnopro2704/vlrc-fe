@@ -154,6 +154,33 @@ function FileUploader() {
 
 ---
 
+### `ahooks` Re-exports & Utilities
+
+Standardized re-exports of popular React utility hooks from `ahooks`:
+
+- **State**: `useToggle`, `useBoolean`, `usePrevious`, `useSetState`
+- **Effect & Lifecycle**: `useMount`, `useUnmount`, `useUpdateEffect`
+- **Async & Timing**: `useDebounce`
+- **DOM & Interaction**: `useClickAway`, `useClickOutside`
+
+#### Example: `useClickOutside`
+
+```tsx
+import { useRef } from 'react';
+import { useClickOutside } from '@vlrc-fe/hooks';
+
+export function Popover() {
+  const ref = useRef<HTMLDivElement>(null);
+  useClickOutside(ref, () => {
+    console.log('Clicked outside popover');
+  });
+
+  return <div ref={ref}>Popover Content</div>;
+}
+```
+
+---
+
 ## Scripts
 
 ```bash

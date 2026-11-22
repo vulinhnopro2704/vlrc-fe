@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "3.0.6",
+  "version": "3.1.0",
   "description": "Enterprise UI component library built on Meta's Astryx Design System, Meta StyleX, and Radix UI.",
   "keywords": [
     "accessible",
@@ -96,6 +96,11 @@
       "types": "./dist/Typography/index.d.ts",
       "import": "./dist/Typography/index.js",
       "require": "./dist/Typography/index.cjs"
+    },
+    "./Tag": {
+      "types": "./dist/Tag/index.d.ts",
+      "import": "./dist/Tag/index.js",
+      "require": "./dist/Tag/index.cjs"
     },
     "./richtext": {
       "types": "./dist/richtext/index.d.ts",

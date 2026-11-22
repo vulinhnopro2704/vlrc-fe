@@ -6,6 +6,7 @@ Enterprise Notion-like Markdown and Rich-Text Editor built on **Meta Lexical**, 
 
 - 📝 **Markdown-First**: Type standard markdown shortcuts (`#`, `##`, `*`, `1.`, `[ ]`, `>`, ````) with real-time bidirectional Markdown serialization.
 - ⚡ **Notion-Style Slash Commands (`/`)**: Instant block picker menu for Headings, Lists, Quotes, Code Blocks, Callouts, and Dividers with keyboard navigation.
+- 🔽 **Notion Toggle Headings**: Collapsible heading blocks (H1, H2, H3 toggles) with smooth chevron expansion, nested content blocks, keyboard navigation, and Enter / Backspace boundary handling.
 - 💬 **Floating Bubble Format Toolbar**: Appears on text selection with Bold, Italic, Strikethrough, Code, Highlight, and Link triggers.
 - 🪟 **Draggable Block Handles (`⋮⋮`)**: Visual hover handle allowing block reordering, duplication, and deletion.
 - 🎨 **Meta StyleX Theming**: Zero magic values, bound directly to unified Astryx design tokens (`colors.*`, `spacing.*`, `radius.*`, `shadow.*`).

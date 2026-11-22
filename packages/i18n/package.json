@@ -1,7 +1,30 @@
 {
   "name": "@vlrc-fe/i18n",
-  "version": "1.0.0",
-  "description": "Standardized i18next instance factory",
+  "version": "1.0.1",
+  "description": "Standardized i18next instance factory and react-i18next re-exports",
+  "keywords": [
+    "i18n",
+    "i18next",
+    "internationalization",
+    "localization",
+    "react-i18next",
+    "translation"
+  ],
+  "homepage": "https://github.com/vulinhnopro2704/vlrc-fe/tree/main/packages/i18n#readme",
+  "bugs": {
+    "url": "https://github.com/vulinhnopro2704/vlrc-fe/issues"
+  },
+  "license": "MIT",
+  "author": "VLRC Platform Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vulinhnopro2704/vlrc-fe.git",
+    "directory": "packages/i18n"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,6 +33,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

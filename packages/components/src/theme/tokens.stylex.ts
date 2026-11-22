@@ -225,10 +225,13 @@ export const tokens = {
   colorBorder: colors.border,
   colorSurface: colors.card,
   colorSurfaceSecondary: colors.secondary,
+  colorSurfaceHover: colors.accent,
   colorText: colors.foreground,
   colorTextSecondary: colors.mutedForeground,
   colorPrimary: colors.primary,
   colorError: colors.destructive,
+  colorSuccess: colors.success,
+  colorWarning: colors.warning,
   colorBgLayout: colors.muted,
   colorBgSubtle: colors.secondary,
 

@@ -2,8 +2,13 @@
 
 This repository contains reusable frontend packages for the VLRC ecosystem, built natively on Meta's **Astryx Design System** and **Meta StyleX**:
 
-- `@vlrc-fe/components` (v3.0.0): UI primitive and composite component library built on Astryx foundations, Meta StyleX, and Radix UI.
-- `@vlrc-fe/hooks`: Shared React utility hooks.
+- `@vlrc-fe/components`: UI primitive and composite component library built on Astryx foundations, Meta StyleX, and Radix UI.
+- `@vlrc-fe/editor`: Notion-like Markdown and Rich-Text Editor built on Meta Lexical and Astryx tokens.
+- `@vlrc-fe/hooks`: Shared React utility hooks and ahooks re-exports.
+- `@vlrc-fe/http`: Typed HTTP client powered by ky with automatic retries and auth token hooks.
+- `@vlrc-fe/i18n`: Standardized i18next instance factory and react-i18next re-exports.
+- `@vlrc-fe/store`: Zustand v5 store wrapper with auto-selectors and persist middleware.
+- `@vlrc-fe/types`: Common TypeScript models, pagination interfaces, and enums.
 
 ---
 
