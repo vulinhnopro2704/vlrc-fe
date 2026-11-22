@@ -24,3 +24,4 @@ export { InsertLinkDialog } from './plugins/InsertLinkDialog';
 export { TableActionMenuPlugin } from './plugins/TableActionMenuPlugin';
 export { TableCellResizerPlugin } from './plugins/TableCellResizerPlugin';
 export { TableHoverActionsPlugin } from './plugins/TableHoverActionsPlugin';
+export { CollapsiblePlugin } from './plugins/CollapsiblePlugin';

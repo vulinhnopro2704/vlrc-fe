@@ -8,10 +8,12 @@ import {
   type NodeKey,
   type SerializedElementNode,
   type Spread,
+  type RangeSelection,
   $applyNodeReplacement,
   $createParagraphNode,
   $getSelection,
   $isRangeSelection,
+  $isElementNode,
 } from 'lexical';
 
 export type CollapsibleLevel = 'default' | 'h1' | 'h2' | 'h3';
@@ -46,6 +48,10 @@ export class CollapsibleContainerNode extends ElementNode {
 
   static clone(node: CollapsibleContainerNode): CollapsibleContainerNode {
     return new CollapsibleContainerNode(node.__open, node.__level, node.__key);
+  }
+
+  isShadowRoot(): boolean {
+    return true;
   }
 
   constructor(open = true, level: CollapsibleLevel = 'default', key?: NodeKey) {
@@ -207,6 +213,36 @@ export class CollapsibleTitleNode extends ElementNode {
     return false;
   }
 
+  collapseAtStart(): boolean {
+    return true;
+  }
+
+  insertNewAfter(_selection: RangeSelection, _restoreSelection = true): ElementNode | null {
+    const containerNode = this.getParent();
+
+    if (!$isCollapsibleContainerNode(containerNode)) {
+      return null;
+    }
+
+    if (!containerNode.getOpen()) {
+      containerNode.setOpen(true);
+    }
+
+    const contentNode = this.getNextSibling();
+    if (!$isCollapsibleContentNode(contentNode)) {
+      return null;
+    }
+
+    const firstChild = contentNode.getFirstChild();
+    if ($isElementNode(firstChild)) {
+      return firstChild;
+    } else {
+      const paragraph = $createParagraphNode();
+      contentNode.append(paragraph);
+      return paragraph;
+    }
+  }
+
   setLevel(level: CollapsibleLevel): void {
     const writable = this.getWritable();
     writable.__level = level;
@@ -256,6 +292,10 @@ export class CollapsibleContentNode extends ElementNode {
 
   static clone(node: CollapsibleContentNode): CollapsibleContentNode {
     return new CollapsibleContentNode(node.__key);
+  }
+
+  isShadowRoot(): boolean {
+    return true;
   }
 
   createDOM(_config: EditorConfig): HTMLElement {

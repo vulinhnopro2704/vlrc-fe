@@ -68,6 +68,7 @@ import { EmojisPlugin } from './plugins/EmojisPlugin';
 import { TableActionMenuPlugin } from './plugins/TableActionMenuPlugin';
 import { TableCellResizerPlugin } from './plugins/TableCellResizerPlugin';
 import { TableHoverActionsPlugin } from './plugins/TableHoverActionsPlugin';
+import { CollapsiblePlugin } from './plugins/CollapsiblePlugin';
 import type { NotionEditorProps } from './types';
 import './theme/editor.css';
 
@@ -340,6 +341,7 @@ export const NotionEditor = forwardRef<HTMLDivElement, NotionEditorProps>(
             <AutoLinkPlugin matchers={AUTO_LINK_MATCHERS} />
             <TablePlugin />
             <HorizontalRulePlugin />
+            <CollapsiblePlugin />
             {enableTabIndentation && <TabIndentationPlugin />}
             {enableCodeHighlighting && <CodeHighlightPlugin />}
             {enableHashtags && <HashtagPlugin />}
