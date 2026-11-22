@@ -37,7 +37,8 @@ export type { MultiSelectProps } from './MultiSelect/type';
 export * from './Typography';
 export * from './Dropdown';
 export * from './Tag';
-export { Token, EmptyState } from '@astryxdesign/core';
+export { getNextRovingIndex, unstyledButtonStyles, srOnlyStyles, cn } from './utils';
+export type { RovingNavigationOptions } from './utils';
 
 // Internationalization & Accessibility from Astryx
 export {

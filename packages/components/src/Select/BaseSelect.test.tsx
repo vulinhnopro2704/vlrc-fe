@@ -156,5 +156,30 @@ describe('BaseSelect', () => {
       });
       expect(tagTooltip).toBeInTheDocument();
     });
+
+    it('should support keyboard roving tabindex navigation across option rows', async () => {
+      render(<BaseSelect {...createDefaultSingleProps({ isSearchable: false })} />);
+
+      const trigger = screen.getByRole('button');
+      fireEvent.click(trigger);
+
+      const options = screen.getAllByRole('option');
+      expect(options).toHaveLength(3);
+
+      // Initially only the first option is tabIndex 0, rest are -1
+      expect(options[0].tabIndex).toBe(0);
+      expect(options[1].tabIndex).toBe(-1);
+      expect(options[2].tabIndex).toBe(-1);
+
+      // Press ArrowDown on option 0
+      fireEvent.keyDown(options[0], { key: 'ArrowDown' });
+      expect(options[1].tabIndex).toBe(0);
+      expect(options[0].tabIndex).toBe(-1);
+
+      // Press ArrowUp on option 1
+      fireEvent.keyDown(options[1], { key: 'ArrowUp' });
+      expect(options[0].tabIndex).toBe(0);
+      expect(options[1].tabIndex).toBe(-1);
+    });
   });
 });

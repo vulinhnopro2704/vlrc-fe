@@ -4,6 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
 import { Text, type TextType } from '../Typography';
+import { srOnlyStyles } from '../utils';
 
 const styles = stylex.create({
   nav: {
@@ -147,17 +148,6 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     color: colors.mutedForeground,
-  },
-  srOnly: {
-    position: 'absolute',
-    width: '1px',
-    height: '1px',
-    padding: 0,
-    margin: '-1px',
-    overflow: 'hidden',
-    clipPath: 'inset(50%)',
-    whiteSpace: 'nowrap',
-    borderWidth: 0,
   },
 });
 
@@ -346,7 +336,7 @@ function PaginationEllipsis({
       {...props}
     >
       <MoreHorizontalIcon aria-hidden="true" {...stylex.props(iconSize)} />
-      <Text sx={styles.srOnly}>More pages</Text>
+      <Text sx={srOnlyStyles.srOnly}>More pages</Text>
     </Text>
   );
 }

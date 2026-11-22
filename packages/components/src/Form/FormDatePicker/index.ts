@@ -15,12 +15,6 @@ export type { MonthPickerPanelProps } from './MonthPickerPanel';
 export { YearPickerPanel } from './YearPickerPanel';
 export type { YearPickerPanelProps } from './YearPickerPanel';
 export {
-  DatePickerTriggerInput,
-  datePickerStyles,
-  sizeWrapperStyles as datePickerSizeWrapperStyles,
-} from './DatePickerTrigger';
-export type { DatePickerTriggerInputProps } from './DatePickerTrigger';
-export {
   useFormDatePicker,
   formatDateValue,
   getDefaultFormat,

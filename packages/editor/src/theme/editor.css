@@ -333,7 +333,7 @@ ol.lexical-ol5 {
 }
 
 .lexical-collapsible-title:hover {
-  background-color: var(--color-surface-hover, rgba(0, 0, 0, 0.04));
+  background-color: var(--color-surface-hover, #e2e8f0);
 }
 
 .lexical-collapsible-title::-webkit-details-marker {
@@ -346,7 +346,7 @@ ol.lexical-ol5 {
 }
 
 /* Custom Notion-style Chevron Arrow */
-.lexical-collapsible-title::before {
+.lexical-collapsible-title [data-collapsible-chevron] {
   content: '';
   display: inline-block;
   flex-shrink: 0;
@@ -369,11 +369,11 @@ ol.lexical-ol5 {
   opacity: 0.65;
 }
 
-.lexical-collapsible-title:hover::before {
+.lexical-collapsible-title:hover [data-collapsible-chevron] {
   opacity: 1;
 }
 
-.lexical-collapsible-container[open] > .lexical-collapsible-title::before {
+.lexical-collapsible-container[open] > .lexical-collapsible-title [data-collapsible-chevron] {
   transform: rotate(90deg);
 }
 

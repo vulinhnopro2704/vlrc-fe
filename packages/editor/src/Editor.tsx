@@ -28,7 +28,7 @@ import {
   type ElementTransformer,
   type MultilineElementTransformer,
 } from '@lexical/markdown';
-import { $createParagraphNode, $createTextNode, type LexicalNode } from 'lexical';
+import { $createParagraphNode, $createTextNode, type ElementNode, type LexicalNode } from 'lexical';
 import {
   TableNode,
   TableRowNode,
@@ -53,6 +53,7 @@ import {
   $isCollapsibleTitleNode,
   $isCollapsibleContentNode,
   type CollapsibleLevel,
+  sanitizeCollapsibleLevel,
 } from './nodes/CollapsibleNodes';
 import { EDITOR_NODES } from './nodes';
 import { editorStyles, editorTheme } from './theme/editorTheme';
@@ -142,7 +143,7 @@ export const TABLE: MultilineElementTransformer = {
 
 export const COLLAPSIBLE: MultilineElementTransformer = {
   dependencies: [CollapsibleContainerNode, CollapsibleTitleNode, CollapsibleContentNode],
-  export: (node: LexicalNode) => {
+  export: (node: LexicalNode, traverseChildren: (node: ElementNode) => string) => {
     if (!$isCollapsibleContainerNode(node)) return null;
     const level = node.getLevel();
     const open = node.getOpen();
@@ -151,9 +152,9 @@ export const COLLAPSIBLE: MultilineElementTransformer = {
     let contentText = '';
     children.forEach((child) => {
       if ($isCollapsibleTitleNode(child)) {
-        titleText = child.getTextContent();
+        titleText = traverseChildren ? traverseChildren(child) : child.getTextContent();
       } else if ($isCollapsibleContentNode(child)) {
-        contentText = child.getTextContent();
+        contentText = traverseChildren ? traverseChildren(child) : child.getTextContent();
       }
     });
     return `<details data-level="${level}"${open ? ' open' : ''}>\n<summary data-level="${level}">${titleText}</summary>\n<div class="lexical-collapsible-content">\n${contentText}\n</div>\n</details>`;
@@ -163,8 +164,8 @@ export const COLLAPSIBLE: MultilineElementTransformer = {
   type: 'multiline-element',
   handleImportAfterStartMatch: ({ lines, rootNode, startLineIndex }) => {
     const startLine = lines[startLineIndex];
-    const levelMatch = /data-level="(default|h1|h2|h3)"/i.exec(startLine);
-    const level: CollapsibleLevel = (levelMatch?.[1] as CollapsibleLevel) || 'default';
+    const levelMatch = /data-level="([^"]+)"/i.exec(startLine);
+    const level: CollapsibleLevel = sanitizeCollapsibleLevel(levelMatch?.[1]);
     const isOpen = /\bopen\b/i.test(startLine);
 
     let endLineIndex = startLineIndex;

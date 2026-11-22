@@ -12,6 +12,7 @@ import { INSERT_TABLE_COMMAND } from '@lexical/table';
 import { create } from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '@vlrc-fe/components/theme/tokens.stylex';
 import { Box, VStack, Text } from '@vlrc-fe/components';
+import { getNextRovingIndex } from '@vlrc-fe/components/utils';
 import { InsertTableDialog } from './InsertTableDialog';
 import { InsertMediaDialog, type MediaType } from './InsertMediaDialog';
 import { SLASH_OPTIONS, type SlashOption } from './slashMenuOptions';
@@ -68,6 +69,7 @@ const styles = create({
   },
   itemSelected: {
     backgroundColor: colors.surfaceSubtle,
+    boxShadow: shadow.ringFocus,
   },
   iconBox: {
     display: 'inline-flex',
@@ -185,6 +187,13 @@ export function SlashMenuPlugin(): JSX.Element | null {
     return { top, left };
   }, []);
 
+  const updatePosition = useCallback((newPos: { top: number; left: number }) => {
+    setPosition((prev) => {
+      if (prev.top === newPos.top && prev.left === newPos.left) return prev;
+      return newPos;
+    });
+  }, []);
+
   // Listen for editor typing to detect "/" trigger and query
   useEffect(() => {
     return editor.registerUpdateListener(({ editorState }) => {
@@ -209,7 +218,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
 
           const pos = calculatePosition();
           if (pos) {
-            setPosition(pos);
+            updatePosition(pos);
             setIsOpen(true);
           }
         } else {
@@ -217,7 +226,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
         }
       });
     });
-  }, [editor, calculatePosition]);
+  }, [editor, calculatePosition, updatePosition]);
 
   // Recalculate or dismiss on scroll/resize
   useEffect(() => {
@@ -226,7 +235,7 @@ export function SlashMenuPlugin(): JSX.Element | null {
     const handleWindowChange = () => {
       const pos = calculatePosition();
       if (pos) {
-        setPosition(pos);
+        updatePosition(pos);
       } else {
         setIsOpen(false);
       }
@@ -247,68 +256,72 @@ export function SlashMenuPlugin(): JSX.Element | null {
       window.removeEventListener('scroll', handleWindowChange, { capture: true });
       document.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [isOpen, calculatePosition]);
+  }, [isOpen, calculatePosition, updatePosition]);
 
-  // Group items by category for clean visual separation
-  const basicItems = useMemo(
-    () => filteredOptions.filter((opt) => opt.category === 'basic'),
-    [filteredOptions],
-  );
-  const mediaItems = useMemo(
-    () => filteredOptions.filter((opt) => opt.category === 'media'),
-    [filteredOptions],
-  );
+  // Group items by category for clean visual separation in a single O(N) pass
+  const { basicItems, mediaItems } = useMemo(() => {
+    const basic: SlashOption[] = [];
+    const media: SlashOption[] = [];
+    for (const opt of filteredOptions) {
+      if (opt.category === 'basic') {
+        basic.push(opt);
+      } else if (opt.category === 'media') {
+        media.push(opt);
+      }
+    }
+    return { basicItems: basic, mediaItems: media };
+  }, [filteredOptions]);
+  const displayedOptions = filteredOptions;
 
-  // Flatten displayed items in the exact visual order they are rendered
-  const displayedOptions = useMemo(() => [...basicItems, ...mediaItems], [basicItems, mediaItems]);
+  // Refs for keyboard handler to avoid re-subscribing on every selection move
+  const selectedIndexRef = useRef(selectedIndex);
+  selectedIndexRef.current = selectedIndex;
+  const displayedOptionsRef = useRef(displayedOptions);
+  displayedOptionsRef.current = displayedOptions;
+  const selectOptionRef = useRef(selectOption);
+  selectOptionRef.current = selectOption;
 
-  // Keyboard navigation
+  // Keyboard navigation using unified roving index helper
   useEffect(() => {
     if (!isOpen) return;
 
     return editor.registerCommand(
       KEY_DOWN_COMMAND,
       (event: KeyboardEvent) => {
-        if (event.key === 'ArrowDown') {
+        const options = displayedOptionsRef.current;
+        const currentIdx = selectedIndexRef.current;
+
+        const nextIndex = getNextRovingIndex(event.key, currentIdx, options.length, {
+          orientation: 'vertical',
+          loop: true,
+        });
+
+        if (nextIndex !== null) {
           event.preventDefault();
-          setSelectedIndex((prev) => (prev + 1) % displayedOptions.length);
+          setSelectedIndex(nextIndex);
           return true;
         }
-        if (event.key === 'ArrowUp') {
-          event.preventDefault();
-          setSelectedIndex(
-            (prev) => (prev - 1 + displayedOptions.length) % displayedOptions.length,
-          );
-          return true;
-        }
-        if (event.key === 'Home') {
-          event.preventDefault();
-          setSelectedIndex(0);
-          return true;
-        }
-        if (event.key === 'End') {
-          event.preventDefault();
-          setSelectedIndex(displayedOptions.length - 1);
-          return true;
-        }
+
         if (event.key === 'Enter') {
           event.preventDefault();
-          const opt = displayedOptions[selectedIndex];
+          const opt = options[currentIdx];
           if (opt) {
-            selectOption(opt);
+            selectOptionRef.current(opt);
           }
           return true;
         }
+
         if (event.key === 'Escape') {
           event.preventDefault();
           setIsOpen(false);
           return true;
         }
+
         return false;
       },
       COMMAND_PRIORITY_LOW,
     );
-  }, [isOpen, displayedOptions, selectedIndex, selectOption, editor]);
+  }, [isOpen, editor]);
 
   return (
     <>

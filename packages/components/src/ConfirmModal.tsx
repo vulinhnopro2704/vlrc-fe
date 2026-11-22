@@ -318,15 +318,17 @@ export function ConfirmModal({
           if (isPending) e.preventDefault();
         }}
       >
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon-xs"
           onClick={handleDismiss}
           disabled={isPending}
-          {...stylex.props(styles.closeBtn)}
+          sx={styles.closeBtn}
           aria-label={closeLabel}
         >
           <Icons.X {...stylex.props(styles.closeIcon)} />
-        </button>
+        </Button>
 
         <div {...stylex.props(styles.header)}>
           <div {...stylex.props(styles.iconWrap)}>

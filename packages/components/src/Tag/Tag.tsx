@@ -1,7 +1,10 @@
 import type { MouseEvent as ReactMouseEvent, ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { Token } from '@astryxdesign/core';
-import { radius } from '../theme/tokens.stylex';
+import { radius, shadow } from '../theme/tokens.stylex';
+import { unstyledButtonStyles } from '../utils';
+import { Button } from '../ui/button';
+import { Text } from '../Typography';
 import Icons from '../Icons';
 
 const styles = stylex.create({
@@ -22,13 +25,41 @@ const styles = stylex.create({
     transitionProperty: 'background-color, border-color, color',
     transitionDuration: '150ms',
   },
-  closableIcon: {
+  clickable: {
     cursor: 'pointer',
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+      outline: 'none',
+    },
+  },
+  contentButton: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.25rem',
+    color: 'inherit',
+    fontSize: 'inherit',
+    fontWeight: 'inherit',
+  },
+  closeButton: {
+    paddingInline: 0,
+    paddingBlock: 0,
+    height: '1rem',
+    width: '1rem',
+    minWidth: '1rem',
+    borderRadius: radius.full,
     opacity: 0.7,
     display: 'inline-flex',
     alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    color: 'inherit',
     ':hover': {
       opacity: 1,
+      backgroundColor: 'transparent',
+    },
+    ':focus-visible': {
+      boxShadow: shadow.ringFocus,
+      outline: 'none',
     },
   },
   categoryDefault: {
@@ -37,14 +68,14 @@ const styles = stylex.create({
     color: 'var(--color-fg-muted, #64748b)',
   },
   categoryGeekblue: {
-    backgroundColor: '#eff6ff',
-    borderColor: '#bfdbfe',
-    color: '#2563eb',
+    backgroundColor: 'var(--tag-geekblue-bg, #eff6ff)',
+    borderColor: 'var(--tag-geekblue-border, #bfdbfe)',
+    color: 'var(--tag-geekblue-fg, #3b82f6)',
   },
   categorySuccess: {
-    backgroundColor: '#f0fdf4',
-    borderColor: '#bbf7d0',
-    color: '#16a34a',
+    backgroundColor: 'var(--tag-success-bg, #f0fdf4)',
+    borderColor: 'var(--tag-success-border, #bbf7d0)',
+    color: 'var(--tag-success-fg, #16a34a)',
   },
 });
 
@@ -91,40 +122,8 @@ export function Tag({
   const content = label ?? children;
   const XIcon = Icons.X;
 
-  if (categoryColor) {
-    const categoryStyle =
-      categoryColor === 'success'
-        ? styles.categorySuccess
-        : categoryColor === 'geekblue'
-          ? styles.categoryGeekblue
-          : styles.categoryDefault;
-
-    const sxProps = stylex.props(styles.customTag, categoryStyle, sx);
-
-    return (
-      <span
-        {...sxProps}
-        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-        onClick={onClick}
-      >
-        {icon && <span>{icon}</span>}
-        <span>{content}</span>
-        {closable && (
-          <span
-            {...stylex.props(styles.closableIcon)}
-            onClick={(event) => {
-              event.stopPropagation();
-              onClose?.(event);
-            }}
-          >
-            <XIcon size={12} />
-          </span>
-        )}
-      </span>
-    );
-  }
-
-  if (typeof content === 'string') {
+  // Delegate standard string tokens without categoryColor to Astryx Token
+  if (!categoryColor && typeof content === 'string') {
     return (
       <Token
         label={content}
@@ -144,27 +143,77 @@ export function Tag({
     );
   }
 
-  const sxProps = stylex.props(styles.customTag, styles.categoryDefault, sx);
+  const categoryStyle =
+    categoryColor === 'success'
+      ? styles.categorySuccess
+      : categoryColor === 'geekblue'
+        ? styles.categoryGeekblue
+        : styles.categoryDefault;
 
+  const closeButton = closable ? (
+    <Button
+      type="button"
+      variant="ghost"
+      size="icon-xs"
+      aria-label="Remove tag"
+      sx={[unstyledButtonStyles.reset, styles.closeButton]}
+      onClick={(event) => {
+        event.stopPropagation();
+        onClose?.(event);
+      }}
+    >
+      <XIcon size={12} />
+    </Button>
+  ) : null;
+
+  // Single interactive button when clickable and not closable
+  if (onClick && !closable) {
+    return (
+      <Button
+        type="button"
+        variant="ghost"
+        sx={[unstyledButtonStyles.reset, styles.customTag, categoryStyle, styles.clickable, sx]}
+        className={className}
+        onClick={onClick}
+      >
+        {icon && <Text>{icon}</Text>}
+        <Text>{content}</Text>
+      </Button>
+    );
+  }
+
+  // Clickable content with separate sibling close button to avoid nested buttons
+  if (onClick && closable) {
+    const sxProps = stylex.props(styles.customTag, categoryStyle, sx);
+    return (
+      <span
+        {...sxProps}
+        className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+      >
+        <Button
+          type="button"
+          variant="ghost"
+          sx={[unstyledButtonStyles.reset, styles.contentButton, styles.clickable]}
+          onClick={onClick}
+        >
+          {icon && <Text>{icon}</Text>}
+          <Text>{content}</Text>
+        </Button>
+        {closeButton}
+      </span>
+    );
+  }
+
+  // Non-clickable container with optional close button
+  const sxProps = stylex.props(styles.customTag, categoryStyle, sx);
   return (
     <span
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-      onClick={onClick}
     >
-      {icon && <span>{icon}</span>}
-      <span>{content}</span>
-      {closable && (
-        <span
-          {...stylex.props(styles.closableIcon)}
-          onClick={(event) => {
-            event.stopPropagation();
-            onClose?.(event);
-          }}
-        >
-          <XIcon size={12} />
-        </span>
-      )}
+      {icon && <Text>{icon}</Text>}
+      <Text>{content}</Text>
+      {closeButton}
     </span>
   );
 }

@@ -9,9 +9,10 @@ import * as stylex from '@stylexjs/stylex';
 import { CheckIcon, ChevronDown, XCircle, XIcon } from 'lucide-react';
 
 import { colors, radius } from '../theme/tokens.stylex';
-import { cn } from '../utils';
+import { cn, unstyledButtonStyles } from '../utils';
 import { Separator } from '../ui/separator';
 import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
 import { Text } from '../Typography';
 import {
   Command,
@@ -327,8 +328,10 @@ export const SelectedValuesContent = ({
               <Text ellipsis tooltip sx={styles.badgeLabel}>
                 {option.label}
               </Text>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon-xs"
                 onClick={(event) => {
                   event.stopPropagation();
                   toggleOption(value);
@@ -341,7 +344,7 @@ export const SelectedValuesContent = ({
                   }
                 }}
                 aria-label={`Remove ${option.label} from selection`}
-                {...stylex.props(styles.badgeRemoveButton)}
+                sx={[unstyledButtonStyles.reset, styles.badgeRemoveButton]}
               >
                 <XCircle
                   {...stylex.props(
@@ -350,7 +353,7 @@ export const SelectedValuesContent = ({
                       : styles.badgeRemoveIcon,
                   )}
                 />
-              </button>
+              </Button>
             </Badge>
           );
         })
@@ -365,24 +368,33 @@ export const SelectedValuesContent = ({
           }}
         >
           {`+ ${selectedValues.length - responsiveSettings.maxCount} more`}
-          <XCircle
-            {...stylex.props(
-              responsiveSettings.compactMode
-                ? styles.extraBadgeRemoveIconCompact
-                : styles.extraBadgeRemoveIcon,
-            )}
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-xs"
             onClick={(event) => {
               event.stopPropagation();
               clearExtraOptions();
             }}
-          />
+            aria-label="Clear extra options"
+            sx={[unstyledButtonStyles.reset, styles.badgeRemoveButton]}
+          >
+            <XCircle
+              {...stylex.props(
+                responsiveSettings.compactMode
+                  ? styles.extraBadgeRemoveIconCompact
+                  : styles.extraBadgeRemoveIcon,
+              )}
+            />
+          </Button>
         </Badge>
       )}
     </div>
     <div {...stylex.props(styles.actionsContainer)}>
-      <div
-        role="button"
-        tabIndex={0}
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon-xs"
         onClick={(event) => {
           event.stopPropagation();
           handleClear();
@@ -395,10 +407,10 @@ export const SelectedValuesContent = ({
           }
         }}
         aria-label={`Clear all ${selectedValues.length} selected options`}
-        {...stylex.props(styles.clearAllButton)}
+        sx={[unstyledButtonStyles.reset, styles.clearAllButton]}
       >
         <XIcon {...stylex.props(styles.clearIcon)} />
-      </div>
+      </Button>
       <Separator orientation="vertical" sx={styles.separator} />
       <ChevronDown {...stylex.props(styles.chevronIcon)} aria-hidden="true" />
     </div>

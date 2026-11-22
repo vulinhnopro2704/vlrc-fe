@@ -3,6 +3,8 @@ import type { ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { resolveWidth, type ComponentWidth, type ComponentSize } from '../theme';
+import { Button } from './button';
+import { unstyledButtonStyles } from '../utils';
 import Icons from '../Icons';
 
 const styles = stylex.create({
@@ -269,6 +271,7 @@ const styles = stylex.create({
       color: colors.foreground,
     },
     ':focus-visible': {
+      boxShadow: shadow.ringFocus,
       outline: 'none',
       color: colors.foreground,
     },
@@ -411,10 +414,21 @@ function Input({
   };
 
   const handleClear = () => {
-    if (inputRef.current) inputRef.current.value = '';
+    if (inputRef.current) {
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+        window.HTMLInputElement.prototype,
+        'value',
+      )?.set;
+      if (nativeInputValueSetter) {
+        nativeInputValueSetter.call(inputRef.current, '');
+      } else {
+        inputRef.current.value = '';
+      }
+      inputRef.current.dispatchEvent(new Event('input', { bubbles: true }));
+      inputRef.current.dispatchEvent(new Event('change', { bubbles: true }));
+      inputRef.current.focus();
+    }
     setUncontrolledHasValue(false);
-    props.onChange?.({ target: { value: '' } } as unknown as ChangeEvent<HTMLInputElement>);
-    inputRef.current?.focus();
   };
 
   const resolvedPrefixIcon = prefixIcon ?? prefix;
@@ -441,11 +455,11 @@ function Input({
         data-width={width}
         disabled={disabled}
         size={htmlSize}
+        {...props}
         onChange={handleInputChange}
         {...sxProps}
         style={{ ...sxProps.style, ...style, ...(resolvedWidth ? { width: resolvedWidth } : {}) }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
-        {...props}
       />
     );
   }
@@ -501,11 +515,11 @@ function Input({
         data-size={resolvedSize}
         disabled={disabled}
         size={htmlSize}
+        {...props}
         onChange={handleInputChange}
         {...inputSxProps}
         style={{ ...inputSxProps.style, ...style }}
         className={mergedInputClass}
-        {...props}
       />
 
       {suffixButton ? (
@@ -516,20 +530,22 @@ function Input({
           {suffixButton}
         </div>
       ) : showClear ? (
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon-xs"
           data-slot="input-clear"
           aria-label="Clear input"
           onClick={handleClear}
-          tabIndex={-1}
-          {...stylex.props(
+          sx={[
+            unstyledButtonStyles.reset,
             styles.addonContainer,
             styles.clearButton,
             iconGlyphStyles[resolvedIconSize],
-          )}
+          ]}
         >
           <Icons.Close />
-        </button>
+        </Button>
       ) : resolvedSuffixIcon ? (
         <span
           data-slot="input-suffix-icon"

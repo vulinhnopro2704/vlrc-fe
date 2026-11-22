@@ -87,7 +87,7 @@ This automatically establishes native CSS cascade layers in the correct order:
 - **Modern `srOnly` / Visually Hidden Standard**:
   - ALWAYS use `clipPath: 'inset(50%)'` for `srOnly` styles. NEVER use deprecated `clip: 'rect(0, 0, 0, 0)'`.
 - **Roving Keyboard Navigation Standard**:
-  - Composite keyboard navigation (tabs, segmented controls, steppers) MUST use the reusable roving index helper `getNextRovingIndex(current, total, direction, loop)` from `packages/components/src/utils.ts`.
+  - Composite keyboard navigation (tabs, segmented controls, steppers) MUST use the reusable roving index helper `getNextRovingIndex(key, current, total, options)` from `packages/components/src/utils.ts`.
 
 ### 4. Zero Magic Values Contract (Zero Hardcoded CSS / Numbers / Colors)
 

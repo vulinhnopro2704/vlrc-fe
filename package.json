@@ -16,7 +16,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm build:packages",
-    "build:packages": "pnpm --filter @vlrc-fe/components build && pnpm --filter @vlrc-fe/hooks build && pnpm --filter @vlrc-fe/editor build",
+    "build:packages": "pnpm -r --filter \"./packages/*\" build",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "pnpm -r exec tsc --noEmit",

@@ -60,7 +60,7 @@ exports[`Avatar > UI > should match snapshot for AvatarGroup with max overflow 1
       data-size="md"
       data-slot="popover-trigger"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/utils.ts:14; @vlrc-fe/components:src/ui/avatar.tsx:123"
+      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/utils.ts:32; @vlrc-fe/components:src/ui/avatar.tsx:123"
       data-variant="ghost"
       type="button"
     >

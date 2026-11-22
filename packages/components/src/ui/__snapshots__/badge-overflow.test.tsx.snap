@@ -73,7 +73,7 @@ exports[`BadgeOverflow > UI > should match snapshot with default max of 3 items 
       data-size="md"
       data-slot="badge-overflow-trigger"
       data-state="closed"
-      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/utils.ts:14"
+      data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:102; @vlrc-fe/components:src/ui/button.tsx:175; @vlrc-fe/components:src/utils.ts:32"
       data-variant="ghost"
       type="button"
     >

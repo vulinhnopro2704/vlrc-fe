@@ -27,6 +27,7 @@ export default defineConfig({
         '../components/src/theme/tokens.stylex.ts',
       ),
       '@vlrc-fe/components/Icons': resolve(import.meta.dirname, '../components/src/Icons/index.ts'),
+      '@vlrc-fe/components/utils': resolve(import.meta.dirname, '../components/src/utils.ts'),
       '@vlrc-fe/components': resolve(import.meta.dirname, '../components/src/index.ts'),
     },
   },

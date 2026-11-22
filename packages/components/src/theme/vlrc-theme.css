@@ -43,10 +43,20 @@
 
     --color-border-default: var(--border);
     --color-border-muted: var(--input);
+    --color-border-subtle: #f1f5f9;
     --color-focus-ring: var(--ring);
     --focus-ring-color: var(--ring);
     --focus-ring-width: 2px;
     --focus-ring-offset: 2px;
+
+    /* Tag Category Colors */
+    --tag-geekblue-bg: #eff6ff;
+    --tag-geekblue-border: #bfdbfe;
+    --tag-geekblue-fg: #3b82f6;
+
+    --tag-success-bg: #f0fdf4;
+    --tag-success-border: #bbf7d0;
+    --tag-success-fg: #16a34a;
 
     /* Astryx Core Semantic Colors */
     --color-accent: var(--primary);
@@ -246,8 +256,18 @@
     --destructive: #f87171;
     --destructive-foreground: #0f172a;
     --border: #1e293b;
+    --color-border-subtle: #1e293b;
     --input: #334155;
     --ring: #60a5fa;
+
+    /* Tag Category Colors (Dark) */
+    --tag-geekblue-bg: rgba(59, 130, 246, 0.15);
+    --tag-geekblue-border: rgba(59, 130, 246, 0.3);
+    --tag-geekblue-fg: #60a5fa;
+
+    --tag-success-bg: rgba(22, 163, 74, 0.15);
+    --tag-success-border: rgba(22, 163, 74, 0.3);
+    --tag-success-fg: #4ade80;
 
     /* Astryx Dark Semantic Overrides */
     --color-surface-default: #090d16;

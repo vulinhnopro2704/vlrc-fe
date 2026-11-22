@@ -158,12 +158,10 @@ This guide documents recurring code smells, anti-patterns, and strict review sta
   ```tsx
   import { getNextRovingIndex } from '../../utils';
 
-  const nextIndex = getNextRovingIndex(
-    currentIndex,
-    totalCount,
-    event.key === 'ArrowLeft' ? 'prev' : 'next',
-    true, // loop
-  );
+  const nextIndex = getNextRovingIndex(event.key, currentIndex, totalCount, {
+    orientation: 'horizontal',
+    loop: true,
+  });
   ```
 
 ---

@@ -80,12 +80,12 @@ describe('Design System Conventions & Anti-Pattern Prevention', () => {
     ).toHaveLength(0);
   });
 
-  it('should not use <span role="button"> or raw <button> for interactive controls', () => {
+  it('should not use <span role="button"> for interactive controls', () => {
     const violations: string[] = [];
-    const spanButtonPattern = /<span\b[^>]*\brole=["']button["']/g;
 
     for (const file of sourceFiles) {
       const content = readFileSync(file, 'utf-8');
+      const spanButtonPattern = /<span\b[^>]*\brole=["']button["']/;
       if (spanButtonPattern.test(content)) {
         violations.push(file);
       }
@@ -99,10 +99,10 @@ describe('Design System Conventions & Anti-Pattern Prevention', () => {
 
   it('should use modern clipPath for visually hidden srOnly styles (no deprecated rect clipping)', () => {
     const violations: string[] = [];
-    const deprecatedClipPattern = /rect\(0,\s*0,\s*0,\s*0\)/g;
 
     for (const file of sourceFiles) {
       const content = readFileSync(file, 'utf-8');
+      const deprecatedClipPattern = /rect\(0,\s*0,\s*0,\s*0\)/;
       if (deprecatedClipPattern.test(content)) {
         violations.push(file);
       }

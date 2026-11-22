@@ -1,23 +1,9 @@
-import type { ControllerRenderProps, FieldPath, FieldValues } from 'react-hook-form';
-import * as stylex from '@stylexjs/stylex';
-import { colors } from '../../theme/tokens.stylex';
-
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../ui/form';
+import type { FieldPath, FieldValues } from 'react-hook-form';
+import { FormBase } from '../Form';
 import { RangeDatePicker } from './RangeDatePicker';
 import { SingleDatePicker } from './SingleDatePicker';
 import type { FormDatePickerProps } from './types';
 import { useFormDatePicker } from './useFormDatePicker';
-
-const styles = stylex.create({
-  formItem: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  requiredAsterisk: {
-    color: colors.destructive,
-    marginLeft: '0.25rem',
-  },
-});
 
 function FormDatePicker<TFieldValues extends FieldValues>(
   props: FormDatePickerProps<TFieldValues>,
@@ -40,7 +26,6 @@ function FormDatePicker<TFieldValues extends FieldValues>(
     onChangeDate,
     onChangeRange,
     rules = {},
-    hideErrorMessage = false,
     suffixIcon,
     className,
     disabledDate,
@@ -51,92 +36,91 @@ function FormDatePicker<TFieldValues extends FieldValues>(
     startMonth,
     endMonth,
     required,
+    description,
+    controlFirst,
+    horizontal,
   } = props;
 
   const resolvedRules = required ? { required: true, ...rules } : rules;
 
-  const { dateFormat, isRequired, processedRules, handleRangeChange, handleSingleChange } =
-    useFormDatePicker({
-      pickerType,
-      showTime,
-      dateFormat: customFormat,
-      rules: resolvedRules,
-      onChangeDate,
-      onChangeRange,
-    });
-
-  const renderRangePicker = (
-    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
-  ) => (
-    <RangeDatePicker
-      value={field.value || [undefined, undefined]}
-      onChange={(dates) => handleRangeChange(field, dates)}
-      placeholder={placeholder}
-      dateFormat={dateFormat}
-      showTime={showTime}
-      size={size}
-      status={status}
-      width={width}
-      disabled={disabled}
-      allowClear={allowClear}
-      hideValue={hideValue}
-      suffixIcon={suffixIcon}
-      className={className}
-      disabledDate={disabledDate}
-      locale={locale}
-      numberOfMonths={numberOfMonths}
-      closeOnSelect={closeOnSelect}
-      startMonth={startMonth}
-      endMonth={endMonth}
-    />
-  );
-
-  const renderSinglePicker = (
-    field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
-  ) => (
-    <SingleDatePicker
-      value={field.value}
-      onChange={(date) => handleSingleChange(field, date)}
-      placeholder={placeholder}
-      pickerType={pickerType}
-      dateFormat={dateFormat}
-      showTime={showTime}
-      size={size}
-      status={status}
-      width={width}
-      disabled={disabled}
-      allowClear={allowClear}
-      hideValue={hideValue}
-      suffixIcon={suffixIcon}
-      className={className}
-      disabledDate={disabledDate}
-      disabledTime={disabledTime}
-      locale={locale}
-      startMonth={startMonth}
-      endMonth={endMonth}
-    />
-  );
+  const { dateFormat, processedRules, handleRangeChange, handleSingleChange } = useFormDatePicker({
+    pickerType,
+    showTime,
+    dateFormat: customFormat,
+    rules: resolvedRules,
+    onChangeDate,
+    onChangeRange,
+  });
 
   return (
-    <FormField
+    <FormBase<TFieldValues, FieldPath<TFieldValues>>
       control={control}
       name={name}
+      label={label}
+      description={description}
+      controlFirst={controlFirst}
+      horizontal={horizontal}
       rules={processedRules}
-      render={({ field }) => (
-        <FormItem sx={styles.formItem}>
-          {label && (
-            <FormLabel>
-              {label}
-              {isRequired && <span {...stylex.props(styles.requiredAsterisk)}>*</span>}
-            </FormLabel>
-          )}
-          <FormControl>
-            {isRangePicker ? renderRangePicker(field) : renderSinglePicker(field)}
-          </FormControl>
-          {!hideErrorMessage && <FormMessage />}
-        </FormItem>
-      )}
-    />
+      className={className}
+    >
+      {(field) => {
+        const isInvalid = Boolean(field['aria-invalid']);
+        const effectiveStatus = isInvalid ? 'error' : status;
+        const describedBy = `${field.id}-description`;
+
+        return isRangePicker ? (
+          <RangeDatePicker
+            id={field.id}
+            aria-describedby={description ? describedBy : undefined}
+            aria-invalid={field['aria-invalid']}
+            value={field.value || [undefined, undefined]}
+            onChange={(dates) => handleRangeChange(field, dates)}
+            placeholder={placeholder}
+            dateFormat={dateFormat}
+            showTime={showTime}
+            size={size}
+            status={effectiveStatus}
+            width={width}
+            disabled={disabled}
+            allowClear={allowClear}
+            hideValue={hideValue}
+            suffixIcon={suffixIcon}
+            className={className}
+            disabledDate={disabledDate}
+            locale={locale}
+            numberOfMonths={numberOfMonths}
+            closeOnSelect={closeOnSelect}
+            startMonth={startMonth}
+            endMonth={endMonth}
+          />
+        ) : (
+          <SingleDatePicker
+            id={field.id}
+            aria-describedby={description ? describedBy : undefined}
+            aria-invalid={field['aria-invalid']}
+            value={field.value}
+            onChange={(date) => handleSingleChange(field, date)}
+            placeholder={placeholder}
+            pickerType={pickerType}
+            dateFormat={dateFormat}
+            showTime={showTime}
+            size={size}
+            status={effectiveStatus}
+            width={width}
+            disabled={disabled}
+            allowClear={allowClear}
+            hideValue={hideValue}
+            suffixIcon={suffixIcon}
+            className={className}
+            disabledDate={disabledDate}
+            disabledTime={disabledTime}
+            locale={locale}
+            startMonth={startMonth}
+            endMonth={endMonth}
+          />
+        );
+      }}
+    </FormBase>
   );
 }
 

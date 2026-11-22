@@ -73,7 +73,7 @@
    - NEVER use raw `<button>`, `<span role="button">`, or `<div role="button">`. ALWAYS use `<Button variant="...">` from `@vlrc-fe/components`.
    - **Zero DOM Nesting Violations**: NEVER nest `<button>` inside `<button>`. For complex composite triggers (such as DatePicker or Select with a clear button), use `<Flex>` as the trigger wrapper and render the trigger `<Button>` and clear `<Button>` as siblings.
    - **Modern `srOnly` / Visually Hidden**: Always use `clipPath: 'inset(50%)'`. NEVER use deprecated `clip: 'rect(0, 0, 0, 0)'`.
-   - **Roving Keyboard Navigation**: Always use `getNextRovingIndex(current, total, direction, loop)` from `packages/components/src/utils.ts` for tabs, segmented controls, and steppers.
+   - **Roving Keyboard Navigation**: Always use `getNextRovingIndex(key, currentIndex, totalCount, options)` from `packages/components/src/utils.ts` for tabs, segmented controls, and steppers.
 
 ---
 

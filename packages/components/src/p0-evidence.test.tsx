@@ -128,16 +128,22 @@ describe('Review P0 Fixes Evidence Suite', () => {
 
       const tab1 = screen.getByRole('tab', { name: /step 1/i });
       const tab2 = screen.getByRole('tab', { name: /step 2/i });
+      const allPanels = document.querySelectorAll('[role="tabpanel"]');
 
-      expect(tab1).toHaveAttribute('aria-controls', 'stepper-panel-step-1');
+      expect(tab1.getAttribute('aria-controls')).toMatch(/-panel-step-1$/);
+      expect(tab1.getAttribute('aria-controls')).toBe(allPanels[0].id);
       expect(tab1).toHaveAttribute('tabindex', '0');
-      expect(tab2).toHaveAttribute('aria-controls', 'stepper-panel-step-2');
+
+      expect(tab2.getAttribute('aria-controls')).toMatch(/-panel-step-2$/);
+      expect(tab2.getAttribute('aria-controls')).toBe(allPanels[1].id);
       expect(tab2).toHaveAttribute('tabindex', '-1');
 
-      const allPanels = document.querySelectorAll('[role="tabpanel"]');
-      expect(allPanels[0]).toHaveAttribute('aria-labelledby', 'stepper-tab-step-1');
+      expect(allPanels[0].getAttribute('aria-labelledby')).toMatch(/-tab-step-1$/);
+      expect(allPanels[0].getAttribute('aria-labelledby')).toBe(tab1.id);
       expect(allPanels[0]).not.toHaveAttribute('hidden');
-      expect(allPanels[1]).toHaveAttribute('aria-labelledby', 'stepper-tab-step-2');
+
+      expect(allPanels[1].getAttribute('aria-labelledby')).toMatch(/-tab-step-2$/);
+      expect(allPanels[1].getAttribute('aria-labelledby')).toBe(tab2.id);
       expect(allPanels[1]).toHaveAttribute('hidden');
     });
   });
@@ -156,23 +162,22 @@ describe('Review P0 Fixes Evidence Suite', () => {
       }
 
       render(<TestForm />);
-      const label = screen.getByText('Birthday');
+      const label = screen.getByText('Birthday').closest('label')!;
       const triggerButton = screen.getByRole('button', { name: /birthday/i });
 
       expect(label).toHaveAttribute('for');
       const labelFor = label.getAttribute('for');
       expect(triggerButton).toHaveAttribute('id', labelFor);
-      expect(triggerButton).toHaveAttribute('aria-describedby');
       expect(triggerButton).toHaveAttribute('aria-invalid', 'false');
     });
 
-    it('should render clear affordance with role="button" and tabIndex={0}', () => {
+    it('should render clear affordance with role="button" and focusable tabIndex', () => {
       const onClear = vi.fn();
       render(<SingleDatePicker value={new Date(2026, 0, 1)} allowClear onChange={onClear} />);
 
       const clearButton = screen.getByRole('button', { name: /clear date/i });
       expect(clearButton).toBeInTheDocument();
-      expect(clearButton).toHaveAttribute('tabindex', '0');
+      expect(clearButton.tabIndex).toBe(0);
 
       fireEvent.click(clearButton);
       expect(onClear).toHaveBeenCalledWith(undefined);

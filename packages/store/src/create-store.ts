@@ -1,6 +1,15 @@
 import { create, type StateCreator } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 
+const noopStorage: Storage = {
+  getItem: () => null,
+  setItem: () => undefined,
+  removeItem: () => undefined,
+  clear: () => undefined,
+  key: () => null,
+  length: 0,
+};
+
 export interface CreateStoreOptions<T> {
   name?: string;
   persist?: (keyof T)[];
@@ -18,16 +27,18 @@ export const createStore = <T extends object>(options?: CreateStoreOptions<T>) =
           storage: createJSONStorage(
             () =>
               options.storage ||
-              (typeof window !== 'undefined' ? window.localStorage : ({} as Storage)),
+              (typeof window !== 'undefined' ? window.localStorage : noopStorage),
           ),
           partialize: (state) => {
             const persistedEntries = options.persist!.map((key) => [key, state[key]]);
             return Object.fromEntries(persistedEntries) as Partial<T>;
           },
-        }) as any;
+        }) as unknown as StateCreator<T>;
       }
 
-      storeCreator = devtools(storeCreator, { name: options.name }) as any;
+      storeCreator = devtools(storeCreator, {
+        name: options.name,
+      }) as unknown as StateCreator<T>;
     }
 
     return create<T>()(storeCreator);

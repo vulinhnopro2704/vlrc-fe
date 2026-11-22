@@ -22,6 +22,7 @@ import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { Icons } from '../Icons';
 import { Text } from '../Typography';
+import { Button } from './button';
 import { formatFileSize, type UploadHandler } from './file-upload-adapters';
 
 export * from './file-upload-adapters';
@@ -1473,21 +1474,9 @@ function FileUploader({
             </Text>
           </div>
           <FileUploadTrigger asChild>
-            <button
-              type="button"
-              style={{
-                fontSize: '0.75rem',
-                padding: '0.375rem 0.75rem',
-                borderRadius: '0.375rem',
-                border: '1px solid var(--border)',
-                backgroundColor: 'var(--background)',
-                color: 'var(--foreground)',
-                cursor: 'pointer',
-                fontWeight: 500,
-              }}
-            >
+            <Button variant="outline" size="sm">
               Browse
-            </button>
+            </Button>
           </FileUploadTrigger>
         </FileUploadDropzone>
 
@@ -1538,10 +1527,10 @@ function FileUploader({
       {showClear && activeFiles.length > 0 && (
         <div {...stylex.props(styles.clearBtnRow)}>
           <FileUploadClear asChild>
-            <button type="button" {...stylex.props(styles.clearBtn)}>
+            <Button variant="ghost" size="xs" sx={styles.clearBtn}>
               <Icons.Trash2 size={13} />
               Clear all
-            </button>
+            </Button>
           </FileUploadClear>
         </div>
       )}

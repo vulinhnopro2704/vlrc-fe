@@ -8,6 +8,7 @@ import { Box, Flex } from '../../layout';
 import { Button } from '../../ui/button';
 import { Text } from '../../Typography';
 import { PopoverTrigger } from '../../ui/popover';
+import { unstyledButtonStyles } from '../../utils';
 
 export const datePickerStyles = stylex.create({
   wrapper: {
@@ -44,16 +45,8 @@ export const datePickerStyles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    padding: 0,
-    outline: 'none',
     textAlign: 'left',
     height: '100%',
-  },
-  triggerButton: {
-    justifyContent: 'space-between',
-    fontWeight: 400,
   },
   statusError: {
     borderColor: colors.destructive,
@@ -71,29 +64,15 @@ export const datePickerStyles = stylex.create({
     gap: '0.25rem',
   },
   clearButton: {
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    padding: 0,
-    margin: 0,
-    cursor: 'pointer',
     color: colors.mutedForeground,
-    lineHeight: 1,
-    outline: 'none',
     borderRadius: radius.sm,
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
     ':hover': {
       color: colors.destructive,
+      backgroundColor: 'transparent',
     },
     ':focus-visible': {
       boxShadow: shadow.ringFocus,
     },
-  },
-  icon: {
-    width: '1rem',
-    height: '1rem',
-    color: colors.mutedForeground,
   },
 });
 
@@ -167,7 +146,7 @@ export function DatePickerTriggerInput({
           variant="ghost"
           size={resolvedSize}
           disabled={disabled}
-          sx={datePickerStyles.triggerInnerButton}
+          sx={[unstyledButtonStyles.reset, datePickerStyles.triggerInnerButton]}
         >
           {hasValue && displayValue ? (
             <Text size={typographySize} weight="normal">
@@ -187,11 +166,10 @@ export function DatePickerTriggerInput({
             data-slot="clear-button"
             variant="ghost"
             size="icon-xs"
-            tabIndex={0}
             aria-label="Clear date"
             disabled={disabled}
             onClick={onClear}
-            sx={datePickerStyles.clearButton}
+            sx={[unstyledButtonStyles.reset, datePickerStyles.clearButton]}
           >
             <Text size={typographySize}>×</Text>
           </Button>

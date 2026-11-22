@@ -3,12 +3,15 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useId,
   useMemo,
+  useRef,
   useState,
   type ComponentProps,
   type KeyboardEvent as ReactKeyboardEvent,
   type MouseEvent as ReactMouseEvent,
   type ReactNode,
+  type RefObject,
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
@@ -21,6 +24,8 @@ export type StepperOrientation = 'horizontal' | 'vertical';
 export type StepStatus = 'inactive' | 'active' | 'completed';
 
 interface StepperContextValue {
+  instanceId: string;
+  listRef: RefObject<HTMLDivElement | null>;
   value: string;
   setValue: (nextValue: string) => Promise<boolean>;
   orientation: StepperOrientation;
@@ -240,6 +245,8 @@ function Stepper({
   children,
   ...props
 }: StepperProps) {
+  const instanceId = useId();
+  const listRef = useRef<HTMLDivElement | null>(null);
   const [internalValue, setInternalValue] = useState<string>(defaultValue);
   const [stepKeys, setStepKeys] = useState<string[]>([]);
 
@@ -280,6 +287,8 @@ function Stepper({
 
   const contextValue = useMemo<StepperContextValue>(
     () => ({
+      instanceId,
+      listRef,
       value: currentValue,
       setValue,
       orientation,
@@ -288,7 +297,16 @@ function Stepper({
       registerStep,
       unregisterStep,
     }),
-    [currentValue, setValue, orientation, linear, stepKeys, registerStep, unregisterStep],
+    [
+      instanceId,
+      currentValue,
+      setValue,
+      orientation,
+      linear,
+      stepKeys,
+      registerStep,
+      unregisterStep,
+    ],
   );
 
   const orientationStyle = orientation === 'vertical' ? styles.rootVertical : styles.rootHorizontal;
@@ -314,12 +332,13 @@ export interface StepperListProps extends ComponentProps<'div'> {
 }
 
 function StepperList({ className, sx, children, ...props }: StepperListProps) {
-  const { orientation } = useStepperContext('StepperList');
+  const { orientation, listRef } = useStepperContext('StepperList');
   const orientationStyle = orientation === 'vertical' ? styles.listVertical : styles.listHorizontal;
   const sxProps = stylex.props(styles.list, orientationStyle, sx);
 
   return (
     <Box
+      ref={listRef as any}
       role="tablist"
       aria-orientation={orientation}
       data-slot="stepper-list"
@@ -418,7 +437,8 @@ function StepperTrigger({
   children,
   ...props
 }: StepperTriggerProps) {
-  const { setValue, stepKeys, orientation } = useStepperContext('StepperTrigger');
+  const { setValue, stepKeys, orientation, instanceId, listRef } =
+    useStepperContext('StepperTrigger');
   const { value, status, disabled, stepIndex } = useStepperItemContext('StepperTrigger');
 
   const handleClick = async (e: ReactMouseEvent<HTMLButtonElement>) => {
@@ -440,7 +460,9 @@ function StepperTrigger({
       e.preventDefault();
       const nextKey = stepKeys[targetIndex];
       await setValue(nextKey);
-      const nextButton = document.getElementById(`stepper-tab-${nextKey}`);
+      const nextButton = listRef.current?.querySelector<HTMLButtonElement>(
+        `[id="${instanceId}-tab-${nextKey}"]`,
+      );
       nextButton?.focus();
     }
   };
@@ -452,8 +474,8 @@ function StepperTrigger({
       variant="ghost"
       type="button"
       role="tab"
-      id={props.id ?? `stepper-tab-${value}`}
-      aria-controls={`stepper-panel-${value}`}
+      id={props.id ?? `${instanceId}-tab-${value}`}
+      aria-controls={`${instanceId}-panel-${value}`}
       aria-selected={status === 'active'}
       tabIndex={status === 'active' ? 0 : -1}
       data-slot="stepper-trigger"
@@ -615,7 +637,7 @@ function StepperContent({
   children,
   ...props
 }: StepperContentProps) {
-  const { value } = useStepperContext('StepperContent');
+  const { value, instanceId } = useStepperContext('StepperContent');
   const isHidden = value !== contentValue;
 
   if (isHidden && !forceMount) {
@@ -627,8 +649,8 @@ function StepperContent({
   return (
     <Box
       role="tabpanel"
-      id={props.id ?? `stepper-panel-${contentValue}`}
-      aria-labelledby={`stepper-tab-${contentValue}`}
+      id={props.id ?? `${instanceId}-panel-${contentValue}`}
+      aria-labelledby={`${instanceId}-tab-${contentValue}`}
       hidden={isHidden}
       data-slot="stepper-content"
       {...sxProps}

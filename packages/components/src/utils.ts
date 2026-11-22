@@ -7,6 +7,24 @@ export type StyleXStyles = stylex.StyleXStyles;
 export const cn = (...inputs: ClassValue[]) => clsx(inputs);
 
 /**
+ * Standard visually hidden srOnly styles using modern clipPath inset(50%).
+ * Complies with Astryx accessibility rules (no deprecated rect clipping).
+ */
+export const srOnlyStyles = stylex.create({
+  srOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+  },
+});
+
+/**
  * Reusable reset button styles for interactive wrappers (e.g. Popover/Dropdown trigger buttons)
  * that eliminates browser button chrome and default button padding/height.
  */

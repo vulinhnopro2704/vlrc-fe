@@ -16,6 +16,18 @@ import {
 
 export type CollapsibleLevel = 'default' | 'h1' | 'h2' | 'h3';
 
+export const KNOWN_COLLAPSIBLE_LEVELS = ['default', 'h1', 'h2', 'h3'] as const;
+
+export function sanitizeCollapsibleLevel(level: unknown): CollapsibleLevel {
+  if (
+    typeof level === 'string' &&
+    (KNOWN_COLLAPSIBLE_LEVELS as readonly string[]).includes(level)
+  ) {
+    return level as CollapsibleLevel;
+  }
+  return 'default';
+}
+
 export type SerializedCollapsibleContainerNode = Spread<
   {
     open: boolean;
@@ -103,7 +115,7 @@ export class CollapsibleContainerNode extends ElementNode {
         return {
           conversion: (element: HTMLElement) => {
             const open = element.hasAttribute('open');
-            const level = (element.getAttribute('data-level') as CollapsibleLevel) || 'default';
+            const level = sanitizeCollapsibleLevel(element.getAttribute('data-level'));
             return { node: $createCollapsibleContainerNode(open, level) };
           },
           priority: 1,
@@ -152,13 +164,19 @@ export class CollapsibleTitleNode extends ElementNode {
     const dom = document.createElement('summary');
     dom.classList.add('lexical-collapsible-title');
     dom.dataset.level = this.__level;
+
+    const chevron = document.createElement('span');
+    chevron.setAttribute('data-collapsible-chevron', '');
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.setAttribute('contenteditable', 'false');
+    dom.appendChild(chevron);
+
     dom.addEventListener('click', (e) => {
-      // Allow toggle only when clicking on the chevron icon area (left edge).
-      // Clicking on the title text lets user edit/select text without collapsing details.
-      const rect = dom.getBoundingClientRect();
-      const chevronWidth = this.__level === 'h1' ? 36 : this.__level === 'h2' ? 32 : 28;
-      const isChevronClick = e.clientX - rect.left < chevronWidth;
+      const target = e.target as HTMLElement | null;
+      const isChevronClick = Boolean(target?.closest('[data-collapsible-chevron]'));
+
       if (!isChevronClick) {
+        // Prevent toggle when clicking on the title text area to edit/select
         e.preventDefault();
         editor.update(() => {
           const titleNode = this.getLatest();
@@ -176,24 +194,8 @@ export class CollapsibleTitleNode extends ElementNode {
           }
         });
         editor.focus();
-      } else {
-        editor.update(() => {
-          const titleNode = this.getLatest();
-          if ($isCollapsibleTitleNode(titleNode)) {
-            const firstChild = titleNode.getFirstChild();
-            if (
-              firstChild &&
-              'select' in firstChild &&
-              typeof (firstChild as ElementNode).select === 'function'
-            ) {
-              (firstChild as ElementNode).select(0, 0);
-            } else {
-              titleNode.select(0, 0);
-            }
-          }
-        });
-        editor.focus();
       }
+      // When chevron is clicked, let the native <details> toggle naturally without focus stealing.
     });
     return dom;
   }
@@ -226,7 +228,7 @@ export class CollapsibleTitleNode extends ElementNode {
       summary: (_domNode: HTMLElement) => {
         return {
           conversion: (element: HTMLElement) => {
-            const level = (element.getAttribute('data-level') as CollapsibleLevel) || 'default';
+            const level = sanitizeCollapsibleLevel(element.getAttribute('data-level'));
             return { node: $createCollapsibleTitleNode(level) };
           },
           priority: 1,
