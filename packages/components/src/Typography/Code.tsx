@@ -99,6 +99,7 @@ export function Code({
   rows,
   lineHeight,
   ellipsis,
+  truncate,
   textDecoration,
   textDecorationLine,
   textDecorationStyle,
@@ -111,6 +112,8 @@ export function Code({
   sx,
   ...props
 }: CodeProps) {
+  if (ellipsis === undefined && truncate) ellipsis = true;
+
   const [copied, setCopied] = useState(false);
 
   const customStyle = resolveCustomTypographyStyle({

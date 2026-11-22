@@ -70,8 +70,10 @@
       "import": "./dist/ui/*.js"
     },
     "./theme": {
-      "types": "./dist/theme/index.d.ts",
-      "import": "./dist/theme/index.js"
+      "types": "./dist/theme/tokens.stylex.d.ts",
+      "import": "./dist/theme/tokens.stylex.js",
+      "require": "./dist/theme/tokens.stylex.cjs",
+      "default": "./dist/theme/tokens.stylex.js"
     },
     "./theme/tokens.stylex": {
       "types": "./dist/theme/tokens.stylex.d.ts",

@@ -201,6 +201,8 @@ function DropdownMenuGroup(props: ComponentProps<typeof DropdownMenuPrimitiveGro
 export interface DropdownMenuItemProps extends ComponentProps<typeof DropdownMenuPrimitiveItem> {
   inset?: boolean;
   variant?: 'default' | 'destructive';
+  /** Shorthand for `variant="destructive"` */
+  destructive?: boolean;
   sx?: stylex.StyleXStyles;
 }
 
@@ -208,12 +210,14 @@ function DropdownMenuItem({
   className,
   inset,
   variant = 'default',
+  destructive,
   sx,
   ...props
 }: DropdownMenuItemProps) {
+  const resolvedVariant = destructive ? 'destructive' : variant;
   const sxProps = stylex.props(
     styles.item,
-    variant === 'destructive' && styles.itemDestructive,
+    resolvedVariant === 'destructive' && styles.itemDestructive,
     inset && styles.itemInset,
     sx,
   );
@@ -221,7 +225,7 @@ function DropdownMenuItem({
     <DropdownMenuPrimitiveItem
       data-slot="dropdown-menu-item"
       data-inset={inset}
-      data-variant={variant}
+      data-variant={resolvedVariant}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}

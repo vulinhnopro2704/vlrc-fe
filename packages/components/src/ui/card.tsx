@@ -1,6 +1,9 @@
 import { type ComponentProps } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
+import { Text } from '../Typography/Text';
+import { Title } from '../Typography/Title';
+import type { TitleLevel, TextType } from '../Typography/types';
 
 export type CardVariant =
   | 'default'
@@ -143,35 +146,53 @@ function CardHeader({
   );
 }
 
-function CardTitle({
-  className,
-  sx,
-  ...props
-}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+export interface CardTitleProps extends ComponentProps<'div'> {
+  /** Heading level (1-6) applied to the title typography. Defaults to 1. */
+  level?: TitleLevel;
+  sx?: stylex.StyleXStyles;
+}
+
+function CardTitle({ className, level = 1, sx, children, ...props }: CardTitleProps) {
   const sxProps = stylex.props(styles.title, sx);
   return (
-    <div
+    <Title
+      as="div"
+      level={level}
       data-slot="card-title"
       {...sxProps}
-      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
-    />
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+    >
+      {children}
+    </Title>
   );
+}
+
+export interface CardDescriptionProps extends ComponentProps<'div'> {
+  /** Semantic text color type ('default', 'secondary', 'muted', ...). */
+  type?: TextType;
+  sx?: stylex.StyleXStyles;
 }
 
 function CardDescription({
   className,
+  type = 'secondary',
   sx,
+  children,
   ...props
-}: ComponentProps<'div'> & { sx?: stylex.StyleXStyles }) {
+}: CardDescriptionProps) {
   const sxProps = stylex.props(styles.description, sx);
   return (
-    <div
+    <Text
+      as="div"
+      type={type}
       data-slot="card-description"
       {...sxProps}
-      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
-    />
+      className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
+    >
+      {children}
+    </Text>
   );
 }
 

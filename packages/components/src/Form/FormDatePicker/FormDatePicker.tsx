@@ -50,14 +50,17 @@ function FormDatePicker<TFieldValues extends FieldValues>(
     closeOnSelect,
     startMonth,
     endMonth,
+    required,
   } = props;
+
+  const resolvedRules = required ? { required: true, ...rules } : rules;
 
   const { dateFormat, isRequired, processedRules, handleRangeChange, handleSingleChange } =
     useFormDatePicker({
       pickerType,
       showTime,
       dateFormat: customFormat,
-      rules,
+      rules: resolvedRules,
       onChangeDate,
       onChangeRange,
     });

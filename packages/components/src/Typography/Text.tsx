@@ -176,6 +176,7 @@ export function Text({
   rows,
   lineHeight,
   ellipsis,
+  truncate,
   tooltip,
   textDecoration,
   textDecorationLine,
@@ -208,6 +209,8 @@ export function Text({
   ...props
 }: TextProps) {
   const [copied, setCopied] = useState(false);
+
+  if (ellipsis === undefined && truncate) ellipsis = true;
 
   let defaultComponent = 'span';
   if (keyboard) defaultComponent = 'kbd';

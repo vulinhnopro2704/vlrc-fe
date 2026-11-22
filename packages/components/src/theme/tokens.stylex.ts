@@ -216,3 +216,38 @@ export const typography = stylex.defineVars({
   headline: 'var(--font-size-headline, 3rem)',
   display: 'var(--font-size-display, 3.75rem)',
 });
+
+/**
+ * Unified enterprise tokens contract for ProjectHub and VLRC applications.
+ * Directly resolves via StyleX compiler as valid compile-time variables.
+ */
+export const tokens = stylex.defineVars({
+  colorBorder: 'var(--border, #e2e8f0)',
+  colorSurface: 'var(--card, #ffffff)',
+  colorSurfaceSecondary: 'var(--secondary, #f1f5f9)',
+  colorSurfaceHover: 'var(--color-surface-hover, #e2e8f0)',
+  colorText: 'var(--foreground, #0f172a)',
+  colorTextSecondary: 'var(--muted-foreground, #64748b)',
+  colorPrimary: 'var(--primary, #3b82f6)',
+  colorError: 'var(--destructive, #ef4444)',
+  colorSuccess: 'var(--color-success, #16a34a)',
+  colorWarning: 'var(--color-warning, #eab308)',
+  colorBgLayout: 'var(--muted, #f1f5f9)',
+  colorBgSubtle: 'var(--secondary, #f1f5f9)',
+
+  spacingXS: 'var(--spacing-xs, 0.25rem)',
+  spacingSM: 'var(--spacing-sm, 0.5rem)',
+  spacingMD: 'var(--spacing-md, 1rem)',
+  spacingLG: 'var(--spacing-lg, 1.5rem)',
+  spacingXL: 'var(--spacing-xl, 2rem)',
+
+  radiusSM: 'var(--radius-sm, 2px)',
+  radiusMD: 'var(--radius-md, 6px)',
+  radiusLG: 'var(--radius-lg, 8px)',
+  radiusFull: 'var(--radius-full, 9999px)',
+});
+
+/**
+ * Backward compatibility alias for theme tokens.
+ */
+export const theme = tokens;

@@ -21,9 +21,11 @@ export function FormSelect<
   props: FormMultiSelectProps<TFieldValues, T> | FormSingleSelectProps<TFieldValues, T>,
 ): React.ReactElement {
   const { baseSelectProps, isMulti, createChangeHandlers } = useFormSelect(props);
+  const { required, rules, ...restProps } = props;
+  const mergedRules = required ? { required: true, ...rules } : rules;
 
   return (
-    <FormBase<TFieldValues, FieldPath<TFieldValues>> {...props}>
+    <FormBase<TFieldValues, FieldPath<TFieldValues>> {...restProps} rules={mergedRules}>
       {(field) => {
         const { onChangeMulti, onChangeSingle } = createChangeHandlers(field);
         return isMulti ? (

@@ -1,4 +1,4 @@
-import { createContext, useContext, type ComponentProps } from 'react';
+import { createContext, useContext, type ComponentProps, type ReactNode } from 'react';
 import {
   Content as TabsPrimitiveContent,
   List as TabsPrimitiveList,
@@ -8,6 +8,19 @@ import {
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius } from '../theme/tokens.stylex';
 import type { ComponentSize } from '../theme/types';
+
+export type TabsVariant = 'default' | 'line';
+
+export type TabItem = {
+  key: string;
+  label?: ReactNode;
+  title?: ReactNode;
+  icon?: ReactNode;
+  disabled?: boolean;
+  children?: ReactNode;
+  className?: string;
+  sx?: stylex.StyleXStyles;
+};
 
 const styles = stylex.create({
   root: {
@@ -26,6 +39,17 @@ const styles = stylex.create({
     boxSizing: 'border-box',
     width: 'fit-content',
     gap: '2px',
+  },
+  listLine: {
+    backgroundColor: 'transparent',
+    borderRadius: 0,
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: colors.border,
+    padding: 0,
+    gap: '1rem',
+    width: '100%',
+    justifyContent: 'flex-start',
   },
 
   // 7-tier List Sizing
@@ -80,7 +104,7 @@ const styles = stylex.create({
     fontWeight: 500,
     lineHeight: 1,
     height: '100%',
-    transitionProperty: 'background-color, color, box-shadow',
+    transitionProperty: 'background-color, color, box-shadow, border-color',
     transitionDuration: '150ms',
     boxSizing: 'border-box',
     ':hover': {
@@ -94,6 +118,14 @@ const styles = stylex.create({
       pointerEvents: 'none',
       opacity: 0.5,
     },
+  },
+  triggerLine: {
+    borderRadius: 0,
+    borderBottomWidth: 2,
+    borderBottomStyle: 'solid',
+    borderBottomColor: 'transparent',
+    paddingInline: '0.5rem',
+    height: '100%',
   },
 
   // 7-tier Trigger Sizing
@@ -171,44 +203,136 @@ const triggerSizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
   xxl: styles.triggerXxl,
 };
 
-const TabsContext = createContext<{ size: ComponentSize }>({ size: 'md' });
+const TabsContext = createContext<{ size: ComponentSize; variant: TabsVariant }>({
+  size: 'md',
+  variant: 'default',
+});
 
-export type TabsProps = ComponentProps<typeof TabsPrimitiveRoot> & {
+export type TabsProps = Omit<ComponentProps<typeof TabsPrimitiveRoot>, 'onChange'> & {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
+  /** Declarative array of tab items */
+  items?: TabItem[];
+  /** Alias for value (controlled active tab key) */
+  activeKey?: string;
+  /** Alias for defaultValue (uncontrolled default active tab key) */
+  defaultActiveKey?: string;
+  /** Callback fired when active tab changes */
+  onChange?: (activeKey: string) => void;
+  /** Visual tab style variant ('default' | 'line') */
+  variant?: TabsVariant;
+  /** Custom styles applied to internal TabsList when using items */
+  listSx?: stylex.StyleXStyles;
+  /** Custom class applied to internal TabsList when using items */
+  listClassName?: string;
+  /** Custom styles applied to internal TabsContent when using items */
+  contentSx?: stylex.StyleXStyles;
 };
 
-function Tabs({ size = 'md', className, sx, ...props }: TabsProps) {
+function Tabs({
+  size = 'md',
+  variant = 'default',
+  className,
+  sx,
+  items,
+  activeKey,
+  defaultActiveKey,
+  onChange,
+  value,
+  defaultValue,
+  onValueChange,
+  listSx,
+  listClassName,
+  contentSx,
+  children,
+  ...props
+}: TabsProps) {
+  const resolvedValue = activeKey !== undefined ? activeKey : value;
+  const resolvedDefaultValue = defaultActiveKey !== undefined ? defaultActiveKey : defaultValue;
+  const handleValueChange = (newKey: string) => {
+    onValueChange?.(newKey);
+    onChange?.(newKey);
+  };
+
   const sxProps = stylex.props(styles.root, sx);
+
   return (
-    <TabsContext.Provider value={{ size }}>
+    <TabsContext.Provider value={{ size, variant }}>
       <TabsPrimitiveRoot
         data-slot="tabs"
         data-size={size}
+        data-variant={variant}
+        value={resolvedValue}
+        defaultValue={resolvedDefaultValue}
+        onValueChange={handleValueChange}
         {...sxProps}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
-      />
+      >
+        {items ? (
+          <>
+            <TabsList className={listClassName} sx={listSx} variant={variant} size={size}>
+              {items.map((item) => {
+                const label = item.label ?? item.title;
+                return (
+                  <TabsTrigger
+                    key={item.key}
+                    value={item.key}
+                    disabled={item.disabled}
+                    variant={variant}
+                    size={size}
+                    className={item.className}
+                    sx={item.sx}
+                  >
+                    {item.icon}
+                    {label}
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+            {items.map((item) =>
+              item.children !== undefined && item.children !== null ? (
+                <TabsContent key={item.key} value={item.key} sx={contentSx}>
+                  {item.children}
+                </TabsContent>
+              ) : null,
+            )}
+            {children}
+          </>
+        ) : (
+          children
+        )}
+      </TabsPrimitiveRoot>
     </TabsContext.Provider>
   );
 }
 
 export type TabsListProps = ComponentProps<typeof TabsPrimitiveList> & {
   size?: ComponentSize;
+  variant?: TabsVariant;
   sx?: stylex.StyleXStyles;
 };
 
-function TabsList({ size: propSize, className, sx, ...props }: TabsListProps) {
+function TabsList({
+  size: propSize,
+  variant: propVariant,
+  className,
+  sx,
+  ...props
+}: TabsListProps) {
   const context = useContext(TabsContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
+  const resolvedVariant = propVariant ?? context.variant ?? 'default';
   const sizeStyle = listSizeStyles[resolvedSize] ?? styles.listMd;
-  const sxProps = stylex.props(styles.list, sizeStyle, sx);
+  const variantStyle = resolvedVariant === 'line' ? styles.listLine : null;
+  const sxProps = stylex.props(styles.list, sizeStyle, variantStyle, sx);
 
   return (
     <TabsPrimitiveList
       data-slot="tabs-list"
       data-size={resolvedSize}
+      data-variant={resolvedVariant}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
@@ -218,23 +342,36 @@ function TabsList({ size: propSize, className, sx, ...props }: TabsListProps) {
 
 export type TabsTriggerProps = ComponentProps<typeof TabsPrimitiveTrigger> & {
   size?: ComponentSize;
+  variant?: TabsVariant;
   sx?: stylex.StyleXStyles;
 };
 
-function TabsTrigger({ size: propSize, className, sx, ...props }: TabsTriggerProps) {
+function TabsTrigger({
+  size: propSize,
+  variant: propVariant,
+  className,
+  sx,
+  children,
+  ...props
+}: TabsTriggerProps) {
   const context = useContext(TabsContext);
   const resolvedSize = propSize ?? context.size ?? 'md';
+  const resolvedVariant = propVariant ?? context.variant ?? 'default';
   const sizeStyle = triggerSizeStyles[resolvedSize] ?? styles.triggerMd;
-  const sxProps = stylex.props(styles.trigger, sizeStyle, sx);
+  const variantStyle = resolvedVariant === 'line' ? styles.triggerLine : null;
+  const sxProps = stylex.props(styles.trigger, sizeStyle, variantStyle, sx);
 
   return (
     <TabsPrimitiveTrigger
       data-slot="tabs-trigger"
       data-size={resolvedSize}
+      data-variant={resolvedVariant}
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
-    />
+    >
+      {children}
+    </TabsPrimitiveTrigger>
   );
 }
 

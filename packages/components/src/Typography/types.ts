@@ -159,6 +159,8 @@ export interface BaseTypographyProps extends React.HTMLAttributes<HTMLElement> {
   letterSpacing?: LetterSpacingValue;
   /** Truncate text or clamp to specified number of rows, optionally configuring tooltip */
   ellipsis?: boolean | { rows?: number; tooltip?: TypographyTooltip };
+  /** Single-line truncation shorthand (equivalent to `ellipsis`) */
+  truncate?: boolean;
   /** Tooltip to display on hover, showing the full text or custom content */
   tooltip?: TypographyTooltip;
   /** Complete text decoration shorthand or custom value with typed autocomplete */

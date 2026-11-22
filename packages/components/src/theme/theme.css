@@ -51,6 +51,14 @@
     0 0 0 1px rgba(0, 0, 0, 0.04) !important;
 }
 
+[data-variant='line'] [data-slot='tabs-trigger'][data-state='active'],
+[data-slot='tabs-trigger'][data-variant='line'][data-state='active'] {
+  background-color: transparent !important;
+  color: var(--primary, #2563eb) !important;
+  border-bottom-color: var(--primary, #2563eb) !important;
+  box-shadow: none !important;
+}
+
 .dark [data-slot='tabs-trigger'][data-state='active'],
 [data-theme='dark'] [data-slot='tabs-trigger'][data-state='active'] {
   background-color: var(--card, #111827) !important;

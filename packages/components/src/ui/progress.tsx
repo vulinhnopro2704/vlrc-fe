@@ -24,11 +24,22 @@ const styles = stylex.create({
 export interface ProgressProps extends ComponentProps<'div'> {
   value?: number;
   sx?: stylex.StyleXStyles;
+  indicatorSx?: stylex.StyleXStyles;
+  indicatorColor?: string;
 }
 
-function Progress({ className, value = 0, sx, style, ...props }: ProgressProps) {
+function Progress({
+  className,
+  value = 0,
+  sx,
+  indicatorSx,
+  indicatorColor,
+  style,
+  ...props
+}: ProgressProps) {
   const safeValue = Math.min(Math.max(value, 0), 100);
   const sxProps = stylex.props(styles.root, sx);
+  const indicatorProps = stylex.props(styles.indicator, indicatorSx);
 
   return (
     <div
@@ -42,7 +53,13 @@ function Progress({ className, value = 0, sx, style, ...props }: ProgressProps) 
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
     >
-      <div {...stylex.props(styles.indicator)} style={{ width: `${safeValue}%` }} />
+      <div
+        {...indicatorProps}
+        style={{
+          width: `${safeValue}%`,
+          ...(indicatorColor ? { backgroundColor: indicatorColor } : {}),
+        }}
+      />
     </div>
   );
 }

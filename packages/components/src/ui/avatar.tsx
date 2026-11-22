@@ -37,6 +37,9 @@ const styles = stylex.create({
     overflow: 'hidden',
     borderRadius: radius.full,
   },
+  rootSquare: {
+    borderRadius: radius.sm,
+  },
   // 7-tier Avatar Sizes
   sizeXxs: {
     width: '1.25rem',
@@ -150,16 +153,32 @@ const sizeStyles: Record<ComponentSize, stylex.StyleXStyles> = {
 export interface AvatarProps extends ComponentProps<typeof AvatarPrimitiveRoot> {
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
+  /** Shape of the avatar. Defaults to 'circle'. */
+  shape?: 'circle' | 'square';
+  /** Image source URL. When provided, the AvatarImage slot is rendered automatically. */
+  src?: string;
+  /** User name used for the image alt text and the initials fallback. */
+  name?: string;
   sx?: stylex.StyleXStyles;
 }
 
-function Avatar({ className, size, sx, ...props }: AvatarProps) {
+/** Derives up to two initials from a full name ("Jane Doe" -> "JD"). */
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '';
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function Avatar({ className, size, shape, src, name, sx, children, ...props }: AvatarProps) {
   const groupContext = useContext(AvatarGroupContext);
   const resolvedSize: ComponentSize = size ?? groupContext?.size ?? 'md';
   const inGroup = Boolean(groupContext?.inGroup);
+  const isSquare = shape === 'square';
 
   const sxProps = stylex.props(
     styles.root,
+    isSquare && styles.rootSquare,
     sizeStyles[resolvedSize] ?? styles.sizeMd,
     inGroup && styles.groupItem,
     sx,
@@ -172,7 +191,10 @@ function Avatar({ className, size, sx, ...props }: AvatarProps) {
       {...sxProps}
       className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
       {...props}
-    />
+    >
+      {src != null ? <AvatarImage src={src} alt={name ?? ''} /> : null}
+      {children ?? (name != null ? <AvatarFallback>{getInitials(name)}</AvatarFallback> : null)}
+    </AvatarPrimitiveRoot>
   );
 }
 
