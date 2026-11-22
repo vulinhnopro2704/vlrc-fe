@@ -10,6 +10,7 @@ import {
 import * as stylex from '@stylexjs/stylex';
 import { colors, radius, shadow } from '../theme/tokens.stylex';
 import { useZIndex } from '../theme/zIndex';
+import { Text } from '../Typography';
 
 const fadeIn = stylex.keyframes({
   from: { opacity: 0, transform: 'scale(0.95)' },
@@ -67,7 +68,7 @@ function Tooltip({ content, children, ...props }: TooltipProps) {
             <TooltipPrimitiveTrigger asChild>{children as ReactElement}</TooltipPrimitiveTrigger>
           ) : (
             <TooltipPrimitiveTrigger asChild>
-              <span>{children}</span>
+              <Text>{children}</Text>
             </TooltipPrimitiveTrigger>
           )}
           <TooltipContent>{content}</TooltipContent>

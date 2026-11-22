@@ -1,9 +1,9 @@
-import i18n, { type i18n as I18nInstance } from 'i18next';
+import i18n, { type i18n as I18nInstance, type Resource } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 export interface InitI18nOptions {
   /** Language -> namespace -> key/value resources, e.g. `{ en: { projecthub: {...}, translation: {...} } }` */
-  resources: Record<string, Record<string, Record<string, any>>>;
+  resources: Resource;
   /** Initial language (passed through to i18next as `lng`). */
   lng?: string;
   /** Fallback language (passed through to i18next as `fallbackLng`). */

@@ -147,16 +147,15 @@ function CardHeader({
 }
 
 export interface CardTitleProps extends ComponentProps<'div'> {
-  /** Heading level (1-6) applied to the title typography. Defaults to 1. */
+  /** Heading level (1-6) applied to the title typography. Defaults to 3. */
   level?: TitleLevel;
   sx?: stylex.StyleXStyles;
 }
 
-function CardTitle({ className, level = 1, sx, children, ...props }: CardTitleProps) {
+function CardTitle({ className, level = 3, sx, children, ...props }: CardTitleProps) {
   const sxProps = stylex.props(styles.title, sx);
   return (
     <Title
-      as="div"
       level={level}
       data-slot="card-title"
       {...sxProps}

@@ -229,6 +229,7 @@ export const Icons = {
   PenTool: PenTool,
   BookOpen: BookOpen,
   BarChart3: BarChart3,
+  CheckCircle: CheckCircle2,
   CheckCircle2: CheckCircle2,
   Moon: Moon,
   Sun: Sun,
