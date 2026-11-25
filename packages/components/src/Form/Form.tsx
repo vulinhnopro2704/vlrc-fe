@@ -369,6 +369,7 @@ export const FormCheckbox: FormControlFunc<FormCheckboxExtraProps> = ({
   sx,
   disabled,
   size = 'md',
+  width = 'auto',
   ...props
 }) => {
   return (
@@ -381,6 +382,7 @@ export const FormCheckbox: FormControlFunc<FormCheckboxExtraProps> = ({
       horizontal
       controlFirst
       className={wrapperClassName}
+      width={width}
     >
       {({ onChange, value, ...field }) => (
         <Checkbox
@@ -405,6 +407,7 @@ export const FormSwitch: FormControlFunc<FormSwitchExtraProps> = ({
   sx,
   disabled,
   size = 'md',
+  width = 'auto',
   ...props
 }) => {
   return (
@@ -417,6 +420,7 @@ export const FormSwitch: FormControlFunc<FormSwitchExtraProps> = ({
       horizontal
       controlFirst
       className={wrapperClassName}
+      width={width}
     >
       {({ onChange, value, ...field }) => (
         <Switch

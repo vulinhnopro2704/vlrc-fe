@@ -56,5 +56,5 @@ jobs:
       - name: Ensure git tags are created and pushed
         if: always()
         run: |
-          pnpm changeset git-tag || true
+          pnpm changeset tag || true
           git push --tags || true

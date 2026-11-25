@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import BaseSelect from './BaseSelect';
 import type { BaseSelectOption, BaseSingleSelectProps } from './type';
@@ -53,6 +53,20 @@ describe('BaseSelect', () => {
   });
 
   describe('Behavior', () => {
+    it('keeps the selected option icon in the collapsed trigger', () => {
+      const options = [
+        { value: 'high', label: 'High', icon: <svg data-testid="priority-icon" /> },
+        { value: 'normal', label: 'Normal' },
+      ];
+      const { rerender } = render(<BaseSelect options={options} value="high" />);
+      expect(
+        within(screen.getByRole('button', { name: 'High' })).getByTestId('priority-icon'),
+      ).toBeInTheDocument();
+
+      rerender(<BaseSelect options={options} value="normal" />);
+      expect(screen.queryByTestId('priority-icon')).not.toBeInTheDocument();
+    });
+
     it('should open dropdown options when trigger is clicked', () => {
       render(<BaseSelect {...createDefaultSingleProps()} />);
 

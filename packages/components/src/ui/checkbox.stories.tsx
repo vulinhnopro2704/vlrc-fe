@@ -144,3 +144,11 @@ export const Interactive: Story = {
     await expect(cb).toHaveAttribute('aria-checked', 'false');
   },
 };
+
+export const CustomIndicator: Story = {
+  args: {
+    defaultChecked: true,
+    'aria-label': 'Selected',
+    indicator: '✓',
+  },
+};

@@ -35,6 +35,7 @@ export interface BaseSelectCommonProps<T extends SelectValue = SelectValue> {
   tagRender?: (option: BaseSelectOption<T>, onRemove: () => void) => ReactNode;
   showSelectAll?: boolean;
   allowClear?: boolean;
+  suffixIcon?: ReactNode;
   /** Configurable component width (presets: 'full', 'auto', 'md', px number, or custom CSS string) */
   width?: ComponentWidth;
 }

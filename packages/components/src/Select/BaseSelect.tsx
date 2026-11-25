@@ -51,6 +51,7 @@ const styles = stylex.create({
     cursor: 'not-allowed',
     opacity: 0.6,
   },
+  selectedIcon: { display: 'inline-flex', flexShrink: 0, alignItems: 'center' },
   labelArea: {
     flex: '1 1 0%',
     minWidth: 0,
@@ -237,6 +238,7 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
     maxTagCount = 'responsive',
     tagRender,
     showSelectAll = false,
+    suffixIcon,
     width,
   } = props;
 
@@ -430,16 +432,23 @@ export function BaseSelect<T extends SelectValue = SelectValue>(
               tagRender={tagRender}
             />
           ) : displayLabel ? (
-            <Text ellipsis tooltip sx={styles.labelArea}>
-              {displayLabel}
-            </Text>
+            <>
+              {selectedOptions[0]?.icon && (
+                <span {...stylex.props(styles.selectedIcon)} aria-hidden="true">
+                  {selectedOptions[0].icon}
+                </span>
+              )}
+              <Text ellipsis tooltip sx={styles.labelArea}>
+                {displayLabel}
+              </Text>
+            </>
           ) : (
             <Text sx={[styles.labelArea, styles.placeholder]}>{placeholder}</Text>
           )}
           {isClearable && selectedValues.length > 0 && !disabled && (
             <Icons.XIcon {...stylex.props(styles.clearIcon)} onClick={handleClear} />
           )}
-          <Icons.ChevronDownIcon {...stylex.props(styles.chevronIcon)} />
+          {suffixIcon ?? <Icons.ChevronDownIcon {...stylex.props(styles.chevronIcon)} />}
         </button>
       </PopoverTrigger>
       <PopoverContent sx={styles.popoverContent} align="start">

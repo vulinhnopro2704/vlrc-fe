@@ -18,7 +18,8 @@ const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: '1rem',
-    paddingBlock: '1rem',
+    paddingBlock: '0.75rem',
+    flexWrap: 'wrap',
   },
   selectedInfo: {
     color: colors.mutedForeground,
@@ -43,12 +44,16 @@ export const DataTablePagination = <TData,>({
   tableState,
   pageSizeOptions,
   apiConfig,
+  showSelection,
 }: {
   table: Table<TData>;
   tableState: Table<TData>['getState'] extends () => infer S ? S : never;
   pageSizeOptions: number[];
   apiConfig: DataTableApiConfig;
+  showSelection: boolean;
 }) => {
+  // TanStack keeps the table reference stable while its row models change.
+  'use no memo';
   const pageIndex = tableState.pagination.pageIndex;
   const pageSize = tableState.pagination.pageSize;
 
@@ -60,7 +65,9 @@ export const DataTablePagination = <TData,>({
   return (
     <div {...stylex.props(styles.container)}>
       <div {...stylex.props(styles.selectedInfo)}>
-        {table.getFilteredSelectedRowModel().rows.length} of {totalRows} row(s) selected.
+        {showSelection
+          ? `${table.getFilteredSelectedRowModel().rows.length} of ${totalRows} row(s) selected.`
+          : `${totalRows ? pageIndex * pageSize + 1 : 0}–${Math.min(totalRows, (pageIndex + 1) * pageSize)} / ${totalRows}`}
       </div>
 
       <div {...stylex.props(styles.controls)}>

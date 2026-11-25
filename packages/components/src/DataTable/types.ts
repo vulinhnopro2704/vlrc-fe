@@ -85,6 +85,9 @@ export type DataTableProps<TData> = {
   empty?: DataTableEmptyConfig;
   /** Global search configuration with debounced search input. */
   search?: DataTableSearchConfig;
+  showSearch?: boolean;
+  compact?: boolean;
+  enableRowSelection?: boolean;
   /** Pagination configuration including page size options. */
   pagination?: DataTablePaginationConfig;
   /** Row action menu configuration. */

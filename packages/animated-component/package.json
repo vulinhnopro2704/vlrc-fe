@@ -1,0 +1,42 @@
+{
+  "name": "@vlrc-fe/animated-component",
+  "version": "0.1.1",
+  "description": "Optional GSAP motion and StyleX surfaces for VLRC React applications.",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "styles.css.d.ts"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": {
+      "types": "./styles.css.d.ts",
+      "default": "./dist/assets/stylex.css"
+    }
+  },
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@stylexjs/stylex": "0.19.1",
+    "gsap": "^3.15.1"
+  },
+  "devDependencies": {
+    "@stylexjs/unplugin": "0.19.1",
+    "@types/react": "^19.0.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.0.0"
+  },
+  "peerDependencies": {
+    "@vlrc-fe/components": "workspace:^",
+    "react": "^19.0.0"
+  }
+}

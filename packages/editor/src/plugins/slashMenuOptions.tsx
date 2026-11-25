@@ -37,7 +37,7 @@ export interface SlashOption {
   icon: ReactNode;
   category: 'basic' | 'media';
   actionId?: 'table' | 'image' | 'youtube' | 'figma';
-  onSelect: (editor: LexicalEditor) => void;
+  $select: (editor: LexicalEditor) => void;
 }
 
 export const SLASH_OPTIONS: SlashOption[] = [
@@ -47,13 +47,11 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Plain body text paragraph',
     icon: <Type size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createParagraphNode());
-        }
-      });
+    $select: () => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createParagraphNode());
+      }
     },
   },
   {
@@ -61,13 +59,11 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Large section heading',
     icon: <Heading1 size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createHeadingNode('h1'));
-        }
-      });
+    $select: () => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode('h1'));
+      }
     },
   },
   {
@@ -75,13 +71,11 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Medium section heading',
     icon: <Heading2 size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createHeadingNode('h2'));
-        }
-      });
+    $select: () => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode('h2'));
+      }
     },
   },
   {
@@ -89,13 +83,11 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Small subsection heading',
     icon: <Heading3 size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createHeadingNode('h3'));
-        }
-      });
+    $select: () => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode('h3'));
+      }
     },
   },
   {
@@ -103,7 +95,7 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Simple unorganized list',
     icon: <List size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
+    $select: (editor) => {
       editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
     },
   },
@@ -112,7 +104,7 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Ordered step-by-step list',
     icon: <ListOrdered size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
+    $select: (editor) => {
       editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
     },
   },
@@ -121,7 +113,7 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Interactive checklist with checkboxes',
     icon: <ListTodo size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
+    $select: (editor) => {
       editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, undefined);
     },
   },
@@ -130,13 +122,11 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Indented block quote',
     icon: <Quote size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createQuoteNode());
-        }
-      });
+    $select: () => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createQuoteNode());
+      }
     },
   },
   {
@@ -144,13 +134,11 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Formatted syntax highlighting block',
     icon: <Code size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createCodeNode());
-        }
-      });
+    $select: () => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createCodeNode());
+      }
     },
   },
   {
@@ -158,7 +146,7 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Visual horizontal divider rule',
     icon: <Minus size={16} />,
     category: 'basic',
-    onSelect: (editor) => {
+    $select: (editor) => {
       editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
     },
   },
@@ -194,10 +182,8 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description,
     icon,
     category: 'basic',
-    onSelect: (editor) => {
-      editor.update(() => {
-        $insertCollapsible(level);
-      });
+    $select: () => {
+      $insertCollapsible(level);
     },
   })),
 
@@ -207,13 +193,11 @@ export const SLASH_OPTIONS: SlashOption[] = [
     description: 'Notion highlight callout banner',
     icon: <Lightbulb size={16} />,
     category: 'media',
-    onSelect: (editor) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          $setBlocksType(selection, () => $createCalloutNode('💡'));
-        }
-      });
+    $select: () => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createCalloutNode('💡'));
+      }
     },
   },
   {
@@ -222,7 +206,7 @@ export const SLASH_OPTIONS: SlashOption[] = [
     icon: <TableIcon size={16} />,
     category: 'media',
     actionId: 'table',
-    onSelect: () => {},
+    $select: () => {},
   },
   {
     title: 'Image',
@@ -230,7 +214,7 @@ export const SLASH_OPTIONS: SlashOption[] = [
     icon: <ImageIcon size={16} />,
     category: 'media',
     actionId: 'image',
-    onSelect: () => {},
+    $select: () => {},
   },
   {
     title: 'YouTube Video',
@@ -238,7 +222,7 @@ export const SLASH_OPTIONS: SlashOption[] = [
     icon: <Video size={16} />,
     category: 'media',
     actionId: 'youtube',
-    onSelect: () => {},
+    $select: () => {},
   },
   {
     title: 'Figma Embed',
@@ -246,6 +230,6 @@ export const SLASH_OPTIONS: SlashOption[] = [
     icon: <FigmaIcon size={16} />,
     category: 'media',
     actionId: 'figma',
-    onSelect: () => {},
+    $select: () => {},
   },
 ];

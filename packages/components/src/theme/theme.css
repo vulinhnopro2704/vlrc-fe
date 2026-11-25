@@ -1,4 +1,4 @@
-@layer reset, astryx-base, astryx-theme, product;
+@layer reset, astryx-base, astryx-theme, vlrc, product;
 
 @import '@astryxdesign/core/reset.css' layer(reset);
 @import '@astryxdesign/core/astryx.css' layer(astryx-base);
@@ -6,6 +6,10 @@
 @import './vlrc-theme.css' layer(astryx-theme);
 
 @layer astryx-theme {
+  body {
+    font-family: var(--font-family-body, system-ui, sans-serif);
+  }
+
   /* Radix Data-State Transitions & Keyframes */
   [data-slot='accordion-trigger'][data-state='open'] svg {
     transform: rotate(180deg);

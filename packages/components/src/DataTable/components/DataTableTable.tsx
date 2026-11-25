@@ -17,9 +17,18 @@ import {
   TableRow,
 } from '../../ui/table';
 
+import { colors, spacing } from '../../theme/tokens.stylex';
 import type { DataTableEmptyConfig, DataTableExpandConfig } from '../types';
 
 const styles = stylex.create({
+  compactHead: {
+    backgroundColor: colors.surfaceSubtle,
+    height: spacing['9'],
+    paddingInline: spacing.sm,
+    color: colors.mutedForeground,
+    fontWeight: 600,
+  },
+  compactCell: { paddingBlock: spacing.xs, paddingInline: spacing.sm },
   emptyCell: {
     height: '6rem',
     textAlign: 'center',
@@ -36,6 +45,7 @@ export const DataTableTable = <TData,>({
   expandConfig,
   empty,
   columnsCount,
+  compact,
 }: {
   table: Table<TData>;
   columnVisibility: VisibilityState;
@@ -43,7 +53,10 @@ export const DataTableTable = <TData,>({
   expandConfig: DataTableExpandConfig<TData>;
   empty: DataTableEmptyConfig;
   columnsCount: number;
+  compact: boolean;
 }) => {
+  // TanStack keeps the table reference stable while its row models change.
+  'use no memo';
   const rows = table.getRowModel().rows;
   void expandedState;
 
@@ -60,7 +73,11 @@ export const DataTableTable = <TData,>({
                 ? flexRender(header.column.columnDef.header, header.getContext())
                 : header.column.id;
 
-            return <TableHead key={header.id}>{headerContent}</TableHead>;
+            return (
+              <TableHead key={header.id} sx={compact && styles.compactHead}>
+                {headerContent}
+              </TableHead>
+            );
           })}
         </TableRow>
       ))}
@@ -81,7 +98,7 @@ export const DataTableTable = <TData,>({
       <Fragment key={row.id}>
         <TableRow data-state={row.getIsSelected() ? 'selected' : undefined}>
           {map(row.getVisibleCells(), (cell) => (
-            <TableCell key={cell.id}>
+            <TableCell key={cell.id} sx={compact && styles.compactCell}>
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
             </TableCell>
           ))}

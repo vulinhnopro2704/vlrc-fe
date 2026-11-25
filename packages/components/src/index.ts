@@ -67,3 +67,6 @@ export type {
   Translator,
   Locale,
 } from '@astryxdesign/core';
+
+export { FilterPopup } from './FilterPopup';
+export type { FilterPopupCategory, FilterPopupOption, FilterPopupSelection } from './FilterPopup';

@@ -1,5 +1,27 @@
 # @vlrc-fe/http
 
+## 1.1.0
+
+### Minor Changes
+
+- ### @vlrc-fe/http
+  - **App API Client (`createAppApiClient`)**: Added standardized cookie-auth HTTP client factory with single-flight refresh token queue, per-request retry options preservation, automatic `FormData` `Content-Type` handling, and `auth:unauthorized` event dispatch.
+  - **Error Normalization**: Added `AppApiError`, `normalizeApiErrorResponse`, `isApiErrorResponse`, `getDefaultErrorMessageByStatus`, and `DEFAULT_ERROR_CODE_BY_STATUS`.
+  - **Auth Route Utilities**: Added `DEFAULT_AUTH_ROUTE_PATHS`, `DEFAULT_AUTH_API_PATHS`, `isAuthRoutePath`, `shouldRedirectToLogin`, and `subscribeUnauthorized` to prevent login redirect loops.
+
+  ### @vlrc-fe/components
+  - **FilterPopup**: Added new `FilterPopup` component.
+  - **DataTable, Form, Select, UI & Theme**: Updated `DataTable`, `Form`, `BaseSelect`, `Icons`, `Button`, `Checkbox`, `Popover`, `ScrollArea`, and `theme.css` / `tokens.stylex.ts`.
+
+  ### @vlrc-fe/editor
+  - **SlashMenu**: Updated `SlashMenuPlugin`, `slashMenuOptions`, `slashMenu.stylex.ts`, and `editor.css`.
+
+  ### @vlrc-fe/types
+  - **Enums**: Updated `enums.ts` and package documentation.
+
+  ### @vlrc-fe/animated-component
+  - **Initial Release**: Added optional GSAP motion and StyleX surfaces package.
+
 ## 1.0.1
 
 ### Patch Changes

@@ -20,11 +20,26 @@ export const Default: Story = {
       <PopoverTrigger asChild>
         <Button variant="outline">Open Popover</Button>
       </PopoverTrigger>
-      <PopoverContent style={{ width: 280, padding: '1rem' }}>
+      <PopoverContent width={280} padding="md">
         <h4 style={{ margin: '0 0 0.5rem 0', fontWeight: 600 }}>Dimensions</h4>
         <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>
           Set the dimensions for the layer.
         </p>
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const Compact: Story = {
+  render: () => (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm">
+          Open compact popover
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent width={224} padding="xs">
+        Compact content
       </PopoverContent>
     </Popover>
   ),

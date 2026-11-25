@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/http",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Standardized HTTP client powered by ky",
   "keywords": [
     "api",

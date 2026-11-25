@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Icons from '../Icons';
+import { Box, HStack } from '../layout';
 import { Button } from './button';
 
 const meta = {
@@ -112,6 +113,22 @@ export const AllVariants: Story = {
       <Button variant="gradient">Gradient</Button>
       <Button variant="gradient-success">Success</Button>
     </div>
+  ),
+};
+
+export const GradientThemes: Story = {
+  render: () => (
+    <HStack gap="md">
+      <Box data-theme="dark">
+        <Button variant="gradient">Dark</Button>
+      </Box>
+      <Box data-theme="pink">
+        <Button variant="gradient">Pink</Button>
+      </Box>
+      <Box data-theme="lavender">
+        <Button variant="gradient">Lavender</Button>
+      </Box>
+    </HStack>
   ),
 };
 

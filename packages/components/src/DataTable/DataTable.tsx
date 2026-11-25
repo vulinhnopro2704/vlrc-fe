@@ -82,6 +82,9 @@ export const DataTable = <TData,>({
   initialState,
   empty,
   search,
+  showSearch = true,
+  compact = false,
+  enableRowSelection = true,
   pagination: paginationConfig,
   actions,
   api,
@@ -143,7 +146,7 @@ export const DataTable = <TData,>({
     meta: {
       getRowActions: resolvedActions.getRowActions,
     },
-    enableRowSelection: true,
+    enableRowSelection,
     getRowId: (originalRow, index, parent) =>
       resolvedGetRowId(originalRow, index, parent === undefined ? null : (parent as Row<TData>)),
     onSortingChange: (updater) => setSorting((current) => functionalUpdate(updater, current)),
@@ -195,7 +198,7 @@ export const DataTable = <TData,>({
       ...current,
       pageIndex: clamp(current.pageIndex, 0, maxPageIndex),
     }));
-  }, [manualMode, paginationState.pageSize, table]);
+  }, [data, manualMode, paginationState.pageSize, table]);
 
   const debouncedNotifyRef = useRef(
     debounce((next: DataTableQuery) => {
@@ -263,6 +266,7 @@ export const DataTable = <TData,>({
     >
       <DataTableToolbar<TData>
         table={table}
+        showSearch={showSearch}
         placeholder={resolvedSearch.placeholder}
         debounceMs={resolvedSearch.debounceMs}
         right={
@@ -288,6 +292,7 @@ export const DataTable = <TData,>({
           expandConfig={resolvedExpand}
           empty={resolvedEmpty}
           columnsCount={columnsCount}
+          compact={compact}
         />
       </div>
 
@@ -296,6 +301,7 @@ export const DataTable = <TData,>({
         tableState={table.getState()}
         pageSizeOptions={resolvedPagination.pageSizeOptions}
         apiConfig={resolvedApi}
+        showSelection={enableRowSelection}
       />
     </div>
   );

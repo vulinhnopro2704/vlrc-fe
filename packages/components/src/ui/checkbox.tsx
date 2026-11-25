@@ -1,4 +1,4 @@
-import { useState, type ComponentProps } from 'react';
+import { useState, type ComponentProps, type ReactNode } from 'react';
 import {
   Indicator as CheckboxPrimitiveIndicator,
   Root as CheckboxPrimitiveRoot,
@@ -142,6 +142,7 @@ export interface CheckboxProps extends ComponentProps<typeof CheckboxPrimitiveRo
   /** 7-tier sizing scale ('xxs' to 'xxl', default 'md') */
   size?: ComponentSize;
   sx?: stylex.StyleXStyles;
+  indicator?: ReactNode;
 }
 
 function Checkbox({
@@ -151,6 +152,7 @@ function Checkbox({
   defaultChecked = false,
   onCheckedChange,
   disabled,
+  indicator,
   sx,
   ...props
 }: CheckboxProps) {
@@ -183,7 +185,7 @@ function Checkbox({
         data-slot="checkbox-indicator"
         {...stylex.props(styles.indicator)}
       >
-        <CheckIcon {...stylex.props(iconSize)} strokeWidth={3} />
+        {indicator ?? <CheckIcon {...stylex.props(iconSize)} strokeWidth={3} />}
       </CheckboxPrimitiveIndicator>
     </CheckboxPrimitiveRoot>
   );

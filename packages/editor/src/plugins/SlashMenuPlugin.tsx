@@ -5,89 +5,43 @@ import {
   $getSelection,
   $isRangeSelection,
   $isTextNode,
-  COMMAND_PRIORITY_LOW,
-  KEY_DOWN_COMMAND,
+  $setSelection,
+  COMMAND_PRIORITY_HIGH,
+  KEY_ARROW_DOWN_COMMAND,
+  KEY_ARROW_UP_COMMAND,
+  KEY_ENTER_COMMAND,
+  KEY_ESCAPE_COMMAND,
+  type RangeSelection,
 } from 'lexical';
+import { mergeRegister } from '@lexical/utils';
 import { INSERT_TABLE_COMMAND } from '@lexical/table';
-import { create } from '@stylexjs/stylex';
-import { colors, radius, shadow, spacing } from '@vlrc-fe/components/theme/tokens.stylex';
 import { Box, VStack, Text } from '@vlrc-fe/components';
 import { getNextRovingIndex } from '@vlrc-fe/components/utils';
 import { InsertTableDialog } from './InsertTableDialog';
 import { InsertMediaDialog, type MediaType } from './InsertMediaDialog';
 import { SLASH_OPTIONS, type SlashOption } from './slashMenuOptions';
+import { MENU_MAX_HEIGHT, MENU_WIDTH, VIEWPORT_PADDING, styles } from './slashMenu.stylex';
 import { $createImageNode } from '../nodes/ImageNode';
 import { $createYouTubeNode, $createFigmaNode } from '../nodes/EmbedNodes';
 
-const MENU_WIDTH = 280;
-const MENU_MAX_HEIGHT = 320;
-const VIEWPORT_PADDING = 12;
+function $getSlashTrigger() {
+  const selection = $getSelection();
+  if (!$isRangeSelection(selection) || !selection.isCollapsed()) return null;
 
-const styles = create({
-  menu: {
-    position: 'fixed',
-    zIndex: 9999,
-    width: `${MENU_WIDTH}px`,
-    maxHeight: `min(${MENU_MAX_HEIGHT}px, calc(100vh - 24px))`,
-    overflowY: 'auto',
-    borderRadius: radius.md,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: colors.borderDefault,
-    backgroundColor: colors.surfaceDefault,
-    boxShadow: shadow.lg,
-    padding: spacing['1'],
-    boxSizing: 'border-box',
-    overscrollBehavior: 'contain',
-    scrollBehavior: 'smooth',
-  },
-  groupHeading: {
-    paddingInline: spacing.sm,
-    paddingBlock: spacing['1'],
-    userSelect: 'none',
-  },
-  item: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingInline: spacing.sm,
-    paddingBlock: spacing.xs,
-    borderRadius: radius.sm,
-    cursor: 'pointer',
-    userSelect: 'none',
-    transitionProperty: 'background-color, color',
-    transitionDuration: '100ms',
-    borderWidth: 0,
-    backgroundColor: 'transparent',
-    width: '100%',
-    textAlign: 'left',
-    outline: 'none',
-    boxSizing: 'border-box',
-    ':hover': {
-      backgroundColor: colors.surfaceSubtle,
-    },
-  },
-  itemSelected: {
-    backgroundColor: colors.surfaceSubtle,
-    boxShadow: shadow.ringFocus,
-  },
-  iconBox: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '1.75rem',
-    height: '1.75rem',
-    borderRadius: radius.sm,
-    backgroundColor: colors.surfaceSubtle,
-    color: colors.fgMuted,
-    flexShrink: 0,
-  },
-  empty: {
-    paddingInline: spacing.md,
-    paddingBlock: spacing.lg,
-    textAlign: 'center',
-  },
-});
+  const { anchor } = selection;
+  const node = anchor.getNode();
+  if (!$isTextNode(node)) return null;
+
+  const match = node
+    .getTextContent()
+    .slice(0, anchor.offset)
+    .match(/(?:^|\s)\/([a-zA-Z0-9]*)$/);
+  if (!match) return null;
+
+  const query = match[1];
+  const length = query.length + 1;
+  return { node, query, length, offset: anchor.offset - length };
+}
 
 export function SlashMenuPlugin(): JSX.Element | null {
   const [editor] = useLexicalComposerContext();
@@ -102,6 +56,8 @@ export function SlashMenuPlugin(): JSX.Element | null {
 
   // References for keyboard navigation and viewport anchoring
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const queryRef = useRef<string | null>(null);
+  const dialogSelection = useRef<RangeSelection | null>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const filteredOptions = useMemo(() => {
@@ -126,36 +82,31 @@ export function SlashMenuPlugin(): JSX.Element | null {
 
   const selectOption = useCallback(
     (option: SlashOption) => {
-      // Remove the slash command trigger text from editor selection
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection)) {
-          const anchor = selection.anchor;
-          const node = anchor.getNode();
-          const text = node.getTextContent();
-          const slashIdx = text.lastIndexOf('/');
-          if (slashIdx !== -1 && $isTextNode(node)) {
-            const nextText = text.slice(0, slashIdx);
-            node.setTextContent(nextText);
-          }
-        }
-      });
-
-      if (option.actionId === 'table') {
-        setIsTableDialogOpen(true);
-      } else if (
-        option.actionId === 'image' ||
-        option.actionId === 'youtube' ||
-        option.actionId === 'figma'
-      ) {
-        setMediaDialogType(option.actionId);
-      } else {
-        option.onSelect(editor);
-        editor.focus();
-      }
-
+      const action = option.actionId;
+      let triggerRemoved = false;
+      editor.update(
+        () => {
+          const trigger = $getSlashTrigger();
+          if (!trigger) return;
+          trigger.node.spliceText(trigger.offset, trigger.length, '', true);
+          triggerRemoved = true;
+          if (!action) option.$select(editor);
+        },
+        {
+          onUpdate: () => {
+            if (!triggerRemoved || !action) return;
+            // Lexical can move the caret onto the parent when it removes an empty text node.
+            dialogSelection.current = editor.getEditorState().read(() => {
+              const selection = $getSelection();
+              return $isRangeSelection(selection) ? selection.clone() : null;
+            });
+            if (action === 'table') setIsTableDialogOpen(true);
+            else setMediaDialogType(action);
+          },
+        },
+      );
       setIsOpen(false);
-      setQuery('');
+      queryRef.current = null;
     },
     [editor],
   );
@@ -198,32 +149,22 @@ export function SlashMenuPlugin(): JSX.Element | null {
   useEffect(() => {
     return editor.registerUpdateListener(({ editorState }) => {
       editorState.read(() => {
-        const selection = $getSelection();
-        if (!$isRangeSelection(selection) || !selection.isCollapsed()) {
+        const trigger = $getSlashTrigger();
+        if (!trigger) {
+          queryRef.current = null;
           setIsOpen(false);
           return;
         }
 
-        const anchor = selection.anchor;
-        const node = anchor.getNode();
-        const textContent = node.getTextContent();
-        const offset = anchor.offset;
-        const textBeforeCursor = textContent.slice(0, offset);
-
-        const match = textBeforeCursor.match(/(?:^|\s)\/([a-zA-Z0-9]*)$/);
-        if (match) {
-          const rawQuery = match[1] || '';
-          setQuery(rawQuery);
+        const pos = calculatePosition();
+        if (!pos) return;
+        if (trigger.query !== queryRef.current) {
+          queryRef.current = trigger.query;
+          setQuery(trigger.query);
           setSelectedIndex(0);
-
-          const pos = calculatePosition();
-          if (pos) {
-            updatePosition(pos);
-            setIsOpen(true);
-          }
-        } else {
-          setIsOpen(false);
         }
+        updatePosition(pos);
+        setIsOpen(true);
       });
     });
   }, [editor, calculatePosition, updatePosition]);
@@ -285,43 +226,92 @@ export function SlashMenuPlugin(): JSX.Element | null {
   useEffect(() => {
     if (!isOpen) return;
 
-    return editor.registerCommand(
-      KEY_DOWN_COMMAND,
-      (event: KeyboardEvent) => {
-        const options = displayedOptionsRef.current;
-        const currentIdx = selectedIndexRef.current;
+    const moveSelection = (event: KeyboardEvent) => {
+      const nextIndex = getNextRovingIndex(
+        event.key,
+        selectedIndexRef.current,
+        displayedOptionsRef.current.length,
+        { orientation: 'vertical', loop: true },
+      );
+      if (nextIndex === null) return false;
 
-        const nextIndex = getNextRovingIndex(event.key, currentIdx, options.length, {
-          orientation: 'vertical',
-          loop: true,
-        });
+      event.preventDefault();
+      setSelectedIndex(nextIndex);
+      return true;
+    };
 
-        if (nextIndex !== null) {
-          event.preventDefault();
-          setSelectedIndex(nextIndex);
+    return mergeRegister(
+      editor.registerCommand(KEY_ARROW_UP_COMMAND, moveSelection, COMMAND_PRIORITY_HIGH),
+      editor.registerCommand(KEY_ARROW_DOWN_COMMAND, moveSelection, COMMAND_PRIORITY_HIGH),
+      editor.registerCommand(
+        KEY_ENTER_COMMAND,
+        (event) => {
+          const option = displayedOptionsRef.current[selectedIndexRef.current];
+          if (!option || !$getSlashTrigger() || event?.shiftKey || event?.isComposing) return false;
+          event?.preventDefault();
+          selectOptionRef.current(option);
           return true;
-        }
-
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          const opt = options[currentIdx];
-          if (opt) {
-            selectOptionRef.current(opt);
-          }
-          return true;
-        }
-
-        if (event.key === 'Escape') {
+        },
+        COMMAND_PRIORITY_HIGH,
+      ),
+      editor.registerCommand(
+        KEY_ESCAPE_COMMAND,
+        (event) => {
           event.preventDefault();
           setIsOpen(false);
           return true;
-        }
-
-        return false;
-      },
-      COMMAND_PRIORITY_LOW,
+        },
+        COMMAND_PRIORITY_HIGH,
+      ),
     );
   }, [isOpen, editor]);
+
+  const renderOptionGroup = (options: SlashOption[], title: string, offset = 0) => {
+    if (!options.length) return null;
+
+    return (
+      <>
+        <Box sx={[styles.groupHeading, offset > 0 && styles.groupSpacing]}>
+          <Text size="xs" weight="medium" type="secondary">
+            {title}
+          </Text>
+        </Box>
+        {options.map((option, index) => {
+          const optionIndex = index + offset;
+          const isSelected = optionIndex === selectedIndex;
+          return (
+            <Box
+              as="button"
+              key={option.title}
+              ref={(element: HTMLButtonElement | null) => {
+                itemRefs.current[optionIndex] = element;
+              }}
+              type="button"
+              data-slot="slash-menu-item"
+              data-selected={isSelected ? 'true' : 'false'}
+              className="vlrc-slash-menu-item"
+              sx={[styles.item, isSelected && styles.itemSelected]}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => selectOption(option)}
+              onMouseEnter={() => setSelectedIndex(optionIndex)}
+            >
+              <Box className="vlrc-slash-menu-icon" sx={styles.iconBox} aria-hidden="true">
+                {option.icon}
+              </Box>
+              <VStack gap={0} style={{ flex: 1, minWidth: 0 }}>
+                <Text size="sm" weight="medium">
+                  {option.title}
+                </Text>
+                <Text size="xs" type="secondary">
+                  {option.description}
+                </Text>
+              </VStack>
+            </Box>
+          );
+        })}
+      </>
+    );
+  };
 
   return (
     <>
@@ -335,9 +325,6 @@ export function SlashMenuPlugin(): JSX.Element | null {
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
-              // Modern CSS Anchor Positioning (Baseline 2026)
-              positionArea: 'block-end span-inline-end',
-              positionTryFallbacks: 'flip-block, flip-inline',
             }}
           >
             {displayedOptions.length === 0 ? (
@@ -348,96 +335,8 @@ export function SlashMenuPlugin(): JSX.Element | null {
               </Box>
             ) : (
               <VStack gap="xxs">
-                {basicItems.length > 0 && (
-                  <>
-                    <Box sx={styles.groupHeading}>
-                      <Text size="xs" weight="medium" type="secondary">
-                        Basic blocks
-                      </Text>
-                    </Box>
-                    {basicItems.map((opt, idx) => {
-                      const isSelected = idx === selectedIndex;
-                      return (
-                        <Box
-                          as="button"
-                          key={opt.title}
-                          ref={(el: HTMLButtonElement | null) => {
-                            itemRefs.current[idx] = el;
-                          }}
-                          type="button"
-                          data-slot="slash-menu-item"
-                          data-selected={isSelected ? 'true' : 'false'}
-                          className="vlrc-slash-menu-item"
-                          sx={[styles.item, isSelected && styles.itemSelected]}
-                          onClick={() => selectOption(opt)}
-                          onMouseEnter={() => setSelectedIndex(idx)}
-                        >
-                          <Box
-                            className="vlrc-slash-menu-icon"
-                            sx={styles.iconBox}
-                            aria-hidden="true"
-                          >
-                            {opt.icon}
-                          </Box>
-                          <VStack gap={0} style={{ flex: 1, minWidth: 0 }}>
-                            <Text size="sm" weight="medium">
-                              {opt.title}
-                            </Text>
-                            <Text size="xs" type="secondary">
-                              {opt.description}
-                            </Text>
-                          </VStack>
-                        </Box>
-                      );
-                    })}
-                  </>
-                )}
-
-                {mediaItems.length > 0 && (
-                  <>
-                    <Box sx={styles.groupHeading} style={{ marginTop: '0.25rem' }}>
-                      <Text size="xs" weight="medium" type="secondary">
-                        Media & embeds
-                      </Text>
-                    </Box>
-                    {mediaItems.map((opt, idx) => {
-                      const overallIndex = basicItems.length + idx;
-                      const isSelected = overallIndex === selectedIndex;
-                      return (
-                        <Box
-                          as="button"
-                          key={opt.title}
-                          ref={(el: HTMLButtonElement | null) => {
-                            itemRefs.current[overallIndex] = el;
-                          }}
-                          type="button"
-                          data-slot="slash-menu-item"
-                          data-selected={isSelected ? 'true' : 'false'}
-                          className="vlrc-slash-menu-item"
-                          sx={[styles.item, isSelected && styles.itemSelected]}
-                          onClick={() => selectOption(opt)}
-                          onMouseEnter={() => setSelectedIndex(overallIndex)}
-                        >
-                          <Box
-                            className="vlrc-slash-menu-icon"
-                            sx={styles.iconBox}
-                            aria-hidden="true"
-                          >
-                            {opt.icon}
-                          </Box>
-                          <VStack gap={0} style={{ flex: 1, minWidth: 0 }}>
-                            <Text size="sm" weight="medium">
-                              {opt.title}
-                            </Text>
-                            <Text size="xs" type="secondary">
-                              {opt.description}
-                            </Text>
-                          </VStack>
-                        </Box>
-                      );
-                    })}
-                  </>
-                )}
+                {renderOptionGroup(basicItems, 'Basic blocks')}
+                {renderOptionGroup(mediaItems, 'Media & embeds', basicItems.length)}
               </VStack>
             )}
           </Box>,
@@ -448,10 +347,11 @@ export function SlashMenuPlugin(): JSX.Element | null {
         open={isTableDialogOpen}
         onOpenChange={setIsTableDialogOpen}
         onConfirm={({ rows, columns, includeHeaders }) => {
-          editor.dispatchCommand(INSERT_TABLE_COMMAND, {
-            rows,
-            columns,
-            includeHeaders,
+          editor.update(() => {
+            if (!dialogSelection.current) return;
+            $setSelection(dialogSelection.current);
+            dialogSelection.current = null;
+            editor.dispatchCommand(INSERT_TABLE_COMMAND, { rows, columns, includeHeaders });
           });
         }}
       />
@@ -464,8 +364,10 @@ export function SlashMenuPlugin(): JSX.Element | null {
         }}
         onConfirm={({ type, url, caption }) => {
           editor.update(() => {
-            const selection = $getSelection();
-            if ($isRangeSelection(selection)) {
+            const selection = dialogSelection.current;
+            if (selection) {
+              $setSelection(selection);
+              dialogSelection.current = null;
               if (type === 'image') {
                 selection.insertNodes([
                   $createImageNode({

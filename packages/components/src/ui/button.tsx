@@ -132,11 +132,11 @@ const styles = stylex.create({
     },
   },
   variantGradient: {
-    backgroundImage: 'linear-gradient(to right, var(--primary), var(--accent))',
-    color: colors.primaryForeground,
+    backgroundColor: `color-mix(in srgb, var(--primary, ${colors.primary}) 65%, var(--foreground, ${colors.foreground}))`,
+    backgroundImage: `linear-gradient(to right, color-mix(in srgb, var(--primary, ${colors.primary}) 65%, var(--foreground, ${colors.foreground})), color-mix(in srgb, var(--chart-4, ${colors.chart4}) 50%, var(--foreground, ${colors.foreground})))`,
+    color: `var(--primary-foreground, ${colors.primaryForeground})`,
     boxShadow: shadow.md,
     ':hover': {
-      opacity: 0.95,
       boxShadow: shadow.lg,
     },
   },

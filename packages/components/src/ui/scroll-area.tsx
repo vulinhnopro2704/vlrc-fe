@@ -12,10 +12,13 @@ import { colors, radius } from '../theme/tokens.stylex';
 const styles = stylex.create({
   root: {
     position: 'relative',
+    overflow: 'hidden',
+    minHeight: 0,
   },
   viewport: {
     width: '100%',
     height: '100%',
+    maxHeight: 'inherit',
     borderRadius: 'inherit',
     outline: 'none',
   },
@@ -45,7 +48,7 @@ const styles = stylex.create({
     position: 'relative',
     flex: 1,
     borderRadius: radius.full,
-    backgroundColor: colors.border,
+    backgroundColor: colors.borderMuted,
   },
 });
 

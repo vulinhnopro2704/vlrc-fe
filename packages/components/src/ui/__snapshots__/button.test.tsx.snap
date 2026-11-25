@@ -108,7 +108,7 @@ exports[`Button > UI > should match snapshot for ghost variant 1`] = `
 exports[`Button > UI > should match snapshot for gradient variant 1`] = `
 <DocumentFragment>
   <button
-    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGradient x1d6nh5w xstwp1q x16xnvrd xclktvd xwo25dt button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"
+    class="button__styles.base x3nfvp2 x6s0dn4 xl56j7k xuxw1ft xk50ysn x1ypdohk xfagghw xx6bhzk xwwtwea x1a2a7pz xc342km x1y0btm7 x2lah0s xaqnwrm xijokvz x1s07b3s xik21o4 button__styles.variantGradient xaxqfo8 x1chj0te x1h9mnhn x16xnvrd xwo25dt button__styles.sizeMd xk8t5le xrijj7p x13z6uf9 xnxx81d xkpwil5"
     data-size="md"
     data-slot="button"
     data-style-src="@vlrc-fe/components:src/ui/button.tsx:39; @vlrc-fe/components:src/ui/button.tsx:134; @vlrc-fe/components:src/ui/button.tsx:175"

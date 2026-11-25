@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Button } from '../ui/button';
-import { FormCheckbox, FormInput, FormTextarea } from './Form';
+import { FormCheckbox, FormInput, FormSwitch, FormTextarea } from './Form';
 import FormRadioGroup from './FormRadioGroup';
 import FormSelect from './FormSelect';
 import { FormFileUpload, FormFileUploader } from './FormFileUpload';
 import FormDatePicker from './FormDatePicker';
-import { Title, Text } from '../Typography';
+import { Link, Title, Text } from '../Typography';
+import { HStack, VStack } from '../layout';
 import { createApiUploadHandler } from '../ui/file-upload';
 
 interface FormValues {
@@ -167,6 +168,35 @@ function FullFormWorkflowDemo() {
 
 export const FullFormWorkflow: Story = {
   render: () => <FullFormWorkflowDemo />,
+};
+
+export const InlineBooleanFields: Story = {
+  render: function InlineBooleanFieldsDemo() {
+    const methods = useForm({
+      defaultValues: { remember: false, notifications: true, backup: false },
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <VStack gap="lg">
+          <HStack justify="between" gap="md">
+            <FormCheckbox name="remember" label="Remember me" control={methods.control} />
+            <Link href="#account-help">Account help</Link>
+          </HStack>
+          <HStack justify="between" gap="md">
+            <FormSwitch name="notifications" label="Email updates" control={methods.control} />
+            <Link href="#notification-settings">Notification settings</Link>
+          </HStack>
+          <FormSwitch
+            name="backup"
+            label="Full-width field"
+            control={methods.control}
+            width="full"
+          />
+        </VStack>
+      </FormProvider>
+    );
+  },
 };
 
 interface AvatarFormValues {

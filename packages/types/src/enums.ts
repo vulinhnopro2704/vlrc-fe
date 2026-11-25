@@ -4,7 +4,7 @@ export enum ActivityStatusEnum {
 }
 
 export enum ManagementToolEnum {
-  PLANIX = 'PLANIX',
+  PROJECT_HUB = 'PROJECT_HUB',
   JIRA = 'JIRA',
 }
 

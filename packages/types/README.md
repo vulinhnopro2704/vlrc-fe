@@ -33,7 +33,7 @@ interface Task extends TypeBase {
 export type TaskListResponse = ListItem<Task>;
 
 export const toolOptions: SelectItem<ManagementToolEnum>[] = [
-  { label: 'Planix', value: ManagementToolEnum.PLANIX },
+  { label: 'ProjectHub', value: ManagementToolEnum.PROJECT_HUB },
   { label: 'Jira', value: ManagementToolEnum.JIRA },
 ];
 ```

@@ -9,6 +9,7 @@ export default defineConfig({
     stylex.vite({
       useCSSLayers: {
         before: ['reset', 'astryx-base', 'astryx-theme'],
+        prefix: 'vlrc',
         after: ['product'],
       },
       dev: false,
@@ -37,6 +38,8 @@ export default defineConfig({
       entry: {
         index: resolve(import.meta.dirname, 'src/index.ts'),
         astryx: resolve(import.meta.dirname, 'src/astryx.ts'),
+        'stylex-config': resolve(import.meta.dirname, 'src/stylex-config.ts'),
+        'Icons/index': resolve(import.meta.dirname, 'src/Icons/index.ts'),
       },
       name: 'PlatformCoreComponents',
       formats: ['es', 'cjs'],
@@ -44,6 +47,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
+        /^node:/,
         'react',
         'react/jsx-runtime',
         'react/compiler-runtime',

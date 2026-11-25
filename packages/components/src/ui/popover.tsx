@@ -7,7 +7,7 @@ import {
   Trigger as PopoverPrimitiveTrigger,
 } from '@radix-ui/react-popover';
 import * as stylex from '@stylexjs/stylex';
-import { colors, radius, shadow } from '../theme/tokens.stylex';
+import { colors, radius, shadow, spacing } from '../theme/tokens.stylex';
 import { useZIndex, ZIndexProvider } from '../theme/zIndex';
 
 const scaleIn = stylex.keyframes({
@@ -21,6 +21,8 @@ const styles = stylex.create({
     color: colors.popoverForeground,
     zIndex: 100,
     width: '18rem',
+    maxWidth: 'var(--radix-popover-content-available-width)',
+    boxSizing: 'border-box',
     borderRadius: radius.md,
     borderWidth: 1,
     borderStyle: 'solid',
@@ -49,6 +51,8 @@ function PopoverAnchor(props: ComponentProps<typeof PopoverPrimitiveAnchor>) {
 export interface PopoverContentProps extends ComponentProps<typeof PopoverPrimitiveContent> {
   sx?: stylex.StyleXStyles;
   container?: HTMLElement | DocumentFragment | null;
+  width?: number | string;
+  padding?: '0' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg';
 }
 
 function PopoverContent({
@@ -57,6 +61,8 @@ function PopoverContent({
   sideOffset = 4,
   sx,
   container,
+  width,
+  padding,
   style,
   children,
   ...props
@@ -71,7 +77,13 @@ function PopoverContent({
         align={align}
         sideOffset={sideOffset}
         {...sxProps}
-        style={{ zIndex, ...sxProps.style, ...style }}
+        style={{
+          zIndex,
+          ...sxProps.style,
+          width,
+          padding: padding ? spacing[padding] : undefined,
+          ...style,
+        }}
         className={className ? `${sxProps.className || ''} ${className}`.trim() : sxProps.className}
         {...props}
       >

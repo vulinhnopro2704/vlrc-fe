@@ -9,7 +9,8 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
-    paddingBlock: '1rem',
+    paddingBlock: '0.5rem',
+    justifyContent: 'space-between',
   },
   searchInput: {
     maxWidth: '24rem',
@@ -18,11 +19,13 @@ const styles = stylex.create({
 
 export const DataTableToolbar = <TData,>({
   table,
+  showSearch,
   placeholder,
   debounceMs,
   right,
 }: {
   table: Table<TData>;
+  showSearch: boolean;
   placeholder: string;
   debounceMs: number;
   right: ReactNode;
@@ -53,19 +56,21 @@ export const DataTableToolbar = <TData,>({
 
   return (
     <div {...stylex.props(styles.toolbar)}>
-      <Input
-        placeholder={placeholder}
-        defaultValue={currentValue}
-        onChange={(event) => {
-          const value = event.target.value;
-          if (isEmpty(value)) {
-            debouncedSetRef.current('');
-            return;
-          }
-          debouncedSetRef.current(value);
-        }}
-        sx={styles.searchInput}
-      />
+      {showSearch && (
+        <Input
+          placeholder={placeholder}
+          defaultValue={currentValue}
+          onChange={(event) => {
+            const value = event.target.value;
+            if (isEmpty(value)) {
+              debouncedSetRef.current('');
+              return;
+            }
+            debouncedSetRef.current(value);
+          }}
+          sx={styles.searchInput}
+        />
+      )}
       {right}
     </div>
   );

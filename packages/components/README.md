@@ -42,7 +42,6 @@ Accessible, enterprise-grade React UI component library built natively on Meta's
 ```bash
 # In consumer applications:
 pnpm add @vlrc-fe/components @stylexjs/stylex
-pnpm add -D @astryxdesign/build
 ```
 
 > [!NOTE]
@@ -52,18 +51,19 @@ pnpm add -D @astryxdesign/build
 
 ## Subpath Exports
 
-| Import Path                      | Contents                                                                           |
-| :------------------------------- | :--------------------------------------------------------------------------------- |
-| `@vlrc-fe/components`            | Tree-shakeable enterprise components, layout primitives, typography, forms         |
-| `@vlrc-fe/components/astryx`     | 100% of Meta's Astryx primitives (447+ components, layout, and hooks)              |
-| `@vlrc-fe/components/theme`      | Design tokens: `colors`, `radius`, `spacing`, `shadow`, `duration`, `easing`       |
-| `@vlrc-fe/components/DataTable`  | Virtualized enterprise DataTable powered by TanStack Table & Astryx styles         |
-| `@vlrc-fe/components/Dropdown`   | Accessible dropdown and action menus                                               |
-| `@vlrc-fe/components/Icons`      | Central Lucide icon registry                                                       |
-| `@vlrc-fe/components/Typography` | Extended `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`                    |
-| `@vlrc-fe/components/Tag`        | Compact tag primitive with color tokens, closable actions, and prefix icons        |
-| `@vlrc-fe/components/richtext`   | Lexical-based rich text editor & headless Markdown serializers                     |
-| `@vlrc-fe/components/theme.css`  | Unified CSS layer declarations (`reset`, `astryx-base`, `astryx-theme`, `product`) |
+| Import Path                         | Contents                                                                                   |
+| :---------------------------------- | :----------------------------------------------------------------------------------------- |
+| `@vlrc-fe/components`               | Tree-shakeable enterprise components, layout primitives, typography, forms                 |
+| `@vlrc-fe/components/astryx`        | 100% of Meta's Astryx primitives (447+ components, layout, and hooks)                      |
+| `@vlrc-fe/components/theme`         | Design tokens: `colors`, `radius`, `spacing`, `shadow`, `duration`, `easing`               |
+| `@vlrc-fe/components/DataTable`     | Virtualized enterprise DataTable powered by TanStack Table & Astryx styles                 |
+| `@vlrc-fe/components/Dropdown`      | Accessible dropdown and action menus                                                       |
+| `@vlrc-fe/components/Icons`         | Central Lucide icon registry                                                               |
+| `@vlrc-fe/components/Typography`    | Extended `<Text>`, `<Title>`, `<Paragraph>`, `<Link>`, `<Code>`                            |
+| `@vlrc-fe/components/Tag`           | Compact tag primitive with color tokens, closable actions, and prefix icons                |
+| `@vlrc-fe/components/richtext`      | Lexical-based rich text editor & headless Markdown serializers                             |
+| `@vlrc-fe/components/stylex-config` | Shared build options for Vite consumers using StyleX                                       |
+| `@vlrc-fe/components/theme.css`     | Unified CSS layer declarations (`reset`, `astryx-base`, `astryx-theme`, `vlrc`, `product`) |
 
 ### Direct Astryx Access (`@vlrc-fe/components/astryx`)
 
@@ -80,23 +80,34 @@ import { AstryxComponent, astryx } from '@vlrc-fe/components/astryx';
 
 ### 1. Configure Bundler Plugin (Vite)
 
-In your application's `vite.config.ts`, configure prefix splitting using `@astryxdesign/build/vite`:
+If your application compiles StyleX, use the shared configuration in `vite.config.ts`:
+
+```sh
+pnpm add -D @stylexjs/unplugin
+```
 
 ```ts
-import { defineConfig } from 'vite';
+import { vlrcStylexOptions } from '@vlrc-fe/components/stylex-config';
+import stylex from '@stylexjs/unplugin';
 import react from '@vitejs/plugin-react';
-import { stylex } from '@astryxdesign/build/vite';
+import { defineConfig } from 'vite';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
-    stylex({
-      useCSSLayers: true,
-      dev: process.env.NODE_ENV === 'development',
+    stylex.vite({
+      ...vlrcStylexOptions(import.meta.dirname),
+      dev: command === 'serve',
+      runtimeInjection: false,
     }),
     react(),
   ],
-});
+}));
 ```
+
+The helper orders application StyleX layers after VLRC's layers and resolves
+imports from `@vlrc-fe/components/theme/tokens.stylex` to the same variable
+names as the precompiled stylesheet. Import those tokens from the `.stylex`
+subpath when using them in `stylex.create()`.
 
 ### 2. Import Stylesheet Once in App Entry
 
@@ -109,7 +120,7 @@ import '@vlrc-fe/components/theme.css';
 This automatically declares native CSS cascade layers in the required order:
 
 ```css
-@layer reset, astryx-base, astryx-theme, product;
+@layer reset, astryx-base, astryx-theme, vlrc, product;
 ```
 
 ### 3. Do Not Run the StyleX Babel Plugin Over This Package's Dist

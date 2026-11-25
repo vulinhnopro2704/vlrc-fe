@@ -257,8 +257,42 @@ importers:
         specifier: ^8.3.5
         version: 8.3.5(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
 
+  packages/animated-component:
+    dependencies:
+      '@stylexjs/stylex':
+        specifier: 0.19.1
+        version: 0.19.1
+      '@vlrc-fe/components':
+        specifier: workspace:^
+        version: link:../components
+      gsap:
+        specifier: ^3.15.1
+        version: 3.15.1
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+    devDependencies:
+      '@stylexjs/unplugin':
+        specifier: 0.19.1
+        version: 0.19.1(unplugin@2.3.11)
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.3.0
+      '@vitejs/plugin-react':
+        specifier: ^6.1.2
+        version: 6.1.2(@rolldown/plugin-babel@0.2.3(@babel/core@8.0.1)(@babel/runtime@7.29.7)(rolldown@1.2.15)(vite@8.3.5(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+      vite:
+        specifier: ^8.0.0
+        version: 8.3.5(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
+
   packages/components:
     dependencies:
+      '@astryxdesign/cli':
+        specifier: 0.7.16
+        version: 0.7.16(@astryxdesign/core@0.7.16(@stylexjs/stylex@0.19.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
       '@astryxdesign/core':
         specifier: 0.7.16
         version: 0.7.16(@stylexjs/stylex@0.19.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -404,9 +438,6 @@ importers:
       '@astryxdesign/build':
         specifier: 0.7.16
         version: 0.7.16(@babel/core@8.0.1)(@stylexjs/babel-plugin@0.19.1)(@stylexjs/unplugin@0.19.1(unplugin@2.3.11))(postcss@8.5.32)(vite@8.3.5(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
-      '@astryxdesign/cli':
-        specifier: 0.7.16
-        version: 0.7.16(@astryxdesign/core@0.7.16(@stylexjs/stylex@0.19.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
       '@babel/parser':
         specifier: ^7.29.0
         version: 7.29.14
@@ -3491,6 +3522,9 @@ packages:
 
   graceful-fs@4.2.12:
     resolution: {integrity: sha512-iuyGF2E4oafQfPsRrG2wtY2ILupMhvtdrhzrxB+0VcjsPpSPttpfYdjnGFGsTi5MaJFjI1jOKHPQ6UTbTj9TAw==}
+
+  gsap@3.15.1:
+    resolution: {integrity: sha512-63yjWRFWj3QRP1UOuD8kcidCcy3nxb1mMRpwHr/xJRvPfm9GtWOXFAYUiL0ro1fgPq2nY53LR+98pAgy9BumBg==}
 
   hasown@2.0.4:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
@@ -7575,6 +7609,8 @@ snapshots:
       path-scurry: 2.0.2
 
   graceful-fs@4.2.12: {}
+
+  gsap@3.15.1: {}
 
   hasown@2.0.4:
     dependencies:

@@ -218,34 +218,34 @@ export const typography = stylex.defineVars({
 });
 
 /**
- * Unified enterprise token aliases mapped directly from canonical token maps.
- * Ensures a single source of truth for design tokens.
+ * Enterprise aliases share the canonical CSS theme variables. Export a StyleX
+ * variable group so linked and published consumers resolve the same names.
  */
-export const tokens = {
-  colorBorder: colors.border,
-  colorSurface: colors.card,
-  colorSurfaceSecondary: colors.secondary,
-  colorSurfaceHover: colors.accent,
-  colorText: colors.foreground,
-  colorTextSecondary: colors.mutedForeground,
-  colorPrimary: colors.primary,
-  colorError: colors.destructive,
-  colorSuccess: colors.success,
-  colorWarning: colors.warning,
-  colorBgLayout: colors.muted,
-  colorBgSubtle: colors.secondary,
+export const tokens = stylex.defineVars({
+  colorBorder: 'var(--border, #e2e8f0)',
+  colorSurface: 'var(--card, #ffffff)',
+  colorSurfaceSecondary: 'var(--secondary, #f1f5f9)',
+  colorSurfaceHover: 'var(--accent, #f1f5f9)',
+  colorText: 'var(--foreground, #0f172a)',
+  colorTextSecondary: 'var(--muted-foreground, #64748b)',
+  colorPrimary: 'var(--primary, #3b82f6)',
+  colorError: 'var(--destructive, #ef4444)',
+  colorSuccess: 'var(--color-success, #16a34a)',
+  colorWarning: 'var(--color-warning, #eab308)',
+  colorBgLayout: 'var(--muted, #f1f5f9)',
+  colorBgSubtle: 'var(--secondary, #f1f5f9)',
 
-  spacingXS: spacing.xs,
-  spacingSM: spacing.sm,
-  spacingMD: spacing.md,
-  spacingLG: spacing.lg,
-  spacingXL: spacing.xl,
+  spacingXS: 'var(--spacing-xs, 0.5rem)',
+  spacingSM: 'var(--spacing-sm, 0.75rem)',
+  spacingMD: 'var(--spacing-md, 1rem)',
+  spacingLG: 'var(--spacing-lg, 1.5rem)',
+  spacingXL: 'var(--spacing-xl, 2rem)',
 
-  radiusSM: radius.sm,
-  radiusMD: radius.md,
-  radiusLG: radius.lg,
-  radiusFull: radius.full,
-};
+  radiusSM: 'var(--radius-sm, 2px)',
+  radiusMD: 'var(--radius-md, 6px)',
+  radiusLG: 'var(--radius-lg, 8px)',
+  radiusFull: 'var(--radius-full, 9999px)',
+});
 
 /**
  * Backward compatibility alias for theme tokens.
