@@ -1,11 +1,12 @@
 {
   "name": "@vlrc-fe/animated-component",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Optional GSAP motion and StyleX surfaces for VLRC React applications.",
   "license": "MIT",
   "files": [
     "dist",
-    "styles.css.d.ts"
+    "styles.css.d.ts",
+    "src/fox/LICENSE"
   ],
   "type": "module",
   "sideEffects": [

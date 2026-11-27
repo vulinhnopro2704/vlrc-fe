@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { VLRC_COMPONENTS, formatComponentDoc, formatComponentJson } from './registry.mjs';
 
@@ -17,6 +17,20 @@ function runAstryxCLI(customArgs = args) {
   });
 }
 
+function upstreamJson() {
+  const result = spawnSync(process.execPath, [cliPath, ...args], {
+    encoding: 'utf8',
+    stdio: ['inherit', 'pipe', 'inherit'],
+    maxBuffer: 16 * 1024 * 1024,
+  });
+  if (result.error) throw result.error;
+  if (result.status !== 0) {
+    process.stdout.write(result.stdout ?? '');
+    process.exit(result.status ?? 1);
+  }
+  return JSON.parse(result.stdout);
+}
+
 // 1. Handle `vlrc component <Name> [--json] [--props]`
 if (args[0] === 'component') {
   const isJson = args.includes('--json');
@@ -24,6 +38,14 @@ if (args[0] === 'component') {
   const isList = args.includes('--list') || args.length === 1;
 
   if (isList) {
+    if (isJson) {
+      const output = upstreamJson();
+      for (const { name, package: packageName } of Object.values(VLRC_COMPONENTS)) {
+        (output.data.components[name] ??= []).push({ name, package: packageName });
+      }
+      console.log(JSON.stringify(output, null, 2));
+      process.exit(0);
+    }
     // Print combined list
     const child = spawn(process.execPath, [cliPath, 'component', '--list'], {
       stdio: ['inherit', 'pipe', 'inherit'],
@@ -91,6 +113,23 @@ if (args[0] === 'component') {
       );
     });
 
+    if (matches.length && isJson) {
+      const output = upstreamJson();
+      const local = matches.map((comp) => ({
+        domain: 'component',
+        name: comp.name,
+        package: comp.package,
+        description: comp.description,
+        score: comp.name.toLowerCase() === query ? 100 : 80,
+        reason: 'local registry match',
+        import: comp.package,
+        command: `vlrc component ${comp.name}`,
+      }));
+      output.data.results = [...local, ...output.data.results].sort((a, b) => b.score - a.score);
+      output.data.matchCount += local.length;
+      console.log(JSON.stringify(output, null, 2));
+      process.exit(0);
+    }
     if (matches.length > 0 && !isJson) {
       console.log(`\nFound ${matches.length} matching VLRC component(s):\n`);
       for (const m of matches) {

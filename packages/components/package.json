@@ -1,6 +1,6 @@
 {
   "name": "@vlrc-fe/components",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Enterprise UI component library built on Meta's Astryx Design System, Meta StyleX, and Radix UI.",
   "keywords": [
     "accessible",
@@ -36,7 +36,8 @@
     "dist",
     "bin",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "src/theme/woodland.css"
   ],
   "type": "module",
   "sideEffects": false,
@@ -119,7 +120,8 @@
       "import": "./dist/stylex-config.js",
       "require": "./dist/stylex-config.cjs"
     },
-    "./stylex.css": "./dist/assets/stylex.css"
+    "./stylex.css": "./dist/assets/stylex.css",
+    "./woodland.css": "./src/theme/woodland.css"
   },
   "publishConfig": {
     "access": "public"

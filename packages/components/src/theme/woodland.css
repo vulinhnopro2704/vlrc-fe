@@ -1,0 +1,39 @@
+@layer astryx-theme {
+  :root[data-theme='woodland'] {
+    color-scheme: light;
+    --background: #f6f3e7;
+    --foreground: #233d34;
+    --card: #fffdf5;
+    --card-foreground: var(--foreground);
+    --popover: var(--card);
+    --popover-foreground: var(--foreground);
+    --primary: #275e48;
+    --primary-foreground: #fffefa;
+    --secondary: #ddebd5;
+    --secondary-foreground: #244b39;
+    --accent: #f7dfc3;
+    --accent-foreground: #70391f;
+    --muted: #eeeddf;
+    --muted-foreground: #526153;
+    --border: #cccfba;
+    --input: #adb6a1;
+    --ring: #376e51;
+    --destructive: #ad402c;
+    --chart-1: var(--primary);
+    --chart-2: #af592e;
+    --chart-3: #647e4c;
+    --chart-4: #447565;
+    --chart-5: #98632e;
+    --sidebar: var(--card);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--secondary);
+    --sidebar-accent-foreground: var(--secondary-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+    --radius: 1rem;
+    --font-family-body: ui-rounded, 'Avenir Next', system-ui, sans-serif;
+    --font-family-heading: var(--font-family-body);
+  }
+}

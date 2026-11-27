@@ -1,5 +1,18 @@
 # @vlrc-fe/animated-component
 
+## 0.2.0
+
+### Minor Changes
+
+- **FoxMascot**: Added interactive paper fox mascot component with touch feedback, keyboard accessibility (`Enter` / `Space`), speech balloon messages, and reduced-motion compliance.
+- **TrailBanner**: Added mobile-first responsive illustrated chapter heading component with GSAP entrance timeline and optional companion slot.
+- **Assets & Config**: Bundled paper fox SVG assets with LICENSE and integrated `vlrcStylexOptions` into Vite configuration.
+
+### Patch Changes
+
+- Updated dependencies
+  - @vlrc-fe/components@3.3.0
+
 ## 0.1.1
 
 ### Patch Changes

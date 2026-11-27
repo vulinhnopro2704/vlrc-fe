@@ -4,6 +4,54 @@
  * Registry of VLRC and Richtext components for the VLRC CLI.
  */
 export const VLRC_COMPONENTS = {
+  TrailBanner: {
+    name: 'TrailBanner',
+    displayName: 'Trail Banner',
+    category: 'Motion',
+    package: '@vlrc-fe/animated-component',
+    keywords: ['game', 'trail', 'banner', 'responsive'],
+    import: "import { TrailBanner } from '@vlrc-fe/animated-component';",
+    description:
+      'A mobile-first illustrated chapter heading with GSAP entrance and space for actions and a companion. Import @vlrc-fe/animated-component/styles.css once.',
+    bestPractices: [],
+    props: [
+      { name: 'title', type: 'string', required: true, description: 'Page heading.' },
+      {
+        name: 'artwork',
+        type: 'string',
+        required: true,
+        description: 'URL of decorative landscape artwork.',
+      },
+      { name: 'detail', type: 'string', description: 'Supporting description.' },
+      {
+        name: 'companion',
+        type: 'ReactNode',
+        description: 'Optional mascot in the illustrated panel.',
+      },
+      {
+        name: 'children',
+        type: 'ReactNode',
+        description: 'Optional actions below the description.',
+      },
+    ],
+  },
+  FoxMascot: {
+    name: 'FoxMascot',
+    displayName: 'Fox Mascot',
+    category: 'Motion',
+    package: '@vlrc-fe/animated-component',
+    keywords: ['fox', 'game', 'mascot', 'gsap'],
+    import: "import { FoxMascot } from '@vlrc-fe/animated-component';",
+    description:
+      'Interactive paper fox with touch, keyboard and reduced motion support. Import @vlrc-fe/animated-component/styles.css once.',
+    bestPractices: [],
+    props: [
+      { name: 'label', type: 'string', required: true, description: 'Localized button label.' },
+      { name: 'size', type: "'small' | 'large'", default: 'large', description: 'Display size.' },
+      { name: 'happy', type: 'boolean', default: 'false', description: 'Show celebration face.' },
+      { name: 'onPet', type: '() => void', description: 'Called when activated.' },
+    ],
+  },
   // --- Richtext & Editor ---
   RichTextEditor: {
     name: 'RichTextEditor',

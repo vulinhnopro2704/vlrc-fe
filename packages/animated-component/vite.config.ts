@@ -1,3 +1,4 @@
+import { vlrcStylexOptions } from '@vlrc-fe/components/stylex-config';
 import react from '@vitejs/plugin-react';
 import stylex from '@stylexjs/unplugin';
 import { defineConfig } from 'vite';
@@ -7,7 +8,7 @@ export default defineConfig({
     stylex.vite({
       useCSSLayers: { before: ['reset', 'astryx-base', 'astryx-theme'], after: ['product'] },
       runtimeInjection: false,
-      unstable_moduleResolution: { type: 'commonJS', rootDir: import.meta.dirname },
+      unstable_moduleResolution: vlrcStylexOptions(import.meta.dirname).unstable_moduleResolution,
     }),
     react(),
   ],

@@ -186,6 +186,14 @@
 - Fixed `FormCheckbox` vertical alignment when rendered with descriptions or helper text.
 - Replaced all legacy string class concatenations with pure Meta StyleX atomic CSS.
 
+## 3.3.0
+
+### Minor Changes
+
+- **Theme & Styles**: Added `woodland.css` theme stylesheet providing earthy forest green palette variables and exported `./woodland.css` subpath.
+- **Icons**: Added `VolumeX` icon to the unified `Icons` registry.
+- **CLI & Registry**: Added `TrailBanner` and `FoxMascot` component documentation to the VLRC CLI registry (`registry.mjs`) and enabled upstream JSON querying in `bin/vlrc.mjs`.
+
 ## 3.2.0
 
 ### Minor Changes

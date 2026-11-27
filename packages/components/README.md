@@ -64,6 +64,7 @@ pnpm add @vlrc-fe/components @stylexjs/stylex
 | `@vlrc-fe/components/richtext`      | Lexical-based rich text editor & headless Markdown serializers                             |
 | `@vlrc-fe/components/stylex-config` | Shared build options for Vite consumers using StyleX                                       |
 | `@vlrc-fe/components/theme.css`     | Unified CSS layer declarations (`reset`, `astryx-base`, `astryx-theme`, `vlrc`, `product`) |
+| `@vlrc-fe/components/woodland.css`  | Woodland theme CSS layer overrides (earthy forest green palette)                           |
 
 ### Direct Astryx Access (`@vlrc-fe/components/astryx`)
 
